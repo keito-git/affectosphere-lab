@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import { researchDomains } from "../../data/research-domains.en";
+---
+
+<BaseLayout
+  title="Research"
+  description="Affectosphere Group's nine research domains around affective AI — from ethics to perception, internal understanding, human interaction, business, and development."
+  fullBleed
+  locale="en"
+>
+  <PageHeader
+    eyebrow="Research"
+    title="Nine research domains."
+    subtitle="Nine research domains pursued by Affectosphere Group around affective AI. Each domain is deepened independently while remaining in dialogue with the others to weave the larger whole."
+    wideSubtitle
+  />
+
+  <section class="mx-auto mt-section-sm max-w-content page-x">
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        researchDomains.map((d) => (
+          <a
+            href={`/en/research/${d.slug}/`}
+            class="reveal group relative flex h-full flex-col overflow-hidden border border-stone shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover"
+          >
+            <div
+              class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
+              style={`background-image: url('${d.image}');`}
+              aria-hidden="true"
+            />
+            <div
+              class="absolute inset-0 bg-ivory/55 transition-colors duration-300 group-hover:bg-ivory/45"
+              aria-hidden="true"
+            />
+            <div class="relative z-10 flex h-full flex-col p-6 min-h-[240px]">
+              <h2 class="font-display text-2xl font-bold text-charcoal">
+                {d.title}
+              </h2>
+              <p class="mt-4 font-display text-base font-bold leading-relaxed text-charcoal">
+                {d.summary}
+              </p>
+              <span class="mt-auto pt-6 font-heading text-sm font-bold tracking-wide text-charcoal transition-colors group-hover:text-amber">
+                Read more &rarr;
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

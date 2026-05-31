@@ -1,20 +1,28 @@
 ---
 import { site, navItems } from "../data/site";
+
+interface Props {
+  locale?: "ja" | "en";
+}
+const { locale = "ja" } = Astro.props;
+const prefix = locale === "en" ? "/en" : "";
+const sitemapLabel = locale === "en" ? "Sitemap" : "サイトマップ";
+const navLabel = locale === "en" ? "Footer menu" : "フッターメニュー";
 const year = new Date().getFullYear();
 ---
 
 <footer class="mt-section-sm border-t border-stone bg-ivory">
   <div class="mx-auto max-w-content page-x py-16">
-    <nav aria-label="フッターメニュー">
+    <nav aria-label={navLabel}>
       <p class="font-sans text-base font-medium tracking-wide text-slate mb-6">
-        サイトマップ
+        {sitemapLabel}
       </p>
       <ul class="grid grid-cols-2 gap-x-8 gap-y-3 sm:grid-cols-3 md:grid-cols-4">
         {
           navItems.map((item) => (
             <li>
               <a
-                href={item.href}
+                href={`${prefix}${item.href}`}
                 class="link-amber font-heading text-sm text-charcoal"
               >
                 {item.label}

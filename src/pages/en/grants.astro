@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { grants } from "../../data/grants.en";
+---
+
+<BaseLayout
+  title="Grants"
+  description="Competitive grants and research funding received by Affectosphere Group."
+  fullBleed
+  locale="en"
+>
+  <section class="mx-auto max-w-content page-x pt-24 md:pt-32">
+    <h1
+      class="reveal font-display font-medium tracking-tight text-charcoal"
+      style="font-size: clamp(2.25rem, 4.5vw, 4rem); line-height: 1.12;"
+    >
+      Grants
+    </h1>
+  </section>
+
+  <section class="mx-auto mt-section-sm max-w-content page-x">
+    <ul class="w-full">
+      {
+        grants.map((g) => (
+          <li class="reveal border-b border-stone py-6 last:border-b-0">
+            <p class="font-display text-base italic text-slate">{g.period}</p>
+            <p class="mt-2 font-display text-lg text-charcoal md:text-xl" style="line-height: 1.55;">
+              {g.projectTitle}
+            </p>
+            <p class="mt-2 font-display text-base text-charcoal/85">
+              {g.program}
+              {g.organization && (
+                <span class="text-slate"> / {g.organization}</span>
+              )}
+            </p>
+            <div class="mt-3 flex flex-wrap gap-x-6 gap-y-1 font-display text-sm italic text-slate">
+              {g.role && <span>Role: {g.role}</span>}
+              {g.amount && <span>Amount: {g.amount}</span>}
+              {g.coInvestigators && <span>Co-Investigators: {g.coInvestigators}</span>}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

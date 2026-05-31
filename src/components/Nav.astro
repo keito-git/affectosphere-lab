@@ -6,13 +6,30 @@ import { site, navItems } from "../data/site";
 
 interface Props {
   current?: string; // pathname for active-state styling
+  locale?: "ja" | "en";
 }
-const { current = "" } = Astro.props;
+const { current = "", locale = "ja" } = Astro.props;
+
+const prefix = locale === "en" ? "/en" : "";
+
+function localizedHref(href: string): string {
+  if (href === "/") return locale === "en" ? "/en/" : "/";
+  return `${prefix}${href}`;
+}
 
 function isActive(href: string): boolean {
-  if (href === "/") return current === "/";
-  return current.startsWith(href.replace(/\/$/, ""));
+  const full = localizedHref(href);
+  if (full === "/" || full === "/en/") return current === full;
+  return current.startsWith(full.replace(/\/$/, ""));
 }
+
+// Other-language URL: strips or adds the /en prefix on the current path.
+const otherLocaleHref =
+  locale === "en"
+    ? current.replace(/^\/en(\/|$)/, "/") || "/"
+    : `/en${current.startsWith("/") ? current : `/${current}`}`;
+const switcherLabel = locale === "en" ? "日本語" : "English";
+const switcherShort = locale === "en" ? "JP" : "EN";
 ---
 
 <header
@@ -22,7 +39,7 @@ function isActive(href: string): boolean {
     <!-- Row 1: brand + (mobile) hamburger. -->
     <div class="flex items-center justify-between py-4">
       <a
-        href="/"
+        href={localizedHref("/")}
         class="group inline-flex items-center gap-3 whitespace-nowrap text-charcoal hover:text-deepslate"
         aria-label={`${site.name} home`}
       >
@@ -46,6 +63,14 @@ function isActive(href: string): boolean {
       </a>
 
       <div class="inline-flex items-center gap-3">
+        <!-- Language switcher. Switches between /path and /en/path. -->
+        <a
+          href={otherLocaleHref}
+          aria-label={`Switch to ${switcherLabel}`}
+          class="inline-flex h-9 items-center justify-center border border-stone px-3 font-sans text-xs font-medium tracking-wide text-charcoal transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
+        >
+          {switcherShort}
+        </a>
         <!-- Social links: X and Facebook. Placeholder URLs until handed over. -->
         <!-- TODO(inoshita): replace href="#" with real URLs. -->
         <a
@@ -93,7 +118,7 @@ function isActive(href: string): boolean {
           navItems.map((item) => (
             <li>
               <a
-                href={item.href}
+                href={localizedHref(item.href)}
                 class:list={[
                   "link-amber font-heading text-[0.8125rem] tracking-tight whitespace-nowrap lg:text-[0.875rem]",
                   isActive(item.href) ? "text-charcoal" : "text-slate hover:text-charcoal",
@@ -120,7 +145,7 @@ function isActive(href: string): boolean {
         navItems.map((item) => (
           <li>
             <a
-              href={item.href}
+              href={localizedHref(item.href)}
               class:list={[
                 "block py-3 font-heading text-base tracking-wide",
                 isActive(item.href) ? "text-charcoal" : "text-slate",
@@ -131,6 +156,14 @@ function isActive(href: string): boolean {
           </li>
         ))
       }
+      <li>
+        <a
+          href={otherLocaleHref}
+          class="block py-3 font-heading text-base tracking-wide text-charcoal border-t border-stone mt-2 pt-4"
+        >
+          {switcherLabel}
+        </a>
+      </li>
     </ul>
   </div>
 </header>

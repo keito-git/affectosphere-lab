@@ -1,0 +1,269 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import PublicationItem from "../../components/PublicationItem.astro";
+import NewsItem from "../../components/NewsItem.astro";
+import { recentPublications } from "../../data/publications.en";
+import { recentNews } from "../../data/news.en";
+import { researchDomains, aiForScienceImage } from "../../data/research-domains.en";
+
+// Home grid: the eight affective-AI domains shown as 4 rows × 2 cols,
+// followed by the AI for Science card spanning both columns on row 5.
+// Each affective-AI domain links to /en/research/<slug>/; AI for Science
+// links to its own top-level page.
+type DomainCard = { title: string; summary: string; href: string; image: string };
+
+const affectiveDomainCards: DomainCard[] = researchDomains.map((d) => ({
+  title: d.title,
+  summary: d.summary,
+  href: `/en/research/${d.slug}/`,
+  image: d.image,
+}));
+
+const aiForScienceCard: DomainCard = {
+  title: "AI for Science",
+  summary:
+    "Applying AI to scientific fields beyond emotion. This is where we bundle cross-disciplinary collaborations in biology, educational safety, and related domains.",
+  href: "/en/ai-for-science/",
+  image: aiForScienceImage,
+};
+---
+
+<BaseLayout fullBleed locale="en">
+  <Hero locale="en" />
+
+  <!-- Section 2: About Affectosphere (short intro + read-more) -->
+  <section
+    class="mx-auto mt-section grid max-w-content gap-12 page-x md:grid-cols-[1fr_2fr]"
+    aria-labelledby="affecto-intro"
+  >
+    <div>
+      <p class="reveal font-sans text-lg font-medium tracking-wide text-slate">
+        Vision
+      </p>
+      <h2
+        id="affecto-intro"
+        class="reveal mt-3 whitespace-nowrap font-display text-3xl font-medium text-charcoal md:text-4xl"
+      >
+        About Affectosphere
+      </h2>
+    </div>
+    <div class="reveal">
+      <p
+        class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
+        style="line-height: 1.75;"
+      >
+        Emotion envelops society like an atmosphere, quietly shaping our judgments,
+        our relationships, and the very texture of our inner life.
+        We read this <span class="text-amber">ubiquitous affective sphere</span> with AI,
+        attune AI itself toward the shape that best serves people,
+        and pursue research that connects this work to a society where, even in the age of AI,
+        everyone can keep a margin in the heart.
+      </p>
+      <p class="mt-6">
+        <a href="/en/affectosphere/" class="link-amber font-heading text-sm tracking-wide">
+          Read the vision &rarr;
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 2.5: Principal Investigator (brief introduction with portrait) -->
+  <section
+    class="mx-auto mt-section grid max-w-content gap-10 page-x md:grid-cols-[16rem_1fr] md:gap-14"
+    aria-labelledby="pi-intro"
+  >
+    <div class="reveal">
+      <div class="overflow-hidden border border-stone bg-cream aspect-square w-full max-w-[16rem]">
+        <img
+          src="/people/keito-inoshita.jpg"
+          alt="Keito Inoshita"
+          class="h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+    <div>
+      <p class="reveal font-display text-lg italic tracking-wide text-slate">
+        Principal Investigator
+      </p>
+      <h2
+        id="pi-intro"
+        class="reveal mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl"
+      >
+        Keito Inoshita
+      </h2>
+
+      <div class="reveal mt-6 space-y-5 font-display text-lg leading-relaxed text-charcoal md:text-xl" style="line-height: 1.85;">
+        <p>
+          Affiliated with the Graduate School of Business Administration at Kansai University,
+          the Data Science and AI Innovation Research Center at Shiga University,
+          and the Japan Safety Society Research Center.
+          In parallel, he pursues research and development at the intersection of AI and emotion
+          through collaborations with a wide range of companies.
+        </p>
+        <p>
+          He founded the Affectosphere Group and works coherently across the generation,
+          recognition, and understanding of human emotion with AI, on human-AI interaction,
+          and on the ethics and philosophy of affective AI.
+          The ultimate aim is to realize AI endowed with an EQ that surpasses humans.
+        </p>
+      </div>
+
+      <p class="mt-8">
+        <a href="/en/about/" class="link-amber font-heading text-sm tracking-wide">
+          View profile &rarr;
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 3: Eight research domains (2 columns × 4 rows) -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="research-domains">
+    <header class="reveal mb-10 max-w-prose md:mb-14">
+      <p class="font-sans text-lg font-medium tracking-wide text-slate">
+        Research themes
+      </p>
+      <h2
+        id="research-domains"
+        class="mt-3 font-display text-3xl font-medium tracking-tight text-charcoal md:text-4xl"
+      >
+        Research domains of the lab.
+      </h2>
+      <p class="mt-4 font-display text-base leading-relaxed text-slate md:text-lg">
+        Emotion and society, technology and ethics. Nine domains explored by Affectosphere Group.
+      </p>
+    </header>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        affectiveDomainCards.map((d) => (
+          <a
+            href={d.href}
+            class="reveal group relative flex h-full flex-col overflow-hidden border border-stone shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover"
+          >
+            <div
+              class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
+              style={`background-image: url('${d.image}');`}
+              aria-hidden="true"
+            />
+            <div
+              class="absolute inset-0 bg-ivory/75 transition-colors duration-300 group-hover:bg-ivory/65"
+              aria-hidden="true"
+            />
+            <div class="relative z-10 flex h-full flex-col p-6 min-h-[180px]">
+              <h3 class="font-display text-xl font-bold text-charcoal md:text-2xl">
+                {d.title}
+              </h3>
+              <p class="mt-3 font-display text-base font-bold leading-relaxed text-charcoal">
+                {d.summary}
+              </p>
+              <span class="mt-auto pt-4 font-heading text-sm font-bold tracking-wide text-charcoal transition-colors group-hover:text-amber">
+                Learn more &rarr;
+              </span>
+            </div>
+          </a>
+        ))
+      }
+      <a
+        href={aiForScienceCard.href}
+        class="reveal group relative flex h-full flex-col overflow-hidden border border-stone shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover md:col-span-2"
+      >
+        <div
+          class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
+          style={`background-image: url('${aiForScienceCard.image}');`}
+          aria-hidden="true"
+        />
+        <div
+          class="absolute inset-0 bg-ivory/75 transition-colors duration-300 group-hover:bg-ivory/65"
+          aria-hidden="true"
+        />
+        <div class="relative z-10 flex h-full flex-col p-6 min-h-[180px]">
+          <h3 class="font-display text-xl font-bold text-charcoal md:text-2xl">
+            {aiForScienceCard.title}
+          </h3>
+          <p class="mt-3 font-display text-base font-bold leading-relaxed text-charcoal">
+            {aiForScienceCard.summary}
+          </p>
+          <span class="mt-auto pt-4 font-heading text-sm font-bold tracking-wide text-charcoal transition-colors group-hover:text-amber">
+            Learn more &rarr;
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <div class="reveal mt-10">
+      <a href="/en/research/" class="link-amber font-heading text-sm tracking-wide">
+        See all research themes &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 3.5: Looking for collaborators -->
+  <section
+    class="mx-auto mt-section max-w-content page-x"
+    aria-labelledby="lp-collab"
+  >
+    <div class="reveal border-l-2 border-amber/60 pl-6">
+      <p class="font-display text-sm italic text-slate mb-3">Looking for collaborators</p>
+      <h2
+        id="lp-collab"
+        class="font-display text-2xl font-medium text-charcoal md:text-3xl"
+      >
+        We are recruiting collaborators in affective AI
+      </h2>
+      <p class="mt-4 font-display text-base leading-relaxed text-charcoal md:text-lg">
+        We welcome students, collaborators, and industry partners
+        interested in building and applying affective AI, across a broad range of backgrounds.
+      </p>
+      <p class="mt-6">
+        <a href="/en/contact/" class="link-amber font-heading text-sm tracking-wide">
+          Contact us &rarr;
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 4: Recent Publications -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="recent-pubs">
+    <header class="reveal mb-10 max-w-prose md:mb-14">
+      <h2
+        id="recent-pubs"
+        class="font-display text-3xl font-medium tracking-tight text-charcoal md:text-4xl"
+      >
+        Recent publications
+      </h2>
+    </header>
+    <ul class="w-full">
+      {recentPublications.map((pub) => <PublicationItem pub={pub} hideStatus locale="en" />)}
+    </ul>
+    <div class="reveal mt-10">
+      <a href="/en/publications/" class="link-amber font-heading text-sm tracking-wide">
+        See all publications &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 5: News -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="recent-news">
+    <header class="reveal mb-10 max-w-prose md:mb-14">
+      <h2
+        id="recent-news"
+        class="font-display text-3xl font-medium tracking-tight text-charcoal md:text-4xl"
+      >
+        Latest News
+      </h2>
+    </header>
+    <ul>
+      {recentNews.map((item) => <NewsItem item={item} locale="en" />)}
+    </ul>
+    <div class="reveal mt-10">
+      <a href="/en/news/" class="link-amber font-heading text-sm tracking-wide">
+        See all news &rarr;
+      </a>
+    </div>
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

@@ -11,20 +11,23 @@ interface Props {
   /** When true, the page is rendered without the global <main> max-width wrapper.
    *  Use for full-bleed hero pages that handle their own containers. */
   fullBleed?: boolean;
+  locale?: "ja" | "en";
 }
 
 const {
   title,
   description = site.description,
   fullBleed = false,
+  locale = "ja",
 } = Astro.props;
 
 const pageTitle = title ? `${title} | ${site.name}` : site.name;
 const pathname = Astro.url.pathname;
+const htmlLang = locale === "en" ? "en" : "ja";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -63,13 +66,13 @@ const pathname = Astro.url.pathname;
       Skip to content
     </a>
 
-    <Nav current={pathname} />
+    <Nav current={pathname} locale={locale} />
 
     <main id="main-content" class:list={[!fullBleed && "mx-auto max-w-content"]}>
       <slot />
     </main>
 
-    <Footer />
+    <Footer locale={locale} />
 
     <RevealObserver />
   </body>

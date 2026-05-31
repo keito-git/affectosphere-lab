@@ -1,5 +1,23 @@
 ---
 import { site } from "../data/site";
+
+interface Props {
+  locale?: "ja" | "en";
+}
+const { locale = "ja" } = Astro.props;
+const prefix = locale === "en" ? "/en" : "";
+
+const headline =
+  locale === "en"
+    ? "Creating space in the age of AI through emotion."
+    : "AI時代に、感情でゆとりをつくる。";
+const subtitle =
+  locale === "en"
+    ? "Measuring emotion and returning it to society. Toward a time when everyone can breathe a little easier."
+    : "感情をはかり、社会に返す。誰もが、すこし息のしやすい時代へ。";
+const ctaPrimary =
+  locale === "en" ? "About Affectosphere" : "Affectosphereとは";
+const ctaSecondary = locale === "en" ? "Research" : "研究テーマ";
 ---
 
 <section
@@ -44,23 +62,23 @@ import { site } from "../data/site";
       class="reveal mt-6 font-display font-semibold tracking-tight text-charcoal"
       style="font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.12; text-shadow: 0 1px 2px rgba(250,250,247,0.7), 0 0 28px rgba(250,250,247,0.9);"
     >
-      AI時代に、感情でゆとりをつくる。
+      {headline}
     </h1>
 
     <p
       class="reveal mt-10 max-w-prose font-display font-medium text-charcoal"
       style="font-size: clamp(1.125rem, 1.5vw, 1.5rem); line-height: 1.7; text-shadow: 0 1px 2px rgba(250,250,247,0.65), 0 0 20px rgba(250,250,247,0.75);"
     >
-      感情をはかり、社会に返す。誰もが、すこし息のしやすい時代へ。
+      {subtitle}
     </p>
 
     <div class="reveal mt-12 flex flex-wrap items-center justify-center gap-4">
-      <a href="/affectosphere/" class="btn-solid">
-        Affectosphereとは
+      <a href={`${prefix}/affectosphere/`} class="btn-solid">
+        {ctaPrimary}
         <span aria-hidden="true">&rarr;</span>
       </a>
-      <a href="/research/" class="btn-ghost">
-        研究テーマ
+      <a href={`${prefix}/research/`} class="btn-ghost">
+        {ctaSecondary}
         <span aria-hidden="true">&rarr;</span>
       </a>
     </div>

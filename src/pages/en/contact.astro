@@ -1,0 +1,126 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+// This form posts to Netlify Forms.  When deployed on Netlify, submissions
+// land in the Netlify dashboard and (when notifications are configured) are
+// emailed automatically to inosita.2865@gmail.com.
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact form for Affectosphere Group. We welcome inquiries about collaboration, joining the group, industry proposals, media coverage, and more."
+  locale="en"
+  fullBleed
+>
+  <section class="mx-auto max-w-content page-x pt-24 md:pt-32">
+    <h1
+      class="reveal font-display font-medium tracking-tight text-charcoal"
+      style="font-size: clamp(2.25rem, 4.5vw, 4rem); line-height: 1.12;"
+    >
+      Contact
+    </h1>
+    <p class="reveal mt-6 font-display text-lg leading-relaxed text-slate md:text-xl">
+      Affectosphere Group welcomes inquiries about collaboration, joining the group,
+      industry proposals, media coverage, and more.
+      Please use the form below to share the nature and details of your inquiry.
+    </p>
+  </section>
+
+  <!-- General inquiry form -->
+  <section
+    class="mx-auto mt-section-sm max-w-content page-x"
+    aria-labelledby="contact-form-heading"
+  >
+    <div class="reveal border border-stone bg-cream p-8 md:p-12">
+      <h2
+        id="contact-form-heading"
+        class="font-display text-xl font-medium text-charcoal md:text-2xl"
+      >
+        Inquiry form
+      </h2>
+      <p class="mt-3 font-display text-sm italic text-slate">
+        Your message will reach Affectosphere Group. We typically respond within 2–3 business days.
+      </p>
+
+      <form
+        class="mt-8 grid gap-6 md:grid-cols-2"
+        name="en-contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/en/thanks/"
+      >
+        <input type="hidden" name="form-name" value="en-contact" />
+        <p class="hidden" aria-hidden="true">
+          <label>
+            Please leave this field empty:
+            <input name="bot-field" tabindex="-1" autocomplete="off" />
+          </label>
+        </p>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">Name</span>
+          <input
+            type="text"
+            name="name"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="e.g., Taro Yamada"
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">Affiliation (optional)</span>
+          <input
+            type="text"
+            name="affiliation"
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="e.g., XX University / YY Inc. / Freelance"
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">Reply email</span>
+          <input
+            type="email"
+            name="email"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="example@your-domain.com"
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">Purpose</span>
+          <select
+            name="purpose"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+          >
+            <option value="">Select...</option>
+            <option value="Collaboration inquiry">Collaboration inquiry</option>
+            <option value="Joining the Group">Joining the Group</option>
+            <option value="Industry proposal">Industry proposal</option>
+            <option value="Media coverage">Media coverage</option>
+            <option value="Lecture / speaking request">Lecture / speaking request</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-2">
+          <span class="font-display text-sm italic text-slate">Message</span>
+          <textarea
+            name="message"
+            rows="8"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="Please describe your inquiry in detail."
+          ></textarea>
+        </label>
+
+        <div class="md:col-span-2 flex justify-end">
+          <button type="submit" class="btn-solid">
+            Send
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

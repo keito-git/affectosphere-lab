@@ -1,0 +1,251 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import { site } from "../../data/site";
+
+// Education timeline (researchmap, 2026-05-30).  Newest at top.
+const education = [
+  {
+    period: "2025/04 — present",
+    degree: "Doctoral Program",
+    program: "Graduate School of Business Administration, Major in Commerce",
+    institution: "Kansai University",
+  },
+  {
+    period: "2023/04 — 2025/03",
+    degree: "M.Sc. in Data Science",
+    program: "Graduate School of Data Science, Master's Program",
+    institution: "Shiga University",
+  },
+  {
+    period: "2020/04 — 2023/03",
+    degree: "(withdrew for early admission to graduate school)",
+    program: "School of Regional Innovation, Major in Business Administration",
+    institution: "Sapporo University",
+    note: "Withdrew at the end of the third year for early admission to graduate school.",
+  },
+];
+
+// Current affiliations & research positions (researchmap).
+const affiliations = [
+  {
+    period: "2025/04 — present",
+    affiliation:
+      "Kansai University, Graduate School of Business Administration, Major in Commerce",
+    role: "Doctoral Program",
+  },
+  {
+    period: "2025/04 — present",
+    affiliation:
+      "Shiga University, Data Science and AI Innovation Research Center",
+    role: "Visiting Researcher",
+  },
+  {
+    period: "2025/04 — present",
+    affiliation: "Japan Safety Society Research Center",
+    role: "Researcher",
+  },
+  {
+    period: "2025/12 — 2026/03",
+    affiliation:
+      "Ritsumeikan University, Ritsumeikan Global Innovation Research Organization",
+    role: "Visiting Researcher",
+  },
+  {
+    period: "2025/04 — present",
+    affiliation:
+      "JST Support for Pioneering Research Initiated by the Next Generation (SPRING)",
+    role: "Kansai University SPRING Scholarship Research Student",
+  },
+];
+
+// External profile links.
+const links = [
+  { label: "researchmap", href: "https://researchmap.jp/keito_inoshita" },
+  { label: "ORCID", href: "https://orcid.org/0009-0006-6854-7231" },
+  { label: "X (Twitter)", href: "https://x.com/keito0data" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/%E6%95%AC%E7%BF%94-%E4%BA%95%E4%B8%8B-25433834b/",
+  },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="Keito Inoshita — principal investigator of Affectosphere Group. Bio, education, research interests, and links."
+  fullBleed
+  locale="en"
+>
+  <PageHeader
+    eyebrow="About"
+    title="Keito Inoshita"
+    subtitle="Principal Investigator, Affectosphere Group."
+  />
+
+  <!-- Identity card: portrait placeholder + short bio side by side. -->
+  <section
+    class="mx-auto mt-section-sm grid max-w-content gap-10 page-x md:grid-cols-[20rem_1fr] md:gap-14"
+    aria-labelledby="bio"
+  >
+    <div class="reveal">
+      <div class="aspect-square w-full overflow-hidden border border-stone bg-cream">
+        <img
+          src="/people/keito-inoshita.jpg"
+          alt="Keito Inoshita"
+          class="h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <p class="mt-4 font-sans text-[0.75rem] uppercase tracking-[0.14em] text-slate font-medium">
+        Keito Inoshita
+      </p>
+    </div>
+
+    <div>
+      <p class="font-sans text-base font-medium tracking-wide text-slate reveal">
+        Bio
+      </p>
+      <p
+        id="bio"
+        class="reveal mt-3 font-display text-lg leading-relaxed text-charcoal md:text-xl"
+        style="line-height: 1.85;"
+      >
+        Affiliated with the Graduate School of Business Administration at Kansai University,
+        the Data Science and AI Innovation Research Center at Shiga University,
+        and the Japan Safety Society Research Center.
+        In parallel, he pursues research and development at the intersection of AI and emotion
+        through collaborations with a wide range of companies.
+        He founded the Affectosphere Group and works coherently across the generation,
+        recognition, and understanding of human emotion with AI, on human-AI interaction,
+        and on the ethics and philosophy of affective AI.
+        The ultimate aim is to realize AI endowed with an EQ that surpasses humans.
+      </p>
+
+      <p class="font-sans text-base font-medium tracking-wide text-slate reveal mt-12">
+        Research Statement
+      </p>
+      <div class="reveal mt-3 space-y-5 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.85;">
+        <p>
+          The guiding question of his research is consistent:
+          <em class="italic">how can AI engage with human emotion without diminishing its richness?</em>
+          Emotion is ambiguous and polysemous, yet it shapes human judgment and relationships
+          in every corner of society.
+          Treating that ambiguity as an object of computation, rather than discarding it,
+          is the starting point of his work.
+        </p>
+        <p>
+          To this end, he conducts coherent research spanning the
+          <em class="italic">generation, recognition, and understanding</em> of human emotion with AI,
+          <em class="italic">human-AI interaction</em>, and the
+          <em class="italic">ethics and philosophy of affective AI</em>.
+          Recognition becomes a technique for estimating ambiguity as a distribution;
+          generation and expression form the interface where humans and AI converse through emotion;
+          understanding reopens the question of how people experience emotion in the first place;
+          and ethics and philosophy structurally reconsider the social positioning of affective AI.
+        </p>
+        <p>
+          Beyond academic work, through partnerships with diverse companies he incorporates
+          field-level insight from the sites where affective AI is deployed and reaches society
+          into the foundation of his research.
+          The aim is to draw the contours of AI endowed with an EQ that surpasses humans,
+          through a back-and-forth between technology and the humanities, and between implementation and theory.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section
+    class="mx-auto mt-section max-w-content page-x"
+    aria-labelledby="education"
+  >
+    <h2
+      id="education"
+      class="reveal font-heading text-2xl font-medium tracking-tight text-charcoal md:text-3xl"
+    >
+      Education
+    </h2>
+    <ul class="mt-8 w-full">
+      {
+        education.map((row) => (
+          <li class="reveal grid gap-2 border-b border-stone py-5 last:border-b-0 md:grid-cols-[12rem_1fr] md:gap-10">
+            <span class="font-display text-sm italic text-slate">
+              {row.period}
+            </span>
+            <div>
+              <p class="font-display text-base text-charcoal md:text-lg">
+                {row.degree} &middot; {row.program}
+              </p>
+              <p class="mt-1 font-display text-sm text-slate">{row.institution}</p>
+              {row.note && (
+                <p class="mt-1 font-display text-sm italic text-slate">{row.note}</p>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Affiliations -->
+  <section
+    class="mx-auto mt-section max-w-content page-x"
+    aria-labelledby="affiliations"
+  >
+    <h2
+      id="affiliations"
+      class="reveal font-heading text-2xl font-medium tracking-tight text-charcoal md:text-3xl"
+    >
+      Affiliations
+    </h2>
+    <ul class="reveal mt-8 max-w-prose space-y-4 border-l border-stone pl-6 text-base text-charcoal">
+      {
+        affiliations.map((a) => (
+          <li>
+            <p class="font-display text-base text-charcoal md:text-lg">
+              {a.affiliation}
+            </p>
+            <p class="mt-1 text-sm text-slate">
+              {a.role}
+              <span class="ml-3 font-display text-xs italic">{a.period}</span>
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Links + CV -->
+  <section
+    class="mx-auto mt-section max-w-content page-x"
+    aria-labelledby="links"
+  >
+    <h2
+      id="links"
+      class="reveal font-heading text-2xl font-medium tracking-tight text-charcoal md:text-3xl"
+    >
+      Links
+    </h2>
+
+    <ul class="mt-8 grid gap-3 md:grid-cols-4">
+      {
+        links.map((l) => (
+          <li class="reveal">
+            <a
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block border border-stone bg-cream px-4 py-3 font-display text-sm text-charcoal transition-colors hover:border-charcoal"
+            >
+              <span class="block">{l.label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

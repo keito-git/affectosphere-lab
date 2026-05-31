@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import NewsItem from "../../components/NewsItem.astro";
+import { allNews } from "../../data/news.en";
+
+// Group news by year for an editorial timeline.
+const byYear = allNews.reduce<Record<string, typeof allNews>>((acc, item) => {
+  const year = item.date.slice(0, 4);
+  (acc[year] ||= []).push(item);
+  return acc;
+}, {});
+
+const years = Object.keys(byYear).sort((a, b) => Number(b) - Number(a));
+---
+
+<BaseLayout
+  title="News"
+  description="A timeline of Affectosphere Group's submissions, talks, and updates."
+  fullBleed
+  locale="en"
+>
+  <PageHeader
+    eyebrow="News"
+    title="News"
+    subtitle="Latest updates on submissions, talks, and lab events, in reverse chronological order."
+  />
+
+  {
+    years.map((year) => (
+      <section class="mx-auto mt-section-sm max-w-content page-x" aria-labelledby={`year-${year}`}>
+        <h2
+          id={`year-${year}`}
+          class="reveal mb-6 font-display text-4xl font-medium text-charcoal md:text-5xl"
+        >
+          {year}
+        </h2>
+        <ul>
+          {byYear[year].map((item) => (
+            <NewsItem item={item} locale="en" />
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

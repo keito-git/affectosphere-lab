@@ -1,0 +1,286 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  aiForScienceLongDescription,
+  aiForScienceFindings,
+  aiForScienceNarrative,
+} from "../../data/ai-for-science.en";
+import { aiForScienceImage } from "../../data/research-domains.en";
+---
+
+<BaseLayout
+  title="AI for Science"
+  description="Interdisciplinary AI research at Affectosphere Group. Collaborating with researchers and practitioners across diverse fields to pursue cross-domain inquiries through AI."
+  locale="en"
+  fullBleed
+>
+  <!-- Hero header -->
+  <section
+    class="relative isolate overflow-hidden min-h-[60vh]"
+    aria-labelledby="ai4s-hero"
+  >
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style={`background-image: url('${aiForScienceImage}');`}
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-ivory/65 via-ivory/40 to-ivory/70"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 mx-auto max-w-content page-x pt-24 pb-16 md:pt-32 md:pb-20 text-center">
+      <p class="font-display text-sm italic text-slate reveal">AI for Science</p>
+      <h1
+        id="ai4s-hero"
+        class="reveal mt-4 font-display font-bold tracking-tight text-charcoal"
+        style="font-size: clamp(1.75rem, 3.2vw, 2.75rem); line-height: 1.12; text-shadow: 0 1px 2px rgba(250,250,247,0.85), 0 0 28px rgba(250,250,247,0.95);"
+      >
+        Bridging AI to the sciences.
+      </h1>
+      <p
+        class="reveal mt-6 font-bold text-lg leading-relaxed text-charcoal md:text-xl"
+        style="text-shadow: 0 1px 2px rgba(250,250,247,0.8), 0 0 20px rgba(250,250,247,0.85);"
+      >
+        Collaborating with researchers and practitioners across diverse fields to pursue interdisciplinary inquiries through AI.
+      </p>
+    </div>
+  </section>
+
+  <!-- Purpose & Goal -->
+  <section class="mx-auto mt-section-sm max-w-content page-x">
+    <div class="reveal grid gap-8 md:grid-cols-[16rem_1fr] md:gap-14">
+      <p class="font-display text-xl italic text-slate">Purpose</p>
+      <p
+        class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
+        style="line-height: 1.85;"
+      >
+        {aiForScienceLongDescription}
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto mt-section-sm max-w-content page-x">
+    <div class="reveal grid gap-8 md:grid-cols-[16rem_1fr] md:gap-14">
+      <p class="font-display text-xl italic text-slate">Goal</p>
+      <p
+        class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
+        style="line-height: 1.85;"
+      >
+        {aiForScienceFindings}
+      </p>
+    </div>
+  </section>
+
+  <!-- Call for collaboration (full width) -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="collab-cta">
+    <div class="reveal w-full border-l-2 border-amber/60 pl-6">
+      <p class="font-display text-sm italic text-slate mb-3">Looking for partners</p>
+      <h2 id="collab-cta" class="font-display text-2xl font-medium text-charcoal md:text-3xl">
+        We are looking for those who need AI collaboration
+      </h2>
+      <div
+        class="mt-5 w-full space-y-4 font-display text-base leading-relaxed text-charcoal md:text-lg"
+        style="line-height: 1.85;"
+      >
+        <p>
+          Whether you would like to incorporate AI into your research,
+          analyze data together, or are simply wondering
+          "could AI be useful in my field?" -
+          we are eager to work with researchers and practitioners like you.
+        </p>
+        <p>
+          Field does not matter. We have collaborated with partners across a wide range
+          of disciplines, spanning both the sciences and the humanities.
+          From method selection, data design, and model evaluation to ethical considerations,
+          Affectosphere Group walks alongside you with the techniques we have cultivated.
+        </p>
+        <p>
+          To begin, please use the form below to share your research theme or interests freely.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing / engagement model -->
+  <section class="mx-auto mt-section-sm max-w-content page-x" aria-labelledby="engagement">
+    <div class="reveal grid gap-6 md:grid-cols-2">
+      <div class="border border-stone bg-cream p-6 md:p-8">
+        <p class="font-display text-sm italic text-slate">Initial meeting</p>
+        <p class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+          Free <span class="text-base italic text-slate">(30 min)</span>
+        </p>
+        <p class="mt-4 font-display text-base leading-relaxed text-charcoal" style="line-height:1.8;">
+          A session to hear about your research theme and challenges,
+          and to consider together whether the question is one AI can address,
+          and if so, what approaches might be possible.
+          Please feel free to reach out as a place to align directions.
+        </p>
+      </div>
+      <div class="border border-stone bg-cream p-6 md:p-8">
+        <p class="font-display text-sm italic text-slate">Ongoing collaboration</p>
+        <p class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+          Research and personnel fees
+        </p>
+        <p class="mt-4 font-display text-base leading-relaxed text-charcoal" style="line-height:1.8;">
+          After the initial meeting, if we move forward with a full collaboration,
+          we charge research and personnel fees on an actual-cost basis,
+          depending on the theme, difficulty, duration, and deliverables.
+          An estimated quote will be provided after the initial meeting, once the scope is organized.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquiry form (mailto-based) -->
+  <section
+    class="mx-auto mt-section-sm max-w-content page-x"
+    aria-labelledby="inquiry-form-heading"
+  >
+    <div class="reveal border border-stone bg-cream p-8 md:p-12">
+      <h2
+        id="inquiry-form-heading"
+        class="font-display text-xl font-medium text-charcoal md:text-2xl"
+      >
+        Inquiry for collaboration and AI support
+      </h2>
+      <p class="mt-3 font-display text-sm italic text-slate">
+        Your message will reach Affectosphere Group.
+        We will follow up to arrange the initial meeting.
+      </p>
+
+      <form
+        class="mt-8 grid gap-6 md:grid-cols-2"
+        name="en-ai-for-science"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/en/thanks/"
+      >
+        <input type="hidden" name="form-name" value="en-ai-for-science" />
+        <p class="hidden" aria-hidden="true">
+          <label>
+            Please leave this field empty:
+            <input name="bot-field" tabindex="-1" autocomplete="off" />
+          </label>
+        </p>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">Name</span>
+          <input
+            type="text"
+            name="name"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="e.g., Taro Yamada"
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">Affiliation</span>
+          <input
+            type="text"
+            name="affiliation"
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="e.g., XX University, YY Graduate School / ZZ Inc."
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">Field</span>
+          <input
+            type="text"
+            name="field"
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="e.g., public health / chemistry / medicine / cognitive science / transportation..."
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">Reply email</span>
+          <input
+            type="email"
+            name="email"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="example@your-domain.com"
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-2">
+          <span class="font-display text-sm italic text-slate">Research theme / Inquiry</span>
+          <textarea
+            name="message"
+            rows="6"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="Please describe the domain you work in and the challenges you would like to address with AI."
+          ></textarea>
+        </label>
+
+        <div class="md:col-span-2 flex justify-end">
+          <button type="submit" class="btn-solid">
+            Send
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Narrative / case studies (now placed AFTER the inquiry) -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cases-heading">
+    <header class="reveal mb-10 md:mb-14">
+      <p class="font-display text-sm italic text-slate">Case studies</p>
+      <h2
+        id="cases-heading"
+        class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl"
+      >
+        Case studies
+      </h2>
+      <p class="mt-4 font-display text-base leading-relaxed text-slate md:text-lg">
+        A brief introduction to the AI-driven collaborative research that
+        Affectosphere Group has carried out with researchers from other fields.
+      </p>
+    </header>
+
+    <div class="flex flex-col gap-12 md:gap-16">
+      {
+        aiForScienceNarrative.map((block) => (
+          <div class="reveal">
+            {block.heading && (
+              <h3 class="mb-5 font-display text-2xl font-medium text-charcoal md:text-3xl">
+                {block.heading}
+              </h3>
+            )}
+            {block.figure ? (
+              <div class="grid items-start gap-8 md:grid-cols-[1fr_28rem] md:gap-12">
+                <p
+                  class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
+                  style="line-height: 1.95;"
+                >
+                  {block.text}
+                </p>
+                <figure class="md:max-w-[28rem]">
+                  <img
+                    src={block.figure.src}
+                    alt={block.figure.alt}
+                    loading="lazy"
+                    class="w-full border border-stone bg-white shadow-card"
+                  />
+                  <figcaption class="mt-3 font-display text-sm italic leading-relaxed text-slate">
+                    {block.figure.caption}
+                  </figcaption>
+                </figure>
+              </div>
+            ) : (
+              <p
+                class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
+                style="line-height: 1.95;"
+              >
+                {block.text}
+              </p>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

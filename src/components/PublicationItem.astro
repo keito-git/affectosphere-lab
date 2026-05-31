@@ -1,17 +1,45 @@
 ---
 import type { Publication } from "../data/publications";
-import { kindLabel, formatDateJa } from "../data/publications";
 
 interface Props {
   pub: Publication;
   /** When true, hide the submission/published status badge on the right.
    *  Used on the home page where statuses are intentionally suppressed. */
   hideStatus?: boolean;
+  locale?: "ja" | "en";
 }
-const { pub, hideStatus = false } = Astro.props;
+const { pub, hideStatus = false, locale = "ja" } = Astro.props;
 
-const categoryLabel = kindLabel[pub.kind];
-const dateLabel = formatDateJa(pub.date);
+const kindLabelJa: Record<string, string> = {
+  "journal-international": "国際誌",
+  "journal-domestic": "国内誌",
+  "international-conference": "国際会議",
+  "domestic-conference": "国内会議",
+  "preprint": "プレプリント",
+  "tech-report": "研究報告",
+  "other": "その他",
+};
+const kindLabelEn: Record<string, string> = {
+  "journal-international": "International Journal",
+  "journal-domestic": "Domestic Journal",
+  "international-conference": "International Conference",
+  "domestic-conference": "Domestic Conference",
+  "preprint": "Preprint",
+  "tech-report": "Technical Report",
+  "other": "Other",
+};
+const categoryLabel =
+  locale === "en" ? kindLabelEn[pub.kind] : kindLabelJa[pub.kind];
+
+const [y, m] = pub.date.split("-");
+const monthsEn = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+const dateLabel =
+  locale === "en"
+    ? `${monthsEn[Number(m) - 1]} ${y}`
+    : `${y}年${Number(m)}月`;
 ---
 
 <li

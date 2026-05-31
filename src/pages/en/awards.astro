@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { awardGroups } from "../../data/awards.en";
+
+// Format YYYY-MM-DD as "2026.06" (we only know month accuracy for most items).
+function formatYM(iso: string): string {
+  const [y, m] = iso.split("-");
+  return `${y}.${m}`;
+}
+---
+
+<BaseLayout
+  title="Awards"
+  description="Awards and honors received by the principal investigator."
+  fullBleed
+  locale="en"
+>
+  <section class="mx-auto max-w-content page-x pt-24 md:pt-32">
+    <h1
+      class="reveal font-display font-medium tracking-tight text-charcoal"
+      style="font-size: clamp(2.25rem, 4.5vw, 4rem); line-height: 1.12;"
+    >
+      Awards
+    </h1>
+  </section>
+
+  {
+    awardGroups.map((group) => (
+      <section
+        class="mx-auto mt-section-sm max-w-content page-x"
+        aria-labelledby={`award-group-${group.key}`}
+      >
+        <h2
+          id={`award-group-${group.key}`}
+          class="reveal mb-6 font-display text-2xl font-medium text-charcoal md:text-3xl"
+        >
+          {group.label}
+          <span class="ml-3 font-display text-base italic text-slate">
+            {group.items.length} entries
+          </span>
+        </h2>
+        <ul class="w-full">
+          {group.items.map((a) => (
+            <li class="reveal border-b border-stone py-5 last:border-b-0">
+              <div class="grid gap-4 md:grid-cols-[7rem_8rem_1fr] md:items-start md:gap-6">
+                <span class="font-display text-sm italic text-slate md:pt-1">
+                  {formatYM(a.date)}
+                </span>
+                {a.image ? (
+                  <a
+                    href={a.image}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group block overflow-hidden border border-stone bg-cream transition-shadow hover:shadow-card-hover"
+                    aria-label={`Open certificate for ${a.title}`}
+                  >
+                    <img
+                      src={a.image}
+                      alt={`Certificate for ${a.title}`}
+                      class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </a>
+                ) : (
+                  <div aria-hidden="true" />
+                )}
+                <div>
+                  <p class="font-display text-base text-charcoal md:text-lg">
+                    {a.title}
+                    {a.rank && (
+                      <span class="ml-2 text-amber">{a.rank}</span>
+                    )}
+                  </p>
+                  {a.paperTitle && (
+                    <p class="mt-1 font-display text-sm leading-relaxed text-charcoal/85 md:text-base">
+                      {a.paperTitle}
+                    </p>
+                  )}
+                  {a.paperAuthors && (
+                    <p class="mt-1 font-display text-xs italic text-slate md:text-sm">
+                      {a.paperAuthors}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

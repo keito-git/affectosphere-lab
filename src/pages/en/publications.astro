@@ -1,0 +1,190 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PublicationItem from "../../components/PublicationItem.astro";
+import {
+  allPublications,
+  allYears,
+  groupByYear,
+  kindLabel,
+  kindOrder,
+  type PublicationKind,
+} from "../../data/publications.en";
+
+const yearGroups = groupByYear(allPublications);
+
+const kindFilters: { key: "all" | PublicationKind; label: string }[] = [
+  { key: "all", label: "All" },
+  ...kindOrder.map((k) => ({ key: k, label: kindLabel[k] })),
+];
+
+const yearFilters: { key: "all" | number; label: string }[] = [
+  { key: "all", label: "All" },
+  ...allYears.map((y) => ({ key: y, label: `${y}` })),
+];
+---
+
+<BaseLayout
+  title="Publications"
+  description="All publications by Affectosphere Group, listed chronologically."
+  fullBleed
+  locale="en"
+>
+  <section class="mx-auto max-w-content page-x pt-24 md:pt-32">
+    <h1
+      class="reveal font-display font-medium tracking-tight text-charcoal"
+      style="font-size: clamp(2.25rem, 4.5vw, 4rem); line-height: 1.12;"
+    >
+      Publications
+    </h1>
+  </section>
+
+  <!-- Filters: kind × year (both client-side, AND-combined). -->
+  <section class="mx-auto mt-section-sm max-w-content page-x" aria-label="Filters">
+    <div class="reveal space-y-5" data-pub-filter>
+      <div>
+        <p class="mb-2 font-display text-sm italic text-slate">Kind</p>
+        <div class="flex flex-wrap items-center gap-2" data-kind-bar>
+          {
+            kindFilters.map((f, idx) => (
+              <button
+                type="button"
+                class:list={[
+                  "btn-ghost",
+                  idx === 0 ? "bg-charcoal text-ivory border-charcoal" : "",
+                ]}
+                data-filter-kind={f.key}
+                aria-pressed={idx === 0 ? "true" : "false"}
+              >
+                {f.label}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+      <div>
+        <p class="mb-2 font-display text-sm italic text-slate">Year</p>
+        <div class="flex flex-wrap items-center gap-2" data-year-bar>
+          {
+            yearFilters.map((f, idx) => (
+              <button
+                type="button"
+                class:list={[
+                  "btn-ghost",
+                  idx === 0 ? "bg-charcoal text-ivory border-charcoal" : "",
+                ]}
+                data-filter-year={f.key}
+                aria-pressed={idx === 0 ? "true" : "false"}
+              >
+                {f.label}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <p class="reveal mt-6 font-display text-sm italic text-slate">
+      Total {allPublications.length} entries
+      <span data-pub-count-visible class="ml-3 text-charcoal" />
+    </p>
+  </section>
+
+  {
+    yearGroups.map((group) => (
+      <section
+        class="mx-auto mt-section-sm max-w-content page-x"
+        aria-labelledby={`year-${group.year}`}
+        data-pub-year-section
+        data-section-year={group.year}
+      >
+        <h2
+          id={`year-${group.year}`}
+          class="reveal mb-6 font-display text-4xl font-medium text-charcoal md:text-5xl"
+        >
+          {group.year}
+        </h2>
+        <ul class="w-full" data-pub-list>
+          {group.items.map((pub) => (
+            <PublicationItem pub={pub} locale="en" />
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>
+
+<script>
+  // Two-axis filter (kind × year). Both default to "all" and AND together.
+  const root = document.querySelector<HTMLDivElement>("[data-pub-filter]");
+  if (root) {
+    const kindButtons = root.querySelectorAll<HTMLButtonElement>("[data-filter-kind]");
+    const yearButtons = root.querySelectorAll<HTMLButtonElement>("[data-filter-year]");
+    const sections = document.querySelectorAll<HTMLElement>(
+      "[data-pub-year-section]"
+    );
+    const visibleCount = document.querySelector<HTMLSpanElement>(
+      "[data-pub-count-visible]"
+    );
+
+    let currentKind: string = "all";
+    let currentYear: string = "all";
+
+    function setActive(
+      buttons: NodeListOf<HTMLButtonElement>,
+      attr: string,
+      value: string
+    ) {
+      buttons.forEach((b) => {
+        const active = (b.getAttribute(attr) ?? "all") === value;
+        b.setAttribute("aria-pressed", String(active));
+        b.classList.toggle("bg-charcoal", active);
+        b.classList.toggle("text-ivory", active);
+        b.classList.toggle("border-charcoal", active);
+      });
+    }
+
+    function applyFilters() {
+      let total = 0;
+      sections.forEach((section) => {
+        const sectionYear = section.dataset.sectionYear ?? "";
+        const yearMatch = currentYear === "all" || currentYear === sectionYear;
+        if (!yearMatch) {
+          section.style.display = "none";
+          return;
+        }
+        const items = section.querySelectorAll<HTMLLIElement>("[data-pub-kind]");
+        let visible = 0;
+        items.forEach((li) => {
+          const kindMatch =
+            currentKind === "all" || li.dataset.pubKind === currentKind;
+          li.style.display = kindMatch ? "" : "none";
+          if (kindMatch) visible += 1;
+        });
+        section.style.display = visible > 0 ? "" : "none";
+        total += visible;
+      });
+      if (visibleCount) {
+        visibleCount.textContent =
+          currentKind === "all" && currentYear === "all"
+            ? ""
+            : `/ Showing ${total}`;
+      }
+    }
+
+    kindButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        currentKind = btn.getAttribute("data-filter-kind") ?? "all";
+        setActive(kindButtons, "data-filter-kind", currentKind);
+        applyFilters();
+      });
+    });
+    yearButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        currentYear = btn.getAttribute("data-filter-year") ?? "all";
+        setActive(yearButtons, "data-filter-year", currentYear);
+        applyFilters();
+      });
+    });
+  }
+</script>
