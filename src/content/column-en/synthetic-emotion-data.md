@@ -1,9 +1,9 @@
 ---
-title: "Building \"Plausible\" Data Without Collecting Personal Data — The Practice of Synthetic Emotion Data"
-date: "2026-05-31"
-excerpt: "Collecting emotion-labeled data has long been blocked by the walls of annotator burden, privacy, and representativeness. The latest research on synthetic data shows that the shift from \"collect\" to \"create\" can resolve ethics and cost at the same time. A 5-minute read for data operations, marketing AI, and ethics owners."
+title: "Emotion Data Is Shifting From “Collect” to “Create” — A Third Option Called Synthetic Data"
+date: "2026-06-01"
+excerpt: "Emotion-labeled data is hard to collect because of annotator burden, privacy, and representativeness. Three recent papers show that pairing domain knowledge with LLMs can resolve ethics and cost at the same time. Five minutes for data-ops leaders."
 image: "/column-images/synthetic-emotion-data.svg"
-imageAlt: "Abstract visual of scattered data points with missing regions filled in by amber dots, overlaid with faint human silhouettes"
+imageAlt: "Scattered data points with missing regions filled in by amber dots, overlaid with a faint human silhouette"
 readingMinutes: 5
 basedOnPaper: "Persona-Based Synthetic Data Generation Using Multi-Stage Conditioning with Large Language Models for Emotion Recognition"
 basedOnPaperUrl: "https://arxiv.org/"
@@ -11,116 +11,166 @@ basedOnPaperUrl: "https://arxiv.org/"
 
 > _This article is an English translation of the original Japanese column. Some phrasing has been adapted for English readers._
 
-## Why "synthetic emotion data" is becoming a management issue
+Hello — this is Inoshita from Affectosphere Group.
 
-Customer-service AI, marketing automation, internal-communication analysis. What ultimately powers the accuracy of these systems is, in the end, emotion-labeled text data. But the moment you try to collect it, you run into several walls at once.
+A data-platform lead asked me recently:
 
-First, the psychological burden on annotators. Labeling text saturated with anger, sadness, and fear all day long produces secondary mental harm in its own right. Second, privacy. Emotion data is the most sensitive kind, connecting directly to a person's interior, and GDPR and personal-information protection laws treat it with particular care. Third, representativeness. Collecting data from minority customer groups, users in specific cultural contexts, or socially vulnerable populations in an ethically careful way is structurally difficult.
+“We want to lift our sentiment-analysis accuracy, but we're starved for labeled data. The moment we try to collect more, both the cost and the ethics bar go up sharply.”
 
-"We cannot collect, so the model has no accuracy; the model has no accuracy, so we cannot ship the business." A way to break this loop has rapidly drawn attention over the past year or two: synthetic emotional data. This column translates three studies published in 2025–2026 into the working language of data operations, marketing AI, and ethics owners.
+I really get this.
 
----
+Emotion-data sourcing is structurally different from ordinary annotation work.
+Spending all day labeling texts full of anger, grief, and dread leaves a real secondary mental load on the annotators themselves.
 
-## Three facts the research established
+On top of that, emotion data is among the most sensitive personal information — it's the inner life.
+GDPR and Japan's APPI demand particular caution; collecting respectfully from minority customer segments, specific cultural groups, or vulnerable populations is structurally hard.
 
-### 1. CIEGAD: minority classes in imbalanced data can be "geometrically supplemented"
+“We can't collect, so accuracy stays low. Accuracy stays low, so the product can't launch.”
+Somebody has to break this loop.
 
-CIEGAD (Cluster-conditioned Interpolation/Extrapolation Geometric Augmentation for Data) prescribes a treatment for the class-frequency imbalance that always shows up in emotion data. Frequent emotions like joy and sadness have abundant samples, while rare ones like awe and contempt have very few. The method corrects this imbalance by geometrically controlling "interpolation (filling holes)" and "extrapolation (extending peripheries)" within each cluster.
+Synthetic emotional data has picked up rapidly over the past year or two as the most credible answer.
+Today I want to translate three papers we published in 2025-2026[^1][^2][^3] into the language of data operations and ethics owners.
 
-Interpolating between existing samples in the embedding space fills holes; extrapolating outside a cluster widens its periphery. Asking an LLM to generate text conditioned accordingly stably improves F1 and recall on minority classes.
-
-### 2. KDDA: convert domain knowledge into statistical features, then synthesize
-
-KDDA (Knowledge-Driven Data Augmentation) takes a bolder stance. Instead of collecting data directly from individuals, it converts human knowledge about a target domain into statistical features and uses them to condition LLM generation.
-
-For a domain such as "workplace stress," KDDA constructs a "domain profile" from features specific to that domain — vocabulary frequencies, typical situations, characteristic emotion patterns — and uses it as the generation condition. Generated data is double-filtered through lexical-overlap suppression and statistical consistency evaluation based on Negative Log-Likelihood (NLL). The outcome: an emotion classifier trained solely on synthetic data achieved the distribution closest to real data on 9 of 12 metrics. "Creating without collecting" is now reaching practical levels.
-
-### 3. PersonaGen: multi-stage personas — attributes → socio-cultural background → situational context — reproduce natural stylistic variation
-
-PersonaGen weaves the obvious-but-easily-forgotten fact that "the same emotion is expressed differently by different people" into the synthetic data. "Sadness" voiced by a teenage student and "sadness" voiced by a sixty-year-old physician differ widely in vocabulary, style, and social framing.
-
-PersonaGen stacks persona conditions in three stages — attributes, socio-cultural background, situational context — and reproduces stylistic differences appropriate to each character. The same emotion label yields diverse expressions tuned to the speaker, and downstream-task performance approaches that of real data. Multi-stage persona conditioning has emerged as the key to jointly securing expressive diversity and emotion-label consistency.
+[^1]: Keito Inoshita, Rushia Harada, "Persona-Based Synthetic Data Generation Using Multi-Stage Conditioning with Large Language Models for Emotion Recognition", International Journal of Activity and Behavior Computing, vol. 1, pp. 1-18, 2026.
+[^2]: Keito Inoshita, Hayato Tomisu, Xiaokang Zhou, Akira Kawai, Katsutoshi Yada, "KDDA: A Knowledge-Driven Domain and Diversity Alignment Framework for Emotion Data Generation with Large Language Models", International Journal of Activity and Behavior Computing, vol. 1, pp. 1-24, 2026.
+[^3]: Keito Inoshita, Xiaokang Zhou, Akira Kawai, Katsutoshi Yada, "Geometric Control-Based Data Augmentation with Cluster-Conditioned Interpolation and Extrapolation for Imbalanced Learning in LLM", arXiv preprint, 2025.
 
 ---
 
-## What this research tells data operations
+## Three-line takeaway
 
-Three takeaways.
+1. Value: in more situations than people realize, “create” is now more rational than “collect” across ethics, cost, and accuracy. The old assumption that synthetic data is a degraded version is genuinely outdated.
+2. Design backbone: combining geometric control, statistical featurization of domain knowledge, and multi-stage persona conditioning gets synthetic data close to real data.
+3. Affective AI lens: the domains where you cannot ethically collect — mental health, minors, vulnerable populations — are exactly where synthetic data unlocks the biggest value. Whether your organization can step into those domains is the watershed for affective-AI deployment.
 
-1. For minority classes and vulnerable populations, "synthesize" is increasingly more rational than "collect" — on ethics, cost, and accuracy all at once. The conventional wisdom that "synthetic data is a degraded version of real data," dominant only a few years ago, is clearly shifting.
-2. If domain knowledge can be converted into statistical features, you can reproduce a domain's emotion distribution without collecting any personal data. That is a powerful alternative to GDPR and personal-information protection regimes.
-3. Finer-grained persona conditioning dramatically increases the realism of synthetic data. Region- and attribute-level tuning of marketing AI and customer-service AI becomes possible without real-data collection.
-
-These translate into concrete moves on the risk-management and value-creation sides.
+In order.
 
 ---
 
-## Risk management: three areas to act on now
+## 1. Three papers, three different roles
 
-### Risk 1: Privacy regulation — emotion data is drifting toward "special category" treatment
+### CIEGAD — geometrically complete minority classes
 
-Emotion data is not yet explicitly designated as a "special category" in many jurisdictions, but the regulatory trajectory is clearly tightening. The EU AI Act, evolving GDPR interpretations, and amendments to Japan's APPI all raise the bar for processing that infers a person's interior. The longer you keep collecting and storing real emotion data, the more risk accumulates against future regulatory shifts.
+CIEGAD (Cluster-conditioned Interpolation/Extrapolation Geometric Augmentation for Data) addresses the inevitable class imbalance in emotion data.
 
-What to do: take inventory of your emotion-data collection pipelines and classify them into "replaceable by synthetic data" and "real data is essential." Build a phased migration plan with legal, starting from the former.
+“Joy” and “sadness” are everywhere; “awe” and “contempt” are scarce.
 
-### Risk 2: Annotator protection — organizational responsibility for secondary mental harm
+CIEGAD applies cluster-wise interpolation (to fill in holes) and extrapolation (to push out the margins) under geometric control in the embedding space.
+A simple idea that works: between existing samples, you can fill gaps; outside cluster boundaries, you can widen the margin.
+By conditioning an LLM to produce texts that fit those geometric anchors, F1 and recall for minority classes improve consistently.
 
-Labeling large volumes of anger-, sadness-, and violence-laden data is an area where problems have repeatedly surfaced in the content-moderation industry. Litigation cases are growing, and the question is moving squarely into the territory of corporate duty-of-care for employee safety.
+### KDDA — convert domain knowledge into statistical features and generate
 
-What to do: identify the labeling categories with the highest mental load and work with engineering to map which parts can be replaced by synthetic data generation. For parts that cannot be fully replaced, set up rotation, breaks, and mental-health support for annotators.
+KDDA (Knowledge-Driven Data Augmentation) is bolder.
+Instead of collecting data directly from individuals, you convert human knowledge about the target domain into statistical features and condition an LLM on those.
 
-### Risk 3: Representativeness bias — AI that misses minorities becomes backlash material
+For a domain like “workplace stress,” you build a domain profile from characteristic vocabulary frequencies, typical situations, and signature emotion patterns, and use it as the generation condition.
+The output gets double-filtered — lexical de-duplication and statistical-fit evaluation.
 
-Sentiment-analysis AI trained solely on real data structurally tilts toward majority expression. The risk of misclassifying utterances from minority cultural groups, people with disabilities, or specific age groups as "abnormal" or "negative" is high. Once such misclassifications get media coverage, brand damage is severe.
+A classifier trained only on synthetic data hit a distribution close to real data on the bulk of the evaluation metrics.
+“Create without collecting” has moved within practical reach.
 
-What to do: deliberately diversify your AI evaluation datasets using synthetic data. Supplement minority samples with geometric-control methods like CIEGAD, and adopt regional and attribute-level accuracy parity as a KPI.
+### PersonaGen — multi-stage personas to reproduce natural stylistic variance
 
----
+PersonaGen weaves the everyday fact that “the same emotion looks different across speakers” into synthetic data.
 
-## Value creation: three opportunities hidden in the same research
+“Sadness” written by a teenager and “sadness” written by a 60-year-old physician differ in vocabulary, register, and social context.
 
-Every risk has a value opposite.
-
-### Opportunity 1: AI deployment to ethically hard-to-collect domains
-
-Mental health, children, elder care, abuse counseling — areas where ethical real-data collection is extremely difficult — cannot adopt AI without synthetic data. Combining knowledge-driven generation like KDDA with multi-stage persona conditioning like PersonaGen opens the possibility of building emotion-understanding AI even in these domains. These are new business areas with substantial social impact.
-
-### Opportunity 2: Dramatic reduction in data-collection cost
-
-Annotation costs for emotion-labeled data, when quality is taken seriously, run from hundreds to thousands of yen per sentence. It is not unusual for partial replacement with synthetic data alone to cut annual data-procurement costs by an order of magnitude. Reinvesting the savings into quality evaluation and auditing of synthetic data lets you raise quality and ethics together.
-
-### Opportunity 3: Pre-emptive response to niche segments
-
-Persona conditioning like PersonaGen's lets you synthesize data for "the new customer segment we want to reach" before that segment actually shows up. Marketing-message testing, pre-training of customer-support AI, region-level tuning of UI wording — preparation time for niche segments can be cut substantially.
+PersonaGen stacks persona conditions in three stages — attributes, sociocultural background, situational context — to reproduce the stylistic variance that fits each persona.
+The same emotion label produces diverse expressions across speakers.
+The paper shows that raising the granularity of persona conditioning is the key to combining expressive diversity with label fidelity.
 
 ---
 
-## A 5-item action checklist for business practitioners
+## 2. What this generates for business
 
-Things you can move on tomorrow.
+Put the three together and the underlying change is this.
 
-- [ ] Inventory: classify the emotion data you currently collect into "synthetically replaceable" and "real data essential"
-- [ ] Annotator protection: identify high-load labeling work and map, with engineering, where synthetic generation can take over
-- [ ] Regulatory response: build, with legal, an emotion-data risk map and a synthetic-data policy
-- [ ] Diversity audit: add synthetic data to existing AI evaluation sets and adopt regional and attribute-level accuracy parity as a KPI
-- [ ] Pilot plan: in an ethically hard-to-collect niche domain (mental health, minority cultural groups, etc.), trial one new use case built on synthetic data
+It's not just that “collecting” gets cheaper. The reach extends to “domains you couldn't reach before.”
+
+Three places this lands.
+
+First, sourcing cost.
+Quality annotation of emotion-labeled text runs anywhere from a few hundred to a few thousand yen per sentence.
+Replacing even part of that with synthetic data routinely cuts annual sourcing cost by an order of magnitude.
+
+Second, annotator protection.
+Forcing annotators to label endless streams of anger, violence, and despair is a domain with a real, growing legal record in the content-moderation industry.
+Even partial replacement with synthetic data moves you forward on duty-of-care.
+
+Third, regulatory get-ahead.
+EU AI Act, tighter GDPR interpretation, ongoing APPI revisions — all of them raise the bar for processing that infers people's inner states.
+The longer you accumulate real data, the more your exposure compounds when regulation shifts.
+Migrating gradually to synthetic data is closer to risk hedging than to pure tech investment.
 
 ---
 
-## Closing — the premise of data strategy is shifting from "collect" to "create"
+## 3. The part I most want to convey as an affective-AI lab
 
-Research on synthetic emotion data is quietly overturning the long-held premise that "data is something you collect." Instead of giving up because collection is hard, the new posture is to create precisely because collection is not possible.
+This is where I really want to put weight.
 
-What CIEGAD, KDDA, and PersonaGen show is that combining "geometric control," "statistical-feature encoding of domain knowledge," and "multi-stage persona conditioning" allows synthetic data to move beyond being a degraded substitute and reach a quality that complements — and at times exceeds — real data. This is a rare technical advance that addresses ethics, cost, and representativeness all at once.
+The real value of synthetic emotion data is not cost savings.
 
-The next time someone asks "is our data strategy really fine as-is?", I hope this column's checklist is what comes to mind. Not the power to collect data but the power to create data will decide the next competitive advantage.
+The real value is making affective AI reachable in domains where ethics has prevented us from going.
+
+Concretely:
+
+- Text analysis of mental-health consultations
+- Child-abuse helplines and DV hotlines
+- Conversational analysis in elderly care
+- Early detection of suicide risk
+- Research on emotional expression in minority cultures
+
+Each of these maximizes the ethics bar the moment you try to collect real data.
+Collecting from the people involved often imposes additional burden on them.
+
+But these are also the places where affective AI has the highest social value.
+
+KDDA and PersonaGen really matter here.
+You turn expert knowledge into statistical features and create data that does not correspond to any specific real person, but is faithful to the affective distribution of that domain.
+You build AI to support the people in those situations without taking data from them directly.
+That's the biggest impact when affective AI meets synthetic data.
+
+Our lab's core stance is to treat emotion as ambiguous and many-sided, on purpose.
+And the most ambiguous, most delicate emotion almost always lives in the places where data is hardest to collect.
+
+Synthetic data is, I think, the technical bridge into those places.
+But used carelessly, it mass-produces convincing-looking falsehoods.
+Coupling with domain knowledge, quality auditing, and transparency of the generation pipeline must all be designed carefully or it collapses fast.
+
+---
+
+## So what do you do tomorrow?
+
+Three moves you can run.
+
+- Sort your current emotion-data inventory into two columns: “replaceable by synthetic” and “must remain real.” Just this much sharpens the conversation dramatically.
+- Pick one annotation category with high annotator load and run a synthetic-data pilot. Not full replacement — a hybrid of human-labeled and synthetic is the realistic answer.
+- Deliberately mix synthetic data into your evaluation set, and make “regional and demographic accuracy parity” a KPI. This structurally reduces the silent loss of minority groups.
+
+“We can't collect, so we give up” is shifting into “we can't collect, so we build.”
+The premise of data strategy is turning over in the affective-AI domain — quickly.
+
+---
+
+## Closing
+
+“The ability to create data, not the ability to collect it, decides your next competitive edge” — slightly grand, but in affective AI it's becoming literally true.
+
+Synthetic data can turn toxic with one wrong move, technically or ethically.
+Which means the design judgment of “what to create and what to leave uncreated” will matter more, not less.
+
+If you ever wonder, “is our data strategy really fine as it is?” — start with the two-column sort.
+You'll be surprised how many items quietly say, “this is fine to synthesize.”
+
+That's it for now.
 
 ---
 
 ## References
 
-1. Keito Inoshita, Rushia Harada (2026). _Persona-Based Synthetic Data Generation Using Multi-Stage Conditioning with Large Language Models for Emotion Recognition_. International Journal of Activity and Behavior Computing, vol. 1, pp. 1-18.
-2. Keito Inoshita, Hayato Tomisu, Xiaokang Zhou, Akira Kawai, Katsutoshi Yada (2026). _KDDA: A Knowledge-Driven Domain and Diversity Alignment Framework for Emotion Data Generation with Large Language Models_. International Journal of Activity and Behavior Computing, vol. 1, pp. 1-24.
-3. Keito Inoshita, Xiaokang Zhou, Akira Kawai, Katsutoshi Yada (2025). _Geometric Control-Based Data Augmentation with Cluster-Conditioned Interpolation and Extrapolation for Imbalanced Learning in LLM_. arXiv preprint.
+1. Keito Inoshita, Rushia Harada (2026). *Persona-Based Synthetic Data Generation Using Multi-Stage Conditioning with Large Language Models for Emotion Recognition*. International Journal of Activity and Behavior Computing, vol. 1, pp. 1-18.
+2. Keito Inoshita, Hayato Tomisu, Xiaokang Zhou, Akira Kawai, Katsutoshi Yada (2026). *KDDA: A Knowledge-Driven Domain and Diversity Alignment Framework for Emotion Data Generation with Large Language Models*. International Journal of Activity and Behavior Computing, vol. 1, pp. 1-24.
+3. Keito Inoshita, Xiaokang Zhou, Akira Kawai, Katsutoshi Yada (2025). *Geometric Control-Based Data Augmentation with Cluster-Conditioned Interpolation and Extrapolation for Imbalanced Learning in LLM*. arXiv preprint.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

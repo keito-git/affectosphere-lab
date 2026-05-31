@@ -1,9 +1,9 @@
 ---
-title: "Can GPT Pass the Real-Estate Bar? Where Legal AI Helps and Where It Must Stop"
-date: "2026-05-31"
-excerpt: "Feed Japan's real-estate-transactions exam to GPT and you see exactly where legal AI lands and where it falls short. A 5-minute decision framework for legal tech, compliance, real estate, and the regulated professions."
+title: "I Made GPT Take the Real-Estate Exam, and Saw the Shape of the Future of Licensed Professions"
+date: "2026-06-01"
+excerpt: "What happens when GPT-3.5 and GPT-4 take Japan's licensed real-estate broker exam. A 5-minute take, for legal tech, in-house legal, and licensed professionals, on how to turn an 'AI that can't pass' into a tool that makes pass-holders 1.5× more productive."
 image: "/column-images/llm-legal-exams.svg"
-imageAlt: "Abstract visual of a law book, an exam sheet, a balance scale, and a passing-score line"
+imageAlt: "Abstract visual of a law book, an exam sheet, a scale of justice, and a pass line"
 readingMinutes: 6
 basedOnPaper: "Assessing GPT's Legal Knowledge in Japanese Real Estate Transactions Exam"
 basedOnPaperUrl: "https://arxiv.org/"
@@ -11,116 +11,175 @@ basedOnPaperUrl: "https://arxiv.org/"
 
 > _This article is an English translation of the original Japanese column. Some phrasing has been adapted for English readers._
 
-## Why "can an LLM pass a national exam?" is a management question
+Hello, this is Inoshita from Affectosphere Group.
 
-Anyone evaluating legal-tech adoption — leadership, in-house counsel automating contract review, real-estate firms, or licensed professionals from CPAs to attorneys — runs into the same question sooner or later. "How far can we actually trust the LLM?"
+I have been talking with companies evaluating legal tech a lot recently, and the same question always comes up:
 
-The cleanest way to answer it is with a national licensing exam. The scope is defined, the passing score is public, and error patterns are easy to analyze. Recent research has used such exams again and again as venues where the "professional-substitution capacity" of AI can be argued in numbers rather than impressions.
+"So — how far can we actually trust an LLM?"
 
-A study released in 2024 [^1] takes ten past sittings of Japan's Real-Estate Transactions Specialist exam (RETSE), the so-called "takken," and compares the answer quality of GPT-3.5 and GPT-4. This column rereads that study not as a technical artifact, but as material for the management decision "how far should we embed an LLM in our own workflow?"
+It is, honestly, a very fair question.
 
-[^1]: "Assessing GPTs Legal Knowledge in Japanese Real Estate Transactions Exam", 2024.
+"It hits 90% accuracy" — fine, but if the missing 10% lands on a key contract clause, the deal is over. The other way around: "It hits 60%" — fine, depending on the use case that is more than enough.
 
----
+The best material for answering this question quantitatively is the past papers of national licensing exams.
 
-## Three facts the research established
+The scope is clear, the passing line is publicly defined, the error patterns are easy to analyze. It is a rare arena where the "ability to substitute for the job" can be discussed in numbers.
 
-### 1. GPT-4 beats GPT-3.5, but neither reaches the passing bar
+In a paper I wrote in 2024 [^1], I had GPT-3.5 and GPT-4 take ten years of past papers from Japan's Licensed Real Estate Broker (hereafter "takken") exam.
 
-The study had GPT-3.5 and GPT-4 answer ten past exams and compared overall accuracy and the structure of errors. GPT-4 broadly outperforms GPT-3.5, but neither model reaches the passing threshold of the exam.
+Today I want to unpack the results, not as a technical paper, but as material for the question "how far should we integrate an LLM into our own business?"
 
-The business takeaway is the next sentence. The claim that "with the latest GPT, judgments at the level of a licensed professional are possible" does not currently hold, at least for national-license-grade legal judgment.
-
-### 2. Errors cluster in the domain-specific small print
-
-A striking pattern in the error analysis is that mistakes concentrate in tax law, the Real-Estate Transactions Business Act, and similar narrow regulatory detail. On general civil-code reasoning the model is reasonable; on special measures, transitional provisions, and exception-laden numerical thresholds — the parts professionals look up daily — it falls away.
-
-This is less about "missing knowledge" than about "training-data frequency" and "rule-update velocity." Statutes are precisely the area where past correctness becomes present error with every amendment — a structure general-purpose LLMs are inherently poor at.
-
-### 3. Auxiliary prompts lift accuracy on complex questions
-
-A further finding: adding auxiliary prompts such as "take customary law into account" or "consider real-estate trade practice" measurably improves accuracy on complex case-style questions. In other words, the LLM does not simply lack the knowledge; in many cases it has the knowledge but cannot retrieve it without an appropriate reference frame.
-
-That means the same model can express very different capability depending on prompt design and how domain knowledge is supplied. In LLM deployment, the gap is often in the surrounding design, not the model.
+[^1]: Keito Inoshita (2024). Assessing GPT's Legal Knowledge in Japanese Real Estate Transactions Exam, 3ICT 2024, pp. 149-155.
 
 ---
 
-## What this research tells the business
+## Today's takeaway in 3 lines
 
-Three points.
+1. Value: even an "AI that can't pass" can compress the working hours of someone who can. That is where the ROI of legal tech sits.
+2. Structure: the weak spots of general-purpose LLMs are "domain-specific small print" and "keeping up with the latest law." Conversely, plug those with RAG and the thing transforms.
+3. Caution: a design that hands "final judgment" to the LLM is — legally and litigation-wise — unacceptable today. Use it as a draft engine.
 
-1. LLMs do not currently reach national-license-grade legal judgment. A design that treats them as the final decision maker is unacceptable on both regulatory and litigation grounds.
-2. Errors cluster in domain-specific detail. A general-purpose LLM cannot be aimed at professional work as-is; connection to current statute databases and internal rules is a precondition.
-3. Performance varies with prompt design and reference framing. With the same model, operational design quality decides the gap.
-
-The realistic premise that follows is to position legal AI as an "assistive tool," not as a "final decision maker."
+Let me go in order.
 
 ---
 
-## Risk management: three areas to act on now
+## ① First, what we found
 
-### Risk 1: Final-judgment liability — the legal weight of acting on an LLM's output
+The study had GPT-3.5 and GPT-4 take ten years of takken past papers and compared accuracy and error patterns.
 
-If an LLM produces an incorrect legal interpretation and a contract, transaction, or filing is made on that basis, who is liable? Service provider, deploying company, or the responsible practitioner — every interpretation has takers. The most practical defensive line is an operational principle that "the LLM's answer is never the final basis for action."
+Roughly:
 
-What to do: Document an LLM-usage policy for legal, contracts, and filings. Codify in internal rules a clear line: drafting, issue-spotting, and reference opinions may use the LLM; final judgment and signature stay with a licensed person.
+- GPT-4 outperformed GPT-3.5 across the board
+- Neither model reached the takken pass line
+- Errors concentrated on domain-specific small print such as tax law and the Real Estate Brokerage Act
+- Auxiliary prompts like "consider customary law" and "consider real-estate transaction practice" improved accuracy on complex case items
 
-### Risk 2: Keeping up with statute changes — training-data lag becomes a business risk
+"With the latest GPT you get judgment on par with a license holder" — at the level of national licensing, at least, this does not hold today.
 
-LLMs have a hard training-data cutoff, so there is always a window during which they cannot reflect the latest amendment. The higher the amendment frequency — Real-Estate Transactions Business Act, tax law, labor law, data-protection law — the more dangerous it becomes to take a general-purpose LLM's answer at face value.
+But stopping here would not be fair.
 
-What to do: List the statutes referenced in your workflow with their amendment cadence, and mark the domains that "must not be completed by LLM alone." Move to a Retrieval-Augmented Generation (RAG) design that references the live statute database.
-
-### Risk 3: Audit trail — can you reconstruct which provision the LLM relied on?
-
-Whether facing a regulator, an internal audit, or litigation, accountability for "why this conclusion was reached" is unavoidable. If LLM output flows straight into work, the chain back to source provisions becomes hard to recover, and judgments that cannot be reproduced under audit accumulate.
-
-What to do: Build into the workflow system a mechanism that stores the LLM's output, the referenced provisions and rules, and the practitioner's final judgment together. Aim for a state in which you can always say "AI assisted, a human decided, and here is the underlying provision."
+"Cannot pass" and "cannot be used in business" are two different things.
 
 ---
 
-## Value creation: three ways legal AI earns its keep as an assistant
+## ② Why an "AI that can't pass" is still usable in practice
 
-The flip side of those risks is concrete productivity gain.
+The working hours of a takken-licensed broker are not, in fact, spent solving exam-style problems.
 
-### Opportunity 1: Front-end of legal research and contract review
+The bulk of the work is things like:
 
-Issue extraction, first-pass surveys of related provisions, structural sanity checks of contracts, diff detection on standard clauses — these are areas where LLMs are comparatively strong. With final judgment still resting with counsel, halving the time of the upstream work materially shortens overall lead time.
+- Reading property documents and pulling out the issues
+- Surveying similar past cases and comparing structure
+- Drafting the Important Matters Explanation document
+- Pulling and organizing the relevant statutes in response to customer questions
+- Getting a final check from a senior or a license holder
 
-### Opportunity 2: Training content for legal staff and the regulated professions
+The LLM's role here is not "final judge" — it is "draft engine," "issue-extractor," "first-pass surveyor."
 
-If the research is right that "how you frame the prompt changes performance," then "how to frame the right question" itself becomes training content. Case discussions in onboarding, instant feedback on past-exam practice, natural-language access to internal knowledge bases — there is wide scope to lift the productivity of training spend.
+That layer is exactly where GPT-4 shines. Even at the "below pass line" accuracy seen in the study, it is plenty usable.
 
-### Opportunity 3: First-line response for customers
+For example, when a broker is asked "is this property eligible for the housing-loan tax deduction?"
 
-Real-estate customer inquiries, first-touch consultations at administrative-law offices, internal legal helpdesks — designs that have an LLM handle routine questions while routing complex cases to a human improve both cost and customer experience. The key is an explicit design of "scope the AI may close out" and "threshold for human escalation."
+- First, have the LLM do a first-pass survey of the relevant statutes
+- A license holder then verifies the surfaced statutes against current law
+- If needed, the question is escalated to a certified tax accountant
+
+In this design, the risk that the LLM "gets a tax-law detail wrong" is absorbed by the license holder's final check.
+
+And the license holder's working time can probably be compressed by something like 50%.
+
+That is the "turn an AI that can't pass into a tool that makes the pass-holder 1.5× more productive" idea.
 
 ---
 
-## A 5-item action checklist for business leaders
+## ③ Plug the weak spots structurally — the (obvious) RAG story
 
-Things you can move on tomorrow.
+Another thing the study found is: "auxiliary prompts improve accuracy on complex problems."
 
-- [ ] Drawing the line: document an LLM-usage policy for legal and contracts (drafting yes, final judgment no)
-- [ ] Trace: build a mechanism that stores LLM output, referenced provisions, and the human's final judgment together as logs
-- [ ] Statute connection: in high-amendment domains, migrate to a configuration that references the live statute database via RAG
-- [ ] Training design: bake "how to write the right prompt" into onboarding and internal knowledge bases
-- [ ] Front-line design: codify the threshold between "AI handles" and "human escalates" in customer-facing channels
+In other words, there are cases where the LLM does not "lack the knowledge" but "cannot retrieve it without an appropriate reference frame."
+
+The conclusion that falls out naturally is: use RAG (Retrieval-Augmented Generation).
+
+The biggest weak spot of general-purpose LLMs is the training-data cutoff — they cannot keep up with the latest amendments. The Real Estate Brokerage Act, tax law, labor law, the Act on the Protection of Personal Information — the more frequently a domain is amended, the more dangerous it is to use a general-purpose LLM as-is.
+
+The fix is a design that lets the LLM "reference" the latest statute database.
+
+Use the LLM not in isolation but as "LLM + latest-statute DB + internal rules + license holder's final check."
+
+The standard answer for legal-tech architecture is going to be this four-piece set for a while, I think.
 
 ---
 
-## Closing — turn an LLM that cannot pass into a tool that boosts the people who can
+## ④ The angle I want to add, as an emotion-AI researcher
 
-An LLM that cannot pass the takken exam cannot replace a licensed takken specialist. It can, however, compress the share of their time spent on research, organization, and drafting. The same structure applies across legal, contracts, and filings.
+This is the perspective unique to Affectosphere Group.
 
-While remaining cautious about the "LLM replaces the licensed professional" scenario, the "LLM makes the licensed professional 1.5x more productive" scenario is already in range. Companies that do not conflate the two — and that invest in designs treating the LLM as an assistant — will lead in legal-domain AI deployment.
+When designing legal tech, most companies think about "accuracy," "cost," and "audit trail."
 
-Next time you are asked "should we adopt legal tech?", I hope this checklist is what you reach for.
+That is right. But there is one more thing you cannot afford to miss.
+
+The "feelings" of the customer and of the license holder.
+
+Real-estate transactions are not procedures people go through many times in life. Buying a house, moving, inheritance — in nearly all of these moments, the customer is tense, full of things they don't understand, anxious.
+
+When you put an AI at the front desk for those customers, one design slip away you get responses that are "neutral, accurate, but cold."
+
+Returning a technically correct but emotionally inappropriate answer to an anxious customer — this is not a regulatory violation, but it reliably erodes trust in the service.
+
+And it does not show up in the numbers.
+
+Our lab's core stance is to handle emotion "as ambiguous and polysemous as it actually is." When a customer says "I don't get it," behind it there may be anxiety, confusion, or distrust of professionals.
+
+If you compress all of that down to "the content of the question" and hand it to the LLM, the AI can only return "an answer to the question."
+
+What the front desk of a legal-tech service really needs is a design that "stops for a second, senses what the customer is anxious about, and only then answers."
+
+The same is true on the license holder's side.
+
+When the LLM drafts for them, the holder's time gets freed up. Whether they spend that freed time on "handling more cases" or "deepening the conversation with each customer" will, five years out, completely separate good practices from average ones.
+
+The proposal from an emotion-AI researcher is simple:
+
+> Put one line — "resolution of the customer's feelings" — into the design metrics of legal tech.
+
+Just that has a real chance of nudging the industry from a "accuracy and efficiency" race to an "accuracy, efficiency, and feeling-resolution" race.
+
+---
+
+## So what do you do starting tomorrow
+
+It would be unfair to only stack risks, so three things you can act on at the field level.
+
+- Document the boundary: write down the LLM use policy for legal and contract work as "drafting yes, final judgment no." That alone unblocks the field.
+- Logs stored together: store LLM output, referenced statutes, and the license holder's final judgment in one record inside the business system. Pays off every audit.
+- Front-desk design: explicitly define "the range AI can answer" and "the threshold for escalating to a human." Put a "this customer seems anxious" signal into the escalation logic.
+
+The value is big. The risk is big. Look at both — that is the ask from someone studying both AI and emotion.
+
+---
+
+## Closing
+
+An LLM that cannot pass the takken cannot replace a takken-licensed broker.
+
+But it can compress the share of the broker's working hours spent on research, organizing, and drafting.
+
+And the practices that can redirect that freed time into "the quality of conversation with each customer" will, over the next five years, reliably win.
+
+While being wary of the "LLM replaces the license holder" scenario, the "LLM makes the license holder 1.5× more productive" scenario is already within reach.
+
+Do not conflate the two. Invest in the design as an assistive tool — that is the realistic answer in the legal-tech area.
+
+And if I can add one thing from the emotion-AI side: put "resolution of the customer's feelings" into the design metrics, as one line. That, I suspect, will shift the competitive axis of the industry by a notch.
+
+If you are thinking "should we adopt legal tech too?" — start from positioning it as a draft engine.
+
+So — that is it for today.
 
 ---
 
 ## References
 
-1. Keito Inoshita (2024). _Assessing GPT's Legal Knowledge in Japanese Real Estate Transactions Exam_. 3ICT 2024, pp. 149-155.
+1. Keito Inoshita (2024). *Assessing GPT's Legal Knowledge in Japanese Real Estate Transactions Exam*. 3ICT 2024, pp. 149-155.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

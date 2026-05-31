@@ -1,9 +1,9 @@
 ---
-title: "The Duet of Personal AI and Organizational AI — A Blueprint for Next-Generation HR"
-date: "2026-05-31"
-excerpt: "A personal AI for each employee and an organizational AI for the company as a whole — this two-layer structure is quietly rewriting HR. Not surveillance but growth support, not uniformity but diversity, not attrition but retention. A 5-minute guide for HR and the C-suite."
+title: "One AI Per Employee: How HR Quietly Changes"
+date: "2026-06-01"
+excerpt: "From 'roll out the same HR tool to everyone' to 'each employee has a personal AI that talks with the org AI.' A 5-minute take on the two-layer design for next-generation HR — for HR leads, organization developers, and executives."
 image: "/column-images/personal-organizational-ai.svg"
-imageAlt: "Abstract visual of two circles — individual and organization — softly linked by an amber line"
+imageAlt: "Abstract visual of a circle for the individual and a circle for the organization, gently linked by an amber line"
 readingMinutes: 5
 basedOnPaper: "パーソナルAIと組織AIによる人事管理の革新と最適化"
 basedOnPaperUrl: "https://arxiv.org/"
@@ -11,105 +11,135 @@ basedOnPaperUrl: "https://arxiv.org/"
 
 > _This article is an English translation of the original Japanese column. Some phrasing has been adapted for English readers._
 
-## Why "personal AI and organizational AI" is an HR problem
+Hello, this is Inoshita from Affectosphere Group.
 
-For decades, HR and organizational development have wrestled with a single dilemma. We want to give every employee the optimal placement, development path, and evaluation. At the same time, we have to optimize the organization as a whole — strategic fit, budget, fairness, governance. The tension between individual optimum and global optimum has always been the fundamental burden of HR.
+The other day I was at lunch with someone running an HR-tech startup, and they said this.
 
-Recent research [^1] adds a new construction line to this old problem: the two-layer structure of a "personal AI" and an "organizational AI." A personal AI that walks alongside each employee, and an organizational AI that takes the bird's-eye view of the company, divide roles between them and bridge information across the divide. This makes possible a granularity and scale of HR operations that a single human HR officer could never handle.
+"We run an employee engagement survey every six months. But the people who actually submit it — they're not the ones who quit. The ones who quit just quietly disappear before the next survey lands."
 
-This column re-reads that work not as a technical paper, but as decision-making material for HR, organizational development, and the C-suite.
+If you have ever worked in HR, this probably rings a bell.
 
-[^1]: Innovation and Optimization of Human Resource Management with Personal AI and Organizational AI, Hito to Shigoto, 2024.
+Surveys are great as "tools to see the organization," but they were never designed to pick up the daily wobble of an individual employee.
 
----
+In a paper I wrote in 2024 [^1], I proposed flipping this structure on its head.
 
-## Three facts the research established
+The idea: give each employee their own AI — a personal AI — and design it so that this personal AI talks with the organization's AI.
 
-### 1. Splitting AI into "individual side" and "organization side" makes the design suddenly clear
+Today I want to unpack that for HR, organization development, and executive readers.
 
-HR Tech so far has been dominated by organization-side tools: HR systems, talent management, survey tools. The idea that an employee should have their own AI supporting their career and learning is still a sparsely populated area. The research shows that designing AI as two layers — a personal AI that walks alongside the individual and an organizational AI that takes the bird's-eye view — sharpens the roles and responsibility boundaries of both. Personal AI handles career conversation and learning support; organizational AI handles placement optimization and budget allocation. This division of labor enables designs that go beyond the single-platform paradigm.
-
-### 2. AI can bridge the information asymmetry between individual and organization
-
-Information asymmetry is permanent in any organization. Employees do not fully communicate "what they truly want to do" to their managers or HR. Leadership does not fully share "where the company truly wants to go" with the front line. This mutual silence has produced mismatches, attrition, and low engagement for as long as organizations have existed. A two-layer personal AI and organizational AI structure places an "information translator" between the two. The personal AI holds the employee's introspective data and shares only the necessary portion with the organizational AI. The organization's strategy reaches the individual translated into their own language via the personal AI. The design preserves informational sovereignty on the individual side while enabling the bridge.
-
-### 3. Individual and global optima can coexist, given the right design
-
-The research shows that the two-layer structure provides a framework in which "individual career optimization" and "organizational performance optimization" can be pursued simultaneously. Conventional thinking assumed the trade-off — favor the individual and the organization frays, favor the organization and the individual withers. Yet if AI detects in advance the points where the two interests collide and presents the trade-offs as options to both sides, room opens up for resolution through human-to-human dialogue. AI functions not as an arbiter, but as infrastructure that raises the quality of dialogue.
+[^1]: Keito Inoshita (2024). Innovation and Optimization of Human Resource Management with Personal AI and Organizational AI, 1st Essay Prize, Institute for the Future of People and Work.
 
 ---
 
-## What this research tells HR and the C-suite
+## Today's takeaway in 3 lines
 
-Three takeaways.
+1. Value: putting one AI next to each employee can catch "daily wobble" that no survey will ever pick up.
+2. Structure: the key is splitting AI into "personal AI" and "organization AI," and letting them translate between each other. Data sovereignty stays with the individual.
+3. Trap: get the design wrong and this quietly turns into "surveillance AI." The boundary is everything.
 
-1. The starting point for next-generation HR is to design AI not only as an "organization-side tool" but also as an "individual-side partner."
-2. Designs that keep informational sovereignty on the individual side and pass only what is necessary to the organization deliver engagement and governance at the same time.
-3. AI must be positioned not as a surveillance device but as growth-support infrastructure that mediates dialogue between the individual and the organization.
-
-From here, HR and the C-suite should think in two registers: risk management and value creation.
+Let me go in order.
 
 ---
 
-## Risk management: three areas to act on now
+## ① First, what this generates for HR
 
-### Risk 1: Sliding into surveillance AI
+Imagine you are the head of HR at a 500-person company.
 
-A two-layer personal AI and organizational AI structure can easily slide into "surveillance AI" if designed poorly. If the organizational AI sucks up employee emotion data, entry and exit records, and meeting utterances unilaterally, employees will hold back from natural expression in front of AI, and the quality of the data itself will collapse. The point of the research is precisely that "data has meaning because individual sovereignty is preserved."
+Most HR systems today stand on the organization's side. Assignment management, evaluation aggregation, surveys, people analytics. A row of "tools to see the organization."
 
-What to do: Clearly separate which items in the personal AI's holdings are shared with the organizational AI and which are not. Build a UI through which employees themselves can confirm and refuse "what goes to the organization side."
+Now add one "personal AI" per employee. What changes?
 
-### Risk 2: Blurring data sovereignty and regulatory risk
+- An employee has someone to vent to about their career — without going to the manager or HR
+- A learning plan that runs at the pace of their actual life
+- Something that notices "you might be a bit tired lately" before the person themselves does
 
-Data handled in HR is extremely sensitive — emotion, health, career orientation. The EU GDPR treats HR data as a high-protection target, and U.S. state laws and Japan's amended APPI continue to raise the bar for HR AI. Starting operations with "who owns the data" left vague at the design stage builds up legal and ethical debt that surfaces later.
+On its own, that is "a smart 1-on-1 bot." The interesting part starts after that.
 
-What to do: Work with legal to formulate a policy that explicitly states employee data ownership, usage rights, and deletion rights. Establish rules for data erasure at employee separation and rules for secondary use, in advance.
+The personal AI hands only information the employee allows over to the organization AI.
 
-### Risk 3: Opacity of AI involvement in evaluation and compensation
+The organization AI, in turn, translates "company-side concerns" — strategy, budget — through the personal AI back into the employee's own language.
 
-When the organizational AI is involved in placement, evaluation, or promotion candidate selection, the opacity of its reasoning becomes a trigger for litigation, labor disputes, and reputational damage. The EU AI Act classifies HR-use AI as a high-risk category and imposes strict transparency and explainability requirements.
+In short — a translator is now sitting between the individual and the organization.
 
-What to do: For HR decisions in which AI is involved, formulate a policy that discloses, to employees and managers, the degree of AI involvement in each decision. Codify the principle that the final decision is always made by a human and establish a channel through which employees can contest AI recommendations.
-
----
-
-## Value creation: three opportunities hidden in the same research
-
-Every risk has a value opposite.
-
-### Opportunity 1: Engagement through individualized career optimization
-
-A personal AI that continuously converses with the employee and walks alongside their interests, skills, orientation, and life-stage changes gives the employee a felt sense of "my career is being seen." Daily changes that an annual 1-on-1 or career interview cannot capture are supplemented by the personal AI. This ties directly to lifting engagement scores.
-
-### Opportunity 2: Activating diversity
-
-Designing the information aggregated by the organizational AI so that it is not skewed by attribute can surface the strengths of diverse talent that were previously buried. Minority-attribute employees, employees caring for children or family members, neurodivergent employees — resolution rises for incorporating each set of strengths into organizational strategy. This becomes a powerful means to make diversity KPIs substantive.
-
-### Opportunity 3: Structural improvement in retention
-
-Signs of attrition often appear as changes in an employee's introspective data well before the human manager notices. If the personal AI catches the change early and, with the individual's consent, proposes a placement change or a conversation at the right moment, retention of strong talent improves structurally. The mode of engagement shifts from "retaining" to "looking together for the place that fits."
+It is a structure where AI quietly carries the work that used to crush a single HR person trying to do it for hundreds of people.
 
 ---
 
-## A 5-item action checklist for HR and the C-suite
+## ② The "individual optimum vs. organization optimum" dilemma dissolves
 
-Things you can move on tomorrow.
+The eternal dilemma of HR, I think, is: "stand up the individual and the organization collapses; stand up the organization and the individual wilts."
 
-- [ ] Two-layer design review: check whether your HR Tech investment is skewed to "organization-side tools," and whether an "individual-side partner" is missing
-- [ ] Data sovereignty policy: with legal, organize and codify employee data ownership, usage, and deletion rights
-- [ ] Sharing-range visibility: design a UI through which employees themselves can confirm and control what information flows from the personal AI to the organizational AI
-- [ ] Transparency principle: formulate a policy that discloses the degree of AI involvement in HR decisions to employees and managers
-- [ ] Contestation channel: establish a human process through which employees can contest AI recommendations
+Even a single transfer pits the person's wishes against business needs head-on. Tweak an evaluation system and you end up with a system that is mildly uncomfortable for everyone.
+
+What is interesting about the two-layer design is that it reframes this from a trade-off into "a problem of conversational resolution."
+
+For example, an employee's personal AI knows: "this person actually wants to lean more toward marketing." The organization AI knows: "next quarter we need someone to launch a new business at the overseas subsidiary."
+
+The AI detects in advance where these two interests intersect, and presents the option to both sides.
+
+The final decision is still made through human conversation between the employee, the manager, and HR. The AI never elbows its way in as a judge — it just raises the resolution of the conversation.
+
+Quiet, but it actually shifts the premises of how an organization runs.
 
 ---
 
-## Closing — AI is not the arbiter; it is the mediator of dialogue
+## ③ The emotion-AI angle that you cannot afford to skip
 
-The essence of HR is, in the end, dialogue between people. Deciding placement, communicating evaluation, supporting a career — these things happen within human relationships. AI should be designed not as a technology that intrudes there, but as infrastructure that raises the quality of dialogue.
+Here is the part I most wanted to write, as Affectosphere Group.
 
-The two-layer personal AI and organizational AI structure is precisely the translation of this principle into technical architecture. Protect individual sovereignty while pursuing organizational rationality. Have AI quietly translate and support the dialogue between the two.
+The two-layer design of personal AI and organization AI can slide into "surveillance AI" embarrassingly easily.
 
-What technology can do and what HR should do are different questions. The latest research gives us material to redraw that line. The next time someone asks "is our HR AI preserving employee sovereignty?", I hope this column's checklist is what comes to mind.
+Imagine the organization AI vacuuming up all of it — emotion logs, meeting comments, swipe-card times, Slack reactions — from above. What happens?
+
+Employees stop expressing "natural emotion" in front of the AI.
+
+Smile reactions become strategic. People stop saying real things in 1-on-1s. Even when talking to their personal AI, they think "this gets passed upward" and edit themselves.
+
+The instant that happens, the data quality collapses.
+
+Our lab's core stance is to handle emotion "as ambiguous and polysemous as it actually is." The reason is simple: human feelings do not survive being collapsed into averages or majority votes.
+
+Emotion data also has a particular property: the moment people feel they are being observed, the data itself mutates.
+
+So even in this personal-AI / organization-AI design, the principle to defend at the very end is just one:
+
+> "Data has meaning precisely because individual sovereignty is protected."
+
+Put the other way around — HR tech that fails to protect this might post good numbers in the short run, but in three years it will produce an organization where nobody says what they actually think.
+
+And from that organization, you only get quantitative data. Attrition does not drop. Engagement does not rise. The place just somehow stagnates.
+
+That, as an emotion-AI researcher, is the future I find scariest.
+
+---
+
+## So what do you do starting tomorrow
+
+It would be unfair to only fan the risk side, so here are three things you can act on at the field level.
+
+- Inventory: look at whether your HR-tech investments are weighted toward "organization-side tools" or "individual-side partners." It will almost certainly be the former.
+- Visualize what gets shared: if you adopt anything personal-AI-shaped, bake in a UI from day one where the employee can review and refuse what gets passed to the organization. Bolting it on later does not work.
+- Channel for appeal: for HR decisions touched by AI — assignments, evaluations, recommendations — provide a human path for employees to push back. This is both EU-AI-Act-aligned and practically essential.
+
+The value is big. The risk is big. Look at both — that is the ask from someone who works on both HR and emotion AI.
+
+---
+
+## Closing
+
+The essence of HR, ultimately, is conversation between people. Assignment, evaluation, career — they all happen inside human relationships.
+
+AI should not be technology that elbows in, but infrastructure that raises the resolution of those conversations.
+
+The two-layer personal-AI / organization-AI design was an attempt to translate that principle into technical architecture.
+
+Protect individual sovereignty. Pursue organizational rationality. Let the AI quietly translate and support the conversation between them.
+
+And our lab's interest as an emotion-AI group is probably converging on: "how to handle emotion data safely so that even when observed, it does not mutate."
+
+So — that is it for today.
+
+If anyone thought "wait, is our HR tech tilted to the organization side?", please take this chance to do that inventory.
 
 ---
 

@@ -1,9 +1,9 @@
 ---
-title: "AI Reads 'I Had a Great Trip' — Emotional Data for the Tourism Industry, and the Structure of Satisfaction"
-date: "2026-05-31"
-excerpt: "Social posts, reviews, photo captions — fragments of emotion travelers leave behind, now read by LLMs. A 5-minute guide for tourism, hospitality, and destination managers to look past star ratings into the structure of satisfaction."
+title: "A 4.5-Star and a 4.5-Star Are Not the Same — The Resolution Story for Emotion Data in Tourism"
+date: "2026-06-01"
+excerpt: "Reviews, social posts, photo captions. In an era where LLMs decode the fragments of emotion travelers leave behind, how do you act on a satisfaction structure that star ratings miss? Five minutes for tourism, municipal, and hospitality leaders."
 image: "/column-images/tourism-emotion-ai.svg"
-imageAlt: "Abstract visual of a travel map with destinations and emotion icons hovering at each point"
+imageAlt: "Abstract visual of a travel map with destinations and emotion icons floating over each location"
 readingMinutes: 5
 basedOnPaper: "京都・滋賀・奈良3府県の観光拠点間における口コミの類似性に着目した観光候補地群の分析"
 basedOnPaperUrl: "https://arxiv.org/"
@@ -11,108 +11,164 @@ basedOnPaperUrl: "https://arxiv.org/"
 
 > _This article is an English translation of the original Japanese column. Some phrasing has been adapted for English readers._
 
-## Why "tourism and emotion data" is a management issue
+Hello — this is Inoshita from Affectosphere Group.
 
-The metrics that measure guest experience in tourism are quietly shifting. The standard used to be a single score — intent to revisit, overall satisfaction, NPS — applied to a destination or a hotel. But today's traveler posts to social media during the trip, writes reviews after returning home, and shares photographs with captions. These unstructured texts carry an emotional texture that star ratings cannot capture: anticipation, surprise, confusion, relief, gratitude.
+A municipal tourism officer asked me recently:
 
-Recent research [^1] presents a framework that uses Large Language Models (LLMs) to analyze emotional data across these sources and structurally extract the emotional dynamics of travelers. This column re-reads that work not as a technical paper, but as decision-making material for those in tourism, hospitality, and destination management.
+“Our destination has a 4.5-star rating, exactly the same as a nearby competitor. But our repeat-visit rate is completely different. Why do you think that is?”
 
-[^1]: Emotion Data Analysis and LLM Application in Tourism, Journal of the Japan Society for Information and Knowledge, 2025.
+If you stop and sit with this question, it goes pretty deep.
 
----
+One 4.5-star destination, another 4.5-star destination.
+On the surface, the same number.
+But the experience behind those numbers might be entirely different.
 
-## Three facts the research established
+One destination might score 4.5 because expectations were exceeded by surprise.
+The other might score 4.5 because expectations were met, with small disappointments scattered throughout.
+Same number. Very different repeat-visit intent. Very different word-of-mouth dynamics.
 
-### 1. Travel experience is best captured as a layered, multi-source record
+The tourism industry's experience evaluation has long run on single scores — repeat intent, overall satisfaction, NPS.
+But today's traveler posts to social during the trip, writes a review after returning, and shares word-of-mouth with photos.
+These unstructured texts carry an emotional texture — expectation, surprise, confusion, relief, gratitude — that no star count can hold.
 
-A single survey can no longer capture how travelers actually experience a trip. Short posts on social media, reviews on travel sites, blog articles, photo captions — only the combination reveals the full arc. The research shows that integrating texts from multiple channels produces destination-level emotional profiles that no single channel can. What matters is that each channel captures a different kind of emotion: social media captures momentary highs, reviews capture post-hoc summaries, blogs carry the narrative of a journey.
+In a study we published in 2025[^1], LLM-based analysis of reviews surfaced structurally distinct emotional profiles for each destination.
 
-### 2. LLMs extract emotional dynamics along the time axis
+Today I want to translate that paper into the language of tourism, municipal, and hospitality work.
 
-Conventional sentiment analysis assigns one score per text. With LLMs, "the anticipation at the start of the trip," "the surprise on site," and "the afterglow on the way home" can be extracted as a time series. Travelers' feelings become visible at the level of locations and moments. Refusing to compress satisfaction into a single number, and instead capturing it as a flow of emotion, ties directly to analysis of revisit intent and word-of-mouth diffusion.
-
-### 3. The structural drivers of satisfaction can be pulled out of text
-
-The research presents methods that decompose the structural factors behind travelers' emotional expression — access, price, service responsiveness, scenery, cultural experience, interaction with local people. Reading the specific elements behind a single phrase like "it was fun" from multiple emotion words and context exposes the strengths and weaknesses of facilities, locations, and seasons. This raises the resolution of destination branding and product design by an order.
-
----
-
-## What this research tells the tourism industry
-
-Three takeaways.
-
-1. Travel experience is now best understood not as an aggregate of single scores but as the structure of an emotional flow. Star 4.5 and star 4.5 are not the same thing.
-2. LLMs can extract, at scale, the kind of structural insight that previously required qualitative research. Cost drops sharply.
-3. Yet the risk of over-reacting to outlier reviews and extreme social posts remains. Designer judgment matters.
-
-From here, tourism leaders should think in two registers: risk management and value creation.
+[^1]: Hironobu Ozaki, Keito Inoshita, "Analysis of candidate tourist destinations focused on the similarity of word-of-mouth across attractions in Kyoto, Shiga, and Nara prefectures" (in Japanese), Journal of the Japan Society for Information and Knowledge, vol. 35, issue 2, pp. 327-333, 2025.
 
 ---
 
-## Risk management: three areas to act on now
+## Three-line takeaway
 
-### Risk 1: Over-reaction to outlier reviews
+1. Value: tourism experience is no longer a single aggregated score. It's a structure of an emotional flow. A 4.5 and a 4.5 are not the same.
+2. Design: LLMs can extract emotion as a time series — “expectation at the entry,” “surprise on the ground,” “afterglow on the way home” — and improvement points become sharper by an order of magnitude.
+3. Affective AI lens: but you need a design that doesn't get yanked around by the “loud minority.” Reading without crushing the calm majority is what gives this work its dignity.
 
-LLM-based emotion analysis tends to weight extreme posts — strong complaints or excessive praise — more heavily than their share warrants. A poor design can let a handful of complaint posts skew a facility's improvement priorities, pushing back the experience improvements that would benefit the majority.
-
-What to do: Before acting on emotion-analysis results, build internal rules that check the distribution of post counts, the distribution of emotional intensity, and the distribution of poster attributes. Read "the minority with strong feelings" and "the majority with milder feelings" separately. That separation is the starting point.
-
-### Risk 2: Cultural diversity slipping through the cracks
-
-Inbound travelers vary enormously in country of origin, language, and cultural background. LLMs handle English and Japanese well, but accuracy drops in languages and cultural areas with sparse training data. The structural risk is that only the voices of travelers from a particular country reach facility operations, while complaints and suggestions from other cultural areas become invisible.
-
-What to do: Compare the country composition of your travelers against the language composition of the texts actually fed into emotion analysis. Where the gap is large, incorporate supplementary collection routed through professional translation.
-
-### Risk 3: Privacy and the secondary use of social posts
-
-Social posts are "public" texts, but the people who posted them were not writing with operator analysis in mind. The boundary of collection and use needs delicate care, in both research and commercial contexts. Data that includes traveler faces or location information may collide with personal-data law in various jurisdictions.
-
-What to do: Work with legal to organize a policy for the use of social data, separating text, image, and personally identifiable information into distinct treatments. Regularly check alignment with GDPR, Japan's APPI, and the regulations of each destination jurisdiction.
+In order.
 
 ---
 
-## Value creation: three opportunities hidden in the same research
+## 1. What just became possible
 
-Every risk has a value opposite.
+Three shifts have lifted what tourism can do with emotion data in the past few years.
 
-### Opportunity 1: Emotion maps for destination branding
+First, integrated analysis across multiple sources.
 
-Combining emotional data with geographic information makes it possible to visualize, as an "emotion map," which feelings emerge most strongly at which points inside a destination. This becomes evidentiary data for destination-wide branding strategy — which spots to feature, which flows to reinforce. The qualitative structure of stay experience, invisible in star-rating aggregates, comes into view.
+Traveler evaluation can't be captured by a single survey anymore.
+Short social posts, travel-site reviews, blog articles, photo captions — they combine to reveal the full trip arc.
 
-### Opportunity 2: Higher cultural resolution for inbound strategy
+Each channel captures a different kind of emotion.
 
-Parallel analysis of texts in multiple languages produces a high-resolution view of "what attracts whom and where they stumble," broken down by cultural area of origin. The points European and American travelers value and the points East Asian travelers value diverge. Designing experience by cultural area can lift overall satisfaction and improve repeat rates simultaneously.
+- Social — peaks of excitement, surprise in the moment
+- Reviews — retrospective summary, more measured evaluation
+- Blogs — narrative of the trip, memory in context
 
-### Opportunity 3: Higher-resolution product development and stay design
+Reading these in parallel already lifts the resolution of destination branding meaningfully.
 
-Data on emotional dynamics serves both new product planning and existing product improvement. "Raise anticipation in the first half, design surprise in the middle, leave afterglow at the end" can now be executed based on data, not intuition. This opportunity is open to travel agencies, destination management organizations, lodging operators, and experience providers alike.
+Second, time-series extraction of emotional dynamics.
+
+Traditional sentiment analysis assigned one score to a whole text.
+LLMs let you extract the temporal arc — expectation at entry, surprise on the ground, afterglow on the way home — as structure.
+
+For tourism, this is a big shift.
+You no longer flatten satisfaction into one number; you see emotion as a flow.
+Root-cause analysis for repeat intent and word-of-mouth becomes a different kind of sharp.
+
+Third, structural decomposition of satisfaction.
+
+“I had a great time” hides multiple factors: access, price, service, scenery, cultural experience, interaction with locals, and more.
+LLMs can decompose them.
+You can talk quantitatively about strengths and weaknesses by site, by season, by facility.
 
 ---
 
-## A 5-item action checklist for tourism leaders
+## 2. What this generates for business
 
-Things you can move on tomorrow.
+Three opportunities.
 
-- [ ] Inventory: identify which channels hold what volume of traveler text data about your facility or region
-- [ ] Emotion mapping: extract destination-point emotional profiles with LLMs and visualize them on a map
-- [ ] Cultural-area analysis: decompose emotional profiles by country and language, and surface strengths and weaknesses per cultural area
-- [ ] Outlier operations: write internal rules that read minority-strong-emotion posts and majority-mild-emotion posts separately
-- [ ] Ethics governance: with legal, build a policy for collecting and using social data that respects traveler privacy
+First, emotion maps for destination branding.
+Pair emotion data with geography, and you can visualize where in a destination which emotions arise most strongly.
+That becomes the basis for which sites to make centerpieces and which flows to strengthen.
+The qualitative structure of the stay experience — invisible in star aggregates — comes into view.
+
+Second, raising the cultural resolution of inbound strategy.
+Parallel analysis across multiple languages tells you, for each source-culture, what is the draw and where are the friction points.
+Western and East Asian visitors really do value different things.
+Designing experiences by source-culture lifts both satisfaction and repeat rate simultaneously.
+
+Third, sharper product and stay design.
+Emotional-dynamics data informs both new product creation and improvement of existing offerings.
+“Build expectation in the first third, design surprise in the middle third, leave afterglow in the final third” — we are starting to be able to do this on data, not just intuition.
 
 ---
 
-## Closing — the memory of a journey can now be preserved as structure
+## 3. The part I most want to convey as an affective-AI lab
 
-Tourism has long been described as the industry that "sells memories." But memories are vague, hard to quantify, and difficult to use as evidence for improvement. LLM-based emotional-data analysis opens the possibility of treating those vague memories as structured data.
+This is what I most want to push from the lab.
 
-At the same time, we must not forget the basic fact that text data was not written by travelers for operators. The dignity of emotional-data use in tourism is decided by operational design that respects the data, refuses to lose cultural diversity, and does not get whipped around by outliers.
+LLM-based emotional analysis has a quiet tendency to over-amplify “loud emotional voices.”
 
-What technology can do and what tourism should do are different questions. The latest research gives us material to redraw that line. The next time someone asks "does our tourism product hold up under the flow of emotion?", I hope this column's checklist is what comes to mind.
+Sharp complaints, excessive praise, chilling failure stories — these posts carry intense vocabulary, and naturally stand out to the analyzer.
+
+For tourism, that's a structurally awkward situation.
+
+A single design slip leads to this.
+
+A handful of outlier complaint posts skew the facility's improvement priorities.
+Genuine improvements that would lift the bulk of guests get deprioritized.
+And the quietly-satisfied majority, never made visible, drifts to a different destination next time.
+
+From an affective-AI standpoint, this connects to a question I think a lot about: is your technology accidentally crushing the calm and ambiguous emotions?
+
+Our lab's stance is to treat emotion as ambiguous and many-sided.
+A person's feeling can't be summarized by the extremes alone.
+If you only look at “very satisfied” and “very dissatisfied,” the gray zone of “pretty good, but not sure if I'd come again” — which is where most guests actually live — disappears.
+
+And in tourism, the gray zone is almost always what determines repeat rate.
+
+The dignity of emotion-data work in this industry comes from the discipline of reading the loud minority and the calm majority separately.
+Before swallowing a score the LLM returns, ask: “is this being pulled by a small intense minority?”
+That habit matters.
+
+There's also the ethics of social-media data.
+A social post is technically public, but the poster didn't write it imagining a corporate analyst.
+Checking against GDPR, revised APPI, and local municipal ordinances together with legal is the modern floor.
+
+---
+
+## So what do you do tomorrow?
+
+Three concrete moves.
+
+- Map which channels hold how much traveler-text data for your destination. Surprisingly few people have actually inventoried this.
+- Use an LLM to extract an emotional profile per major site and put it on a map. Just having one “emotion map” changes the quality of destination-strategy conversations.
+- Write down the rule for reading “loud minority voices” and “calm majority voices” separately. This alone dramatically reduces the skew in improvement priorities.
+
+Back to that municipal officer: answering “why are repeat rates different at the same 4.5 stars?” needs both emotional flow and culture-segment resolution.
+Read those two layers carefully, and the difference becomes explainable.
+
+---
+
+## Closing
+
+Tourism has long been called “the industry that sells memories.”
+But memories are vague, hard to quantify, and resistant to becoming usable improvement data.
+
+LLM-based emotion analysis opens a path to treating those vague memories with structure.
+
+But never forget the basic: the data was not written by travelers for operators.
+Respecting the data, refusing to drop cultural diversity, and reading without being yanked around by the loud minority — that's what gives this work its dignity.
+
+If you ever wonder, “does our tourism offering hold up to the emotional flow?” — start by drawing an emotion map.
+Unexpected feelings will turn up in unexpected places.
+
+That's it for now.
 
 ---
 
 ## References
 
-1. 尾崎博信, 井下敬翔 (2025). *京都・滋賀・奈良3府県の観光拠点間における口コミの類似性に着目した観光候補地群の分析*. 情報知識学会誌, vol. 35, issue 2, pp. 327-333.
+1. Hironobu Ozaki, Keito Inoshita (2025). *Analysis of candidate tourist destinations focused on the similarity of word-of-mouth across attractions in Kyoto, Shiga, and Nara prefectures* (in Japanese). Journal of the Japan Society for Information and Knowledge, vol. 35, issue 2, pp. 327-333.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

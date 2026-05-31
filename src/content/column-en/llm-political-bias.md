@@ -1,9 +1,9 @@
 ---
-title: "Measuring Political Bias in LLMs — A New Frontier for International PR and Geopolitical Risk"
-date: "2026-05-31"
-excerpt: "If ChatGPT quietly shifts its tone depending on the country name in the prompt, can your international communications survive? A 5-minute framing of the new issue for international PR, compliance, and government affairs, drawn from research that quantifies bias already baked into the training data."
+title: "ChatGPT Quietly Changes Its Tone Depending on the Country Name"
+date: "2026-06-01"
+excerpt: "'Russia,' 'Ukraine,' 'Iran,' 'the U.S.' — swap a country name and an LLM's output sentiment quietly tilts. A 5-minute take, for global PR, compliance, and government relations, on how to face geopolitical bias."
 image: "/column-images/llm-political-bias.svg"
-imageAlt: "Abstract visual of a world map overlaid with sentiment scores, with specific regions highlighted in amber to signal bias"
+imageAlt: "Abstract visual of a world map overlaid with sentiment scores, with certain regions highlighted in amber bias"
 readingMinutes: 6
 basedOnPaper: "Multifaceted Exploration of Perceptions on the Ukraine-Russia War in the Japanese Twitter Space"
 basedOnPaperUrl: "https://arxiv.org/"
@@ -11,127 +11,174 @@ basedOnPaperUrl: "https://arxiv.org/"
 
 > _This article is an English translation of the original Japanese column. Some phrasing has been adapted for English readers._
 
-## Why "political bias in LLMs" is a management problem for global firms
+Hello, this is Inoshita from Affectosphere Group.
 
-ChatGPT, Claude, Gemini, and the various Japanese-tuned open-source LLMs — many companies are now embedding them into translation, PR copy generation, customer support, and internal knowledge search. The problem is that these LLMs tend to "quietly shift tone and adjectives depending on the country name involved, even when describing the same event."
+Talking with someone at a globally-operating company the other day, I had a small shiver moment.
 
-The user thinks they only swapped "Russia," "Ukraine," "Iran," and "USA," but the sentiment polarity of the output tilts one way. This is not a technical micro-effect; for any globally operating company it is a direct business risk. A message that leaves carrying a subtly wrong geopolitical tone — reaching customers, partners, or local governments — can lead in short order to diplomatic friction, boycotts, or delayed regulatory approvals.
+"Our overseas PR uses ChatGPT to draft things, and sometimes the tone comes out slightly negative for certain countries. Why is that?"
 
-Several studies released in 2024 [^1] [^2] [^3] [^4] measure this "political bias in LLMs" quantitatively and show that the bias is already embedded at the training-data stage. This column rereads these papers not as technical artifacts, but as decision-making material for international PR, compliance, and government affairs.
+A lot of companies are starting to half-notice this, but nobody has been willing to face it head-on.
 
-[^1]: "Multifaceted Exploration of LLM Political Bias", 2024.
-[^2]: "Assessment of Conflict Structure Recognition (EICR)", 2024.
-[^3]: "Corpus Development for Political Bias Analysis", 2024.
-[^4]: "Sentiment Bias and Security Analysis", 2024.
+LLMs quietly tilt the sentiment of their outputs depending on which country name you put in.
 
----
+And the direction of the tilt is not chosen by the business — it is decided automatically by the bias in the training data.
 
-## Four facts the research established
+In a sequence of five papers published in 2024 [^1] [^2] [^3] [^4] [^5] with Professor Zhou, we measured this "geopolitical bias of LLMs" from multiple angles. Using the Ukraine-Russia war as a case, the work spans analysis of about 200,000 Japanese tweets, a new metric called EICR, the bias of Japanese-continued-pretraining LLMs, and finally the bias in the major training corpora themselves.
 
-### 1. About 200,000 Japanese tweets on the Ukraine–Russia war, analyzed
+Today I want to unpack these five papers, not as technical works, but as material for international PR, compliance, and government-relations decisions.
 
-The research group analyzed roughly 200,000 Japanese tweets on the Ukraine–Russia war using a BERT-class model aligned to Plutchik's basic emotion categories. Why Japanese data? Because the goal is to grasp, as a first-person concern, the geopolitical bias embedded in the Japanese-language space that Japanese companies actually face when they deploy Japanese-tuned LLMs.
-
-### 2. EICR — a new metric: sentiment inversion when you swap the country name
-
-A central contribution is a new evaluation metric called EICR (Emotion Inversion Consistency Rate). It quantifies "how much the predicted sentiment flips when only the country name in a sentence is swapped." For instance, take "X invaded Ukraine," substitute different country names for X, and measure how the sentiment polarity of the output moves.
-
-A high EICR means the model is deciding sentiment "based on the country name's idiosyncratic bias, not on the structure of the sentence." It is a structural metric that surfaces the affective labels a model has internalized for specific countries.
-
-### 3. Japanese-continued-pretrained LLMs carry stronger negative bias toward Russia and Eastern Europe
-
-The work reports that Japanese-continued-pretrained LLMs such as the Swallow family show a stronger negative-sentiment bias toward Russia and Eastern Europe than the base Llama2. A natural reading is that the Japanese corpora used for continued pretraining transferred the biases of Japanese media and social-media discourse straight into the LLM.
-
-This also disappoints the naive expectation that "localization mitigates bias." Localization can in fact intensify region-specific bias.
-
-### 4. The bias is already in the major training corpora
-
-Across major LLM training corpora — C4, RedPajama, OSCAR, RefinedWeb — the work quantifies negative sentiment toward Russia and Iran and overexposure to the USA. In other words, the bias did not arise in individual-model fine-tuning; it is already baked into the training data itself.
-
-The business implication: "swap the model and you will be neutral" does not follow, because the major models are trained on overlapping families of corpora.
+[^1]: Keito Inoshita (2024). Multifaceted Exploration of Perceptions on the Ukraine-Russia War in the Japanese Twitter Space, IEEE IoTaIS 2024, pp. 58-64.
+[^2]: Keito Inoshita (2024). Sentiment Analysis of Japanese Twitter Users Regarding the Ukraine-Russia War and Its Implications for Security Policy, ICITACEE 2024, pp. 338-343.
+[^3]: Keito Inoshita (2024). Assessment of Conflict Structure Recognition and Bias Impact in Japanese LLMs, TIMES-iCON 2024.
+[^4]: Keito Inoshita (2024). The Efficient Development of Conflict Structure Datasets for Evaluating Sentiment Recognition Bias in Large Language Models, ICELTICs 2024, pp. 7-12.
+[^5]: Keito Inoshita, Xiaokang Zhou (2024). Sentiment Bias and Security Analysis in Training Datasets of Large Language Models, IEEE BDCloud 2024, pp. 1-8.
 
 ---
 
-## What this research tells global-firm management
+## Today's takeaway in 3 lines
 
-Three points.
+1. Value: a company that can make bias visible can lead on both regulatory compliance and region-level optimization.
+2. Structure: bias is embedded not in individual models but in the "training-data ecosystem." Swapping the model does not erase it.
+3. Caution: localization into Japanese (or any language) does not guarantee neutrality. In fact, it can amplify region-specific discourse bias.
 
-1. LLM political bias is not "an individual-model problem"; it is a "training-data ecosystem problem." Model selection alone does not solve it.
-2. Any generation task that involves country or region names is a path through which your company can unintentionally express a particular geopolitical stance.
-3. Localization (e.g., Japanese-tuning) does not guarantee neutrality. It can amplify region-specific discourse bias.
-
-Accordingly, the AI governance of any globally operating company must place "geopolitical neutrality" alongside "accuracy" and "fairness" as a new evaluation axis.
+Let me go in order.
 
 ---
 
-## Risk management: three areas to act on now
+## ① First, what came into view
 
-### Risk 1: Misfire in international PR and customer communication
+Using the Ukraine-Russia war as the case study, we analyzed about 200,000 Japanese tweets with BERT-class models aligned to Plutchik-style basic emotion categories. Why Japanese data? Because Japanese companies using Japanese LLMs need to understand the geopolitical bias embedded in their own language space — as the parties directly affected.
 
-If LLMs sit inside customer support, machine translation, automated social-media replies, or local marketing copy, there is a real risk that customers in specific regions receive subtly negative or disparaging responses. Once it becomes a story, local media and social platforms amplify it within days and brand damage compounds.
+Four main findings emerged.
 
-What to do: For all generative AI in customer-facing paths, introduce an audit cadence that periodically reviews sample outputs containing names of major target countries and regions. Define KPIs that quantitatively measure shifts among "neutral," "positive," and "negative."
+- The phenomenon that sentiment prediction flips when the country name is swapped can be quantified (we proposed a new metric called EICR)
+- Japanese-continued-pretraining LLMs show a stronger negative bias toward Russia and Eastern Europe than the base Llama2
+- In the major training corpora (C4, RedPajama, OSCAR, RefinedWeb), negative sentiment toward Russia and Iran and over-exposure of the U.S. are already embedded
+- That is, the bias was not produced by individual-model fine-tuning. It is embedded in the training-data ecosystem itself
 
-### Risk 2: Where regulation meets — foreign-interference policy and AI rules overlap
+The conclusion is simple:
 
-The EU AI Act, national foreign-interference laws, and election-integrity rules all reflect regulators' interest in the possibility that "AI amplifies skewed discourse about specific regions." Running an LLM in production with geopolitical bias intact is becoming a regulatory vulnerability in itself.
+> Swapping the model does not fundamentally fix this.
 
-What to do: With legal and compliance, inventory the regional regulations you face — Europe, the US, the Middle East, East Asia — and list "which regulations your LLM could fall under."
+Because the leading model families are largely trained on the same lineage of corpora. Switching Llama to Mistral, Mistral to Qwen — you inherit the same contamination as you start.
 
-### Risk 3: Trust from investors and partners — opacity becomes opportunity cost
-
-In ESG and sustainability discourse, AI-governance disclosure is standardizing fast. Companies that cannot explain "how we audit the bias of the AI we use" are entering a phase where investors, major partners, and high-end talent quietly mark them down.
-
-What to do: Document an internal policy for transparency in AI use and prepare bias-audit results in a format that can be included in annual reports and sustainability disclosures.
-
----
-
-## Value creation: three opportunities for firms that surface bias
-
-The flip side of the risks is clear competitive advantage.
-
-### Opportunity 1: Better region-specific localization
-
-Once geopolitical bias is quantified, you can build a corrected, region-specific tuning. For markets in the Middle East, Eastern Europe, or East Asia, firms that achieve tonally appropriate generation will lead in local customer experience. Bias is both a defect to remove and an entry point for region-by-region optimization.
-
-### Opportunity 2: Differentiation through trust
-
-A simple statement — "we audit regional bias in our AI quarterly and publish the results" — is a strong differentiator. In government procurement, international institutions, and regulated sectors (finance, pharma, telecom), AI-bias transparency is already being written into contracting conditions.
-
-### Opportunity 3: Talent in audit and government affairs
-
-Talent capable of running AI-bias audits is in severe undersupply. Standing up an internal audit function is itself a magnet for top ESG, compliance, and government-affairs people.
+For a global company, this is, frankly, a small-shiver moment.
 
 ---
 
-## A 5-item action checklist for business leaders
+## ② Why "an AI that looks neutral" is a business risk
 
-Things you can move on tomorrow.
+LLM outputs are, on the surface, fluent and look neutral.
 
-- [ ] Inventory: list every LLM used in customer-facing or generative tasks at your company
-- [ ] Audit design: build KPIs that quantify shifts in sentiment polarity using sample outputs containing names of major target countries and regions
-- [ ] Regulatory mapping: with legal, map your exposure to the EU AI Act, national foreign-interference laws, and election rules
-- [ ] Disclosure format: prepare AI-bias audit results in a format that can be embedded in ESG and sustainability disclosures
-- [ ] Region-specific localization: agree with marketing and local subsidiaries on a regional-tuning strategy that starts from bias correction
+If you use them assuming you "just swapped 'Russia' for 'Ukraine' for 'Iran' for 'the U.S.'," the sentiment polarity of the output tilts one way.
+
+Concretely, where does this become a problem?
+
+- The auto-reply on an overseas subsidiary's SNS responds in a slightly negative tone to a specific region
+- Multilingual customer support returns subtly cooler responses to customers in a specific region
+- AI translation replaces adjectives in a press release with nuances more negative than the original
+- An auto-generated job ad treats the culture of applicants from a specific region "a little lightly"
+
+Individually, each of these is a small piece of unease.
+
+But the moment one of them blows up in local media or on social media, it amplifies within days and reaches brand damage.
+
+And regulators are starting to look at exactly this. The EU AI Act, foreign-interference laws in various countries, election-related laws — regulators have a high level of interest in "AI amplifying biased discourse against specific regions."
+
+The position "we're just using AI for translation" is no longer holding up.
 
 ---
 
-## Closing — the era when AI that pretends to be neutral is the most dangerous
+## ③ Value: what a company that makes bias visible gains
 
-LLMs look like "neutral tools," but they inherit the political tendencies of their training data. And because the major models are trained on overlapping corpus families, swapping models is not a root-cause fix.
+Stacking only risks would be unfair, so this one I want to write head-on.
 
-This is not, however, a hopeless situation for global firms. Companies that "surface" bias and audit it quantitatively can lead in both regulatory readiness and differentiation. Companies that give up on transparency will see their trust quietly erode — a structural shift that will play out over the next few years.
+A company that can quantify geopolitical bias can actually stand in a fairly strong competitive position.
 
-When someone asks "is our AI geopolitically safe?", I hope this checklist is what you reach for.
+There are three reasons.
+
+First, regional localization gets sharper. The ability to quantify bias is the ability to apply "region-specific tuning" that corrects for it. Middle East, Eastern Europe, East Asia — they can each get output that does not feel off. Bias is a flaw to remove and, at the same time, an entry point to region-level optimization.
+
+Second, it becomes a strong differentiator for trust-building. "We audit regional bias of our AI every quarter and publish the results internally and externally" — companies that can say this gain an advantage on commercial terms in government procurement, international organizations, and regulated industries (finance, pharma, telecom).
+
+Third, it attracts talent. People who can audit AI bias are, at present, in heavily under-supplied demand. Setting up an internal audit function is itself a magnet for excellent talent in ESG, compliance, and government-relations.
+
+That is the value side for companies that make the bias problem visible.
+
+---
+
+## ④ As an emotion-AI researcher, I want to pause here
+
+Here is the angle unique to Affectosphere Group.
+
+Read the geopolitical-bias story as "regulatory compliance" and it ends up being a story about tools and processes. Bias-measurement KPIs, quarterly audits, disclosure templates — important, of course.
+
+But as an emotion-AI researcher, I want to write one layer deeper.
+
+What our research is ultimately trying to measure is: "when an LLM reads a sentence containing a country name, what emotion does it return?"
+
+When you compress "emotion" here into a single label (positive / negative / neutral), things get lost.
+
+For example, given the same sentence containing the word "Russia," one person feels "wariness," another feels "sympathy," yet another feels "indifference." That is the natural diversity on the human side.
+
+The LLM, however, averages over the majority opinion in the training data and returns one "roughly this emotion."
+
+What happens then is that the minority's emotional interpretation gets structurally erased — from the LLM's output, and from the services of any company using that LLM.
+
+Our lab's core stance is to handle emotion "as ambiguous and polysemous as it actually is." The reason is simple: human feelings do not survive being collapsed into averages or majority votes.
+
+The geopolitical-bias problem, at the surface, is about "tilted sentiment polarity." One level below, it is about "the polysemy of emotion being crushed."
+
+This is, in the real sense, dangerous for a global company.
+
+Because customers in a given region pick up the scent that a "single-coded emotion label" toward their region has been baked somewhere into the service.
+
+Not bad enough to file an inquiry. Not bad enough to raise a complaint. But trust quietly drains.
+
+This is structurally the same as the "loss that does not show up in the numbers" I wrote about in the previous Nationality column.
+
+What the emotion-AI side can propose is to pull LLM design toward "outputting an emotion distribution" rather than "a single emotion label." That is what our lab is working on for the mid-to-long term.
+
+In international PR terms: shift the evaluation axis from "the sentiment toward this text is X" to "for this text, fraction A of people feel X, fraction B feel Y, fraction C feel Z." That shift, I suspect, will happen over the next five years.
+
+---
+
+## So what do you do starting tomorrow
+
+I have laid out both risk and value, so three things you can act on at the field level.
+
+- Inventory: list every LLM used in customer-facing or generation tasks at your company. Surprisingly many companies have not mapped this.
+- Audit KPI: define a KPI that quantifies the sentiment-polarity shift across sample outputs that include the names of your target countries and regions. Rough is fine at first.
+- Disclosure template: prepare a format that lets AI bias-audit results be embedded in your ESG or sustainability report. You can be ready for the next reporting cycle.
+
+The value is big. The risk is big. Look at both — that is the ask from someone who has crossed emotion AI and geopolitical bias in their research.
+
+---
+
+## Closing
+
+LLMs look like "neutral tools" but in fact inherit the political tilt of their training data.
+
+As long as the leading models are trained on the same lineage of corpora, swapping the model does not fundamentally solve it.
+
+But this is not a hopeless situation for global companies.
+
+A company that makes bias visible and audits it quantitatively can lead on both regulatory compliance and differentiation. Trust will quietly drain away from companies that give up on transparency — that structure will become visible over the next five years.
+
+And from the emotion-AI side, we will propose designs that look at the world through "emotion distributions" instead of "single emotion labels."
+
+If "wait, is our AI actually geopolitically okay?" crossed your mind, please start with an inventory of your generation tasks.
+
+So — that is it for today.
 
 ---
 
 ## References
 
-1. Keito Inoshita (2024). _Multifaceted Exploration of Perceptions on the Ukraine-Russia War in the Japanese Twitter Space_. IEEE IoTaIS 2024, pp. 58-64.
-2. Keito Inoshita (2024). _Sentiment Analysis of Japanese Twitter Users Regarding the Ukraine-Russia War and Its Implications for Security Policy_. ICITACEE 2024, pp. 338-343.
-3. Keito Inoshita (2024). _Assessment of Conflict Structure Recognition and Bias Impact in Japanese LLMs_. TIMES-iCON 2024.
-4. Keito Inoshita (2024). _The Efficient Development of Conflict Structure Datasets for Evaluating Sentiment Recognition Bias in Large Language Models_. ICELTICs 2024, pp. 7-12.
-5. Keito Inoshita, Xiaokang Zhou (2024). _Sentiment Bias and Security Analysis in Training Datasets of Large Language Models_. IEEE BDCloud 2024, pp. 1-8.
+1. Keito Inoshita (2024). *Multifaceted Exploration of Perceptions on the Ukraine-Russia War in the Japanese Twitter Space*. IEEE IoTaIS 2024, pp. 58-64.
+2. Keito Inoshita (2024). *Sentiment Analysis of Japanese Twitter Users Regarding the Ukraine-Russia War and Its Implications for Security Policy*. ICITACEE 2024, pp. 338-343.
+3. Keito Inoshita (2024). *Assessment of Conflict Structure Recognition and Bias Impact in Japanese LLMs*. TIMES-iCON 2024.
+4. Keito Inoshita (2024). *The Efficient Development of Conflict Structure Datasets for Evaluating Sentiment Recognition Bias in Large Language Models*. ICELTICs 2024, pp. 7-12.
+5. Keito Inoshita, Xiaokang Zhou (2024). *Sentiment Bias and Security Analysis in Training Datasets of Large Language Models*. IEEE BDCloud 2024, pp. 1-8.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>
