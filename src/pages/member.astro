@@ -57,10 +57,10 @@ function initials(name: string): string {
         </h2>
 
         <!-- Grid is intentionally sparse: future members slot into the same
-             3-column layout without any layout migration. -->
-        <div class="grid gap-6 md:grid-cols-3">
+             4-column layout without any layout migration. -->
+        <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {group.people.map((p) => (
-            <article class="surface-card reveal flex h-full flex-col">
+            <article class="surface-card reveal flex h-full flex-col !p-4">
               <!-- Portrait slot.  Render initials block until a portrait
                    image is supplied. -->
               {p.portrait ? (
@@ -72,34 +72,34 @@ function initials(name: string): string {
                 />
               ) : (
                 <div class="flex aspect-square w-full items-center justify-center border border-stone bg-ivory">
-                  <span class="font-display text-5xl text-charcoal/30">
+                  <span class="font-display text-4xl text-charcoal/30">
                     {initials(p.name)}
                   </span>
                 </div>
               )}
 
-              <div class="mt-5 flex flex-1 flex-col">
-                <p class="font-sans text-[0.65rem] uppercase tracking-[0.14em] text-slate font-medium">
+              <div class="mt-4 flex flex-1 flex-col">
+                <p class="font-sans text-[0.6rem] uppercase tracking-[0.14em] text-slate font-medium">
                   {p.role}
                 </p>
-                <h3 class="mt-2 font-heading text-lg font-medium text-charcoal">
+                <h3 class="mt-1.5 font-heading text-base font-medium text-charcoal">
                   {p.name}
                   {p.nameJa && (
-                    <span class="ml-2 font-display text-base text-slate">
+                    <span class="ml-1.5 font-display text-sm text-slate">
                       ({p.nameJa})
                     </span>
                   )}
                 </h3>
-                <p class="mt-2 text-[0.7rem] text-slate">{p.affiliation}</p>
-                <p class="mt-3 text-sm leading-relaxed text-charcoal/85">
+                <p class="mt-1.5 text-[0.65rem] leading-snug text-slate">{p.affiliation}</p>
+                <p class="mt-2.5 text-xs leading-relaxed text-charcoal/85">
                   {p.blurb}
                 </p>
 
                 {p.href && (
-                  <div class="mt-auto pt-6">
+                  <div class="mt-auto pt-4">
                     <a
                       href={p.href}
-                      class="link-amber font-heading text-sm tracking-wide"
+                      class="link-amber font-heading text-xs tracking-wide"
                     >
                       Details &rarr;
                     </a>
