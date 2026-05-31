@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAFAF7"/>
+      <stop offset="55%" stop-color="#F4F0E8"/>
+      <stop offset="100%" stop-color="#E8DCC4"/>
+    </linearGradient>
+    <linearGradient id="amber-glow" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0%" stop-color="#D49F4C" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#D49F4C" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#D49F4C" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="curve-joy" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D49F4C" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#D49F4C" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="curve-grat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7A5A2C" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#7A5A2C" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="curve-relief" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6B6B66" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#6B6B66" stop-opacity="0.05"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="0.5" cy="0.5" r="0.78">
+      <stop offset="60%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.12"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base parchment -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Subtle horizontal grid (probability axis suggestion) -->
+  <g stroke="#D4C5A3" stroke-width="0.6" fill="none" opacity="0.5">
+    <line x1="120" y1="200" x2="1480" y2="200"/>
+    <line x1="120" y1="350" x2="1480" y2="350"/>
+    <line x1="120" y1="500" x2="1480" y2="500"/>
+    <line x1="120" y1="650" x2="1480" y2="650"/>
+    <line x1="120" y1="750" x2="1480" y2="750"/>
+  </g>
+
+  <!-- Amber horizontal glow -->
+  <rect width="1600" height="900" fill="url(#amber-glow)"/>
+
+  <!-- Three overlapping bell-shape distributions: joy / gratitude / relief -->
+  <!-- Joy (centered around x=560) -->
+  <path d="M 120 750
+           C 320 750, 380 280, 560 280
+           C 740 280, 800 750, 1000 750
+           Z" fill="url(#curve-joy)" stroke="#D49F4C" stroke-width="2" opacity="0.85"/>
+
+  <!-- Gratitude (centered around x=820) -->
+  <path d="M 380 750
+           C 580 750, 640 360, 820 360
+           C 1000 750, 1060 750, 1260 750
+           M 380 750
+           C 580 750, 640 360, 820 360
+           C 1000 360, 1060 750, 1260 750
+           Z" fill="url(#curve-grat)" stroke="#7A5A2C" stroke-width="2" opacity="0.8"/>
+
+  <!-- Relief (centered around x=1080) -->
+  <path d="M 640 750
+           C 840 750, 900 440, 1080 440
+           C 1260 440, 1320 750, 1480 750
+           Z" fill="url(#curve-relief)" stroke="#6B6B66" stroke-width="2" opacity="0.78"/>
+
+  <!-- Baseline axis -->
+  <line x1="100" y1="750" x2="1500" y2="750" stroke="#2B2B28" stroke-width="1.2" opacity="0.55"/>
+
+  <!-- Peak indicators (small ticks at distribution peaks) -->
+  <g stroke="#2B2B28" stroke-width="1" opacity="0.35">
+    <line x1="560" y1="280" x2="560" y2="750"/>
+    <line x1="820" y1="360" x2="820" y2="750"/>
+    <line x1="1080" y1="440" x2="1080" y2="750"/>
+  </g>
+
+  <!-- Emotion labels -->
+  <g font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" fill="#2B2B28">
+    <text x="500" y="260" font-size="34" fill="#7A5A2C" opacity="0.9">joy</text>
+    <text x="755" y="340" font-size="32" fill="#7A5A2C" opacity="0.85">gratitude</text>
+    <text x="1020" y="420" font-size="32" fill="#2B2B28" opacity="0.7">relief</text>
+  </g>
+
+  <!-- Confidence percentages annotations -->
+  <g font-family="'Helvetica Neue', 'Hiragino Kaku Gothic ProN', sans-serif" fill="#2B2B28" opacity="0.55" font-size="20">
+    <text x="500" y="800">50%</text>
+    <text x="775" y="800">30%</text>
+    <text x="1040" y="800">20%</text>
+  </g>
+
+  <!-- Soft caption strip at bottom -->
+  <g font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" fill="#2B2B28" opacity="0.45" font-size="22">
+    <text x="120" y="860">a single utterance — three overlapping interpretations</text>
+  </g>
+
+  <!-- Vignette focus -->
+  <rect width="1600" height="900" fill="url(#vignette)"/>
+</svg>

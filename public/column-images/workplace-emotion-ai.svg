@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAFAF7"/>
+      <stop offset="55%" stop-color="#F4F0E8"/>
+      <stop offset="100%" stop-color="#E8DCC4"/>
+    </linearGradient>
+    <linearGradient id="dashboard-glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D49F4C" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#D49F4C" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="0.5" cy="0.5" r="0.75">
+      <stop offset="60%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.12"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base parchment -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Abstract office floor plan: faint geometric blocks suggesting desks/rooms -->
+  <g fill="none" stroke="#D4C5A3" stroke-width="0.8" opacity="0.55">
+    <rect x="120" y="180" width="200" height="120" rx="6"/>
+    <rect x="350" y="180" width="200" height="120" rx="6"/>
+    <rect x="120" y="330" width="200" height="120" rx="6"/>
+    <rect x="350" y="330" width="200" height="120" rx="6"/>
+    <rect x="120" y="490" width="430" height="180" rx="6"/>
+  </g>
+
+  <!-- Tiny seat circles -->
+  <g fill="#7A5A2C" opacity="0.45">
+    <circle cx="170" cy="240" r="6"/>
+    <circle cx="220" cy="240" r="6"/>
+    <circle cx="270" cy="240" r="6"/>
+    <circle cx="400" cy="240" r="6"/>
+    <circle cx="450" cy="240" r="6"/>
+    <circle cx="500" cy="240" r="6"/>
+    <circle cx="170" cy="390" r="6"/>
+    <circle cx="220" cy="390" r="6"/>
+    <circle cx="270" cy="390" r="6"/>
+    <circle cx="400" cy="390" r="6"/>
+    <circle cx="450" cy="390" r="6"/>
+    <circle cx="170" cy="560" r="6"/>
+    <circle cx="230" cy="560" r="6"/>
+    <circle cx="290" cy="560" r="6"/>
+    <circle cx="350" cy="560" r="6"/>
+    <circle cx="410" cy="560" r="6"/>
+    <circle cx="470" cy="560" r="6"/>
+    <circle cx="200" cy="620" r="6"/>
+    <circle cx="260" cy="620" r="6"/>
+    <circle cx="320" cy="620" r="6"/>
+    <circle cx="380" cy="620" r="6"/>
+    <circle cx="440" cy="620" r="6"/>
+  </g>
+
+  <!-- Floor label -->
+  <text x="120" y="160" font-family="'Times New Roman', 'Noto Serif JP', serif" font-size="20" font-style="italic" fill="#6B6B66" opacity="0.75">workspace</text>
+
+  <!-- Emotion icon row (abstract circles in different tones, representing different affective states) -->
+  <g>
+    <circle cx="180" cy="780" r="22" fill="#D49F4C" opacity="0.75"/>
+    <circle cx="240" cy="780" r="22" fill="#7A5A2C" opacity="0.6"/>
+    <circle cx="300" cy="780" r="22" fill="#6B6B66" opacity="0.55"/>
+    <circle cx="360" cy="780" r="22" fill="#D49F4C" opacity="0.4"/>
+    <circle cx="420" cy="780" r="22" fill="#2B2B28" opacity="0.55"/>
+    <circle cx="480" cy="780" r="22" fill="#D49F4C" opacity="0.85"/>
+  </g>
+  <text x="120" y="740" font-family="'Times New Roman', 'Noto Serif JP', serif" font-size="18" font-style="italic" fill="#6B6B66" opacity="0.75">emotion signals</text>
+
+  <!-- Right side: dashboard panel -->
+  <g>
+    <!-- Dashboard frame -->
+    <rect x="700" y="180" width="780" height="540" rx="10" fill="#FAFAF7" stroke="#7A5A2C" stroke-width="1" opacity="0.95"/>
+    <rect x="700" y="180" width="780" height="540" rx="10" fill="url(#dashboard-glow)"/>
+
+    <!-- Dashboard title -->
+    <text x="730" y="225" font-family="'Times New Roman', 'Noto Serif JP', serif" font-size="22" fill="#2B2B28" opacity="0.9">team health dashboard</text>
+
+    <!-- Three KPI tiles -->
+    <g>
+      <rect x="730" y="255" width="220" height="100" rx="6" fill="#F4F0E8" stroke="#D4C5A3" stroke-width="0.8"/>
+      <text x="750" y="295" font-family="'Times New Roman', 'Noto Serif JP', serif" font-size="16" fill="#6B6B66">engagement</text>
+      <text x="750" y="335" font-family="'Times New Roman', 'Noto Serif JP', serif" font-size="32" fill="#7A5A2C">+12%</text>
+
+      <rect x="970" y="255" width="220" height="100" rx="6" fill="#F4F0E8" stroke="#D4C5A3" stroke-width="0.8"/>
+      <text x="990" y="295" font-family="'Times New Roman', 'Noto Serif JP', serif" font-size="16" fill="#6B6B66">stress index</text>
+      <text x="990" y="335" font-family="'Times New Roman', 'Noto Serif JP', serif" font-size="32" fill="#D49F4C">3.2</text>
+
+      <rect x="1210" y="255" width="240" height="100" rx="6" fill="#F4F0E8" stroke="#D4C5A3" stroke-width="0.8"/>
+      <text x="1230" y="295" font-family="'Times New Roman', 'Noto Serif JP', serif" font-size="16" fill="#6B6B66">burnout signal</text>
+      <text x="1230" y="335" font-family="'Times New Roman', 'Noto Serif JP', serif" font-size="32" fill="#2B2B28">low</text>
+    </g>
+
+    <!-- Sparkline / trend chart -->
+    <g stroke="#7A5A2C" stroke-width="2" fill="none">
+      <polyline points="730,580 800,560 870,565 940,540 1010,520 1080,505 1150,510 1220,485 1290,470 1360,455 1430,430"/>
+    </g>
+    <!-- Trend chart axis -->
+    <line x1="730" y1="600" x2="1450" y2="600" stroke="#D4C5A3" stroke-width="1"/>
+    <line x1="730" y1="420" x2="730" y2="600" stroke="#D4C5A3" stroke-width="1"/>
+
+    <!-- amber fill under the line -->
+    <polyline points="730,580 800,560 870,565 940,540 1010,520 1080,505 1150,510 1220,485 1290,470 1360,455 1430,430 1430,600 730,600" fill="#D49F4C" opacity="0.15" stroke="none"/>
+
+    <text x="730" y="640" font-family="'Times New Roman', 'Noto Serif JP', serif" font-size="14" font-style="italic" fill="#6B6B66" opacity="0.75">12-week well-being trend</text>
+
+    <!-- Footer note -->
+    <text x="730" y="690" font-family="'Times New Roman', 'Noto Serif JP', serif" font-size="14" fill="#6B6B66" opacity="0.7">aggregated · team-level · employee-first disclosure</text>
+  </g>
+
+  <!-- Subtle connecting lines from office to dashboard -->
+  <g stroke="#D49F4C" stroke-width="0.8" opacity="0.45" fill="none" stroke-dasharray="3,5">
+    <path d="M 550 380 Q 620 400 700 400"/>
+    <path d="M 550 560 Q 620 540 700 480"/>
+  </g>
+
+  <!-- Subtle vignette -->
+  <rect width="1600" height="900" fill="url(#vignette)"/>
+</svg>

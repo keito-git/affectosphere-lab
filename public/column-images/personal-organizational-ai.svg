@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAFAF7"/>
+      <stop offset="55%" stop-color="#F4F0E8"/>
+      <stop offset="100%" stop-color="#E8DCC4"/>
+    </linearGradient>
+    <radialGradient id="circ-individual" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#D49F4C" stop-opacity="0.32"/>
+      <stop offset="60%" stop-color="#D49F4C" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#D49F4C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="circ-organization" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#7A5A2C" stop-opacity="0.28"/>
+      <stop offset="60%" stop-color="#7A5A2C" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#7A5A2C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bridge" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0%" stop-color="#D49F4C" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#D49F4C" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#7A5A2C" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base parchment -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Faint grid -->
+  <g stroke="#D4C5A3" stroke-width="0.5" fill="none" opacity="0.4">
+    <line x1="0" y1="225" x2="1600" y2="225"/>
+    <line x1="0" y1="450" x2="1600" y2="450"/>
+    <line x1="0" y1="675" x2="1600" y2="675"/>
+    <line x1="400" y1="0" x2="400" y2="900"/>
+    <line x1="800" y1="0" x2="800" y2="900"/>
+    <line x1="1200" y1="0" x2="1200" y2="900"/>
+  </g>
+
+  <!-- Two soft halos -->
+  <ellipse cx="480" cy="450" rx="380" ry="320" fill="url(#circ-individual)"/>
+  <ellipse cx="1120" cy="450" rx="380" ry="320" fill="url(#circ-organization)"/>
+
+  <!-- Individual circle -->
+  <circle cx="480" cy="450" r="220" fill="none" stroke="#D49F4C" stroke-width="2.5" opacity="0.85"/>
+  <circle cx="480" cy="450" r="220" fill="#FAFAF7" opacity="0.35"/>
+
+  <!-- Organization circle -->
+  <circle cx="1120" cy="450" r="220" fill="none" stroke="#7A5A2C" stroke-width="2.5" opacity="0.85"/>
+  <circle cx="1120" cy="450" r="220" fill="#FAFAF7" opacity="0.35"/>
+
+  <!-- Amber bridge line -->
+  <path d="M 700 450 L 900 450" stroke="url(#bridge)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 700 420 L 900 420" stroke="url(#bridge)" stroke-width="2" stroke-linecap="round" opacity="0.55" stroke-dasharray="6 8"/>
+  <path d="M 700 480 L 900 480" stroke="url(#bridge)" stroke-width="2" stroke-linecap="round" opacity="0.55" stroke-dasharray="6 8"/>
+
+  <!-- Bridge end dots -->
+  <circle cx="700" cy="450" r="8" fill="#D49F4C"/>
+  <circle cx="900" cy="450" r="8" fill="#7A5A2C"/>
+
+  <!-- Labels -->
+  <g font-family="'Times New Roman', 'Noto Serif JP', serif" fill="#2B2B28">
+    <text x="480" y="430" font-size="42" font-style="italic" fill="#7A5A2C" text-anchor="middle">Personal AI</text>
+    <text x="480" y="478" font-size="22" fill="#6B6B66" text-anchor="middle" opacity="0.85">walks alongside the individual</text>
+
+    <text x="1120" y="430" font-size="42" font-style="italic" fill="#7A5A2C" text-anchor="middle">Organizational AI</text>
+    <text x="1120" y="478" font-size="22" fill="#6B6B66" text-anchor="middle" opacity="0.85">takes the bird's-eye view</text>
+
+    <text x="800" y="400" font-size="18" fill="#7A5A2C" text-anchor="middle" opacity="0.75" font-style="italic">translate</text>
+    <text x="800" y="520" font-size="18" fill="#7A5A2C" text-anchor="middle" opacity="0.75" font-style="italic">bridge</text>
+
+    <!-- Floating words on individual side -->
+    <text x="280" y="280" font-size="22" font-style="italic" opacity="0.55">career</text>
+    <text x="320" y="650" font-size="22" font-style="italic" opacity="0.55">learning</text>
+    <text x="220" y="450" font-size="22" font-style="italic" opacity="0.5">introspection</text>
+    <text x="380" y="220" font-size="20" opacity="0.4">志向</text>
+    <text x="560" y="700" font-size="20" opacity="0.4">growth</text>
+
+    <!-- Floating words on organization side -->
+    <text x="1300" y="280" font-size="22" font-style="italic" opacity="0.55">strategy</text>
+    <text x="1290" y="650" font-size="22" font-style="italic" opacity="0.55">placement</text>
+    <text x="1380" y="450" font-size="22" font-style="italic" opacity="0.5">governance</text>
+    <text x="1200" y="220" font-size="20" opacity="0.4">配置</text>
+    <text x="1020" y="700" font-size="20" opacity="0.4">fairness</text>
+
+    <!-- Header tag -->
+    <text x="800" y="120" font-size="28" font-style="italic" fill="#7A5A2C" text-anchor="middle" opacity="0.85">Two layers, one dialogue</text>
+    <text x="800" y="820" font-size="20" fill="#6B6B66" text-anchor="middle" opacity="0.7">individual sovereignty preserved · organization aligned</text>
+  </g>
+
+  <!-- Subtle vignette -->
+  <radialGradient id="vignette" cx="0.5" cy="0.5" r="0.75">
+    <stop offset="60%" stop-color="#000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0.12"/>
+  </radialGradient>
+  <rect width="1600" height="900" fill="url(#vignette)"/>
+</svg>
