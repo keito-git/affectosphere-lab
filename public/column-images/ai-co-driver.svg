@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAFAF7"/>
+      <stop offset="60%" stop-color="#F4F0E8"/>
+      <stop offset="100%" stop-color="#E8DCC4"/>
+    </linearGradient>
+    <radialGradient id="dashGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#D49F4C" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#D49F4C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Perspective road lines -->
+  <g stroke="#8a8a82" stroke-width="1.2" fill="none" opacity="0.5">
+    <line x1="800" y1="900" x2="800" y2="450"/>
+    <line x1="100" y1="900" x2="700" y2="450"/>
+    <line x1="1500" y1="900" x2="900" y2="450"/>
+    <line x1="500" y1="900" x2="760" y2="450"/>
+    <line x1="1100" y1="900" x2="840" y2="450"/>
+  </g>
+  <!-- Horizon line -->
+  <line x1="0" y1="450" x2="1600" y2="450" stroke="#D4C5A3" stroke-width="0.8" opacity="0.6"/>
+
+  <!-- Dashboard glow -->
+  <ellipse cx="800" cy="780" rx="640" ry="80" fill="url(#dashGlow)"/>
+
+  <!-- Cognitive-causal chain: 4 stages, each a circle, connected by arrows -->
+  <g font-family="Times New Roman, serif" fill="#2B2B28">
+    <circle cx="280" cy="280" r="56" fill="#FAFAF7" stroke="#7A5A2C" stroke-width="1.5"/>
+    <text x="280" y="288" font-size="16" font-style="italic" text-anchor="middle" fill="#7A5A2C">Perception</text>
+    <circle cx="600" cy="240" r="56" fill="#FAFAF7" stroke="#7A5A2C" stroke-width="1.5"/>
+    <text x="600" y="248" font-size="16" font-style="italic" text-anchor="middle" fill="#7A5A2C">Judgment</text>
+    <circle cx="980" cy="240" r="56" fill="#FAFAF7" stroke="#7A5A2C" stroke-width="1.5"/>
+    <text x="980" y="248" font-size="16" font-style="italic" text-anchor="middle" fill="#7A5A2C">Emotion</text>
+    <circle cx="1300" cy="280" r="56" fill="#FAFAF7" stroke="#7A5A2C" stroke-width="1.5"/>
+    <text x="1300" y="288" font-size="16" font-style="italic" text-anchor="middle" fill="#7A5A2C">Action</text>
+  </g>
+  <g stroke="#D49F4C" stroke-width="1.5" fill="none" opacity="0.85">
+    <path d="M340 270 L540 240" marker-end="url(#arrow)"/>
+    <path d="M660 240 L920 240" marker-end="url(#arrow)"/>
+    <path d="M1040 250 L1240 270" marker-end="url(#arrow)"/>
+  </g>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#D49F4C"/>
+    </marker>
+  </defs>
+
+  <text x="800" y="100" font-family="Times New Roman, serif" font-size="32" font-style="italic" fill="#6B6B66" text-anchor="middle" opacity="0.7">From perception to action, the AI co-driver</text>
+</svg>

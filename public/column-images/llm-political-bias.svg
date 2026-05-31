@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAFAF7"/>
+      <stop offset="55%" stop-color="#F4F0E8"/>
+      <stop offset="100%" stop-color="#E8DCC4"/>
+    </linearGradient>
+    <radialGradient id="hot" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#D49F4C" stop-opacity="0.75"/>
+      <stop offset="60%" stop-color="#D49F4C" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#D49F4C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cool" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#2B2B28" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#2B2B28" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base parchment -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Latitude/longitude grid -->
+  <g stroke="#D4C5A3" stroke-width="0.6" fill="none" opacity="0.55">
+    <line x1="0" y1="150" x2="1600" y2="150"/>
+    <line x1="0" y1="300" x2="1600" y2="300"/>
+    <line x1="0" y1="450" x2="1600" y2="450"/>
+    <line x1="0" y1="600" x2="1600" y2="600"/>
+    <line x1="0" y1="750" x2="1600" y2="750"/>
+    <line x1="200" y1="0" x2="200" y2="900"/>
+    <line x1="400" y1="0" x2="400" y2="900"/>
+    <line x1="600" y1="0" x2="600" y2="900"/>
+    <line x1="800" y1="0" x2="800" y2="900"/>
+    <line x1="1000" y1="0" x2="1000" y2="900"/>
+    <line x1="1200" y1="0" x2="1200" y2="900"/>
+    <line x1="1400" y1="0" x2="1400" y2="900"/>
+  </g>
+
+  <!-- Abstract continent shapes (simplified blobs) -->
+  <g fill="#C8B894" opacity="0.45">
+    <!-- North America -->
+    <path d="M 140 280 Q 240 230 340 270 Q 400 290 420 360 Q 410 430 360 460 Q 280 470 220 440 Q 150 410 140 360 Z"/>
+    <!-- South America -->
+    <path d="M 340 500 Q 380 490 400 540 Q 410 620 380 700 Q 350 760 320 740 Q 310 660 320 580 Z"/>
+    <!-- Europe -->
+    <path d="M 700 250 Q 780 230 820 270 Q 830 320 800 350 Q 740 360 700 340 Q 680 300 700 250 Z"/>
+    <!-- Africa -->
+    <path d="M 750 400 Q 820 390 860 440 Q 880 530 850 620 Q 810 680 770 660 Q 740 580 740 490 Z"/>
+    <!-- Russia / Eastern Europe / Central Asia (long horizontal) -->
+    <path d="M 830 220 Q 1000 200 1180 230 Q 1280 250 1300 290 Q 1250 320 1100 320 Q 950 310 830 290 Z"/>
+    <!-- Middle East -->
+    <path d="M 870 350 Q 940 340 980 380 Q 990 420 950 440 Q 890 440 870 410 Z"/>
+    <!-- East Asia -->
+    <path d="M 1200 320 Q 1290 310 1340 360 Q 1340 420 1290 450 Q 1220 450 1200 410 Z"/>
+    <!-- Australia -->
+    <path d="M 1330 580 Q 1410 570 1450 610 Q 1450 660 1400 680 Q 1340 680 1320 640 Z"/>
+  </g>
+
+  <!-- Bias overlays: amber where the LLM tilts negative -->
+  <!-- Russia / Eastern Europe -->
+  <ellipse cx="1050" cy="275" rx="260" ry="90" fill="url(#hot)"/>
+  <!-- Iran / Middle East -->
+  <ellipse cx="920" cy="395" rx="140" ry="80" fill="url(#hot)"/>
+  <!-- USA: overexposure marked with cool desaturated tone -->
+  <ellipse cx="280" cy="370" rx="200" ry="100" fill="url(#cool)"/>
+
+  <!-- Labels -->
+  <g font-family="'Times New Roman', 'Noto Serif JP', serif" fill="#2B2B28">
+    <text x="280" y="510" font-size="22" text-anchor="middle" fill="#4A4A42" font-style="italic">USA · over-represented</text>
+    <text x="1050" y="200" font-size="22" text-anchor="middle" fill="#7A5A2C" font-style="italic">Russia / Eastern Europe · negative tilt</text>
+    <text x="920" y="490" font-size="22" text-anchor="middle" fill="#7A5A2C" font-style="italic">Iran · negative tilt</text>
+  </g>
+
+  <!-- EICR legend strip at bottom -->
+  <g transform="translate(200, 770)">
+    <text x="0" y="0" font-family="'Times New Roman', serif" font-size="20" fill="#2B2B28" font-style="italic">EICR — Emotion Inversion Consistency Rate</text>
+    <line x1="0" y1="20" x2="600" y2="20" stroke="#2B2B28" stroke-width="0.8"/>
+    <!-- Scale -->
+    <rect x="0" y="35" width="600" height="14" fill="none" stroke="#2B2B28" stroke-width="0.8"/>
+    <defs>
+      <linearGradient id="scale" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#FAFAF7"/>
+        <stop offset="100%" stop-color="#D49F4C"/>
+      </linearGradient>
+    </defs>
+    <rect x="0" y="35" width="600" height="14" fill="url(#scale)"/>
+    <text x="0" y="75" font-size="14" fill="#2B2B28">neutral</text>
+    <text x="600" y="75" font-size="14" fill="#7A5A2C" text-anchor="end">strong country-name bias</text>
+  </g>
+
+  <!-- Title strip top-right -->
+  <g transform="translate(1100, 80)">
+    <text x="0" y="0" font-family="'Times New Roman', serif" font-size="22" fill="#2B2B28" font-style="italic" text-anchor="end" font-weight="normal">
+      <tspan x="0" dy="0">Sentiment varies by</tspan>
+      <tspan x="0" dy="28">country name —</tspan>
+      <tspan x="0" dy="28" fill="#7A5A2C">even when the structure</tspan>
+      <tspan x="0" dy="28" fill="#7A5A2C">of the sentence is identical.</tspan>
+    </text>
+  </g>
+
+  <!-- Vignette -->
+  <radialGradient id="vignette" cx="0.5" cy="0.5" r="0.75">
+    <stop offset="60%" stop-color="#000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0.12"/>
+  </radialGradient>
+  <rect width="1600" height="900" fill="url(#vignette)"/>
+</svg>
