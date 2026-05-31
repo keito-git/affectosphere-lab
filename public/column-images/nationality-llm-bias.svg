@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAFAF7"/>
+      <stop offset="55%" stop-color="#F4F0E8"/>
+      <stop offset="100%" stop-color="#E8DCC4"/>
+    </linearGradient>
+    <linearGradient id="amber-glow" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0%" stop-color="#D49F4C" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#D49F4C" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#D49F4C" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#D49F4C" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#D49F4C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base parchment -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Faint latitude / longitude grid (suggests world map) -->
+  <g stroke="#D4C5A3" stroke-width="0.6" fill="none" opacity="0.55">
+    <line x1="0" y1="150" x2="1600" y2="150"/>
+    <line x1="0" y1="300" x2="1600" y2="300"/>
+    <line x1="0" y1="450" x2="1600" y2="450"/>
+    <line x1="0" y1="600" x2="1600" y2="600"/>
+    <line x1="0" y1="750" x2="1600" y2="750"/>
+    <line x1="200" y1="0" x2="200" y2="900"/>
+    <line x1="400" y1="0" x2="400" y2="900"/>
+    <line x1="600" y1="0" x2="600" y2="900"/>
+    <line x1="800" y1="0" x2="800" y2="900"/>
+    <line x1="1000" y1="0" x2="1000" y2="900"/>
+    <line x1="1200" y1="0" x2="1200" y2="900"/>
+    <line x1="1400" y1="0" x2="1400" y2="900"/>
+  </g>
+
+  <!-- Soft amber atmospheric glow across the middle -->
+  <rect width="1600" height="900" fill="url(#amber-glow)"/>
+
+  <!-- Three radial spotlights to suggest "regions where AI judges confidently" -->
+  <ellipse cx="380" cy="320" rx="280" ry="180" fill="url(#spot)"/>
+  <ellipse cx="1200" cy="360" rx="320" ry="200" fill="url(#spot)"/>
+  <ellipse cx="800" cy="640" rx="260" ry="160" fill="url(#spot)"/>
+
+  <!-- Scattered names in many scripts: some bright (confidently classified), some faded (overlooked) -->
+  <g font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" fill="#2B2B28">
+    <!-- Confidently inferred (warm, slightly amber tinted) -->
+    <text x="280" y="310" font-size="38" fill="#7A5A2C" opacity="0.95">Yamada</text>
+    <text x="1080" y="350" font-size="42" fill="#7A5A2C" opacity="0.95">O'Brien</text>
+    <text x="720" y="630" font-size="40" fill="#7A5A2C" opacity="0.95">Müller</text>
+    <text x="350" y="370" font-size="34" fill="#7A5A2C" opacity="0.9">山田</text>
+    <text x="1170" y="410" font-size="32" fill="#7A5A2C" opacity="0.9">王</text>
+
+    <!-- Slightly less confident -->
+    <text x="180" y="510" font-size="30" opacity="0.6">Schmidt</text>
+    <text x="1330" y="200" font-size="28" opacity="0.55">Kuznetsov</text>
+    <text x="540" y="170" font-size="28" opacity="0.6">Brown</text>
+    <text x="950" y="170" font-size="28" opacity="0.5">García</text>
+    <text x="620" y="760" font-size="28" opacity="0.55">Tanaka</text>
+
+    <!-- Fading toward "overlooked / misclassified" (low opacity) -->
+    <text x="100" y="700" font-size="26" opacity="0.28">Achebe</text>
+    <text x="1380" y="540" font-size="26" opacity="0.28">Bekova</text>
+    <text x="470" y="820" font-size="26" opacity="0.28">Fa'amausili</text>
+    <text x="1430" y="780" font-size="26" opacity="0.28">Tafari</text>
+    <text x="60" y="280" font-size="26" opacity="0.28">Niazi</text>
+    <text x="1340" y="100" font-size="24" opacity="0.22">Кузнецов</text>
+    <text x="80" y="100" font-size="24" opacity="0.22">अग्रवाल</text>
+    <text x="700" y="40" font-size="24" opacity="0.22">المرسي</text>
+    <text x="1500" y="450" font-size="24" opacity="0.22">Ɓɔɔrɛ</text>
+  </g>
+
+  <!-- Subtle vignette to focus the eye -->
+  <radialGradient id="vignette" cx="0.5" cy="0.5" r="0.75">
+    <stop offset="60%" stop-color="#000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0.12"/>
+  </radialGradient>
+  <rect width="1600" height="900" fill="url(#vignette)"/>
+</svg>

@@ -31,7 +31,7 @@ const hasJapanese = (await getCollection("column-ja")).some(
   locale="en"
 >
   <article class="mx-auto max-w-content page-x pt-24 md:pt-32">
-    <header class="reveal mx-auto max-w-3xl">
+    <header class="reveal mx-auto max-w-5xl">
       <p class="eyebrow">Column</p>
       <h1
         class="mt-4 font-display font-medium tracking-tight text-charcoal"
@@ -70,13 +70,13 @@ const hasJapanese = (await getCollection("column-ja")).some(
     )}
 
     <div
-      class="prose-column reveal mx-auto mt-12 max-w-3xl font-display text-charcoal"
+      class="prose-column reveal mx-auto mt-12 max-w-5xl font-display text-charcoal"
     >
       <Content />
     </div>
 
     {post.data.basedOnPaper && (
-      <aside class="reveal mx-auto mt-16 max-w-3xl border-l-2 border-amber/60 bg-cream/40 p-6">
+      <aside class="reveal mx-auto mt-16 max-w-5xl border-l-2 border-amber/60 bg-cream/40 p-6">
         <p class="font-display text-sm italic text-slate mb-2">Based on</p>
         <p class="font-display text-base text-charcoal">
           {post.data.basedOnPaperUrl ? (
@@ -90,7 +90,7 @@ const hasJapanese = (await getCollection("column-ja")).some(
       </aside>
     )}
 
-    <nav class="reveal mx-auto mt-16 max-w-3xl border-t border-stone pt-8">
+    <nav class="reveal mx-auto mt-16 max-w-5xl border-t border-stone pt-8">
       <a
         href="/en/column/"
         class="link-amber font-heading text-sm tracking-wide"
