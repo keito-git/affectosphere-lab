@@ -1,0 +1,178 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("column-en");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+type Props = { post: CollectionEntry<"column-en"> };
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(iso: string): string {
+  const [y, m, d] = iso.split("-");
+  return `${y} / ${m} / ${d}`;
+}
+
+const hasJapanese = (await getCollection("column-ja")).some(
+  (p) => p.slug === post.slug
+);
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.excerpt}
+  fullBleed
+  locale="en"
+>
+  <article class="mx-auto max-w-content page-x pt-24 md:pt-32">
+    <header class="reveal mx-auto max-w-3xl">
+      <p class="eyebrow">Column</p>
+      <h1
+        class="mt-4 font-display font-medium tracking-tight text-charcoal"
+        style="font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.15;"
+      >
+        {post.data.title}
+      </h1>
+      <p class="mt-6 font-display text-lg leading-relaxed text-slate md:text-xl">
+        {post.data.excerpt}
+      </p>
+      <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-sans text-sm text-slate">
+        <time datetime={post.data.date}>{formatDate(post.data.date)}</time>
+        <span class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-amber">
+          {post.data.readingMinutes} min read
+        </span>
+        {hasJapanese && (
+          <a
+            href={`/column/${post.slug}/`}
+            class="link-amber font-heading text-[0.8125rem] tracking-wide"
+          >
+            日本語版 &rarr;
+          </a>
+        )}
+      </div>
+    </header>
+
+    {post.data.image && (
+      <figure class="reveal mx-auto mt-12 max-w-4xl">
+        <img
+          src={post.data.image}
+          alt={post.data.imageAlt ?? ""}
+          class="w-full border border-stone shadow-card"
+          loading="eager"
+        />
+      </figure>
+    )}
+
+    <div
+      class="prose-column reveal mx-auto mt-12 max-w-3xl font-display text-charcoal"
+    >
+      <Content />
+    </div>
+
+    {post.data.basedOnPaper && (
+      <aside class="reveal mx-auto mt-16 max-w-3xl border-l-2 border-amber/60 bg-cream/40 p-6">
+        <p class="font-display text-sm italic text-slate mb-2">Based on</p>
+        <p class="font-display text-base text-charcoal">
+          {post.data.basedOnPaperUrl ? (
+            <a href={post.data.basedOnPaperUrl} class="link-amber">
+              {post.data.basedOnPaper}
+            </a>
+          ) : (
+            post.data.basedOnPaper
+          )}
+        </p>
+      </aside>
+    )}
+
+    <nav class="reveal mx-auto mt-16 max-w-3xl border-t border-stone pt-8">
+      <a
+        href="/en/column/"
+        class="link-amber font-heading text-sm tracking-wide"
+      >
+        &larr; Back to column
+      </a>
+    </nav>
+  </article>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>
+
+<style>
+  :global(.prose-column) {
+    line-height: 1.95;
+    font-size: 1.0625rem;
+  }
+  :global(.prose-column h2) {
+    margin-top: 3.5rem;
+    margin-bottom: 1rem;
+    font-family: "Times New Roman", "Noto Serif JP", serif;
+    font-weight: 500;
+    font-size: 1.625rem;
+    line-height: 1.3;
+    color: #2b2b28;
+  }
+  :global(.prose-column h3) {
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-family: "Times New Roman", "Noto Serif JP", serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.35;
+    color: #2b2b28;
+  }
+  :global(.prose-column p) {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  :global(.prose-column hr) {
+    margin: 3rem 0;
+    border: none;
+    border-top: 1px solid #ddd6c4;
+  }
+  :global(.prose-column strong) {
+    font-weight: 600;
+  }
+  :global(.prose-column blockquote) {
+    margin: 1.75rem 0;
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    border-left: 2px solid rgba(212, 159, 76, 0.5);
+    color: #6b6b66;
+    font-style: italic;
+  }
+  :global(.prose-column ol),
+  :global(.prose-column ul) {
+    margin: 1.25rem 0 1.25rem 1.5rem;
+    padding-left: 1rem;
+  }
+  :global(.prose-column li) {
+    margin: 0.5rem 0;
+  }
+  :global(.prose-column a) {
+    color: #d49f4c;
+    border-bottom: 1px solid rgba(212, 159, 76, 0.4);
+    text-decoration: none;
+  }
+  :global(.prose-column a:hover) {
+    border-bottom-color: rgba(212, 159, 76, 0.9);
+  }
+  :global(.prose-column code) {
+    background: rgba(212, 159, 76, 0.12);
+    padding: 0.1rem 0.35rem;
+    border-radius: 2px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.92em;
+  }
+  :global(.prose-column .footnotes) {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd6c4;
+    font-size: 0.875rem;
+    color: #6b6b66;
+  }
+</style>
