@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { members } from "../data/people";
+
+// Grouped by role.  Until we have more people, only "Principal Investigator"
+// has entries.  TODO(inoshita): add roles as collaborators / students join.
+const groups: { label: string; key: string }[] = [
+  { label: "Principal Investigator", key: "Principal Investigator" },
+  { label: "Postdoctoral Researchers", key: "Postdoctoral Researcher" },
+  { label: "Doctoral Students", key: "Doctoral Student" },
+  { label: "Master's Students", key: "Master's Student" },
+  { label: "Undergraduates", key: "Undergraduate" },
+  { label: "Visiting Researchers", key: "Visiting Researcher" },
+  { label: "Collaborators", key: "Collaborator" },
+];
+
+const populatedGroups = groups
+  .map((g) => ({ ...g, people: members.filter((m) => m.role === g.key) }))
+  .filter((g) => g.people.length > 0);
+
+function initials(name: string): string {
+  return name
+    .split(/\s+/)
+    .map((p) => p[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
+---
+
+<BaseLayout
+  title="Member"
+  description="Members of Affectosphere Group."
+  fullBleed
+>
+  <section class="mx-auto max-w-content page-x pt-24 md:pt-32">
+    <h1
+      class="reveal font-display font-medium tracking-tight text-charcoal"
+      style="font-size: clamp(2.25rem, 4.5vw, 4rem); line-height: 1.12;"
+    >
+      Member
+    </h1>
+    <p class="reveal mt-6 max-w-prose font-display text-lg leading-relaxed text-slate md:text-xl">
+      Affectosphere Group は小さなチームとして始まっています。
+      メンバー・客員研究員・共同研究者は順次このページに掲載されます。
+    </p>
+  </section>
+
+  {
+    populatedGroups.map((group) => (
+      <section class="mx-auto mt-section-sm max-w-content page-x" aria-labelledby={`group-${group.key}`}>
+        <h2
+          id={`group-${group.key}`}
+          class="reveal mb-8 font-heading text-2xl font-medium tracking-tight text-charcoal md:text-3xl"
+        >
+          {group.label}
+        </h2>
+
+        <!-- Grid is intentionally sparse: future members slot into the same
+             3-column layout without any layout migration. -->
+        <div class="grid gap-6 md:grid-cols-3">
+          {group.people.map((p) => (
+            <article class="surface-card reveal flex h-full flex-col">
+              <!-- Portrait slot.  Render initials block until a portrait
+                   image is supplied. -->
+              {p.portrait ? (
+                <img
+                  src={p.portrait}
+                  alt={`Portrait of ${p.name}`}
+                  class="aspect-square w-full border border-stone object-cover"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="flex aspect-square w-full items-center justify-center border border-stone bg-ivory">
+                  <span class="font-display text-5xl text-charcoal/30">
+                    {initials(p.name)}
+                  </span>
+                </div>
+              )}
+
+              <div class="mt-5 flex flex-1 flex-col">
+                <p class="eyebrow">{p.role}</p>
+                <h3 class="mt-2 font-heading text-lg font-medium text-charcoal">
+                  {p.name}
+                  {p.nameJa && (
+                    <span class="ml-2 font-display text-base text-slate">
+                      ({p.nameJa})
+                    </span>
+                  )}
+                </h3>
+                <p class="mt-2 text-xs text-slate">{p.affiliation}</p>
+                <p class="mt-3 text-sm leading-relaxed text-charcoal/85">
+                  {p.blurb}
+                </p>
+
+                {p.href && (
+                  <div class="mt-auto pt-6">
+                    <a
+                      href={p.href}
+                      class="link-amber font-heading text-sm tracking-wide"
+                    >
+                      Details &rarr;
+                    </a>
+                  </div>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))
+  }
+
+  <!-- Looking for collaborators block. -->
+  <section
+    class="mx-auto mt-section max-w-content page-x"
+    aria-labelledby="collab"
+  >
+    <div class="reveal border-l-2 border-amber/60 pl-6">
+      <p class="font-display text-sm italic text-slate mb-3">Looking for collaborators</p>
+      <h2
+        id="collab"
+        class="font-display text-xl font-medium text-charcoal md:text-2xl"
+      >
+        感情AIに関わる仲間を募集しています
+      </h2>
+      <p class="mt-4 max-w-prose font-display text-base leading-relaxed text-charcoal">
+        感情AIの構築・活用などに興味関心がある学生・共同研究者・ビジネスマンなど、
+        幅広く募集しています。
+      </p>
+      <p class="mt-6">
+        <a href="/contact/" class="link-amber font-heading text-sm tracking-wide">
+          お問い合わせ &rarr;
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- TODO(inoshita): when the lab gains its first additional member,
+       populate `src/data/people.ts` with their entry and they will
+       automatically appear in the relevant group above. -->
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

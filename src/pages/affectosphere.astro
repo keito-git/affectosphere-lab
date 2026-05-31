@@ -1,0 +1,283 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+// The lab manifesto is authored separately at the project root and imported
+// here at build time via Vite's `?raw` query.  Editors update the manifesto
+// without touching Astro code; the page re-renders on save.
+// @ts-ignore - Vite's ?raw import is not in the default type set.
+import manifestoRaw from "../../MANIFESTO.md?raw";
+const manifestoBody: string | null =
+  typeof manifestoRaw === "string" && manifestoRaw.trim().length > 0
+    ? manifestoRaw.trim()
+    : null;
+
+// --- Minimal Markdown renderer ----------------------------------------------
+// We deliberately avoid a Markdown dependency (e.g. `marked`) for now and
+// implement the small subset the MANIFESTO.md authors actually use:
+//   - ATX headings (#, ##, ### , #### )
+//   - Horizontal rule (---)
+//   - Paragraphs (blank-line separated)
+//   - Inline **bold** and *italic*
+//   - GitHub-flavored tables (header | --- | rows)
+//   - Inline code with backticks
+// Anything not handled falls back to a plain paragraph.
+// When richer Markdown is needed, swap this out for a real parser.
+// TODO(markdown): Replace this hand-rolled renderer with `marked` or an Astro
+// Content Collection once the manifesto stabilizes.
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function renderInline(s: string): string {
+  let out = escapeHtml(s);
+  // inline code
+  out = out.replace(/`([^`]+)`/g, '<code class="font-mono text-[0.95em] text-deepslate bg-cream px-1.5 py-0.5">$1</code>');
+  // bold **text**
+  out = out.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-charcoal">$1</strong>');
+  // italic *text*
+  out = out.replace(/(^|[^*])\*([^*]+)\*(?!\*)/g, '$1<em class="italic">$2</em>');
+  // em-dash safety: convert literal " -- " to en-dash for typographic feel
+  out = out.replace(/ -- /g, " &mdash; ");
+  return out;
+}
+
+type Block =
+  | { kind: "h2"; text: string }
+  | { kind: "h3"; text: string }
+  | { kind: "h4"; text: string }
+  | { kind: "hr" }
+  | { kind: "p"; text: string }
+  | { kind: "table"; header: string[]; rows: string[][] };
+
+function parseMarkdown(src: string): Block[] {
+  const lines = src.split(/\r?\n/);
+  const blocks: Block[] = [];
+  let i = 0;
+  let buf: string[] = [];
+
+  const flushPara = () => {
+    if (buf.length === 0) return;
+    const text = buf.join("\n").trim();
+    if (text) blocks.push({ kind: "p", text });
+    buf = [];
+  };
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    if (/^\s*$/.test(line)) {
+      flushPara();
+      i++;
+      continue;
+    }
+    if (/^---\s*$/.test(line)) {
+      flushPara();
+      blocks.push({ kind: "hr" });
+      i++;
+      continue;
+    }
+    const h = /^(#{1,6})\s+(.+)$/.exec(line);
+    if (h) {
+      flushPara();
+      const level = h[1].length;
+      const text = h[2].trim();
+      // Skip the very first H1 (document title) — page hero already shows the title.
+      if (level === 1) {
+        i++;
+        continue;
+      }
+      if (level === 2) blocks.push({ kind: "h2", text });
+      else if (level === 3) blocks.push({ kind: "h3", text });
+      else blocks.push({ kind: "h4", text });
+      i++;
+      continue;
+    }
+    // Table: a header row followed by a separator row.
+    if (/^\s*\|.*\|\s*$/.test(line) && i + 1 < lines.length && /^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)+\|?\s*$/.test(lines[i + 1])) {
+      flushPara();
+      const splitRow = (r: string) =>
+        r
+          .trim()
+          .replace(/^\||\|$/g, "")
+          .split("|")
+          .map((c) => c.trim());
+      const header = splitRow(line);
+      i += 2; // skip header + separator
+      const rows: string[][] = [];
+      while (i < lines.length && /^\s*\|.*\|\s*$/.test(lines[i])) {
+        rows.push(splitRow(lines[i]));
+        i++;
+      }
+      blocks.push({ kind: "table", header, rows });
+      continue;
+    }
+    buf.push(line);
+    i++;
+  }
+  flushPara();
+  return blocks;
+}
+
+const blocks: Block[] = manifestoBody ? parseMarkdown(manifestoBody) : [];
+---
+
+<BaseLayout
+  title="Vision"
+  description="The Affectosphere Group vision: emotion as an atmosphere that envelops society, described in the language of probability and structure."
+  fullBleed
+>
+  <!-- Vision Hero with the lab mark as central visual -->
+  <section
+    class="relative isolate flex min-h-[85vh] flex-col justify-center overflow-hidden bg-ivory"
+    aria-labelledby="affecto-hero"
+  >
+    <!-- Ambient gradient layers (atmospheric feel) -->
+    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+      <div
+        class="absolute right-[-20%] top-[-15%] h-[90vh] w-[90vh] rounded-full bg-gradient-to-br from-amber/15 via-rose/8 to-transparent blur-3xl"
+      ></div>
+      <div
+        class="absolute bottom-[-20%] left-[-20%] h-[75vh] w-[75vh] rounded-full bg-gradient-to-tr from-steel/12 via-sage/8 to-transparent blur-3xl"
+      ></div>
+    </div>
+
+    <div class="mx-auto w-full max-w-content page-x py-24 grid items-center gap-12 md:grid-cols-[1fr_28rem]">
+      <div>
+        <p class="reveal font-display text-sm italic text-slate uppercase tracking-[0.25em]">Vision</p>
+        <h1
+          id="affecto-hero"
+          class="reveal mt-6 font-display font-medium text-charcoal"
+          style="font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.02; letter-spacing: -0.02em;"
+        >
+          Affectosphere
+        </h1>
+        <p
+          class="reveal mt-8 max-w-prose font-display text-charcoal/90"
+          style="font-size: clamp(1.25rem, 1.8vw, 1.75rem); line-height: 1.5;"
+        >
+          感情が大気のように社会を包む圏域。
+          遍在し、測りうる、誰もが心のゆとりを取り戻すための情動圏。
+        </p>
+      </div>
+      <div class="reveal flex items-center justify-center">
+        <img
+          src="/logo/mark.png"
+          alt="Affectosphere Group emblem"
+          class="w-full max-w-[24rem] aspect-square object-contain"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision body: full content width, no inner prose constraint. -->
+  <article
+    class="mx-auto mt-section-sm max-w-content page-x font-display text-charcoal"
+    style="line-height: 1.95;"
+  >
+    {
+      manifestoBody && blocks.length > 0 ? (
+        <div class="w-full">
+          {blocks.map((b) => {
+            if (b.kind === "hr") {
+              return <hr class="reveal my-16 border-0 border-t border-stone" />;
+            }
+            if (b.kind === "h2") {
+              return (
+                <h2
+                  class="reveal mt-20 mb-8 font-display text-charcoal"
+                  style="font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.15; letter-spacing: -0.01em; font-weight: 500;"
+                  set:html={renderInline(b.text)}
+                />
+              );
+            }
+            if (b.kind === "h3") {
+              return (
+                <h3
+                  class="reveal mt-14 mb-5 font-display font-medium text-charcoal"
+                  style="font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.2;"
+                  set:html={renderInline(b.text)}
+                />
+              );
+            }
+            if (b.kind === "h4") {
+              return (
+                <h4
+                  class="reveal mt-12 mb-4 font-display font-medium italic text-charcoal"
+                  style="font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.3;"
+                  set:html={renderInline(b.text)}
+                />
+              );
+            }
+            if (b.kind === "table") {
+              return (
+                <div class="reveal my-12 overflow-x-auto">
+                  <table class="w-full border-collapse text-left text-base">
+                    <thead>
+                      <tr>
+                        {b.header.map((h) => (
+                          <th
+                            class="border-b border-stone py-4 pr-6 font-display text-sm italic text-slate"
+                            set:html={renderInline(h)}
+                          />
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {b.rows.map((r) => (
+                        <tr class="border-b border-stone/60">
+                          {r.map((c) => (
+                            <td
+                              class="py-4 pr-6 align-top text-charcoal"
+                              style="line-height: 1.75;"
+                              set:html={renderInline(c)}
+                            />
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              );
+            }
+            const html = b.text
+              .split(/\n/)
+              .map((ln) => renderInline(ln))
+              .join("<br />");
+            return (
+              <p
+                class="reveal mb-8 text-charcoal"
+                style="font-size: clamp(1.0625rem, 1.25vw, 1.25rem); line-height: 1.95;"
+                set:html={html}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <div class="reveal mx-auto max-w-prose border border-stone bg-cream p-8 text-center">
+          <p class="font-display text-sm italic uppercase tracking-[0.18em] text-amber">
+            Coming soon
+          </p>
+          <h2 class="mt-3 font-display text-2xl text-charcoal">マニフェスト準備中</h2>
+          <p class="mt-3 text-base leading-relaxed text-slate" style="line-height: 1.75;">
+            <code class="font-mono text-sm text-deepslate">MANIFESTO.md</code>{" "}
+            がプロジェクト直下に配置され次第、ここに本文が表示されます。
+          </p>
+        </div>
+      )
+    }
+
+    <div class="reveal mt-20 w-full border-t border-stone pt-8 text-center">
+      <a href="/" class="link-amber font-heading text-sm tracking-wide">
+        &larr; Back to home
+      </a>
+    </div>
+  </article>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Thank you"
+  description="お問い合わせを受け付けました。"
+  fullBleed
+>
+  <section class="mx-auto max-w-content page-x pt-32 pb-section">
+    <div class="reveal max-w-prose">
+      <p class="font-display text-sm italic text-slate">Thank you</p>
+      <h1
+        class="mt-4 font-display font-medium tracking-tight text-charcoal"
+        style="font-size: clamp(2.25rem, 4.5vw, 4rem); line-height: 1.12;"
+      >
+        お問い合わせを受け付けました
+      </h1>
+      <p class="mt-6 font-display text-lg leading-relaxed text-charcoal md:text-xl" style="line-height: 1.85;">
+        ご連絡いただきありがとうございます。
+        通常 2–3 営業日以内に、ご記入いただいたメールアドレス宛てに返信します。
+        しばらくお待ちください。
+      </p>
+      <p class="mt-10">
+        <a href="/" class="link-amber font-display text-base">
+          &larr; トップに戻る
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

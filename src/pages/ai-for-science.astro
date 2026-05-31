@@ -1,0 +1,282 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  aiForScienceLongDescription,
+  aiForScienceFindings,
+  aiForScienceNarrative,
+} from "../data/ai-for-science";
+import { aiForScienceImage } from "../data/research-domains";
+---
+
+<BaseLayout
+  title="AI for Science"
+  description="Affectosphere Group の学際的AI研究。多様な分野の研究者・実務家と共同し、AIを用いた領域横断的な探究を進めています。"
+  fullBleed
+>
+  <!-- Hero header -->
+  <section
+    class="relative isolate overflow-hidden min-h-[60vh]"
+    aria-labelledby="ai4s-hero"
+  >
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style={`background-image: url('${aiForScienceImage}');`}
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-ivory/65 via-ivory/40 to-ivory/70"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 mx-auto max-w-content page-x pt-24 pb-16 md:pt-32 md:pb-20">
+      <p class="font-display text-sm italic text-slate reveal">AI for Science</p>
+      <h1
+        id="ai4s-hero"
+        class="reveal mt-4 font-display font-bold tracking-tight text-charcoal"
+        style="font-size: clamp(1.75rem, 3.2vw, 2.75rem); line-height: 1.12; text-shadow: 0 1px 2px rgba(250,250,247,0.85), 0 0 28px rgba(250,250,247,0.95);"
+      >
+        科学領域への、AIの橋渡し。
+      </h1>
+      <p
+        class="reveal mt-6 max-w-prose font-bold text-lg leading-relaxed text-charcoal md:text-xl"
+        style="text-shadow: 0 1px 2px rgba(250,250,247,0.8), 0 0 20px rgba(250,250,247,0.85);"
+      >
+        多様な分野の研究者・実務家と共同で、AIを用いた領域横断的な探究を進めています。
+      </p>
+    </div>
+  </section>
+
+  <!-- Purpose & Goal -->
+  <section class="mx-auto mt-section-sm max-w-content page-x">
+    <div class="reveal grid gap-8 md:grid-cols-[16rem_1fr] md:gap-14">
+      <p class="font-display text-xl italic text-slate">目的</p>
+      <p
+        class="max-w-prose font-display text-lg leading-relaxed text-charcoal md:text-xl"
+        style="line-height: 1.85;"
+      >
+        {aiForScienceLongDescription}
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto mt-section-sm max-w-content page-x">
+    <div class="reveal grid gap-8 md:grid-cols-[16rem_1fr] md:gap-14">
+      <p class="font-display text-xl italic text-slate">目標</p>
+      <p
+        class="max-w-prose font-display text-lg leading-relaxed text-charcoal md:text-xl"
+        style="line-height: 1.85;"
+      >
+        {aiForScienceFindings}
+      </p>
+    </div>
+  </section>
+
+  <!-- Call for collaboration (full width) -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="collab-cta">
+    <div class="reveal w-full border-l-2 border-amber/60 pl-6">
+      <p class="font-display text-sm italic text-slate mb-3">Looking for partners</p>
+      <h2 id="collab-cta" class="font-display text-2xl font-medium text-charcoal md:text-3xl">
+        AIの支援を必要とされている方を探しています
+      </h2>
+      <div
+        class="mt-5 w-full space-y-4 font-display text-base leading-relaxed text-charcoal md:text-lg"
+        style="line-height: 1.85;"
+      >
+        <p>
+          研究テーマにAIを取り入れたい、データ分析を一緒に進めたい、
+          あるいは「自分の分野でもAIは活かせるのだろうか」と迷っている──
+          そんな研究者・実務家の方々と共に取り組みたいと考えています。
+        </p>
+        <p>
+          分野は問いません。これまで文理を横断する多くの領域の方々と共同してきました。
+          手法選択・データ設計・モデル評価・倫理面での検討まで、
+          Affectosphere Group が培ってきた技法をもって一緒に並走します。
+        </p>
+        <p>
+          まずは下のフォームから、研究テーマや関心について自由にお書きください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing / engagement model -->
+  <section class="mx-auto mt-section-sm max-w-content page-x" aria-labelledby="engagement">
+    <div class="reveal grid gap-6 md:grid-cols-2">
+      <div class="border border-stone bg-cream p-6 md:p-8">
+        <p class="font-display text-sm italic text-slate">初回ミーティング</p>
+        <p class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+          無料 <span class="text-base italic text-slate">(30分)</span>
+        </p>
+        <p class="mt-4 font-display text-base leading-relaxed text-charcoal" style="line-height:1.8;">
+          研究テーマや課題感をうかがい、
+          そもそも AI で扱える問いなのか、扱えるとしてどんなアプローチが考えられるかを、
+          一緒に検討する時間です。お互いの方向性を確認する場として、まずはお気軽にお声がけください。
+        </p>
+      </div>
+      <div class="border border-stone bg-cream p-6 md:p-8">
+        <p class="font-display text-sm italic text-slate">継続的なご協力</p>
+        <p class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+          研究費 + 人件費
+        </p>
+        <p class="mt-4 font-display text-base leading-relaxed text-charcoal" style="line-height:1.8;">
+          初回MTG後、本格的に共同で進める場合は、
+          研究テーマ・難易度・期間・成果物に応じて、
+          研究費と人件費を実費ベースで頂戴いたします。
+          見積もりの目安は、初回MTG後に内容を整理してご提示します。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquiry form (mailto-based) -->
+  <section
+    class="mx-auto mt-section-sm max-w-content page-x"
+    aria-labelledby="inquiry-form-heading"
+  >
+    <div class="reveal border border-stone bg-cream p-8 md:p-12">
+      <h2
+        id="inquiry-form-heading"
+        class="font-display text-xl font-medium text-charcoal md:text-2xl"
+      >
+        共同研究・AI 支援のお問い合わせ
+      </h2>
+      <p class="mt-3 font-display text-sm italic text-slate">
+        送信内容は Affectosphere Group まで届きます。
+        初回MTGの日程調整等、改めてご連絡します。
+      </p>
+
+      <form
+        class="mt-8 grid gap-6 md:grid-cols-2"
+        name="ai-for-science"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/thanks/"
+      >
+        <input type="hidden" name="form-name" value="ai-for-science" />
+        <p class="hidden" aria-hidden="true">
+          <label>
+            この欄は空にしてください:
+            <input name="bot-field" tabindex="-1" autocomplete="off" />
+          </label>
+        </p>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">お名前</span>
+          <input
+            type="text"
+            name="name"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="例: 山田 太郎"
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">ご所属</span>
+          <input
+            type="text"
+            name="affiliation"
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="例: ○○大学 △△研究科 / 株式会社□□"
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">分野</span>
+          <input
+            type="text"
+            name="field"
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="例: 公衆衛生学 / 化学 / 医学 / 認知科学 / 交通工学..."
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">返信先メール</span>
+          <input
+            type="email"
+            name="email"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="example@your-domain.com"
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-2">
+          <span class="font-display text-sm italic text-slate">研究テーマ・ご相談内容</span>
+          <textarea
+            name="message"
+            rows="6"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="どのような領域で、どんな課題に AI を活用したいか、自由にお書きください。"
+          ></textarea>
+        </label>
+
+        <div class="md:col-span-2 flex justify-end">
+          <button type="submit" class="btn-solid">
+            送信する
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Narrative / case studies (now placed AFTER the inquiry) -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cases-heading">
+    <header class="reveal mb-10 md:mb-14">
+      <p class="font-display text-sm italic text-slate">Case studies</p>
+      <h2
+        id="cases-heading"
+        class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl"
+      >
+        これまでの事例
+      </h2>
+      <p class="mt-4 max-w-prose font-display text-base leading-relaxed text-slate md:text-lg">
+        Affectosphere Group がこれまで他分野の研究者と取り組んできた、
+        AI を用いた共同研究の簡単な紹介です。
+      </p>
+    </header>
+
+    <div class="flex flex-col gap-12 md:gap-16">
+      {
+        aiForScienceNarrative.map((block) => (
+          <div class="reveal">
+            {block.heading && (
+              <h3 class="mb-5 font-display text-2xl font-medium text-charcoal md:text-3xl">
+                {block.heading}
+              </h3>
+            )}
+            {block.figure ? (
+              <div class="grid items-start gap-8 md:grid-cols-[1fr_28rem] md:gap-12">
+                <p
+                  class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
+                  style="line-height: 1.95;"
+                >
+                  {block.text}
+                </p>
+                <figure class="md:max-w-[28rem]">
+                  <img
+                    src={block.figure.src}
+                    alt={block.figure.alt}
+                    loading="lazy"
+                    class="w-full border border-stone bg-white shadow-card"
+                  />
+                  <figcaption class="mt-3 font-display text-sm italic leading-relaxed text-slate">
+                    {block.figure.caption}
+                  </figcaption>
+                </figure>
+              </div>
+            ) : (
+              <p
+                class="max-w-prose font-display text-lg leading-relaxed text-charcoal md:text-xl"
+                style="line-height: 1.95;"
+              >
+                {block.text}
+              </p>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

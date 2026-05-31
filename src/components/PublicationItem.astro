@@ -1,0 +1,46 @@
+---
+import type { Publication } from "../data/publications";
+import { kindLabel, formatDateJa } from "../data/publications";
+
+interface Props {
+  pub: Publication;
+  /** When true, hide the submission/published status badge on the right.
+   *  Used on the home page where statuses are intentionally suppressed. */
+  hideStatus?: boolean;
+}
+const { pub, hideStatus = false } = Astro.props;
+
+const categoryLabel = kindLabel[pub.kind];
+const dateLabel = formatDateJa(pub.date);
+---
+
+<li
+  class="reveal flex flex-col gap-3 border-b border-stone py-6 last:border-b-0 md:flex-row md:items-start md:justify-between md:gap-8"
+  data-pub-kind={pub.kind}
+>
+  <div class="flex-1">
+    <div class="mb-2 flex flex-wrap items-center gap-3">
+      <span class="inline-block bg-amber/15 px-2 py-0.5 text-[0.7rem] font-medium tracking-wide text-amber">
+        {categoryLabel}
+      </span>
+    </div>
+    <p class="font-display text-xl leading-snug text-charcoal">
+      {pub.href ? (
+        <a href={pub.href} class="link-amber">{pub.title}</a>
+      ) : (
+        pub.title
+      )}
+    </p>
+    <p class="mt-2 font-sans text-sm text-slate">{pub.authors}</p>
+    <p class="mt-1 font-sans text-sm text-slate">
+      {pub.venue}<span class="mx-2 text-stone">&middot;</span>{dateLabel}
+    </p>
+  </div>
+  {pub.status && !hideStatus && (
+    <div class="md:pt-1 md:text-right">
+      <span class="font-sans text-[0.75rem] uppercase tracking-[0.14em] text-amber font-medium">
+        {pub.status}
+      </span>
+    </div>
+  )}
+</li>

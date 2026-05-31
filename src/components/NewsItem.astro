@@ -1,0 +1,22 @@
+---
+import type { NewsItem } from "../data/news";
+
+interface Props {
+  item: NewsItem;
+}
+const { item } = Astro.props;
+
+// Format ISO date as "2026年5月25日" for a Japanese editorial feel.
+const [y, m, d] = item.date.split("-");
+const display = `${y}年${Number(m)}月${Number(d)}日`;
+---
+
+<li class="reveal grid gap-2 border-b border-stone py-5 last:border-b-0 md:grid-cols-[10rem_8rem_1fr] md:gap-6">
+  <time class="font-sans text-xs text-slate font-medium" datetime={item.date}>
+    {display}
+  </time>
+  <span class="font-sans text-xs uppercase tracking-[0.14em] text-amber font-medium">
+    {item.label}
+  </span>
+  <p class="text-sm text-charcoal md:text-base">{item.body}</p>
+</li>

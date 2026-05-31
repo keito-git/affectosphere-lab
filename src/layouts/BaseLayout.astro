@@ -1,0 +1,76 @@
+---
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import RevealObserver from "../components/RevealObserver.astro";
+import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** When true, the page is rendered without the global <main> max-width wrapper.
+   *  Use for full-bleed hero pages that handle their own containers. */
+  fullBleed?: boolean;
+}
+
+const {
+  title,
+  description = site.description,
+  fullBleed = false,
+} = Astro.props;
+
+const pageTitle = title ? `${title} | ${site.name}` : site.name;
+const pathname = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content="/logo/mark-light.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="/logo/mark-light.png" />
+
+    <!-- Favicon (lab logo, light-bg variant for browser tabs on white). -->
+    <link rel="icon" type="image/png" href="/logo/mark.png" />
+    <link rel="apple-touch-icon" href="/logo/mark.png" />
+
+    <!-- Google Fonts: Noto Serif JP for Japanese, JetBrains Mono for code only.
+         English uses Times New Roman (system font, no loading needed). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+  </head>
+
+  <body class="min-h-screen bg-ivory text-charcoal antialiased">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-charcoal focus:px-3 focus:py-2 focus:text-ivory"
+    >
+      Skip to content
+    </a>
+
+    <Nav current={pathname} />
+
+    <main id="main-content" class:list={[!fullBleed && "mx-auto max-w-content"]}>
+      <slot />
+    </main>
+
+    <Footer />
+
+    <RevealObserver />
+  </body>
+</html>

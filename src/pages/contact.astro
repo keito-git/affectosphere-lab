@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+// This form posts to Netlify Forms.  When deployed on Netlify, submissions
+// land in the Netlify dashboard and (when notifications are configured) are
+// emailed automatically to inosita.2865@gmail.com.
+---
+
+<BaseLayout
+  title="Contact"
+  description="Affectosphere Group へのお問い合わせフォーム。共同研究・グループ参加・企業提案・取材など、幅広く受け付けています。"
+  fullBleed
+>
+  <section class="mx-auto max-w-content page-x pt-24 md:pt-32">
+    <h1
+      class="reveal font-display font-medium tracking-tight text-charcoal"
+      style="font-size: clamp(2.25rem, 4.5vw, 4rem); line-height: 1.12;"
+    >
+      Contact
+    </h1>
+    <p class="reveal mt-6 max-w-prose font-display text-lg leading-relaxed text-slate md:text-xl">
+      共同研究・グループへの参加希望・企業からのご提案・取材など、
+      Affectosphere Group へのお問い合わせを広く受け付けています。
+      下のフォームより、ご用件と内容を自由にお書きください。
+    </p>
+  </section>
+
+  <!-- General inquiry form -->
+  <section
+    class="mx-auto mt-section-sm max-w-content page-x"
+    aria-labelledby="contact-form-heading"
+  >
+    <div class="reveal border border-stone bg-cream p-8 md:p-12">
+      <h2
+        id="contact-form-heading"
+        class="font-display text-xl font-medium text-charcoal md:text-2xl"
+      >
+        お問い合わせフォーム
+      </h2>
+      <p class="mt-3 font-display text-sm italic text-slate">
+        送信内容は Affectosphere Group まで届きます。通常 2–3 営業日以内にご返信します。
+      </p>
+
+      <form
+        class="mt-8 grid gap-6 md:grid-cols-2"
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/thanks/"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden" aria-hidden="true">
+          <label>
+            この欄は空にしてください:
+            <input name="bot-field" tabindex="-1" autocomplete="off" />
+          </label>
+        </p>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">お名前</span>
+          <input
+            type="text"
+            name="name"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="例: 山田 太郎"
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">ご所属(任意)</span>
+          <input
+            type="text"
+            name="affiliation"
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="例: ○○大学 / 株式会社□□ / フリーランス"
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">返信先メール</span>
+          <input
+            type="email"
+            name="email"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="example@your-domain.com"
+          />
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-1">
+          <span class="font-display text-sm italic text-slate">ご用件</span>
+          <select
+            name="purpose"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+          >
+            <option value="">選択してください</option>
+            <option value="共同研究のご相談">共同研究のご相談</option>
+            <option value="Groupへの参加希望">Group への参加希望</option>
+            <option value="企業からのご提案">企業からのご提案</option>
+            <option value="取材のご依頼">取材のご依頼</option>
+            <option value="講演・登壇のご依頼">講演・登壇のご依頼</option>
+            <option value="その他">その他</option>
+          </select>
+        </label>
+        <label class="flex flex-col gap-2 md:col-span-2">
+          <span class="font-display text-sm italic text-slate">お問い合わせ内容</span>
+          <textarea
+            name="message"
+            rows="8"
+            required
+            class="border border-stone bg-ivory px-4 py-3 font-display text-base text-charcoal focus:border-charcoal focus:outline-none"
+            placeholder="ご用件の詳細、ご相談内容を自由にお書きください。"
+          ></textarea>
+        </label>
+
+        <div class="md:col-span-2 flex justify-end">
+          <button type="submit" class="btn-solid">
+            送信する
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

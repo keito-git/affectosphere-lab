@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+ * Global tokens & base styles for Affectosphere Group.
+ * - Tailwind handles utility classes; this layer defines typography defaults,
+ *   link styles, and animation primitives that map to the design spec.
+ * ------------------------------------------------------------------------- */
+
+@layer base {
+  :root {
+    --color-ivory: #fafaf7;
+    --color-cream: #f4f0e8;
+    --color-stone: #e2ddd6;
+    --color-charcoal: #1a1a1a;
+    --color-slate: #6b7280;
+    --color-amber: #c4974a;
+    --color-steel: #3d6b8c;
+    --color-rose: #b5737a;
+    --color-sage: #6b8f7a;
+    --color-deepslate: #1e2a38;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: "Times New Roman", "Noto Serif JP", Times, serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-family: "Times New Roman", "Noto Serif JP", Times, serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--color-charcoal);
+  }
+
+  h2,
+  h3 {
+    font-family: "Times New Roman", "Noto Serif JP", Times, serif;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--color-charcoal);
+  }
+
+  code,
+  pre {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  /* Selection accent in amber. */
+  ::selection {
+    background-color: rgba(196, 151, 74, 0.25);
+    color: var(--color-charcoal);
+  }
+}
+
+@layer components {
+  /* Underline-on-hover link styling matching the design spec. */
+  .link-amber {
+    position: relative;
+    display: inline-block;
+    color: var(--color-charcoal);
+    transition: color 200ms ease;
+  }
+  .link-amber::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-amber);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 200ms ease;
+  }
+  .link-amber:hover::after,
+  .link-amber:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* Pill-shaped CTA link. */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 border border-stone bg-transparent px-5 py-2.5
+           font-heading text-sm tracking-wide text-charcoal transition-colors
+           hover:border-charcoal focus-visible:outline-none focus-visible:ring-1
+           focus-visible:ring-charcoal;
+  }
+
+  /* Solid CTA. */
+  .btn-solid {
+    @apply inline-flex items-center gap-2 bg-charcoal px-5 py-2.5 font-heading text-sm
+           tracking-wide text-ivory transition-colors hover:bg-deepslate
+           focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber;
+  }
+
+  /* Card surface. */
+  .surface-card {
+    @apply rounded-none border border-stone bg-cream p-6 shadow-card transition-all
+           duration-300 ease-out;
+  }
+  .surface-card:hover {
+    @apply -translate-y-1 shadow-card-hover;
+  }
+
+  /* Eyebrow / kicker label. */
+  .eyebrow {
+    @apply font-sans text-[0.75rem] uppercase tracking-[0.14em] text-slate font-medium;
+  }
+}
+
+@layer utilities {
+  /* Scroll-triggered reveal. JS toggles .is-visible. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Tight page-edge padding so the layout truly reaches the viewport edges
+   * (Ochiai Lab style).  Scales from ~12px on phones to ~32px on very wide
+   * desktops — minimal breathing room, nothing more. */
+  .page-x {
+    padding-left: clamp(0.75rem, 1.5vw, 2rem);
+    padding-right: clamp(0.75rem, 1.5vw, 2rem);
+  }
+}

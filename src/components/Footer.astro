@@ -1,0 +1,39 @@
+---
+import { site, navItems } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-section-sm border-t border-stone bg-ivory">
+  <div class="mx-auto max-w-content page-x py-16">
+    <nav aria-label="フッターメニュー">
+      <p class="font-sans text-base font-medium tracking-wide text-slate mb-6">
+        サイトマップ
+      </p>
+      <ul class="grid grid-cols-2 gap-x-8 gap-y-3 sm:grid-cols-3 md:grid-cols-4">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="link-amber font-heading text-sm text-charcoal"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+
+  <div class="border-t border-stone">
+    <div
+      class="mx-auto flex max-w-content flex-col items-start justify-between gap-2 page-x py-6 text-xs text-slate md:flex-row md:items-center"
+    >
+      <p>&copy; {year} {site.name}. All rights reserved.</p>
+      <p class="font-sans uppercase tracking-[0.14em] font-medium">
+        Built with Astro &middot; Tailwind CSS
+      </p>
+    </div>
+  </div>
+</footer>

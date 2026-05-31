@@ -1,0 +1,268 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import PublicationItem from "../components/PublicationItem.astro";
+import NewsItem from "../components/NewsItem.astro";
+import { recentPublications } from "../data/publications";
+import { recentNews } from "../data/news";
+import { researchDomains, aiForScienceImage } from "../data/research-domains";
+
+// Home grid: the eight affective-AI domains shown as 4 rows × 2 cols,
+// followed by the AI for Science card spanning both columns on row 5.
+// Each affective-AI domain links to /research/<slug>/; AI for Science
+// links to its own top-level page.
+type DomainCard = { title: string; summary: string; href: string; image: string };
+
+const affectiveDomainCards: DomainCard[] = researchDomains.map((d) => ({
+  title: d.title,
+  summary: d.summary,
+  href: `/research/${d.slug}/`,
+  image: d.image,
+}));
+
+const aiForScienceCard: DomainCard = {
+  title: "AI for Science",
+  summary:
+    "感情以外の科学領域へのAI応用。生物学・教育安全など、分野横断の共同研究をここで束ねています。",
+  href: "/ai-for-science/",
+  image: aiForScienceImage,
+};
+---
+
+<BaseLayout fullBleed>
+  <Hero />
+
+  <!-- Section 2: Affectosphereとは (short intro + read-more) -->
+  <section
+    class="mx-auto mt-section grid max-w-content gap-12 page-x md:grid-cols-[1fr_2fr]"
+    aria-labelledby="affecto-intro"
+  >
+    <div>
+      <p class="reveal font-sans text-lg font-medium tracking-wide text-slate">
+        Vision
+      </p>
+      <h2
+        id="affecto-intro"
+        class="reveal mt-3 whitespace-nowrap font-display text-3xl font-medium text-charcoal md:text-4xl"
+      >
+        Affectosphereとは
+      </h2>
+    </div>
+    <div class="reveal max-w-prose">
+      <p
+        class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
+        style="line-height: 1.75;"
+      >
+        感情は大気のように社会を包み、人々の判断・関係・心のあり方を静かに形づくっている。
+        我々はその<span class="text-amber">遍在する情動圏</span>を、
+        AIで読み解き、人にとって最適な形へとAIを調えていくことで、
+        AI時代においても誰もが心のゆとりを持てる社会へとつなぐ研究を進める。
+      </p>
+      <p class="mt-6">
+        <a href="/affectosphere/" class="link-amber font-heading text-sm tracking-wide">
+          Visionを読む &rarr;
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 2.5: Principal Investigator (brief introduction with portrait) -->
+  <section
+    class="mx-auto mt-section grid max-w-content gap-10 page-x md:grid-cols-[16rem_1fr] md:gap-14"
+    aria-labelledby="pi-intro"
+  >
+    <div class="reveal">
+      <div class="overflow-hidden border border-stone bg-cream aspect-square w-full max-w-[16rem]">
+        <img
+          src="/people/keito-inoshita.jpg"
+          alt="Keito Inoshita"
+          class="h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+    <div>
+      <p class="reveal font-display text-lg italic tracking-wide text-slate">
+        Principal Investigator
+      </p>
+      <h2
+        id="pi-intro"
+        class="reveal mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl"
+      >
+        井下 敬翔
+      </h2>
+      <p class="reveal mt-2 font-display text-base text-slate">
+        Keito Inoshita
+      </p>
+
+      <div class="reveal mt-6 max-w-prose space-y-5 font-display text-lg leading-relaxed text-charcoal md:text-xl" style="line-height: 1.85;">
+        <p>
+          関西大学大学院、滋賀大学 DS・AI研究推進センター、
+          日本セーフティソサイエティ研究センターに所属。
+          あわせて、多様な企業と連携しながら AI × 感情の研究開発を進めている。
+        </p>
+        <p>
+          Affectosphereを立ち上げ、
+          AIを用いた人間の感情の生成・認識・理解から、人間とのインタラクション、
+          感情AIの倫理や哲学までを一貫して研究を行っている。
+          最終的に目指すのは、人間を超える EQ を備えた AI の実現である。
+        </p>
+      </div>
+
+      <p class="mt-8">
+        <a href="/about/" class="link-amber font-heading text-sm tracking-wide">
+          プロフィールを見る &rarr;
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 3: Eight research domains (2 columns × 4 rows) -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="research-domains">
+    <header class="reveal mb-10 max-w-prose md:mb-14">
+      <p class="font-sans text-lg font-medium tracking-wide text-slate">
+        主な研究テーマ
+      </p>
+      <h2
+        id="research-domains"
+        class="mt-3 font-display text-3xl font-medium tracking-tight text-charcoal md:text-4xl"
+      >
+        ラボの研究領域。
+      </h2>
+      <p class="mt-4 font-display text-base leading-relaxed text-slate md:text-lg">
+        感情と社会、技術と倫理。Affectosphere Groupが取り組んでいる九つの領域です。
+      </p>
+    </header>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        affectiveDomainCards.map((d) => (
+          <a
+            href={d.href}
+            class="reveal group relative flex h-full flex-col overflow-hidden border border-stone shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover"
+          >
+            <div
+              class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
+              style={`background-image: url('${d.image}');`}
+              aria-hidden="true"
+            />
+            <div
+              class="absolute inset-0 bg-ivory/75 transition-colors duration-300 group-hover:bg-ivory/65"
+              aria-hidden="true"
+            />
+            <div class="relative z-10 flex h-full flex-col p-6 min-h-[180px]">
+              <h3 class="font-display text-xl font-bold text-charcoal md:text-2xl">
+                {d.title}
+              </h3>
+              <p class="mt-3 font-display text-base font-bold leading-relaxed text-charcoal">
+                {d.summary}
+              </p>
+              <span class="mt-auto pt-4 font-heading text-sm font-bold tracking-wide text-charcoal transition-colors group-hover:text-amber">
+                詳しく見る &rarr;
+              </span>
+            </div>
+          </a>
+        ))
+      }
+      <a
+        href={aiForScienceCard.href}
+        class="reveal group relative flex h-full flex-col overflow-hidden border border-stone shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover md:col-span-2"
+      >
+        <div
+          class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
+          style={`background-image: url('${aiForScienceCard.image}');`}
+          aria-hidden="true"
+        />
+        <div
+          class="absolute inset-0 bg-ivory/75 transition-colors duration-300 group-hover:bg-ivory/65"
+          aria-hidden="true"
+        />
+        <div class="relative z-10 flex h-full flex-col p-6 min-h-[180px]">
+          <h3 class="font-display text-xl font-bold text-charcoal md:text-2xl">
+            {aiForScienceCard.title}
+          </h3>
+          <p class="mt-3 font-display text-base font-bold leading-relaxed text-charcoal">
+            {aiForScienceCard.summary}
+          </p>
+          <span class="mt-auto pt-4 font-heading text-sm font-bold tracking-wide text-charcoal transition-colors group-hover:text-amber">
+            詳しく見る &rarr;
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <div class="reveal mt-10">
+      <a href="/research/" class="link-amber font-heading text-sm tracking-wide">
+        研究テーマ一覧へ &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 3.5: Looking for collaborators -->
+  <section
+    class="mx-auto mt-section max-w-content page-x"
+    aria-labelledby="lp-collab"
+  >
+    <div class="reveal border-l-2 border-amber/60 pl-6">
+      <p class="font-display text-sm italic text-slate mb-3">Looking for collaborators</p>
+      <h2
+        id="lp-collab"
+        class="font-display text-2xl font-medium text-charcoal md:text-3xl"
+      >
+        感情AIに関わる仲間を募集しています
+      </h2>
+      <p class="mt-4 max-w-prose font-display text-base leading-relaxed text-charcoal md:text-lg">
+        感情AIの構築・活用などに興味関心がある学生・共同研究者・ビジネスマンなど、
+        幅広く募集しています。
+      </p>
+      <p class="mt-6">
+        <a href="/contact/" class="link-amber font-heading text-sm tracking-wide">
+          お問い合わせ &rarr;
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 4: Recent Publications -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="recent-pubs">
+    <header class="reveal mb-10 max-w-prose md:mb-14">
+      <h2
+        id="recent-pubs"
+        class="font-display text-3xl font-medium tracking-tight text-charcoal md:text-4xl"
+      >
+        新着論文
+      </h2>
+    </header>
+    <ul class="w-full">
+      {recentPublications.map((pub) => <PublicationItem pub={pub} hideStatus />)}
+    </ul>
+    <div class="reveal mt-10">
+      <a href="/publications/" class="link-amber font-heading text-sm tracking-wide">
+        論文一覧へ &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 5: News -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="recent-news">
+    <header class="reveal mb-10 max-w-prose md:mb-14">
+      <h2
+        id="recent-news"
+        class="font-display text-3xl font-medium tracking-tight text-charcoal md:text-4xl"
+      >
+        最新News
+      </h2>
+    </header>
+    <ul>
+      {recentNews.map((item) => <NewsItem item={item} />)}
+    </ul>
+    <div class="reveal mt-10">
+      <a href="/news/" class="link-amber font-heading text-sm tracking-wide">
+        ニュース一覧へ &rarr;
+      </a>
+    </div>
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

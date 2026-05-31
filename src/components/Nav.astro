@@ -1,0 +1,148 @@
+---
+// Top-of-page navigation. Sticky on scroll, semantically a <header>.
+// Layout: brand on the top row, all nav tabs spread across the row below
+// (Ochiai Lab style).  Mobile collapses everything into a single drawer.
+import { site, navItems } from "../data/site";
+
+interface Props {
+  current?: string; // pathname for active-state styling
+}
+const { current = "" } = Astro.props;
+
+function isActive(href: string): boolean {
+  if (href === "/") return current === "/";
+  return current.startsWith(href.replace(/\/$/, ""));
+}
+---
+
+<header
+  class="sticky top-0 z-30 border-b border-stone/70 bg-ivory/85 backdrop-blur supports-[backdrop-filter]:bg-ivory/70"
+>
+  <div class="mx-auto max-w-content page-x">
+    <!-- Row 1: brand + (mobile) hamburger. -->
+    <div class="flex items-center justify-between py-4">
+      <a
+        href="/"
+        class="group inline-flex items-center gap-3 whitespace-nowrap text-charcoal hover:text-deepslate"
+        aria-label={`${site.name} home`}
+      >
+        <img
+          src="/logo/mark.png"
+          alt=""
+          width="52"
+          height="52"
+          class="h-12 w-auto shrink-0 transition-transform duration-200 group-hover:scale-[1.03]"
+          loading="eager"
+          decoding="async"
+        />
+        <span class="flex flex-col leading-tight">
+          <span class="font-display text-2xl font-medium tracking-tight">
+            Affectosphere <span class="text-slate">Group</span>
+          </span>
+          <span class="mt-0.5 font-sans text-[0.7rem] tracking-wide text-slate">
+            Kansai University, Keito Inoshita Laboratory
+          </span>
+        </span>
+      </a>
+
+      <div class="inline-flex items-center gap-3">
+        <!-- Social links: X and Facebook. Placeholder URLs until handed over. -->
+        <!-- TODO(inoshita): replace href="#" with real URLs. -->
+        <a
+          href="#"
+          aria-label="X (Twitter)"
+          class="hidden md:inline-flex h-9 w-9 items-center justify-center border border-stone text-charcoal transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a
+          href="#"
+          aria-label="Facebook"
+          class="hidden md:inline-flex h-9 w-9 items-center justify-center border border-stone text-charcoal transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+        <!-- Mobile: a minimal hamburger toggle. -->
+        <button
+          type="button"
+          class="md:hidden inline-flex h-10 w-10 items-center justify-center border border-stone text-charcoal"
+          aria-label="メニューを開く"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          data-nav-toggle
+        >
+          <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true">
+            <path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" stroke-width="1.5"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Row 2: full navigation (desktop only). Tabs spread across the row
+         with consistent spacing; wraps if the viewport is too narrow. -->
+    <nav
+      class="hidden border-t border-stone/50 py-3 md:block"
+      aria-label="主要メニュー"
+    >
+      <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 lg:gap-x-6 xl:gap-x-7">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={[
+                  "link-amber font-heading text-[0.8125rem] tracking-tight whitespace-nowrap lg:text-[0.875rem]",
+                  isActive(item.href) ? "text-charcoal" : "text-slate hover:text-charcoal",
+                ]}
+                aria-current={isActive(item.href) ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Mobile drawer (hidden by default). Shows every entry. -->
+  <div
+    id="mobile-nav"
+    class="hidden border-t border-stone/70 bg-ivory md:hidden"
+    data-nav-panel
+  >
+    <ul class="page-x flex flex-col py-4">
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={[
+                "block py-3 font-heading text-base tracking-wide",
+                isActive(item.href) ? "text-charcoal" : "text-slate",
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</header>
+
+<script>
+  // Lightweight mobile menu toggle.
+  const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+  const panel = document.querySelector<HTMLDivElement>("[data-nav-panel]");
+  toggle?.addEventListener("click", () => {
+    if (!panel) return;
+    const open = panel.classList.toggle("hidden") === false;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+  });
+</script>

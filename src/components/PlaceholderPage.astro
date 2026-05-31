@@ -1,0 +1,49 @@
+---
+// Generic placeholder for pages that are not yet authored.
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  bullets?: string[];
+}
+const { eyebrow, title, description, bullets = [] } = Astro.props;
+---
+
+<section class="mx-auto max-w-content page-x pt-24 md:pt-32">
+  <p class="eyebrow reveal">{eyebrow}</p>
+  <h1
+    class="reveal mt-4 font-display font-medium text-charcoal"
+    style="font-size: clamp(2.25rem, 4.5vw, 4rem); line-height: 1.08;"
+  >
+    {title}
+  </h1>
+  <p class="reveal mt-6 max-w-prose text-lg leading-relaxed text-slate md:text-xl">
+    {description}
+  </p>
+
+  {
+    bullets.length > 0 && (
+      <ul class="reveal mt-12 max-w-prose space-y-3 border-l border-stone pl-6">
+        {bullets.map((b) => (
+          <li class="font-heading text-base text-charcoal">
+            <span class="mr-3 font-sans text-xs uppercase tracking-[0.14em] text-amber font-medium">
+              準備中
+            </span>
+            {b}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <div class="reveal mt-16 border-t border-stone pt-8">
+    <p class="font-sans text-[0.75rem] uppercase tracking-[0.14em] text-slate font-medium">
+      このページは現在準備中です。
+    </p>
+    <a href="/" class="link-amber mt-2 inline-block font-heading text-sm tracking-wide">
+      &larr; ホームに戻る
+    </a>
+  </div>
+</section>
+
+<div class="h-section-sm" aria-hidden="true"></div>
