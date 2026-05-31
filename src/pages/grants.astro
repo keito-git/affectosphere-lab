@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { grants, totalGrants } from "../data/grants";
+import { grants } from "../data/grants";
 ---
 
 <BaseLayout
@@ -15,9 +15,6 @@ import { grants, totalGrants } from "../data/grants";
     >
       Grants
     </h1>
-    <p class="reveal mt-6 max-w-prose font-display text-lg leading-relaxed text-slate md:text-xl">
-      競争的資金・研究助成の一覧(全 {totalGrants} 件)。
-    </p>
   </section>
 
   <section class="mx-auto mt-section-sm max-w-content page-x">

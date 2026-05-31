@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { awardGroups, totalAwards } from "../data/awards";
+import { awardGroups } from "../data/awards";
 
 // Format YYYY-MM-DD as "2026.06" (we only know month accuracy for most items).
 function formatYM(iso: string): string {
@@ -21,13 +21,6 @@ function formatYM(iso: string): string {
     >
       Awards
     </h1>
-    <p
-      class="reveal mt-6 max-w-prose font-display text-lg leading-relaxed text-slate md:text-xl"
-    >
-      Awards and honors received to date — research best-paper awards,
-      contests, and academic recognitions. Total {totalAwards} entries
-      (newest first within each group).
-    </p>
   </section>
 
   {
