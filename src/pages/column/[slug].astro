@@ -180,4 +180,13 @@ const hasEnglish = (await getCollection("column-en")).some(
     font-size: 0.875rem;
     color: #6b6b66;
   }
+  :global(.prose-column .ai-notice) {
+    margin-top: 2.5rem;
+    color: #8a8a82;
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+  :global(.prose-column .ai-notice small) {
+    font-size: inherit;
+  }
 </style>
