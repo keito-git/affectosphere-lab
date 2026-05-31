@@ -5,7 +5,7 @@ excerpt: "AI that visualizes employees' psychological states is moving into HR a
 image: "/column-images/workplace-emotion-ai.svg"
 imageAlt: "Abstract visual of an office space overlaid with multiple emotion icons and a team-dashboard-style chart"
 readingMinutes: 5
-basedOnPaper: "Current Status and Prospects of Multimodal Emotion Recognition in the Workplace"
+basedOnPaper: "職場環境におけるマルチモーダル感情認識技術の現状と展望"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -117,8 +117,8 @@ The next time someone asks "is our organizational development really fine as-is?
 
 ## References
 
-1. Keito Inoshita, Hironobu Ozaki (2025). _Current Status and Prospects of Multimodal Emotion Recognition Technology in Workplace Environments (Original in Japanese: 職場環境におけるマルチモーダル感情認識技術の現状と展望)_. Journal of Japan Society of Information and Knowledge, vol. 35, issue 2, pp. 151-156.
-2. Keito Inoshita (2025). _Workplace Emotion Analysis Using Generative AI and Well-being Enhancement (Original in Japanese: 生成AIを活用した職場感情分析とWell-beingの向上)_. Chikyu-Uchu-Mirai, vol. 1, issue 2, pp. 109-114.
-3. Keito Inoshita (2025). _Workplace Environment as Well-being in the Generative AI Era Driven by Emotion Data (Original in Japanese: 感情データが導く生成AI時代のWell-beingは職場環境)_. 25th Award-Winning Papers from the Science and Engineering Students' Scientific and Technical Paper Contest.
+1. 井下敬翔, 尾崎博信 (2025). *職場環境におけるマルチモーダル感情認識技術の現状と展望*. 情報知識学会誌, vol. 35, issue 2, pp. 151-156.
+2. 井下敬翔 (2025). *生成AIを活用した職場感情分析とWell-beingの向上*. 地球・宇宙・未来, vol. 1, issue 2, pp. 109-114.
+3. 井下敬翔 (2025). *感情データが導く生成AI時代のWell-beingは職場環境*. 第25回理工学系学生科学技術論文コンクール入賞論文集.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

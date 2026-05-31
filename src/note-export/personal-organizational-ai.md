@@ -112,7 +112,7 @@ https://affectosphere-group.netlify.app/column/personal-organizational-ai/
 
 ## 参考論文
 
-1. 井下敬翔 (2024). _パーソナルAIと組織AIによる人事管理の革新と最適化_. 人と仕事の未来研究所第1回懸賞論文.
+1. 井下敬翔 (2024). *パーソナルAIと組織AIによる人事管理の革新と最適化*. 人と仕事の未来研究所第1回懸賞論文.
 
 ## 注釈
 

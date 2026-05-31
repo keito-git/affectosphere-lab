@@ -5,7 +5,7 @@ excerpt: "A personal AI for each employee and an organizational AI for the compa
 image: "/column-images/personal-organizational-ai.svg"
 imageAlt: "Abstract visual of two circles — individual and organization — softly linked by an amber line"
 readingMinutes: 5
-basedOnPaper: "Innovation and Optimization of HR Management Through Personal AI and Organizational AI"
+basedOnPaper: "パーソナルAIと組織AIによる人事管理の革新と最適化"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -115,6 +115,6 @@ What technology can do and what HR should do are different questions. The latest
 
 ## References
 
-1. Keito Inoshita (2024). _Innovation and Optimization of HR Management Through Personal AI and Organizational AI (Original in Japanese: パーソナルAIと組織AIによる人事管理の革新と最適化)_. 1st Essay Award, Future of People and Work Research Institute.
+1. 井下敬翔 (2024). *パーソナルAIと組織AIによる人事管理の革新と最適化*. 人と仕事の未来研究所第1回懸賞論文.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

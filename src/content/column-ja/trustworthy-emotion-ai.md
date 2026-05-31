@@ -121,8 +121,8 @@ basedOnPaperUrl: "https://arxiv.org/"
 
 ## 参考論文
 
-1. 井下敬翔, 周暁康, 河合明, 矢田勝俊 (2026). *LLMs Capture Emotion Labels, Not Emotion Uncertainty: Distributional Analysis and Calibration of Human-LLM Judgment Gaps*. arXiv preprint.
-2. 井下敬翔, 上野孝斗 (2026). *Uncertainty Decomposition via Cyclical SG-MCMC and Soft-label Learning for Subjective NLP*. arXiv preprint.
-3. 井下敬翔, 上野孝斗 (2026). *Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement*. arXiv preprint.
+1. Keito Inoshita, Xiaokang Zhou, Akira Kawai, Katsutoshi Yada (2026). *LLMs Capture Emotion Labels, Not Emotion Uncertainty: Distributional Analysis and Calibration of Human-LLM Judgment Gaps*. arXiv preprint.
+2. Keito Inoshita, Takato Ueno (2026). *Uncertainty Decomposition via Cyclical SG-MCMC and Soft-label Learning for Subjective NLP*. arXiv preprint.
+3. Keito Inoshita, Takato Ueno (2026). *Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement*. arXiv preprint.
 
 <p class="ai-notice"><small>※ 本記事は一部 AI により執筆されており、間違った情報が含まれる恐れがあります。</small></p>

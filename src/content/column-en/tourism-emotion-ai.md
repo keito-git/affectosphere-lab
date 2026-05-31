@@ -5,7 +5,7 @@ excerpt: "Social posts, reviews, photo captions — fragments of emotion travele
 image: "/column-images/tourism-emotion-ai.svg"
 imageAlt: "Abstract visual of a travel map with destinations and emotion icons hovering at each point"
 readingMinutes: 5
-basedOnPaper: "Analysis of Tourism Candidate Areas Based on Similarity of Reviews Across Tourist Spots in Kyoto, Shiga, and Nara"
+basedOnPaper: "京都・滋賀・奈良3府県の観光拠点間における口コミの類似性に着目した観光候補地群の分析"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -113,6 +113,6 @@ What technology can do and what tourism should do are different questions. The l
 
 ## References
 
-1. Hironobu Ozaki, Keito Inoshita (2025). _Analysis of Tourism Candidate Areas Based on Similarity of Reviews Across Tourist Spots in Kyoto, Shiga, and Nara (Original in Japanese: 京都・滋賀・奈良3府県の観光拠点間における口コミの類似性に着目した観光候補地群の分析)_. Journal of Japan Society of Information and Knowledge, vol. 35, issue 2, pp. 327-333.
+1. 尾崎博信, 井下敬翔 (2025). *京都・滋賀・奈良3府県の観光拠点間における口コミの類似性に着目した観光候補地群の分析*. 情報知識学会誌, vol. 35, issue 2, pp. 327-333.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

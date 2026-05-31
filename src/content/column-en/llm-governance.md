@@ -5,7 +5,7 @@ excerpt: "Large language models are quietly influencing politics, education, and
 image: "/column-images/llm-governance.svg"
 imageAlt: "Abstract visual of a three-layer hierarchy diagram with a vertical amber line of accountability cutting through each layer"
 readingMinutes: 5
-basedOnPaper: "Political Impact of Large Language Models and Guidelines for Governance"
+basedOnPaper: "大規模言語モデルの政治的影響とガバナンスの指針"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -137,6 +137,6 @@ What technology can do and what management should do are different questions. Th
 
 ## References
 
-1. Keito Inoshita (2025). _Political Impact of Large Language Models and Guidelines for Governance (Original in Japanese: 大規模言語モデルの政治的影響とガバナンスの指針)_. 44th Showa Ikeda Award for Student Papers.
+1. 井下敬翔 (2025). *大規模言語モデルの政治的影響とガバナンスの指針*. 第44回学生論文昭和池田賞.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

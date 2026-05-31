@@ -115,7 +115,7 @@ WM-SAR や DBDA-EDL が示すのは、皮肉理解には「単一の高性能モ
 
 ## 参考論文
 
-1. 井下敬翔, 水野慎之介 (2026). *World model inspired sarcasm reasoning with large language model agents*. Discovery Artificial Intelligence.
-2. 上野孝斗, 井下敬翔 (2025). *Dual-Branch Feature Extraction via Discrepancy-Aware Fusion with Evidential Deep Learning for Sarcasm Detection*. IEEE IAICT 2025, pp. 345-352.
+1. Keito Inoshita, Shinnosuke Mizuno (2026). *World model inspired sarcasm reasoning with large language model agents*. Discovery Artificial Intelligence.
+2. Takato Ueno, Keito Inoshita (2025). *Dual-Branch Feature Extraction via Discrepancy-Aware Fusion with Evidential Deep Learning for Sarcasm Detection*. IEEE IAICT 2025, pp. 345-352.
 
 <p class="ai-notice"><small>※ 本記事は一部 AI により執筆されており、間違った情報が含まれる恐れがあります。</small></p>
