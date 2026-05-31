@@ -5,7 +5,7 @@ excerpt: "Most enterprise emotion-AI projects stumble not on technology but on t
 image: "/column-images/five-silos.svg"
 imageAlt: "Six-layer emotion-AI pipeline stacked vertically with amber bridges connecting the layers"
 readingMinutes: 5
-basedOnPaper: "Bridging the Silos in Affective AI"
+basedOnPaper: "Bridging the Silos in Affective AI: A Critical Perspective from Data to Society"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -121,6 +121,8 @@ Mismanage the risk and technology investment spins in place inside the gaps, sur
 
 ---
 
-> This article is a business-oriented rewrite of _"Bridging the Silos in Affective AI"_ (AI and Society, submitted 2026), authored by Keito Inoshita (Affectosphere Group, Kansai University).
+## References
+
+1. Keito Inoshita (2026). _Bridging the Silos in Affective AI: A Critical Perspective from Data to Society_. SSRN preprint.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

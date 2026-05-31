@@ -123,6 +123,8 @@ What technology _can_ do and what business _should_ do are different questions. 
 
 ---
 
-> This article is a business-oriented rewrite of _"Nationality and Region Prediction from Names: A Comparative Study of Neural Models and Large Language Models"_ (arXiv, 2026), authored by Keito Inoshita (Affectosphere Group, Kansai University).
+## References
+
+1. Keito Inoshita (2026). _Nationality and Region Prediction from Names: A Comparative Study of Neural Models and Large Language Models_. arXiv preprint.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

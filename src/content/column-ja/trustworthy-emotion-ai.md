@@ -5,7 +5,7 @@ excerpt: "顧客の感情を読む AI が、自信満々に間違える時代は
 image: "/column-images/trustworthy-emotion-ai.svg"
 imageAlt: "複数の感情ラベルが確率分布の山として重なり合う抽象的なビジュアル"
 readingMinutes: 5
-basedOnPaper: "LLMs Capture Emotion Labels, Not Emotion Uncertainty / Uncertainty Decomposition via Cyclical SG-MCMC and Soft-label Learning / Bayesian Spectral Emotion Transition Discovery"
+basedOnPaper: "LLMs Capture Emotion Labels, Not Emotion Uncertainty: Distributional Analysis and Calibration of Human-LLM Judgment Gaps"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -119,6 +119,10 @@ basedOnPaperUrl: "https://arxiv.org/"
 
 ---
 
-> 本記事は、感情 AI の不確実性に関する 2026 年の 3 本の研究を、ビジネス向けに再構成したコラムです。
+## 参考論文
+
+1. 井下敬翔, 周暁康, 河合明, 矢田勝俊 (2026). *LLMs Capture Emotion Labels, Not Emotion Uncertainty: Distributional Analysis and Calibration of Human-LLM Judgment Gaps*. arXiv preprint.
+2. 井下敬翔, 上野孝斗 (2026). *Uncertainty Decomposition via Cyclical SG-MCMC and Soft-label Learning for Subjective NLP*. arXiv preprint.
+3. 井下敬翔, 上野孝斗 (2026). *Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement*. arXiv preprint.
 
 <p class="ai-notice"><small>※ 本記事は一部 AI により執筆されており、間違った情報が含まれる恐れがあります。</small></p>

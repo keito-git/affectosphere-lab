@@ -110,7 +110,9 @@ https://affectosphere-group.netlify.app/column/personal-organizational-ai/
 
 ---
 
-> 本記事は、パーソナル AI と組織 AI による人事管理の革新と最適化に関する研究 (人と仕事, 2024) を、HR・経営実務向けに再構成したコラムです。
+## 参考論文
+
+1. 井下敬翔 (2024). _パーソナルAIと組織AIによる人事管理の革新と最適化_. 人と仕事の未来研究所第1回懸賞論文.
 
 ## 注釈
 

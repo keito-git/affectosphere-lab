@@ -5,7 +5,7 @@ excerpt: "If ChatGPT quietly shifts its tone depending on the country name in th
 image: "/column-images/llm-political-bias.svg"
 imageAlt: "Abstract visual of a world map overlaid with sentiment scores, with specific regions highlighted in amber to signal bias"
 readingMinutes: 6
-basedOnPaper: "Multifaceted Exploration / EICR / Corpus Development / Sentiment Bias and Security Analysis"
+basedOnPaper: "Multifaceted Exploration of Perceptions on the Ukraine-Russia War in the Japanese Twitter Space"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -126,6 +126,12 @@ When someone asks "is our AI geopolitically safe?", I hope this checklist is wha
 
 ---
 
-> This article is a business-oriented rewrite of several 2024 studies on political bias in LLMs.
+## References
+
+1. Keito Inoshita (2024). _Multifaceted Exploration of Perceptions on the Ukraine-Russia War in the Japanese Twitter Space_. IEEE IoTaIS 2024, pp. 58-64.
+2. Keito Inoshita (2024). _Sentiment Analysis of Japanese Twitter Users Regarding the Ukraine-Russia War and Its Implications for Security Policy_. ICITACEE 2024, pp. 338-343.
+3. Keito Inoshita (2024). _Assessment of Conflict Structure Recognition and Bias Impact in Japanese LLMs_. TIMES-iCON 2024.
+4. Keito Inoshita (2024). _The Efficient Development of Conflict Structure Datasets for Evaluating Sentiment Recognition Bias in Large Language Models_. ICELTICs 2024, pp. 7-12.
+5. Keito Inoshita, Xiaokang Zhou (2024). _Sentiment Bias and Security Analysis in Training Datasets of Large Language Models_. IEEE BDCloud 2024, pp. 1-8.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

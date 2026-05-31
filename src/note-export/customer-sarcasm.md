@@ -114,7 +114,10 @@ WM-SAR や DBDA-EDL が示すのは、皮肉理解には「単一の高性能モ
 
 ---
 
-> 本記事は、皮肉認識に関する最新研究 _"World Model Inspired Sarcasm Reasoning with LLM Agents"_ および _"Dual-Branch Feature Extraction via Discrepancy-Aware Fusion with EDL for Sarcasm Detection"_ を、ビジネス向けに再構成したコラムです。
+## 参考論文
+
+1. 井下敬翔, 水野慎之介 (2026). _World model inspired sarcasm reasoning with large language model agents_. Discovery Artificial Intelligence.
+2. 上野孝斗, 井下敬翔 (2025). _Dual-Branch Feature Extraction via Discrepancy-Aware Fusion with Evidential Deep Learning for Sarcasm Detection_. IEEE IAICT 2025, pp. 345-352.
 
 ## おことわり
 

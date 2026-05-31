@@ -5,7 +5,7 @@ excerpt: "従業員の心理状態を可視化する AI が、HR や組織開発
 image: "/column-images/workplace-emotion-ai.svg"
 imageAlt: "抽象化されたオフィス空間に複数の感情アイコンとチームダッシュボード風のグラフが重なるビジュアル"
 readingMinutes: 5
-basedOnPaper: "職場環境におけるマルチモーダル感情認識技術の現状と展望 / 生成 AI を活用した職場感情分析と Well-being の向上 / 感情データが導く生成 AI 時代の Well-being と職場環境"
+basedOnPaper: "職場環境におけるマルチモーダル感情認識技術の現状と展望"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -113,6 +113,10 @@ basedOnPaperUrl: "https://arxiv.org/"
 
 ---
 
-> 本記事は、職場感情 AI に関する 2025 年の研究 _"職場環境におけるマルチモーダル感情認識技術の現状と展望"_, _"生成 AI を活用した職場感情分析と Well-being の向上"_, _"感情データが導く生成 AI 時代の Well-being と職場環境"_ を、ビジネス向けに再構成したコラムです。
+## 参考論文
+
+1. 井下敬翔, 尾崎博信 (2025). *職場環境におけるマルチモーダル感情認識技術の現状と展望*. 情報知識学会誌, vol. 35, issue 2, pp. 151-156.
+2. 井下敬翔 (2025). *生成AIを活用した職場感情分析とWell-beingの向上*. 地球・宇宙・未来, vol. 1, issue 2, pp. 109-114.
+3. 井下敬翔 (2025). *感情データが導く生成AI時代のWell-beingは職場環境*. 第25回理工学系学生科学技術論文コンクール入賞論文集.
 
 <p class="ai-notice"><small>※ 本記事は一部 AI により執筆されており、間違った情報が含まれる恐れがあります。</small></p>

@@ -5,7 +5,7 @@ excerpt: "The era of \"slap an LLM on the car and win\" is over. Lightweight mod
 image: "/column-images/ai-co-driver.svg"
 imageAlt: "Abstract line drawing of a driver-seat perspective and a cognitive-chain flow"
 readingMinutes: 5
-basedOnPaper: "Cognitive-Causal Multi-Task Learning (CauPsi) / C-DIRA: Dynamic ROI Routing and Adversarial Learning for Driver Behavior"
+basedOnPaper: "Cognitive-Causal Multi-Task Learning with Psychological State Conditioning for Assistive Driving Perception"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -124,6 +124,9 @@ The next time you sit down to redesign your AI stack, I hope this column's check
 
 ---
 
-> This article is a business-oriented rewrite of CauPsi (2026), which embeds the cognitive-causal chain into multi-task learning, and C-DIRA (2025), which lightweights driver-behavior recognition via dynamic ROI routing and domain-invariant adversarial learning.
+## References
+
+1. Keito Inoshita, Nobuhiro Hayashida, Akira Imanishi (2026). _Cognitive-Causal Multi-Task Learning with Psychological State Conditioning for Assistive Driving Perception_. arXiv preprint.
+2. Keito Inoshita (2025). _C-DIRA: Computationally Efficient Dynamic ROI Routing and Domain-Invariant Adversarial Learning for Lightweight Driver Behavior Recognition_. arXiv preprint.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

@@ -5,7 +5,7 @@ excerpt: "The age of emotion AI confidently making wrong calls is ending. Three 
 image: "/column-images/trustworthy-emotion-ai.svg"
 imageAlt: "Abstract visual of multiple emotion labels overlapping as probability distributions"
 readingMinutes: 5
-basedOnPaper: "LLMs Capture Emotion Labels, Not Emotion Uncertainty / Uncertainty Decomposition via Cyclical SG-MCMC and Soft-label Learning / Bayesian Spectral Emotion Transition Discovery"
+basedOnPaper: "LLMs Capture Emotion Labels, Not Emotion Uncertainty: Distributional Analysis and Calibration of Human-LLM Judgment Gaps"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -119,6 +119,10 @@ Manage the risk poorly and the costs of confidently-wrong verdicts (churn, regul
 
 ---
 
-> This article is a business-oriented rewrite of three 2026 research papers on uncertainty in emotion AI.
+## References
+
+1. Keito Inoshita, Xiaokang Zhou, Akira Kawai, Katsutoshi Yada (2026). _LLMs Capture Emotion Labels, Not Emotion Uncertainty: Distributional Analysis and Calibration of Human-LLM Judgment Gaps_. arXiv preprint.
+2. Keito Inoshita, Takato Ueno (2026). _Uncertainty Decomposition via Cyclical SG-MCMC and Soft-label Learning for Subjective NLP_. arXiv preprint.
+3. Keito Inoshita, Takato Ueno (2026). _Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement_. arXiv preprint.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

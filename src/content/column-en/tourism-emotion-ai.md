@@ -5,7 +5,7 @@ excerpt: "Social posts, reviews, photo captions — fragments of emotion travele
 image: "/column-images/tourism-emotion-ai.svg"
 imageAlt: "Abstract visual of a travel map with destinations and emotion icons hovering at each point"
 readingMinutes: 5
-basedOnPaper: "Emotion Data Analysis and LLM Application in Tourism"
+basedOnPaper: "Analysis of Tourism Candidate Areas Based on Similarity of Reviews Across Tourist Spots in Kyoto, Shiga, and Nara"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -111,6 +111,8 @@ What technology can do and what tourism should do are different questions. The l
 
 ---
 
-> This article is a tourism-industry-oriented rewrite of research on emotion data analysis and LLM application in tourism (Journal of the Japan Society for Information and Knowledge, 2025).
+## References
+
+1. Hironobu Ozaki, Keito Inoshita (2025). _Analysis of Tourism Candidate Areas Based on Similarity of Reviews Across Tourist Spots in Kyoto, Shiga, and Nara (Original in Japanese: 京都・滋賀・奈良3府県の観光拠点間における口コミの類似性に着目した観光候補地群の分析)_. Journal of Japan Society of Information and Knowledge, vol. 35, issue 2, pp. 327-333.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

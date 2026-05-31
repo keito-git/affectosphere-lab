@@ -5,7 +5,7 @@ excerpt: "Collecting emotion-labeled data has long been blocked by the walls of 
 image: "/column-images/synthetic-emotion-data.svg"
 imageAlt: "Abstract visual of scattered data points with missing regions filled in by amber dots, overlaid with faint human silhouettes"
 readingMinutes: 5
-basedOnPaper: "CIEGAD / KDDA / PersonaGen"
+basedOnPaper: "Persona-Based Synthetic Data Generation Using Multi-Stage Conditioning with Large Language Models for Emotion Recognition"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -117,6 +117,10 @@ The next time someone asks "is our data strategy really fine as-is?", I hope thi
 
 ---
 
-> This article is a business-oriented rewrite of recent synthetic emotion-data research, including _"CIEGAD"_, _"KDDA"_, and _"PersonaGen"_.
+## References
+
+1. Keito Inoshita, Rushia Harada (2026). _Persona-Based Synthetic Data Generation Using Multi-Stage Conditioning with Large Language Models for Emotion Recognition_. International Journal of Activity and Behavior Computing, vol. 1, pp. 1-18.
+2. Keito Inoshita, Hayato Tomisu, Xiaokang Zhou, Akira Kawai, Katsutoshi Yada (2026). _KDDA: A Knowledge-Driven Domain and Diversity Alignment Framework for Emotion Data Generation with Large Language Models_. International Journal of Activity and Behavior Computing, vol. 1, pp. 1-24.
+3. Keito Inoshita, Xiaokang Zhou, Akira Kawai, Katsutoshi Yada (2025). _Geometric Control-Based Data Augmentation with Cluster-Conditioned Interpolation and Extrapolation for Imbalanced Learning in LLM_. arXiv preprint.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

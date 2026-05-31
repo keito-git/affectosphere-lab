@@ -5,7 +5,7 @@ excerpt: "The attention economy quietly erodes user wellbeing. New research show
 image: "/column-images/emotion-tempering.svg"
 imageAlt: "Emotion-intensity meter dropping from red to amber as a sensational headline is rewritten into a calmer version"
 readingMinutes: 5
-basedOnPaper: "MALLET: Multi-Agent LLM-based Emotion Tempering"
+basedOnPaper: "Multi-Agent Large Language Model Based Emotional Detoxification Through Personalized Intensity Control for Consumer Protection"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -121,6 +121,8 @@ Mismanage the risk and regulatory cost, silent attrition, and brand erosion all 
 
 ---
 
-> This article is a business-oriented rewrite of _"MALLET: Multi-Agent LLM-based Emotion Tempering"_ (2026).
+## References
+
+1. Keito Inoshita (2026). _Multi-Agent Large Language Model Based Emotional Detoxification Through Personalized Intensity Control for Consumer Protection_. IEEE ZINC 2026.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

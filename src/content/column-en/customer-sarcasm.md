@@ -5,7 +5,7 @@ excerpt: "When customer reviews and support tickets say \"well done,\" is it pra
 image: "/column-images/customer-sarcasm.svg"
 imageAlt: "Abstract visual of the same phrase shown in two colors, representing surface meaning and intended meaning"
 readingMinutes: 5
-basedOnPaper: "World Model Inspired Sarcasm Reasoning with LLM Agents / Dual-Branch Feature Extraction via Discrepancy-Aware Fusion with EDL for Sarcasm Detection"
+basedOnPaper: "World model inspired sarcasm reasoning with large language model agents"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -115,6 +115,9 @@ The next time someone asks "is our sentiment analysis really fine?", I hope this
 
 ---
 
-> This article is a business-oriented rewrite of recent sarcasm-recognition research, including _"World Model Inspired Sarcasm Reasoning with LLM Agents"_ and _"Dual-Branch Feature Extraction via Discrepancy-Aware Fusion with EDL for Sarcasm Detection"_.
+## References
+
+1. Keito Inoshita, Shinnosuke Mizuno (2026). _World model inspired sarcasm reasoning with large language model agents_. Discovery Artificial Intelligence.
+2. Takato Ueno, Keito Inoshita (2025). _Dual-Branch Feature Extraction via Discrepancy-Aware Fusion with Evidential Deep Learning for Sarcasm Detection_. IEEE IAICT 2025, pp. 345-352.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

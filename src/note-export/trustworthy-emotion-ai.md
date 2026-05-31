@@ -116,7 +116,11 @@ https://affectosphere-group.netlify.app/column/trustworthy-emotion-ai/
 
 ---
 
-> 本記事は、感情 AI の不確実性に関する 2026 年の 3 本の研究を、ビジネス向けに再構成したコラムです。
+## 参考論文
+
+1. 井下敬翔, 周暁康, 河合明, 矢田勝俊 (2026). _LLMs Capture Emotion Labels, Not Emotion Uncertainty: Distributional Analysis and Calibration of Human-LLM Judgment Gaps_. arXiv preprint.
+2. 井下敬翔, 上野孝斗 (2026). _Uncertainty Decomposition via Cyclical SG-MCMC and Soft-label Learning for Subjective NLP_. arXiv preprint.
+3. 井下敬翔, 上野孝斗 (2026). _Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement_. arXiv preprint.
 
 ## 注釈
 

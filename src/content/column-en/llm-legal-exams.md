@@ -5,7 +5,7 @@ excerpt: "Feed Japan's real-estate-transactions exam to GPT and you see exactly 
 image: "/column-images/llm-legal-exams.svg"
 imageAlt: "Abstract visual of a law book, an exam sheet, a balance scale, and a passing-score line"
 readingMinutes: 6
-basedOnPaper: "Assessing GPTs Legal Knowledge in Japanese Real Estate Transactions Exam"
+basedOnPaper: "Assessing GPT's Legal Knowledge in Japanese Real Estate Transactions Exam"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -119,6 +119,8 @@ Next time you are asked "should we adopt legal tech?", I hope this checklist is 
 
 ---
 
-> This article is a business-oriented rewrite of a 2024 study evaluating GPT models on the Japanese Real-Estate Transactions Specialist exam.
+## References
+
+1. Keito Inoshita (2024). _Assessing GPT's Legal Knowledge in Japanese Real Estate Transactions Exam_. 3ICT 2024, pp. 149-155.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>

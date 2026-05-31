@@ -5,7 +5,7 @@ excerpt: "In an era where AI assistance lets everyone write well, where does an 
 image: "/column-images/ai-homogenization.svg"
 imageAlt: "Abstract visual of multiple overlapping essay drafts with only one — the rare one — glowing amber"
 readingMinutes: 5
-basedOnPaper: "Argument Rarity-based Originality Assessment for AI-Assisted Writing / Does AI Homogenize Student Thinking?"
+basedOnPaper: "Argument Rarity-based Originality Assessment for AI-Assisted Writing"
 basedOnPaperUrl: "https://arxiv.org/"
 ---
 
@@ -120,6 +120,9 @@ The next time you sit down to redesign an essay rubric, I hope this column's che
 
 ---
 
-> This article is a business-oriented rewrite of the rarity-based originality framework AROA (2026) and a 6,875-essay empirical study of AI-induced homogenization of argument structure (2026).
+## References
+
+1. Keito Inoshita, Michiaki Omura, Tsukasa Yamanaka, Go Maeda, Kentaro Tsuji (2026). _Argument Rarity-based Originality Assessment for AI-Assisted Writing_. arXiv preprint.
+2. Keito Inoshita, Michiaki Omura, Tsukasa Yamanaka, Go Maeda, Kentaro Tsuji (2026). _Does AI Homogenize Student Thinking? A Multi-Dimensional Analysis of Structural Convergence in AI-Augmented Essays_. arXiv preprint.
 
 <p class="ai-notice"><small>* This article was written in part with AI assistance and may contain inaccuracies.</small></p>
