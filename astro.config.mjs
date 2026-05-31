@@ -1,16 +1,19 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  // Static output by default. Set `site` and `base` when deploying to GitHub Pages.
-  site: "https://example.com",
+  // Production URL. Used for sitemap generation, canonical URLs, and og:url.
+  // Update if a custom domain is configured later.
+  site: "https://affectosphere-group.netlify.app",
   integrations: [
     tailwind({
       // Inject Tailwind base styles via a custom entrypoint so we can layer
       // our own CSS variables and font-face declarations on top.
       applyBaseStyles: false,
     }),
+    sitemap(),
   ],
   build: {
     format: "directory",

@@ -12,6 +12,12 @@ interface Props {
    *  Use for full-bleed hero pages that handle their own containers. */
   fullBleed?: boolean;
   locale?: "ja" | "en";
+  /** Optional per-page social image (Open Graph / Twitter card).
+   *  Pass a site-relative path like "/column-images/foo.svg".
+   *  Falls back to the lab logo if omitted. */
+  ogImage?: string;
+  /** Optional structured data (JSON-LD) injected into <head>. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -19,11 +25,37 @@ const {
   description = site.description,
   fullBleed = false,
   locale = "ja",
+  ogImage,
+  jsonLd,
 } = Astro.props;
 
 const pageTitle = title ? `${title} | ${site.name}` : site.name;
 const pathname = Astro.url.pathname;
 const htmlLang = locale === "en" ? "en" : "ja";
+
+// Absolute origin for canonical / og:url / hreflang alternates.
+// Astro.site is configured in astro.config.mjs.
+const origin = Astro.site ? Astro.site.origin : "https://affectosphere-group.netlify.app";
+const canonical = `${origin}${pathname}`;
+
+// hreflang alternates: mirror the path between the JP root and the /en/ subtree.
+const altPath =
+  locale === "en"
+    ? pathname.replace(/^\/en(\/|$)/, "/") || "/"
+    : `/en${pathname.startsWith("/") ? pathname : `/${pathname}`}`;
+const alternateUrl = `${origin}${altPath}`;
+
+// Absolute OG image URL: per-page override, otherwise the lab logo.
+const ogImagePath = ogImage ?? "/logo/mark-light.png";
+const ogImageAbsolute = ogImagePath.startsWith("http")
+  ? ogImagePath
+  : `${origin}${ogImagePath}`;
+
+const jsonLdArray = jsonLd
+  ? Array.isArray(jsonLd)
+    ? jsonLd
+    : [jsonLd]
+  : [];
 ---
 
 <!doctype html>
@@ -35,14 +67,32 @@ const htmlLang = locale === "en" ? "en" : "ja";
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
 
+    <!-- Canonical + hreflang alternates for the JP/EN site pair. -->
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="alternate"
+      hreflang={locale}
+      href={canonical}
+    />
+    <link
+      rel="alternate"
+      hreflang={locale === "en" ? "ja" : "en"}
+      href={alternateUrl}
+    />
+    <link rel="alternate" hreflang="x-default" href={`${origin}/`} />
+
     <!-- Open Graph / social -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:image" content="/logo/mark-light.png" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:image" content="/logo/mark-light.png" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:locale" content={locale === "en" ? "en_US" : "ja_JP"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
 
     <!-- Favicon (lab logo, light-bg variant for browser tabs on white). -->
     <link rel="icon" type="image/png" href="/logo/mark.png" />
@@ -56,6 +106,15 @@ const htmlLang = locale === "en" ? "en" : "ja";
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     />
+
+    {
+      jsonLdArray.map((data) => (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(data)}
+        />
+      ))
+    }
   </head>
 
   <body class="min-h-screen bg-ivory text-charcoal antialiased">

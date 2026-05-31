@@ -22,6 +22,40 @@ function formatDate(iso: string): string {
 const hasJapanese = (await getCollection("column-ja")).some(
   (p) => p.slug === post.slug
 );
+
+const origin = Astro.site
+  ? Astro.site.origin
+  : "https://affectosphere-group.netlify.app";
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.excerpt,
+  inLanguage: "en",
+  datePublished: post.data.date,
+  dateModified: post.data.date,
+  author: {
+    "@type": "Person",
+    name: "Keito Inoshita",
+    url: `${origin}/en/about/`,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Affectosphere Group",
+    url: origin,
+    logo: {
+      "@type": "ImageObject",
+      url: `${origin}/logo/mark.png`,
+    },
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `${origin}/en/column/${post.slug}/`,
+  },
+  ...(post.data.image && {
+    image: `${origin}${post.data.image}`,
+  }),
+};
 ---
 
 <BaseLayout
@@ -29,6 +63,8 @@ const hasJapanese = (await getCollection("column-ja")).some(
   description={post.data.excerpt}
   fullBleed
   locale="en"
+  ogImage={post.data.image}
+  jsonLd={articleJsonLd}
 >
   <article class="mx-auto max-w-content page-x pt-24 md:pt-32">
     <header class="reveal mx-auto max-w-5xl">
