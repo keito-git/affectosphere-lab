@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAFAF7"/>
+      <stop offset="55%" stop-color="#F4F0E8"/>
+      <stop offset="100%" stop-color="#E8DCC4"/>
+    </linearGradient>
+    <linearGradient id="amber-glow" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0%" stop-color="#D49F4C" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#D49F4C" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#D49F4C" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#D49F4C" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#D49F4C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pin" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#D49F4C" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#7A5A2C" stop-opacity="0.85"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base parchment -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Faint grid suggesting a travel map -->
+  <g stroke="#D4C5A3" stroke-width="0.6" fill="none" opacity="0.5">
+    <line x1="0" y1="180" x2="1600" y2="180"/>
+    <line x1="0" y1="360" x2="1600" y2="360"/>
+    <line x1="0" y1="540" x2="1600" y2="540"/>
+    <line x1="0" y1="720" x2="1600" y2="720"/>
+    <line x1="220" y1="0" x2="220" y2="900"/>
+    <line x1="500" y1="0" x2="500" y2="900"/>
+    <line x1="800" y1="0" x2="800" y2="900"/>
+    <line x1="1100" y1="0" x2="1100" y2="900"/>
+    <line x1="1380" y1="0" x2="1380" y2="900"/>
+  </g>
+
+  <!-- Soft amber atmospheric glow -->
+  <rect width="1600" height="900" fill="url(#amber-glow)"/>
+
+  <!-- Distant mountain silhouettes -->
+  <g fill="#6B6B66" opacity="0.18">
+    <polygon points="0,640 180,420 360,560 540,360 760,580 980,400 1180,560 1380,420 1600,580 1600,900 0,900"/>
+  </g>
+  <g fill="#7A5A2C" opacity="0.14">
+    <polygon points="0,700 220,520 440,640 660,500 900,660 1140,500 1340,640 1600,520 1600,900 0,900"/>
+  </g>
+
+  <!-- Winding travel route (amber dashed line) -->
+  <path d="M 120 720 C 260 640, 340 540, 480 500 S 720 380, 860 420 S 1140 520, 1280 460 S 1480 300, 1520 240"
+        fill="none" stroke="#D49F4C" stroke-width="3" stroke-dasharray="10 8" opacity="0.7"/>
+
+  <!-- Emotion spotlights at key travel points -->
+  <ellipse cx="280" cy="660" rx="160" ry="110" fill="url(#spot)"/>
+  <ellipse cx="640" cy="460" rx="180" ry="120" fill="url(#spot)"/>
+  <ellipse cx="1060" cy="500" rx="170" ry="115" fill="url(#spot)"/>
+  <ellipse cx="1440" cy="280" rx="160" ry="110" fill="url(#spot)"/>
+
+  <!-- Map pins at travel points -->
+  <g>
+    <circle cx="280" cy="660" r="14" fill="url(#pin)"/>
+    <circle cx="640" cy="460" r="14" fill="url(#pin)"/>
+    <circle cx="1060" cy="500" r="14" fill="url(#pin)"/>
+    <circle cx="1440" cy="280" r="14" fill="url(#pin)"/>
+    <circle cx="280" cy="660" r="5" fill="#FAFAF7"/>
+    <circle cx="640" cy="460" r="5" fill="#FAFAF7"/>
+    <circle cx="1060" cy="500" r="5" fill="#FAFAF7"/>
+    <circle cx="1440" cy="280" r="5" fill="#FAFAF7"/>
+  </g>
+
+  <!-- Emotion words floating above pins -->
+  <g font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" fill="#2B2B28">
+    <text x="220" y="600" font-size="32" fill="#7A5A2C" opacity="0.92">anticipation</text>
+    <text x="560" y="400" font-size="36" fill="#7A5A2C" opacity="0.92">surprise</text>
+    <text x="990" y="440" font-size="32" fill="#7A5A2C" opacity="0.92">gratitude</text>
+    <text x="1330" y="220" font-size="30" fill="#7A5A2C" opacity="0.92">afterglow</text>
+
+    <text x="120" y="800" font-size="24" opacity="0.45">scenery</text>
+    <text x="430" y="240" font-size="22" opacity="0.4">access</text>
+    <text x="820" y="720" font-size="24" opacity="0.45">hospitality</text>
+    <text x="1180" y="700" font-size="22" opacity="0.4">local craft</text>
+    <text x="100" y="180" font-size="22" opacity="0.4">expectation</text>
+    <text x="1380" y="780" font-size="22" opacity="0.4">memory</text>
+
+    <text x="60" y="500" font-size="20" opacity="0.28">レビュー</text>
+    <text x="1480" y="540" font-size="20" opacity="0.28">口コミ</text>
+    <text x="740" y="850" font-size="20" opacity="0.28">SNS post</text>
+  </g>
+
+  <!-- Subtle vignette -->
+  <radialGradient id="vignette" cx="0.5" cy="0.5" r="0.75">
+    <stop offset="60%" stop-color="#000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0.12"/>
+  </radialGradient>
+  <rect width="1600" height="900" fill="url(#vignette)"/>
+</svg>

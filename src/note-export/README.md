@@ -1,6 +1,21 @@
 # note 投稿用エクスポート
 
 Affectosphere Group の Column 14 本を、note 投稿用に整形したテキストファイル群です。
+**記事 (`<slug>.md`) と画像 (`<slug>.svg`) はセットで配置**しています。
+
+## ファイル運用ルール
+
+新規 Column 記事を追加するとき、以下を **同じ slug 名** で 1 セットで揃える:
+
+| パス | 中身 |
+|------|------|
+| `src/content/column-ja/<slug>.md` | サイト本体・日本語版本文 |
+| `src/content/column-en/<slug>.md` | サイト本体・英語版本文 |
+| `public/column-images/<slug>.svg` | サイト本体・ヘッダ画像 |
+| `src/note-export/<slug>.md` | note 投稿用整形済み本文 |
+| `src/note-export/<slug>.svg` | note 投稿用画像(`public/column-images/` と同じ内容のコピー) |
+
+note は SVG をそのまま受け付けないので、note にアップロードする際は **1200x630 程度の PNG** に変換してから使う(または gpt-image で本番 PNG を新規生成し、両ディレクトリの `.svg` を `.png` に差し替え)。
 
 ## 投稿の全体フロー
 

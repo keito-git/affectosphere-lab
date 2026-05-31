@@ -1,0 +1,178 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Services"
+  description="Affectosphere Group の企業向けサービス。AI 研修・講演・コンサルティングを通じて、感情 AI と LLM の最前線を実務に届けます。"
+  fullBleed
+>
+  <!-- Hero -->
+  <section
+    class="relative isolate overflow-hidden min-h-[55vh]"
+    aria-labelledby="svc-hero"
+  >
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image: url('/field-images/感情AIとビジネス.png');"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-ivory/70 via-ivory/45 to-ivory/75"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 mx-auto max-w-content page-x pt-24 pb-16 md:pt-32 md:pb-20 text-center">
+      <p class="font-display text-sm italic text-slate reveal">For Business</p>
+      <h1
+        id="svc-hero"
+        class="reveal mt-4 font-display font-bold tracking-tight text-charcoal"
+        style="font-size: clamp(1.75rem, 3.2vw, 2.75rem); line-height: 1.12; text-shadow: 0 1px 2px rgba(250,250,247,0.85), 0 0 28px rgba(250,250,247,0.95);"
+      >
+        感情 AI と LLM の最前線を、企業の実務に届ける。
+      </h1>
+      <p
+        class="reveal mt-6 font-bold text-lg leading-relaxed text-charcoal md:text-xl"
+        style="text-shadow: 0 1px 2px rgba(250,250,247,0.8), 0 0 20px rgba(250,250,247,0.85);"
+      >
+        Affectosphere Group は、研修・講演・コンサルティングを通じて、企業の意思決定者と現場に研究知見をお届けします。
+      </p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="mx-auto mt-section-sm max-w-content page-x">
+    <div class="reveal grid gap-8 md:grid-cols-[16rem_1fr] md:gap-14">
+      <p class="font-display text-xl italic text-slate">私たちにできること</p>
+      <p
+        class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
+        style="line-height: 1.85;"
+      >
+        生成 AI と LLM が業務に入り込むなかで、企業の現場では「精度の高さ」とは別の問い ── 不確実性をどう扱うか、バイアスをどう監査するか、AI に何を任せて何を残すか ── が日々生まれています。Affectosphere Group は、感情 AI と LLM ガバナンスを軸に、研究の知見を「すぐ動かせる判断材料」に翻訳してお届けします。研修・講演・コンサルティングの 3 形態で、組織の状況に合わせた関わり方を選んでいただけます。
+      </p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section
+    class="mx-auto mt-section max-w-content page-x"
+    aria-labelledby="services-list"
+  >
+    <header class="reveal mb-10 md:mb-14">
+      <p class="font-display text-sm italic text-slate">Service menu</p>
+      <h2
+        id="services-list"
+        class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl"
+      >
+        3 つの関わり方。
+      </h2>
+    </header>
+
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- 研修 -->
+      <article class="reveal border border-stone bg-cream p-8 md:p-10">
+        <p class="font-display text-sm italic text-slate">01</p>
+        <h3 class="mt-3 font-display text-2xl font-medium text-charcoal md:text-3xl">
+          企業内研修・勉強会
+        </h3>
+        <p class="mt-5 font-display text-base leading-relaxed text-charcoal" style="line-height:1.85;">
+          感情 AI、LLM ガバナンス、AI 倫理、機械学習の不確実性 ── 経営層・マネージャー・エンジニア・コンプライアンス担当のいずれにも届くよう、テーマと深さを調整します。1 回 90 分の単発から、複数回シリーズまで柔軟に対応します。
+        </p>
+        <p class="mt-6 font-sans text-xs uppercase tracking-[0.14em] text-slate font-medium">
+          こんなテーマで
+        </p>
+        <ul class="mt-3 space-y-2 font-display text-sm text-charcoal">
+          <li>・LLM 時代のリスク管理(GDPR / EU AI Act 入門)</li>
+          <li>・感情 AI を業務に取り入れる際の設計原則</li>
+          <li>・AI の不確実性をビジネス判断にどう使うか</li>
+          <li>・コンテンツ AI とユーザー保護の境界線</li>
+        </ul>
+      </article>
+
+      <!-- 講演 -->
+      <article class="reveal border border-stone bg-cream p-8 md:p-10">
+        <p class="font-display text-sm italic text-slate">02</p>
+        <h3 class="mt-3 font-display text-2xl font-medium text-charcoal md:text-3xl">
+          講演・登壇
+        </h3>
+        <p class="mt-5 font-display text-base leading-relaxed text-charcoal" style="line-height:1.85;">
+          業界カンファレンス、社内イベント、業界団体のセミナー、自治体の有識者枠まで、登壇形式の話題提供をいたします。聴衆の専門性に合わせ、研究の最前線をそのまま伝えるか、ビジネス示唆を抽出して届けるかをすり合わせます。
+        </p>
+        <p class="mt-6 font-sans text-xs uppercase tracking-[0.14em] text-slate font-medium">
+          得意な切り口
+        </p>
+        <ul class="mt-3 space-y-2 font-display text-sm text-charcoal">
+          <li>・感情 AI の社会実装と倫理的境界</li>
+          <li>・LLM が生む新しいバイアスと監査の実務</li>
+          <li>・AI for Science ── 各分野での AI 活用事例</li>
+          <li>・生成 AI 時代の働き方とウェルビーイング</li>
+        </ul>
+      </article>
+
+      <!-- コンサル -->
+      <article class="reveal border border-stone bg-cream p-8 md:p-10">
+        <p class="font-display text-sm italic text-slate">03</p>
+        <h3 class="mt-3 font-display text-2xl font-medium text-charcoal md:text-3xl">
+          コンサルティング
+        </h3>
+        <p class="mt-5 font-display text-base leading-relaxed text-charcoal" style="line-height:1.85;">
+          自社プロダクトや業務プロセスへの AI 導入を、設計段階から伴走します。AI 戦略の方針づくり、製品仕様の妥当性確認、リスク評価、ガバナンス整備など、組織の段階に合わせて関わり方を設計します。月次契約から案件単位まで対応可能です。
+        </p>
+        <p class="mt-6 font-sans text-xs uppercase tracking-[0.14em] text-slate font-medium">
+          相談される領域
+        </p>
+        <ul class="mt-3 space-y-2 font-display text-sm text-charcoal">
+          <li>・AI プロダクトの設計・要件定義・第三者レビュー</li>
+          <li>・社内 AI ガバナンス・倫理ガイドラインの策定</li>
+          <li>・データセット設計とバイアス監査の枠組み構築</li>
+          <li>・研究開発部門の AI 戦略立案</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Pricing note -->
+  <section class="mx-auto mt-section-sm max-w-content page-x">
+    <div class="reveal border-l-2 border-amber/60 pl-6">
+      <p class="font-display text-sm italic text-slate mb-3">料金について</p>
+      <h2 class="font-display text-2xl font-medium text-charcoal md:text-3xl">
+        内容・規模・期間に応じてお見積もり
+      </h2>
+      <p class="mt-5 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height:1.85;">
+        各サービスの料金は、テーマ・対象人数・回数・準備期間・成果物の有無などにより変動します。まずは初回 30 分の無料オンライン相談で、課題と方向性をすり合わせさせてください。そのうえで内容を整理し、お見積もりをご提示します。共同研究のご相談は <a href="/ai-for-science/" class="link-amber">AI for Science</a> ページもご覧ください。
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA to Contact -->
+  <section class="mx-auto mt-section-sm max-w-content page-x" aria-labelledby="svc-cta">
+    <div class="reveal grid gap-8 md:grid-cols-2">
+      <div class="border border-stone bg-cream p-8 md:p-10">
+        <p class="font-display text-sm italic text-slate">初回オンライン相談</p>
+        <p class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+          無料 <span class="text-base italic text-slate">(30 分)</span>
+        </p>
+        <p class="mt-4 font-display text-base leading-relaxed text-charcoal" style="line-height:1.85;">
+          まずは課題感とご希望をお聞かせください。研修・講演・コンサルのどれが合うか、あるいは別の形が良いかを一緒に整理します。
+        </p>
+        <p class="mt-6">
+          <a href="/contact/" class="btn-solid">
+            お問い合わせ
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </p>
+      </div>
+      <div class="border border-stone bg-cream p-8 md:p-10">
+        <p class="font-display text-sm italic text-slate">本契約</p>
+        <p class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+          要相談
+        </p>
+        <p class="mt-4 font-display text-base leading-relaxed text-charcoal" style="line-height:1.85;">
+          初回相談で内容を整理した後、お見積もりと契約書をご提示します。請求・契約は関西大学の所定手続きに準じます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

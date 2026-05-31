@@ -34,6 +34,7 @@ export const navItems: NavItem[] = [
   { label: "Awards", href: "/awards/", primary: true },
   { label: "Grants", href: "/grants/", primary: true },
   { label: "AI for Science", href: "/ai-for-science/", primary: true },
+  { label: "Services", href: "/services/", primary: true },
   { label: "Column", href: "/column/", primary: true },
   { label: "News", href: "/news/", primary: true },
   { label: "Contact", href: "/contact/", primary: true },

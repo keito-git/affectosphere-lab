@@ -1,0 +1,179 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Services"
+  description="Affectosphere Group's services for enterprises. We deliver the frontier of affective AI and LLM research to business practice through training, talks, and consulting."
+  fullBleed
+  locale="en"
+>
+  <!-- Hero -->
+  <section
+    class="relative isolate overflow-hidden min-h-[55vh]"
+    aria-labelledby="svc-hero"
+  >
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image: url('/field-images/感情AIとビジネス.png');"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-ivory/70 via-ivory/45 to-ivory/75"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 mx-auto max-w-content page-x pt-24 pb-16 md:pt-32 md:pb-20 text-center">
+      <p class="font-display text-sm italic text-slate reveal">For Business</p>
+      <h1
+        id="svc-hero"
+        class="reveal mt-4 font-display font-bold tracking-tight text-charcoal"
+        style="font-size: clamp(1.75rem, 3.2vw, 2.75rem); line-height: 1.12; text-shadow: 0 1px 2px rgba(250,250,247,0.85), 0 0 28px rgba(250,250,247,0.95);"
+      >
+        Bringing the frontier of affective AI and LLM research to business practice.
+      </h1>
+      <p
+        class="reveal mt-6 font-bold text-lg leading-relaxed text-charcoal md:text-xl"
+        style="text-shadow: 0 1px 2px rgba(250,250,247,0.8), 0 0 20px rgba(250,250,247,0.85);"
+      >
+        Affectosphere Group works with decision-makers and practitioners in companies through training, talks, and consulting.
+      </p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="mx-auto mt-section-sm max-w-content page-x">
+    <div class="reveal grid gap-8 md:grid-cols-[16rem_1fr] md:gap-14">
+      <p class="font-display text-xl italic text-slate">What we can do</p>
+      <p
+        class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
+        style="line-height: 1.85;"
+      >
+        As generative AI and LLMs enter day-to-day operations, businesses face new questions that go beyond accuracy alone — how to handle uncertainty, how to audit bias, what to delegate to AI and what to keep human. Affectosphere Group translates research insights from affective AI and LLM governance into decision-ready material that organizations can act on. Choose from three engagement forms — training, talks, or consulting — depending on where your organization stands.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section
+    class="mx-auto mt-section max-w-content page-x"
+    aria-labelledby="services-list"
+  >
+    <header class="reveal mb-10 md:mb-14">
+      <p class="font-display text-sm italic text-slate">Service menu</p>
+      <h2
+        id="services-list"
+        class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl"
+      >
+        Three ways to work with us.
+      </h2>
+    </header>
+
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- Training -->
+      <article class="reveal border border-stone bg-cream p-8 md:p-10">
+        <p class="font-display text-sm italic text-slate">01</p>
+        <h3 class="mt-3 font-display text-2xl font-medium text-charcoal md:text-3xl">
+          In-house training and workshops
+        </h3>
+        <p class="mt-5 font-display text-base leading-relaxed text-charcoal" style="line-height:1.85;">
+          We tailor topic and depth so that the same session can land for executives, managers, engineers, or compliance officers. Formats range from a single 90-minute workshop to multi-session series.
+        </p>
+        <p class="mt-6 font-sans text-xs uppercase tracking-[0.14em] text-slate font-medium">
+          Sample themes
+        </p>
+        <ul class="mt-3 space-y-2 font-display text-sm text-charcoal">
+          <li>· Risk management in the LLM era (GDPR / EU AI Act primer)</li>
+          <li>· Design principles for adopting affective AI</li>
+          <li>· Using AI uncertainty in business decisions</li>
+          <li>· Drawing the line between content AI and user protection</li>
+        </ul>
+      </article>
+
+      <!-- Talks -->
+      <article class="reveal border border-stone bg-cream p-8 md:p-10">
+        <p class="font-display text-sm italic text-slate">02</p>
+        <h3 class="mt-3 font-display text-2xl font-medium text-charcoal md:text-3xl">
+          Talks and keynotes
+        </h3>
+        <p class="mt-5 font-display text-base leading-relaxed text-charcoal" style="line-height:1.85;">
+          Industry conferences, internal events, association seminars, and public-sector expert panels. We adjust whether to present the research frontier as it is or to distill it into business implications, depending on your audience.
+        </p>
+        <p class="mt-6 font-sans text-xs uppercase tracking-[0.14em] text-slate font-medium">
+          Strongest angles
+        </p>
+        <ul class="mt-3 space-y-2 font-display text-sm text-charcoal">
+          <li>· Social implementation and ethical boundaries of affective AI</li>
+          <li>· New biases produced by LLMs and the practice of auditing</li>
+          <li>· AI for Science — cross-disciplinary use cases</li>
+          <li>· Ways of working and well-being in the generative AI era</li>
+        </ul>
+      </article>
+
+      <!-- Consulting -->
+      <article class="reveal border border-stone bg-cream p-8 md:p-10">
+        <p class="font-display text-sm italic text-slate">03</p>
+        <h3 class="mt-3 font-display text-2xl font-medium text-charcoal md:text-3xl">
+          Consulting
+        </h3>
+        <p class="mt-5 font-display text-base leading-relaxed text-charcoal" style="line-height:1.85;">
+          We accompany teams from the design phase of AI adoption in products or processes — from AI strategy direction, product-spec validation, risk assessment, to governance setup — adjusting engagement to your stage. Monthly retainers and per-project models are both possible.
+        </p>
+        <p class="mt-6 font-sans text-xs uppercase tracking-[0.14em] text-slate font-medium">
+          Common topics
+        </p>
+        <ul class="mt-3 space-y-2 font-display text-sm text-charcoal">
+          <li>· Design, requirements, and third-party review of AI products</li>
+          <li>· Internal AI governance and ethics guidelines</li>
+          <li>· Dataset design and bias-audit framework</li>
+          <li>· AI strategy for R&D organizations</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Pricing note -->
+  <section class="mx-auto mt-section-sm max-w-content page-x">
+    <div class="reveal border-l-2 border-amber/60 pl-6">
+      <p class="font-display text-sm italic text-slate mb-3">On pricing</p>
+      <h2 class="font-display text-2xl font-medium text-charcoal md:text-3xl">
+        Estimated based on content, scale, and duration
+      </h2>
+      <p class="mt-5 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height:1.85;">
+        Fees vary with theme, audience size, frequency, preparation time, and required deliverables. Please start with a free 30-minute online consultation so we can align on the challenge and direction. We will then provide a tailored quote. For research collaboration, see also our <a href="/en/ai-for-science/" class="link-amber">AI for Science</a> page.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="mx-auto mt-section-sm max-w-content page-x" aria-labelledby="svc-cta">
+    <div class="reveal grid gap-8 md:grid-cols-2">
+      <div class="border border-stone bg-cream p-8 md:p-10">
+        <p class="font-display text-sm italic text-slate">Initial online consultation</p>
+        <p class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+          Free <span class="text-base italic text-slate">(30 min)</span>
+        </p>
+        <p class="mt-4 font-display text-base leading-relaxed text-charcoal" style="line-height:1.85;">
+          Share your challenge and aims. We will discuss whether training, talks, or consulting fits best — or whether a different form would serve you better.
+        </p>
+        <p class="mt-6">
+          <a href="/en/contact/" class="btn-solid">
+            Contact us
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </p>
+      </div>
+      <div class="border border-stone bg-cream p-8 md:p-10">
+        <p class="font-display text-sm italic text-slate">Engagement</p>
+        <p class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+          Quote on request
+        </p>
+        <p class="mt-4 font-display text-base leading-relaxed text-charcoal" style="line-height:1.85;">
+          After the initial consultation, we provide a written quote and contract. Billing and contracts follow Kansai University's established procedures.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

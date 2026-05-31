@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAFAF7"/>
+      <stop offset="55%" stop-color="#F4F0E8"/>
+      <stop offset="100%" stop-color="#E8DCC4"/>
+    </linearGradient>
+    <linearGradient id="meter-fill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7A5A2C" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#D49F4C" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#C45A3C" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="meter-fill-after" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7A5A2C" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#D49F4C" stop-opacity="0.7"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="0.5" cy="0.5" r="0.78">
+      <stop offset="60%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.12"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Base parchment -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Subtle vertical column separator -->
+  <line x1="800" y1="80" x2="800" y2="820" stroke="#D4C5A3" stroke-width="1" opacity="0.5" stroke-dasharray="6 8"/>
+
+  <!-- Left column: BEFORE -->
+  <g>
+    <text x="120" y="130" font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" font-size="32" fill="#6B6B66">before</text>
+
+    <!-- Headline card (sensational) -->
+    <rect x="120" y="170" width="620" height="220" rx="14" fill="#FAFAF7" stroke="#7A5A2C" stroke-width="1.2"/>
+    <text x="150" y="230" font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" font-size="34" fill="#2B2B28">X goes rogue,</text>
+    <text x="150" y="280" font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" font-size="34" fill="#2B2B28">industry in shock</text>
+    <text x="150" y="345" font-family="'Helvetica Neue', 'Hiragino Kaku Gothic ProN', sans-serif" font-size="22" fill="#6B6B66" opacity="0.7">— inflammatory framing</text>
+
+    <!-- Intensity meter (high) -->
+    <text x="120" y="460" font-family="'Helvetica Neue', sans-serif" font-size="22" fill="#6B6B66">emotional intensity</text>
+    <rect x="120" y="490" width="620" height="46" rx="23" fill="#F4F0E8" stroke="#7A5A2C" stroke-width="1.2"/>
+    <rect x="120" y="490" width="540" height="46" rx="23" fill="url(#meter-fill)"/>
+    <text x="680" y="522" font-family="'Helvetica Neue', sans-serif" font-size="22" fill="#2B2B28">87</text>
+
+    <!-- Tick scale -->
+    <g stroke="#2B2B28" stroke-width="1" opacity="0.35">
+      <line x1="120" y1="550" x2="120" y2="562"/>
+      <line x1="275" y1="550" x2="275" y2="562"/>
+      <line x1="430" y1="550" x2="430" y2="562"/>
+      <line x1="585" y1="550" x2="585" y2="562"/>
+      <line x1="740" y1="550" x2="740" y2="562"/>
+    </g>
+    <text x="115" y="585" font-family="'Helvetica Neue', sans-serif" font-size="14" fill="#6B6B66">0</text>
+    <text x="730" y="585" font-family="'Helvetica Neue', sans-serif" font-size="14" fill="#6B6B66">100</text>
+
+    <!-- Effect annotation -->
+    <text x="120" y="700" font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" font-size="22" fill="#2B2B28" opacity="0.7">readers: anxious, dependent</text>
+  </g>
+
+  <!-- Center arrow indicating transformation -->
+  <g transform="translate(800, 460)">
+    <line x1="-30" y1="0" x2="30" y2="0" stroke="#D49F4C" stroke-width="3"/>
+    <polyline points="20,-10 30,0 20,10" fill="none" stroke="#D49F4C" stroke-width="3"/>
+    <text x="0" y="-30" font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" font-size="20" fill="#7A5A2C" text-anchor="middle">temper</text>
+  </g>
+
+  <!-- Right column: AFTER -->
+  <g>
+    <text x="860" y="130" font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" font-size="32" fill="#7A5A2C">after</text>
+
+    <!-- Headline card (tempered) -->
+    <rect x="860" y="170" width="620" height="220" rx="14" fill="#FAFAF7" stroke="#7A5A2C" stroke-width="1.2"/>
+    <text x="890" y="230" font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" font-size="34" fill="#2B2B28">X makes an unexpected</text>
+    <text x="890" y="280" font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" font-size="34" fill="#2B2B28">move; industry reviews</text>
+    <text x="890" y="345" font-family="'Helvetica Neue', 'Hiragino Kaku Gothic ProN', sans-serif" font-size="22" fill="#6B6B66" opacity="0.7">— meaning preserved, heat lowered</text>
+
+    <!-- Intensity meter (lower) -->
+    <text x="860" y="460" font-family="'Helvetica Neue', sans-serif" font-size="22" fill="#6B6B66">emotional intensity</text>
+    <rect x="860" y="490" width="620" height="46" rx="23" fill="#F4F0E8" stroke="#7A5A2C" stroke-width="1.2"/>
+    <rect x="860" y="490" width="280" height="46" rx="23" fill="url(#meter-fill-after)"/>
+    <text x="1160" y="522" font-family="'Helvetica Neue', sans-serif" font-size="22" fill="#2B2B28">45</text>
+
+    <!-- Tick scale -->
+    <g stroke="#2B2B28" stroke-width="1" opacity="0.35">
+      <line x1="860" y1="550" x2="860" y2="562"/>
+      <line x1="1015" y1="550" x2="1015" y2="562"/>
+      <line x1="1170" y1="550" x2="1170" y2="562"/>
+      <line x1="1325" y1="550" x2="1325" y2="562"/>
+      <line x1="1480" y1="550" x2="1480" y2="562"/>
+    </g>
+    <text x="855" y="585" font-family="'Helvetica Neue', sans-serif" font-size="14" fill="#6B6B66">0</text>
+    <text x="1470" y="585" font-family="'Helvetica Neue', sans-serif" font-size="14" fill="#6B6B66">100</text>
+
+    <!-- Effect annotation -->
+    <text x="860" y="700" font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" font-size="22" fill="#2B2B28" opacity="0.7">readers: rested, capable of acting</text>
+  </g>
+
+  <!-- Footer caption -->
+  <g font-family="'Times New Roman', 'Noto Serif JP', serif" font-style="italic" fill="#2B2B28" opacity="0.45" font-size="22">
+    <text x="120" y="860">same fact — different framing — different effect on the reader</text>
+  </g>
+
+  <!-- Vignette focus -->
+  <rect width="1600" height="900" fill="url(#vignette)"/>
+</svg>
