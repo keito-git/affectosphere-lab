@@ -37,7 +37,7 @@ const narrative = domain.narrative ?? [];
       aria-hidden="true"
     ></div>
 
-    <div class="relative z-10 mx-auto max-w-content page-x pt-24 pb-16 md:pt-32 md:pb-20">
+    <div class="relative z-10 mx-auto max-w-content page-x pt-24 pb-16 md:pt-32 md:pb-20 text-center">
       <p class="font-display text-sm italic text-slate reveal">Research</p>
       <h1
         id="domain-hero"
@@ -47,7 +47,7 @@ const narrative = domain.narrative ?? [];
         {domain.title}
       </h1>
       <p
-        class="reveal mt-6 max-w-prose font-bold text-lg leading-relaxed text-charcoal md:text-xl"
+        class="reveal mt-6 font-bold text-lg leading-relaxed text-charcoal md:text-xl"
         style="text-shadow: 0 1px 2px rgba(250,250,247,0.8), 0 0 20px rgba(250,250,247,0.85);"
       >
         {domain.summary}
@@ -61,7 +61,7 @@ const narrative = domain.narrative ?? [];
       <div class="reveal grid gap-8 md:grid-cols-[16rem_1fr] md:gap-14">
         <p class="font-display text-xl italic text-slate">取り組んでいること</p>
         <p
-          class="max-w-prose font-display text-lg leading-relaxed text-charcoal md:text-xl"
+          class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
           style="line-height: 1.85;"
         >
           {domain.longDescription}
@@ -76,7 +76,7 @@ const narrative = domain.narrative ?? [];
       <div class="reveal grid gap-8 md:grid-cols-[16rem_1fr] md:gap-14">
         <p class="font-display text-xl italic text-slate">分かってきていること</p>
         <p
-          class="max-w-prose font-display text-lg leading-relaxed text-charcoal md:text-xl"
+          class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
           style="line-height: 1.85;"
         >
           {domain.findings}
@@ -122,7 +122,7 @@ const narrative = domain.narrative ?? [];
             </div>
           ) : (
             <p
-              class="reveal max-w-prose font-display text-lg leading-relaxed text-charcoal md:text-xl"
+              class="reveal font-display text-lg leading-relaxed text-charcoal md:text-xl"
               style="line-height: 1.95;"
             >
               {block.text}
