@@ -1,0 +1,79 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1600" height="900" fill="#FDFAF4"/>
+
+  <!-- Subtle radial lines from center -->
+  <line x1="800" y1="450" x2="800" y2="80" stroke="#E8E0D0" stroke-width="1" opacity="0.5"/>
+  <line x1="800" y1="450" x2="800" y2="820" stroke="#E8E0D0" stroke-width="1" opacity="0.5"/>
+  <line x1="800" y1="450" x2="160" y2="450" stroke="#E8E0D0" stroke-width="1" opacity="0.5"/>
+  <line x1="800" y1="450" x2="1440" y2="450" stroke="#E8E0D0" stroke-width="1" opacity="0.5"/>
+  <line x1="800" y1="450" x2="348" y2="198" stroke="#E8E0D0" stroke-width="1" opacity="0.4"/>
+  <line x1="800" y1="450" x2="1252" y2="198" stroke="#E8E0D0" stroke-width="1" opacity="0.4"/>
+  <line x1="800" y1="450" x2="348" y2="702" stroke="#E8E0D0" stroke-width="1" opacity="0.4"/>
+  <line x1="800" y1="450" x2="1252" y2="702" stroke="#E8E0D0" stroke-width="1" opacity="0.4"/>
+
+  <!-- Concentric circles -->
+  <circle cx="800" cy="450" r="100" fill="none" stroke="#D4C8B8" stroke-width="1.2" opacity="0.5"/>
+  <circle cx="800" cy="450" r="200" fill="none" stroke="#D4C8B8" stroke-width="1.2" opacity="0.4"/>
+  <circle cx="800" cy="450" r="300" fill="none" stroke="#D4C8B8" stroke-width="1" opacity="0.3"/>
+
+  <!-- Valence-Arousal axes labels -->
+  <text x="800" y="68" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="16" opacity="0.7">High Arousal</text>
+  <text x="800" y="848" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="16" opacity="0.7">Low Arousal</text>
+  <text x="140" y="455" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="16" opacity="0.7">Negative</text>
+  <text x="1460" y="455" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="16" opacity="0.7">Positive</text>
+
+  <!-- Emotion word dots: plotted in valence-arousal space -->
+  <!-- Joy: high valence, high arousal -->
+  <circle cx="1050" cy="220" r="12" fill="#D4A94A" opacity="0.8"/>
+  <text x="1070" y="215" fill="#3D3530" font-family="Georgia, serif" font-size="16" font-style="italic">joy / 喜び / 기쁨</text>
+
+  <!-- Anger: negative, high arousal -->
+  <circle cx="520" cy="210" r="12" fill="#3D3530" opacity="0.7"/>
+  <text x="438" y="205" fill="#3D3530" font-family="Georgia, serif" font-size="16" font-style="italic">anger / 怒り</text>
+
+  <!-- Sadness: negative, low arousal -->
+  <circle cx="540" cy="680" r="12" fill="#7A6A5A" opacity="0.7"/>
+  <text x="455" y="697" fill="#3D3530" font-family="Georgia, serif" font-size="16" font-style="italic">sadness / 悲しみ</text>
+
+  <!-- Fear: negative, high arousal (slightly higher) -->
+  <circle cx="450" cy="290" r="10" fill="#3D3530" opacity="0.5"/>
+  <text x="365" y="286" fill="#3D3530" font-family="Georgia, serif" font-size="14" font-style="italic">fear / 恐れ</text>
+
+  <!-- Calm: positive, low arousal -->
+  <circle cx="1060" cy="670" r="10" fill="#D4A94A" opacity="0.6"/>
+  <text x="1075" y="686" fill="#3D3530" font-family="Georgia, serif" font-size="14" font-style="italic">calm / 穏やかさ</text>
+
+  <!-- Surprise: neutral-positive, high arousal -->
+  <circle cx="900" cy="160" r="10" fill="#B88A30" opacity="0.6"/>
+  <text x="918" y="155" fill="#3D3530" font-family="Georgia, serif" font-size="14" font-style="italic">surprise / 驚き</text>
+
+  <!-- Disgust: negative, medium arousal -->
+  <circle cx="430" cy="430" r="9" fill="#7A6A5A" opacity="0.5"/>
+  <text x="340" y="427" fill="#3D3530" font-family="Georgia, serif" font-size="13" font-style="italic">disgust / 嫌悪</text>
+
+  <!-- Trust: positive, low-medium arousal -->
+  <circle cx="1080" cy="560" r="9" fill="#D4A94A" opacity="0.5"/>
+  <text x="1094" y="555" fill="#3D3530" font-family="Georgia, serif" font-size="13" font-style="italic">trust / 信頼</text>
+
+  <!-- Center point -->
+  <circle cx="800" cy="450" r="16" fill="#3D3530" opacity="0.85"/>
+  <circle cx="800" cy="450" r="8" fill="#D4A94A" opacity="0.9"/>
+
+  <!-- Convergence arrows from emotion words to center -->
+  <path d="M 1042 232 Q 950 340 815 445" fill="none" stroke="#D4A94A" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5" marker-end="url(#arr)"/>
+  <path d="M 528 222 Q 650 330 785 445" fill="none" stroke="#7A6A5A" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+  <path d="M 550 668 Q 660 580 785 460" fill="none" stroke="#7A6A5A" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+  <path d="M 1054 658 Q 960 575 815 460" fill="none" stroke="#D4A94A" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+
+  <!-- Shared structure highlight ring -->
+  <circle cx="800" cy="450" r="50" fill="none" stroke="#D4A94A" stroke-width="3" opacity="0.4"/>
+  <text x="800" y="448" text-anchor="middle" fill="#3D3530" font-family="Georgia, serif" font-size="12" opacity="0.7">Shared</text>
+  <text x="800" y="463" text-anchor="middle" fill="#3D3530" font-family="Georgia, serif" font-size="12" opacity="0.7">Structure</text>
+
+  <!-- Title -->
+  <text x="800" y="46" text-anchor="middle" fill="#3D3530" font-family="Georgia, serif" font-size="26" font-weight="bold" opacity="0.85">AI Emotion Space = Human Emotion Space</text>
+
+  <!-- Bottom label -->
+  <text x="800" y="878" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="13" opacity="0.6">Affectosphere Group — valence × arousal structure across languages</text>
+</svg>

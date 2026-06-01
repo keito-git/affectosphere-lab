@@ -1,0 +1,67 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1600" height="900" fill="#FBF8F2"/>
+
+  <!-- Subtle dot grid -->
+  <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="20" cy="20" r="1.2" fill="#D4C8B8" opacity="0.7"/>
+  </pattern>
+  <rect width="1600" height="900" fill="url(#dots)"/>
+
+  <!-- Balance beam arm -->
+  <rect x="660" y="350" width="280" height="8" rx="4" fill="#3D3530" opacity="0.8"/>
+  <!-- Fulcrum vertical -->
+  <rect x="796" y="358" width="8" height="120" rx="3" fill="#3D3530" opacity="0.8"/>
+  <!-- Fulcrum triangle base -->
+  <polygon points="760,478 840,478 800,460" fill="#3D3530" opacity="0.8"/>
+
+  <!-- Left pan: machine/circuit -->
+  <line x1="660" y1="354" x2="560" y2="420" stroke="#7A6A5A" stroke-width="2.5" opacity="0.7"/>
+  <rect x="490" y="418" width="140" height="90" rx="8" fill="#D4A94A" opacity="0.25" stroke="#D4A94A" stroke-width="2"/>
+  <!-- Circuit pattern inside left pan -->
+  <line x1="510" y1="440" x2="610" y2="440" stroke="#B88A30" stroke-width="1.5" opacity="0.6"/>
+  <line x1="510" y1="460" x2="610" y2="460" stroke="#B88A30" stroke-width="1.5" opacity="0.6"/>
+  <line x1="530" y1="435" x2="530" y2="510" stroke="#B88A30" stroke-width="1.5" opacity="0.6"/>
+  <line x1="590" y1="435" x2="590" y2="510" stroke="#B88A30" stroke-width="1.5" opacity="0.6"/>
+  <rect x="522" y="448" width="16" height="16" rx="2" fill="#D4A94A" opacity="0.7"/>
+  <rect x="582" y="448" width="16" height="16" rx="2" fill="#D4A94A" opacity="0.7"/>
+  <text x="560" y="525" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="14">Machine</text>
+
+  <!-- Right pan: heart -->
+  <line x1="940" y1="354" x2="1040" y2="420" stroke="#7A6A5A" stroke-width="2.5" opacity="0.7"/>
+  <rect x="970" y="418" width="140" height="90" rx="8" fill="#3D3530" opacity="0.12" stroke="#3D3530" stroke-width="2"/>
+  <!-- Heart shape in right pan -->
+  <path d="M 1040 490 C 1040 490 1010 470 1010 452 C 1010 443 1018 436 1027 436 C 1033 436 1038 440 1040 444 C 1042 440 1047 436 1053 436 C 1062 436 1070 443 1070 452 C 1070 470 1040 490 1040 490 Z" fill="#3D3530" opacity="0.65"/>
+  <text x="1040" y="525" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="14">Human Emotion</text>
+
+  <!-- Scale balance indicator: slightly tilted left (machine is heavy) -->
+
+  <!-- Ethics labels floating -->
+  <text x="300" y="280" fill="#B88A30" font-family="Georgia, serif" font-size="22" opacity="0.6" font-style="italic">Ethics</text>
+  <text x="1200" y="320" fill="#B88A30" font-family="Georgia, serif" font-size="22" opacity="0.6" font-style="italic">Culture</text>
+  <text x="720" y="200" fill="#B88A30" font-family="Georgia, serif" font-size="22" opacity="0.6" font-style="italic">Regulation</text>
+
+  <!-- Connecting arc: ethics, culture, regulation to center -->
+  <path d="M 340 290 Q 500 240 660 310" fill="none" stroke="#D4C8B8" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+  <path d="M 1160 330 Q 1020 250 900 310" fill="none" stroke="#D4C8B8" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+
+  <!-- Title -->
+  <text x="800" y="80" text-anchor="middle" fill="#3D3530" font-family="Georgia, serif" font-size="34" font-weight="bold" opacity="0.85">Feeling Machines</text>
+  <text x="800" y="120" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="19" opacity="0.7">Ethics, Culture, and the Rise of Emotional AI</text>
+
+  <!-- Bottom 3 pillars -->
+  <rect x="200" y="660" width="320" height="60" rx="6" fill="#D4A94A" opacity="0.2" stroke="#D4A94A" stroke-width="1.5"/>
+  <text x="360" y="685" text-anchor="middle" fill="#3D3530" font-family="Georgia, serif" font-size="15">Transparency</text>
+  <text x="360" y="707" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="12">Who knows what you feel?</text>
+
+  <rect x="640" y="660" width="320" height="60" rx="6" fill="#D4A94A" opacity="0.2" stroke="#D4A94A" stroke-width="1.5"/>
+  <text x="800" y="685" text-anchor="middle" fill="#3D3530" font-family="Georgia, serif" font-size="15">Cultural Fairness</text>
+  <text x="800" y="707" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="12">Whose emotions matter?</text>
+
+  <rect x="1080" y="660" width="320" height="60" rx="6" fill="#D4A94A" opacity="0.2" stroke="#D4A94A" stroke-width="1.5"/>
+  <text x="1240" y="685" text-anchor="middle" fill="#3D3530" font-family="Georgia, serif" font-size="15">Safe Dependency</text>
+  <text x="1240" y="707" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="12">When does help become harm?</text>
+
+  <!-- Bottom label -->
+  <text x="800" y="860" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="14" opacity="0.6">Affectosphere Group</text>
+</svg>

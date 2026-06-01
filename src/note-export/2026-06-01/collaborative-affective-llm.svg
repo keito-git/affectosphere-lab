@@ -1,0 +1,72 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1600" height="900" fill="#FDFAF4"/>
+
+  <!-- Subtle grid -->
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#E8E0D0" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1600" height="900" fill="url(#grid)" opacity="0.6"/>
+
+  <!-- Central hub circle -->
+  <circle cx="800" cy="450" r="90" fill="#3D3530" opacity="0.9"/>
+  <text x="800" y="440" text-anchor="middle" fill="#FDFAF4" font-family="Georgia, serif" font-size="18" font-weight="bold">EMOTION</text>
+  <text x="800" y="465" text-anchor="middle" fill="#D4A94A" font-family="Georgia, serif" font-size="14">ORCHESTRATOR</text>
+
+  <!-- Agent node 1: top left -->
+  <circle cx="420" cy="240" r="65" fill="#D4A94A" opacity="0.85"/>
+  <text x="420" y="233" text-anchor="middle" fill="#1E1816" font-family="Georgia, serif" font-size="15" font-weight="bold">LLM-A</text>
+  <text x="420" y="255" text-anchor="middle" fill="#1E1816" font-family="Georgia, serif" font-size="11">Text Emotion</text>
+
+  <!-- Agent node 2: top right -->
+  <circle cx="1180" cy="240" r="65" fill="#D4A94A" opacity="0.85"/>
+  <text x="1180" y="233" text-anchor="middle" fill="#1E1816" font-family="Georgia, serif" font-size="15" font-weight="bold">LLM-B</text>
+  <text x="1180" y="255" text-anchor="middle" fill="#1E1816" font-family="Georgia, serif" font-size="11">Audio Intensity</text>
+
+  <!-- Agent node 3: bottom left -->
+  <circle cx="420" cy="660" r="65" fill="#D4A94A" opacity="0.85"/>
+  <text x="420" y="653" text-anchor="middle" fill="#1E1816" font-family="Georgia, serif" font-size="15" font-weight="bold">LLM-C</text>
+  <text x="420" y="675" text-anchor="middle" fill="#1E1816" font-family="Georgia, serif" font-size="11">Cultural Context</text>
+
+  <!-- Agent node 4: bottom right -->
+  <circle cx="1180" cy="660" r="65" fill="#D4A94A" opacity="0.85"/>
+  <text x="1180" y="653" text-anchor="middle" fill="#1E1816" font-family="Georgia, serif" font-size="15" font-weight="bold">LLM-D</text>
+  <text x="1180" y="675" text-anchor="middle" fill="#1E1816" font-family="Georgia, serif" font-size="11">Final Judgment</text>
+
+  <!-- Connecting arcs from agents to center -->
+  <!-- LLM-A to center -->
+  <path d="M 480 275 Q 640 300 715 390" fill="none" stroke="#7A6A5A" stroke-width="2.5" stroke-dasharray="8,4" opacity="0.7"/>
+  <!-- LLM-B to center -->
+  <path d="M 1120 275 Q 960 300 885 390" fill="none" stroke="#7A6A5A" stroke-width="2.5" stroke-dasharray="8,4" opacity="0.7"/>
+  <!-- LLM-C to center -->
+  <path d="M 480 625 Q 640 600 715 510" fill="none" stroke="#7A6A5A" stroke-width="2.5" stroke-dasharray="8,4" opacity="0.7"/>
+  <!-- LLM-D to center -->
+  <path d="M 1120 625 Q 960 600 885 510" fill="none" stroke="#7A6A5A" stroke-width="2.5" stroke-dasharray="8,4" opacity="0.7"/>
+
+  <!-- Cross connections between agents -->
+  <path d="M 480 220 Q 800 100 1115 220" fill="none" stroke="#B88A30" stroke-width="1.5" opacity="0.4"/>
+  <path d="M 480 680 Q 800 800 1115 680" fill="none" stroke="#B88A30" stroke-width="1.5" opacity="0.4"/>
+  <path d="M 450 305 Q 430 450 450 595" fill="none" stroke="#B88A30" stroke-width="1.5" opacity="0.4"/>
+  <path d="M 1150 305 Q 1170 450 1150 595" fill="none" stroke="#B88A30" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Arrow decorations on paths -->
+  <!-- Arrow from LLM-A path -->
+  <polygon points="715,390 700,375 728,378" fill="#7A6A5A" opacity="0.7"/>
+  <!-- Arrow from LLM-B path -->
+  <polygon points="885,390 900,375 872,378" fill="#7A6A5A" opacity="0.7"/>
+
+  <!-- Emotion signal dots floating -->
+  <circle cx="580" cy="330" r="8" fill="#D4A94A" opacity="0.6"/>
+  <circle cx="620" cy="310" r="5" fill="#B88A30" opacity="0.5"/>
+  <circle cx="1020" cy="330" r="8" fill="#D4A94A" opacity="0.6"/>
+  <circle cx="980" cy="310" r="5" fill="#B88A30" opacity="0.5"/>
+  <circle cx="580" cy="570" r="8" fill="#D4A94A" opacity="0.6"/>
+  <circle cx="1020" cy="570" r="8" fill="#D4A94A" opacity="0.6"/>
+
+  <!-- Title text -->
+  <text x="800" y="80" text-anchor="middle" fill="#3D3530" font-family="Georgia, serif" font-size="32" font-weight="bold" opacity="0.85">Collaborative Affective Computing</text>
+  <text x="800" y="118" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="18" opacity="0.7">Multiple LLMs, coordinated emotion intelligence</text>
+
+  <!-- Bottom label -->
+  <text x="800" y="860" text-anchor="middle" fill="#7A6A5A" font-family="Georgia, serif" font-size="14" opacity="0.6">Affectosphere Group</text>
+</svg>
