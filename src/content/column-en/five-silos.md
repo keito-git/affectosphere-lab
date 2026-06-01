@@ -23,7 +23,7 @@ But when I ask what they are actually afraid of, the answer splits in interestin
 
 In other words, emotion-AI projects don't die because "the tech is bad," "the vendor is bad," or "the field is bad." They die in the gap between layers.
 
-The position paper [^1] we submitted to AI and Society in 2026 tackles this structure head-on.
+The position paper [^1] we posted on SSRN in 2026 tackles this structure head-on.
 
 The conclusion up front:
 
