@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- Background: charcoal-tinted cream -->
+  <rect width="1600" height="900" fill="#F6F2EA"/>
+
+  <defs>
+    <pattern id="finegrid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#E4DECE" stroke-width="0.5"/>
+    </pattern>
+    <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#D4A76A;stop-opacity:0.1"/>
+      <stop offset="50%" style="stop-color:#D4A76A;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#3D3830;stop-opacity:0.1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#finegrid)"/>
+
+  <!-- Flow arrow background -->
+  <rect x="100" y="380" width="1400" height="140" rx="70" fill="url(#flowGrad)" opacity="0.4"/>
+
+  <!-- Stage 1: Expert (left) -->
+  <circle cx="260" cy="450" r="80" fill="#EDE8DC" stroke="#D4A76A" stroke-width="2" opacity="0.85"/>
+  <!-- Head -->
+  <circle cx="260" cy="415" r="28" fill="#3D3830" opacity="0.65"/>
+  <!-- Body silhouette -->
+  <path d="M 220 455 Q 260 480 300 455 L 308 510 L 212 510 Z" fill="#3D3830" opacity="0.55"/>
+  <text x="260" y="560" font-family="Georgia, serif" font-size="17" fill="#3D3830" opacity="0.65" text-anchor="middle">Expert</text>
+
+  <!-- Arrow 1 -->
+  <line x1="345" y1="450" x2="480" y2="450" stroke="#D4A76A" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="487,450 472,442 472,458" fill="#D4A76A" opacity="0.7"/>
+  <!-- Label above arrow -->
+  <text x="415" y="425" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.5" text-anchor="middle">distill</text>
+
+  <!-- Stage 2: Knowledge types (center-left) -->
+  <rect x="490" y="280" width="280" height="340" rx="16" fill="#F2EDE0" stroke="#D4A76A" stroke-width="1.5" opacity="0.8"/>
+  <text x="630" y="320" font-family="Georgia, serif" font-size="19" fill="#3D3830" opacity="0.7" text-anchor="middle">Knowledge</text>
+  <!-- Three knowledge type tags -->
+  <rect x="515" y="340" width="230" height="44" rx="10" fill="#EDE8DC" stroke="#D4A76A" stroke-width="1" opacity="0.7"/>
+  <text x="630" y="367" font-family="Georgia, serif" font-size="14" fill="#3D3830" opacity="0.65" text-anchor="middle">Procedural Know-How</text>
+
+  <rect x="515" y="398" width="230" height="44" rx="10" fill="#EDE8DC" stroke="#D4A76A" stroke-width="1" opacity="0.7"/>
+  <text x="630" y="425" font-family="Georgia, serif" font-size="14" fill="#3D3830" opacity="0.65" text-anchor="middle">Mental Models</text>
+
+  <rect x="515" y="456" width="230" height="44" rx="10" fill="#EDE8DC" stroke="#D4A76A" stroke-width="1" opacity="0.7"/>
+  <text x="630" y="483" font-family="Georgia, serif" font-size="14" fill="#3D3830" opacity="0.65" text-anchor="middle">Decision Heuristics</text>
+
+  <!-- Arrow 2 -->
+  <line x1="775" y1="450" x2="900" y2="450" stroke="#D4A76A" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="907,450 892,442 892,458" fill="#D4A76A" opacity="0.7"/>
+  <text x="840" y="425" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.5" text-anchor="middle">package</text>
+
+  <!-- Stage 3: Skill Package (center-right) -->
+  <rect x="910" y="300" width="260" height="300" rx="16" fill="#3D3830" opacity="0.12" stroke="#3D3830" stroke-width="1.5"/>
+  <text x="1040" y="335" font-family="Georgia, serif" font-size="19" fill="#3D3830" opacity="0.7" text-anchor="middle">Skill Package</text>
+  <!-- Version badge -->
+  <rect x="930" y="350" width="220" height="32" rx="8" fill="#3D3830" opacity="0.15"/>
+  <text x="1040" y="371" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">v1.0 → v1.1 → v1.2</text>
+  <!-- Editable label -->
+  <rect x="930" y="395" width="220" height="32" rx="8" fill="#D4A76A" opacity="0.2"/>
+  <text x="1040" y="416" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">Natural Language Editable</text>
+  <!-- Transferable label -->
+  <rect x="930" y="440" width="220" height="32" rx="8" fill="#3D3830" opacity="0.12"/>
+  <text x="1040" y="461" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.55" text-anchor="middle">Transferable / Rollback</text>
+  <!-- Stars -->
+  <text x="1040" y="530" font-family="Georgia, serif" font-size="14" fill="#D4A76A" opacity="0.7" text-anchor="middle">18,500+ GitHub stars</text>
+  <text x="1040" y="558" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.45" text-anchor="middle">215 community skills</text>
+
+  <!-- Arrow 3 -->
+  <line x1="1175" y1="450" x2="1305" y2="450" stroke="#D4A76A" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="1312,450 1297,442 1297,458" fill="#D4A76A" opacity="0.7"/>
+  <text x="1243" y="425" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.5" text-anchor="middle">deploy</text>
+
+  <!-- Stage 4: AI Agent (right) -->
+  <rect x="1318" y="370" width="160" height="160" rx="20" fill="#EDE8DC" stroke="#3D3830" stroke-width="2" opacity="0.75"/>
+  <!-- Robot face -->
+  <rect x="1338" y="388" width="120" height="80" rx="12" fill="#3D3830" opacity="0.7"/>
+  <circle cx="1370" cy="418" r="12" fill="#F6F2EA" opacity="0.9"/>
+  <circle cx="1410" cy="418" r="12" fill="#F6F2EA" opacity="0.9"/>
+  <rect x="1360" y="445" width="60" height="6" rx="3" fill="#D4A76A" opacity="0.8"/>
+  <text x="1398" y="550" font-family="Georgia, serif" font-size="17" fill="#3D3830" opacity="0.65" text-anchor="middle">AI Agent</text>
+
+  <!-- Title -->
+  <text x="800" y="75" font-family="Georgia, serif" font-size="28" fill="#3D3830" opacity="0.4" text-anchor="middle" letter-spacing="3">EXPERT KNOWLEDGE · DISTILLATION · SKILL</text>
+
+  <!-- Bottom benefit labels -->
+  <text x="260" y="800" font-family="Georgia, serif" font-size="15" fill="#3D3830" opacity="0.45" text-anchor="middle">Before retirement</text>
+  <text x="630" y="800" font-family="Georgia, serif" font-size="15" fill="#3D3830" opacity="0.45" text-anchor="middle">Structured &amp; visible</text>
+  <text x="1040" y="800" font-family="Georgia, serif" font-size="15" fill="#3D3830" opacity="0.45" text-anchor="middle">Org asset, versioned</text>
+  <text x="1398" y="800" font-family="Georgia, serif" font-size="15" fill="#3D3830" opacity="0.45" text-anchor="middle">Scales without the person</text>
+
+  <!-- Decorative corners -->
+  <path d="M 60 60 L 140 60 L 140 100" fill="none" stroke="#D4A76A" stroke-width="2" opacity="0.4"/>
+  <path d="M 1540 840 L 1460 840 L 1460 800" fill="none" stroke="#D4A76A" stroke-width="2" opacity="0.4"/>
+</svg>

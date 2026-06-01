@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- Background: cream -->
+  <rect width="1600" height="900" fill="#F9F5EC"/>
+
+  <defs>
+    <pattern id="dots" width="60" height="60" patternUnits="userSpaceOnUse">
+      <circle cx="30" cy="30" r="1.5" fill="#DDD5C0" opacity="0.6"/>
+    </pattern>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#D4A76A;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#D4A76A;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#dots)"/>
+  <!-- Center glow -->
+  <ellipse cx="800" cy="450" rx="500" ry="380" fill="url(#centerGlow)"/>
+
+  <!-- Concentric rings representing 4 dimensions -->
+  <circle cx="800" cy="450" r="320" fill="none" stroke="#D4A76A" stroke-width="1.2" stroke-dasharray="8,8" opacity="0.35"/>
+  <circle cx="800" cy="450" r="240" fill="none" stroke="#D4A76A" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.45"/>
+  <circle cx="800" cy="450" r="160" fill="none" stroke="#D4A76A" stroke-width="1.8" stroke-dasharray="4,6" opacity="0.55"/>
+  <circle cx="800" cy="450" r="80" fill="none" stroke="#D4A76A" stroke-width="2" opacity="0.7"/>
+
+  <!-- Human icon (left) -->
+  <!-- Head -->
+  <circle cx="440" cy="390" r="42" fill="#3D3830" opacity="0.75"/>
+  <!-- Body -->
+  <path d="M 390 445 Q 440 480 490 445 L 500 570 L 380 570 Z" fill="#3D3830" opacity="0.65"/>
+
+  <!-- AI icon (right) -->
+  <!-- rounded rectangle head -->
+  <rect x="1118" y="348" width="84" height="84" rx="18" fill="#3D3830" opacity="0.75"/>
+  <!-- eyes -->
+  <circle cx="1143" cy="378" r="9" fill="#F9F5EC" opacity="0.9"/>
+  <circle cx="1177" cy="378" r="9" fill="#F9F5EC" opacity="0.9"/>
+  <!-- mouth line -->
+  <line x1="1148" y1="408" x2="1172" y2="408" stroke="#F9F5EC" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <!-- body -->
+  <rect x="1105" y="445" width="110" height="125" rx="12" fill="#3D3830" opacity="0.65"/>
+
+  <!-- Bond arc connecting them -->
+  <path d="M 490 430 Q 800 200 1110 430" fill="none" stroke="#D4A76A" stroke-width="3.5" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Small nodes on the arc -->
+  <circle cx="620" cy="305" r="8" fill="#D4A76A" opacity="0.8"/>
+  <circle cx="800" cy="245" r="10" fill="#D4A76A" opacity="0.9"/>
+  <circle cx="980" cy="305" r="8" fill="#D4A76A" opacity="0.8"/>
+
+  <!-- Four dimension labels around the outer ring -->
+  <!-- Top -->
+  <text x="800" y="108" font-family="Georgia, serif" font-size="20" fill="#3D3830" opacity="0.65" text-anchor="middle">Romantic Intimacy</text>
+  <!-- Right -->
+  <text x="1152" y="460" font-family="Georgia, serif" font-size="20" fill="#3D3830" opacity="0.65" text-anchor="start">Separation Anxiety</text>
+  <!-- Bottom -->
+  <text x="800" y="808" font-family="Georgia, serif" font-size="20" fill="#3D3830" opacity="0.65" text-anchor="middle">Emotional Investment</text>
+  <!-- Left -->
+  <text x="100" y="460" font-family="Georgia, serif" font-size="20" fill="#3D3830" opacity="0.65" text-anchor="start">Emotional Realism</text>
+
+  <!-- Center label -->
+  <text x="800" y="440" font-family="Georgia, serif" font-size="28" fill="#3D3830" opacity="0.55" text-anchor="middle">HAABI</text>
+  <text x="800" y="472" font-family="Georgia, serif" font-size="16" fill="#3D3830" opacity="0.4" text-anchor="middle">Human-AI Affective Bonding</text>
+
+  <!-- Title -->
+  <text x="800" y="70" font-family="Georgia, serif" font-size="30" fill="#3D3830" opacity="0.45" text-anchor="middle" letter-spacing="3">MEASURING THE BOND</text>
+
+  <!-- Decorative brackets -->
+  <path d="M 60 120 L 60 80 L 140 80" fill="none" stroke="#D4A76A" stroke-width="2" opacity="0.5"/>
+  <path d="M 1540 780 L 1540 820 L 1460 820" fill="none" stroke="#D4A76A" stroke-width="2" opacity="0.5"/>
+</svg>
