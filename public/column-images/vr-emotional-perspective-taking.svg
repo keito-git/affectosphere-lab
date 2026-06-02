@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- Background: warm ivory -->
+  <rect width="1600" height="900" fill="#F6F2EA"/>
+
+  <defs>
+    <pattern id="grid-vr" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#E4DECE" stroke-width="0.5"/>
+    </pattern>
+    <linearGradient id="loopGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color:#D4A76A;stop-opacity:0.15"/>
+      <stop offset="50%" style="stop-color:#D4A76A;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#3D3830;stop-opacity:0.1"/>
+    </linearGradient>
+    <radialGradient id="glowL" cx="30%" cy="50%" r="30%">
+      <stop offset="0%" style="stop-color:#D4A76A;stop-opacity:0.18"/>
+      <stop offset="100%" style="stop-color:#D4A76A;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="glowR" cx="70%" cy="50%" r="30%">
+      <stop offset="0%" style="stop-color:#3D3830;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#3D3830;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#grid-vr)"/>
+  <rect width="1600" height="900" fill="url(#glowL)"/>
+  <rect width="1600" height="900" fill="url(#glowR)"/>
+
+  <!-- Horizontal loop band -->
+  <rect x="80" y="390" width="1440" height="120" rx="60" fill="url(#loopGrad)" opacity="0.35"/>
+
+  <!-- Left: VR player silhouette -->
+  <circle cx="270" cy="430" r="90" fill="#EDE8DC" stroke="#D4A76A" stroke-width="2" opacity="0.75"/>
+  <!-- Head -->
+  <circle cx="270" cy="390" r="32" fill="#3D3830" opacity="0.6"/>
+  <!-- VR headset -->
+  <rect x="238" y="372" width="64" height="28" rx="8" fill="#D4A76A" opacity="0.75"/>
+  <!-- Body -->
+  <path d="M 228 428 Q 270 455 312 428 L 322 495 L 218 495 Z" fill="#3D3830" opacity="0.5"/>
+  <!-- Emotion waves emanating from face -->
+  <ellipse cx="270" cy="385" rx="48" ry="18" fill="none" stroke="#D4A76A" stroke-width="1.5" opacity="0.45" stroke-dasharray="4 3"/>
+  <ellipse cx="270" cy="385" rx="65" ry="26" fill="none" stroke="#D4A76A" stroke-width="1" opacity="0.25" stroke-dasharray="4 4"/>
+  <text x="270" y="555" font-family="Georgia, serif" font-size="16" fill="#3D3830" opacity="0.6" text-anchor="middle">Player</text>
+  <text x="270" y="575" font-family="Georgia, serif" font-size="13" fill="#D4A76A" opacity="0.6" text-anchor="middle">(face-tracking)</text>
+
+  <!-- Arrow player → emotion engine -->
+  <line x1="365" y1="450" x2="510" y2="450" stroke="#D4A76A" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="517,450 503,443 503,457" fill="#D4A76A" opacity="0.7"/>
+  <text x="442" y="428" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.5" text-anchor="middle">emotion state</text>
+
+  <!-- Center: Emotion Engine -->
+  <rect x="520" y="310" width="260" height="280" rx="16" fill="#F2EDE0" stroke="#D4A76A" stroke-width="1.5" opacity="0.8"/>
+  <text x="650" y="350" font-family="Georgia, serif" font-size="18" fill="#3D3830" opacity="0.7" text-anchor="middle">Emotion Engine</text>
+  <rect x="545" y="368" width="210" height="38" rx="9" fill="#EDE8DC" stroke="#D4A76A" stroke-width="1" opacity="0.7"/>
+  <text x="650" y="392" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.65" text-anchor="middle">Real-time Inference</text>
+  <rect x="545" y="420" width="210" height="38" rx="9" fill="#EDE8DC" stroke="#D4A76A" stroke-width="1" opacity="0.7"/>
+  <text x="650" y="444" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.65" text-anchor="middle">Narrative Branching</text>
+  <rect x="545" y="472" width="210" height="38" rx="9" fill="#EDE8DC" stroke="#D4A76A" stroke-width="1" opacity="0.7"/>
+  <text x="650" y="496" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.65" text-anchor="middle">Emotional Loop</text>
+
+  <!-- Arrow engine → character -->
+  <line x1="783" y1="450" x2="928" y2="450" stroke="#D4A76A" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="935,450 921,443 921,457" fill="#D4A76A" opacity="0.7"/>
+  <text x="858" y="428" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.5" text-anchor="middle">narrative shape</text>
+
+  <!-- Right: VR Character -->
+  <circle cx="1050" cy="430" r="90" fill="#EDE8DC" stroke="#3D3830" stroke-width="2" opacity="0.65"/>
+  <!-- Character face: gentle expression circles -->
+  <circle cx="1035" cy="415" r="10" fill="#3D3830" opacity="0.55"/>
+  <circle cx="1065" cy="415" r="10" fill="#3D3830" opacity="0.55"/>
+  <path d="M 1028 445 Q 1050 462 1072 445" fill="none" stroke="#3D3830" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+  <!-- Resonance waves from character -->
+  <ellipse cx="1050" cy="425" rx="55" ry="22" fill="none" stroke="#3D3830" stroke-width="1.5" opacity="0.35" stroke-dasharray="5 3"/>
+  <ellipse cx="1050" cy="425" rx="75" ry="32" fill="none" stroke="#3D3830" stroke-width="1" opacity="0.18" stroke-dasharray="5 4"/>
+  <text x="1050" y="555" font-family="Georgia, serif" font-size="16" fill="#3D3830" opacity="0.6" text-anchor="middle">VR Character</text>
+  <text x="1050" y="575" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.5" text-anchor="middle">(emotional response)</text>
+
+  <!-- Feedback arrow character → player (curve above) -->
+  <path d="M 1050 335 Q 660 180 270 335" fill="none" stroke="#3D3830" stroke-width="1.8" stroke-dasharray="8 5" opacity="0.35"/>
+  <polygon points="270,335 282,324 280,340" fill="#3D3830" opacity="0.35"/>
+  <text x="660" y="240" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.4" text-anchor="middle">shared emotional resonance</text>
+
+  <!-- Right panel: outcome -->
+  <rect x="1210" y="310" width="280" height="280" rx="16" fill="#3D3830" opacity="0.06" stroke="#3D3830" stroke-width="1.5"/>
+  <text x="1350" y="350" font-family="Georgia, serif" font-size="17" fill="#3D3830" opacity="0.65" text-anchor="middle">Perspective-Taking</text>
+  <text x="1350" y="372" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.45" text-anchor="middle">Outcome</text>
+  <line x1="1228" y1="395" x2="1472" y2="395" stroke="#D4A76A" stroke-width="0.8" opacity="0.35"/>
+  <text x="1350" y="420" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.55" text-anchor="middle">Emotional Immersion</text>
+  <text x="1350" y="448" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.55" text-anchor="middle">Empathy Development</text>
+  <text x="1350" y="476" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.55" text-anchor="middle">Identity Resonance</text>
+  <text x="1350" y="504" font-family="Georgia, serif" font-size="12" fill="#D4A76A" opacity="0.55" text-anchor="middle">DIS Companion '26</text>
+  <text x="1350" y="525" font-family="Georgia, serif" font-size="11" fill="#3D3830" opacity="0.4" text-anchor="middle">arXiv:2606.02425</text>
+
+  <!-- Arrow engine → outcome -->
+  <line x1="1145" y1="450" x2="1208" y2="450" stroke="#3D3830" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  <polygon points="1215,450 1201,443 1201,457" fill="#3D3830" opacity="0.4"/>
+
+  <!-- Title -->
+  <text x="800" y="75" font-family="Georgia, serif" font-size="26" fill="#3D3830" opacity="0.35" text-anchor="middle" letter-spacing="3">VR · AFFECTIVE FACE-TRACKING · EMOTIONAL PERSPECTIVE-TAKING</text>
+
+  <!-- Bottom labels -->
+  <text x="270" y="800" font-family="Georgia, serif" font-size="14" fill="#3D3830" opacity="0.4" text-anchor="middle">Sensing</text>
+  <text x="650" y="800" font-family="Georgia, serif" font-size="14" fill="#3D3830" opacity="0.4" text-anchor="middle">Narrating</text>
+  <text x="1050" y="800" font-family="Georgia, serif" font-size="14" fill="#3D3830" opacity="0.4" text-anchor="middle">Resonating</text>
+  <text x="1350" y="800" font-family="Georgia, serif" font-size="14" fill="#3D3830" opacity="0.4" text-anchor="middle">Growing</text>
+
+  <!-- Decorative corners -->
+  <path d="M 60 60 L 140 60 L 140 100" fill="none" stroke="#D4A76A" stroke-width="2" opacity="0.4"/>
+  <path d="M 1540 840 L 1460 840 L 1460 800" fill="none" stroke="#D4A76A" stroke-width="2" opacity="0.4"/>
+</svg>

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- Background: ivory -->
+  <rect width="1600" height="900" fill="#F6F2EA"/>
+
+  <defs>
+    <pattern id="grid-ag" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#E4DECE" stroke-width="0.5"/>
+    </pattern>
+    <linearGradient id="loopBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A76A;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#3D3830;stop-opacity:0.05"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#grid-ag)"/>
+
+  <!-- Title -->
+  <text x="800" y="72" font-family="Georgia, serif" font-size="24" fill="#3D3830" opacity="0.35" text-anchor="middle" letter-spacing="2">AI AGENT · FIELD EXPERIMENT LEARNING · BEYOND ONE-SHOT</text>
+
+  <!-- Circular loop background -->
+  <circle cx="800" cy="470" r="280" fill="none" stroke="#D4A76A" stroke-width="1" stroke-dasharray="8 6" opacity="0.25"/>
+
+  <!-- Stage 1 box: Expert + AI Design -->
+  <rect x="80" y="180" width="320" height="200" rx="14" fill="#F2EDE0" stroke="#D4A76A" stroke-width="1.5" opacity="0.8"/>
+  <text x="240" y="218" font-family="Georgia, serif" font-size="16" fill="#3D3830" opacity="0.7" text-anchor="middle">Stage 1</text>
+  <text x="240" y="240" font-family="Georgia, serif" font-size="14" fill="#D4A76A" opacity="0.75" text-anchor="middle">Expert × AI Design</text>
+  <line x1="96" y1="252" x2="384" y2="252" stroke="#E4DECE" stroke-width="1" opacity="0.6"/>
+  <text x="240" y="278" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">Multiple message variants</text>
+  <text x="240" y="300" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">Field experiment deployed</text>
+  <text x="240" y="326" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.55" text-anchor="middle">~700K patient visits</text>
+  <text x="240" y="348" font-family="Georgia, serif" font-size="12" fill="#D4A76A" opacity="0.6" text-anchor="middle">Healthcare RCT setting</text>
+
+  <!-- Arrow Stage1 → Data -->
+  <line x1="400" y1="280" x2="490" y2="280" stroke="#D4A76A" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="497,280 483,273 483,287" fill="#D4A76A" opacity="0.7"/>
+  <text x="445" y="262" font-family="Georgia, serif" font-size="11" fill="#3D3830" opacity="0.45" text-anchor="middle">outcomes</text>
+
+  <!-- Data box -->
+  <rect x="500" y="215" width="240" height="130" rx="14" fill="#EDE8DC" stroke="#D4A76A" stroke-width="1.5" opacity="0.8"/>
+  <text x="620" y="252" font-family="Georgia, serif" font-size="15" fill="#3D3830" opacity="0.7" text-anchor="middle">Experiment Data</text>
+  <text x="620" y="278" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">CTR per variant</text>
+  <text x="620" y="300" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">Behavioral signals</text>
+  <text x="620" y="322" font-family="Georgia, serif" font-size="12" fill="#D4A76A" opacity="0.6" text-anchor="middle">Real outcomes (not priors)</text>
+
+  <!-- Arrow Data → AI Agent -->
+  <line x1="740" y1="280" x2="840" y2="335" stroke="#D4A76A" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+  <polygon points="845,340 831,330 840,323" fill="#D4A76A" opacity="0.65"/>
+  <text x="820" y="295" font-family="Georgia, serif" font-size="11" fill="#3D3830" opacity="0.45" text-anchor="middle">learns from</text>
+
+  <!-- AI Agent center -->
+  <circle cx="800" cy="470" r="100" fill="#F2EDE0" stroke="#D4A76A" stroke-width="2.5" opacity="0.85"/>
+  <text x="800" y="455" font-family="Georgia, serif" font-size="17" fill="#3D3830" opacity="0.75" text-anchor="middle">AI Agent</text>
+  <text x="800" y="478" font-family="Georgia, serif" font-size="13" fill="#D4A76A" opacity="0.75" text-anchor="middle">learns &amp; generates</text>
+  <text x="800" y="498" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.55" text-anchor="middle">autonomously</text>
+
+  <!-- Arrow AI Agent → New Variants -->
+  <line x1="900" y1="470" x2="1010" y2="390" stroke="#D4A76A" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+  <polygon points="1017,386 1007,399 1000,390" fill="#D4A76A" opacity="0.65"/>
+  <text x="985" y="415" font-family="Georgia, serif" font-size="11" fill="#3D3830" opacity="0.45" text-anchor="middle">generates</text>
+
+  <!-- New Variants box -->
+  <rect x="1020" y="220" width="260" height="160" rx="14" fill="#F2EDE0" stroke="#D4A76A" stroke-width="1.5" opacity="0.8"/>
+  <text x="1150" y="258" font-family="Georgia, serif" font-size="15" fill="#3D3830" opacity="0.7" text-anchor="middle">Stage 2 Variants</text>
+  <text x="1150" y="282" font-family="Georgia, serif" font-size="13" fill="#D4A76A" opacity="0.75" text-anchor="middle">17 new messages</text>
+  <text x="1150" y="304" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">Auto-generated</text>
+  <text x="1150" y="326" font-family="Georgia, serif" font-size="14" fill="#3D3830" opacity="0.7" text-anchor="middle">Top: CTR 69.8%</text>
+  <text x="1150" y="348" font-family="Georgia, serif" font-size="12" fill="#D4A76A" opacity="0.65" text-anchor="middle">Exceeds Stage 1 best</text>
+
+  <!-- Arrow New Variants → deployed again (loop) -->
+  <line x1="1150" y1="380" x2="1150" y2="540" stroke="#3D3830" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.35"/>
+  <text x="1185" y="465" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.4">deploy again</text>
+
+  <!-- Bottom: Key finding box -->
+  <rect x="200" y="640" width="500" height="130" rx="14" fill="#EDE8DC" stroke="#3D3830" stroke-width="1.5" opacity="0.65"/>
+  <text x="450" y="675" font-family="Georgia, serif" font-size="16" fill="#3D3830" opacity="0.7" text-anchor="middle">Critical Finding</text>
+  <line x1="215" y1="686" x2="685" y2="686" stroke="#E4DECE" stroke-width="1" opacity="0.5"/>
+  <text x="450" y="712" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.65" text-anchor="middle">LLM without real data:</text>
+  <text x="450" y="732" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.65" text-anchor="middle">could NOT predict effective interventions</text>
+  <text x="450" y="752" font-family="Georgia, serif" font-size="13" fill="#D4A76A" opacity="0.75" text-anchor="middle">Data is what makes the loop work</text>
+
+  <!-- Arrow AI Agent → Key finding -->
+  <line x1="750" y1="565" x2="580" y2="638" stroke="#3D3830" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.3"/>
+
+  <!-- Right panel: Application -->
+  <rect x="1080" y="545" width="400" height="220" rx="14" fill="#EDE8DC" stroke="#D4A76A" stroke-width="1.5" opacity="0.7"/>
+  <text x="1280" y="580" font-family="Georgia, serif" font-size="16" fill="#3D3830" opacity="0.7" text-anchor="middle">Business Application</text>
+  <line x1="1096" y1="592" x2="1464" y2="592" stroke="#E4DECE" stroke-width="1" opacity="0.5"/>
+  <text x="1280" y="618" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">Email / Push notification loops</text>
+  <text x="1280" y="642" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">CRM message optimization</text>
+  <text x="1280" y="666" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">Patient engagement nudges</text>
+  <text x="1280" y="694" font-family="Georgia, serif" font-size="12" fill="#D4A76A" opacity="0.65" text-anchor="middle">arXiv:2606.02458</text>
+  <text x="1280" y="715" font-family="Georgia, serif" font-size="11" fill="#3D3830" opacity="0.4" text-anchor="middle">Luo, Agarwal, Gao (2026)</text>
+
+  <!-- Bottom caption -->
+  <text x="800" y="845" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.35" text-anchor="middle">The value is in the loop, not in the oracle.</text>
+
+  <!-- Decorative corners -->
+  <path d="M 60 60 L 140 60 L 140 100" fill="none" stroke="#D4A76A" stroke-width="2" opacity="0.4"/>
+  <path d="M 1540 840 L 1460 840 L 1460 800" fill="none" stroke="#D4A76A" stroke-width="2" opacity="0.4"/>
+</svg>

@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- Background: cream -->
+  <rect width="1600" height="900" fill="#F6F2EA"/>
+
+  <defs>
+    <pattern id="grid-fin" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#E4DECE" stroke-width="0.5"/>
+    </pattern>
+    <linearGradient id="memGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A76A;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#3D3830;stop-opacity:0.08"/>
+    </linearGradient>
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#D4A76A;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#D4A76A;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#grid-fin)"/>
+
+  <!-- Title -->
+  <text x="800" y="72" font-family="Georgia, serif" font-size="24" fill="#3D3830" opacity="0.35" text-anchor="middle" letter-spacing="2">InKH · INTERACTION-NATIVE KNOWLEDGE HARNESS · FINANCIAL LLM</text>
+
+  <!-- Left: User conversation stack -->
+  <rect x="80" y="140" width="300" height="580" rx="14" fill="#F2EDE0" stroke="#D4A76A" stroke-width="1.5" opacity="0.75"/>
+  <text x="230" y="178" font-family="Georgia, serif" font-size="16" fill="#3D3830" opacity="0.7" text-anchor="middle">User Sessions</text>
+  <line x1="95" y1="190" x2="365" y2="190" stroke="#E4DECE" stroke-width="1" opacity="0.6"/>
+
+  <!-- Session bubbles (timeline) -->
+  <!-- t-3 months -->
+  <rect x="100" y="208" width="260" height="64" rx="10" fill="#EDE8DC" stroke="#D4A76A" stroke-width="1" opacity="0.55"/>
+  <text x="120" y="230" font-family="Georgia, serif" font-size="11" fill="#D4A76A" opacity="0.7">3 months ago</text>
+  <text x="120" y="250" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.6">Portfolio goals discussed</text>
+  <text x="120" y="265" font-family="Georgia, serif" font-size="11" fill="#3D3830" opacity="0.45">Risk tolerance: moderate</text>
+
+  <!-- t-1 month -->
+  <rect x="100" y="288" width="260" height="64" rx="10" fill="#EDE8DC" stroke="#D4A76A" stroke-width="1" opacity="0.55"/>
+  <text x="120" y="310" font-family="Georgia, serif" font-size="11" fill="#D4A76A" opacity="0.7">Last month</text>
+  <text x="120" y="330" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.6">Rebalancing considered</text>
+  <text x="120" y="345" font-family="Georgia, serif" font-size="11" fill="#3D3830" opacity="0.45">Equity → bond shift</text>
+
+  <!-- t-1 week -->
+  <rect x="100" y="368" width="260" height="64" rx="10" fill="#EDE8DC" stroke="#3D3830" stroke-width="1" opacity="0.4"/>
+  <text x="120" y="390" font-family="Georgia, serif" font-size="11" fill="#3D3830" opacity="0.55">Last week</text>
+  <text x="120" y="410" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.6">Tax concerns raised</text>
+  <text x="120" y="425" font-family="Georgia, serif" font-size="11" fill="#3D3830" opacity="0.45">Year-end planning</text>
+
+  <!-- today -->
+  <rect x="100" y="448" width="260" height="64" rx="10" fill="#3D3830" opacity="0.10" stroke="#3D3830" stroke-width="1.5"/>
+  <text x="120" y="470" font-family="Georgia, serif" font-size="11" fill="#D4A76A" opacity="0.8">Today</text>
+  <text x="120" y="490" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.65">New question...</text>
+  <text x="120" y="506" font-family="Georgia, serif" font-size="11" fill="#3D3830" opacity="0.5">System already knows context</text>
+
+  <text x="230" y="590" font-family="Georgia, serif" font-size="13" fill="#D4A76A" opacity="0.65" text-anchor="middle">Passive Injection</text>
+  <text x="230" y="610" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.5" text-anchor="middle">No user action required</text>
+
+  <!-- Arrow user → InKH -->
+  <line x1="385" y1="440" x2="490" y2="440" stroke="#D4A76A" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="497,440 483,433 483,447" fill="#D4A76A" opacity="0.7"/>
+
+  <!-- Center: InKH Graph Memory -->
+  <rect x="500" y="140" width="580" height="580" rx="14" fill="url(#memGrad)" stroke="#D4A76A" stroke-width="1.5" opacity="0.6"/>
+  <text x="790" y="180" font-family="Georgia, serif" font-size="18" fill="#3D3830" opacity="0.7" text-anchor="middle">Temporal Graph Memory</text>
+  <line x1="515" y1="193" x2="1065" y2="193" stroke="#D4A76A" stroke-width="1" opacity="0.4"/>
+
+  <!-- Graph nodes -->
+  <!-- Node: Goals -->
+  <circle cx="650" cy="290" r="38" fill="#F6F2EA" stroke="#D4A76A" stroke-width="2" opacity="0.8"/>
+  <text x="650" y="287" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.7" text-anchor="middle">Goals</text>
+  <text x="650" y="303" font-family="Georgia, serif" font-size="10" fill="#D4A76A" opacity="0.65" text-anchor="middle">t-3mo</text>
+
+  <!-- Node: Risk -->
+  <circle cx="790" cy="240" r="38" fill="#F6F2EA" stroke="#D4A76A" stroke-width="2" opacity="0.8"/>
+  <text x="790" y="237" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.7" text-anchor="middle">Risk</text>
+  <text x="790" y="253" font-family="Georgia, serif" font-size="10" fill="#D4A76A" opacity="0.65" text-anchor="middle">moderate</text>
+
+  <!-- Node: Rebalance -->
+  <circle cx="920" cy="310" r="38" fill="#F6F2EA" stroke="#3D3830" stroke-width="1.5" opacity="0.6"/>
+  <text x="920" y="307" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.65" text-anchor="middle">Rebalance</text>
+  <text x="920" y="323" font-family="Georgia, serif" font-size="10" fill="#3D3830" opacity="0.45" text-anchor="middle">t-1mo</text>
+
+  <!-- Node: Tax -->
+  <circle cx="700" cy="430" r="38" fill="#F6F2EA" stroke="#3D3830" stroke-width="1.5" opacity="0.6"/>
+  <text x="700" y="427" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.65" text-anchor="middle">Tax</text>
+  <text x="700" y="443" font-family="Georgia, serif" font-size="10" fill="#3D3830" opacity="0.45" text-anchor="middle">t-1wk</text>
+
+  <!-- Node: Current -->
+  <circle cx="870" cy="450" r="44" fill="#EDE8DC" stroke="#D4A76A" stroke-width="2.5" opacity="0.85"/>
+  <text x="870" y="447" font-family="Georgia, serif" font-size="12" fill="#3D3830" opacity="0.75" text-anchor="middle">Current</text>
+  <text x="870" y="463" font-family="Georgia, serif" font-size="10" fill="#D4A76A" opacity="0.8" text-anchor="middle">state</text>
+
+  <!-- Edges -->
+  <line x1="650" y1="252" x2="790" y2="278" stroke="#D4A76A" stroke-width="1.5" opacity="0.4"/>
+  <line x1="790" y1="278" x2="920" y2="272" stroke="#D4A76A" stroke-width="1.5" opacity="0.4"/>
+  <line x1="920" y1="348" x2="870" y2="406" stroke="#3D3830" stroke-width="1.5" opacity="0.3"/>
+  <line x1="650" y1="328" x2="700" y2="392" stroke="#3D3830" stroke-width="1.5" opacity="0.3"/>
+  <line x1="700" y1="430" x2="826" y2="450" stroke="#3D3830" stroke-width="1" opacity="0.3" stroke-dasharray="4 3"/>
+
+  <!-- Stats -->
+  <rect x="515" y="555" width="530" height="30" rx="8" fill="#3D3830" opacity="0.06"/>
+  <text x="780" y="575" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.55" text-anchor="middle">Quality: 0.815 · Latency: 900ms · Stale reduction: 96.58%</text>
+
+  <!-- Arrow InKH → Response -->
+  <line x1="1085" y1="440" x2="1175" y2="440" stroke="#D4A76A" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="1182,440 1168,433 1168,447" fill="#D4A76A" opacity="0.7"/>
+
+  <!-- Right: AI Response panel -->
+  <rect x="1185" y="140" width="330" height="580" rx="14" fill="#EDE8DC" stroke="#D4A76A" stroke-width="1.5" opacity="0.7"/>
+  <text x="1350" y="178" font-family="Georgia, serif" font-size="16" fill="#3D3830" opacity="0.7" text-anchor="middle">AI Response</text>
+  <line x1="1200" y1="190" x2="1500" y2="190" stroke="#E4DECE" stroke-width="1" opacity="0.6"/>
+
+  <text x="1350" y="240" font-family="Georgia, serif" font-size="13" fill="#D4A76A" opacity="0.75" text-anchor="middle">"Building on what</text>
+  <text x="1350" y="260" font-family="Georgia, serif" font-size="13" fill="#D4A76A" opacity="0.75" text-anchor="middle">we discussed..."</text>
+
+  <rect x="1205" y="290" width="290" height="2" rx="1" fill="#D4A76A" opacity="0.3"/>
+
+  <text x="1350" y="330" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">No re-explanation needed</text>
+  <text x="1350" y="360" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">Context auto-continued</text>
+  <text x="1350" y="390" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.6" text-anchor="middle">Adviser handover ready</text>
+
+  <rect x="1205" y="420" width="290" height="2" rx="1" fill="#D4A76A" opacity="0.3"/>
+
+  <text x="1350" y="460" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.55" text-anchor="middle">Retention</text>
+  <text x="1350" y="482" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.55" text-anchor="middle">Efficiency</text>
+  <text x="1350" y="504" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.55" text-anchor="middle">Compliance trace</text>
+
+  <text x="1350" y="550" font-family="Georgia, serif" font-size="12" fill="#D4A76A" opacity="0.6" text-anchor="middle">arXiv:2606.01886</text>
+
+  <!-- Bottom caption -->
+  <text x="800" y="845" font-family="Georgia, serif" font-size="13" fill="#3D3830" opacity="0.35" text-anchor="middle">Complexity belongs in the system, not in the user's re-explanation.</text>
+
+  <!-- Decorative corners -->
+  <path d="M 60 60 L 140 60 L 140 100" fill="none" stroke="#D4A76A" stroke-width="2" opacity="0.4"/>
+  <path d="M 1540 840 L 1460 840 L 1460 800" fill="none" stroke="#D4A76A" stroke-width="2" opacity="0.4"/>
+</svg>
