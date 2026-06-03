@@ -2,7 +2,7 @@
 title: "I Made GPT Take the Real-Estate Exam, and Saw the Shape of the Future of Licensed Professions"
 date: "2026-06-01"
 excerpt: "What happens when GPT-3.5 and GPT-4 take Japan's licensed real-estate broker exam. A 5-minute take, for legal tech, in-house legal, and licensed professionals, on how to turn an 'AI that can't pass' into a tool that makes pass-holders 1.5× more productive."
-image: "/column-images/llm-legal-exams.svg"
+image: "/column-images/llm-legal-exams.png"
 imageAlt: "Abstract visual of a law book, an exam sheet, a scale of justice, and a pass line"
 readingMinutes: 6
 basedOnPaper: "Assessing GPT's Legal Knowledge in Japanese Real Estate Transactions Exam"

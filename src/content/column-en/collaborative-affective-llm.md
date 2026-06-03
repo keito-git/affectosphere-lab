@@ -2,7 +2,7 @@
 title: "Emotion AI Went Team-Based ── Why One LLM Can't Do It Alone"
 date: "2026-06-01"
 excerpt: "Why does a single LLM keep hitting a wall when it comes to understanding emotions? A 2026 survey revealed a clear breakthrough: collaborative architectures where multiple LLMs divide the work. Here's what it means for product teams in 5 minutes."
-image: "/column-images/collaborative-affective-llm.svg"
+image: "/column-images/collaborative-affective-llm.png"
 imageAlt: "Abstract diagram of multiple AI modules connected in a circle, passing emotion signals to each other"
 readingMinutes: 5
 basedOnPaper: "When LLMs Team Up: The Emergence of Collaborative Affective Computing"

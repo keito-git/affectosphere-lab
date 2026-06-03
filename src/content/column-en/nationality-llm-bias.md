@@ -2,7 +2,7 @@
 title: "Your Company's AI Is Quietly Guessing 'Whose Name This Is'"
 date: "2026-05-31"
 excerpt: "Global CRM, hiring AI, credit scoring — processes that infer nationality from a customer's name are quietly spreading. What is going on behind the convenience? A 5-minute take from the latest research and an emotion-AI lens."
-image: "/column-images/nationality-llm-bias.svg"
+image: "/column-images/nationality-llm-bias.png"
 imageAlt: "Abstract visual of a world map overlaid with personal names in multiple scripts"
 readingMinutes: 5
 basedOnPaper: "Nationality and Region Prediction from Names: A Comparative Study of Neural Models and Large Language Models"

@@ -2,7 +2,7 @@
 title: "Why Emotion AI Needs Its Own Rules"
 date: "2026-06-01"
 excerpt: "Should we regulate emotion AI — the kind deployed in healthcare, education, and mental health — with the same frameworks we use for general AI? A 23-author interdisciplinary report says no, and lays out 10 concrete proposals for what's needed instead."
-image: "/column-images/feeling-machines-ethics.svg"
+image: "/column-images/feeling-machines-ethics.png"
 imageAlt: "A balance scale with a machine on one side and a human heart silhouette on the other, ivory background"
 readingMinutes: 5
 basedOnPaper: "Feeling Machines: Ethics, Culture, and the Rise of Emotional AI"

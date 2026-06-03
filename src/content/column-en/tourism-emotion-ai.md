@@ -2,7 +2,7 @@
 title: "A 4.5-Star and a 4.5-Star Are Not the Same — The Resolution Story for Emotion Data in Tourism"
 date: "2026-06-01"
 excerpt: "Reviews, social posts, photo captions. In an era where LLMs decode the fragments of emotion travelers leave behind, how do you act on a satisfaction structure that star ratings miss? Five minutes for tourism, municipal, and hospitality leaders."
-image: "/column-images/tourism-emotion-ai.svg"
+image: "/column-images/tourism-emotion-ai.png"
 imageAlt: "Abstract visual of a travel map with destinations and emotion icons floating over each location"
 readingMinutes: 5
 basedOnPaper: "京都・滋賀・奈良3府県の観光拠点間における口コミの類似性に着目した観光候補地群の分析"

@@ -2,7 +2,7 @@
 title: "Autonomous Driving Got Both Rules and Intuition ── ADRD's Case for Interpretable LLM Control"
 date: "2026-06-01"
 excerpt: "The wall that pure reinforcement learning and standalone LLMs couldn't break through in autonomous driving has been tackled by combining rule-based decision systems with LLM reasoning. ADRD achieves interpretability, response speed, and driving performance simultaneously — here's what that means for automotive and mobility teams."
-image: "/column-images/adrd-llm-driving.svg"
+image: "/column-images/adrd-llm-driving.png"
 imageAlt: "Abstract bird's-eye view of a car in motion, with a rule flowchart on the left and LLM reasoning bubbles on the right, merging at center"
 readingMinutes: 5
 basedOnPaper: "ADRD: LLM-Driven Autonomous Driving Based on Rule-based Decision Systems"

@@ -2,7 +2,7 @@
 title: "病院が AI 医療モデルを選ぶとき、何を基準にすればいいか ── EHRBench という新しい答え"
 date: "2026-06-02"
 excerpt: "電子カルテから 100 万件規模の臨床 QA を自動生成し、30 以上の LLM を横断評価するベンチマーク EHRBench が登場した。医療 AI の調達・導入を担当する病院・ベンダー・規制機関にとって、「どの AI を選べばいいか」の標準評価軸になりうる研究を 5 分で解説。"
-image: "/column-images/ehrbench-clinical-decision-llm.svg"
+image: "/column-images/ehrbench-clinical-decision-llm.png"
 imageAlt: "電子カルテのアイコンから放射状に伸びる評価軸、30以上のAIモデルが並ぶ横断比較の抽象ビジュアル"
 readingMinutes: 5
 basedOnPaper: "EHRBench: An Automated and Reliable EHR-based Benchmark for Clinical Decision Making with LLMs"

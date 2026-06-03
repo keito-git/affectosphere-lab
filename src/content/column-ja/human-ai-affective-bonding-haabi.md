@@ -2,7 +2,7 @@
 title: "AI への「感情的な絆」は測れるのか ── HAABI スケールが開く依存管理の新しい扉"
 date: "2026-06-02"
 excerpt: "会話 AI にユーザーが感じる感情的な絆を測定する尺度 HAABI が開発された。673 名の調査で検証済みのこの測定ツールは、AI プロダクトの過依存リスクと離脱リスクを KPI で管理する基盤になりうる。AI コーチ・HR テック・CX 設計担当者に向けて 5 分で解説。"
-image: "/column-images/human-ai-affective-bonding-haabi.svg"
+image: "/column-images/human-ai-affective-bonding-haabi.png"
 imageAlt: "人とAIのアイコンが絆を表す緩やかな弧で結ばれ、4つの次元を示す同心円が広がる抽象ビジュアル"
 readingMinutes: 5
 basedOnPaper: "Understanding the Rising Human-AI Affective Bonding: Conceptualization and HAABI Scale Development"

@@ -2,7 +2,7 @@
 title: "感情 AI のプロジェクトは、たぶん「層と層のすき間」で死ぬ"
 date: "2026-06-01"
 excerpt: "感情 AI を導入する企業の多くが、技術でもベンダーでも現場でもなく、層をまたぐ責任の空白で躓きます。6 層構造と 5 つの設計基準、そして「感情主権」という概念を、経営層向けに 5 分で。"
-image: "/column-images/five-silos.svg"
+image: "/column-images/five-silos.png"
 imageAlt: "6 層に積層された感情 AI パイプラインと、層間を結ぶ amber のブリッジ"
 readingMinutes: 5
 basedOnPaper: "Bridging the Silos in Affective AI: A Critical Perspective from Data to Society"

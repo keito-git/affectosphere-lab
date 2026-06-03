@@ -2,7 +2,7 @@
 title: "Chat UI vs. Dashboard: What 134 Managers' Data Actually Says"
 date: "2026-06-02"
 excerpt: "An experiment with 134 manufacturing managers compared LLM-based conversational interfaces against graphical dashboards across tasks of varying complexity. The results offer a clearer picture of when to use which — and why neither is a replacement for the other. A 5-minute read for DX, ERP, and BI tool teams."
-image: "/column-images/llm-conversational-vs-graphical-decision-support.svg"
+image: "/column-images/llm-conversational-vs-graphical-decision-support.png"
 imageAlt: "Chat UI bubbles on the left, graphical dashboard on the right, with a central balance scale tipping based on task complexity"
 readingMinutes: 5
 basedOnPaper: "Neither Replacement nor Panacea: Comparing LLM-Based Conversational and Graphical Decision Support in Industrial Tasks"

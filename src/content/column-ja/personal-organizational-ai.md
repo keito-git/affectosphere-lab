@@ -2,7 +2,7 @@
 title: "社員一人に AI を一台、という時代の HR の話"
 date: "2026-06-01"
 excerpt: "「全社で同じ HR ツールを入れる」発想から、「社員一人ひとりに伴走するパーソナル AI が、組織の AI と話し合う」発想へ。次世代 HR の二層構造を、人事・組織開発・経営層のための 5 分ガイドで。"
-image: "/column-images/personal-organizational-ai.svg"
+image: "/column-images/personal-organizational-ai.png"
 imageAlt: "個人を表す円と組織を表す円が、琥珀色の線で柔らかく結ばれた抽象ビジュアル"
 readingMinutes: 5
 basedOnPaper: "パーソナルAIと組織AIによる人事管理の革新と最適化"

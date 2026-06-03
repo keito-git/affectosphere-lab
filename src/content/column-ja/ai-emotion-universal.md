@@ -2,7 +2,7 @@
 title: "AI の感情は「本物」か ── 言語を超えて一致する感情空間の発見"
 date: "2026-06-01"
 excerpt: "LLM が導く感情の地図は、人間のそれと構造的に重なっている。多言語・多文化データでそれを実証した研究が示す、グローバル展開する感情 AI に対する信頼の根拠。5 分で。"
-image: "/column-images/ai-emotion-universal.svg"
+image: "/column-images/ai-emotion-universal.png"
 imageAlt: "多言語の感情語が円環状に配置され、中心に向かって矢印が収束するビジュアル"
 readingMinutes: 5
 basedOnPaper: "AI shares emotion with humans across languages and cultures"

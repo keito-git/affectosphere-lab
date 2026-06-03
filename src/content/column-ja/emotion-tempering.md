@@ -2,7 +2,7 @@
 title: "煽らないと勝てない、はもう古い ── 「意味は残して刺激だけ下げる」AI の話"
 date: "2026-06-01"
 excerpt: "怒り・不安・憤慨でクリックを取る時代の次に来るのは何か。意味を保ったまま感情強度だけを下げる AI が、メディア・広告・コンテンツプラットフォームの競争軸を静かに塗り替えはじめています。5 分で。"
-image: "/column-images/emotion-tempering.svg"
+image: "/column-images/emotion-tempering.png"
 imageAlt: "感情強度メーターが赤から黄色に下がり、衝撃的見出しが穏やかな表現に変換される様子"
 readingMinutes: 5
 basedOnPaper: "Multi-Agent Large Language Model Based Emotional Detoxification Through Personalized Intensity Control for Consumer Protection"

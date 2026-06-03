@@ -2,7 +2,7 @@
 title: "Before 'AI Governance' Lands on the CEO's Desk — Just 3 Things"
 date: "2026-06-01"
 excerpt: "LLMs are no longer an IT-only matter. They are quietly shaping the language used in politics, education, and the workplace. Three control points an executive should keep their hand on — data, model selection, output review. A 5-minute guide."
-image: "/column-images/llm-governance.svg"
+image: "/column-images/llm-governance.png"
 imageAlt: "Abstract visual of a three-tier hierarchy diagram crossed vertically by an amber line of responsibility"
 readingMinutes: 5
 basedOnPaper: "大規模言語モデルの政治的影響とガバナンスの指針"

@@ -2,7 +2,7 @@
 title: "Can You Package a Veteran's Expertise Before They Retire? COLLEAGUE.SKILL Says Yes"
 date: "2026-06-02"
 excerpt: "A framework called COLLEAGUE.SKILL automatically converts experts' tacit knowledge — procedural know-how, mental models, decision heuristics — into structured AI skill packages that can be edited, versioned, and transferred to other agents. For L&D, knowledge management, and AI implementation teams, this is one of the more practically grounded ideas in tacit knowledge transfer."
-image: "/column-images/colleague-skill-expert-knowledge-distillation.svg"
+image: "/column-images/colleague-skill-expert-knowledge-distillation.png"
 imageAlt: "Abstract flow showing knowledge extracted from a senior employee's mind, structured into a package, and transferred to an AI agent"
 readingMinutes: 5
 basedOnPaper: "COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation"

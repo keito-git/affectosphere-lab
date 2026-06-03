@@ -2,7 +2,7 @@
 title: "「ありがとう」を真に受ける AI は、最も大事な顧客を取り逃がす"
 date: "2026-06-01"
 excerpt: "顧客の「お見事ですね」が、賞賛なのか皮肉なのか。AI が取り違えた瞬間、NPS は上振れ、改善優先度は下がり、本当に怒っている人は黙って離脱します。最新の皮肉認識研究 2 本から、CX 担当者向けに 5 分で。"
-image: "/column-images/customer-sarcasm.svg"
+image: "/column-images/customer-sarcasm.png"
 imageAlt: "「お見事」という同じ言葉が「字面」と「本音」の二色で表現された抽象的なビジュアル"
 readingMinutes: 5
 basedOnPaper: "World model inspired sarcasm reasoning with large language model agents"

@@ -2,7 +2,7 @@
 title: "車の AI に LLM はいらない ── 軽量モデルが「認知の連鎖」を学ぶ時代"
 date: "2026-06-01"
 excerpt: "車載 AI に GPT を載せれば勝てる、はもう古い。データセンター前提の設計が車内で破綻する理由と、認知科学を組み込んだ軽量モデルがなぜ強いのか ── 自動車・モビリティ事業者向けに 5 分で。"
-image: "/column-images/ai-co-driver.svg"
+image: "/column-images/ai-co-driver.png"
 imageAlt: "運転席視点と認知連鎖の流れを抽象線で表したビジュアル"
 readingMinutes: 5
 basedOnPaper: "Cognitive-Causal Multi-Task Learning with Psychological State Conditioning for Assistive Driving Perception"

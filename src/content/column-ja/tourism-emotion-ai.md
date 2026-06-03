@@ -2,7 +2,7 @@
 title: "星 4.5 と星 4.5 は、同じじゃない ── 観光業の感情データ活用、解像度の話"
 date: "2026-06-01"
 excerpt: "口コミ、SNS、レビュー写真。観光客が残した感情の断片を LLM が読み解く時代に、星の数だけでは捉えきれない満足度の構造をどう活かすか。観光・自治体・ホスピタリティの方向けに 5 分で。"
-image: "/column-images/tourism-emotion-ai.svg"
+image: "/column-images/tourism-emotion-ai.png"
 imageAlt: "旅の地図上に配置された観光地と、地点ごとに浮かぶ感情アイコンの抽象ビジュアル"
 readingMinutes: 5
 basedOnPaper: "京都・滋賀・奈良3府県の観光拠点間における口コミの類似性に着目した観光候補地群の分析"

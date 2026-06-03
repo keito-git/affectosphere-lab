@@ -2,7 +2,7 @@
 title: "感情データは「集める」から「作る」へ ── 合成データという第三の選択肢"
 date: "2026-06-01"
 excerpt: "感情ラベル付きデータは、心理的負担・プライバシー・代表性の壁で集めにくい。最新研究 3 本が示すのは、ドメイン知識と LLM を使えば、倫理とコストを同時に解決できる場面が出てきたという事実です。データ運用担当者向けに 5 分で。"
-image: "/column-images/synthetic-emotion-data.svg"
+image: "/column-images/synthetic-emotion-data.png"
 imageAlt: "散らばるデータポイントの欠落部分を amber 色のドットが補完し、薄い人型シルエットが重なる抽象的なビジュアル"
 readingMinutes: 5
 basedOnPaper: "Persona-Based Synthetic Data Generation Using Multi-Stage Conditioning with Large Language Models for Emotion Recognition"

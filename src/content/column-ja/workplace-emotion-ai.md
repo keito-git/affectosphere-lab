@@ -2,7 +2,7 @@
 title: "職場の「気持ち」を測る AI ── 支援と監視は紙一重、という話"
 date: "2026-06-01"
 excerpt: "従業員の心理状態を可視化する AI が、HR や組織開発の現場に静かに広がっています。最新研究 3 本から、「監視と感じさせない設計」「介入への接続」「感情を測ることが人をモノ化しないために」、HR・経営層向けに 5 分で。"
-image: "/column-images/workplace-emotion-ai.svg"
+image: "/column-images/workplace-emotion-ai.png"
 imageAlt: "抽象化されたオフィス空間に複数の感情アイコンとチームダッシュボード風のグラフが重なるビジュアル"
 readingMinutes: 5
 basedOnPaper: "職場環境におけるマルチモーダル感情認識技術の現状と展望"

@@ -2,7 +2,7 @@
 title: "When Everyone Can 'Write Well' With AI, Where Does an Organization Measure Individuality?"
 date: "2026-06-01"
 excerpt: "In an era where anyone can mass-produce polished prose with AI, the thinking of the whole organization is quietly being homogenized. A 5-minute read from the latest research on argument rarity and our emotion-AI perspective."
-image: "/column-images/ai-homogenization.svg"
+image: "/column-images/ai-homogenization.png"
 imageAlt: "Abstract visual of overlapping essay drafts with only the rare one glowing amber"
 readingMinutes: 5
 basedOnPaper: "Argument Rarity-based Originality Assessment for AI-Assisted Writing"

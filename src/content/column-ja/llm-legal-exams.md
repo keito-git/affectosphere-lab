@@ -2,7 +2,7 @@
 title: "GPT に宅建を解かせてみたら、士業の未来の輪郭が見えた話"
 date: "2026-06-01"
 excerpt: "GPT-3.5 と GPT-4 を、日本の宅地建物取引士試験の過去問にぶつけてみた研究の話。「合格できない AI」を、合格者の生産性を 1.5 倍にするツールに変える設計の輪郭を、リーガルテック・法務・士業向けに 5 分で。"
-image: "/column-images/llm-legal-exams.svg"
+image: "/column-images/llm-legal-exams.png"
 imageAlt: "法律書と試験用紙、天秤、合格ラインを抽象化したビジュアル"
 readingMinutes: 6
 basedOnPaper: "Assessing GPT's Legal Knowledge in Japanese Real Estate Transactions Exam"

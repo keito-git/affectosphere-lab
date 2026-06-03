@@ -2,7 +2,7 @@
 title: "Emotion Data Is Shifting From “Collect” to “Create” — A Third Option Called Synthetic Data"
 date: "2026-06-01"
 excerpt: "Emotion-labeled data is hard to collect because of annotator burden, privacy, and representativeness. Three recent papers show that pairing domain knowledge with LLMs can resolve ethics and cost at the same time. Five minutes for data-ops leaders."
-image: "/column-images/synthetic-emotion-data.svg"
+image: "/column-images/synthetic-emotion-data.png"
 imageAlt: "Scattered data points with missing regions filled in by amber dots, overlaid with a faint human silhouette"
 readingMinutes: 5
 basedOnPaper: "Persona-Based Synthetic Data Generation Using Multi-Stage Conditioning with Large Language Models for Emotion Recognition"

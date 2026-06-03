@@ -2,7 +2,7 @@
 title: "全員が AI で「うまく書ける」時代、組織はどこで個性を測るのか"
 date: "2026-06-01"
 excerpt: "AI 補助で誰もが上手な文章を量産できる時代。便利さの裏で、組織全体の思考がじわじわ均質化していく ── 議論の希少性を測る最新研究と、感情 AI の視点から 5 分で。"
-image: "/column-images/ai-homogenization.svg"
+image: "/column-images/ai-homogenization.png"
 imageAlt: "重なり合うエッセイ草稿の中で、独自性の高い 1 枚だけが琥珀色に光る抽象的なビジュアル"
 readingMinutes: 5
 basedOnPaper: "Argument Rarity-based Originality Assessment for AI-Assisted Writing"

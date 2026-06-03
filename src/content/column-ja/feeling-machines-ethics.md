@@ -2,7 +2,7 @@
 title: "感情を扱う AI には、なぜ特別なルールが必要なのか"
 date: "2026-06-01"
 excerpt: "医療・教育・メンタルヘルスに入り込む感情応答 AI を、既存の AI 規制の枠組みでそのまま扱っていいのか。23 名の研究者が出した学際的レポートが、コンプライアンス担当者・導入責任者が今知っておくべき問いを整理しています。"
-image: "/column-images/feeling-machines-ethics.svg"
+image: "/column-images/feeling-machines-ethics.png"
 imageAlt: "天秤の左に機械、右に人の心のシルエット、ivory 背景"
 readingMinutes: 5
 basedOnPaper: "Feeling Machines: Ethics, Culture, and the Rise of Emotional AI"

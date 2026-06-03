@@ -2,7 +2,7 @@
 title: "Cars Don't Need an LLM — The Era of Lightweight Models That Learn the 'Cognitive Chain'"
 date: "2026-06-01"
 excerpt: "'Slap GPT on the car and win' is already outdated. Why data-center-style designs break inside the cabin, and why lightweight models that embed cognitive science are stronger — a 5-minute brief for automotive and mobility leaders."
-image: "/column-images/ai-co-driver.svg"
+image: "/column-images/ai-co-driver.png"
 imageAlt: "Abstract line drawing of a driver-seat perspective and a cognitive-chain flow"
 readingMinutes: 5
 basedOnPaper: "Cognitive-Causal Multi-Task Learning with Psychological State Conditioning for Assistive Driving Perception"

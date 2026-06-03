@@ -2,7 +2,7 @@
 title: "AI That Measures “How the Workplace Feels” — Support and Surveillance Are Two Sides of the Same Coin"
 date: "2026-06-01"
 excerpt: "AI that visualizes employees' psychological states is quietly spreading through HR and organizational development. From three recent studies, here's a five-minute brief on “designs that do not feel like surveillance,” “connecting measurement to intervention,” and “measuring emotion without dehumanizing the person” — for HR and executive leadership."
-image: "/column-images/workplace-emotion-ai.svg"
+image: "/column-images/workplace-emotion-ai.png"
 imageAlt: "An abstract office space overlaid with emotion icons and team-dashboard-style charts"
 readingMinutes: 5
 basedOnPaper: "職場環境におけるマルチモーダル感情認識技術の現状と展望"

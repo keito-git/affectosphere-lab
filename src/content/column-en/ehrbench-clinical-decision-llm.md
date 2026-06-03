@@ -2,7 +2,7 @@
 title: "How Should Hospitals Choose Their Clinical AI? EHRBench Offers a Starting Answer"
 date: "2026-06-02"
 excerpt: "A new benchmark called EHRBench auto-generates over one million clinical QA pairs from electronic health records and evaluates more than 30 LLMs across three core clinical tasks. For hospital procurement teams, healthcare AI vendors, and regulatory bodies, it's the closest thing yet to a standard evaluation axis for clinical AI selection."
-image: "/column-images/ehrbench-clinical-decision-llm.svg"
+image: "/column-images/ehrbench-clinical-decision-llm.png"
 imageAlt: "Abstract visualization of an EHR icon radiating evaluation axes, with more than 30 AI models arranged in a comparative grid"
 readingMinutes: 5
 basedOnPaper: "EHRBench: An Automated and Reliable EHR-based Benchmark for Clinical Decision Making with LLMs"

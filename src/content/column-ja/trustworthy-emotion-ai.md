@@ -2,7 +2,7 @@
 title: "「自信 92%」と言い切る感情 AI が、いちばん危ない"
 date: "2026-06-01"
 excerpt: "顧客の感情を読む AI が、迷うべき場面でも自信満々に答えてしまう。CX・サポート・SaaS の現場で何が起きるのか、不確実性研究 3 本と感情 AI の視点から 5 分で。"
-image: "/column-images/trustworthy-emotion-ai.svg"
+image: "/column-images/trustworthy-emotion-ai.png"
 imageAlt: "複数の感情ラベルが確率分布の山として重なり合う抽象的なビジュアル"
 readingMinutes: 5
 basedOnPaper: "LLMs Capture Emotion Labels, Not Emotion Uncertainty: Distributional Analysis and Calibration of Human-LLM Judgment Gaps"

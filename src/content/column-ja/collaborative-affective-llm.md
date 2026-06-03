@@ -2,7 +2,7 @@
 title: "感情 AI が「チーム戦」に変わった ── 1 台の LLM では越えられない壁の話"
 date: "2026-06-01"
 excerpt: "単体 LLM に感情を理解させようとして、なぜいつも壁にぶつかるのか。最新のサーベイが示した「複数 LLM の協調」という突破口を、AI プロダクトの実装視点で 5 分に凝縮しました。"
-image: "/column-images/collaborative-affective-llm.svg"
+image: "/column-images/collaborative-affective-llm.png"
 imageAlt: "複数の AI モジュールが円形に接続し、感情の矢印を互いに受け渡す抽象図"
 readingMinutes: 5
 basedOnPaper: "When LLMs Team Up: The Emergence of Collaborative Affective Computing"

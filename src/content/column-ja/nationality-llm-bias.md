@@ -2,7 +2,7 @@
 title: "あなたの会社の AI、こっそり『誰の名前か』を当てています"
 date: "2026-05-31"
 excerpt: "グローバル CRM、採用 AI、与信 ── 顧客の名前から AI が国籍を推論する処理が、いま静かに普及しています。便利さの裏側で何が起きているのか、最新研究と感情 AI の視点から 5 分で。"
-image: "/column-images/nationality-llm-bias.svg"
+image: "/column-images/nationality-llm-bias.png"
 imageAlt: "世界地図と多言語の人名が重なり合う抽象的なビジュアル"
 readingMinutes: 5
 basedOnPaper: "Nationality and Region Prediction from Names: A Comparative Study of Neural Models and Large Language Models"

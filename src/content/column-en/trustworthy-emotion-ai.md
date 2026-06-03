@@ -2,7 +2,7 @@
 title: "The Emotion AI That Says '92% Confident' Is the Most Dangerous One"
 date: "2026-06-01"
 excerpt: "Emotion-reading AI keeps answering confidently in moments where it should hesitate. What happens in CX, support, and SaaS operations — a 5-minute take from three uncertainty papers and an emotion-AI lens."
-image: "/column-images/trustworthy-emotion-ai.svg"
+image: "/column-images/trustworthy-emotion-ai.png"
 imageAlt: "Abstract visual of multiple emotion labels overlapping as probability distributions"
 readingMinutes: 5
 basedOnPaper: "LLMs Capture Emotion Labels, Not Emotion Uncertainty: Distributional Analysis and Calibration of Human-LLM Judgment Gaps"

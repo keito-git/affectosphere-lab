@@ -2,7 +2,7 @@
 title: "自動運転に「ルールと直感」を両立させた LLM フレームワーク ── 解釈可能性の新しい形"
 date: "2026-06-01"
 excerpt: "強化学習だけでも、LLM だけでも越えられなかった自動運転の壁を、ルールベース意思決定と LLM の組み合わせが突破した。解釈可能性・応答速度・走行性能を同時に達成した ADRD の話を、自動車・モビリティ担当者向けに 5 分で。"
-image: "/column-images/adrd-llm-driving.svg"
+image: "/column-images/adrd-llm-driving.png"
 imageAlt: "車が走る抽象的な俯瞰図。左にルールのフローチャート、右に LLM の思考バブル、中央で統合される"
 readingMinutes: 5
 basedOnPaper: "ADRD: LLM-Driven Autonomous Driving Based on Rule-based Decision Systems"

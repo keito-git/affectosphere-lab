@@ -2,7 +2,7 @@
 title: "AI チャットとダッシュボードはどちらが強いか ── 134 名の実験が出した意外な答え"
 date: "2026-06-02"
 excerpt: "製造業の管理職 134 名を対象にした実験研究が、「LLM 会話型 UI とグラフィカルダッシュボード、どちらが意思決定を助けるか」に明確な条件付きの答えを出した。DX 推進・ERP 導入・BI ツール担当者に向けて、UI 設計の判断基準を 5 分で整理。"
-image: "/column-images/llm-conversational-vs-graphical-decision-support.svg"
+image: "/column-images/llm-conversational-vs-graphical-decision-support.png"
 imageAlt: "左にチャットバブルのUI、右にグラフィカルダッシュボード、中央に天秤が置かれ状況によって傾きが変わることを示す"
 readingMinutes: 5
 basedOnPaper: "Neither Replacement nor Panacea: Comparing LLM-Based Conversational and Graphical Decision Support in Industrial Tasks"

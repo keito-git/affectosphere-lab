@@ -2,7 +2,7 @@
 title: "ChatGPT は国名次第で、トーンを変えています"
 date: "2026-06-01"
 excerpt: "「ロシア」「ウクライナ」「イラン」「米国」── LLM は国名を入れ替えるだけで、出力の感情が静かに傾く。グローバル企業の国際 PR・コンプラ・政策渉外向けに、地政学バイアスとどう向き合うかを 5 分で。"
-image: "/column-images/llm-political-bias.svg"
+image: "/column-images/llm-political-bias.png"
 imageAlt: "世界地図の上に感情スコアが重なり、特定地域が琥珀色の偏りで強調される抽象的なビジュアル"
 readingMinutes: 6
 basedOnPaper: "Multifaceted Exploration of Perceptions on the Ukraine-Russia War in the Japanese Twitter Space"

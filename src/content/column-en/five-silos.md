@@ -2,7 +2,7 @@
 title: "Emotion-AI Projects Probably Die in the Gaps Between Layers"
 date: "2026-06-01"
 excerpt: "Most enterprise emotion-AI projects fail not because of technology, vendors, or the field, but because responsibility falls into the gaps between layers. A six-layer model, five design criteria, and the concept of emotional sovereignty — a 5-minute read for executives."
-image: "/column-images/five-silos.svg"
+image: "/column-images/five-silos.png"
 imageAlt: "Six-layer emotion-AI pipeline stacked vertically with amber bridges connecting the layers"
 readingMinutes: 5
 basedOnPaper: "Bridging the Silos in Affective AI: A Critical Perspective from Data to Society"

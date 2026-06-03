@@ -2,7 +2,7 @@
 title: "ベテランが辞める前に、暗黙知を AI スキルに変換できるか ── COLLEAGUE.SKILL の可能性"
 date: "2026-06-02"
 excerpt: "専門家の分散した知識を AI エージェントが実行可能な「スキルパッケージ」へ自動変換するフレームワーク COLLEAGUE.SKILL が登場した。ベテラン退職前の暗黙知継承コスト削減と、AI エージェントへの業務引き継ぎを現実的な選択肢にする研究を、人材育成・ナレッジマネジメント担当者向けに解説。"
-image: "/column-images/colleague-skill-expert-knowledge-distillation.svg"
+image: "/column-images/colleague-skill-expert-knowledge-distillation.png"
 imageAlt: "ベテラン社員の頭脳から知識が抽出され、構造化パッケージに変換され、AIエージェントへ移植されるフローの抽象ビジュアル"
 readingMinutes: 5
 basedOnPaper: "COLLEAGUE.SKILL: Automated AI Skill Generation via Expert Knowledge Distillation"

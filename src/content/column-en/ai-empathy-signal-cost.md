@@ -2,7 +2,7 @@
 title: "Is AI Empathy Real or Manipulative? A Signal-Cost Framework for Getting It Right"
 date: "2026-06-02"
 excerpt: "When an AI expresses empathy, is it actually appropriate for the moment? A new framework drawing on economic signaling theory offers a way to measure — and design for — the difference between over-empathy and cold indifference. A 5-minute read for chatbot, HR tech, and CX teams."
-image: "/column-images/ai-empathy-signal-cost.svg"
+image: "/column-images/ai-empathy-signal-cost.png"
 imageAlt: "Abstract balance scale with emotional waveforms on the left and cost calculation formulas on the right, held in equilibrium at center"
 readingMinutes: 5
 basedOnPaper: "Appropriateness of Empathy in AI: A Signal-Cost Perspective"

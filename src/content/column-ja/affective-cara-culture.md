@@ -2,7 +2,7 @@
 title: "感情 AI の「文化の壁」を突破した知識グラフ ── 61% の偏向削減が意味すること"
 date: "2026-06-01"
 excerpt: "多国籍チームで使う感情 AI が「日本人には冷たく、アメリカ人には暖かく」聞こえてしまう問題の根っこと、知識グラフ駆動で文化的偏向を 61% 削減したフレームワークの話。グローバル HR・CX 担当者向けに 5 分で。"
-image: "/column-images/affective-cara-culture.svg"
+image: "/column-images/affective-cara-culture.png"
 imageAlt: "世界地図を背景に、文化ラベルが知識グラフのノードとして接続される抽象ビジュアル"
 readingMinutes: 5
 basedOnPaper: "Affective-CARA: A Knowledge Graph Driven Framework for Culturally Adaptive Emotional Intelligence in HCI"

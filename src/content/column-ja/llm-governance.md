@@ -2,7 +2,7 @@
 title: "経営者の机に『AI ガバナンス』が乗ってくる前に、3 つだけ"
 date: "2026-06-01"
 excerpt: "LLM はもう IT 部門だけの話じゃない。政治・教育・職場の言葉遣いまで静かに方向付ける段階に入った。経営者が握り続けるべき統制点を、データ・モデル・出力レビューの 3 つに絞って整理する 5 分ガイド。"
-image: "/column-images/llm-governance.svg"
+image: "/column-images/llm-governance.png"
 imageAlt: "3 層の階層構造図と、各層を縦に貫く琥珀色の責任連鎖ラインの抽象ビジュアル"
 readingMinutes: 5
 basedOnPaper: "大規模言語モデルの政治的影響とガバナンスの指針"

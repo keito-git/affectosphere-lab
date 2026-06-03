@@ -2,7 +2,7 @@
 title: "“Outrage Wins Clicks” Is Already Outdated — The AI That Tones Down Intensity Without Changing Meaning"
 date: "2026-06-01"
 excerpt: "What comes after a decade of media optimized for anger, anxiety, and outrage? An AI that preserves meaning while dialing down emotional intensity is quietly redrawing the competitive map for media, advertising, and content platforms. Five minutes."
-image: "/column-images/emotion-tempering.svg"
+image: "/column-images/emotion-tempering.png"
 imageAlt: "An emotion-intensity meter shifting from red to yellow as a sensational headline is rewritten in a calmer tone"
 readingMinutes: 5
 basedOnPaper: "Multi-Agent Large Language Model Based Emotional Detoxification Through Personalized Intensity Control for Consumer Protection"

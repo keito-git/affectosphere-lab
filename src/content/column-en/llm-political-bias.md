@@ -2,7 +2,7 @@
 title: "ChatGPT Quietly Changes Its Tone Depending on the Country Name"
 date: "2026-06-01"
 excerpt: "'Russia,' 'Ukraine,' 'Iran,' 'the U.S.' — swap a country name and an LLM's output sentiment quietly tilts. A 5-minute take, for global PR, compliance, and government relations, on how to face geopolitical bias."
-image: "/column-images/llm-political-bias.svg"
+image: "/column-images/llm-political-bias.png"
 imageAlt: "Abstract visual of a world map overlaid with sentiment scores, with certain regions highlighted in amber bias"
 readingMinutes: 6
 basedOnPaper: "Multifaceted Exploration of Perceptions on the Ukraine-Russia War in the Japanese Twitter Space"

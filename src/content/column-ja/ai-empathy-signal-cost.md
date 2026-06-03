@@ -2,7 +2,7 @@
 title: "AI の「共感」は本物か操作か ── シグナリングコストで測る適切さの基準"
 date: "2026-06-02"
 excerpt: "AI が共感を示すとき、それは場に見合っているのか。経済学のシグナリング理論を援用した新フレームワークが、「共感しすぎ」「共感なさすぎ」の両リスクを同時に管理する設計基準を提示した。チャットボット・HRテック・CXデザイン担当者に向けて5分で解説。"
-image: "/column-images/ai-empathy-signal-cost.svg"
+image: "/column-images/ai-empathy-signal-cost.png"
 imageAlt: "抽象的なスケール図。左側に感情的な波形、右側にコスト計算の数式、中央でバランスが取れている"
 readingMinutes: 5
 basedOnPaper: "Appropriateness of Empathy in AI: A Signal-Cost Perspective"

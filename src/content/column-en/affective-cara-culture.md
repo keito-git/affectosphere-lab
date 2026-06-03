@@ -2,7 +2,7 @@
 title: "Breaking the Cultural Wall in Emotion AI ── What 61% Bias Reduction Actually Means"
 date: "2026-06-01"
 excerpt: "When emotion AI sounds warm to American users but cold to Japanese users, that's not an accuracy problem — it's a structural bias problem. A 2026 paper introducing the Affective-CARA framework cut cultural expression bias by 61% using a knowledge graph approach. Here's what that means for global HR and CX teams."
-image: "/column-images/affective-cara-culture.svg"
+image: "/column-images/affective-cara-culture.png"
 imageAlt: "World map background with culture labels as knowledge graph nodes connected by edges"
 readingMinutes: 5
 basedOnPaper: "Affective-CARA: A Knowledge Graph Driven Framework for Culturally Adaptive Emotional Intelligence in HCI"

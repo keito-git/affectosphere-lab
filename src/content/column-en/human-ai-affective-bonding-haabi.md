@@ -2,7 +2,7 @@
 title: "Can We Measure How Emotionally Attached Users Are to AI? HAABI Says Yes"
 date: "2026-06-02"
 excerpt: "A new measurement scale called HAABI can quantify the emotional bond users form with conversational AI — across four dimensions, validated with 673 participants. For AI product managers, HR tech teams, and CX designers, this opens the door to KPI-based monitoring of both over-dependency and disengagement risk."
-image: "/column-images/human-ai-affective-bonding-haabi.svg"
+image: "/column-images/human-ai-affective-bonding-haabi.png"
 imageAlt: "Abstract visual of human and AI icons connected by a gentle arc representing a bond, surrounded by concentric rings indicating four dimensions"
 readingMinutes: 5
 basedOnPaper: "Understanding the Rising Human-AI Affective Bonding: Conceptualization and HAABI Scale Development"

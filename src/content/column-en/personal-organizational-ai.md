@@ -2,7 +2,7 @@
 title: "One AI Per Employee: How HR Quietly Changes"
 date: "2026-06-01"
 excerpt: "From 'roll out the same HR tool to everyone' to 'each employee has a personal AI that talks with the org AI.' A 5-minute take on the two-layer design for next-generation HR — for HR leads, organization developers, and executives."
-image: "/column-images/personal-organizational-ai.svg"
+image: "/column-images/personal-organizational-ai.png"
 imageAlt: "Abstract visual of a circle for the individual and a circle for the organization, gently linked by an amber line"
 readingMinutes: 5
 basedOnPaper: "パーソナルAIと組織AIによる人事管理の革新と最適化"

@@ -2,7 +2,7 @@
 title: "Is AI Emotion Real? ── The Discovery of an Emotion Space That Matches Across Languages"
 date: "2026-06-01"
 excerpt: "The emotional map that LLMs construct structurally overlaps with the one humans use. A 2026 study validated this across multiple languages and cultures — and the findings give global emotion AI deployments a more solid empirical foundation than before."
-image: "/column-images/ai-emotion-universal.svg"
+image: "/column-images/ai-emotion-universal.png"
 imageAlt: "Emotion words in multiple languages arranged in a ring, with arrows converging toward a shared center"
 readingMinutes: 5
 basedOnPaper: "AI shares emotion with humans across languages and cultures"

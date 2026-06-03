@@ -2,7 +2,7 @@
 title: "An AI That Takes “Thank You” at Face Value Will Lose Your Most Important Customers"
 date: "2026-06-01"
 excerpt: "When a customer says “well done,” is it praise or sarcasm? The moment your AI mistakes one for the other, NPS goes up, improvement priorities go down, and the genuinely angry customers leave in silence. Five minutes for CX leaders, drawn from two recent sarcasm-recognition papers."
-image: "/column-images/customer-sarcasm.svg"
+image: "/column-images/customer-sarcasm.png"
 imageAlt: "The same phrase “well done” rendered in two colors representing surface meaning vs. real intent"
 readingMinutes: 5
 basedOnPaper: "World model inspired sarcasm reasoning with large language model agents"
