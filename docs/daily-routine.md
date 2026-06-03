@@ -78,40 +78,52 @@
 |------|------|
 | サイト JP 本文 | `src/content/column-ja/<slug>.md` |
 | サイト EN 本文 | `src/content/column-en/<slug>.md` |
-| サイト ヘッダ画像 | `public/column-images/<slug>.svg` |
+| サイト ヘッダ画像 | `public/column-images/<slug>.png` (GPT-image 生成・次節) |
 | **note 本文** | `src/note-export/<YYYY-MM-DD>/<slug>.md` |
-| **note 画像 SVG** | `src/note-export/<YYYY-MM-DD>/<slug>.svg` |
-| **note 画像 PNG** | `src/note-export/<YYYY-MM-DD>/<slug>.png` (生成は次節) |
+| **note 画像 PNG** | `src/note-export/<YYYY-MM-DD>/<slug>.png` (GPT-image 生成・次節) |
 
 `<YYYY-MM-DD>` フォルダは毎日新規作成、5 セット格納。
 
 ### subagent 並列実行
 - 5 論文を 3-5 個の general-purpose subagent に分配
-- 各 subagent が担当論文の 5 ファイル(JP/EN/note md + SVG)を作成
+- 各 subagent が担当論文の本文(JP/EN/note md)+ 画像用 `concept` 1 行を作成
+  (画像 PNG は §4 の GPT-image 生成で一括作成)
 - 並列度は 3-5 を上限(過去 4 並列以上で socket close 発生実績あり)
 
 ---
 
-## 4. 画像生成(SVG → PNG)
+## 4. 画像生成(GPT-image でイラスト調を毎日自動生成)
 
-### SVG プレースホルダ
-各 subagent が記事執筆時に同時に `<slug>.svg` を生成する。テーマに合わせて
-ivory/cream/amber/charcoal カラーパレットで 16:9 (1600x900) の抽象ビジュアル。
+**2026-06-03 改定: 抽象 SVG プレースホルダを廃止し、GPT-image でフラットな
+エディトリアルイラスト調(著作権フリー・記事内容を示す)を毎日 API 生成する。**
 
-### PNG 一括変換
-記事執筆完了後、メイン Claude が以下を実行:
+### プロンプト = マスター固定 + `{concept}` のみ差し替え
+ブランド配色・スタイル・「文字/ロゴ/実在人物/著作物を入れない」制約は
+`scripts/gen-images.mjs` の `buildPrompt()` に集約(マスター)。三浦は記事ごとに
+**論文コアを具体的メタファに落とした 1 行 `concept` だけ**を用意する
+(抽象模様は不可)。
+
+### 生成手順
+三浦が記事執筆後、各記事の `{slug, concept}` をマニフェスト JSON にまとめて実行:
 
 ```bash
-# src/note-export/*.svg を src/note-export/*.png に変換
-node scripts/svg-to-png.mjs
+# manifest 例: [{ "slug": "...", "concept": "one-line visual concept" }, ...]
+node scripts/gen-images.mjs <manifest.json> --note-dir src/note-export/<YYYY-MM-DD>
+# = npm run gen:images -- <manifest.json> --note-dir src/note-export/<YYYY-MM-DD>
 ```
 
-(スクリプトは `src/note-export/` 以下を**再帰探索**するため、
-日付フォルダ内の SVG も自動で拾う。)
+出力: `public/column-images/<slug>.png`(サイト) と
+`src/note-export/<YYYY-MM-DD>/<slug>.png`(note 用)。
+モデル `gpt-image-2-2026-04-21`(失敗時 `gpt-image-1` フォールバック)、1536x1024。
+OPENAI_API_KEY は `~/.claude/api_keys.env` から内部読込(外部出力厳禁)。
 
-### 将来:本番画像
-gpt-image-2-2026-04-21 等で本番 PNG を生成して `.svg` を `.png` に差し替える運用。
-当面は SVG プレースホルダで運用。
+### frontmatter は `.png` 参照
+各記事 frontmatter は `image: "/column-images/<slug>.png"`。
+SVG は当面フォールバックとして残してよいが、サイト表示は PNG を使う。
+
+### 旧 SVG→PNG 変換について
+`node scripts/svg-to-png.mjs` (npm run notes:images) は SVG 運用時代の名残。
+GPT-image 運用では原則使わない(SVG プレースホルダを併用する場合のみ)。
 
 ---
 

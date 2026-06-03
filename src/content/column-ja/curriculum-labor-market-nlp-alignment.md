@@ -2,7 +2,7 @@
 title: "社員研修と採用要件のズレ、NLP で数値化できる時代が来た"
 date: "2026-06-03"
 excerpt: "大学カリキュラムと求人票を LLM で自動分析し、スキルギャップを多次元で定量化する NLP パイプラインが登場した。企業の研修投資配分と採用戦略に、このフレームワークをどう使えるかを読み解く。"
-image: "/column-images/curriculum-labor-market-nlp-alignment.svg"
+image: "/column-images/curriculum-labor-market-nlp-alignment.png"
 imageAlt: "カリキュラムと求人票から抽出されたスキルデータがESCO分類軸上でマッチングされ、ギャップが可視化される抽象ビジュアル"
 readingMinutes: 5
 basedOnPaper: "An NLP-Driven Framework for Curriculum-Labor Market Alignment: Schema-Constrained LLM Extraction, ESCO-Anchored Semantic Matching, and Multi-Dimensional Gap Quantification"

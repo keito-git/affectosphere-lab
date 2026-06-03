@@ -2,7 +2,7 @@
 title: "Can VR Actually Build Empathy? What Face-Tracking in a Narrative Game Suggests"
 date: "2026-06-03"
 excerpt: "A VR system called Rekindle uses real-time face-tracking to sense a player's emotional state and weave it directly into the narrative's shape — not just its difficulty. For anyone designing empathy training or affective experience, the design philosophy shift here is worth examining."
-image: "/column-images/vr-emotional-perspective-taking.svg"
+image: "/column-images/vr-emotional-perspective-taking.png"
 imageAlt: "Abstract visual of emotion data flowing from a VR headset wearer into a feedback loop with a virtual character"
 readingMinutes: 5
 basedOnPaper: "Fostering Emotional Perspective-Taking: An Exploration of Affective Face-Tracking Interactions in the VR Narrative Rekindle"

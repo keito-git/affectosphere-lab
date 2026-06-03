@@ -2,7 +2,7 @@
 title: "「高性能 AI」が社員の意欲を奪うかもしれない ── 職場の AI 設計に欠けていた視点"
 date: "2026-06-03"
 excerpt: "AI の能力が高く積極的なほど、職場の人間関係や仕事への意義感が損なわれることを50名の実験が示した。HR・AI 導入担当者が今すぐ問い直すべき設計の前提とは。"
-image: "/column-images/ai-workplace-social-perception.svg"
+image: "/column-images/ai-workplace-social-perception.png"
 imageAlt: "職場でAIと人間が隣り合い、AIの積極性レベルに応じて人間の表情が変化する抽象ビジュアル"
 readingMinutes: 5
 basedOnPaper: "The New Social Image: How AI Competency and AI Proactivity Influence Self- and Peer-Perceptions in the Workplace"

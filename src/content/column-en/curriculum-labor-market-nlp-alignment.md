@@ -2,7 +2,7 @@
 title: "Your Training Curriculum and Job Requirements Are Probably Out of Sync — NLP Can Now Measure the Gap"
 date: "2026-06-03"
 excerpt: "An NLP pipeline that auto-extracts skills from curricula and job postings, maps them to the ESCO standard classification, and quantifies the gap by category is now available as a research framework. The structure translates directly to corporate L&D and hiring strategy."
-image: "/column-images/curriculum-labor-market-nlp-alignment.svg"
+image: "/column-images/curriculum-labor-market-nlp-alignment.png"
 imageAlt: "Abstract visualization of skills extracted from curriculum documents and job postings being mapped onto ESCO classification axes, with gaps highlighted"
 readingMinutes: 5
 basedOnPaper: "An NLP-Driven Framework for Curriculum-Labor Market Alignment: Schema-Constrained LLM Extraction, ESCO-Anchored Semantic Matching, and Multi-Dimensional Gap Quantification"

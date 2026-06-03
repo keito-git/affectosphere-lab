@@ -2,7 +2,7 @@
 title: "VR で「他人の気持ち」は本当に育てられるか？ ── 顔トラッキングが開く共感の扉"
 date: "2026-06-03"
 excerpt: "顔トラッキングでプレイヤーの感情をリアルタイム検知し、キャラクターとの感情ループを物語に組み込む VR システムが登場した。感情的視点取得を座学でなく没入体験で習得させる可能性を、感情 AI 研究の観点から読み解く。"
-image: "/column-images/vr-emotional-perspective-taking.svg"
+image: "/column-images/vr-emotional-perspective-taking.png"
 imageAlt: "VRヘッドセットを装着した人物の顔から感情データが検出され、バーチャルキャラクターとの感情ループを形成する抽象ビジュアル"
 readingMinutes: 5
 basedOnPaper: "Fostering Emotional Perspective-Taking: An Exploration of Affective Face-Tracking Interactions in the VR Narrative Rekindle"

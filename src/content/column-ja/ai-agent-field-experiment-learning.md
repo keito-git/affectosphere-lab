@@ -2,7 +2,7 @@
 title: "A/B テストの「次の手」を AI が自律提案する時代 ── フィールド実験学習エージェントの可能性"
 date: "2026-06-03"
 excerpt: "約70万患者訪問のフィールド実験データを AI エージェントが自律学習し、次のメッセージ変異体を自動生成。AI 生成の最優秀メッセージはクリックスルー率69.8%を達成し専門家設計を上回った。マーケ・CRM 担当者が「継続的改善ループ」を設計するヒントを読み解く。"
-image: "/column-images/ai-agent-field-experiment-learning.svg"
+image: "/column-images/ai-agent-field-experiment-learning.png"
 imageAlt: "フィールド実験データをAIエージェントが学習し次の介入メッセージを自律生成する改善ループの抽象ビジュアル"
 readingMinutes: 5
 basedOnPaper: "Beyond One-shot: AI Agents for Learning in Field Experiments"

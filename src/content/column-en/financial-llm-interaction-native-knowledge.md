@@ -2,7 +2,7 @@
 title: "Stop Making Users Re-Explain Everything: A Knowledge Architecture for Financial AI"
 date: "2026-06-03"
 excerpt: "InKH, an interaction-native knowledge harness for financial LLM agents, absorbs session context passively and retrieves it via temporal graph memory — achieving task quality 0.815, latency under 900ms, and 96% reduction in stale knowledge use. The design principle is broadly applicable wherever users are currently paying the complexity cost that systems should absorb."
-image: "/column-images/financial-llm-interaction-native-knowledge.svg"
+image: "/column-images/financial-llm-interaction-native-knowledge.png"
 imageAlt: "Abstract visualization of conversation history being absorbed into a graph memory and automatically restored in the next financial AI interaction"
 readingMinutes: 5
 basedOnPaper: "Absorbing Complexity: An Interaction-Native Knowledge Harness for Financial LLM Agents"

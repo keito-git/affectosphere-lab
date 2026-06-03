@@ -2,7 +2,7 @@
 title: "Highly Capable AI Might Be Damaging Your Team — A Study on Workplace Perception"
 date: "2026-06-03"
 excerpt: "An experiment with 50 participants found that low-competency, low-proactivity AI produced better outcomes for employee ownership, job meaningfulness, and team dynamics than the high-performing alternative. For HR and AI implementation leaders, the design implication is significant."
-image: "/column-images/ai-workplace-social-perception.svg"
+image: "/column-images/ai-workplace-social-perception.png"
 imageAlt: "Abstract workplace scene showing humans alongside AI at varying proactivity levels, with facial expressions shifting accordingly"
 readingMinutes: 5
 basedOnPaper: "The New Social Image: How AI Competency and AI Proactivity Influence Self- and Peer-Perceptions in the Workplace"

@@ -2,7 +2,7 @@
 title: "A/B Testing That Generates Its Own Next Round — Field Experiments with AI Agents"
 date: "2026-06-03"
 excerpt: "An AI agent learned from 700K+ patient visit field experiment data and auto-generated 17 new message variants for round two. The top AI-generated message hit 69.8% CTR, outperforming expert-designed messages. The key finding: LLMs without real data couldn't predict effective interventions. Data is what makes the loop work."
-image: "/column-images/ai-agent-field-experiment-learning.svg"
+image: "/column-images/ai-agent-field-experiment-learning.png"
 imageAlt: "Abstract visualization of field experiment data being learned by an AI agent that autonomously generates the next round of intervention messages"
 readingMinutes: 5
 basedOnPaper: "Beyond One-shot: AI Agents for Learning in Field Experiments"

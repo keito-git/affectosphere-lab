@@ -2,7 +2,7 @@
 title: "「毎回同じことを説明する」をなくす ── 金融 AI が文脈を自動継続する設計"
 date: "2026-06-03"
 excerpt: "金融 LLM エージェントに「複雑さをユーザーに転嫁しない」知識ハーネスを組み込む InKH が、タスク品質 0.815・遅延 900ms・古い知識使用を 96% 削減した。顧客文脈を自動継続する CX を実現する設計原則を読み解く。"
-image: "/column-images/financial-llm-interaction-native-knowledge.svg"
+image: "/column-images/financial-llm-interaction-native-knowledge.png"
 imageAlt: "会話履歴がグラフメモリに吸収され、次のインタラクションで文脈が自動復元される金融AIシステムの抽象ビジュアル"
 readingMinutes: 5
 basedOnPaper: "Absorbing Complexity: An Interaction-Native Knowledge Harness for Financial LLM Agents"
