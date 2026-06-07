@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "uf-ama-cross-domain-emotion-recognition",
+    "concept": "EEG brainwave lines and eye-tracking gaze paths from multiple different people converging and aligning into a single unified emotion signal, representing cross-domain adaptation, in a flat minimal illustration style"
+  },
+  {
+    "slug": "agentic-tort-liability-interaction-framework",
+    "concept": "an AI agent producing an action arrow that passes through a legal evidence checkpoint storing interaction logs in a document vault, symbolizing liability traceability, in a flat minimal illustration style"
+  },
+  {
+    "slug": "graph-rag-financial-sentiment-analysis",
+    "concept": "multiple company nodes connected by sentiment-weighted edges in a knowledge graph, with a retrieval query path traversing through related entities to surface indirect signals, in a flat minimal illustration style"
+  },
+  {
+    "slug": "medication-aware-financial-exploitation-detection",
+    "concept": "a medication schedule timeline linked by a bridge to a bank transaction ledger, with a risk alert flag appearing at the overlap of a missed-dose window and a suspicious transfer, in a flat minimal illustration style"
+  },
+  {
+    "slug": "medical-llm-red-teaming-safety-fairness",
+    "concept": "a medical AI system passing through a series of domain evaluation gates and a demographic fairness checkpoint, with warning indicators highlighting edge-case failure clusters beneath a high average score bar, in a flat minimal illustration style"
+  }
+]
