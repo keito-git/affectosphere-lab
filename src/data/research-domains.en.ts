@@ -111,11 +111,11 @@ export const researchDomains: ResearchDomain[] = [
       },
       {
         text:
-          "Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement (BiSEDD, 2026) extends this direction to the analysis of emotion transitions in conversation. BiSEDD has three stages. The first preserves the distribution of judgments from multiple annotators with a hierarchical Dirichlet–Multinomial model and estimates a posterior distribution over the emotion-transition probability matrix. This lets us treat 'how easily one emotion shifts into another' as a probability distribution rather than a point estimate.",
+          "Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement (BSETD, 2026) extends this direction to the analysis of emotion transitions in conversation. BSETD has three stages. The first preserves the distribution of judgments from multiple annotators with a hierarchical Dirichlet–Multinomial model and estimates a posterior distribution over the emotion-transition probability matrix. This lets us treat 'how easily one emotion shifts into another' as a probability distribution rather than a point estimate.",
         figure: {
           src: "/research-figures/human-emotion-understanding/bayes-spectral.png",
           caption:
-            "Overview of BiSEDD. Annotator disagreement is preserved as a Bayesian posterior, and emotion transitions are analyzed in terms of 'persistence' and 'contagion' (Bayesian Spectral Emotion Transition Discovery, 2026).",
+            "Overview of BSETD. Annotator disagreement is preserved as a Bayesian posterior, and emotion transitions are analyzed in terms of 'persistence' and 'contagion' (Bayesian Spectral Emotion Transition Discovery, 2026).",
           alt: "Three-stage pipeline for emotion-transition discovery via Bayesian posteriors and spectral decomposition",
         },
       },

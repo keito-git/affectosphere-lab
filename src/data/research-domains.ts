@@ -111,11 +111,11 @@ export const researchDomains: ResearchDomain[] = [
       },
       {
         text:
-          "Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement(BiSEDD, 2026)は、この方向性を会話中の感情遷移分析へ拡張したベイズ的フレームワークである。BiSEDDは三段階で構成される。第一段階では、複数アノテーターの判断分布を階層 Dirichlet-Multinomial モデルで保持し、感情間の遷移確率行列の事後分布を推定する。これにより「ある感情から別の感情への移り変わりやすさ」を、点推定ではなく確率分布として扱う。",
+          "Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement(BSETD, 2026)は、この方向性を会話中の感情遷移分析へ拡張したベイズ的フレームワークである。BSETDは三段階で構成される。第一段階では、複数アノテーターの判断分布を階層 Dirichlet-Multinomial モデルで保持し、感情間の遷移確率行列の事後分布を推定する。これにより「ある感情から別の感情への移り変わりやすさ」を、点推定ではなく確率分布として扱う。",
         figure: {
           src: "/research-figures/human-emotion-understanding/bayes-spectral.png",
           caption:
-            "BiSEDDの全体像。アノテーター不一致をベイズ事後分布として保持し、感情遷移を「持続」と「伝染」に分けて解析する(Bayesian Spectral Emotion Transition Discovery, 2026)。",
+            "BSETDの全体像。アノテーター不一致をベイズ事後分布として保持し、感情遷移を「持続」と「伝染」に分けて解析する(Bayesian Spectral Emotion Transition Discovery, 2026)。",
           alt: "ベイズ事後分布とスペクトル分解からなる感情遷移発見の3段階パイプライン図",
         },
       },
