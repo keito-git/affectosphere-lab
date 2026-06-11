@@ -7,8 +7,8 @@ import { recentPublications } from "../data/publications";
 import { recentNews } from "../data/news";
 import { researchDomains, aiForScienceImage } from "../data/research-domains";
 
-// Home grid: the eight affective-AI domains shown as 4 rows × 2 cols,
-// followed by the AI for Science card spanning both columns on row 5.
+// Home grid: the ten affective-AI domains shown as 5 rows × 2 cols,
+// followed by the AI for Science card spanning both columns on row 6.
 // Each affective-AI domain links to /research/<slug>/; AI for Science
 // links to its own top-level page.
 type DomainCard = { title: string; summary: string; href: string; image: string };
@@ -118,7 +118,7 @@ const aiForScienceCard: DomainCard = {
     </div>
   </section>
 
-  <!-- Section 3: Eight research domains (2 columns × 4 rows) -->
+  <!-- Section 3: Ten research domains (2 columns × 5 rows) -->
   <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="research-domains">
     <header class="reveal mb-10 max-w-prose md:mb-14">
       <p class="font-sans text-lg font-medium tracking-wide text-slate">
@@ -131,7 +131,7 @@ const aiForScienceCard: DomainCard = {
         ラボの研究領域。
       </h2>
       <p class="mt-4 font-display text-base leading-relaxed text-slate md:text-lg">
-        感情と社会、技術と倫理。Affectosphere Groupが取り組んでいる九つの領域です。
+        感情と社会、技術と倫理。Affectosphere Groupが取り組んでいる十の領域です。
       </p>
     </header>
 

@@ -1,4 +1,4 @@
-// The eight core research domains that frame the lab's affective-AI work.
+// The ten core research domains that frame the lab's affective-AI work.
 // AI for Science lives in its own tab.
 
 export type NarrativeBlock = {
