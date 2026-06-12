@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://affectosphere-group.netlify.app/*"
+  to = "https://lab.affectosphere.group/:splat"
+  status = 301
+  force = true
