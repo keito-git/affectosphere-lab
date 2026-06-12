@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://affectosphere-group.netlify.app/sitemap-index.xml
+Sitemap: https://lab.affectosphere.group/sitemap-index.xml

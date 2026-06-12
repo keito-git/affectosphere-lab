@@ -78,4 +78,4 @@
 
 ---
 
-元記事: https://affectosphere-group.netlify.app
+元記事: https://lab.affectosphere.group

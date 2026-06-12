@@ -98,4 +98,4 @@ Chu, M. D., Wu, Y., Chen, Z., Hwang, A. H.-C., & Luceri, L. (2026). *When Chatbo
 
 <p class="ai-notice"><small>※ 本記事は一部 AI により執筆されており、間違った情報が含まれる恐れがあります。</small></p>
 
-元記事: https://affectosphere-group.netlify.app
+元記事: https://lab.affectosphere.group

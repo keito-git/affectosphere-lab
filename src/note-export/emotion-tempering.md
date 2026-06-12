@@ -6,7 +6,7 @@
 #感情AI #LLM #Affectosphere #AIビジネス #コンテンツマーケティング #広告 #メディア
 
 【元記事】
-https://affectosphere-group.netlify.app/column/emotion-tempering/
+https://lab.affectosphere.group/column/emotion-tempering/
 
 ---
 
@@ -169,11 +169,11 @@ MALLET のような感情調整 AI は、その競争軸を技術的に成立さ
 
 詳細・図版・関連記事は Affectosphere Group 公式サイトをご覧ください。
 
-https://affectosphere-group.netlify.app/column/emotion-tempering/
+https://lab.affectosphere.group/column/emotion-tempering/
 
 ## 🏛 Affectosphere Group とは
 
 関西大学 大学院商学研究科 井下敬翔(Keito Inoshita)研究室の公式ラボです。感情 AI の倫理・認識・データ拡張・人間とのインタラクションを横断的に研究しています。
 
-ラボ公式サイト: https://affectosphere-group.netlify.app/
-お問い合わせ: https://affectosphere-group.netlify.app/contact/
+ラボ公式サイト: https://lab.affectosphere.group/
+お問い合わせ: https://lab.affectosphere.group/contact/

@@ -113,4 +113,4 @@ AIエージェント導入の最大の価値は、工数削減ではないかも
 
 ---
 
-元記事: https://affectosphere-group.netlify.app
+元記事: https://lab.affectosphere.group

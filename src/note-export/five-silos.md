@@ -6,7 +6,7 @@
 #感情AI #AIガバナンス #CTO #Affectosphere #プロダクト戦略 #AI倫理 #感情主権
 
 【元記事】
-https://affectosphere-group.netlify.app/column/five-silos/
+https://lab.affectosphere.group/column/five-silos/
 
 ---
 
@@ -155,11 +155,11 @@ https://affectosphere-group.netlify.app/column/five-silos/
 
 詳細・図版・関連記事は Affectosphere Group 公式サイトをご覧ください。
 
-https://affectosphere-group.netlify.app/column/five-silos/
+https://lab.affectosphere.group/column/five-silos/
 
 ## 🏛 Affectosphere Group とは
 
 関西大学 大学院商学研究科 井下敬翔(Keito Inoshita)研究室の公式ラボです。感情 AI の倫理・認識・データ拡張・人間とのインタラクションを横断的に研究しています。
 
-ラボ公式サイト: https://affectosphere-group.netlify.app/
-お問い合わせ: https://affectosphere-group.netlify.app/contact/
+ラボ公式サイト: https://lab.affectosphere.group/
+お問い合わせ: https://lab.affectosphere.group/contact/

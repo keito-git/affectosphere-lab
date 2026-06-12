@@ -140,4 +140,4 @@ BWMが示しているのは、「企業を構造化して記述できれば、AI
 
 ---
 
-元記事: https://affectosphere-group.netlify.app
+元記事: https://lab.affectosphere.group

@@ -139,4 +139,4 @@ Dep-LLM が追加学習なしで動くことの意味は、導入ハードルの
 ---
 
 元記事は Affectosphere Group 公式サイトに掲載されています。
-https://affectosphere-group.netlify.app
+https://lab.affectosphere.group
