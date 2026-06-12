@@ -20,7 +20,7 @@ export const aiForScienceFindings =
   "What has become clear through repeated cross-disciplinary collaboration is that the value AI provides is by no means uniform across fields. In education, we have visualized the homogenization of thinking that arises from human-AI collaboration; in political science, we have quantified the geopolitical biases embedded in training data; in ecology, we have dramatically streamlined large-scale classification tasks; and in law, we have used qualifying examinations to draw the boundary of substitutability. AI for Science is not merely the application of methods but a practice of discerning, within each field's specific context, what AI can do and what must not be entrusted to it — generating insights that can only be reached through dialogue between domain experts and methodologists.";
 
 // Inquiry endpoint (the form opens the user's email client with this address).
-export const inquiryEmail = "inosita.2865@gmail.com";
+export const inquiryEmail = "inquiry@affectosphere.group";
 
 export const aiForScienceNarrative: NarrativeBlock[] = [
   {

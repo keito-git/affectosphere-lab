@@ -7,9 +7,9 @@ export const site = {
     "Affectosphere Groupは、感情を確率としてとらえ、社会の構造と共に研究することで、誰もが息のしやすい時代を目指すラボです。",
   affiliation: "関西大学",
   pillars: ["感情コンピューティング", "不確実性", "社会"] as const,
-  url: "https://example.com",
+  url: "https://lab.affectosphere.group",
   // Public contact for the principal investigator.
-  email: "suisosansotanso@gmail.com",
+  email: "contact@affectosphere.group",
 };
 
 export type NavItem = {

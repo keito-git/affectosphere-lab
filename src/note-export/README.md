@@ -35,13 +35,13 @@ npm run notes:images
 ### Step 1: note アカウント作成(初回のみ)
 
 1. https://note.com/signup にアクセス
-2. メールアドレス: `inosita.2865@gmail.com`(または運用ご希望のもの)で登録
+2. メールアドレス: `contact@affectosphere.group`(または運用ご希望のもの)で登録
 3. クリエイター名: **Affectosphere Group**
 4. note ID(URL になる文字列): `affectosphere-group`(推奨。空きがあれば)
    - URL は `https://note.com/affectosphere-group` になる
 5. プロフィール画像: `/public/logo/mark.png` をアップロード
 6. プロフィール文:
-   > 関西大学 井下敬翔研究室(Affectosphere Group)の公式 note。感情 AI 研究の最新成果を、ビジネスマン向けに 5 分で読めるコラムとして発信しています。本サイト: https://affectosphere-group.netlify.app
+   > 関西大学 井下敬翔研究室(Affectosphere Group)の公式 note。感情 AI 研究の最新成果を、ビジネスマン向けに 5 分で読めるコラムとして発信しています。本サイト: https://lab.affectosphere.group
 
 ### Step 2: マガジンを作成(初回のみ)
 

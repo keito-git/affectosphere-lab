@@ -20,7 +20,7 @@ export const aiForScienceFindings =
   "多分野連携を重ねるうちに見えてきたのは、AIが各分野で発揮する価値は決して一様ではないということである。教育学では「人と AI の協働がもたらす思考の均質化」を可視化し、政治学では学習データに埋め込まれた地政学的バイアスを定量化し、生態学では膨大な分類タスクを劇的に効率化し、法律学では資格試験を通じて代替可能性の境界を引いた。AI for Science は単なる手法の応用ではなく、それぞれの分野で「AIが何をできて、何を任せてはならないか」を分野固有の文脈で見極める営みであり、領域専門家と方法論者の対話の中でしか到達できない知見を生み出していく。";
 
 // Inquiry endpoint (the form opens the user's email client with this address).
-export const inquiryEmail = "inosita.2865@gmail.com";
+export const inquiryEmail = "inquiry@affectosphere.group";
 
 export const aiForScienceNarrative: NarrativeBlock[] = [
   {
