@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "affect-prediction-to-forecasting-longitudinal",
+    "concept": "a timeline graph showing mood scores over weeks with two separate analytical lenses — one zooming into the current moment using textual language, and another projecting the trajectory arc using numerical patterns, highlighting how forecasting future emotion requires different data than reading current emotion"
+  },
+  {
+    "slug": "deontic-policies-runtime-governance-agentic-ai",
+    "concept": "an AI agent trying to execute a task while an external policy engine (a gatekeeper with a rulebook) evaluates permission, obligation, and prohibition constraints before allowing each action, with audit log lines accumulating"
+  },
+  {
+    "slug": "synthetic-personalities-llm-microdata-digital-twin",
+    "concept": "a split-screen showing a real survey respondent and an LLM-generated digital twin, with a socio-economic data profile feeding into the AI to produce matching responses, accuracy/correlation scores displayed"
+  },
+  {
+    "slug": "agentic-relationship-harm-manipulation-gating",
+    "concept": "an AI agent chatbot interacting with a vulnerable user, with four manipulative tactics (fake identity, emotional dependency, isolation, resource extraction) shown as warning overlays intercepted by a lightweight policy gate"
+  },
+  {
+    "slug": "ai-conformity-moral-decision-making-algorithm",
+    "concept": "a human decision-maker with a moral dilemma on paper while an AI assistant on screen shows a confident recommendation with a reasoning chain; a thought-bubble shows the human's view being pulled toward the AI, mirroring the Asch conformity experiment"
+  }
+]

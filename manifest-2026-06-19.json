@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "ai-synthetic-lived-experience-caregiver-support",
+    "concept": "a caregiver typing to an AI chatbot that responds with empathetic first-person language on screen, while a split panel shows a human peer's authentic past memory versus the AI generating emotionally resonant but experientially hollow narrative text"
+  },
+  {
+    "slug": "human-ai-agent-interaction-business-ux",
+    "concept": "a business professional interacting with an AI agent interface on a desk monitor, with a UX evaluation dashboard on the side showing trust score, intuitive rating, and decision support quality metrics in a corporate office setting"
+  },
+  {
+    "slug": "profillm-agentic-user-profiling-ride-hailing-dispatch",
+    "concept": "an AI agent system reading a massive ride-hailing behavior log and using 27 analytical tools to extract a structured user profile card, with a sparse user's history on one side being transformed into a rich preference profile that improves dispatch matching accuracy"
+  },
+  {
+    "slug": "eibench-emotion-management-llm-simulator-rl",
+    "concept": "an AI customer service agent conversation window with emotional state bars tracked across each turn of an exchange, showing tension rising then de-escalating as the agent employs emotion repair strategies, with a benchmark score panel displaying improvement metrics"
+  },
+  {
+    "slug": "ago-framework-agentic-ai-business-process-analysis",
+    "concept": "a formal business process diagram where AI agents are nodes connected by goal arrows and object boxes, forming an auditable knowledge base that shows who does what and why in an automated enterprise workflow"
+  }
+]

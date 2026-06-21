@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "coping-crisis-computational-modeling-coping-styles-earthquake",
+    "concept": "a timeline of disaster tweets shifting from urgent rescue requests to communal grief symbols, with a classifier overlay labeling each cluster as problem, emotion, or meaning-making coping"
+  },
+  {
+    "slug": "twinbi-agentic-digital-twin-business-intelligence-dashboard",
+    "concept": "a digital twin mirroring a business intelligence dashboard, where a conversational AI chat bubble updates in sync with every filter and drill-down action"
+  },
+  {
+    "slug": "personal-care-utility-health-everyday-infrastructure",
+    "concept": "a person's daily routine surrounded by sensor icons for glucose, sleep, steps, and meals, all feeding into a central health AI hub like a utility control panel"
+  },
+  {
+    "slug": "factoryllm-open-source-ai-evaluation-smart-factory",
+    "concept": "a factory floor with machine maintenance manuals feeding into a local LLM server, surrounded by a privacy shield, generating diagnostic reports for a technician"
+  },
+  {
+    "slug": "workflowview-cross-domain-action-sequences-interpretable-workflows",
+    "concept": "a stream of browser clicks and editing actions being lifted by an LLM into labeled workflow blocks like puzzle pieces fitting a business process map"
+  }
+]
