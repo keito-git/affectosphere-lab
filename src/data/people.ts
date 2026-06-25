@@ -6,6 +6,7 @@
 
 export type Role =
   | "Principal Investigator"
+  | "Member"
   | "Postdoctoral Researcher"
   | "Doctoral Student"
   | "Master's Student"
@@ -39,5 +40,15 @@ export const members: Person[] = [
       "Affectosphere Group を主宰。AI を用いた人間の感情の理解・認識・生成・表出を研究の中心に据え、人間を超える EQ を備えた AI の実現を目指す。多様な企業との連携も並行して進めている。",
     portrait: "/people/keito-inoshita.jpg",
     href: "/about/",
+  },
+  {
+    slug: "toma-okugawa",
+    name: "Toma Okugawa",
+    nameJa: "奥河 董馬",
+    role: "Member",
+    affiliation: "弓削商船高等専門学校 情報工学科",
+    blurb:
+      "Small Language Model（SLM）を用いた地域課題の解決に取り組む。",
+    portrait: "/people/okugawa-toma.jpg",
   },
 ];

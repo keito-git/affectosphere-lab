@@ -6,6 +6,7 @@
 
 export type Role =
   | "Principal Investigator"
+  | "Member"
   | "Postdoctoral Researcher"
   | "Doctoral Student"
   | "Master's Student"
@@ -39,5 +40,16 @@ export const members: Person[] = [
       "Director of the Affectosphere Group. Places the AI-driven understanding, recognition, generation, and expression of human emotion at the center of his research, aiming to realize AI endowed with an EQ that surpasses humans. Pursues collaborations with a diverse range of companies in parallel.",
     portrait: "/people/keito-inoshita.jpg",
     href: "/about/",
+  },
+  {
+    slug: "toma-okugawa",
+    name: "Toma Okugawa",
+    nameJa: "奥河 董馬",
+    role: "Member",
+    affiliation:
+      "National Institute of Technology, Yuge College, Department of Information Engineering",
+    blurb:
+      "Works on solving regional issues with Small Language Models (SLMs).",
+    portrait: "/people/okugawa-toma.jpg",
   },
 ];
