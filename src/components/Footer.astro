@@ -8,6 +8,18 @@ const { locale = "ja" } = Astro.props;
 const prefix = locale === "en" ? "/en" : "";
 const sitemapLabel = locale === "en" ? "Sitemap" : "サイトマップ";
 const navLabel = locale === "en" ? "Footer menu" : "フッターメニュー";
+const networkLabel = locale === "en" ? "Network" : "関連サイト";
+const networkSites = [
+  { href: "https://daily.affectosphere.group", label: "AI Business Daily" },
+  {
+    href: "https://kids.affectosphere.group",
+    label: locale === "en" ? "AI Business Daily Kids" : "AI Business Daily（子供版）",
+  },
+  {
+    href: "https://fiction.affectosphere.group",
+    label: locale === "en" ? "Fictional Pro" : "架空のプロフェッショナル",
+  },
+];
 const year = new Date().getFullYear();
 ---
 
@@ -23,6 +35,28 @@ const year = new Date().getFullYear();
             <li>
               <a
                 href={`${prefix}${item.href}`}
+                class="link-amber font-heading text-sm text-charcoal"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <nav aria-label={networkLabel} class="mt-12">
+      <p class="font-sans text-base font-medium tracking-wide text-slate mb-6">
+        {networkLabel}
+      </p>
+      <ul class="flex flex-wrap gap-x-8 gap-y-3">
+        {
+          networkSites.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 class="link-amber font-heading text-sm text-charcoal"
               >
                 {item.label}
