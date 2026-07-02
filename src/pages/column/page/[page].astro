@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import ColumnGrid from "../../../components/ColumnGrid.astro";
+import Pagination from "../../../components/Pagination.astro";
+
+export async function getStaticPaths() {
+  const PAGE_SIZE = 15;
+  const allPosts = (await getCollection("column-ja")).sort((a, b) =>
+    b.data.date.localeCompare(a.data.date)
+  );
+  const totalPages = Math.max(1, Math.ceil(allPosts.length / PAGE_SIZE));
+  // Page 1 lives at /column/; only pages 2..N are generated here.
+  return Array.from({ length: totalPages - 1 }, (_, i) => {
+    const page = i + 2;
+    return {
+      params: { page: String(page) },
+      props: {
+        posts: allPosts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+        page,
+        totalPages,
+      },
+    };
+  });
+}
+
+const { posts, page, totalPages } = Astro.props;
+---
+
+<BaseLayout
+  title={`Column (${page}/${totalPages})`}
+  description="Affectosphere Group の研究を、ビジネス・実務目線で読み解くコラム。5 分で読めるように書いています。"
+  fullBleed
+>
+  <PageHeader
+    eyebrow="Column"
+    title="研究をビジネスの言葉に。"
+    subtitle="Affectosphere Group の研究を、ビジネスや実務の意思決定に役立つ形で書き直しています。1 本 5 分で読めます。"
+    wideSubtitle
+  />
+
+  <section class="mx-auto mt-section-sm max-w-content page-x">
+    <ColumnGrid posts={posts} hrefBase="/column" />
+    <Pagination current={page} total={totalPages} basePath="/column" />
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>

@@ -1,0 +1,74 @@
+---
+interface Props {
+  current: number;
+  total: number;
+  basePath: string; // e.g. "/column" or "/en/column" (no trailing slash)
+}
+
+const { current, total, basePath } = Astro.props;
+
+const pageUrl = (p: number) => (p === 1 ? `${basePath}/` : `${basePath}/page/${p}/`);
+
+// Windowed page list: 1 … current-1 current current+1 … total
+const pages: (number | "ellipsis")[] = [];
+for (let p = 1; p <= total; p++) {
+  if (p === 1 || p === total || Math.abs(p - current) <= 1) {
+    pages.push(p);
+  } else if (pages[pages.length - 1] !== "ellipsis") {
+    pages.push("ellipsis");
+  }
+}
+---
+
+{
+  total > 1 && (
+    <nav
+      class="mt-12 flex items-center justify-center gap-2 font-mono text-xs"
+      aria-label="Pagination"
+    >
+      {current > 1 ? (
+        <a
+          href={pageUrl(current - 1)}
+          class="border border-stone px-3 py-2 text-charcoal transition-colors hover:border-amber hover:text-amber"
+          rel="prev"
+        >
+          &larr; Prev
+        </a>
+      ) : (
+        <span class="border border-stone/50 px-3 py-2 text-slate/50">&larr; Prev</span>
+      )}
+
+      {pages.map((p) =>
+        p === "ellipsis" ? (
+          <span class="px-1 text-slate">&hellip;</span>
+        ) : p === current ? (
+          <span
+            class="border border-charcoal bg-charcoal px-3 py-2 text-cream"
+            aria-current="page"
+          >
+            {p}
+          </span>
+        ) : (
+          <a
+            href={pageUrl(p)}
+            class="border border-stone px-3 py-2 text-charcoal transition-colors hover:border-amber hover:text-amber"
+          >
+            {p}
+          </a>
+        )
+      )}
+
+      {current < total ? (
+        <a
+          href={pageUrl(current + 1)}
+          class="border border-stone px-3 py-2 text-charcoal transition-colors hover:border-amber hover:text-amber"
+          rel="next"
+        >
+          Next &rarr;
+        </a>
+      ) : (
+        <span class="border border-stone/50 px-3 py-2 text-slate/50">Next &rarr;</span>
+      )}
+    </nav>
+  )
+}

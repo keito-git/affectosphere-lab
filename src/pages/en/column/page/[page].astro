@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import PageHeader from "../../../../components/PageHeader.astro";
+import ColumnGrid from "../../../../components/ColumnGrid.astro";
+import Pagination from "../../../../components/Pagination.astro";
+
+export async function getStaticPaths() {
+  const PAGE_SIZE = 15;
+  const allPosts = (await getCollection("column-en")).sort((a, b) =>
+    b.data.date.localeCompare(a.data.date)
+  );
+  const totalPages = Math.max(1, Math.ceil(allPosts.length / PAGE_SIZE));
+  // Page 1 lives at /en/column/; only pages 2..N are generated here.
+  return Array.from({ length: totalPages - 1 }, (_, i) => {
+    const page = i + 2;
+    return {
+      params: { page: String(page) },
+      props: {
+        posts: allPosts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+        page,
+        totalPages,
+      },
+    };
+  });
+}
+
+const { posts, page, totalPages } = Astro.props;
+---
+
+<BaseLayout
+  title={`Column (${page}/${totalPages})`}
+  description="Plain-language columns from Affectosphere Group — research findings rewritten for business and practice. 5-minute reads."
+  fullBleed
+  locale="en"
+>
+  <PageHeader
+    eyebrow="Column"
+    title="Research, in business language."
+    subtitle="We rewrite Affectosphere Group's research into something useful for business and practical decision-making. Each piece is a 5-minute read."
+    wideSubtitle
+  />
+
+  <section class="mx-auto mt-section-sm max-w-content page-x">
+    <ColumnGrid posts={posts} hrefBase="/en/column" />
+    <Pagination current={page} total={totalPages} basePath="/en/column" />
+  </section>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>
