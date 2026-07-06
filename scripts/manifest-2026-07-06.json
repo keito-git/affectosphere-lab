@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "emotional-impact-visualization-framing-episodic-thematic",
+    "concept": "a split-screen data visualization showing U.S. mass shooting statistics — on the left with episodic framing text highlighting individual incidents, on the right with thematic framing showing overall trends — with emotional response heat maps below each showing stronger negative affect under the episodic condition"
+  },
+  {
+    "slug": "faithmed-llm-faithful-medical-reasoning",
+    "concept": "a clinical decision support interface showing an LLM generating a step-by-step medical diagnosis with each reasoning step linked to an evidence citation, overlaid with a quality gauge showing faithfulness score improvement over a baseline model"
+  },
+  {
+    "slug": "fitone-domain-specific-fitness-llm-training",
+    "concept": "a split-panel showing a fitness coaching chatbot interface powered by FitOne on mobile, with a knowledge benchmark bar chart comparing FitOne performance against base models on ACSM and NSCA certification questions, alongside a three-stage post-training pipeline diagram"
+  },
+  {
+    "slug": "dips-dialogue-policy-persuasion-rl",
+    "concept": "a conversational interface split into two layers — the top shows a dialogue between an AI agent and a hesitant resident during fire evacuation, while the bottom shows a Q-learning policy selection chart dynamically switching between different persuasion strategies such as safety appeal, social proof, and urgency framing based on utterance analysis"
+  },
+  {
+    "slug": "human-ai-teams-taxonomy-five-clusters",
+    "concept": "a visual taxonomy diagram showing five distinct human-AI team cluster types arranged by autonomy level and interdependence — from AI Assistant at one end to Group Equanimity at the other — with example industry use cases mapped onto each cluster type"
+  }
+]
