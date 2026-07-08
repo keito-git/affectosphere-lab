@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "twitter-dsm5-depression-adhd-asd-nlp-profiling",
+    "concept": "a split population dashboard showing two clusters of social media users — one labeled ADHD and one labeled ASD — with their Twitter posts categorized into nine DSM-5 depressive symptom circles using color-coded NLP tagging, with a bar chart comparing symptom frequency between the two groups highlighting cognitive issues in ADHD and suicidal ideation in ASD"
+  },
+  {
+    "slug": "automated-compliance-mapping-cloud-sentence-transformer",
+    "concept": "a compliance dashboard showing a cloud security control list from multiple European standards being automatically matched to technical metric rows with similarity scores, using a domain-adapted sentence transformer neural network diagram in the center, with cross-standard mapping connections highlighted and an nDCG@10 performance bar chart on the side"
+  },
+  {
+    "slug": "lca-model-agnostic-orchestration-oncology-decision-support",
+    "concept": "a hospital oncology decision support dashboard showing three separated layers — patient data standardization via geometric deep learning, a dynamic cancer routing module in the center, and multiple interchangeable AI model boxes on the right — with a zero-overhead orchestration label and 100 percent data anomaly recall badge, all connected by clean modular pipelines"
+  },
+  {
+    "slug": "synthetic-consumer-insight-llm-projective-techniques",
+    "concept": "a market research dashboard comparing LLM-generated consumer association maps alongside human participant association maps for city tourism destinations, with overlapping word clusters shown in green for shared themes and diverging clusters in orange for LLM-specific stylistic differences, next to a table of temperature settings and prompting strategies with their impact on quality metrics"
+  },
+  {
+    "slug": "inject-or-navigate-token-efficient-legal-llm-retrieval",
+    "concept": "a legal document processing pipeline diagram showing a large corpus of transactional contracts on the left, with three parallel paths labeled Full Injection, NAVEMBED, and NAVINDEX, with token count reduction ratios displayed as 1x, 17.3x, and 56x, alongside a cost crossover graph showing the break-even point where cached injection becomes economical relative to retrieval methods"
+  }
+]
