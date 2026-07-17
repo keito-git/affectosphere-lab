@@ -30,6 +30,11 @@ export type AwardGroup = {
 
 const _rawResearch: Award[] = [
   {
+    title: "GeoSciAI2026（地球惑星科学データAIモデル作成コンペティション・気象課題）",
+    rank: "学生賞",
+    date: "2026-05-24",
+  },
+  {
     title: "ICITACEE 2024",
     rank: "Best Paper Award",
     date: "2024-08-01",
@@ -141,6 +146,11 @@ const _rawResearch: Award[] = [
 ];
 
 const _rawContest: Award[] = [
+  {
+    title: "AI Grand Prix（日本情報教育学会 第10回研究会）",
+    rank: "大賞",
+    date: "2026-08-01",
+  },
   { title: "第2回 高速道路DXアイデアコンテスト", rank: "優秀賞", date: "2024-01-01" },
   {
     title: "水地域イノベーション財団 2024年度支援事業ビジネスプランコンテスト",

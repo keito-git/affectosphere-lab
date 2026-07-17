@@ -109,12 +109,13 @@ const rawPublications: Publication[] = [
   {
     slug: "nojiri-etymology-2026",
     title:
-      "Unravelling historical, taxonomic, and cultural influences on the etymology of scientific names across Animalia",
-    venue: "bioRxiv",
-    date: "2026-02-01",
+      "Historical, taxonomic, and cultural patterns in scientific naming across Animalia",
+    venue: "PLOS ONE",
+    date: "2026-07-01",
     year: 2026,
     authors: "Kota Nojiri, Keito Inoshita, Haruto Sugeno, Takumi Taga",
-    kind: "preprint",
+    kind: "journal-international",
+    reviewed: true,
   },
   {
     slug: "inoshita-ai-homogenize-2026",
@@ -192,6 +193,39 @@ const rawPublications: Publication[] = [
     kind: "preprint",
     firstAuthor: true,
   },
+  {
+    slug: "inoshita-driver-intervention-2026",
+    title:
+      "Safety-Aware Evaluation of LLM-Generated Driver Intervention Messages through Multi-Task Risk Fusion",
+    venue: "arXiv",
+    date: "2026-06-01",
+    year: 2026,
+    authors: "Keito Inoshita",
+    kind: "preprint",
+    firstAuthor: true,
+  },
+  {
+    slug: "inoshita-uncertainty-routing-2026",
+    title:
+      "Interpretable Uncertainty Routing Separating Emotion Ambiguity from Distribution Shift in Facial Expression Recognition",
+    venue: "arXiv",
+    date: "2026-06-01",
+    year: 2026,
+    authors: "Keito Inoshita, Takato Ueno",
+    kind: "preprint",
+    firstAuthor: true,
+  },
+  {
+    slug: "inoshita-affective-sovereignty-2026",
+    title:
+      "Who Determines the Meaning of an Emotion? Affective Sovereignty as an Epistemic Consequence of Measurement Limits",
+    venue: "arXiv",
+    date: "2026-07-01",
+    year: 2026,
+    authors: "Keito Inoshita",
+    kind: "preprint",
+    firstAuthor: true,
+  },
   // ---- 国際ジャーナル (2026) ----
   {
     slug: "persona-synthetic-2026",
@@ -220,8 +254,8 @@ const rawPublications: Publication[] = [
   {
     slug: "world-model-sarcasm-2026",
     title: "World model inspired sarcasm reasoning with large language model agents",
-    venue: "Discovery Artificial Intelligence",
-    date: "2026-06-01",
+    venue: "Discovery Artificial Intelligence, vol. 6, no. 606",
+    date: "2026-05-01",
     year: 2026,
     authors: "Keito Inoshita, Shinnosuke Mizuno",
     kind: "journal-international",
@@ -491,14 +525,15 @@ const rawPublications: Publication[] = [
   },
   // ---- Preprint (2025) ----
   {
-    slug: "sugeno-bioRxiv-2025",
+    slug: "sugeno-plankton-2026",
     title:
-      "Introducing Large Language Models to Human-Based Etymological Classification in Zooplankton",
-    venue: "bioRxiv",
-    date: "2025-05-01",
-    year: 2025,
+      "Applying large language models to expert-based etymological classification in zooplankton",
+    venue: "Journal of Plankton Research",
+    date: "2026-07-01",
+    year: 2026,
     authors: "Haruto Sugeno, Keito Inoshita, Kota Nojiri",
-    kind: "preprint",
+    kind: "journal-international",
+    reviewed: true,
   },
   {
     slug: "c-dira-2025",
