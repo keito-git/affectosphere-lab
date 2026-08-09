@@ -16,6 +16,10 @@ const display =
   locale === "en"
     ? `${monthsEn[Number(m) - 1]} ${Number(d)}, ${y}`
     : `${y}年${Number(m)}月${Number(d)}日`;
+
+const base = locale === "en" ? "/en" : "";
+const href = item.slug ? `${base}/news/${item.slug}/` : null;
+const more = locale === "en" ? "Details →" : "詳細 →";
 ---
 
 <li class="reveal grid gap-2 border-b border-stone py-5 last:border-b-0 md:grid-cols-[10rem_8rem_1fr] md:gap-6">
@@ -25,5 +29,14 @@ const display =
   <span class="font-sans text-xs uppercase tracking-[0.14em] text-amber font-medium">
     {item.label}
   </span>
-  <p class="text-sm text-charcoal md:text-base">{item.body}</p>
+  <div>
+    {href ? (
+      <a href={href} class="link-amber text-sm text-charcoal md:text-base">
+        {item.body}
+        <span class="ml-2 whitespace-nowrap font-sans text-xs text-amber">{more}</span>
+      </a>
+    ) : (
+      <p class="text-sm text-charcoal md:text-base">{item.body}</p>
+    )}
+  </div>
 </li>
