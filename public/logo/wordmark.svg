@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 120" width="700" height="120" role="img" aria-label="Affectosphere Group">
+  <g transform="translate(60,60)">
+    <circle r="34" fill="none" stroke="#1A1A1A" stroke-width="3"/>
+    <circle r="18" fill="none" stroke="#C4974A" stroke-width="3"/>
+    <circle r="6" fill="#1A1A1A"/>
+  </g>
+  <text x="130" y="60" dominant-baseline="middle"
+        font-family="'Times New Roman','Noto Serif JP',Times,serif"
+        font-size="52" letter-spacing="0.5">
+    <tspan fill="#1A1A1A">Affectosphere</tspan><tspan fill="#6B7280"> Group</tspan>
+  </text>
+</svg>

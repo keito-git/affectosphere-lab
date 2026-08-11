@@ -25,14 +25,15 @@ const others = allNews.filter((n) => n.slug && n.slug !== item.slug);
     <p class="reveal text-center font-sans text-sm text-slate">{dateDisplay}</p>
 
     <!-- Center: lab logo -->
-    <div class="reveal mt-8 flex justify-center">
+    <div class="reveal mt-8 flex flex-col items-center gap-4">
       <img
-        src="/logo/mark.png"
+        src="/logo/wordmark.svg"
         alt="Affectosphere Group"
-        width="176"
-        height="176"
-        class="h-32 w-32 border border-stone bg-white object-contain p-4 shadow-card md:h-40 md:w-40"
+        width="360"
+        height="62"
+        class="h-14 w-auto md:h-16"
       />
+      <div class="h-px w-16 bg-amber" aria-hidden="true"></div>
     </div>
 
     <!-- Body -->

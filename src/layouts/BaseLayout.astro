@@ -46,7 +46,7 @@ const altPath =
 const alternateUrl = `${origin}${altPath}`;
 
 // Absolute OG image URL: per-page override, otherwise the lab logo.
-const ogImagePath = ogImage ?? "/logo/mark-light.png";
+const ogImagePath = ogImage ?? "/og/default.png";
 const ogImageAbsolute = ogImagePath.startsWith("http")
   ? ogImagePath
   : `${origin}${ogImagePath}`;
