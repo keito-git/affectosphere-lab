@@ -23,6 +23,49 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-08-11",
+    label: "Paper",
+    body: "A single-author paper was accepted to AI & Society (Springer, IF 6.1).",
+    slug: "20260811-ai-society-silos",
+    title: "Single-author paper accepted to AI & Society",
+    entries: [
+      {
+        title:
+          "Bridging the Silos in Affective AI: A Critical Perspective from Data to Society",
+        authors: "Keito Inoshita",
+        venue: "AI & Society (Springer)",
+        summary:
+          "A position paper that reframes affective computing as a six-layer pipeline, diagnoses four recurring silo-bridge disconnections that cascade across it, and proposes five integrated design criteria — situating affective AI as a sociotechnical system that must respect human emotional agency.",
+      },
+    ],
+  },
+  {
+    date: "2026-08-11",
+    label: "Paper",
+    body: "Two co-authored papers were accepted to IEEE GCCE 2026.",
+    slug: "20260811-gcce2026",
+    title: "Two co-authored papers accepted to IEEE GCCE 2026",
+    entries: [
+      {
+        title:
+          "Re-Defining Vanishing Municipalities in Japan: A Multidimensional Clustering and SLM-Based Policy Insight Framework",
+        authors: "Toma Okugawa, Keito Inoshita",
+        venue: "IEEE GCCE 2026",
+        summary:
+          "A reproducible framework (UBRS) that re-defines Japan's 'vanishing municipalities' beyond a single demographic axis — clustering 1,721 municipalities across 125 indicators (UMAP + HDBSCAN + SHAP) and injecting each cluster profile as RAG context into a locally deployable small language model to generate municipality-tailored policy insights.",
+      },
+      {
+        title:
+          "Behavioral Fidelity and Philosophy-Grounded Design for Self-Reflective Conversational AI",
+        authors: "Takumi Matsuo, Keito Inoshita",
+        venue: "IEEE GCCE 2026",
+        summary:
+          "Proposes Behavioral Fidelity (BF), a framework that quantifies whether an LLM dialogue agent actually follows its designer-specified behavioral rules — via LLM-as-judge strategy classification, KL-divergence analysis, and sequential constraint checks — and applies it to Mirra, a philosophy-of-language-grounded self-reflection app.",
+      },
+    ],
+  },
+
+  {
     date: "2026-08-05",
     label: "Award",
     body: "Received the Grand Prize at the AI Grand Prix (10th Workshop of the Japan Society of Educational Information).",

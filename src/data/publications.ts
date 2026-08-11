@@ -164,12 +164,14 @@ const rawPublications: Publication[] = [
     slug: "inoshita-affective-silos-2026",
     title:
       "Bridging the Silos in Affective AI: A Critical Perspective from Data to Society",
-    venue: "SSRN",
-    date: "2026-05-25",
+    venue: "AI & Society",
+    date: "2026-08-11",
     year: 2026,
     authors: "Keito Inoshita",
-    kind: "preprint",
+    kind: "journal-international",
     firstAuthor: true,
+    reviewed: true,
+    status: "Accepted, in press",
   },
   {
     slug: "inoshita-uncertainty-decomp-2026",

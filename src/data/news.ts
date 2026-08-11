@@ -32,6 +32,49 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-08-11",
+    label: "論文",
+    body: "単著論文が AI & Society（Springer, IF 6.1）に採択されました。",
+    slug: "20260811-ai-society-silos",
+    title: "単著論文が AI & Society に採択",
+    entries: [
+      {
+        title:
+          "Bridging the Silos in Affective AI: A Critical Perspective from Data to Society",
+        authors: "Keito Inoshita",
+        venue: "AI & Society (Springer)",
+        summary:
+          "感情コンピューティングを6層のパイプラインとして捉え直し、分野を横断して連鎖する4つの断絶（サイロ）を診断し、それらに噛み合う5つの統合的な設計指針を提示する立場表明論文。感情AIを、人間の感情主体性を尊重すべき社会技術システムとして位置づける。",
+      },
+    ],
+  },
+  {
+    date: "2026-08-11",
+    label: "論文",
+    body: "共著論文2本が IEEE GCCE 2026 に採択されました。",
+    slug: "20260811-gcce2026",
+    title: "共著論文2本が IEEE GCCE 2026 に採択",
+    entries: [
+      {
+        title:
+          "Re-Defining Vanishing Municipalities in Japan: A Multidimensional Clustering and SLM-Based Policy Insight Framework",
+        authors: "Toma Okugawa, Keito Inoshita",
+        venue: "IEEE GCCE 2026",
+        summary:
+          "「消滅可能性自治体」を20〜39歳女性人口の減少という単一指標ではなく、125の指標・1,721自治体から多次元にクラスタリング（UMAP＋HDBSCAN＋SHAP）し、各クラスタのプロファイルを小規模言語モデル（SLM）へRAGで与えて自治体別の政策提言を生成する、再現可能な枠組み（UBRS）を提案した研究。",
+      },
+      {
+        title:
+          "Behavioral Fidelity and Philosophy-Grounded Design for Self-Reflective Conversational AI",
+        authors: "Takumi Matsuo, Keito Inoshita",
+        venue: "IEEE GCCE 2026",
+        summary:
+          "LLM対話エージェントが設計者の意図した振る舞いの仕様に実際に従っているかを定量化する評価枠組み「Behavioral Fidelity（BF）」を提案。LLM-as-judgeによる戦略分類・KLダイバージェンス分析・逐次制約検証で検査し、言語哲学に基づく自己省察アプリ Mirra へ適用。消費者向けAIには振る舞いの検証と目的整合的な設計の両方が必要であることを示す研究。",
+      },
+    ],
+  },
+
+  {
     date: "2026-08-05",
     label: "受賞",
     body: "日本情報教育学会 第10回研究会「AI Grand Prix」にて大賞を受賞しました。",
