@@ -101,8 +101,10 @@ function initials(name: string): string {
                     <a
                       href={p.href}
                       class="link-amber font-heading text-xs tracking-wide"
+                      target={p.href.startsWith("http") ? "_blank" : undefined}
+                      rel={p.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     >
-                      Details &rarr;
+                      {p.href.startsWith("http") ? "個人サイト →" : "Details →"}
                     </a>
                   </div>
                 )}
