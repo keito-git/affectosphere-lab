@@ -51,6 +51,6 @@ export const members: Person[] = [
     blurb:
       "Works on solving regional issues with Small Language Models (SLMs).",
     portrait: "/people/okugawa-toma.jpg",
-    href: "https://t-okugawa.dev/publications/",
+    href: "https://t-okugawa.dev/",
   },
 ];
