@@ -32,6 +32,24 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-08-16",
+    label: "論文",
+    body: "共著論文が IEEE ICDM 2026 (Research Track) に採択されました。",
+    slug: "20260816-icdm2026-bsetd",
+    title: "共著論文が IEEE ICDM 2026 に採択",
+    entries: [
+      {
+        title:
+          "Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement",
+        authors: "Keito Inoshita, Takato Ueno",
+        venue: "IEEE ICDM 2026 (Research Track)",
+        summary:
+          "アノテーター間の不一致を「ノイズ」ではなく「信号」として扱い、多アノテーターのソフトラベルから感情の遷移構造を教師なしで発見する2段階フレームワーク（BSETD）。ベイズ的な遷移確率推定（Dirichlet-Multinomial階層モデル＋FDR制御）とグラフスペクトル分解により、感情の慣性（inertia）と伝染（contagion）を分離する。5コーパスの多言語横断検証で、心理学的知見（Plutchik／Russell 等）と整合することを示した。",
+      },
+    ],
+  },
+
+  {
     date: "2026-08-11",
     label: "論文",
     body: "単著論文が AI & Society（Springer, IF 6.1）に採択されました。",

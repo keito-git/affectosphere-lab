@@ -23,6 +23,24 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-08-16",
+    label: "Paper",
+    body: "A co-authored paper was accepted to IEEE ICDM 2026 (Research Track).",
+    slug: "20260816-icdm2026-bsetd",
+    title: "Co-authored paper accepted to IEEE ICDM 2026",
+    entries: [
+      {
+        title:
+          "Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement",
+        authors: "Keito Inoshita, Takato Ueno",
+        venue: "IEEE ICDM 2026 (Research Track)",
+        summary:
+          "A two-stage unsupervised framework (BSETD) that treats annotator disagreement as signal rather than noise, discovering emotion-transition structure directly from multi-annotator soft labels. Bayesian transition estimation (a hierarchical Dirichlet-Multinomial model with FDR control) and graph-spectral decomposition separate emotional inertia from contagion, validated across five corpora and cross-lingual data and aligned with established findings in psychology.",
+      },
+    ],
+  },
+
+  {
     date: "2026-08-11",
     label: "Paper",
     body: "A single-author paper was accepted to AI & Society (Springer, IF 6.1).",

@@ -188,12 +188,14 @@ const rawPublications: Publication[] = [
     slug: "inoshita-bayesian-spectral-2026",
     title:
       "Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement",
-    venue: "arXiv",
-    date: "2026-05-01",
+    venue: "IEEE ICDM 2026",
+    date: "2026-08-16",
     year: 2026,
     authors: "Keito Inoshita, Takato Ueno",
-    kind: "preprint",
+    kind: "international-conference",
     firstAuthor: true,
+    reviewed: true,
+    status: "Accepted, to appear",
   },
   {
     slug: "inoshita-driver-intervention-2026",
