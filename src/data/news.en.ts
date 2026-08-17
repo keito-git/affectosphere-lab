@@ -25,9 +25,9 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-16",
     label: "Paper",
-    body: "A co-authored paper was accepted to IEEE ICDM 2026 (Research Track).",
+    body: "A paper co-authored by Inoshita and Ueno was accepted to IEEE ICDM 2026 (Research Track).",
     slug: "20260816-icdm2026-bsetd",
-    title: "Co-authored paper accepted to IEEE ICDM 2026",
+    title: "Inoshita and Ueno's paper accepted to IEEE ICDM 2026",
     entries: [
       {
         title:
@@ -43,9 +43,9 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-11",
     label: "Paper",
-    body: "A single-author paper was accepted to AI & Society (Springer, IF 6.1).",
+    body: "Inoshita's single-authored paper was accepted to AI & Society (Springer, IF 6.1).",
     slug: "20260811-ai-society-silos",
-    title: "Single-author paper accepted to AI & Society",
+    title: "Inoshita's single-authored paper accepted to AI & Society",
     entries: [
       {
         title:
@@ -60,9 +60,9 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-11",
     label: "Paper",
-    body: "Two co-authored papers were accepted to IEEE GCCE 2026.",
+    body: "Two co-authored papers (Okugawa & Inoshita; Matsuo & Inoshita) were accepted to IEEE GCCE 2026.",
     slug: "20260811-gcce2026",
-    title: "Two co-authored papers accepted to IEEE GCCE 2026",
+    title: "Papers by Okugawa & Inoshita and Matsuo & Inoshita accepted to IEEE GCCE 2026",
     entries: [
       {
         title:

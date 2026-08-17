@@ -34,9 +34,9 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-16",
     label: "論文",
-    body: "共著論文が IEEE ICDM 2026 (Research Track) に採択されました。",
+    body: "井下と上野の共著論文が IEEE ICDM 2026 (Research Track) に採択されました。",
     slug: "20260816-icdm2026-bsetd",
-    title: "共著論文が IEEE ICDM 2026 に採択",
+    title: "井下と上野の共著論文が IEEE ICDM 2026 に採択",
     entries: [
       {
         title:
@@ -52,9 +52,9 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-11",
     label: "論文",
-    body: "単著論文が AI & Society（Springer, IF 6.1）に採択されました。",
+    body: "井下の単著論文が AI & Society（Springer, IF 6.1）に採択されました。",
     slug: "20260811-ai-society-silos",
-    title: "単著論文が AI & Society に採択",
+    title: "井下の単著論文が AI & Society に採択",
     entries: [
       {
         title:
@@ -69,9 +69,9 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-11",
     label: "論文",
-    body: "共著論文2本が IEEE GCCE 2026 に採択されました。",
+    body: "奥河・井下、松尾・井下の共著論文2本が IEEE GCCE 2026 に採択されました。",
     slug: "20260811-gcce2026",
-    title: "共著論文2本が IEEE GCCE 2026 に採択",
+    title: "奥河・井下／松尾・井下の共著論文2本が IEEE GCCE 2026 に採択",
     entries: [
       {
         title:
