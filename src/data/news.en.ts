@@ -25,9 +25,9 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-16",
     label: "Paper",
-    body: "A paper co-authored by Inoshita and Ueno was accepted to IEEE ICDM 2026 (Research Track).",
+    body: "A co-authored paper first-authored by Inoshita was accepted to IEEE ICDM 2026 (Research Track).",
     slug: "20260816-icdm2026-bsetd",
-    title: "Inoshita and Ueno's paper accepted to IEEE ICDM 2026",
+    title: "Inoshita's first-authored paper accepted to IEEE ICDM 2026",
     entries: [
       {
         title:
@@ -60,9 +60,9 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-11",
     label: "Paper",
-    body: "Two co-authored papers (Okugawa & Inoshita; Matsuo & Inoshita) were accepted to IEEE GCCE 2026.",
+    body: "Two of Inoshita's co-authored papers were accepted to IEEE GCCE 2026 (one of them first-authored by Okugawa).",
     slug: "20260811-gcce2026",
-    title: "Papers by Okugawa & Inoshita and Matsuo & Inoshita accepted to IEEE GCCE 2026",
+    title: "Two of Inoshita's co-authored papers accepted to IEEE GCCE 2026",
     entries: [
       {
         title:
@@ -95,9 +95,9 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-07-01",
     label: "Paper",
-    body: "Co-authored papers were published in PLOS ONE and the Journal of Plankton Research.",
+    body: "Two of Inoshita's co-authored papers were published in PLOS ONE and the Journal of Plankton Research.",
     slug: "20260701-papers-plosone-jpr",
-    title: "Two co-authored papers published in PLOS ONE / Journal of Plankton Research",
+    title: "Two of Inoshita's co-authored papers published in PLOS ONE / Journal of Plankton Research",
     entries: [
       {
         title:

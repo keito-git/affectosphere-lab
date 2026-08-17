@@ -34,9 +34,9 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-16",
     label: "論文",
-    body: "井下と上野の共著論文が IEEE ICDM 2026 (Research Track) に採択されました。",
+    body: "井下が筆頭の共著論文が IEEE ICDM 2026 (Research Track) に採択されました。",
     slug: "20260816-icdm2026-bsetd",
-    title: "井下と上野の共著論文が IEEE ICDM 2026 に採択",
+    title: "井下が筆頭の共著論文が IEEE ICDM 2026 に採択",
     entries: [
       {
         title:
@@ -69,9 +69,9 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-11",
     label: "論文",
-    body: "奥河・井下、松尾・井下の共著論文2本が IEEE GCCE 2026 に採択されました。",
+    body: "井下の共著論文2本が IEEE GCCE 2026 に採択されました（うち1本は奥河が筆頭）。",
     slug: "20260811-gcce2026",
-    title: "奥河・井下／松尾・井下の共著論文2本が IEEE GCCE 2026 に採択",
+    title: "井下の共著論文2本が IEEE GCCE 2026 に採択",
     entries: [
       {
         title:
@@ -104,9 +104,9 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-07-01",
     label: "論文",
-    body: "共著論文が PLOS ONE および Journal of Plankton Research に掲載されました。",
+    body: "井下の共著論文が PLOS ONE および Journal of Plankton Research に掲載されました。",
     slug: "20260701-papers-plosone-jpr",
-    title: "共著論文2本が PLOS ONE / Journal of Plankton Research に掲載",
+    title: "井下の共著論文2本が PLOS ONE / Journal of Plankton Research に掲載",
     entries: [
       {
         title:
