@@ -83,24 +83,58 @@ const aiForScienceCard: DomainCard = {
           What CAI is
         </h2>
       </div>
-      <div class="reveal">
+      <div>
         <p
-          class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
+          class="reveal border-l-2 border-amber pl-6 font-display text-xl leading-relaxed text-charcoal md:text-2xl"
           style="line-height: 1.75;"
         >
-          Not simply an AI that recognises emotion. Keeping emotion&rsquo;s
-          <span class="text-amber-deep">subjectivity, plurality and movement</span> intact,
-          and placing AI on the side that raises human emotional intelligence &mdash;
-          that design discipline is what we call Computational Affective Intelligence (CAI).
+          Computational Affective Intelligence is the study of how affect is
+          <span class="text-amber-deep">represented, inferred, generated, learned and utilised</span>
+          by artificial intelligence systems.
         </p>
-        <p class="mt-6 font-display text-base leading-relaxed text-slate md:text-lg">
-          A system that collapses emotion into one correct answer installs someone&rsquo;s reading
-          of it as the objective one. CAI takes up the question that comes before that.
+        <p class="reveal mt-7 font-display text-base leading-relaxed text-slate md:text-lg">
+          Its subject is not only human emotion. How does an AI represent affect, interpret it,
+          reason over it, produce it? How does it hold the uncertainty and the value judgements that
+          come with it? Once a language model reasons about emotion on its own, and answers
+          differently depending on persona and culture, recognition alone no longer covers the
+          question. Emotional intelligence itself has to become the object of computation.
         </p>
       </div>
     </div>
 
-    <ol class="reveal mt-14 grid gap-px border border-stone bg-stone md:grid-cols-3">
+    <!-- Lineage: what this is not a synonym for. -->
+    <div class="reveal mt-16">
+      <p class="eyebrow">Lineage</p>
+      <ol class="mt-6 border-t border-stone">
+        <li class="grid gap-2 border-b border-stone py-5 md:grid-cols-[18rem_1fr] md:gap-8">
+          <p class="font-label text-[0.82rem] uppercase tracking-[0.12em] text-slate">
+            Emotion Recognition
+          </p>
+          <p class="font-display text-base leading-relaxed text-slate md:text-lg">
+            Guessing the emotion.
+          </p>
+        </li>
+        <li class="grid gap-2 border-b border-stone py-5 md:grid-cols-[18rem_1fr] md:gap-8">
+          <p class="font-label text-[0.82rem] uppercase tracking-[0.12em] text-slate">
+            Affective Computing
+          </p>
+          <p class="font-display text-base leading-relaxed text-slate md:text-lg">
+            Building systems that recognise, produce and respond to emotion.
+          </p>
+        </li>
+        <li class="grid gap-2 border-b border-stone py-5 md:grid-cols-[18rem_1fr] md:gap-8">
+          <p class="font-label text-[0.82rem] uppercase tracking-[0.12em] text-amber-deep">
+            Computational Affective Intelligence
+          </p>
+          <p class="font-display text-base font-medium leading-relaxed text-charcoal md:text-lg">
+            How an AI understands affect, structures it internally, and uses it to reason and decide.
+          </p>
+        </li>
+      </ol>
+    </div>
+
+    <!-- The design commitments that follow from the definition. -->
+    <ol class="reveal mt-16 grid gap-px border border-stone bg-stone md:grid-cols-3">
       <li class="bg-ivory p-7">
         <p class="font-label text-[0.72rem] tracking-[0.18em] text-amber-deep">01</p>
         <h3 class="mt-4 font-display text-xl font-medium text-charcoal">Emotion is a distribution</h3>

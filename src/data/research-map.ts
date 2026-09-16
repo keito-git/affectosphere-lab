@@ -15,6 +15,7 @@
 import { allPublications, type Publication } from "./publications";
 
 export type StageId =
+  | "human-affect"
   | "perception"
   | "representation"
   | "reasoning"
@@ -32,6 +33,13 @@ export type Stage = {
 };
 
 export const stages: Stage[] = [
+  {
+    id: "human-affect",
+    label: "Human Affect",
+    labelJa: "人間の感情を理解する",
+    note: "そもそも人は感情をどう経験し、どう食い違うのか。計算の前にある問い。",
+    noteEn: "How people actually experience emotion, and where they disagree — the question that precedes any model.",
+  },
   {
     id: "perception",
     label: "Perception",
@@ -83,8 +91,74 @@ export const stages: Stage[] = [
   },
 ];
 
-/** The six stages of CAI, excluding the "beyond" band. */
+/** The stages of CAI, excluding the "beyond" band. */
 export const caiStages = stages.filter((s) => s.id !== "beyond");
+
+export type TierId =
+  | "human-affect"
+  | "computational-representation"
+  | "affective-intelligence"
+  | "human-ai-society";
+
+export type Tier = {
+  id: TierId;
+  numeral: string;
+  label: string;
+  labelJa: string;
+  note: string;
+  noteEn: string;
+};
+
+/**
+ * The four tiers the field divides into: understanding human affect, giving it
+ * a computational representation, letting a system reason and act with it, and
+ * placing the result back among people.
+ */
+export const tiers: Tier[] = [
+  {
+    id: "human-affect",
+    numeral: "I",
+    label: "Human Affect",
+    labelJa: "人間の感情",
+    note: "人間の感情そのものを理解する層。",
+    noteEn: "Understanding human emotion itself.",
+  },
+  {
+    id: "computational-representation",
+    numeral: "II",
+    label: "Computational Representation",
+    labelJa: "計算表現",
+    note: "それを AI の内部で計算可能な形に置く層。",
+    noteEn: "Giving it a form a machine can hold and compute over.",
+  },
+  {
+    id: "affective-intelligence",
+    numeral: "III",
+    label: "Affective Intelligence",
+    labelJa: "感情知能",
+    note: "AI がそれを使って推論し、生成し、判断する層。",
+    noteEn: "Where the system reasons, generates and decides with it.",
+  },
+  {
+    id: "human-ai-society",
+    numeral: "IV",
+    label: "Human–AI Society",
+    labelJa: "人とAIの社会",
+    note: "それが人と社会のあいだで何を起こすかを扱う層。",
+    noteEn: "What all of it does between people, and in society.",
+  },
+];
+
+/** Which tier each stage belongs to. */
+export const stageTier: Record<string, TierId> = {
+  "human-affect": "human-affect",
+  perception: "computational-representation",
+  representation: "computational-representation",
+  reasoning: "affective-intelligence",
+  generation: "affective-intelligence",
+  interaction: "human-ai-society",
+  society: "human-ai-society",
+};
 
 /**
  * Research domain -> the stage it mainly serves, so the ten domains and the
@@ -92,7 +166,7 @@ export const caiStages = stages.filter((s) => s.id !== "beyond");
  */
 export const domainStage: Record<string, StageId> = {
   "emotion-recognition": "perception",
-  "human-emotion-understanding": "representation",
+  "human-emotion-understanding": "human-affect",
   interpretability: "reasoning",
   "data-augmentation": "generation",
   "human-ai-interaction": "interaction",
@@ -115,10 +189,12 @@ export const publicationStage: Record<string, StageId> = {
   "c-dira-2025": "perception",
   "ieee-ithings-2024": "perception",
 
+  // --- Human affect --------------------------------------------------------
+  "inoshita-bayesian-spectral-2026": "human-affect",
+
   // --- Representation ------------------------------------------------------
   "inoshita-llm-emotion-uncertainty-2026": "representation",
   "inoshita-uncertainty-decomp-2026": "representation",
-  "inoshita-bayesian-spectral-2026": "representation",
   "inoshita-uncertainty-routing-2026": "representation",
 
   // --- Reasoning -----------------------------------------------------------

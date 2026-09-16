@@ -81,23 +81,55 @@ const aiForScienceCard: DomainCard = {
           CAI とは何か
         </h2>
       </div>
-      <div class="reveal">
+      <div>
         <p
-          class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
+          class="reveal border-l-2 border-amber pl-6 font-display text-xl leading-relaxed text-charcoal md:text-2xl"
           style="line-height: 1.75;"
         >
-          感情を認識するAIのことではない。感情の<span class="text-amber-deep">主観性・多義性・揺らぎ</span>を保ったまま、
-          人の感情知性を高める側にAIを置く——その設計の体系を、
-          我々は Computational Affective Intelligence（CAI）と呼ぶ。
+          Computational Affective Intelligence とは、人間および人工知能における感情・情動を、
+          <span class="text-amber-deep">表現・認識・推論・生成・学習・利用</span>という観点から
+          計算論的に理解し、設計する研究領域である。
         </p>
-        <p class="mt-6 font-display text-base leading-relaxed text-slate md:text-lg">
-          感情を一つの正解へ潰す技術は、誰かの解釈を「客観」として制度化してしまう。
-          CAI が引き受けるのは、その手前にある問いである。
+        <p class="reveal mt-7 font-display text-base leading-relaxed text-slate md:text-lg">
+          扱うのは人間の感情だけではない。AI が感情をどう表象し、どう解釈し、どう推論し、どう生成するのか。
+          感情をめぐる不確実性や価値判断を、内部にどう持つのか。
+          LLM が感情について自ら推論し、文化や人格によって異なる判断を返すようになった以上、
+          「認識」だけでは足りない。感情知能そのものを計算の対象として扱う必要がある。
         </p>
       </div>
     </div>
 
-    <ol class="reveal mt-14 grid gap-px border border-stone bg-stone md:grid-cols-3">
+    <!-- Lineage: what this is not a synonym for. -->
+    <div class="reveal mt-16">
+      <p class="eyebrow">Lineage</p>
+      <ol class="mt-6 border-t border-stone">
+        <li class="grid gap-2 border-b border-stone py-5 md:grid-cols-[18rem_1fr] md:gap-8">
+          <p class="font-label text-[0.82rem] uppercase tracking-[0.12em] text-slate">
+            Emotion Recognition
+          </p>
+          <p class="font-display text-base leading-relaxed text-slate md:text-lg">感情を当てる。</p>
+        </li>
+        <li class="grid gap-2 border-b border-stone py-5 md:grid-cols-[18rem_1fr] md:gap-8">
+          <p class="font-label text-[0.82rem] uppercase tracking-[0.12em] text-slate">
+            Affective Computing
+          </p>
+          <p class="font-display text-base leading-relaxed text-slate md:text-lg">
+            感情を認識・生成・応答する計算システムをつくる。
+          </p>
+        </li>
+        <li class="grid gap-2 border-b border-stone py-5 md:grid-cols-[18rem_1fr] md:gap-8">
+          <p class="font-label text-[0.82rem] uppercase tracking-[0.12em] text-amber-deep">
+            Computational Affective Intelligence
+          </p>
+          <p class="font-display text-base font-medium leading-relaxed text-charcoal md:text-lg">
+            AI が感情をどう理解し、内部でどう構造化し、推論と判断にどう使うかまでを扱う。
+          </p>
+        </li>
+      </ol>
+    </div>
+
+    <!-- The design commitments that follow from the definition. -->
+    <ol class="reveal mt-16 grid gap-px border border-stone bg-stone md:grid-cols-3">
       <li class="bg-ivory p-7">
         <p class="font-label text-[0.72rem] tracking-[0.18em] text-amber-deep">01</p>
         <h3 class="mt-4 font-display text-xl font-medium text-charcoal">感情は確率分布である</h3>
@@ -116,7 +148,7 @@ const aiForScienceCard: DomainCard = {
         <p class="font-label text-[0.72rem] tracking-[0.18em] text-amber-deep">03</p>
         <h3 class="mt-4 font-display text-xl font-medium text-charcoal">AI は判定者ではなく鏡</h3>
         <p class="mt-3 font-display text-base leading-relaxed text-slate">
-          感情を解釈する権利を人の側に残し、AI は人の感情知性を引き上げる側に立つ。
+          感情を解釈する権利を人の側に残し、AI は人の感情知能を引き上げる側に立つ。
         </p>
       </li>
     </ol>

@@ -1,10 +1,18 @@
 ---
-// The research map: the six stages of Computational Affective Intelligence,
-// and how far each one has actually been filled in. Every dot is one
-// publication from publications.ts — nothing is padded.
-import { caiStages, stageStats, unmappedCount, tier, domainStage } from "../data/research-map";
+// The research map: the four tiers of Computational Affective Intelligence,
+// the stages nested under them, and how far each one has actually been filled
+// in. Every dot is one publication from publications.ts — nothing is padded.
+import {
+  tiers,
+  caiStages,
+  stageTier,
+  stageStats,
+  unmappedCount,
+  tier as venueTier,
+} from "../data/research-map";
 import { researchDomains as domainsJa } from "../data/research-domains";
 import { researchDomains as domainsEn } from "../data/research-domains.en";
+import { domainStage } from "../data/research-map";
 
 interface Props {
   locale?: "ja" | "en";
@@ -18,15 +26,10 @@ const caiTotal = caiStages.reduce((n, s) => n + stats[s.id].total, 0);
 const beyond = stats.beyond;
 const total = caiTotal + beyond.total;
 const unmapped = unmappedCount();
-const domainPrefix = isEn ? "/en" : "";
+const prefix = isEn ? "/en" : "";
 
-/** Domains that mainly serve a given stage, for the cross-links under it. */
-function domainsFor(stageId: string) {
-  return domains.filter((d) => domainStage[d.slug] === stageId);
-}
-
-const dotClass = (pub: Parameters<typeof tier>[0]) => {
-  const t = tier(pub);
+const dotClass = (pub: Parameters<typeof venueTier>[0]) => {
+  const t = venueTier(pub);
   if (t === "international") return "bg-amber";
   if (t === "domestic") return "bg-[#7C8798]";
   return "border border-[#7C8798]";
@@ -50,13 +53,13 @@ const dotClass = (pub: Parameters<typeof tier>[0]) => {
         id="research-map-heading"
         class="mt-4 font-display text-3xl font-medium tracking-tight text-[#F4F2ED] md:text-4xl"
       >
-        {isEn ? "Where we stand on the CAI stack" : "CAI の地図の、どこを埋めたか"}
+        {isEn ? "Where we stand on the map of CAI" : "CAI の地図の、どこを埋めたか"}
       </h2>
       <p class="mt-5 font-display text-base leading-relaxed text-[#CFCBC2] md:text-lg">
         {
           isEn
-            ? "Computational Affective Intelligence runs through six stages: an affective system reads emotion, holds it, reasons from it, gives it form, meets a person through it, and is finally placed in society. Each dot below is one publication, at the stage it contributes to most."
-            : "Computational Affective Intelligence は六つの段でできている。感情を読み取り、保持し、それを前提に考え、形にし、人と向き合い、社会に据え直す。下のドットひとつが業績ひとつ、最も寄与する段に置いた。"
+            ? "The field divides into four tiers, and the work moves through stages inside them. Each dot below is one publication, placed at the stage it contributes to most — so the thin rows are as informative as the full ones."
+            : "この領域は四つの層に分かれ、その中を段が進む。下のドットひとつが業績ひとつ、最も寄与する段に置いた。薄い行は、次に向かう先を指している。"
         }
       </p>
     </header>
@@ -77,73 +80,88 @@ const dotClass = (pub: Parameters<typeof tier>[0]) => {
       </li>
     </ul>
 
-    <!-- The stack -->
-    <ol class="mt-12 border-t border-[#2B3341]">
+    <!-- Four tiers, with their stages nested -->
+    <div class="mt-12 space-y-12">
       {
-        caiStages.map((stage, i) => {
-          const s = stats[stage.id];
-          const related = domainsFor(stage.id);
+        tiers.map((t) => {
+          const rows = caiStages.filter((s) => stageTier[s.id] === t.id);
+          const tierTotal = rows.reduce((n, s) => n + stats[s.id].total, 0);
           return (
-            <li class="reveal border-b border-[#2B3341] py-7">
-              <div class="grid gap-4 md:grid-cols-[3rem_16rem_1fr_3rem] md:items-baseline md:gap-6">
-                <p class="font-label text-[0.8rem] tracking-[0.14em] text-[#4a5464]">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-
-                <div>
-                  <h3 class="font-label text-[0.9rem] uppercase tracking-[0.18em] text-amber">
-                    {stage.label}
-                  </h3>
-                  {!isEn && (
-                    <p class="mt-1 font-display text-lg text-[#E9E6DF]">{stage.labelJa}</p>
-                  )}
-                </div>
-
-                <div>
-                  <div class="flex flex-wrap items-center gap-[0.3rem]">
-                    {s.pubs.map((pub) => (
-                      <span
-                        class={`inline-block h-2.5 w-2.5 rounded-full ${dotClass(pub)}`}
-                        title={`${pub.title} (${pub.venue}, ${pub.year})`}
-                      />
-                    ))}
-                  </div>
-                  <p class="mt-3 font-display text-sm leading-relaxed text-[#9AA4B4]">
-                    {isEn ? stage.noteEn : stage.note}
-                  </p>
-                  {related.length > 0 && (
-                    <p class="mt-2 flex flex-wrap gap-x-4 gap-y-1">
-                      {related.map((d) => (
-                        <a
-                          href={`${domainPrefix}/research/${d.slug}/`}
-                          class="font-display text-sm text-[#8C96A6] underline-offset-4 hover:text-amber hover:underline"
-                        >
-                          {d.title}
-                        </a>
-                      ))}
-                    </p>
-                  )}
-                </div>
-
-                <p class="font-label text-[0.8rem] tracking-[0.12em] text-[#6E7889] md:text-right">
-                  {s.total}
+            <section class="reveal" aria-label={t.label}>
+              <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-[#2B3341] pb-3">
+                <p class="font-label text-[0.8rem] tracking-[0.2em] text-[#4a5464]">{t.numeral}</p>
+                <h3 class="font-label text-[0.88rem] uppercase tracking-[0.18em] text-amber">
+                  {t.label}
+                </h3>
+                {!isEn && <p class="font-display text-base text-[#E9E6DF]">{t.labelJa}</p>}
+                <p class="font-display text-sm text-[#9AA4B4]">{isEn ? t.noteEn : t.note}</p>
+                <p class="ml-auto font-label text-[0.75rem] tracking-[0.12em] text-[#6E7889]">
+                  {tierTotal}
                 </p>
               </div>
-            </li>
+
+              <ul class="mt-5 space-y-4 md:pl-8">
+                {rows.map((s) => {
+                  const stat = stats[s.id];
+                  const related = domains.filter((d) => domainStage[d.slug] === s.id);
+                  return (
+                    <li class="grid gap-2 md:grid-cols-[13rem_1fr_3rem] md:items-baseline md:gap-6">
+                      <div>
+                        <p class="font-label text-[0.78rem] uppercase tracking-[0.14em] text-[#B8B4AC]">
+                          {s.label}
+                        </p>
+                        {!isEn && (
+                          <p class="mt-0.5 font-display text-base text-[#E9E6DF]">{s.labelJa}</p>
+                        )}
+                      </div>
+
+                      <div>
+                        <div class="flex flex-wrap items-center gap-[0.3rem]">
+                          {stat.pubs.map((pub) => (
+                            <span
+                              class={`inline-block h-2.5 w-2.5 rounded-full ${dotClass(pub)}`}
+                              title={`${pub.title} (${pub.venue}, ${pub.year})`}
+                            />
+                          ))}
+                        </div>
+                        <p class="mt-2.5 font-display text-sm leading-relaxed text-[#9AA4B4]">
+                          {isEn ? s.noteEn : s.note}
+                        </p>
+                        {related.length > 0 && (
+                          <p class="mt-1.5 flex flex-wrap gap-x-4 gap-y-1">
+                            {related.map((d) => (
+                              <a
+                                href={`${prefix}/research/${d.slug}/`}
+                                class="font-display text-sm text-[#8C96A6] underline-offset-4 hover:text-amber hover:underline"
+                              >
+                                {d.title}
+                              </a>
+                            ))}
+                          </p>
+                        )}
+                      </div>
+
+                      <p class="font-label text-[0.78rem] tracking-[0.12em] text-[#6E7889] md:text-right">
+                        {stat.total}
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
           );
         })
       }
-    </ol>
+    </div>
 
-    <!-- AI research outside affective AI: shown, but kept off the stack. -->
-    <div class="reveal mt-10">
-      <div class="grid gap-3 md:grid-cols-[3rem_16rem_1fr_3rem] md:items-baseline md:gap-6">
-        <p class="font-label text-[0.8rem] tracking-[0.14em] text-[#3d4653]">&mdash;</p>
+    <!-- AI research outside affective AI: shown, but kept off the map. -->
+    <div class="reveal mt-12 border-t border-[#2B3341] pt-7">
+      <div class="grid gap-3 md:grid-cols-[13rem_1fr_3rem] md:items-baseline md:gap-6">
         <div>
-          <h3 class="font-label text-[0.9rem] uppercase tracking-[0.18em] text-[#6E7889]">
+          <p class="font-label text-[0.78rem] uppercase tracking-[0.14em] text-[#6E7889]">
             Beyond affect
-          </h3>
-          {!isEn && <p class="mt-1 font-display text-lg text-[#8C96A6]">感情AIの外側</p>}
+          </p>
+          {!isEn && <p class="mt-0.5 font-display text-base text-[#8C96A6]">感情AIの外側</p>}
         </div>
         <div>
           <div class="flex flex-wrap items-center gap-[0.3rem] opacity-60">
@@ -154,15 +172,15 @@ const dotClass = (pub: Parameters<typeof tier>[0]) => {
               />
             ))}
           </div>
-          <p class="mt-3 max-w-prose font-display text-sm leading-relaxed text-[#6E7889]">
+          <p class="mt-2.5 max-w-prose font-display text-sm leading-relaxed text-[#6E7889]">
             {
               isEn
-                ? "AI research outside affective computing — scientific naming, conflict-structure corpora, model merging. Counted here rather than on the stack."
-                : "感情AI以外のAI研究——学名の語源分析、紛争構造コーパス、モデルマージなど。スタックとは分けて数えている。"
+                ? "AI research outside affective computing — scientific naming, conflict-structure corpora, model merging. Counted here rather than on the map."
+                : "感情AI以外のAI研究——学名の語源分析、紛争構造コーパス、モデルマージなど。地図とは分けて数えている。"
             }
           </p>
         </div>
-        <p class="font-label text-[0.8rem] tracking-[0.12em] text-[#3d4653] md:text-right">
+        <p class="font-label text-[0.78rem] tracking-[0.12em] text-[#3d4653] md:text-right">
           {beyond.total}
         </p>
       </div>
@@ -172,11 +190,11 @@ const dotClass = (pub: Parameters<typeof tier>[0]) => {
     <p class="reveal mt-12 max-w-prose font-display text-sm leading-relaxed text-[#8C96A6]">
       {
         isEn
-          ? `Every publication on this site was read and placed at the single stage it contributes to most; work spanning several stages is counted once. ${caiTotal} sit on the CAI stack and ${beyond.total} outside it${unmapped > 0 ? `, with ${unmapped} not yet placed` : ""}.`
-          : `本サイトに掲載している業績を一件ずつ読み、最も寄与する段ひとつに置いた。複数の段にまたがる研究も一度だけ数えている。CAI のスタック上に ${caiTotal} 件、その外側に ${beyond.total} 件${unmapped > 0 ? `（未割り当て ${unmapped} 件）` : ""}。`
+          ? `Every publication on this site was read and placed at the single stage it contributes to most; work spanning several stages is counted once. ${caiTotal} sit on the map and ${beyond.total} outside it${unmapped > 0 ? `, with ${unmapped} not yet placed` : ""}.`
+          : `本サイトに掲載している業績を一件ずつ読み、最も寄与する段ひとつに置いた。複数の段にまたがる研究も一度だけ数えている。地図の上に ${caiTotal} 件、その外側に ${beyond.total} 件${unmapped > 0 ? `（未割り当て ${unmapped} 件）` : ""}。`
       }
       <a
-        href={`${domainPrefix}/publications/`}
+        href={`${prefix}/publications/`}
         class="ml-2 text-amber underline underline-offset-4 hover:text-[#d3a95f]"
       >
         {isEn ? "Publications" : "Publications を見る"} &rarr;
