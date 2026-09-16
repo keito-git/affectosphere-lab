@@ -31,7 +31,7 @@ export const allNews: NewsItem[] = [
     entries: [
       {
         title:
-          "Getting past “an LLM gives you the label, not the uncertainty”: implementation and operation practices for generative AI on subjective judgement tasks",
+          "Crossing the “LLMs Give Labels but Not Uncertainty” Wall: Implementation and Operational Practices for Generative AI Deployment in Subjective Judgment Tasks",
         authors: "Keito Inoshita",
         venue: "IPSJ Transactions on Digital Practices (to appear, April 2027)",
       },

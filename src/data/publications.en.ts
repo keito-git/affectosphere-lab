@@ -82,7 +82,7 @@ const rawPublications: Publication[] = [
   {
     slug: "ipsj-dp-uncertainty-2027",
     title:
-      "Getting past “an LLM gives you the label, not the uncertainty”: implementation and operation practices for generative AI on subjective judgement tasks",
+      "Crossing the “LLMs Give Labels but Not Uncertainty” Wall: Implementation and Operational Practices for Generative AI Deployment in Subjective Judgment Tasks",
     venue: "IPSJ Transactions on Digital Practices",
     date: "2027-04-01",
     year: 2027,
