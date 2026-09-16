@@ -23,6 +23,35 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-09-16",
+    label: "Paper",
+    body: "A single-authored paper by Inoshita has been accepted to IPSJ Transactions on Digital Practices.",
+    slug: "20260916-ipsj-dp-uncertainty",
+    title: "Single-authored paper accepted to IPSJ Transactions on Digital Practices",
+    entries: [
+      {
+        title:
+          "Getting past “an LLM gives you the label, not the uncertainty”: implementation and operation practices for generative AI on subjective judgement tasks",
+        authors: "Keito Inoshita",
+        venue: "IPSJ Transactions on Digital Practices (to appear, April 2027)",
+      },
+    ],
+  },
+  {
+    date: "2026-09-16",
+    label: "Award",
+    body: "Inoshita received an Encouragement Award in the 23rd “My Proposal” call by the Rengo Institute for Advancement of Living Standards.",
+    slug: "20260916-watashi-no-teigen",
+    title: "Encouragement Award in the 23rd “My Proposal” call",
+  },
+  {
+    date: "2026-09-16",
+    label: "Award",
+    body: "Inoshita received the Chairman's Award of the Kinro Seishonen Yakushinkai at Youth Forum 2026 for the essay “What does it mean to work?”.",
+    slug: "20260916-hataraku-essay",
+    title: "Chairman's Award at Youth Forum 2026",
+  },
+  {
     date: "2026-08-16",
     label: "Paper",
     body: "A co-authored paper first-authored by Inoshita was accepted to IEEE ICDM 2026 (Research Track).",

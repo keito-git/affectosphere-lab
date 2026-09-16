@@ -147,6 +147,16 @@ const _rawResearch: Award[] = [
 
 const _rawContest: Award[] = [
   {
+    title: "公益社団法人教育文化協会 第23回 私の提言募集",
+    rank: "奨励賞",
+    date: "2026-09-16",
+  },
+  {
+    title: "若者を考えるつどい2026「働くってなんだろう」エッセイ",
+    rank: "勤労青少年躍進会理事長賞",
+    date: "2026-09-16",
+  },
+  {
     title: "AI Grand Prix（日本情報教育学会 第10回研究会）",
     rank: "大賞",
     date: "2026-08-01",

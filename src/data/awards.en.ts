@@ -151,6 +151,16 @@ const _rawResearch: Award[] = [
 
 const _rawContest: Award[] = [
   {
+    title: "Rengo Institute for Advancement of Living Standards, 23rd “My Proposal” call",
+    rank: "Encouragement Award",
+    date: "2026-09-16",
+  },
+  {
+    title: "Youth Forum 2026, “What does it mean to work?” essay",
+    rank: "Chairman's Award, Kinro Seishonen Yakushinkai",
+    date: "2026-09-16",
+  },
+  {
     title: "AI Grand Prix (10th Workshop, Japan Society of Educational Information)",
     rank: "Grand Prize",
     date: "2026-08-01",

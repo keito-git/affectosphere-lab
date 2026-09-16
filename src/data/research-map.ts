@@ -196,6 +196,7 @@ export const publicationStage: Record<string, StageId> = {
   "inoshita-llm-emotion-uncertainty-2026": "representation",
   "inoshita-uncertainty-decomp-2026": "representation",
   "inoshita-uncertainty-routing-2026": "representation",
+  "ipsj-dp-uncertainty-2027": "representation",
 
   // --- Reasoning -----------------------------------------------------------
   "inoshita-cognitive-causal-2026": "reasoning",
@@ -284,6 +285,7 @@ export const publicationDomain: Record<string, string> = {
   "inoshita-llm-emotion-uncertainty-2026": "interpretability",
   "inoshita-uncertainty-decomp-2026": "interpretability",
   "inoshita-uncertainty-routing-2026": "interpretability",
+  "ipsj-dp-uncertainty-2027": "interpretability",
 
   // 感情データの拡張
   "persona-synthetic-2026": "data-augmentation",

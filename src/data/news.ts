@@ -32,6 +32,35 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-09-16",
+    label: "論文",
+    body: "井下の単著論文が 情報処理学会論文誌デジタルプラクティス に採録されました。",
+    slug: "20260916-ipsj-dp-uncertainty",
+    title: "井下の単著論文が 情報処理学会論文誌デジタルプラクティス に採録",
+    entries: [
+      {
+        title:
+          "「LLMはラベルを出すが不確実性は出さない」という壁をどう越えるか -主観的判断タスクへの生成AI導入における実装・運用プラクティス-",
+        authors: "井下敬翔",
+        venue: "情報処理学会論文誌デジタルプラクティス（2027年4月号 掲載予定）",
+      },
+    ],
+  },
+  {
+    date: "2026-09-16",
+    label: "受賞",
+    body: "井下が 公益社団法人教育文化協会 第23回 私の提言募集 にて奨励賞を受賞しました。",
+    slug: "20260916-watashi-no-teigen",
+    title: "第23回 私の提言募集 にて奨励賞を受賞",
+  },
+  {
+    date: "2026-09-16",
+    label: "受賞",
+    body: "井下が 若者を考えるつどい2026「働くってなんだろう」エッセイ にて勤労青少年躍進会理事長賞を受賞しました。",
+    slug: "20260916-hataraku-essay",
+    title: "「働くってなんだろう」エッセイ にて勤労青少年躍進会理事長賞を受賞",
+  },
+  {
     date: "2026-08-16",
     label: "論文",
     body: "井下が筆頭の共著論文が IEEE ICDM 2026 (Research Track) に採択されました。",

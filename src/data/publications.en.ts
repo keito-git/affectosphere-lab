@@ -78,6 +78,19 @@ export const kindOrder: PublicationKind[] = [
 // below is hand-curated; we sort at the bottom of the file so editors can
 // keep entries grouped by kind here without breaking display order.
 const rawPublications: Publication[] = [
+  // ---- Added from 業績リスト_井下敬翔.docx (2026-09-16) ----
+  {
+    slug: "ipsj-dp-uncertainty-2027",
+    title:
+      "Getting past “an LLM gives you the label, not the uncertainty”: implementation and operation practices for generative AI on subjective judgement tasks",
+    venue: "IPSJ Transactions on Digital Practices",
+    date: "2027-04-01",
+    year: 2027,
+    authors: "Keito Inoshita",
+    kind: "journal-domestic",
+    firstAuthor: true,
+    status: "Accepted, to appear",
+  },
   // ---- Added from 業績リスト_井下敬翔.docx (2026-08-20) ----
   {
     slug: "okugawa-vanishing-municipalities-2026",

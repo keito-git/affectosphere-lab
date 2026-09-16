@@ -78,6 +78,19 @@ export const kindOrder: PublicationKind[] = [
 // below is hand-curated; we sort at the bottom of the file so editors can
 // keep entries grouped by kind here without breaking display order.
 const rawPublications: Publication[] = [
+  // ---- Added from 業績リスト_井下敬翔.docx (2026-09-16) ----
+  {
+    slug: "ipsj-dp-uncertainty-2027",
+    title:
+      "「LLMはラベルを出すが不確実性は出さない」という壁をどう越えるか -主観的判断タスクへの生成AI導入における実装・運用プラクティス-",
+    venue: "情報処理学会論文誌デジタルプラクティス",
+    date: "2027-04-01",
+    year: 2027,
+    authors: "井下敬翔",
+    kind: "journal-domestic",
+    firstAuthor: true,
+    status: "Accepted, to appear",
+  },
   // ---- Added from 業績リスト_井下敬翔.docx (2026-08-20) ----
   {
     slug: "okugawa-vanishing-municipalities-2026",
