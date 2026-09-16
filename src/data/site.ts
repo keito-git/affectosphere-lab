@@ -33,6 +33,7 @@ export type NavItem = {
 export const navItems: NavItem[] = [
   { label: "Affectosphere", href: "/affectosphere/" },
   { label: "Research", href: "/research/" },
+  { label: "Research Map", href: "/research-map/" },
   { label: "Publications", href: "/publications/" },
   { label: "Column", href: "/column/" },
   { label: "News", href: "/news/" },
