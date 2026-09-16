@@ -9,6 +9,8 @@ export type NarrativeBlock = {
     src: string;
     caption: string;
     alt: string;
+    /** Redrawn as SVG: names a component in src/components/figures. */
+    svg?: string;
   };
 };
 
@@ -54,6 +56,7 @@ export const researchDomains: ResearchDomain[] = [
           "Bridging the Silos in Affective AI (2026) is a position paper that organizes affective-AI research as a six-layer pipeline (theory, data, model, dialogue, social application, ethics/evaluation) and diagnoses four recurring patterns of disconnection — 'silo bridges' — between layers. Specifically, it identifies (i) operationalization drift between theory and data (the emotion that theory speaks of and the label that ends up on data diverge), (ii) cognitive mismatch between model and dialogue (model outputs and the user's interpretive frame fail to mesh), (iii) the dissipation of responsibility between technology and ethics (it becomes unclear who is ultimately accountable), and (iv) implicit representativeness assumptions between data and social application (data from specific populations is treated as universal truth).",
         figure: {
           src: "/research-figures/ethics-philosophy/silos.png",
+          svg: "silos",
           caption:
             "The six-layer pipeline that constitutes affective AI and the four recurring patterns of disconnection between layers (Bridging the Silos in Affective AI, 2026).",
           alt: "Conceptual diagram of the six-layer affective-AI pipeline and the four silo bridges",

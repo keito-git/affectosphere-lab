@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { researchDomains } from "../../data/research-domains";
 import Img from "../../components/Img.astro";
+import SilosFigure from "../../components/figures/SilosFigure.astro";
 import PublicationItem from "../../components/PublicationItem.astro";
 import { allPublications } from "../../data/publications";
 import { stages, domainStage, publicationDomain } from "../../data/research-map";
@@ -20,6 +21,11 @@ const { domain } = Astro.props;
 const siblings = researchDomains.filter((d) => d.slug !== domain.slug);
 
 const narrative = domain.narrative ?? [];
+
+// Figures redrawn as SVG, keyed by the name a figure declares.
+const FIGURE_COMPONENTS: Record<string, any> = {
+  silos: SilosFigure,
+};
 
 // The work in this domain, and the stage of CAI the domain mainly serves.
 // Both come from the research map, so the page cannot disagree with it.
@@ -122,7 +128,16 @@ const domainPubs = allPublications
                 {block.text}
               </p>
               <figure class="md:max-w-[28rem]">
-                <Img src={block.figure.src} alt={block.figure.alt} class="w-full border border-stone bg-white shadow-card" />
+                {block.figure.svg && FIGURE_COMPONENTS[block.figure.svg] ? (
+                  <div class="border border-stone bg-ivory p-5 shadow-card">
+                    {(() => {
+                      const Fig = FIGURE_COMPONENTS[block.figure.svg];
+                      return <Fig />;
+                    })()}
+                  </div>
+                ) : (
+                  <Img src={block.figure.src} alt={block.figure.alt} class="w-full border border-stone bg-white shadow-card" />
+                )}
                 <figcaption class="mt-3 font-display text-sm italic leading-relaxed text-slate">
                   {block.figure.caption}
                 </figcaption>

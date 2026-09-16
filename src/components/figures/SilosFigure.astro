@@ -1,0 +1,156 @@
+---
+// Bridging the Silos in Affective AI (2026), Figure 1, redrawn.
+//
+// Content transcribed from the paper's own figure: six layers L1–L6, the
+// pipeline running down them, the cross-cutting audit feedback, and the four
+// recurring fractures P1–P4. Only the rendering changes — lab palette, vector
+// text, a few KB instead of 392 KB.
+const LAYERS = [
+  { id: "L1", name: "Theoretical Foundations", items: "discrete · dimensional · appraisal · constructionist" },
+  { id: "L2", name: "Data Collection / Annotation", items: "benchmark corpora · labeling schemes · ecological validity" },
+  { id: "L3", name: "Computational Modeling", items: "feature extraction · multimodal fusion · LLMs" },
+  { id: "L4", name: "Human–AI Interaction", items: "affective dialogue · user acceptance · long-term relationships" },
+  { id: "L5", name: "Social Applications", items: "healthcare · education · public sector" },
+  { id: "L6", name: "Ethics / Fairness / Evaluation", items: "algorithmic bias · regulatory frameworks · societal risk" },
+];
+
+// Fractures: which layers each one spans, and its label.
+const FRACTURES = [
+  { id: "P1", label: "Theory ↔ Data", from: 0, to: 1, lane: 0, labelRow: 0 },
+  { id: "P2", label: "Modeling ↔ Interaction", from: 2, to: 3, lane: 0, labelRow: 2 },
+  { id: "P4", label: "Data ↔ Application", from: 1, to: 4, lane: 1, labelRow: 3 },
+  { id: "P3", label: "Technology ↔ Ethics", from: 1, to: 5, lane: 2, labelRow: 5 },
+];
+
+const BOX_X = 96;
+const BOX_W = 392;
+const BOX_H = 52;
+const GAP = 12;
+const TOP = 18;
+const rowY = (i: number) => TOP + i * (BOX_H + GAP);
+const LANE_X = [516, 548, 580];
+const LABEL_X = 614;
+---
+
+<svg viewBox="0 0 860 420" class="h-auto w-full" role="img" aria-labelledby="silos-title">
+  <title id="silos-title">
+    感情AIを構成する6層パイプラインと、層間に繰り返し現れる4つの分断パターン
+  </title>
+
+  <!-- Pipeline flow, L1 down to L6 -->
+  <g stroke="#6B7280" stroke-width="1.2" fill="none">
+    <line x1="62" y1={rowY(0) + 6} x2="62" y2={rowY(5) + BOX_H - 6} marker-end="url(#silosArrow)" />
+  </g>
+  <text x="58" y={rowY(0) - 4} text-anchor="end" class="fig-note">Pipeline flow</text>
+  <text x="58" y={rowY(0) + 10} text-anchor="end" class="fig-note">L1 → L6</text>
+
+  <!-- Cross-cutting audit feedback, running back up the outside -->
+  <path
+    d={`M 30 ${rowY(5) + BOX_H - 6} L 30 ${rowY(0) + 6}`}
+    stroke="#6B7280"
+    stroke-width="1"
+    stroke-dasharray="4 4"
+    fill="none"
+    marker-end="url(#silosArrow)"
+  />
+  <text x="30" y={rowY(5) + BOX_H + 18} text-anchor="start" class="fig-note">Cross-cutting audit feedback</text>
+
+  <defs>
+    <marker id="silosArrow" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#6B7280" />
+    </marker>
+    <marker id="silosFracture" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#7B5E28" />
+    </marker>
+  </defs>
+
+  <!-- The six layers. Tone deepens down the stack rather than changing hue. -->
+  {
+    LAYERS.map((l, i) => (
+      <g>
+        <rect
+          x={BOX_X}
+          y={rowY(i)}
+          width={BOX_W}
+          height={BOX_H}
+          rx="2"
+          fill="#F4F0E8"
+          fill-opacity={0.3 + i * 0.13}
+          stroke="#E2DDD6"
+        />
+        <text x={BOX_X + 14} y={rowY(i) + 22} class="fig-layer-id">{l.id}</text>
+        <text x={BOX_X + 44} y={rowY(i) + 22} class="fig-layer-name">{l.name}</text>
+        <text x={BOX_X + 44} y={rowY(i) + 39} class="fig-layer-items">{l.items}</text>
+      </g>
+    ))
+  }
+
+  <!-- The four recurring fractures -->
+  {
+    FRACTURES.map((f) => {
+      const x = LANE_X[f.lane];
+      const y1 = rowY(f.from) + BOX_H / 2;
+      const y2 = rowY(f.to) + BOX_H / 2;
+      const labelY = rowY(f.labelRow) + BOX_H / 2;
+      return (
+        <g>
+          {/* Bracket linking the two layers, then a leader to its label row. */}
+          <path
+            d={`M ${BOX_X + BOX_W + 4} ${y1} L ${x} ${y1} L ${x} ${y2} L ${BOX_X + BOX_W + 4} ${y2}`}
+            fill="none"
+            stroke="#7B5E28"
+            stroke-width="1"
+            stroke-dasharray="3 3"
+            marker-end="url(#silosFracture)"
+          />
+          <path
+            d={`M ${x} ${(y1 + y2) / 2} L ${LABEL_X - 8} ${(y1 + y2) / 2} L ${LABEL_X - 8} ${labelY}`}
+            fill="none"
+            stroke="#7B5E28"
+            stroke-width="0.8"
+            stroke-opacity="0.5"
+          />
+          <text x={LABEL_X} y={labelY - 3} class="fig-fracture-id">{f.id}</text>
+          <text x={LABEL_X} y={labelY + 12} class="fig-fracture-label">{f.label}</text>
+        </g>
+      );
+    })
+  }
+
+  <text x={LABEL_X} y={12} class="fig-note">Cascade structure</text>
+</svg>
+
+<style>
+  svg text {
+    font-family: "Times New Roman", "Noto Serif JP", serif;
+    fill: #1a1a1a;
+  }
+  .fig-layer-id {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px;
+    fill: #7b5e28;
+  }
+  .fig-layer-name {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .fig-layer-items {
+    font-size: 11.5px;
+    fill: #6b7280;
+  }
+  .fig-fracture-id {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px;
+    fill: #7b5e28;
+  }
+  .fig-fracture-label {
+    font-size: 11.5px;
+    fill: #6b7280;
+  }
+  .fig-note {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 9.5px;
+    fill: #6b7280;
+    letter-spacing: 0.06em;
+  }
+</style>

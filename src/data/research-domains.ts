@@ -9,6 +9,9 @@ export type NarrativeBlock = {
     src: string;
     caption: string;
     alt: string;
+    /** Redrawn as SVG: names a component in src/components/figures. When set,
+     *  the component is rendered and `src` is kept only as a fallback. */
+    svg?: string;
   };
 };
 
@@ -54,6 +57,7 @@ export const researchDomains: ResearchDomain[] = [
           "Bridging the Silos in Affective AI(2026)は、感情AI研究を6層(理論・データ・モデル・対話・社会応用・倫理/評価)のパイプラインとして整理し、層間に繰り返し現れる4つの「サイロ橋(silo bridge)」分断パターンを診断したポジションペーパーである。具体的には、(i)理論-データ間の操作化ずれ(理論で語る感情と、データに付くラベルが食い違う問題)、(ii)モデル-対話間の認知的ミスマッチ(モデル出力とユーザの解釈枠組みが噛み合わない問題)、(iii)技術-倫理間の責任の散逸(誰が最終的に説明責任を負うかが曖昧になる問題)、(iv)データ-社会応用間の暗黙の代表性仮定(特定集団のデータが普遍的な真理として扱われる問題)、の4つを指摘している。",
         figure: {
           src: "/research-figures/ethics-philosophy/silos.png",
+          svg: "silos",
           caption:
             "感情AIを構成する6層パイプラインと、層間に繰り返し現れる4つの分断パターン(Bridging the Silos in Affective AI, 2026)。",
           alt: "感情AIの6層パイプラインと4つのサイロ橋を示した概念図",
