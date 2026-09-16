@@ -48,11 +48,33 @@ const yearFilters: { key: "all" | number; label: string }[] = [
   { key: "all", label: "All" },
   ...allYears.map((y) => ({ key: y, label: `${y}` })),
 ];
+
+// The publication list as structured data, so a search engine reads this as a
+// body of scholarly work rather than a page of text. Only fields the list
+// actually holds are emitted.
+const publicationsLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Publications — Affectosphere Group",
+  numberOfItems: allPublications.length,
+  itemListElement: allPublications.map((pub, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "ScholarlyArticle",
+      name: pub.title,
+      author: pub.authors.split(",").map((a) => ({ "@type": "Person", name: a.trim() })),
+      datePublished: pub.date,
+      publisher: pub.venue,
+      ...(pub.href ? { url: pub.href, sameAs: pub.href } : {}),
+    },
+  })),
+};
 ---
 
-<BaseLayout
-  title="Publications"
-  description="All publications by Affectosphere Group, listed chronologically."
+<BaseLayout jsonLd={publicationsLd}
+  title="業績 — 感情AI・LLM研究の論文"
+  description="Affectosphere Group（井下敬翔）の論文・国際会議発表の一覧。感情AI・LLM・不確実性・感情データ生成を中心に、年・種別・CAIの段で絞り込めます。"
   fullBleed
 >
   <section class="mx-auto max-w-content page-x pt-24 md:pt-32">

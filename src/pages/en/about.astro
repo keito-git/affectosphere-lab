@@ -70,10 +70,44 @@ const links = [
     href: "https://www.linkedin.com/in/%E6%95%AC%E7%BF%94-%E4%BA%95%E4%B8%8B-25433834b/",
   },
 ];
+
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://lab.affectosphere.group/about/#person",
+  name: "Keito Inoshita",
+  alternateName: "井下 敬翔",
+  url: "https://lab.affectosphere.group/about/",
+  jobTitle: "計算的感情知能（Computational Affective Intelligence）研究者",
+  description:
+    "AI に感情知能を与える研究者。感情の読み取りから、保持・推論・生成・相互作用・社会への定着までを Computational Affective Intelligence というひと続きの体系として扱う。",
+  affiliation: [
+    { "@type": "CollegeOrUniversity", name: "関西大学 大学院商学研究科" },
+    { "@type": "CollegeOrUniversity", name: "滋賀大学 データサイエンス・AIイノベーション研究推進センター" },
+    { "@type": "Organization", name: "日本セーフティソサイエティ研究センター" },
+  ],
+  knowsAbout: [
+    "Computational Affective Intelligence",
+    "Affective Computing",
+    "感情AI",
+    "大規模言語モデル",
+    "感情認識",
+    "不確実性の定量化",
+    "感情データ生成",
+    "AI倫理",
+  ],
+  sameAs: [
+    "https://researchmap.jp/keito_inoshita",
+    "https://orcid.org/0009-0006-6854-7231",
+    "https://x.com/keito0data",
+    "https://www.linkedin.com/in/%E6%95%AC%E7%BF%94-%E4%BA%95%E4%B8%8B-25433834b/",
+  ],
+  worksFor: { "@id": "https://lab.affectosphere.group/#organization" },
+};
 ---
 
-<BaseLayout
-  title="About"
+<BaseLayout jsonLd={personLd}
+  title="Keito Inoshita — Computational Affective Intelligence researcher"
   description="Keito Inoshita — principal investigator of Affectosphere Group. Bio, education, research interests, and links."
   fullBleed
   locale="en"

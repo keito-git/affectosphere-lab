@@ -48,10 +48,32 @@ const yearFilters: { key: "all" | number; label: string }[] = [
   { key: "all", label: "All" },
   ...allYears.map((y) => ({ key: y, label: `${y}` })),
 ];
+
+// The publication list as structured data, so a search engine reads this as a
+// body of scholarly work rather than a page of text. Only fields the list
+// actually holds are emitted.
+const publicationsLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Publications — Affectosphere Group",
+  numberOfItems: allPublications.length,
+  itemListElement: allPublications.map((pub, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "ScholarlyArticle",
+      name: pub.title,
+      author: pub.authors.split(",").map((a) => ({ "@type": "Person", name: a.trim() })),
+      datePublished: pub.date,
+      publisher: pub.venue,
+      ...(pub.href ? { url: pub.href, sameAs: pub.href } : {}),
+    },
+  })),
+};
 ---
 
-<BaseLayout
-  title="Publications"
+<BaseLayout jsonLd={publicationsLd}
+  title="Publications — affective AI and LLM research"
   description="All publications by Affectosphere Group, listed chronologically."
   fullBleed
   locale="en"

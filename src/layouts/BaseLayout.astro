@@ -35,7 +35,13 @@ const {
 const pageDescription =
   description ?? (locale === "en" ? site.descriptionEn : site.description);
 
-const pageTitle = title ? `${title} | ${site.name}` : site.name;
+// Without a page title, the site name alone only reaches people who already
+// know it. The home title says what the lab is.
+const pageTitle = title
+  ? `${title} | ${site.name}`
+  : locale === "en"
+    ? `${site.name} — Computational Affective Intelligence`
+    : `${site.name}｜感情AIの研究室`;
 const pathname = Astro.url.pathname;
 const htmlLang = locale === "en" ? "en" : "ja";
 
@@ -102,8 +108,27 @@ const websiteLd = {
   publisher: { "@id": `${origin}/#organization` },
 };
 
+// Breadcrumbs, so a result shows where the page sits rather than a bare URL.
+const segments = pathname.split("/").filter(Boolean);
+const breadcrumbLd =
+  segments.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: site.name, item: `${origin}/` },
+          ...segments.map((seg, i) => ({
+            "@type": "ListItem",
+            position: i + 2,
+            name: i === segments.length - 1 && title ? title : seg,
+            item: `${origin}/${segments.slice(0, i + 1).join("/")}/`,
+          })),
+        ],
+      }
+    : null;
+
 const pageJsonLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
-const jsonLdArray = [organizationLd, websiteLd, ...pageJsonLd];
+const jsonLdArray = [organizationLd, websiteLd, ...(breadcrumbLd ? [breadcrumbLd] : []), ...pageJsonLd];
 ---
 
 <!doctype html>

@@ -1,10 +1,32 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { webp } from "../lib/images";
+
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://lab.affectosphere.group/services/#service",
+  name: "Affectosphere Group — 感情AI・LLMの企業向けサービス",
+  description:
+    "感情 AI と大規模言語モデルの研究知見を、企業内研修・講演・導入支援という形で実務に届けます。不確実性の扱い、バイアス監査、AI に任せる範囲の設計まで。",
+  url: "https://lab.affectosphere.group/services/",
+  provider: { "@id": "https://lab.affectosphere.group/#organization" },
+  areaServed: { "@type": "Country", name: "日本" },
+  availableLanguage: ["ja", "en"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "サービス",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "企業内研修・勉強会", description: "感情AI、LLMガバナンス、AI倫理、機械学習の不確実性。経営層から実務者まで、テーマと深さを調整します。" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "講演・登壇", description: "業界カンファレンス、社内イベント、自治体の有識者枠まで。" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "導入支援・コンサルティング", description: "AI戦略の方針づくり、製品仕様の妥当性確認、リスク評価、ガバナンス整備。" } },
+    ],
+  },
+};
 ---
 
-<BaseLayout
-  title="Services"
+<BaseLayout jsonLd={serviceLd}
+  title="企業向け — 感情AI・LLMの研修／講演／導入支援"
   description="Affectosphere Group の企業向けサービス。AI 研修・講演・コンサルティングを通じて、感情 AI と LLM の最前線を実務に届けます。"
   fullBleed
 >
