@@ -113,7 +113,7 @@ const switcherShort = locale === "en" ? "JP" : "EN";
       <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 lg:gap-x-6 xl:gap-x-7">
         {
           navItems.map((item) => (
-            <li>
+            <li class:list={[item.groupStart && "md:ml-2.5 lg:ml-4"]}>
               <a
                 href={localizedHref(item.href)}
                 class:list={[

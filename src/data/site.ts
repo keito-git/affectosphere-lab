@@ -19,29 +19,32 @@ export const site = {
 export type NavItem = {
   label: string;
   href: string;
-  /** When true this item is shown in the desktop "primary" row.
-   *  Items not flagged primary go into the secondary row to keep the
-   *  desktop header to two compact rows. */
-  primary?: boolean;
+  /** First item of a group: gets a little extra space before it, so the one
+   *  row reads as sections without splitting in two. */
+  groupStart?: boolean;
 };
 
-// Full 11-tab sitemap.  Order matters: this is the order rendered in the
-// header, footer, and mobile drawer.
-// All nav labels are in English (page content remains Japanese).
-// All tabs share the same single navigation row.
-// One row, every tab at the same weight.
+// One row, ordered as a reader would move through the lab: what it believes,
+// what it studies, what it has produced, who does it, what is happening, and
+// how to get involved.
 export const navItems: NavItem[] = [
+  // What the lab believes
   { label: "Affectosphere", href: "/affectosphere/" },
-  { label: "Research", href: "/research/" },
+  // What it studies
+  { groupStart: true, label: "Research", href: "/research/" },
   { label: "Research Map", href: "/research-map/" },
-  { label: "Publications", href: "/publications/" },
-  { label: "Column", href: "/column/" },
-  { label: "News", href: "/news/" },
-  { label: "About", href: "/about/" },
-  { label: "Member", href: "/member/" },
+  { label: "AI for Science", href: "/ai-for-science/" },
+  // What it has produced
+  { groupStart: true, label: "Publications", href: "/publications/" },
   { label: "Awards", href: "/awards/" },
   { label: "Grants", href: "/grants/" },
-  { label: "AI for Science", href: "/ai-for-science/" },
-  { label: "Services", href: "/services/" },
+  // Who does it
+  { groupStart: true, label: "About", href: "/about/" },
+  { label: "Member", href: "/member/" },
+  // What is happening
+  { groupStart: true, label: "News", href: "/news/" },
+  { label: "Column", href: "/column/" },
+  // How to get involved
+  { groupStart: true, label: "Services", href: "/services/" },
   { label: "Contact", href: "/contact/" },
 ];
