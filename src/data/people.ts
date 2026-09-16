@@ -37,7 +37,7 @@ export const members: Person[] = [
     affiliation:
       "関西大学大学院 / 滋賀大学 DS・AI研究推進センター / 日本セーフティソサイエティ研究センター",
     blurb:
-      "Affectosphere Group を主宰。AI を用いた人間の感情の理解・認識・生成・表出を研究の中心に据え、人間を超える EQ を備えた AI の実現を目指す。多様な企業との連携も並行して進めている。",
+      "AI に感情知能を与える研究をしている。感情の読み取りから保持・推論・生成・相互作用・社会への定着までを Computational Affective Intelligence（CAI）というひと続きの体系として構築中。Affectosphere Group 主宰。見据えるのは、人間を超える EQ を備えた AI である。",
     portrait: "/people/keito-inoshita.jpg",
     href: "/about/",
   },

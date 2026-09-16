@@ -18,7 +18,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       aria-hidden="true"
     ></div>
     <div
-      class="absolute inset-0 bg-gradient-to-b from-ivory/70 via-ivory/45 to-ivory/75"
+      class="absolute inset-0 bg-gradient-to-b from-ivory/90 via-ivory/80 to-ivory/90"
       aria-hidden="true"
     ></div>
 
@@ -29,13 +29,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         class="reveal mt-4 font-display font-bold tracking-tight text-charcoal"
         style="font-size: clamp(1.75rem, 3.2vw, 2.75rem); line-height: 1.12; text-shadow: 0 1px 2px rgba(250,250,247,0.85), 0 0 28px rgba(250,250,247,0.95);"
       >
-        感情 AI と LLM の最前線を、企業の実務に届ける。
+        AI に感情知能を足す層を、現場と一緒につくる。
       </h1>
       <p
         class="reveal mt-6 font-bold text-lg leading-relaxed text-charcoal md:text-xl"
         style="text-shadow: 0 1px 2px rgba(250,250,247,0.8), 0 0 20px rgba(250,250,247,0.85);"
       >
-        Affectosphere Group は、研修・講演・コンサルティングを通じて、企業の意思決定者と現場に研究知見をお届けします。
+        感情を測る装置を売るのではなく、LLM やエージェントに感情の理解・推論・不確実性の扱いを足す層をつくっています。その過程で得た知見を、研修・講演・導入支援という形でお渡しします。
       </p>
     </div>
   </section>
@@ -44,12 +44,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section class="mx-auto mt-section-sm max-w-content page-x">
     <div class="reveal grid gap-8 md:grid-cols-[16rem_1fr] md:gap-14">
       <p class="font-display text-xl italic text-slate">私たちにできること</p>
-      <p
-        class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
-        style="line-height: 1.85;"
-      >
-        生成 AI と LLM が業務に入り込むなかで、企業の現場では「精度の高さ」とは別の問い ── 不確実性をどう扱うか、バイアスをどう監査するか、AI に何を任せて何を残すか ── が日々生まれています。Affectosphere Group は、感情 AI と LLM ガバナンスを軸に、研究の知見を「すぐ動かせる判断材料」に翻訳してお届けします。研修・講演・コンサルティングの 3 形態で、組織の状況に合わせた関わり方を選んでいただけます。
-      </p>
+      <div>
+  <p
+          class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
+          style="line-height: 1.85;"
+        >
+          既存の感情 AI の多くは「顔や声から感情を当てる」方向に進んできました。私たちが向かうのはその先です。感情を読み取るだけでなく、確率として保持し、それを前提に考え、人に返せる ── その機能を LLM やエージェントに足すための層を、<span class="text-amber-deep">Affective Intelligence Layer</span> と呼んで構築しています。
+        </p>
+        <p
+          class="mt-5 font-display text-lg leading-relaxed text-charcoal md:text-xl"
+          style="line-height: 1.85;"
+        >
+          層そのものはまだ研究の途上にあります。いま企業にお渡しできるのは、その構築の過程で積み上がった判断材料です ── 不確実性をどう扱うか、バイアスをどう監査するか、AI に何を任せて何を残すか。研修・講演・導入支援の 3 形態で、組織の状況に合わせた関わり方を選んでいただけます。
+        </p>
+      </div>
     </div>
   </section>
 
@@ -145,6 +153,50 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </section>
 
   <!-- CTA to Contact -->
+  <!-- Track record. Real engagements only; nothing is described beyond what
+       actually took place. -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="svc-track">
+    <div class="reveal grid gap-8 md:grid-cols-[16rem_1fr] md:gap-14">
+      <div>
+        <p class="eyebrow">Track record</p>
+        <h2
+          id="svc-track"
+          class="mt-3 font-display text-2xl font-medium text-charcoal md:text-3xl"
+        >
+          これまでの取り組み。
+        </h2>
+      </div>
+      <div>
+        <p class="font-display text-lg leading-relaxed text-charcoal md:text-xl" style="line-height: 1.85;">
+          企業の研究所から中学校の教室まで、相手の前提がまったく違う場で話してきました。
+          感情 AI は、技術としてよりも先に「これをどこまで人に向けてよいのか」が問われる領域です。
+          その問いは、現場ごとに形を変えて現れます。
+        </p>
+
+        <ul class="mt-10 divide-y divide-stone border-t border-stone">
+          <li class="grid gap-2 py-6 md:grid-cols-[18rem_1fr] md:gap-8">
+            <p class="font-display text-base font-medium text-charcoal">いすゞ自動車 / いすゞ中央研究所</p>
+            <p class="font-display text-base leading-relaxed text-slate">
+              AI 技術の導入支援、および感情 AI に関するワークショップの開催。
+            </p>
+          </li>
+          <li class="grid gap-2 py-6 md:grid-cols-[18rem_1fr] md:gap-8">
+            <p class="font-display text-base font-medium text-charcoal">Almondays</p>
+            <p class="font-display text-base leading-relaxed text-slate">
+              AI 技術の導入支援、および感情 AI に関するワークショップの開催。
+            </p>
+          </li>
+          <li class="grid gap-2 py-6 md:grid-cols-[18rem_1fr] md:gap-8">
+            <p class="font-display text-base font-medium text-charcoal">滋賀大学教育学部附属中学校</p>
+            <p class="font-display text-base leading-relaxed text-slate">
+              生徒に向けた感情 AI の解説と質疑応答。
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section class="mx-auto mt-section-sm max-w-content page-x" aria-labelledby="svc-cta">
     <div class="reveal grid gap-8 md:grid-cols-2">
       <div class="border border-stone bg-cream p-8 md:p-10">

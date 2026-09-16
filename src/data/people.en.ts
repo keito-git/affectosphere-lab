@@ -37,7 +37,7 @@ export const members: Person[] = [
     affiliation:
       "Graduate School, Kansai University / Center for Data Science and AI Innovation, Shiga University / Japan Safety Society Research Center",
     blurb:
-      "Director of the Affectosphere Group. Places the AI-driven understanding, recognition, generation, and expression of human emotion at the center of his research, aiming to realize AI endowed with an EQ that surpasses humans. Pursues collaborations with a diverse range of companies in parallel.",
+      "Works on giving AI emotional intelligence, building perception, representation, reasoning, generation, interaction and social placement into one continuous system he calls Computational Affective Intelligence (CAI). Founder of the Affectosphere Group. The horizon is an AI endowed with an EQ that surpasses humans.",
     portrait: "/people/keito-inoshita.jpg",
     href: "/about/",
   },

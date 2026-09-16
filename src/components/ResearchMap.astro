@@ -1,8 +1,8 @@
 ---
-// The research map: how far each of the ten CAI domains has actually been
-// filled in. Every dot is one publication from publications.ts — nothing is
-// padded, and the two domains with no publications yet are shown empty.
-import { caiLayers, domainStats, unmappedCount, tier } from "../data/research-map";
+// The research map: the six stages of Computational Affective Intelligence,
+// and how far each one has actually been filled in. Every dot is one
+// publication from publications.ts — nothing is padded.
+import { caiStages, stageStats, unmappedCount, tier, domainStage } from "../data/research-map";
 import { researchDomains as domainsJa } from "../data/research-domains";
 import { researchDomains as domainsEn } from "../data/research-domains.en";
 
@@ -12,40 +12,51 @@ interface Props {
 const { locale = "ja" } = Astro.props;
 const isEn = locale === "en";
 
-const titles = new Map(
-  (isEn ? domainsEn : domainsJa).map((d) => [d.slug, d.title]),
-);
-const stats = domainStats();
-const mapped = Object.values(stats).reduce((n, s) => n + s.total, 0);
-const beyond = stats["other-ai-research"];
-const caiStats = Object.values(stats).filter((s) => s.layer !== "beyond");
-const caiTotal = caiStats.reduce((n, s) => n + s.total, 0);
+const domains = isEn ? domainsEn : domainsJa;
+const stats = stageStats();
+const caiTotal = caiStages.reduce((n, s) => n + stats[s.id].total, 0);
+const beyond = stats.beyond;
+const total = caiTotal + beyond.total;
 const unmapped = unmappedCount();
-const filled = caiStats.filter((s) => s.total > 0).length;
-const caiDomains = caiStats.length;
-const domainHref = (slug: string) => `${isEn ? "/en" : ""}/research/${slug}/`;
+const domainPrefix = isEn ? "/en" : "";
+
+/** Domains that mainly serve a given stage, for the cross-links under it. */
+function domainsFor(stageId: string) {
+  return domains.filter((d) => domainStage[d.slug] === stageId);
+}
+
+const dotClass = (pub: Parameters<typeof tier>[0]) => {
+  const t = tier(pub);
+  if (t === "international") return "bg-amber";
+  if (t === "domestic") return "bg-[#7C8798]";
+  return "border border-[#7C8798]";
+};
 ---
 
-<section id="research-map" class="surface-ink relative overflow-hidden scroll-mt-24" aria-labelledby="research-map-heading">
+<section
+  id="research-map"
+  class="surface-ink relative overflow-hidden scroll-mt-24"
+  aria-labelledby="research-map-heading"
+>
   <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-content page-x py-20 md:py-28">
     <header class="reveal max-w-prose">
       <p class="eyebrow">
         Research map<span class="mx-2 text-[#4a5464]">/</span>{caiTotal}
-        {isEn ? "of" : "/"} {mapped} {isEn ? "publications" : "件の業績"}
+        {isEn ? "of" : "/"} {total} {isEn ? "publications" : "件の業績"}
       </p>
       <h2
         id="research-map-heading"
         class="mt-4 font-display text-3xl font-medium tracking-tight text-[#F4F2ED] md:text-4xl"
       >
-        {isEn ? "Where we are on the map of CAI" : "CAI の地図の、どこを埋めたか"}
+        {isEn ? "Where we stand on the CAI stack" : "CAI の地図の、どこを埋めたか"}
       </h2>
       <p class="mt-5 font-display text-base leading-relaxed text-[#CFCBC2] md:text-lg">
         {
           isEn
-            ? `Nine domains make up Computational Affective Intelligence. Each dot below is one publication, placed in the domain it contributes to most. Two domains are still empty — that is where the work goes next.`
-            : `Computational Affective Intelligence は、九つの領域でできている。下のドットひとつが業績ひとつ、最も寄与する領域に置いた。二つの領域はまだ空いている。次に向かうのはそこだ。`
+            ? "Computational Affective Intelligence runs through six stages: an affective system reads emotion, holds it, reasons from it, gives it form, meets a person through it, and is finally placed in society. Each dot below is one publication, at the stage it contributes to most."
+            : "Computational Affective Intelligence は六つの段でできている。感情を読み取り、保持し、それを前提に考え、形にし、人と向き合い、社会に据え直す。下のドットひとつが業績ひとつ、最も寄与する段に置いた。"
         }
       </p>
     </header>
@@ -66,131 +77,108 @@ const domainHref = (slug: string) => `${isEn ? "/en" : ""}/research/${slug}/`;
       </li>
     </ul>
 
-    <!-- Layers -->
-    <div class="mt-14 space-y-14">
+    <!-- The stack -->
+    <ol class="mt-12 border-t border-[#2B3341]">
       {
-        caiLayers.map((layer) => {
-          const rows = caiStats.filter((s) => s.layer === layer.id);
-          const layerTotal = rows.reduce((n, s) => n + s.total, 0);
+        caiStages.map((stage, i) => {
+          const s = stats[stage.id];
+          const related = domainsFor(stage.id);
           return (
-            <div class="reveal">
-              <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-[#2B3341] pb-3">
-                <h3 class="font-label text-[0.78rem] uppercase tracking-[0.2em] text-amber">
-                  {isEn ? layer.labelEn : layer.label}
-                </h3>
-                <p class="font-display text-sm text-[#9AA4B4]">
-                  {isEn ? layer.noteEn : layer.note}
+            <li class="reveal border-b border-[#2B3341] py-7">
+              <div class="grid gap-4 md:grid-cols-[3rem_16rem_1fr_3rem] md:items-baseline md:gap-6">
+                <p class="font-label text-[0.8rem] tracking-[0.14em] text-[#4a5464]">
+                  {String(i + 1).padStart(2, "0")}
                 </p>
-                <p class="ml-auto font-label text-[0.72rem] tracking-[0.12em] text-[#6E7889]">
-                  {layerTotal}
+
+                <div>
+                  <h3 class="font-label text-[0.9rem] uppercase tracking-[0.18em] text-amber">
+                    {stage.label}
+                  </h3>
+                  {!isEn && (
+                    <p class="mt-1 font-display text-lg text-[#E9E6DF]">{stage.labelJa}</p>
+                  )}
+                </div>
+
+                <div>
+                  <div class="flex flex-wrap items-center gap-[0.3rem]">
+                    {s.pubs.map((pub) => (
+                      <span
+                        class={`inline-block h-2.5 w-2.5 rounded-full ${dotClass(pub)}`}
+                        title={`${pub.title} (${pub.venue}, ${pub.year})`}
+                      />
+                    ))}
+                  </div>
+                  <p class="mt-3 font-display text-sm leading-relaxed text-[#9AA4B4]">
+                    {isEn ? stage.noteEn : stage.note}
+                  </p>
+                  {related.length > 0 && (
+                    <p class="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+                      {related.map((d) => (
+                        <a
+                          href={`${domainPrefix}/research/${d.slug}/`}
+                          class="font-display text-sm text-[#8C96A6] underline-offset-4 hover:text-amber hover:underline"
+                        >
+                          {d.title}
+                        </a>
+                      ))}
+                    </p>
+                  )}
+                </div>
+
+                <p class="font-label text-[0.8rem] tracking-[0.12em] text-[#6E7889] md:text-right">
+                  {s.total}
                 </p>
               </div>
-
-              <ul class="mt-6 space-y-5">
-                {rows.map((s) => (
-                  <li class="grid gap-2 md:grid-cols-[15rem_1fr_3rem] md:items-center md:gap-6">
-                    <a
-                      href={domainHref(s.slug)}
-                      class="font-display text-base text-[#E9E6DF] underline-offset-4 hover:text-amber hover:underline"
-                    >
-                      {titles.get(s.slug) ?? s.slug}
-                    </a>
-
-                    {s.total > 0 ? (
-                      <div class="flex flex-wrap items-center gap-[0.3rem]">
-                        {s.pubs.map((pub) => {
-                          const t = tier(pub);
-                          const cls =
-                            t === "international"
-                              ? "bg-amber"
-                              : t === "domestic"
-                                ? "bg-[#7C8798]"
-                                : "border border-[#7C8798]";
-                          return (
-                            <span
-                              class={`inline-block h-2.5 w-2.5 rounded-full ${cls}`}
-                              title={`${pub.title} (${pub.venue}, ${pub.year})`}
-                            />
-                          );
-                        })}
-                      </div>
-                    ) : (
-                      <div class="flex items-center">
-                        <span class="inline-flex items-center gap-2 border border-dashed border-[#4a5464] px-3 py-1 font-label text-[0.68rem] uppercase tracking-[0.16em] text-[#8C96A6]">
-                          Frontier
-                          <span class="font-display text-[0.8rem] normal-case tracking-normal">
-                            {isEn ? "opening up" : "立ち上がり中"}
-                          </span>
-                        </span>
-                      </div>
-                    )}
-
-                    <p class="font-label text-[0.72rem] tracking-[0.12em] text-[#6E7889] md:text-right">
-                      {s.total}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </li>
           );
         })
       }
-    </div>
+    </ol>
 
-
-    <!-- Work that is AI research but not affective AI: kept off the CAI map so
-         the map above reads as coverage of CAI, but still shown in full. -->
-    <div class="reveal mt-14 border-t border-[#2B3341] pt-8">
-      <div class="grid gap-3 md:grid-cols-[15rem_1fr_3rem] md:items-center md:gap-6">
+    <!-- AI research outside affective AI: shown, but kept off the stack. -->
+    <div class="reveal mt-10">
+      <div class="grid gap-3 md:grid-cols-[3rem_16rem_1fr_3rem] md:items-baseline md:gap-6">
+        <p class="font-label text-[0.8rem] tracking-[0.14em] text-[#3d4653]">&mdash;</p>
         <div>
-          <p class="font-label text-[0.72rem] uppercase tracking-[0.2em] text-[#6E7889]">
+          <h3 class="font-label text-[0.9rem] uppercase tracking-[0.18em] text-[#6E7889]">
             Beyond affect
-          </p>
-          <a
-            href={domainHref(beyond.slug)}
-            class="mt-1 block font-display text-base text-[#B8B4AC] underline-offset-4 hover:text-amber hover:underline"
-          >
-            {titles.get(beyond.slug) ?? beyond.slug}
-          </a>
+          </h3>
+          {!isEn && <p class="mt-1 font-display text-lg text-[#8C96A6]">感情AIの外側</p>}
         </div>
-        <div class="flex flex-wrap items-center gap-[0.3rem] opacity-70">
-          {beyond.pubs.map((pub) => {
-            const t = tier(pub);
-            const cls =
-              t === "international"
-                ? "bg-amber"
-                : t === "domestic"
-                  ? "bg-[#7C8798]"
-                  : "border border-[#7C8798]";
-            return (
+        <div>
+          <div class="flex flex-wrap items-center gap-[0.3rem] opacity-60">
+            {beyond.pubs.map((pub) => (
               <span
-                class={`inline-block h-2.5 w-2.5 rounded-full ${cls}`}
+                class={`inline-block h-2.5 w-2.5 rounded-full ${dotClass(pub)}`}
                 title={`${pub.title} (${pub.venue}, ${pub.year})`}
               />
-            );
-          })}
+            ))}
+          </div>
+          <p class="mt-3 max-w-prose font-display text-sm leading-relaxed text-[#6E7889]">
+            {
+              isEn
+                ? "AI research outside affective computing — scientific naming, conflict-structure corpora, model merging. Counted here rather than on the stack."
+                : "感情AI以外のAI研究——学名の語源分析、紛争構造コーパス、モデルマージなど。スタックとは分けて数えている。"
+            }
+          </p>
         </div>
-        <p class="font-label text-[0.72rem] tracking-[0.12em] text-[#6E7889] md:text-right">
+        <p class="font-label text-[0.8rem] tracking-[0.12em] text-[#3d4653] md:text-right">
           {beyond.total}
         </p>
       </div>
-      <p class="mt-4 max-w-prose font-display text-sm leading-relaxed text-[#6E7889]">
-        {
-          isEn
-            ? "AI research outside affective computing — scientific naming, conflict-structure corpora, model merging and related work. Counted here rather than on the CAI map."
-            : "感情AI以外のAI研究——学名の語源分析、紛争構造コーパス、モデルマージなど。CAI の地図とは分けて数えている。"
-        }
-      </p>
     </div>
 
-    <!-- How the map is built. Stated plainly so the numbers can be checked. -->
-    <p class="reveal mt-14 max-w-prose font-display text-sm leading-relaxed text-[#8C96A6]">
+    <!-- How the map is built, stated so the numbers can be checked. -->
+    <p class="reveal mt-12 max-w-prose font-display text-sm leading-relaxed text-[#8C96A6]">
       {
         isEn
-          ? `Every publication listed on this site was read and placed in the single domain it contributes to most; papers spanning several domains are counted once. ${filled} of the ${caiDomains} CAI domains currently hold work, alongside ${beyond.total} publications outside affective AI${unmapped > 0 ? `, with ${unmapped} not yet placed` : ""}. The full list is on the publications page.`
-          : `本サイトに掲載している業績を一件ずつ読み、最も寄与する領域ひとつに割り当てた。複数領域にまたがる研究も一度だけ数えている。現在、CAI の ${caiDomains} 領域のうち ${filled} 領域に業績があり、これとは別に感情AI以外の研究が ${beyond.total} 件ある${unmapped > 0 ? `（未割り当て ${unmapped} 件）` : ""}。全件は Publications ページに掲載している。`
+          ? `Every publication on this site was read and placed at the single stage it contributes to most; work spanning several stages is counted once. ${caiTotal} sit on the CAI stack and ${beyond.total} outside it${unmapped > 0 ? `, with ${unmapped} not yet placed` : ""}.`
+          : `本サイトに掲載している業績を一件ずつ読み、最も寄与する段ひとつに置いた。複数の段にまたがる研究も一度だけ数えている。CAI のスタック上に ${caiTotal} 件、その外側に ${beyond.total} 件${unmapped > 0 ? `（未割り当て ${unmapped} 件）` : ""}。`
       }
-      <a href={`${isEn ? "/en" : ""}/publications/`} class="ml-2 text-amber underline underline-offset-4 hover:text-[#d3a95f]">
+      <a
+        href={`${domainPrefix}/publications/`}
+        class="ml-2 text-amber underline underline-offset-4 hover:text-[#d3a95f]"
+      >
         {isEn ? "Publications" : "Publications を見る"} &rarr;
       </a>
     </p>
