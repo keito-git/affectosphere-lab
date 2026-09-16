@@ -35,6 +35,11 @@ const categoryLabel =
 const stageId = publicationStage[pub.slug];
 const stage = stages.find((s) => s.id === stageId);
 
+// Figures as recorded on acceptance in the PI's publication list. Nothing is
+// inferred: an entry without a figure simply shows none.
+const metrics = [pub.impact, pub.sjr ? `SJR ${pub.sjr}` : null, pub.rank ? `Rank ${pub.rank}` : null]
+  .filter(Boolean) as string[];
+
 const [y, m] = pub.date.split("-");
 const monthsEn = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -56,6 +61,11 @@ const dateLabel =
       <span class="inline-block bg-amber/15 px-2 py-0.5 text-[0.7rem] font-medium tracking-wide text-amber-deep">
         {categoryLabel}
       </span>
+      {pub.award && (
+        <span class="inline-block border border-amber-deep/40 px-2 py-0.5 font-label text-[0.66rem] uppercase tracking-[0.1em] text-amber-deep">
+          {pub.award}
+        </span>
+      )}
       {stage && (
         <span class="font-label text-[0.68rem] uppercase tracking-[0.12em] text-slate">
           {stage.label}
@@ -80,8 +90,18 @@ const dateLabel =
       )}
     </p>
     <p class="mt-2 font-sans text-sm text-slate">{pub.authors}</p>
-    <p class="mt-1 font-sans text-sm text-slate">
-      {pub.venue}<span class="mx-2 text-stone">&middot;</span>{dateLabel}
+    <p class="mt-1 flex flex-wrap items-center gap-x-2 font-sans text-sm text-slate">
+      <span>{pub.venue}</span>
+      <span class="text-stone">&middot;</span>
+      <span>{dateLabel}</span>
+      {metrics.length > 0 && (
+        <>
+          <span class="text-stone">&middot;</span>
+          <span class="font-label text-[0.72rem] tracking-[0.08em] text-amber-deep">
+            {metrics.join(" / ")}
+          </span>
+        </>
+      )}
     </p>
   </div>
   {pub.status && !hideStatus && (

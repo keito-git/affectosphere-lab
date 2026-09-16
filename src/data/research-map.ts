@@ -215,8 +215,10 @@ export const publicationStage: Record<string, StageId> = {
   "wakate-symposium-2025": "generation",
   "text-analytics-2025": "generation",
   "geometric-control-2025": "generation",
+  "inoshita-class-structure-2026": "generation",
 
   // --- Interaction ---------------------------------------------------------
+  "matsuo-self-reflective-2026": "interaction",
   "ieee-hpcc-2025": "interaction",
   "ai-dhwp-2025": "interaction",
 
@@ -258,6 +260,7 @@ export const publicationStage: Record<string, StageId> = {
   "nuclear-opinion-2024": "beyond",
   "taiku-shisetsu-2024": "beyond",
   "shakai-kyoiku-2024": "beyond",
+  "okugawa-vanishing-municipalities-2026": "beyond",
 };
 
 /** Venue tier, derived from `kind` — not guessed. */

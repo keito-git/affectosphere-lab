@@ -31,6 +31,12 @@ export type Publication = {
   award?: string;
   /** Lifecycle hint shown next to the venue. */
   status?: string;
+  /** Journal metric as recorded on acceptance (e.g. "IF 6.1", "CiteScore 6.0"). */
+  impact?: string;
+  /** SJR quartile at acceptance. */
+  sjr?: string;
+  /** Conference rank at acceptance, CORE-style. */
+  rank?: string;
   /** Optional external link. */
   href?: string;
 };
@@ -72,6 +78,40 @@ export const kindOrder: PublicationKind[] = [
 // below is hand-curated; we sort at the bottom of the file so editors can
 // keep entries grouped by kind here without breaking display order.
 const rawPublications: Publication[] = [
+  // ---- Added from 業績リスト_井下敬翔.docx (2026-08-20) ----
+  {
+    slug: "okugawa-vanishing-municipalities-2026",
+    title:
+      "Re-Defining Vanishing Municipalities in Japan: A Multidimensional Clustering and SLM-Based Policy Insight Framework",
+    venue: "IEEE GCCE 2026",
+    date: "2026-10-01",
+    year: 2026,
+    authors: "Toma Okugawa, Keito Inoshita",
+    kind: "international-conference",
+    status: "Accepted, to appear",
+  },
+  {
+    slug: "matsuo-self-reflective-2026",
+    title:
+      "Behavioral Fidelity and Philosophy-Grounded Design for Self-Reflective Conversational AI",
+    venue: "IEEE GCCE 2026",
+    date: "2026-10-01",
+    year: 2026,
+    authors: "Takumi Matsuo, Keito Inoshita",
+    kind: "international-conference",
+    status: "Accepted, to appear",
+  },
+  {
+    slug: "inoshita-class-structure-2026",
+    title:
+      "Class-Structure Preservation Beats Diversity: A Comprehensive Benchmark of Text Augmentation Methods for Imbalanced Text Classification",
+    venue: "arXiv",
+    date: "2026-08-01",
+    year: 2026,
+    authors: "Keito Inoshita",
+    kind: "preprint",
+    firstAuthor: true,
+  },
   // ===== 2026 =====
   // ---- Preprint (2026) ----
   {
@@ -120,6 +160,8 @@ const rawPublications: Publication[] = [
     kind: "journal-international",
     reviewed: true,
     href: "https://doi.org/10.1371/journal.pone.0353612",
+    impact: "IF 2.8",
+    sjr: "Q1",
   },
   {
     slug: "inoshita-ai-homogenize-2026",
@@ -181,6 +223,8 @@ const rawPublications: Publication[] = [
     reviewed: true,
     status: "Accepted, in press",
     href: "https://doi.org/10.1007/s00146-026-03324-y",
+    impact: "IF 6.1",
+    sjr: "Q1",
   },
   {
     slug: "inoshita-uncertainty-decomp-2026",
@@ -207,6 +251,7 @@ const rawPublications: Publication[] = [
     reviewed: true,
     status: "Accepted, to appear",
     href: "https://arxiv.org/abs/2606.01906",
+    rank: "A*",
   },
   {
     slug: "inoshita-driver-intervention-2026",
@@ -280,6 +325,8 @@ const rawPublications: Publication[] = [
     kind: "journal-international",
     firstAuthor: true,
     href: "https://doi.org/10.1007/s44163-026-01360-7",
+    impact: "CiteScore 6.0",
+    sjr: "Q1",
   },
   // ---- 国際会議 (2026) ----
   {
@@ -319,6 +366,8 @@ const rawPublications: Publication[] = [
     kind: "journal-international",
     reviewed: true,
     href: "https://doi.org/10.2108/zs250025",
+    impact: "IF 1.0",
+    sjr: "Q2",
   },
   // ---- 国際会議 (2025) ----
   {
@@ -334,6 +383,7 @@ const rawPublications: Publication[] = [
     reviewed: true,
     award: "Best Paper Award",
     href: "https://doi.org/10.1007/978-3-031-97141-9_1",
+    rank: "C",
   },
   {
     slug: "ieee-iaict-2025-naming",
@@ -371,6 +421,7 @@ const rawPublications: Publication[] = [
     kind: "international-conference",
     reviewed: true,
     award: "Best Paper Award",
+    rank: "C",
   },
   {
     slug: "ieee-icoailo-2025",
@@ -564,6 +615,8 @@ const rawPublications: Publication[] = [
     kind: "journal-international",
     reviewed: true,
     href: "https://doi.org/10.1093/plankt/fbag061",
+    impact: "IF 2.0",
+    sjr: "Q1",
   },
   {
     slug: "c-dira-2025",
@@ -580,7 +633,7 @@ const rawPublications: Publication[] = [
   {
     slug: "geometric-control-2025",
     title:
-      "Geometric Control-Based Data Augmentation with Cluster-Conditioned Interpolation and Extrapolation for Imbalanced Learning in LLM",
+      "CIEGAD: Cluster-Conditioned Interpolative and Extrapolative Framework for Geometry-Aware and Domain-Aligned Data Augmentation",
     venue: "arXiv",
     date: "2025-12-01",
     year: 2025,
