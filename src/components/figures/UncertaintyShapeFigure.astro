@@ -1,0 +1,30 @@
+---
+// Concept figure: LLMs match the label, not the spread.
+interface Props { locale?: "ja" | "en"; }
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+---
+
+<svg viewBox="0 0 640 320" class="fig h-auto w-full" role="img" aria-labelledby="fig-shape">
+  <title id="fig-shape">{isEn ? "Human judgements spread; the model's collapse to a peak" : "人の判断は広がり、モデルの判断は尖る"}</title>
+  <text x="20" y="24" class="fig-head">{isEn ? "Same answer" : "答えは同じ"}</text>
+  <text x="620" y="24" text-anchor="end" class="fig-head fig-accent">{isEn ? "Different way of being unsure" : "迷い方が違う"}</text>
+
+  <line x1="60" y1="250" x2="580" y2="250" stroke="#E2DDD6" stroke-width="1" />
+  <line x1="320" y1="70" x2="320" y2="262" stroke="#C4974A" stroke-width="1" stroke-dasharray="3 4" />
+  <text x="320" y="282" text-anchor="middle" class="fig-mono fig-accent">{isEn ? "shared peak" : "同じピーク"}</text>
+
+  {/* Human judgements: broad, asymmetric */}
+  <path d="M 70 250 C 150 250 190 150 250 120 C 300 95 345 100 395 130 C 450 165 500 250 570 250"
+        fill="#6B7280" fill-opacity="0.10" stroke="#6B7280" stroke-width="1.6" />
+  <text x="92" y="176" class="fig-side">{isEn ? "people" : "人の判断"}</text>
+
+  {/* Model: narrow */}
+  <path d="M 262 250 C 300 250 306 96 320 88 C 334 96 340 250 378 250"
+        fill="#C4974A" fill-opacity="0.16" stroke="#7B5E28" stroke-width="1.6" />
+  <text x="392" y="112" class="fig-side fig-accent">{isEn ? "model" : "モデル"}</text>
+
+  <text x="60" y="308" class="fig-small">
+    {isEn ? "The majority label is reproduced. The disagreement around it is not." : "多数派のラベルは再現される。そのまわりの食い違いは再現されない。"}
+  </text>
+</svg>

@@ -1,0 +1,52 @@
+---
+// Concept figure: One prediction, or several passes.
+interface Props { locale?: "ja" | "en"; }
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+---
+
+<svg viewBox="0 0 640 330" class="fig h-auto w-full" role="img" aria-labelledby="fig-decomp">
+  <title id="fig-decomp">{isEn ? "A single prediction against a decomposed one" : "一発の予測と、分解した推論"}</title>
+  <text x="20" y="24" class="fig-head">{isEn ? "One shot" : "一度に当てる"}</text>
+  <text x="340" y="24" class="fig-head fig-accent">{isEn ? "Broken into steps" : "分けて考える"}</text>
+
+  {/* left: single box to a single point */}
+  <rect x="34" y="92" width="120" height="52" rx="2" fill="#F4F0E8" stroke="#E2DDD6" />
+  <text x="94" y="123" text-anchor="middle" class="fig-label">{isEn ? "model" : "モデル"}</text>
+  <line x1="158" y1="118" x2="232" y2="118" stroke="#6B7280" stroke-width="1" marker-end="url(#figArrow)" />
+  <circle cx="252" cy="118" r="5" fill="#6B7280" />
+  <text x="252" y="146" text-anchor="middle" class="fig-small">{isEn ? "one label" : "一点"}</text>
+  <text x="34" y="186" class="fig-small">{isEn ? "confidence runs away" : "確信だけが独り歩きする"}</text>
+
+  <line x1="300" y1="60" x2="300" y2="280" stroke="#E2DDD6" stroke-width="1" />
+
+  {/* right: chain of steps into a spread */}
+  {[
+    { ja: "観察", en: "observe" },
+    { ja: "規範", en: "norm" },
+    { ja: "差分", en: "gap" },
+    { ja: "意図", en: "intent" },
+  ].map((s, i) => (
+    <g>
+      <rect x={340 + i * 62} y="92" width="54" height="52" rx="2" fill="#F4F0E8" stroke="#E2DDD6" />
+      <text x={367 + i * 62} y="123" text-anchor="middle" class="fig-small">{isEn ? s.en : s.ja}</text>
+      {i < 3 && (
+        <line x1={394 + i * 62} y1="118" x2={404 + i * 62} y2="118" stroke="#6B7280" stroke-width="1" marker-end="url(#figArrow)" />
+      )}
+    </g>
+  ))}
+  <path d="M 596 96 C 606 96 612 140 604 140 C 596 140 592 96 602 96" fill="none" />
+  <path d="M 560 176 C 578 176 584 152 596 152 C 608 152 614 176 632 176"
+        fill="#C4974A" fill-opacity="0.16" stroke="#7B5E28" stroke-width="1.4" />
+  <text x="596" y="196" text-anchor="middle" class="fig-small fig-accent">{isEn ? "a spread" : "分布"}</text>
+
+  <defs>
+    <marker id="figArrow" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#6B7280" />
+    </marker>
+  </defs>
+
+  <text x="20" y="314" class="fig-small">
+    {isEn ? "Splitting the inference across viewpoints improves not only accuracy but how uncertainty is expressed." : "推論を視点ごとに分けると、精度だけでなく不確実性の表し方も変わる。"}
+  </text>
+</svg>

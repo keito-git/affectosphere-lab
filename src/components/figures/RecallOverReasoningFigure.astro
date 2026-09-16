@@ -1,0 +1,49 @@
+---
+// Concept figure: Asking it to recall beats asking it to reason.
+interface Props { locale?: "ja" | "en"; }
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+---
+
+<svg viewBox="0 0 640 310" class="fig h-auto w-full" role="img" aria-labelledby="fig-recall">
+  <title id="fig-recall">{isEn ? "Concrete recall drawn from several agents, against abstract reasoning" : "抽象的な推論と、複数エージェントによる具体的な連想想起"}</title>
+  <text x="20" y="24" class="fig-head">{isEn ? "Ask it to reason" : "推論させる"}</text>
+  <text x="340" y="24" class="fig-head fig-accent">{isEn ? "Ask it who it reminds you of" : "誰を思い出すか訊く"}</text>
+
+  <rect x="24" y="76" width="240" height="56" rx="2" fill="#F4F0E8" stroke="#E2DDD6" />
+  <text x="144" y="110" text-anchor="middle" class="fig-small">{isEn ? "“infer the nationality”" : "「国籍を推論して」"}</text>
+  <line x1="144" y1="136" x2="144" y2="176" stroke="#6B7280" stroke-width="1" marker-end="url(#figArrow4)" />
+  <circle cx="144" cy="196" r="6" fill="#6B7280" fill-opacity="0.5" />
+  <text x="144" y="224" text-anchor="middle" class="fig-small">{isEn ? "one thin answer" : "答えは細い"}</text>
+
+  <line x1="300" y1="56" x2="300" y2="264" stroke="#E2DDD6" stroke-width="1" />
+
+  {[
+    { ja: "人物を思い出す", en: "recall a person", x: 348 },
+    { ja: "作品を思い出す", en: "recall a work", x: 490 },
+  ].map((a) => (
+    <g>
+      <rect x={a.x} y="76" width="126" height="56" rx="2" fill="#C4974A" fill-opacity="0.10" stroke="#7B5E28" />
+      <text x={a.x + 63} y="110" text-anchor="middle" class="fig-small">{isEn ? a.en : a.ja}</text>
+      <line x1={a.x + 63} y1="136" x2={a.x + 63} y2="170" stroke="#7B5E28" stroke-width="1" marker-end="url(#figArrowB)" />
+    </g>
+  ))}
+
+  <rect x="392" y="176" width="140" height="40" rx="2" fill="#F4F0E8" stroke="#E2DDD6" />
+  <text x="462" y="201" text-anchor="middle" class="fig-small">{isEn ? "vote" : "投票"}</text>
+  <line x1="462" y1="220" x2="462" y2="240" stroke="#7B5E28" stroke-width="1" marker-end="url(#figArrowB)" />
+  <circle cx="462" cy="256" r="7" fill="#C4974A" />
+
+  <defs>
+    <marker id="figArrow4" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#6B7280" />
+    </marker>
+    <marker id="figArrowB" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#7B5E28" />
+    </marker>
+  </defs>
+
+  <text x="20" y="294" class="fig-small">
+    {isEn ? "The knowledge is already in the model. Getting at it is a question of what you ask for." : "知識はもうモデルの中にある。問題は、何を訊くかのほうにある。"}
+  </text>
+</svg>

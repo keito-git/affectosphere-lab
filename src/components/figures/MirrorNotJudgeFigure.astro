@@ -1,0 +1,43 @@
+---
+// Concept figure: A mirror rather than a judge.
+interface Props { locale?: "ja" | "en"; }
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+---
+
+<svg viewBox="0 0 640 290" class="fig h-auto w-full" role="img" aria-labelledby="fig-mirror">
+  <title id="fig-mirror">{isEn ? "An AI that reflects rather than rules" : "判定を下すのではなく、映し返すAI"}</title>
+  <text x="20" y="24" class="fig-head">{isEn ? "As a judge" : "判定者として"}</text>
+  <text x="340" y="24" class="fig-head fig-accent">{isEn ? "As a mirror" : "鏡として"}</text>
+
+  <circle cx="70" cy="128" r="26" fill="#F4F0E8" stroke="#E2DDD6" />
+  <text x="70" y="133" text-anchor="middle" class="fig-small">{isEn ? "person" : "人"}</text>
+  <rect x="180" y="102" width="86" height="52" rx="2" fill="#F4F0E8" stroke="#E2DDD6" />
+  <text x="223" y="133" text-anchor="middle" class="fig-small">AI</text>
+  <line x1="178" y1="128" x2="104" y2="128" stroke="#6B7280" stroke-width="1.4" marker-end="url(#figArrow2)" />
+  <text x="140" y="116" text-anchor="middle" class="fig-small">{isEn ? "“you are angry”" : "「怒っています」"}</text>
+  <text x="20" y="196" class="fig-small">{isEn ? "the reading is handed down" : "解釈が、上から降りてくる"}</text>
+
+  <line x1="300" y1="50" x2="300" y2="240" stroke="#E2DDD6" stroke-width="1" />
+
+  <circle cx="390" cy="128" r="26" fill="#F4F0E8" stroke="#E2DDD6" />
+  <text x="390" y="133" text-anchor="middle" class="fig-small">{isEn ? "person" : "人"}</text>
+  <rect x="500" y="102" width="86" height="52" rx="2" fill="#C4974A" fill-opacity="0.12" stroke="#7B5E28" />
+  <text x="543" y="133" text-anchor="middle" class="fig-small">AI</text>
+  <line x1="420" y1="120" x2="496" y2="120" stroke="#7B5E28" stroke-width="1.4" marker-end="url(#figArrowA)" />
+  <line x1="496" y1="140" x2="420" y2="140" stroke="#7B5E28" stroke-width="1.4" marker-end="url(#figArrowA)" />
+  <text x="340" y="196" class="fig-small fig-accent">{isEn ? "the reading stays with the person" : "解釈する権利は、本人に残る"}</text>
+
+  <defs>
+    <marker id="figArrow2" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#6B7280" />
+    </marker>
+    <marker id="figArrowA" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#7B5E28" />
+    </marker>
+  </defs>
+
+  <text x="20" y="272" class="fig-small">
+    {isEn ? "Self-understanding deepens when the system gives the reading back instead of settling it." : "システムが結論を出すのではなく返すとき、自己理解のほうが深まる。"}
+  </text>
+</svg>

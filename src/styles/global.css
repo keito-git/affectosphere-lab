@@ -157,6 +157,42 @@
   }
 }
 
+@layer components {
+  /* Shared type scale for the concept figures in the research domains.
+   * Kept here rather than repeated per figure so the whole set stays one
+   * family as figures are added. */
+  .fig text {
+    font-family: "Times New Roman", "Noto Serif JP", Times, serif;
+    fill: #1a1a1a;
+  }
+  .fig .fig-head {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    fill: #6b7280;
+  }
+  .fig .fig-label {
+    font-size: 14px;
+  }
+  .fig .fig-side {
+    font-size: 12px;
+    fill: #6b7280;
+  }
+  .fig .fig-small {
+    font-size: 11px;
+    fill: #6b7280;
+  }
+  .fig .fig-accent {
+    fill: #7b5e28;
+  }
+  .fig .fig-mono {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    fill: #6b7280;
+  }
+}
+
 @layer utilities {
   /* Scroll-triggered reveal. JS toggles .is-visible. */
   .reveal {

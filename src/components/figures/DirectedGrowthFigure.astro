@@ -1,0 +1,39 @@
+---
+// Concept figure: Generate where the data is thin.
+interface Props { locale?: "ja" | "en"; }
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+---
+
+<svg viewBox="0 0 640 320" class="fig h-auto w-full" role="img" aria-labelledby="fig-grow">
+  <title id="fig-grow">{isEn ? "Filling the thin regions of an emotion dataset on purpose" : "感情データの薄い場所を、狙って埋める"}</title>
+  <text x="20" y="24" class="fig-head">{isEn ? "What exists" : "あるもの"}</text>
+  <text x="340" y="24" class="fig-head fig-accent">{isEn ? "What is generated" : "つくるもの"}</text>
+
+  <rect x="20" y="44" width="250" height="210" rx="2" fill="#F4F0E8" fill-opacity="0.5" stroke="#E2DDD6" />
+  <rect x="340" y="44" width="250" height="210" rx="2" fill="#F4F0E8" fill-opacity="0.5" stroke="#E2DDD6" />
+
+  {/* dense cluster + sparse corner, left */}
+  {[[70,90],[92,104],[64,118],[104,86],[84,130],[112,116],[58,96],[98,132],[76,112],[120,98]].map(([x,y]) => (
+    <circle cx={x} cy={y} r="3.4" fill="#6B7280" fill-opacity="0.55" />
+  ))}
+  {[[196,196],[214,214]].map(([x,y]) => <circle cx={x} cy={y} r="3.4" fill="#6B7280" fill-opacity="0.55" />)}
+  <text x="150" y="232" class="fig-small">{isEn ? "thin here" : "ここが薄い"}</text>
+  <path d="M 180 224 L 200 206" stroke="#6B7280" stroke-width="0.8" opacity="0.6" />
+
+  {/* same, right, with generated points filling the sparse corner */}
+  {[[390,90],[412,104],[384,118],[424,86],[404,130],[432,116],[378,96],[418,132],[396,112],[440,98]].map(([x,y]) => (
+    <circle cx={x} cy={y} r="3.4" fill="#6B7280" fill-opacity="0.45" />
+  ))}
+  {[[516,196],[534,214],[498,182],[546,190],[520,222],[556,208],[492,210],[538,168]].map(([x,y]) => (
+    <circle cx={x} cy={y} r="3.4" fill="#C4974A" />
+  ))}
+  <text x="452" y="246" class="fig-small fig-accent">{isEn ? "filled, keeping the shape" : "形を保ったまま埋める"}</text>
+
+  <text x="20" y="286" class="fig-small">
+    {isEn ? "Direction, domain knowledge and persona conditioning decide where new data goes — not how much of it there is." : "どこに足すかを、方向・知識・ペルソナの条件付けで決める。量ではなく位置の問題である。"}
+  </text>
+  <text x="20" y="306" class="fig-small">
+    {isEn ? "Which is what makes it usable where collecting real data would not be ethical." : "だから、実データの収集が倫理的に難しい領域でも使える。"}
+  </text>
+</svg>

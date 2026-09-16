@@ -3,6 +3,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { researchDomains } from "../../data/research-domains";
 import Img from "../../components/Img.astro";
 import SilosFigure from "../../components/figures/SilosFigure.astro";
+import DisagreementKeptFigure from "../../components/figures/DisagreementKeptFigure.astro";
+import DirectedGrowthFigure from "../../components/figures/DirectedGrowthFigure.astro";
+import UncertaintyShapeFigure from "../../components/figures/UncertaintyShapeFigure.astro";
+import DecomposedInferenceFigure from "../../components/figures/DecomposedInferenceFigure.astro";
+import MirrorNotJudgeFigure from "../../components/figures/MirrorNotJudgeFigure.astro";
+import AccuracyAndAcceptanceFigure from "../../components/figures/AccuracyAndAcceptanceFigure.astro";
+import ThreePositionsFigure from "../../components/figures/ThreePositionsFigure.astro";
+import OverconfidenceFigure from "../../components/figures/OverconfidenceFigure.astro";
+import RecallOverReasoningFigure from "../../components/figures/RecallOverReasoningFigure.astro";
 import PublicationItem from "../../components/PublicationItem.astro";
 import { allPublications } from "../../data/publications";
 import { stages, domainStage, publicationDomain } from "../../data/research-map";
@@ -24,7 +33,16 @@ const narrative = domain.narrative ?? [];
 
 // Figures redrawn as SVG, keyed by the name a figure declares.
 const FIGURE_COMPONENTS: Record<string, any> = {
-  silos: SilosFigure,
+  "silos": SilosFigure,
+  "disagreement-kept": DisagreementKeptFigure,
+  "directed-growth": DirectedGrowthFigure,
+  "uncertainty-shape": UncertaintyShapeFigure,
+  "decomposed-inference": DecomposedInferenceFigure,
+  "mirror-not-judge": MirrorNotJudgeFigure,
+  "accuracy-acceptance": AccuracyAndAcceptanceFigure,
+  "three-positions": ThreePositionsFigure,
+  "overconfidence": OverconfidenceFigure,
+  "recall-over-reasoning": RecallOverReasoningFigure,
 };
 
 // The work in this domain, and the stage of CAI the domain mainly serves.
@@ -132,7 +150,7 @@ const domainPubs = allPublications
                   <div class="border border-stone bg-ivory p-5 shadow-card">
                     {(() => {
                       const Fig = FIGURE_COMPONENTS[block.figure.svg];
-                      return <Fig />;
+                      return <Fig locale="ja" />;
                     })()}
                   </div>
                 ) : (

@@ -1,0 +1,38 @@
+---
+// Concept figure: Keep the disagreement.
+interface Props { locale?: "ja" | "en"; }
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+---
+
+<svg viewBox="0 0 640 330" class="fig h-auto w-full" role="img" aria-labelledby="fig-disagree">
+  <title id="fig-disagree">{isEn ? "Annotator disagreement kept as a distribution rather than voted away" : "アノテーターの不一致を、多数決で消さずに分布として保つ"}</title>
+  <text x="20" y="24" class="fig-head">{isEn ? "Three readings of one utterance" : "ひとつの発話、三つの読み"}</text>
+
+  {[
+    { ja: "怒り", en: "anger", y: 70 },
+    { ja: "悲しみ", en: "sadness", y: 122 },
+    { ja: "あきれ", en: "disbelief", y: 174 },
+  ].map((r) => (
+    <g>
+      <circle cx="46" cy={r.y} r="9" fill="none" stroke="#6B7280" stroke-width="1.2" />
+      <text x="68" y={r.y + 5} class="fig-side">{isEn ? r.en : r.ja}</text>
+    </g>
+  ))}
+
+  <line x1="150" y1="122" x2="206" y2="122" stroke="#E2DDD6" stroke-width="1" />
+  <text x="178" y="112" text-anchor="middle" class="fig-mono">{isEn ? "usual" : "従来"}</text>
+  <circle cx="230" cy="122" r="6" fill="#6B7280" />
+  <text x="230" y="148" text-anchor="middle" class="fig-small">{isEn ? "majority" : "多数決"}</text>
+  <text x="196" y="176" class="fig-small">{isEn ? "two readings discarded" : "二つは捨てられる"}</text>
+
+  <line x1="150" y1="238" x2="206" y2="238" stroke="#C4974A" stroke-width="1" />
+  <text x="178" y="228" text-anchor="middle" class="fig-mono fig-accent">{isEn ? "ours" : "本領域"}</text>
+  <path d="M 216 262 C 246 262 250 214 276 210 C 302 206 312 250 344 250 C 366 250 372 226 396 226 C 420 226 424 262 448 262"
+        fill="#C4974A" fill-opacity="0.14" stroke="#7B5E28" stroke-width="1.5" />
+  <text x="332" y="286" text-anchor="middle" class="fig-small fig-accent">{isEn ? "all three kept, as a shape" : "三つとも、形のまま残す"}</text>
+
+  <text x="20" y="318" class="fig-small">
+    {isEn ? "Adjacent emotions turn into one another often; opposite ones rarely. That structure only survives if the disagreement does." : "隣り合う感情はよく入れ替わり、反対の感情はめったに入れ替わらない。その構造は、不一致を残さなければ見えない。"}
+  </text>
+</svg>

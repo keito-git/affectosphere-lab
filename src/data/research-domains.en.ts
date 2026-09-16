@@ -55,11 +55,11 @@ export const researchDomains: ResearchDomain[] = [
         text:
           "Bridging the Silos in Affective AI (2026) is a position paper that organizes affective-AI research as a six-layer pipeline (theory, data, model, dialogue, social application, ethics/evaluation) and diagnoses four recurring patterns of disconnection — 'silo bridges' — between layers. Specifically, it identifies (i) operationalization drift between theory and data (the emotion that theory speaks of and the label that ends up on data diverge), (ii) cognitive mismatch between model and dialogue (model outputs and the user's interpretive frame fail to mesh), (iii) the dissipation of responsibility between technology and ethics (it becomes unclear who is ultimately accountable), and (iv) implicit representativeness assumptions between data and social application (data from specific populations is treated as universal truth).",
         figure: {
-          src: "/research-figures/ethics-philosophy/silos.png",
+          src: "",
           svg: "silos",
           caption:
-            "The six-layer pipeline that constitutes affective AI and the four recurring patterns of disconnection between layers (Bridging the Silos in Affective AI, 2026).",
-          alt: "Conceptual diagram of the six-layer affective-AI pipeline and the four silo bridges",
+            "感情AIは六つの層でできている。層はそれぞれ独立に深まり、問題は層と層のあいだ——責任が落ちる場所——に生じる。",
+          alt: "六つの層が積み重なり、その境界に隙間があることを示した図",
         },
       },
       {
@@ -103,6 +103,13 @@ export const researchDomains: ResearchDomain[] = [
       {
         text:
           "Several major frameworks dominate psychological theories of emotion. Plutchik's (1980) wheel of emotions arranges eight basic emotions — joy, sadness, anger, fear, disgust, surprise, anticipation, and trust — in a circle and explains complex emotions as mixtures of adjacent ones. Gottman's (1994) interaction analysis coded marital communication in fine detail and showed that specific emotional patterns predict relational collapse. Hatfield and colleagues' (1994) emotional-contagion theory formalized the phenomenon that people automatically mimic others' emotions through facial expression, posture, and voice, and that their own emotions are influenced as a result. These theories all describe how dynamic, relational, and context-dependent emotion is.",
+        figure: {
+          src: "",
+          svg: "disagreement-kept",
+          caption:
+            "同じ発話に、人は違う感情を読む。その食い違いを多数決で潰さず分布として保つと、隣接する感情は入れ替わりやすく、反対の感情は入れ替わりにくいという構造が残る。",
+          alt: "三者の異なる判断を、多数決で一つに潰す場合と、分布として保つ場合を並べた図",
+        },
       },
       {
         text:
@@ -114,13 +121,7 @@ export const researchDomains: ResearchDomain[] = [
       },
       {
         text:
-          "Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement (BSETD, 2026) extends this direction to the analysis of emotion transitions in conversation. BSETD has three stages. The first preserves the distribution of judgments from multiple annotators with a hierarchical Dirichlet–Multinomial model and estimates a posterior distribution over the emotion-transition probability matrix. This lets us treat 'how easily one emotion shifts into another' as a probability distribution rather than a point estimate.",
-        figure: {
-          src: "/research-figures/human-emotion-understanding/bayes-spectral.png",
-          caption:
-            "Overview of BSETD. Annotator disagreement is preserved as a Bayesian posterior, and emotion transitions are analyzed in terms of 'persistence' and 'contagion' (Bayesian Spectral Emotion Transition Discovery, 2026).",
-          alt: "Three-stage pipeline for emotion-transition discovery via Bayesian posteriors and spectral decomposition",
-        },
+          "Bayesian Spectral Emotion Transition Discovery from Multi-Annotator Disagreement (BSETD, 2026) extends this direction to the analysis of emotion transitions in conversation. BSETD has three stages. The first preserves the distribution of judgments from multiple annotators with a hierarchical Dirichlet–Multinomial model and estimates a posterior distribution over the emotion-transition probability matrix. This lets us treat 'how easily one emotion shifts into another' as a probability distribution rather than a point estimate."
       },
       {
         text:
@@ -155,36 +156,25 @@ export const researchDomains: ResearchDomain[] = [
       {
         text:
           "It is useful to organize three concepts: 'personality-dependent' versus 'personality-independent' collection, and 'semantic augmentation.' Personality-dependent collection is the traditional approach of obtaining emotion labels directly from specific people; their subjectivity and individual bias enter the result directly. Personality-independent generation synthesizes data without depending on specific individuals — LLM-based generation and knowledge-driven conditional generation are representative. Semantic augmentation supplements and extends distributions while preserving the semantic and statistical structure of existing data, and is used for imbalance correction and domain adaptation. This domain combines these three concepts to seek designs that satisfy both ethics and accuracy.",
-      },
-      {
-        text:
-          "Emotional datasets always carry imbalance: dense around some classes and full of holes around others. Frequent emotions such as 'joy' and 'sadness' attract large numbers of samples, while rare emotions such as 'contempt' and 'awe' yield only a few. This imbalance causes machine-learning models to misclassify minority classes. CIEGAD (Cluster-conditioned Interpolation/Extrapolation Geometric Augmentation for Data, 2025) addresses this by geometrically controlling the direction of 'interpolation (filling holes)' and 'extrapolation (extending peripheries)' within each cluster and asking an LLM to perform conditional generation. Concretely, interpolating between existing samples in the embedding space fills holes, and extrapolating outside the cluster widens the periphery. The approach stably improves F1 and recall on minority classes.",
         figure: {
-          src: "/research-figures/data-augmentation/ciegad.png",
+          src: "",
+          svg: "directed-growth",
           caption:
-            "Concept diagram of CIEGAD. Cluster-conditioned interpolation and extrapolation are geometrically controlled to supplement imbalanced emotion data (Geometric Control-Based Data Augmentation, 2025).",
-          alt: "Concept diagram of geometric-control data augmentation by cluster-conditioned interpolation and extrapolation",
+            "生成の要点は量ではなく位置にある。方向・知識・ペルソナの条件付けで、データの薄い場所を狙って埋める。",
+          alt: "疎な領域を狙って生成データで埋める様子を示した図",
         },
       },
       {
         text:
-          "KDDA (Knowledge-Driven Data Augmentation, 2025) is a framework that, instead of collecting emotion data directly from individuals, converts human knowledge about a target domain into statistical features and uses them to condition LLM generation. For a domain such as 'workplace stress,' it builds a 'domain profile' from features specific to that domain — vocabulary frequencies, typical situations, characteristic emotion patterns — and uses it to condition the LLM. Generated data is doubly filtered by lexical-level overlap suppression and statistical consistency evaluation based on Negative Log-Likelihood (NLL), removing low-quality samples. As a result, an emotion classifier trained solely on synthetic data achieved the closest distribution to real data on 9 of 12 metrics — an example of a personality-independent generation pipeline that avoids personality-dependent collection.",
-        figure: {
-          src: "/research-figures/data-augmentation/kdda.png",
-          caption:
-            "Data-generation pipeline of KDDA. Using a domain profile built from domain knowledge as the criterion, generated data is double-filtered statistically and lexically (KDDA, 2025).",
-          alt: "Overall diagram of the knowledge-driven emotion-data generation framework",
-        },
+          "Emotional datasets always carry imbalance: dense around some classes and full of holes around others. Frequent emotions such as 'joy' and 'sadness' attract large numbers of samples, while rare emotions such as 'contempt' and 'awe' yield only a few. This imbalance causes machine-learning models to misclassify minority classes. CIEGAD (Cluster-conditioned Interpolation/Extrapolation Geometric Augmentation for Data, 2025) addresses this by geometrically controlling the direction of 'interpolation (filling holes)' and 'extrapolation (extending peripheries)' within each cluster and asking an LLM to perform conditional generation. Concretely, interpolating between existing samples in the embedding space fills holes, and extrapolating outside the cluster widens the periphery. The approach stably improves F1 and recall on minority classes."
       },
       {
         text:
-          "PersonaGen (2025) is a method that progressively conditions an LLM on multi-layer personas — age, occupation, personality, cultural background — to generate emotion expressions that are socio-culturally consistent. Even 'sadness' is articulated differently by a teenage student and a sixty-year-old physician. PersonaGen stacks conditioning in three stages — attributes, socio-cultural background, situational context — and reproduces stylistic differences consistent with the persona. As a result, the same emotion label yields diverse expressions appropriate to the character speaking, and downstream tasks achieve performance approaching real data. Multi-stage persona conditioning is effective for jointly securing expressive diversity and emotion-label consistency.",
-        figure: {
-          src: "/research-figures/data-augmentation/personagen.png",
-          caption:
-            "Multi-stage persona conditioning of PersonaGen. Conditions are stacked on the LLM in the order attribute → socio-cultural background → situational context, producing emotion expressions consistent with the persona (PersonaGen, 2025).",
-          alt: "Multi-stage persona-conditioned emotion-generation framework of PersonaGen",
-        },
+          "KDDA (Knowledge-Driven Data Augmentation, 2025) is a framework that, instead of collecting emotion data directly from individuals, converts human knowledge about a target domain into statistical features and uses them to condition LLM generation. For a domain such as 'workplace stress,' it builds a 'domain profile' from features specific to that domain — vocabulary frequencies, typical situations, characteristic emotion patterns — and uses it to condition the LLM. Generated data is doubly filtered by lexical-level overlap suppression and statistical consistency evaluation based on Negative Log-Likelihood (NLL), removing low-quality samples. As a result, an emotion classifier trained solely on synthetic data achieved the closest distribution to real data on 9 of 12 metrics — an example of a personality-independent generation pipeline that avoids personality-dependent collection."
+      },
+      {
+        text:
+          "PersonaGen (2025) is a method that progressively conditions an LLM on multi-layer personas — age, occupation, personality, cultural background — to generate emotion expressions that are socio-culturally consistent. Even 'sadness' is articulated differently by a teenage student and a sixty-year-old physician. PersonaGen stacks conditioning in three stages — attributes, socio-cultural background, situational context — and reproduces stylistic differences consistent with the persona. As a result, the same emotion label yields diverse expressions appropriate to the character speaking, and downstream tasks achieve performance approaching real data. Multi-stage persona conditioning is effective for jointly securing expressive diversity and emotion-label consistency."
       },
       {
         text:
@@ -219,6 +209,13 @@ export const researchDomains: ResearchDomain[] = [
       {
         text:
           "Another distinctive feature of emotion tasks is that there is no objectively fixed 'correct answer' — they are subjective problems. The question 'is this text anger or disgust?' divides human annotators. Therefore, evaluation of affective AI should be measured not by agreement with a single ground-truth label but by how faithfully the model reproduces the distribution of human judgments. Concretely, internal understanding must be advanced from three perspectives: (i) whether the model reproduces human 'hesitation' and 'wavering,' (ii) whether confidence aligns with correctness (calibration), and (iii) what knowledge is elicited and how it is used to judge.",
+        figure: {
+          src: "",
+          svg: "uncertainty-shape",
+          caption:
+            "モデルは多数派のラベルを当てる。しかし、そのまわりで人の判断がどう散らばっているか——迷い方の形——までは再現しない。",
+          alt: "人の判断分布とモデルの分布を重ね、ピークは一致するが広がりが異なることを示した図",
+        },
       },
       {
         text:
@@ -226,13 +223,7 @@ export const researchDomains: ResearchDomain[] = [
       },
       {
         text:
-          "LLMs Capture Emotion Labels, Not Emotion Uncertainty (2026) examined, in a large-scale experiment spanning four models and 640,000 responses, the extent to which LLMs as emotion annotators can reproduce human judgment distributions. The design had LLMs annotate items in multiple emotion datasets including GoEmotions many times and compared the output distributions with the judgment distributions of human annotator populations using distributional metrics (KL divergence, Earth Mover Distance, etc.). The result: representative labels broadly agree, but the 'shape of wavering' among annotators — the shape of the judgment distribution — is not reproduced.",
-        figure: {
-          src: "/research-figures/interpretability/llm-gaps.png",
-          caption:
-            "Framework for distributional analysis of the human–LLM emotion-judgment gap (LLMs Capture Emotion Labels, Not Emotion Uncertainty, 2026).",
-          alt: "Overall framework for analyzing human–LLM emotion-judgment distributional gaps",
-        },
+          "LLMs Capture Emotion Labels, Not Emotion Uncertainty (2026) examined, in a large-scale experiment spanning four models and 640,000 responses, the extent to which LLMs as emotion annotators can reproduce human judgment distributions. The design had LLMs annotate items in multiple emotion datasets including GoEmotions many times and compared the output distributions with the judgment distributions of human annotator populations using distributional metrics (KL divergence, Earth Mover Distance, etc.). The result: representative labels broadly agree, but the 'shape of wavering' among annotators — the shape of the judgment distribution — is not reproduced."
       },
       {
         text:
@@ -271,6 +262,13 @@ export const researchDomains: ResearchDomain[] = [
       {
         text:
           "Targets range from simple binary positive/negative judgment to two-faced expressions such as sarcasm, drivers' psychological states, and context-dependent emotion interpretation. Particularly difficult are cases in which expression and intent diverge. Sarcasm is the prototypical example — positive on the surface, negative in intent. Cultural polysemy also matters: whether the Japanese 'kekkō desu' is acceptance or refusal depends on context. Further complications include annotator disagreement and the neglect of minority opinion. Single-model point estimates wash out all of this complexity.",
+        figure: {
+          src: "",
+          svg: "decomposed-inference",
+          caption:
+            "一度に当てにいかず、観察・規範・差分・意図といった段に分けて推論する。精度だけでなく、不確実性の表し方が変わる。",
+          alt: "単一モデルによる一点推定と、段に分けた推論による分布推定を並べた図",
+        },
       },
       {
         text:
@@ -278,53 +276,23 @@ export const researchDomains: ResearchDomain[] = [
       },
       {
         text:
-          "World Model Inspired Sarcasm Reasoning with LLM Agents (WM-SAR, 2026) decomposes sarcasm understanding into the human cognitive process of 'observation → norm prediction → gap detection → intent inference,' and assigns each stage to a separate LLM agent. The notion of a 'world model' here refers to the internal representation of reality that humans maintain in order to predict the outcomes of actions; sarcasm is recognized through the gap between a 'norm-based prediction grounded in the world model' and the actual utterance. The observation agent describes the situation, the norm-prediction agent predicts 'what one would normally say,' the gap-detection agent extracts the difference from the actual utterance, and the intent-inference agent estimates the underlying intent. A lightweight regression model makes the final decision. Beyond surpassing existing methods in accuracy, the system can structurally explain 'where the gap arose.'",
-        figure: {
-          src: "/research-figures/emotion-recognition/wm-sar.png",
-          caption:
-            "Structure of WM-SAR. Different LLM agents handle observation, norm prediction, gap detection, and intent inference, reasoning about sarcasm in a world-model style (WM-SAR, 2026).",
-          alt: "World-model-inspired multi-agent sarcasm-reasoning architecture of WM-SAR",
-        },
+          "World Model Inspired Sarcasm Reasoning with LLM Agents (WM-SAR, 2026) decomposes sarcasm understanding into the human cognitive process of 'observation → norm prediction → gap detection → intent inference,' and assigns each stage to a separate LLM agent. The notion of a 'world model' here refers to the internal representation of reality that humans maintain in order to predict the outcomes of actions; sarcasm is recognized through the gap between a 'norm-based prediction grounded in the world model' and the actual utterance. The observation agent describes the situation, the norm-prediction agent predicts 'what one would normally say,' the gap-detection agent extracts the difference from the actual utterance, and the intent-inference agent estimates the underlying intent. A lightweight regression model makes the final decision. Beyond surpassing existing methods in accuracy, the system can structurally explain 'where the gap arose.'"
       },
       {
         text:
-          "Cognitive-Causal Multi-Task Learning (CauPsi, 2026) directly structures cognitive-scientific insight into driving-support recognition tasks. The 'cognitive-causal chain' here refers to the ordered psychological process — perception → judgment → emotion → action — that humans go through when acting. CauPsi links four tasks — traffic-situation recognition, vehicle-operation prediction, emotion estimation, and behavior prediction — as multi-task learning that follows this causal chain. Specifically, the intermediate representations of lower tasks propagate as conditions to higher tasks, and in particular the psychological state estimated from the driver's face and posture conditions all tasks. With about 5M parameters, the model achieves 82.7% average accuracy and improves over prior methods especially on emotion (+3.7%) and behavior (+7.5%). It is a fine example of translating cognitive science directly into model structure.",
-        figure: {
-          src: "/research-figures/emotion-recognition/caupsi.png",
-          caption:
-            "Structure of CauPsi. The cognitive-causal chain is built in as the structure of four tasks, and psychological-state conditioning is supplied to all tasks (CauPsi, 2026).",
-          alt: "Overall architecture of CauPsi cognitive-causal multi-task learning",
-        },
+          "Cognitive-Causal Multi-Task Learning (CauPsi, 2026) directly structures cognitive-scientific insight into driving-support recognition tasks. The 'cognitive-causal chain' here refers to the ordered psychological process — perception → judgment → emotion → action — that humans go through when acting. CauPsi links four tasks — traffic-situation recognition, vehicle-operation prediction, emotion estimation, and behavior prediction — as multi-task learning that follows this causal chain. Specifically, the intermediate representations of lower tasks propagate as conditions to higher tasks, and in particular the psychological state estimated from the driver's face and posture conditions all tasks. With about 5M parameters, the model achieves 82.7% average accuracy and improves over prior methods especially on emotion (+3.7%) and behavior (+7.5%). It is a fine example of translating cognitive science directly into model structure."
       },
       {
         text:
-          "A Multi-Agent Probabilistic Inference Framework Inspired by Kairanban-Style CoT (2025) is a distinctive attempt that imports a Japanese cultural deliberation process into machine reasoning. The 'kairanban' is a Japanese tradition in which a document is passed in turn around a neighborhood association so members can add their opinions, and the paper translates this into the Kairanban Chain of Stamps (KCS), a design in which multiple LLMs append opinions in turn. This is followed by 'idobata conversation' (IBC), a stage in which multiple LLMs exchange opinions freely. The two-stage discussion suppresses runaway confidence (overconfidence by a single model) while preserving variance in predictions, achieving more careful emotion estimation. It is an interesting design study showing that a cultural deliberation process can function as a bias-correcting mechanism.",
-        figure: {
-          src: "/research-figures/emotion-recognition/kairanban.png",
-          caption:
-            "Multi-agent inference framework that combines kairanban-style CoT with idobata conversation (Kairanban-IBC, 2025).",
-          alt: "Multi-agent emotion-inference framework combining kairanban and idobata conversation",
-        },
+          "A Multi-Agent Probabilistic Inference Framework Inspired by Kairanban-Style CoT (2025) is a distinctive attempt that imports a Japanese cultural deliberation process into machine reasoning. The 'kairanban' is a Japanese tradition in which a document is passed in turn around a neighborhood association so members can add their opinions, and the paper translates this into the Kairanban Chain of Stamps (KCS), a design in which multiple LLMs append opinions in turn. This is followed by 'idobata conversation' (IBC), a stage in which multiple LLMs exchange opinions freely. The two-stage discussion suppresses runaway confidence (overconfidence by a single model) while preserving variance in predictions, achieving more careful emotion estimation. It is an interesting design study showing that a cultural deliberation process can function as a bias-correcting mechanism."
       },
       {
         text:
-          "Dual-Branch Feature Extraction via Discrepancy-Aware Fusion with Evidential Deep Learning for Sarcasm Detection (DBDA-EDL, 2025) represents sarcasm in two parallel streams — 'literal' and 'intended' — and explicitly extracts the mismatch between them. The Evidential Deep Learning (EDL) introduced here is a method that directly outputs the parameters of a Dirichlet distribution rather than ordinary class probabilities, simultaneously expressing predictive confidence and uncertainty. DBDA-EDL extracts the discrepancy between literal and intended representations as a fused feature and uses EDL to output predictive confidence at the same time. For ambiguous sarcasm, it realizes an 'honestly hesitant model' that returns a modest confidence.",
-        figure: {
-          src: "/research-figures/emotion-recognition/dual-branch.png",
-          caption:
-            "Structure of DBDA-EDL. Sarcasm detection and uncertainty estimation via Dual-Branch / Discrepancy-Aware Fusion / Evidential Deep Learning (DBDA-EDL, 2025).",
-          alt: "DBDA-EDL dual-stream feature extraction and discrepancy-fusion sarcasm-detection architecture",
-        },
+          "Dual-Branch Feature Extraction via Discrepancy-Aware Fusion with Evidential Deep Learning for Sarcasm Detection (DBDA-EDL, 2025) represents sarcasm in two parallel streams — 'literal' and 'intended' — and explicitly extracts the mismatch between them. The Evidential Deep Learning (EDL) introduced here is a method that directly outputs the parameters of a Dirichlet distribution rather than ordinary class probabilities, simultaneously expressing predictive confidence and uncertainty. DBDA-EDL extracts the discrepancy between literal and intended representations as a fused feature and uses EDL to output predictive confidence at the same time. For ambiguous sarcasm, it realizes an 'honestly hesitant model' that returns a modest confidence."
       },
       {
         text:
-          "C-DIRA (2025) redesigns driver-behavior recognition for in-vehicle cameras under the industrial requirement of jointly achieving lightweighting and robustness. In-vehicle environments pile up problems that are invisible in the lab: limited compute, diverse lighting, individual driver differences, varying camera positions. C-DIRA addresses these with two ideas. First, 'dynamic ROI routing' first classifies the entire image and only narrows down to important regions (Regions of Interest) for difficult scenes. Second, 'domain-invariant adversarial learning' adversarially trains the model to cancel out differences in driver and lighting environment. With only 2M parameters, the model achieves 99.2% accuracy together with robustness to domain shift.",
-        figure: {
-          src: "/research-figures/emotion-recognition/cdira.png",
-          caption:
-            "Structure of C-DIRA. Lightweight driver-behavior recognition combining dynamic ROI routing with domain-invariant adversarial learning (C-DIRA, 2025).",
-          alt: "Structural diagram of C-DIRA's dynamic ROI routing and domain-invariant learning",
-        },
+          "C-DIRA (2025) redesigns driver-behavior recognition for in-vehicle cameras under the industrial requirement of jointly achieving lightweighting and robustness. In-vehicle environments pile up problems that are invisible in the lab: limited compute, diverse lighting, individual driver differences, varying camera positions. C-DIRA addresses these with two ideas. First, 'dynamic ROI routing' first classifies the entire image and only narrows down to important regions (Regions of Interest) for difficult scenes. Second, 'domain-invariant adversarial learning' adversarially trains the model to cancel out differences in driver and lighting environment. With only 2M parameters, the model achieves 99.2% accuracy together with robustness to domain shift."
       },
       {
         text:
@@ -351,6 +319,13 @@ export const researchDomains: ResearchDomain[] = [
       {
         text:
           "There are several possible stances for the relationship between people and affective AI. The first is the position of 'supporter of self-reflection,' in which the AI helps the user understand and articulate their own emotion. The second is the position of 'authority to which judgment is deferred,' in which the user acts according to the AI's judgment. The third is the position of 'partner in co-presence,' in which the AI functions not as a judge or a supporter but simply as a presence that is there. Each stance carries different design principles and ethical implications. Our lab emphasizes especially the first and the third — stances that respect the non-intrusiveness of AI.",
+        figure: {
+          src: "",
+          svg: "mirror-not-judge",
+          caption:
+            "AIが「あなたは怒っています」と結論を下すのか、それとも読みを本人に返すのか。解釈する権利をどちら側に置くかで、設計は変わる。",
+          alt: "判定を下すAIと、読みを本人に返すAIを対比した図",
+        },
       },
       {
         text:
@@ -385,6 +360,13 @@ export const researchDomains: ResearchDomain[] = [
       {
         text:
           "Industrial deployment imposes constraints absent in research prototypes, all at once. First, user acceptability: even technically excellent systems will not spread if users find them 'creepy.' Second, operational uncertainty: in real environments, inputs unlike training data flow in daily, and model behavior becomes unpredictable. Third, accountability: when something goes wrong, commercial deployment requires clarity about who is responsible. Fourth, ethical considerations specific to emotion-related services: because they intervene in users' vulnerable moments, they demand a higher ethical bar than ordinary IT services. This domain advances design research that handles these constraints simultaneously.",
+        figure: {
+          src: "",
+          svg: "accuracy-acceptance",
+          caption:
+            "技術精度と社会的受容は別の軸である。当たるが受け入れられない実装も、好かれるが当たらない実装も、現場では使えない。",
+          alt: "技術精度と社会的受容を二軸に取り、両立する領域を示した図",
+        },
       },
       {
         text:
@@ -392,23 +374,11 @@ export const researchDomains: ResearchDomain[] = [
       },
       {
         text:
-          "MALLET (Multi-Agent LLM-based Emotion Tempering, 2026) is a consumer-protection framework that delivers stimulating news and similar expression to users with reduced affective intensity while preserving meaning. The background is the concern that the 'attention economy' of social media and news distribution captures attention by stimulating people's emotion, ultimately worsening users' mental state. MALLET consists of four LLM agents. An emotion-analysis agent measures the affective intensity of the input text, a tempering agent rewrites the text to lower its affective intensity while preserving meaning, a monitoring agent tracks the user's emotion history weekly, and a guide agent produces individualized feedback. On 800 AG News items, MALLET achieves stimulation-score reductions of up to 19.3% while keeping SBERT similarity at 0.83 or above, jointly preserving meaning and tempering emotion.",
-        figure: {
-          src: "/research-figures/business/mallet.png",
-          caption:
-            "Structure of MALLET. Four LLM agents share the roles of emotion analysis, tempering, monitoring, and guidance (MALLET, 2026).",
-          alt: "Overall diagram of the MALLET multi-agent system for emotion tempering in consumer protection",
-        },
+          "MALLET (Multi-Agent LLM-based Emotion Tempering, 2026) is a consumer-protection framework that delivers stimulating news and similar expression to users with reduced affective intensity while preserving meaning. The background is the concern that the 'attention economy' of social media and news distribution captures attention by stimulating people's emotion, ultimately worsening users' mental state. MALLET consists of four LLM agents. An emotion-analysis agent measures the affective intensity of the input text, a tempering agent rewrites the text to lower its affective intensity while preserving meaning, a monitoring agent tracks the user's emotion history weekly, and a guide agent produces individualized feedback. On 800 AG News items, MALLET achieves stimulation-score reductions of up to 19.3% while keeping SBERT similarity at 0.83 or above, jointly preserving meaning and tempering emotion."
       },
       {
         text:
-          "GNN-Enhanced Multimodal Fusion (2025) rethinks user personalization through the concrete application of meal recommendation. Conventional meal recommenders are dominated by collaborative filtering that recommends similar recipes from past recipe ratings, but this ignores the user's long-term health goals and lifestyle. This work integrates diverse information — food images, nutritional data, ingredient composition, and cooking methods — using a Graph Neural Network (GNN). A GNN is a deep-learning method that performs representation learning while taking relations between nodes into account, and it can consistently handle diverse relations such as ingredient-to-dish and dish-to-nutrition. Furthermore, contrastive learning extracts the user's 'lifestyle' as a latent representation. As a result, the model surpasses existing methods on AllRecipes data and demonstrates the feasibility of food recommendations consistent with health goals.",
-        figure: {
-          src: "/research-figures/business/gnn-recipe.png",
-          caption:
-            "Structure of GNN-Enhanced Multimodal Fusion. Visual, lifestyle, and taste features are fused with HGT to recommend health-oriented recipes (2025).",
-          alt: "Concept diagram of GNN-enhanced multimodal fusion for health-recipe recommendation",
-        },
+          "GNN-Enhanced Multimodal Fusion (2025) rethinks user personalization through the concrete application of meal recommendation. Conventional meal recommenders are dominated by collaborative filtering that recommends similar recipes from past recipe ratings, but this ignores the user's long-term health goals and lifestyle. This work integrates diverse information — food images, nutritional data, ingredient composition, and cooking methods — using a Graph Neural Network (GNN). A GNN is a deep-learning method that performs representation learning while taking relations between nodes into account, and it can consistently handle diverse relations such as ingredient-to-dish and dish-to-nutrition. Furthermore, contrastive learning extracts the user's 'lifestyle' as a latent representation. As a result, the model surpasses existing methods on AllRecipes data and demonstrates the feasibility of food recommendations consistent with health goals."
       },
       {
         text:
@@ -435,6 +405,13 @@ export const researchDomains: ResearchDomain[] = [
       {
         text:
           "With the rise of generative AI, the positions AI can take with respect to art can be organized into three large categories. The first is 'making,' in which AI directly generates artworks. Generative AI such as Stable Diffusion, DALL-E, Sora, and Suno produces images, video, and music from textual descriptions and has dramatically lowered the threshold of creation. The second is 'reading,' in which AI interprets existing artworks and extracts emotion, meaning, and context. Emotion analysis of paintings, analysis of affective structure in music, and extraction of emotion curves from literary texts fall here. The third is 'inspiring,' in which AI takes on the supportive role of helping and prompting human creation — idea generation, style transfer, critical feedback. Our lab pursues research that moves among these three positions.",
+        figure: {
+          src: "",
+          svg: "three-positions",
+          caption:
+            "AIは作る側にも、読む側にも、人の表現を動かす側にも立つ。ひとつの作品のなかで、その位置を移っていく。",
+          alt: "作る・読む・触発するという三つの位置と、その間の移動を示した図",
+        },
       },
       {
         text:
@@ -469,16 +446,17 @@ export const researchDomains: ResearchDomain[] = [
       {
         text:
           "AI applications in psychological-support areas face several distinctive difficulties. First, 'clinical safety': there is a risk that erroneous advice from the AI worsens the user's mental state. Second, the necessity of an 'empathic response': what is technically correct is not necessarily emotionally appropriate. Telling a user who reports sadness that 'objective data shows things will improve' may be correct but not appropriate. Third, the limits of 'substituting for experts': AI should not replace licensed professionals but remain in a complementary position. Research in this domain carefully designs the range in which AI can safely contribute, taking these difficulties into account.",
+        figure: {
+          src: "",
+          svg: "overconfidence",
+          caption:
+            "役割を持つエージェントが多段で議論すると、共感的で実用的な出力が得られる。ただしシステムは自分の判断に自信を持ちすぎる。心理支援では、この差を詰めることが精度より重い。",
+          alt: "多段の議論による出力と、確信度と実際の信頼性の差を示した図",
+        },
       },
       {
         text:
-          "Role-Playing LLM-Based Multi-Agent Support Framework (2025) proposes a system that detects 'suppressed emotion' in a child and 'ideal-parent bias' in a parent from parent–child conversation and returns empathic feedback to each family member. 'Suppressed emotion' refers to feelings the child has toward the parent but cannot directly express, while 'ideal-parent bias' refers to the cognitive bias by which the parent evaluates themselves as an 'ideal parent' and thereby overlooks the child's actual experience. The system is built on 30 Japanese parent–child dialogue scenarios and integrates four processing stages: suppressed-emotion detection, attribute estimation, bias detection, and a five-agent debate.",
-        figure: {
-          src: "/research-figures/application-development/family-bias.png",
-          caption:
-            "Overview of the family-communication support framework. A four-stage pipeline from suppressed-emotion detection through multi-agent debate (Role-Playing LLM Multi-Agent, 2025).",
-          alt: "Overall diagram of the family-conversation bias-detection multi-agent support framework",
-        },
+          "Role-Playing LLM-Based Multi-Agent Support Framework (2025) proposes a system that detects 'suppressed emotion' in a child and 'ideal-parent bias' in a parent from parent–child conversation and returns empathic feedback to each family member. 'Suppressed emotion' refers to feelings the child has toward the parent but cannot directly express, while 'ideal-parent bias' refers to the cognitive bias by which the parent evaluates themselves as an 'ideal parent' and thereby overlooks the child's actual experience. The system is built on 30 Japanese parent–child dialogue scenarios and integrates four processing stages: suppressed-emotion detection, attribute estimation, bias detection, and a five-agent debate."
       },
       {
         text:
@@ -517,16 +495,17 @@ export const researchDomains: ResearchDomain[] = [
       {
         text:
           "What this domain emphasizes most is the question of how the world knowledge inside LLMs is drawn out. LLMs acquire knowledge about the world from vast amounts of text during pretraining, but drawing on that knowledge requires appropriate prompt design and inference strategies. Capacities such as associative-memory-like chained recall from a cue, reasoning that exploits world knowledge, and elucidation of which forms of knowledge elicitation are reliable are central to deploying LLMs in practice. This is two sides of the same coin with research on the inside of affective AI and constitutes one of the two wheels of our lab's basic research.",
+        figure: {
+          src: "",
+          svg: "recall-over-reasoning",
+          caption:
+            "抽象的に推論させるより、具体的に思い出させるほうが当たる。複数のエージェントに並列に想起させ、投票で決める。",
+          alt: "抽象推論による細い出力と、複数エージェントの想起＋投票による出力を対比した図",
+        },
       },
       {
         text:
-          "Who Does This Name Remind You of? (LAMA, 2026) is a representative study that analyzed how LLMs draw on internal knowledge. The task is predicting a person's nationality from their name, but the essence of the work is in elucidating 'what knowledge LLMs draw on, and how.' LAMA prompts the LLM to recall 'famous people this name reminds you of' and then estimates the nationality of the original name from the recalled person's nationality. Specifically, two agents — a Person Agent (person recall) and a Media Agent (entertainment and sports recall) — recall famous people in parallel, each estimates a nationality from its recalled set, and a vote produces the final decision. The model achieves an accuracy of 0.817 on 99-country prediction.",
-        figure: {
-          src: "/research-figures/other-ai-research/lama.png",
-          caption:
-            "Dual-agent associative-recall architecture of LAMA. The Person Agent and Media Agent recall famous people in parallel, and a vote decides nationality (LAMA, 2026).",
-          alt: "Diagram of LAMA's dual-agent associative-recall architecture",
-        },
+          "Who Does This Name Remind You of? (LAMA, 2026) is a representative study that analyzed how LLMs draw on internal knowledge. The task is predicting a person's nationality from their name, but the essence of the work is in elucidating 'what knowledge LLMs draw on, and how.' LAMA prompts the LLM to recall 'famous people this name reminds you of' and then estimates the nationality of the original name from the recalled person's nationality. Specifically, two agents — a Person Agent (person recall) and a Media Agent (entertainment and sports recall) — recall famous people in parallel, each estimates a nationality from its recalled set, and a vote produces the final decision. The model achieves an accuracy of 0.817 on 99-country prediction."
       },
       {
         text:
@@ -534,13 +513,7 @@ export const researchDomains: ResearchDomain[] = [
       },
       {
         text:
-          "Nationality and Region Prediction from Names (2026) takes up the same nationality-from-name task as LAMA but develops a more systematic comparison. The work comprehensively compares six conventional neural models (LSTM, Transformer, various embedding methods, etc.) with six LLM prompting strategies (zero-shot, few-shot, chain-of-thought, etc.) at three granularities of nationality, region, and continent. The result is that LLMs surpass conventional neural models at every granularity, and the gap is quantitatively shown to derive from the world knowledge acquired during pretraining.",
-        figure: {
-          src: "/research-figures/other-ai-research/name-pred.png",
-          caption:
-            "Systematic comparison of conventional models and LLMs on predicting nationality from names (Nationality and Region Prediction from Names, 2026).",
-          alt: "Conceptual comparison of neural models and LLMs for name-to-nationality prediction",
-        },
+          "Nationality and Region Prediction from Names (2026) takes up the same nationality-from-name task as LAMA but develops a more systematic comparison. The work comprehensively compares six conventional neural models (LSTM, Transformer, various embedding methods, etc.) with six LLM prompting strategies (zero-shot, few-shot, chain-of-thought, etc.) at three granularities of nationality, region, and continent. The result is that LLMs surpass conventional neural models at every granularity, and the gap is quantitatively shown to derive from the world knowledge acquired during pretraining."
       },
       {
         text:

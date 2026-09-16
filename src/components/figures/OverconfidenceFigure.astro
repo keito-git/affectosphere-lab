@@ -1,0 +1,50 @@
+---
+// Concept figure: Empathetic output, overconfident system.
+interface Props { locale?: "ja" | "en"; }
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+---
+
+<svg viewBox="0 0 640 300" class="fig h-auto w-full" role="img" aria-labelledby="fig-overconf">
+  <title id="fig-overconf">{isEn ? "Multi-agent debate produces useful feedback, and too much confidence" : "多段の議論は有用な出力を生むが、同時に自信過剰も生む"}</title>
+  <text x="20" y="24" class="fig-head">{isEn ? "Agents in role, debating" : "役割を持つエージェントの議論"}</text>
+
+  {[
+    { ja: "検出", en: "detect" },
+    { ja: "解釈", en: "interpret" },
+    { ja: "反論", en: "challenge" },
+    { ja: "統合", en: "synthesise" },
+  ].map((s, i) => (
+    <g>
+      <rect x={24 + i * 96} y="56" width="80" height="46" rx="2" fill="#F4F0E8" stroke="#E2DDD6" />
+      <text x={64 + i * 96} y="84" text-anchor="middle" class="fig-small">{isEn ? s.en : s.ja}</text>
+      {i < 3 && <line x1={106 + i * 96} y1="79" x2={118 + i * 96} y2="79" stroke="#6B7280" stroke-width="1" marker-end="url(#figArrow3)" />}
+    </g>
+  ))}
+
+  <line x1="416" y1="79" x2="452" y2="79" stroke="#6B7280" stroke-width="1" marker-end="url(#figArrow3)" />
+  <rect x="456" y="52" width="160" height="54" rx="2" fill="#C4974A" fill-opacity="0.10" stroke="#7B5E28" />
+  <text x="536" y="83" text-anchor="middle" class="fig-small">{isEn ? "empathetic, usable" : "共感的で、実用になる"}</text>
+
+  {/* the catch */}
+  <line x1="536" y1="112" x2="536" y2="150" stroke="#7B5E28" stroke-width="1" stroke-dasharray="3 3" />
+  <text x="536" y="170" text-anchor="middle" class="fig-small fig-accent">{isEn ? "and very sure of itself" : "そして、やけに自信がある"}</text>
+
+  <line x1="60" y1="204" x2="616" y2="204" stroke="#E2DDD6" />
+  <text x="60" y="226" class="fig-mono">{isEn ? "stated confidence" : "システムの確信"}</text>
+  <rect x="200" y="214" width="380" height="9" rx="2" fill="#C4974A" fill-opacity="0.75" />
+  <text x="60" y="252" class="fig-mono">{isEn ? "actual reliability" : "実際の当たり"}</text>
+  <rect x="200" y="240" width="224" height="9" rx="2" fill="#6B7280" fill-opacity="0.45" />
+  <line x1="424" y1="236" x2="424" y2="253" stroke="#7B5E28" stroke-width="1" />
+  <text x="434" y="250" class="fig-small fig-accent">{isEn ? "the gap to calibrate" : "較正すべき差"}</text>
+
+  <defs>
+    <marker id="figArrow3" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#6B7280" />
+    </marker>
+  </defs>
+
+  <text x="20" y="288" class="fig-small">
+    {isEn ? "In psychologically delicate settings, closing that gap matters more than the last point of accuracy." : "心理的にデリケートな場面では、この差を詰めることのほうが、最後の一点の精度より重い。"}
+  </text>
+</svg>

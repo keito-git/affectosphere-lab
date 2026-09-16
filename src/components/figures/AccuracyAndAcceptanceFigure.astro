@@ -1,0 +1,38 @@
+---
+// Concept figure: Accuracy and acceptance are two axes, not one.
+interface Props { locale?: "ja" | "en"; }
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+---
+
+<svg viewBox="0 0 640 340" class="fig h-auto w-full" role="img" aria-labelledby="fig-accept">
+  <title id="fig-accept">{isEn ? "Technical accuracy and social acceptance as two axes" : "技術精度と社会的受容という二つの軸"}</title>
+  <text x="20" y="24" class="fig-head">{isEn ? "Deploying affective AI" : "感情AIを現場に置く"}</text>
+
+  <line x1="90" y1="280" x2="560" y2="280" stroke="#E2DDD6" stroke-width="1" />
+  <line x1="90" y1="56" x2="90" y2="280" stroke="#E2DDD6" stroke-width="1" />
+  <text x="560" y="300" text-anchor="end" class="fig-mono">{isEn ? "technical accuracy →" : "技術精度 →"}</text>
+  <text x="76" y="56" text-anchor="end" class="fig-mono" transform="rotate(-90 76 56)">
+    {isEn ? "social acceptance →" : "社会的受容 →"}
+  </text>
+
+  {/* the quadrant everyone aims at, and the two that are easy to land in */}
+  <rect x="340" y="76" width="210" height="96" rx="2" fill="#C4974A" fill-opacity="0.13" stroke="#7B5E28" stroke-dasharray="4 4" />
+  <text x="445" y="118" text-anchor="middle" class="fig-label fig-accent">{isEn ? "both at once" : "両立"}</text>
+  <text x="445" y="140" text-anchor="middle" class="fig-small fig-accent">{isEn ? "what we are after" : "狙うのはここ"}</text>
+
+  <text x="360" y="244" class="fig-small">{isEn ? "accurate, refused" : "当たるが、受け入れられない"}</text>
+  <text x="120" y="118" class="fig-small">{isEn ? "welcome, wrong" : "好かれるが、当たらない"}</text>
+
+  {/* the three moves that get you there */}
+  {[
+    { ja: "潜在的な指向を読む", en: "read latent preference" },
+    { ja: "強度を、意味を保って調整", en: "temper intensity, keep meaning" },
+    { ja: "使われ方を追い続ける", en: "watch it over time" },
+  ].map((m, i) => (
+    <g>
+      <circle cx="104" cy={314 - 0} r="0" />
+      <text x={24 + i * 208} y="326" class="fig-small fig-accent">{"· " + (isEn ? m.en : m.ja)}</text>
+    </g>
+  ))}
+</svg>

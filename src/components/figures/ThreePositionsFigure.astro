@@ -1,0 +1,32 @@
+---
+// Concept figure: Making, reading, provoking.
+interface Props { locale?: "ja" | "en"; }
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+---
+
+<svg viewBox="0 0 640 300" class="fig h-auto w-full" role="img" aria-labelledby="fig-three">
+  <title id="fig-three">{isEn ? "Three positions AI moves between in art" : "アートにおいてAIが行き来する三つの位置"}</title>
+  <text x="20" y="24" class="fig-head">{isEn ? "Not one role, three" : "役はひとつではない"}</text>
+
+  {[
+    { ja: "作る", en: "make", sub: { ja: "生成する側に立つ", en: "stands as the maker" }, cx: 140, cy: 120 },
+    { ja: "読む", en: "read", sub: { ja: "解釈する側に立つ", en: "stands as the reader" }, cx: 500, cy: 120 },
+    { ja: "触発する", en: "provoke", sub: { ja: "人の表現を動かす", en: "moves the person" }, cx: 320, cy: 226 },
+  ].map((p) => (
+    <g>
+      <circle cx={p.cx} cy={p.cy} r="52" fill="#F4F0E8" stroke="#E2DDD6" />
+      <text x={p.cx} y={p.cy - 2} text-anchor="middle" class="fig-label">{isEn ? p.en : p.ja}</text>
+      <text x={p.cx} y={p.cy + 18} text-anchor="middle" class="fig-small">{isEn ? p.sub.en : p.sub.ja}</text>
+    </g>
+  ))}
+
+  {/* the movement between them is the point */}
+  <path d="M 196 112 C 260 86 380 86 444 112" fill="none" stroke="#7B5E28" stroke-width="1.2" stroke-dasharray="4 5" />
+  <path d="M 470 168 C 436 206 392 222 376 226" fill="none" stroke="#7B5E28" stroke-width="1.2" stroke-dasharray="4 5" />
+  <path d="M 264 226 C 248 222 204 206 170 168" fill="none" stroke="#7B5E28" stroke-width="1.2" stroke-dasharray="4 5" />
+
+  <text x="20" y="282" class="fig-small">
+    {isEn ? "The interesting question is not which one it is, but that it moves between them within a single work." : "面白いのはどれであるかではなく、一つの作品のなかで位置を移ることのほうである。"}
+  </text>
+</svg>
