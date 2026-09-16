@@ -22,21 +22,33 @@ const posts = allPosts.slice(0, PAGE_SIZE);
   <PageHeader
     eyebrow="Column"
     title="研究をビジネスの言葉に。"
-    subtitle="Affectosphere Group の研究を、ビジネスや実務の意思決定に役立つ形で書き直しています。1 本 5 分で読めます。"
+    subtitle="Affectosphere Group の研究を、ビジネスや実務の意思決定に役立つ形で書き直していきます。"
     wideSubtitle
   />
 
   <section class="mx-auto mt-section-sm max-w-content page-x">
     {
       posts.length === 0 ? (
-        <p class="reveal text-base text-slate">
-          No posts yet. The first column entries will appear here shortly.
-        </p>
+        <div class="reveal max-w-prose">
+          <p class="font-display text-lg leading-relaxed text-charcoal md:text-xl" style="line-height: 1.85;">
+            コラムは現在準備中です。
+          </p>
+          <p class="mt-4 font-display text-base leading-relaxed text-slate md:text-lg">
+            研究を、ビジネスや実務の意思決定に使える言葉へ書き直した記事を、ここで公開していきます。
+          </p>
+          <p class="mt-8">
+            <a href="/research/" class="link-amber font-heading text-sm tracking-wide">
+              研究テーマを見る &rarr;
+            </a>
+          </p>
+        </div>
       ) : (
         <ColumnGrid posts={posts} hrefBase="/column" />
       )
     }
-    <Pagination current={1} total={totalPages} basePath="/column" />
+    {allPosts.length > 0 && (
+      <Pagination current={1} total={totalPages} basePath="/column" />
+    )}
   </section>
 
   <div class="h-section-sm" aria-hidden="true"></div>

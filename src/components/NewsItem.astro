@@ -22,7 +22,10 @@ const href = item.slug ? `${base}/news/${item.slug}/` : null;
 const more = locale === "en" ? "Details →" : "詳細 →";
 ---
 
-<li class="reveal grid gap-2 border-b border-stone py-5 last:border-b-0 md:grid-cols-[10rem_8rem_1fr] md:gap-6">
+<li
+  class="reveal grid gap-2 border-b border-stone py-5 last:border-b-0 md:grid-cols-[10rem_8rem_1fr] md:gap-6"
+  data-news-label={item.label}
+>
   <time class="font-sans text-xs text-slate font-medium" datetime={item.date}>
     {display}
   </time>

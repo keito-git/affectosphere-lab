@@ -2,6 +2,9 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { researchDomains } from "../../../data/research-domains.en";
 import Img from "../../../components/Img.astro";
+import PublicationItem from "../../../components/PublicationItem.astro";
+import { allPublications } from "../../../data/publications.en";
+import { stages, domainStage, publicationStage } from "../../../data/research-map";
 import { webp } from "../../../lib/images";
 
 export function getStaticPaths() {
@@ -17,6 +20,15 @@ const { domain } = Astro.props;
 const siblings = researchDomains.filter((d) => d.slug !== domain.slug);
 
 const narrative = domain.narrative ?? [];
+
+// Publications placed at the stage this domain mainly serves, so a reader can
+// go from the description straight to the work. Sourced from the research map,
+// so it cannot disagree with it.
+const stage = stages.find((s) => s.id === domainStage[domain.slug]);
+const domainPubs = stage
+  ? allPublications.filter((p) => publicationStage[p.slug] === stage.id)
+  : [];
+
 ---
 
 <BaseLayout
@@ -140,6 +152,39 @@ const narrative = domain.narrative ?? [];
   )}
 
   <!-- Sibling navigation. -->
+
+  <!-- The work itself. A domain page that only describes the field, without the
+       papers behind it, is where "just a list" starts. -->
+  {domainPubs.length > 0 && (
+    <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="domain-pubs">
+      <div class="grid gap-10 md:grid-cols-[16rem_1fr] md:gap-14">
+        <div>
+          <p class="eyebrow reveal">Work in this domain</p>
+          <h2
+            id="domain-pubs"
+            class="reveal mt-3 font-display text-2xl font-medium text-charcoal md:text-3xl"
+          >
+            Publications in this domain
+          </h2>
+          <p class="reveal mt-4 font-label text-[0.75rem] tracking-[0.12em] text-slate">
+            {domainPubs.length} entries
+            {stage && <span class="ml-2">/ {stage.label}</span>}
+          </p>
+        </div>
+        <div>
+          <ul class="w-full">
+            {domainPubs.map((pub) => <PublicationItem pub={pub} hideStatus locale="en" />)}
+          </ul>
+          <p class="reveal mt-8">
+            <a href="/en/publications/" class="link-amber font-heading text-sm tracking-wide">
+              See all publications &rarr;
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+  )}
+
   <section class="mx-auto mt-section max-w-content page-x">
     <div class="reveal border-t border-stone pt-8">
       <h2 class="font-display text-xl font-medium text-charcoal md:text-2xl">

@@ -30,14 +30,26 @@ const posts = allPosts.slice(0, PAGE_SIZE);
   <section class="mx-auto mt-section-sm max-w-content page-x">
     {
       posts.length === 0 ? (
-        <p class="reveal text-base text-slate">
-          No posts yet. The first column entries will appear here shortly.
-        </p>
+        <div class="reveal max-w-prose">
+          <p class="font-display text-lg leading-relaxed text-charcoal md:text-xl" style="line-height: 1.85;">
+            Columns are in preparation.
+          </p>
+          <p class="mt-4 font-display text-base leading-relaxed text-slate md:text-lg">
+            Research rewritten into language a business or practice decision can be made from will appear here.
+          </p>
+          <p class="mt-8">
+            <a href="/en/research/" class="link-amber font-heading text-sm tracking-wide">
+              See the research &rarr;
+            </a>
+          </p>
+        </div>
       ) : (
         <ColumnGrid posts={posts} hrefBase="/en/column" />
       )
     }
-    <Pagination current={1} total={totalPages} basePath="/en/column" />
+    {allPosts.length > 0 && (
+      <Pagination current={1} total={totalPages} basePath="/en/column" />
+    )}
   </section>
 
   <div class="h-section-sm" aria-hidden="true"></div>

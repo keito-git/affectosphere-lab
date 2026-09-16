@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { caiStages, stageStats } from "../data/research-map";
 import { members } from "../data/people";
 import Img from "../components/Img.astro";
 
@@ -28,6 +29,22 @@ function initials(name: string): string {
     .join("")
     .toUpperCase();
 }
+
+// The two thinnest stages on the research map, with what we want help on.
+// Counts come from the map, so this section cannot drift out of date.
+const _stats = stageStats();
+const WANTED: Record<string, string> = {
+  interaction:
+    "人と AI が感情を介して往復する場の設計。自己省察の支援、対話インタフェース、共在をどう評価するか。立ち上がったばかりの段です。",
+  "human-affect":
+    "そもそも人が感情をどう経験し、どこで食い違うのか。心理学・認知科学の側から、計算の手前にある問いを一緒に立てられる方を探しています。",
+  representation:
+    "読み取った感情を、確率分布と不確実性のまま持ち続けるための表現。ベイズ・較正・ソフトラベルまわり。",
+};
+const thinStages = caiStages
+  .map((stage) => ({ stage, total: _stats[stage.id].total, wanted: WANTED[stage.id] }))
+  .filter((s) => s.wanted)
+  .sort((a, b) => a.total - b.total);
 ---
 
 <BaseLayout
@@ -112,28 +129,75 @@ function initials(name: string): string {
     ))
   }
 
-  <!-- Looking for collaborators block. -->
-  <section
-    class="mx-auto mt-section max-w-content page-x"
-    aria-labelledby="collab"
-  >
-    <div class="reveal border-l-2 border-amber/60 pl-6">
-      <p class="font-display text-sm italic text-slate mb-3">Looking for collaborators</p>
-      <h2
-        id="collab"
-        class="font-display text-xl font-medium text-charcoal md:text-2xl"
-      >
-        感情AIに関わる仲間を募集しています
-      </h2>
-      <p class="mt-4 font-display text-base leading-relaxed text-charcoal">
-        感情AIの構築・活用などに興味関心がある学生・共同研究者・ビジネスマンなど、
-        幅広く募集しています。
-      </p>
-      <p class="mt-6">
-        <a href="/contact/" class="link-amber font-heading text-sm tracking-wide">
-          お問い合わせ &rarr;
-        </a>
-      </p>
+  <!-- What we are looking for. Driven by the research map: the stages with the
+       least behind them are the ones we most need people on. -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="collab">
+    <div class="grid gap-10 md:grid-cols-[16rem_1fr] md:gap-14">
+      <div>
+        <p class="eyebrow reveal">Open positions</p>
+        <h2
+          id="collab"
+          class="reveal mt-3 font-display text-2xl font-medium text-charcoal md:text-3xl"
+        >
+          いま、人を探している場所。
+        </h2>
+      </div>
+      <div>
+        <p class="reveal font-display text-lg leading-relaxed text-charcoal md:text-xl" style="line-height: 1.85;">
+          研究の地図で薄い段が、そのまま募集している場所です。
+          埋まっている場所より、空いている場所のほうが面白いと思っています。
+        </p>
+
+        <ul class="reveal mt-10 divide-y divide-stone border-t border-stone">
+          {
+            thinStages.map((s) => (
+              <li class="grid gap-2 py-6 md:grid-cols-[13rem_1fr] md:gap-8">
+                <div>
+                  <p class="font-label text-[0.78rem] uppercase tracking-[0.14em] text-amber-deep">
+                    {s.stage.label}
+                  </p>
+                  <p class="mt-0.5 font-display text-base text-charcoal">{s.stage.labelJa}</p>
+                  <p class="mt-1 font-label text-[0.72rem] tracking-[0.12em] text-slate">
+                    業績 {s.total} 件
+                  </p>
+                </div>
+                <p class="font-display text-base leading-relaxed text-slate">{s.wanted}</p>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="reveal mt-12">
+          <p class="eyebrow">Who we work with</p>
+          <ul class="mt-5 space-y-4">
+            <li class="grid gap-1.5 md:grid-cols-[9rem_1fr] md:gap-6">
+              <p class="font-display text-base font-medium text-charcoal">学生</p>
+              <p class="font-display text-base leading-relaxed text-slate">
+                学部・修士・博士いずれも。研究テーマは、上の地図から一緒に選びます。
+              </p>
+            </li>
+            <li class="grid gap-1.5 md:grid-cols-[9rem_1fr] md:gap-6">
+              <p class="font-display text-base font-medium text-charcoal">共同研究者</p>
+              <p class="font-display text-base leading-relaxed text-slate">
+                心理学・認知科学・HCI・倫理学など、AI の外側に軸足がある方ほど噛み合います。
+              </p>
+            </li>
+            <li class="grid gap-1.5 md:grid-cols-[9rem_1fr] md:gap-6">
+              <p class="font-display text-base font-medium text-charcoal">企業</p>
+              <p class="font-display text-base leading-relaxed text-slate">
+                実装先と、実際のデータ。感情 AI を現場に置くための条件を一緒に探せる相手を探しています。
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <p class="reveal mt-10">
+          <a href="/contact/" class="btn-solid">
+            相談してみる
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </p>
+      </div>
     </div>
   </section>
 

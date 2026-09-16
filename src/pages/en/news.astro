@@ -12,6 +12,11 @@ const byYear = allNews.reduce<Record<string, typeof allNews>>((acc, item) => {
 }, {});
 
 const years = Object.keys(byYear).sort((a, b) => Number(b) - Number(a));
+
+// Categories present in the data, most frequent first.
+const labelCounts = [...new Set(allNews.map((n) => n.label))]
+  .map((label) => ({ label, count: allNews.filter((n) => n.label === label).length }))
+  .sort((a, b) => b.count - a.count);
 ---
 
 <BaseLayout
@@ -26,9 +31,31 @@ const years = Object.keys(byYear).sort((a, b) => Number(b) - Number(a));
     subtitle="Latest updates on submissions, talks, and lab events, in reverse chronological order."
   />
 
+  <!-- Category filter. Seven entries do not need a summary panel, but they do
+       benefit from being separable by kind. -->
+  <section class="mx-auto mt-section-sm max-w-content page-x" aria-label="Filter">
+    <div class="reveal flex flex-wrap items-center gap-2" data-news-filter>
+      <button
+        type="button"
+        class="btn-ghost bg-charcoal text-ivory border-charcoal"
+        data-filter-label="all"
+        aria-pressed="true"
+      >
+        All <span class="ml-2 font-label text-[0.72rem]">{allNews.length}</span>
+      </button>
+      {
+        labelCounts.map((c) => (
+          <button type="button" class="btn-ghost" data-filter-label={c.label} aria-pressed="false">
+            {c.label} <span class="ml-2 font-label text-[0.72rem]">{c.count}</span>
+          </button>
+        ))
+      }
+    </div>
+  </section>
+
   {
     years.map((year) => (
-      <section class="mx-auto mt-section-sm max-w-content page-x" aria-labelledby={`year-${year}`}>
+      <section class="mx-auto mt-section-sm max-w-content page-x" aria-labelledby={`year-${year}`} data-news-year>
         <h2
           id={`year-${year}`}
           class="reveal mb-6 font-display text-4xl font-medium text-charcoal md:text-5xl"
@@ -46,3 +73,34 @@ const years = Object.keys(byYear).sort((a, b) => Number(b) - Number(a));
 
   <div class="h-section-sm" aria-hidden="true"></div>
 </BaseLayout>
+
+<script>
+  // One axis: the category label. Year sections hide when they empty out.
+  const bar = document.querySelector<HTMLDivElement>("[data-news-filter]");
+  if (bar) {
+    const buttons = bar.querySelectorAll<HTMLButtonElement>("[data-filter-label]");
+    const sections = document.querySelectorAll<HTMLElement>("[data-news-year]");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const want = btn.getAttribute("data-filter-label") ?? "all";
+        buttons.forEach((b) => {
+          const active = b === btn;
+          b.setAttribute("aria-pressed", String(active));
+          b.classList.toggle("bg-charcoal", active);
+          b.classList.toggle("text-ivory", active);
+          b.classList.toggle("border-charcoal", active);
+        });
+        sections.forEach((section) => {
+          let visible = 0;
+          section.querySelectorAll<HTMLElement>("[data-news-label]").forEach((li) => {
+            const match = want === "all" || li.dataset.newsLabel === want;
+            li.style.display = match ? "" : "none";
+            if (match) visible += 1;
+          });
+          section.style.display = visible > 0 ? "" : "none";
+        });
+      });
+    });
+  }
+</script>
+
