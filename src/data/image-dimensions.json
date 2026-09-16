@@ -115,6 +115,14 @@
     "width": 992,
     "height": 718
   },
+  "/field-images/AI for Science.png": {
+    "width": 1672,
+    "height": 941
+  },
+  "/field-images/AIによる感情の認識.png": {
+    "width": 1672,
+    "height": 941
+  },
   "/field-images/affective-ai-art.png": {
     "width": 1536,
     "height": 1024
@@ -158,6 +166,42 @@
   "/field-images/other-ai-research.png": {
     "width": 1536,
     "height": 1024
+  },
+  "/field-images/その他AI研究.png": {
+    "width": 1672,
+    "height": 941
+  },
+  "/field-images/人間の感情理解.png": {
+    "width": 1671,
+    "height": 941
+  },
+  "/field-images/感情AIとアート.png": {
+    "width": 1672,
+    "height": 941
+  },
+  "/field-images/感情AIとビジネス.png": {
+    "width": 1672,
+    "height": 941
+  },
+  "/field-images/感情AIと人間のインタラクション.png": {
+    "width": 1672,
+    "height": 941
+  },
+  "/field-images/感情AIに基づく開発.png": {
+    "width": 1672,
+    "height": 941
+  },
+  "/field-images/感情AIの倫理と哲学.png": {
+    "width": 1698,
+    "height": 926
+  },
+  "/field-images/感情AIの内部理解.png": {
+    "width": 1672,
+    "height": 941
+  },
+  "/field-images/感情データの拡張.png": {
+    "width": 1679,
+    "height": 937
   },
   "/research-figures/application-development/family-bias.png": {
     "width": 1700,

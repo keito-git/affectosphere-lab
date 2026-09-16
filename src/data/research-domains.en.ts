@@ -33,7 +33,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "ethics-philosophy",
     title: "Ethics and Philosophy of Affective AI",
-    image: `/field-images/ethics-philosophy.png`,
+    image: fieldImage("感情AIの倫理と哲学.png"),
     summary:
       "We keep asking who emotion-measuring technologies are for, and how they should be used. We reexamine, in the language of philosophy, the norms that lie between technology and the human.",
     longDescription:
@@ -85,7 +85,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "human-emotion-understanding",
     title: "Understanding Human Emotion",
-    image: `/field-images/human-emotion-understanding.png`,
+    image: fieldImage("人間の感情理解.png"),
     summary:
       "How do humans actually experience and express emotion in the first place? We re-read the accumulated insights of psychology, cognitive science, and neuroscience as the foundation for AI research.",
     longDescription:
@@ -137,7 +137,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "data-augmentation",
     title: "Augmenting Emotional Data",
-    image: `/field-images/data-augmentation.png`,
+    image: fieldImage("感情データの拡張.png"),
     summary:
       "We explore methods that augment and complete ambiguous, polysemous emotion labels while preserving their uncertainty — enabling faithful learning even from sparse annotation.",
     longDescription:
@@ -201,7 +201,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "interpretability",
     title: "Understanding the Inside of Affective AI",
-    image: `/field-images/interpretability.png`,
+    image: fieldImage("感情AIの内部理解.png"),
     summary:
       "We unravel what models actually base their emotion judgments on and make the underlying behavior visible.",
     longDescription:
@@ -253,7 +253,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "emotion-recognition",
     title: "Emotion Recognition by AI",
-    image: `/field-images/emotion-recognition.png`,
+    image: fieldImage("AIによる感情の認識.png"),
     summary:
       "Foundational recognition research that estimates emotion distributions from text, speech, and physiological signals — aiming for designs that handle uncertainty rather than point estimates.",
     longDescription:
@@ -333,7 +333,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "human-ai-interaction",
     title: "Affective AI and Human Interaction",
-    image: `/field-images/human-ai-interaction.png`,
+    image: fieldImage("感情AIと人間のインタラクション.png"),
     summary:
       "How should we design the place where people and models face each other? Self-reflection, dialogue, and the problem of co-presence.",
     longDescription:
@@ -367,7 +367,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "business",
     title: "Affective AI and Business",
-    image: `/field-images/business.png`,
+    image: fieldImage("感情AIとビジネス.png"),
     summary:
       "We re-frame the meeting point of uncertainty, acceptance, and ethics in industrial deployment as practitioner knowledge.",
     longDescription:
@@ -417,7 +417,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "affective-ai-art",
     title: "Affective AI and Art",
-    image: `/field-images/affective-ai-art.png`,
+    image: fieldImage("感情AIとアート.png"),
     summary:
       "Art as the place where emotion and expression meet — a domain in which AI moves among three positions: 'making,' 'reading,' and 'inspiring.'",
     longDescription:
@@ -451,7 +451,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "application-development",
     title: "Development Based on Affective AI",
-    image: `/field-images/application-development.png`,
+    image: fieldImage("感情AIに基づく開発.png"),
     summary:
       "Development research that implements emotion-reading AI as applied systems and delivers them to society.",
     longDescription:
@@ -499,7 +499,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "other-ai-research",
     title: "Other AI Research",
-    image: `/field-images/other-ai-research.png`,
+    image: fieldImage("その他AI研究.png"),
     summary:
       "Themes of AI research that are not directly part of affective AI but that our lab pursues.",
     longDescription:
@@ -550,4 +550,4 @@ export const researchDomains: ResearchDomain[] = [
     ],
   },
 ];
-export const aiForScienceImage = "/field-images/ai-for-science.png";
+export const aiForScienceImage = fieldImage("AI for Science.png");

@@ -33,7 +33,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "ethics-philosophy",
     title: "感情AIの倫理と哲学",
-    image: `/field-images/ethics-philosophy.png`,
+    image: fieldImage("感情AIの倫理と哲学.png"),
     summary:
       "感情を計測する技術が、誰のために、どのように使われるべきかを問い続ける。技術と人間のあいだに横たわる規範を、哲学の言葉で見つめなおす。",
     longDescription:
@@ -85,7 +85,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "human-emotion-understanding",
     title: "人間の感情理解",
-    image: `/field-images/human-emotion-understanding.png`,
+    image: fieldImage("人間の感情理解.png"),
     summary:
       "人間がそもそも感情をどう経験し、どう表現しているのか。心理学・認知科学・神経科学の知見を、AI研究の土台として読み直す。",
     longDescription:
@@ -137,7 +137,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "data-augmentation",
     title: "感情データの拡張",
-    image: `/field-images/data-augmentation.png`,
+    image: fieldImage("感情データの拡張.png"),
     summary:
       "曖昧で多義的な感情ラベルを、不確実性を保ったまま拡張・補完する手法を探る。少数アノテーションでも、忠実な学習を可能にする。",
     longDescription:
@@ -201,7 +201,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "interpretability",
     title: "感情AIの内部理解",
-    image: `/field-images/interpretability.png`,
+    image: fieldImage("感情AIの内部理解.png"),
     summary:
       "モデルが何を根拠に感情を判断しているかを解きほぐし、振る舞いの背後を可視化する。",
     longDescription:
@@ -253,7 +253,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "emotion-recognition",
     title: "AIによる感情の認識",
-    image: `/field-images/emotion-recognition.png`,
+    image: fieldImage("AIによる感情の認識.png"),
     summary:
       "テキスト・音声・生理信号から感情の分布を推定する、基盤的な認識研究。一点推定ではなく、不確実性ごと扱う設計を志向する。",
     longDescription:
@@ -333,7 +333,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "human-ai-interaction",
     title: "感情AIと人間のインタラクション",
-    image: `/field-images/human-ai-interaction.png`,
+    image: fieldImage("感情AIと人間のインタラクション.png"),
     summary:
       "人とモデルが向き合う場をどう設計するか。自己省察、対話、共在の問題。",
     longDescription:
@@ -367,7 +367,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "business",
     title: "感情AIとビジネス",
-    image: `/field-images/business.png`,
+    image: fieldImage("感情AIとビジネス.png"),
     summary:
       "産業実装における不確実性・受容・倫理が交わる地点を、実務知として捉え直す。",
     longDescription:
@@ -417,7 +417,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "affective-ai-art",
     title: "感情AIとアート",
-    image: `/field-images/affective-ai-art.png`,
+    image: fieldImage("感情AIとアート.png"),
     summary:
       "感情と表現が交わる場としてのアート。AIが「作る」「読む」「触発する」三つの位置を行き来する領域。",
     longDescription:
@@ -451,7 +451,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "application-development",
     title: "感情AIに基づく開発",
-    image: `/field-images/application-development.png`,
+    image: fieldImage("感情AIに基づく開発.png"),
     summary:
       "感情を読み取るAIを、応用システムとして実装し、社会に届ける開発研究。",
     longDescription:
@@ -499,7 +499,7 @@ export const researchDomains: ResearchDomain[] = [
   {
     slug: "other-ai-research",
     title: "その他AI研究",
-    image: `/field-images/other-ai-research.png`,
+    image: fieldImage("その他AI研究.png"),
     summary:
       "感情AIに直接含まれないが、ラボとして取り組んでいるAI研究のテーマ群。",
     longDescription:
@@ -550,4 +550,4 @@ export const researchDomains: ResearchDomain[] = [
     ],
   },
 ];
-export const aiForScienceImage = "/field-images/ai-for-science.png";
+export const aiForScienceImage = fieldImage("AI for Science.png");
