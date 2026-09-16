@@ -27,8 +27,10 @@ export function webp(src: string, width: VariantWidth = 800): string {
 export function webpSrcset(src: string): string {
   const { width } = intrinsic(src);
   const small = `${webp(src, 800)} 800w`;
-  if (width !== null && width < 1600) return small;
-  return `${small}, ${webp(src, 1600)} 1600w`;
+  if (width !== null && width <= 800) return small;
+  // The wide variant is capped at the source width, so advertise that width.
+  const wide = width !== null ? Math.min(width, 1600) : 1600;
+  return `${small}, ${webp(src, 1600)} ${wide}w`;
 }
 
 /**

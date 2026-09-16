@@ -263,6 +263,99 @@ export const publicationStage: Record<string, StageId> = {
   "okugawa-vanishing-municipalities-2026": "beyond",
 };
 
+
+/**
+ * Publication -> research domain. A second axis, independent of the stage: the
+ * stage says what part of a system the work advances, the domain says which of
+ * the lab's ten research areas it belongs to. Assigned by reading each entry.
+ */
+export const publicationDomain: Record<string, string> = {
+  // 感情AIの倫理と哲学
+  "inoshita-ai-homogenize-2026": "ethics-philosophy",
+  "inoshita-affective-silos-2026": "ethics-philosophy",
+  "inoshita-affective-sovereignty-2026": "ethics-philosophy",
+  "showa-ikeda-2025": "ethics-philosophy",
+  "ieee-bdcloud-2024": "ethics-philosophy",
+
+  // 人間の感情理解
+  "inoshita-bayesian-spectral-2026": "human-emotion-understanding",
+
+  // 感情AIの内部理解
+  "inoshita-llm-emotion-uncertainty-2026": "interpretability",
+  "inoshita-uncertainty-decomp-2026": "interpretability",
+  "inoshita-uncertainty-routing-2026": "interpretability",
+
+  // 感情データの拡張
+  "persona-synthetic-2026": "data-augmentation",
+  "kdda-2026": "data-augmentation",
+  "nlc-2026": "data-augmentation",
+  "ieee-gcce-2025": "data-augmentation",
+  "fit-2025": "data-augmentation",
+  "kansei-kogaku-2025": "data-augmentation",
+  "ipsj-kansai-2025": "data-augmentation",
+  "wakate-symposium-2025": "data-augmentation",
+  "text-analytics-2025": "data-augmentation",
+  "geometric-control-2025": "data-augmentation",
+  "inoshita-class-structure-2026": "data-augmentation",
+
+  // AIによる感情の認識
+  "world-model-sarcasm-2026": "emotion-recognition",
+  "nldb-2025": "emotion-recognition",
+  "ieee-iaict-2025-sarcasm": "emotion-recognition",
+  "ieee-icoailo-2025": "emotion-recognition",
+  "ieee-picom-2025": "emotion-recognition",
+  "ipsj-ch-ueno-2025": "emotion-recognition",
+  "ipsj-nl-2025": "emotion-recognition",
+  "c-dira-2025": "emotion-recognition",
+  "ieee-ithings-2024": "emotion-recognition",
+
+  // 感情AIと人間のインタラクション
+  "matsuo-self-reflective-2026": "human-ai-interaction",
+
+  // 感情AIとビジネス
+  "ieee-zinc-2026": "business",
+  "joho-chishiki-multimodal-2025": "business",
+  "joho-chishiki-tourism-2025": "business",
+  "chikyu-uchu-mirai-2025": "business",
+  "rikoukei-essay-2025": "business",
+  "hito-shigoto-2024": "business",
+
+  // 感情AIに基づく開発
+  "inoshita-cognitive-causal-2026": "application-development",
+  "inoshita-driver-intervention-2026": "application-development",
+  "ieee-hpcc-2025": "application-development",
+  "ai-dhwp-2025": "application-development",
+
+  // その他AI研究
+  "inoshita-name-region-2026": "other-ai-research",
+  "inoshita-name-remind-2026": "other-ai-research",
+  "inoshita-argument-rarity-2026": "other-ai-research",
+  "nojiri-etymology-2026": "other-ai-research",
+  "nojiri-gliding-2026": "other-ai-research",
+  "automated-labeling-2025": "other-ai-research",
+  "ieee-iaict-2025-naming": "other-ai-research",
+  "biology-3gakkai-sugeno-2025": "other-ai-research",
+  "biology-3gakkai-nojiri-2025": "other-ai-research",
+  "dobutsugakkai-2025": "other-ai-research",
+  "sugeno-plankton-2026": "other-ai-research",
+  "okugawa-vanishing-municipalities-2026": "other-ai-research",
+  "times-icon-2024": "other-ai-research",
+  "icitacee-2024": "other-ai-research",
+  "diges-grace-2024": "other-ai-research",
+  "icelitics-2024": "other-ai-research",
+  "nlp4dh-emnlp-2024": "other-ai-research",
+  "ieee-iotais-2024-evolutionary": "other-ai-research",
+  "ieee-iotais-2024-multifaceted": "other-ai-research",
+  "3ict-2024": "other-ai-research",
+  "ieee-dss-2024": "other-ai-research",
+  "jinmoncon-2024": "other-ai-research",
+  "ipsj-ch-2024-1": "other-ai-research",
+  "ipsj-ch-2024-2": "other-ai-research",
+  "nuclear-opinion-2024": "other-ai-research",
+  "taiku-shisetsu-2024": "other-ai-research",
+  "shakai-kyoiku-2024": "other-ai-research",
+};
+
 /** Venue tier, derived from `kind` — not guessed. */
 export function tier(pub: Publication): "international" | "domestic" | "preprint" {
   if (pub.kind === "journal-international" || pub.kind === "international-conference") {

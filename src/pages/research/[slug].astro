@@ -4,7 +4,7 @@ import { researchDomains } from "../../data/research-domains";
 import Img from "../../components/Img.astro";
 import PublicationItem from "../../components/PublicationItem.astro";
 import { allPublications } from "../../data/publications";
-import { stages, domainStage, publicationStage } from "../../data/research-map";
+import { stages, domainStage, publicationDomain } from "../../data/research-map";
 import { webp } from "../../lib/images";
 
 export function getStaticPaths() {
@@ -21,13 +21,12 @@ const siblings = researchDomains.filter((d) => d.slug !== domain.slug);
 
 const narrative = domain.narrative ?? [];
 
-// Publications placed at the stage this domain mainly serves, so a reader can
-// go from the description straight to the work. Sourced from the research map,
-// so it cannot disagree with it.
+// The work in this domain, and the stage of CAI the domain mainly serves.
+// Both come from the research map, so the page cannot disagree with it.
 const stage = stages.find((s) => s.id === domainStage[domain.slug]);
-const domainPubs = stage
-  ? allPublications.filter((p) => publicationStage[p.slug] === stage.id)
-  : [];
+const domainPubs = allPublications
+  .filter((p) => publicationDomain[p.slug] === domain.slug)
+  .sort((a, b) => b.date.localeCompare(a.date));
 
 ---
 

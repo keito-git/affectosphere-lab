@@ -101,8 +101,10 @@ async function main() {
       srcBytes += (await stat(src)).size;
 
       for (const width of WIDTHS) {
-        // Never upscale: a 900px-wide source gets no 1600 variant.
-        if (meta.width && meta.width < width && width !== WIDTHS[0]) continue;
+        // Never upscale: withoutEnlargement caps the output at the source
+        // width, so a 1536px source yields a 1536px "-1600" variant rather
+        // than none at all.
+        if (meta.width && meta.width <= WIDTHS[0] && width !== WIDTHS[0]) continue;
         const out = variantPath(src, width);
         if (!(await needsWork(src, out))) {
           skipped += 1;
