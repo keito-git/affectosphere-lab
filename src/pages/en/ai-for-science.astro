@@ -7,6 +7,7 @@ import {
 } from "../../data/ai-for-science.en";
 import { aiForScienceImage } from "../../data/research-domains.en";
 import Img from "../../components/Img.astro";
+import { webp } from "../../lib/images";
 ---
 
 <BaseLayout
@@ -22,7 +23,7 @@ import Img from "../../components/Img.astro";
   >
     <div
       class="absolute inset-0 bg-cover bg-center"
-      style={`background-image: url('${aiForScienceImage}');`}
+      style={`background-image: url('${webp(aiForScienceImage, 1600)}');`}
       aria-hidden="true"
     ></div>
     <div

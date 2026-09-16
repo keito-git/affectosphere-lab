@@ -2,6 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { researchDomains } from "../../../data/research-domains.en";
 import Img from "../../../components/Img.astro";
+import { webp } from "../../../lib/images";
 
 export function getStaticPaths() {
   return researchDomains.map((d) => ({
@@ -31,7 +32,7 @@ const narrative = domain.narrative ?? [];
   >
     <div
       class="absolute inset-0 bg-cover bg-center"
-      style={`background-image: url('${domain.image}');`}
+      style={`background-image: url('${webp(domain.image, 1600)}');`}
       aria-hidden="true"
     ></div>
     <div
