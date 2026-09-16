@@ -9,8 +9,35 @@ import {
   kindOrder,
   type PublicationKind,
 } from "../../data/publications.en";
+import { caiStages, publicationStage } from "../../data/research-map";
+import StatPanel from "../../components/StatPanel.astro";
 
 const yearGroups = groupByYear(allPublications);
+
+// Summary figures, all derived from the list itself.
+const byKind = kindOrder
+  .map((k) => ({ label: kindLabel[k], value: allPublications.filter((p) => p.kind === k).length }))
+  .filter((r) => r.value > 0)
+  .sort((a, b) => b.value - a.value);
+const byYear = [...allYears]
+  .sort((a, b) => a - b)
+  .map((y) => ({ label: String(y), value: allPublications.filter((p) => p.year === y).length }));
+const firstAuthorCount = allPublications.filter((p) => p.firstAuthor).length;
+const awardedCount = allPublications.filter((p) => p.award).length;
+const yearSpan = `${Math.min(...allYears)} — ${Math.max(...allYears)}`;
+
+// Stage filter: the same stages the research map uses, so a visitor can go from
+// "this part of CAI is thin" straight to the work behind it.
+const stageFilters = [
+  { key: "all", label: "All" },
+  ...caiStages
+    .map((st) => ({
+      key: st.id,
+      label: st.label,
+      count: allPublications.filter((p) => publicationStage[p.slug] === st.id).length,
+    }))
+    .filter((f) => f.count > 0),
+];
 
 const kindFilters: { key: "all" | PublicationKind; label: string }[] = [
   { key: "all", label: "All" },
@@ -38,6 +65,22 @@ const yearFilters: { key: "all" | number; label: string }[] = [
     </h1>
   </section>
 
+  <section class="mx-auto mt-section-sm max-w-content page-x" aria-label="Summary">
+    <StatPanel
+      headline={allPublications.length}
+      headlineLabel="publications"
+      headlineNote={yearSpan}
+      highlights={[
+        { label: "First author", value: firstAuthorCount },
+        { label: "Award-winning", value: awardedCount },
+      ]}
+      groups={[
+        { title: "By kind", rows: byKind },
+        { title: "By year", rows: byYear },
+      ]}
+    />
+  </section>
+
   <!-- Filters: kind × year (both client-side, AND-combined). -->
   <section class="mx-auto mt-section-sm max-w-content page-x" aria-label="Filters">
     <div class="reveal space-y-5" data-pub-filter>
@@ -61,6 +104,27 @@ const yearFilters: { key: "all" | number; label: string }[] = [
           }
         </div>
       </div>
+      <div>
+        <p class="mb-2 font-display text-sm italic text-slate">CAI stage</p>
+        <div class="flex flex-wrap items-center gap-2" data-stage-bar>
+          {
+            stageFilters.map((f, idx) => (
+              <button
+                type="button"
+                class:list={[
+                  "btn-ghost",
+                  idx === 0 ? "bg-charcoal text-ivory border-charcoal" : "",
+                ]}
+                data-filter-stage={f.key}
+                aria-pressed={idx === 0 ? "true" : "false"}
+              >
+                {f.label}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
       <div>
         <p class="mb-2 font-display text-sm italic text-slate">Year</p>
         <div class="flex flex-wrap items-center gap-2" data-year-bar>
@@ -120,6 +184,7 @@ const yearFilters: { key: "all" | number; label: string }[] = [
   if (root) {
     const kindButtons = root.querySelectorAll<HTMLButtonElement>("[data-filter-kind]");
     const yearButtons = root.querySelectorAll<HTMLButtonElement>("[data-filter-year]");
+    const stageButtons = root.querySelectorAll<HTMLButtonElement>("[data-filter-stage]");
     const sections = document.querySelectorAll<HTMLElement>(
       "[data-pub-year-section]"
     );
@@ -129,6 +194,7 @@ const yearFilters: { key: "all" | number; label: string }[] = [
 
     let currentKind: string = "all";
     let currentYear: string = "all";
+    let currentStage: string = "all";
 
     function setActive(
       buttons: NodeListOf<HTMLButtonElement>,
@@ -158,15 +224,18 @@ const yearFilters: { key: "all" | number; label: string }[] = [
         items.forEach((li) => {
           const kindMatch =
             currentKind === "all" || li.dataset.pubKind === currentKind;
-          li.style.display = kindMatch ? "" : "none";
-          if (kindMatch) visible += 1;
+          const stageMatch =
+            currentStage === "all" || li.dataset.pubStage === currentStage;
+          const match = kindMatch && stageMatch;
+          li.style.display = match ? "" : "none";
+          if (match) visible += 1;
         });
         section.style.display = visible > 0 ? "" : "none";
         total += visible;
       });
       if (visibleCount) {
         visibleCount.textContent =
-          currentKind === "all" && currentYear === "all"
+          currentKind === "all" && currentYear === "all" && currentStage === "all"
             ? ""
             : `/ Showing ${total}`;
       }
@@ -176,6 +245,13 @@ const yearFilters: { key: "all" | number; label: string }[] = [
       btn.addEventListener("click", () => {
         currentKind = btn.getAttribute("data-filter-kind") ?? "all";
         setActive(kindButtons, "data-filter-kind", currentKind);
+        applyFilters();
+      });
+    });
+    stageButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        currentStage = btn.getAttribute("data-filter-stage") ?? "all";
+        setActive(stageButtons, "data-filter-stage", currentStage);
         applyFilters();
       });
     });

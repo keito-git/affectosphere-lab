@@ -2,8 +2,39 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { awardGroups } from "../../data/awards.en";
 import Img from "../../components/Img.astro";
+import StatPanel from "../../components/StatPanel.astro";
 
 // Format YYYY-MM-DD as "2026.06" (we only know month accuracy for most items).
+// Summary figures, derived from the list itself.
+const allAwards = awardGroups.flatMap((g) => g.items);
+const awardYears = [...new Set(allAwards.map((a) => Number(a.date.slice(0, 4))))].sort();
+
+// Ranks are written as they appear on each certificate, so they are grouped
+// into the tiers a reader can actually compare. Anything not matching falls to
+// "other" rather than being forced into a tier.
+const RANK_TIERS: { label: string; labelJa: string; test: (r: string) => boolean }[] = [
+  { label: "Best Paper", labelJa: "Best Paper", test: (r) => /best paper/i.test(r) },
+  { label: "Grand prize", labelJa: "最優秀・大賞", test: (r) => /最優秀|大賞/.test(r) },
+  { label: "Excellence", labelJa: "優秀賞", test: (r) => /優秀賞/.test(r) },
+  { label: "Encouragement", labelJa: "奨励賞", test: (r) => /奨励賞/.test(r) },
+];
+const rankRows = (() => {
+  const counted = RANK_TIERS.map((t) => ({
+    label: t.label,
+    value: allAwards.filter((a) => a.rank && t.test(a.rank)).length,
+  })).filter((r) => r.value > 0);
+  const placed = counted.reduce((n, r) => n + r.value, 0);
+  const rest = allAwards.length - placed;
+  return rest > 0 ? [...counted, { label: "Other", value: rest }] : counted;
+})();
+
+const groupRows = awardGroups.map((g) => ({ label: g.label, value: g.items.length }));
+const yearRows = awardYears.map((y) => ({
+  label: String(y),
+  value: allAwards.filter((a) => a.date.startsWith(String(y))).length,
+}));
+const bestPaperCount = allAwards.filter((a) => a.rank && /best paper/i.test(a.rank)).length;
+
 function formatYM(iso: string): string {
   const [y, m] = iso.split("-");
   return `${y}.${m}`;
@@ -23,6 +54,19 @@ function formatYM(iso: string): string {
     >
       Awards
     </h1>
+  </section>
+
+  <section class="mx-auto mt-section-sm max-w-content page-x" aria-label="Summary">
+    <StatPanel
+      headline={allAwards.length}
+      headlineLabel="awards"
+      headlineNote={`${Math.min(...awardYears)} — ${Math.max(...awardYears)}`}
+      highlights={[{ label: "Best Paper Award", value: bestPaperCount }]}
+      groups={[
+        { title: "By tier", rows: rankRows },
+        { title: "By year", rows: yearRows },
+      ]}
+    />
   </section>
 
   {

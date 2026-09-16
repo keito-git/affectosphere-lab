@@ -1,0 +1,96 @@
+---
+// A summary panel for a long list: the headline count, then the breakdowns
+// that tell you what kind of list it is before you start reading it.
+//
+// Deliberately not a chart. Each breakdown is a handful of numbers, so the
+// numbers themselves lead and a thin bar carries the proportion behind them.
+// One colour throughout — the bars encode magnitude, not identity, so nothing
+// here needs a legend or a categorical palette.
+
+export type StatRow = {
+  label: string;
+  value: number;
+  /** Optional note shown after the value, e.g. a percentage. */
+  note?: string;
+};
+
+export type StatGroup = {
+  title: string;
+  rows: StatRow[];
+};
+
+interface Props {
+  /** The one number the page is about. */
+  headline: number;
+  headlineLabel: string;
+  /** Short qualifier beside the headline, e.g. a year range. */
+  headlineNote?: string;
+  /** Highlighted figures shown next to the headline. */
+  highlights?: StatRow[];
+  groups: StatGroup[];
+}
+
+const { headline, headlineLabel, headlineNote, highlights = [], groups } = Astro.props;
+const maxOf = (rows: StatRow[]) => Math.max(1, ...rows.map((r) => r.value));
+---
+
+<div class="reveal border-y border-stone">
+  <!-- Headline row -->
+  <div class="flex flex-wrap items-baseline gap-x-8 gap-y-3 py-7">
+    <p class="flex items-baseline gap-3">
+      <span class="font-label text-4xl leading-none text-charcoal md:text-5xl">{headline}</span>
+      <span class="font-label text-[0.75rem] uppercase tracking-[0.18em] text-slate">
+        {headlineLabel}
+      </span>
+    </p>
+    {headlineNote && (
+      <p class="font-label text-[0.75rem] tracking-[0.14em] text-slate">{headlineNote}</p>
+    )}
+    {highlights.length > 0 && (
+      <dl class="ml-auto flex flex-wrap items-baseline gap-x-8 gap-y-2">
+        {highlights.map((h) => (
+          <div class="flex items-baseline gap-2">
+            <dt class="font-display text-sm text-slate">{h.label}</dt>
+            <dd class="font-label text-lg text-charcoal">{h.value}</dd>
+            {h.note && <dd class="font-label text-[0.72rem] text-slate">{h.note}</dd>}
+          </div>
+        ))}
+      </dl>
+    )}
+  </div>
+
+  <!-- Breakdowns -->
+  <div class="grid gap-x-14 gap-y-8 border-t border-stone py-7 md:grid-cols-2">
+    {
+      groups.map((g) => {
+        const max = maxOf(g.rows);
+        return (
+          <div>
+            <p class="font-label text-[0.7rem] uppercase tracking-[0.18em] text-slate">
+              {g.title}
+            </p>
+            <ul class="mt-4 space-y-2.5">
+              {g.rows.map((r) => (
+                <li class="flex items-center gap-3">
+                  <span class="w-[9.5rem] shrink-0 truncate font-display text-sm text-charcoal">
+                    {r.label}
+                  </span>
+                  {/* Proportion only — the number to its right is the value. */}
+                  <span class="h-1.5 min-w-0 flex-1 rounded-[2px] bg-stone/70" aria-hidden="true">
+                    <span
+                      class="block h-full rounded-[2px] bg-amber"
+                      style={`width: ${Math.round((r.value / max) * 100)}%`}
+                    />
+                  </span>
+                  <span class="w-7 shrink-0 text-right font-label text-sm text-charcoal">
+                    {r.value}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })
+    }
+  </div>
+</div>

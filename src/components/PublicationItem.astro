@@ -1,5 +1,6 @@
 ---
 import type { Publication } from "../data/publications";
+import { publicationStage, stages } from "../data/research-map";
 
 interface Props {
   pub: Publication;
@@ -31,6 +32,9 @@ const kindLabelEn: Record<string, string> = {
 const categoryLabel =
   locale === "en" ? kindLabelEn[pub.kind] : kindLabelJa[pub.kind];
 
+const stageId = publicationStage[pub.slug];
+const stage = stages.find((s) => s.id === stageId);
+
 const [y, m] = pub.date.split("-");
 const monthsEn = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -45,12 +49,19 @@ const dateLabel =
 <li
   class="reveal flex flex-col gap-3 border-b border-stone py-6 last:border-b-0 md:flex-row md:items-start md:justify-between md:gap-8"
   data-pub-kind={pub.kind}
+  data-pub-stage={stageId ?? "unplaced"}
 >
   <div class="flex-1">
     <div class="mb-2 flex flex-wrap items-center gap-3">
       <span class="inline-block bg-amber/15 px-2 py-0.5 text-[0.7rem] font-medium tracking-wide text-amber-deep">
         {categoryLabel}
       </span>
+      {stage && (
+        <span class="font-label text-[0.68rem] uppercase tracking-[0.12em] text-slate">
+          {stage.label}
+          {locale === "ja" && <span class="ml-1.5 font-display normal-case tracking-normal">{stage.labelJa}</span>}
+        </span>
+      )}
     </div>
     <p class="font-display text-xl leading-snug text-charcoal">
       {pub.href ? (
