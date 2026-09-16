@@ -4,6 +4,9 @@
 // (Ochiai Lab style).  Mobile collapses everything into a single drawer.
 import { site, navItems } from "../data/site";
 
+const primaryItems = navItems.filter((i) => i.primary);
+const secondaryItems = navItems.filter((i) => !i.primary);
+
 interface Props {
   current?: string; // pathname for active-state styling
   locale?: "ja" | "en";
@@ -118,17 +121,35 @@ const switcherShort = locale === "en" ? "JP" : "EN";
     <!-- Row 2: full navigation (desktop only). Tabs spread across the row
          with consistent spacing; wraps if the viewport is too narrow. -->
     <nav
-      class="hidden border-t border-stone/50 py-3 md:block"
+      class="hidden border-t border-stone/50 pb-2.5 pt-3 md:block"
       aria-label="主要メニュー"
     >
-      <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 lg:gap-x-6 xl:gap-x-7">
+      <ul class="flex flex-wrap items-center gap-x-6 gap-y-2 lg:gap-x-7">
         {
-          navItems.map((item) => (
+          primaryItems.map((item) => (
             <li>
               <a
                 href={localizedHref(item.href)}
                 class:list={[
-                  "link-amber font-heading text-[0.8125rem] tracking-tight whitespace-nowrap lg:text-[0.875rem]",
+                  "link-amber font-heading text-[0.9375rem] tracking-tight whitespace-nowrap lg:text-base",
+                  isActive(item.href) ? "text-charcoal" : "text-charcoal/80 hover:text-charcoal",
+                ]}
+                aria-current={isActive(item.href) ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1.5 lg:gap-x-6">
+        {
+          secondaryItems.map((item) => (
+            <li>
+              <a
+                href={localizedHref(item.href)}
+                class:list={[
+                  "link-amber font-label text-[0.72rem] uppercase tracking-[0.1em] whitespace-nowrap",
                   isActive(item.href) ? "text-charcoal" : "text-slate hover:text-charcoal",
                 ]}
                 aria-current={isActive(item.href) ? "page" : undefined}

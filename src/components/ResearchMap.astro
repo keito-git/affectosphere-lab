@@ -2,7 +2,7 @@
 // The research map: how far each of the ten CAI domains has actually been
 // filled in. Every dot is one publication from publications.ts — nothing is
 // padded, and the two domains with no publications yet are shown empty.
-import { layers, domainStats, unmappedCount, tier } from "../data/research-map";
+import { caiLayers, domainStats, unmappedCount, tier } from "../data/research-map";
 import { researchDomains as domainsJa } from "../data/research-domains";
 import { researchDomains as domainsEn } from "../data/research-domains.en";
 
@@ -69,7 +69,7 @@ const domainHref = (slug: string) => `${isEn ? "/en" : ""}/research/${slug}/`;
     <!-- Layers -->
     <div class="mt-14 space-y-14">
       {
-        layers.map((layer) => {
+        caiLayers.map((layer) => {
           const rows = caiStats.filter((s) => s.layer === layer.id);
           const layerTotal = rows.reduce((n, s) => n + s.total, 0);
           return (

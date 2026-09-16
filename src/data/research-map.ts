@@ -34,7 +34,17 @@ export const layers: { id: LayerId; label: string; labelEn: string; note: string
     note: "測った感情を、人の手元に届ける層。",
     noteEn: "Returning what was measured to the people it came from.",
   },
+  {
+    id: "beyond",
+    label: "感情AI以外",
+    labelEn: "Beyond affect",
+    note: "感情AIの外側で進めている、AI研究そのものの領域。",
+    noteEn: "AI research pursued outside affective computing.",
+  },
 ];
+
+/** The three layers that make up CAI, excluding the "beyond" band. */
+export const caiLayers = layers.filter((l) => l.id !== "beyond");
 
 /** Domain slug -> layer. Slugs match research-domains.ts. */
 export const domainLayer: Record<string, LayerId> = {
