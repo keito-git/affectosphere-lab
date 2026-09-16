@@ -1,38 +1,71 @@
 ---
-// The research map: the four tiers of Computational Affective Intelligence,
-// the stages nested under them, and how far each one has actually been filled
-// in. Every dot is one publication from publications.ts — nothing is padded.
-import {
-  tiers,
-  caiStages,
-  stageTier,
-  stageStats,
-  unmappedCount,
-  tier as venueTier,
-} from "../data/research-map";
-import { researchDomains as domainsJa } from "../data/research-domains";
-import { researchDomains as domainsEn } from "../data/research-domains.en";
-import { domainStage } from "../data/research-map";
+// The research map, drawn as a map.
+//
+// Each stage of Computational Affective Intelligence is a place on it, sized by
+// how much work stands behind it — so the sparse places read as sparse at a
+// glance. Selecting a place shows the work done there.
+//
+// One colour throughout: size and fill encode magnitude, not identity, so the
+// map needs no legend of hues. Venue tier is carried by the dots in the list
+// below, where a label sits beside every mark.
+import { stages, tiers, stageTier, stageStats, publicationStage, unmappedCount, tier as venueTier } from "../data/research-map";
+import { allPublications } from "../data/publications";
+import { allPublications as allPublicationsEn } from "../data/publications.en";
 
 interface Props {
   locale?: "ja" | "en";
 }
 const { locale = "ja" } = Astro.props;
 const isEn = locale === "en";
-
-const domains = isEn ? domainsEn : domainsJa;
+const pubs = isEn ? allPublicationsEn : allPublications;
 const stats = stageStats();
-const caiTotal = caiStages.reduce((n, s) => n + stats[s.id].total, 0);
+
+// Coordinates are hand-placed so the map reads left-to-right as the work moves
+// from understanding a person to placing a system among people.
+const PLACES: { id: string; x: number; y: number }[] = [
+  { id: "human-affect", x: 140, y: 250 },
+  { id: "perception", x: 360, y: 170 },
+  { id: "representation", x: 470, y: 400 },
+  { id: "reasoning", x: 680, y: 180 },
+  { id: "generation", x: 730, y: 410 },
+  { id: "interaction", x: 940, y: 190 },
+  { id: "society", x: 950, y: 420 },
+];
+
+// Vertical bands, one per tier, wide enough to hold their places.
+const BANDS: Record<string, { x: number; w: number }> = {
+  "human-affect": { x: 30, w: 220 },
+  "computational-representation": { x: 262, w: 318 },
+  "affective-intelligence": { x: 592, w: 238 },
+  "human-ai-society": { x: 842, w: 238 },
+};
+
+const maxTotal = Math.max(...PLACES.map((p) => stats[p.id].total), 1);
+// Area ∝ count, with a floor so an empty place is still a place.
+const radiusOf = (n: number) => 22 + Math.sqrt(n / maxTotal) * 44;
+
+const places = PLACES.map((p) => {
+  const stage = stages.find((s) => s.id === p.id)!;
+  const stat = stats[p.id];
+  return {
+    ...p,
+    stage,
+    total: stat.total,
+    r: radiusOf(stat.total),
+    tier: tiers.find((t) => t.id === stageTier[p.id])!,
+    pubs: pubs.filter((pub) => publicationStage[pub.slug] === p.id),
+  };
+});
+
 const beyond = stats.beyond;
-const total = caiTotal + beyond.total;
+const caiTotal = places.reduce((n, p) => n + p.total, 0);
 const unmapped = unmappedCount();
 const prefix = isEn ? "/en" : "";
 
-const dotClass = (pub: Parameters<typeof venueTier>[0]) => {
-  const t = venueTier(pub);
-  if (t === "international") return "bg-amber";
-  if (t === "domestic") return "bg-[#7C8798]";
-  return "border border-[#7C8798]";
+const fmtDate = (iso: string) => {
+  const [y, m] = iso.split("-");
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  return isEn ? `${months[Number(m) - 1]} ${y}` : `${y}年${Number(m)}月`;
 };
 ---
 
@@ -41,164 +74,287 @@ const dotClass = (pub: Parameters<typeof venueTier>[0]) => {
   class="surface-ink relative overflow-hidden scroll-mt-24"
   aria-labelledby="research-map-heading"
 >
-  <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-content page-x py-20 md:py-28">
     <header class="reveal max-w-prose">
       <p class="eyebrow">
         Research map<span class="mx-2 text-[#4a5464]">/</span>{caiTotal}
-        {isEn ? "of" : "/"} {total} {isEn ? "publications" : "件の業績"}
+        {isEn ? "of" : "/"} {caiTotal + beyond.total} {isEn ? "publications" : "件の業績"}
       </p>
       <h2
         id="research-map-heading"
         class="mt-4 font-display text-3xl font-medium tracking-tight text-[#F4F2ED] md:text-4xl"
       >
-        {isEn ? "Where we stand on the map of CAI" : "CAI の地図の、どこを埋めたか"}
+        {isEn ? "The map of CAI, and where we have been" : "CAI の地図と、歩いたところ"}
       </h2>
       <p class="mt-5 font-display text-base leading-relaxed text-[#CFCBC2] md:text-lg">
         {
           isEn
-            ? "The field divides into four tiers, and the work moves through stages inside them. Each dot below is one publication, placed at the stage it contributes to most — so the thin rows are as informative as the full ones."
-            : "この領域は四つの層に分かれ、その中を段が進む。下のドットひとつが業績ひとつ、最も寄与する段に置いた。薄い行は、次に向かう先を指している。"
+            ? "Seven places, from understanding a person's emotion to placing a system among people. Each is drawn to the size of the work behind it. Select one to see that work."
+            : "人の感情を理解するところから、つくったものを社会に置くところまで。七つの場所を、積み上がった仕事の大きさで描いている。場所を選ぶと、そこでの研究が出る。"
         }
       </p>
     </header>
 
-    <!-- Legend -->
-    <ul class="reveal mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 font-label text-[0.7rem] uppercase tracking-[0.14em] text-[#9AA4B4]">
-      <li class="flex items-center gap-2">
-        <span class="inline-block h-2.5 w-2.5 rounded-full bg-amber" aria-hidden="true"></span>
-        {isEn ? "International journal / conference" : "国際誌・国際会議"}
-      </li>
-      <li class="flex items-center gap-2">
-        <span class="inline-block h-2.5 w-2.5 rounded-full bg-[#7C8798]" aria-hidden="true"></span>
-        {isEn ? "Domestic venue / report" : "国内誌・国内会議・研究報告"}
-      </li>
-      <li class="flex items-center gap-2">
-        <span class="inline-block h-2.5 w-2.5 rounded-full border border-[#7C8798]" aria-hidden="true"></span>
-        {isEn ? "Preprint" : "プレプリント"}
-      </li>
-    </ul>
-
-    <!-- Four tiers, with their stages nested -->
-    <div class="mt-12 space-y-12">
-      {
-        tiers.map((t) => {
-          const rows = caiStages.filter((s) => stageTier[s.id] === t.id);
-          const tierTotal = rows.reduce((n, s) => n + stats[s.id].total, 0);
-          return (
-            <section class="reveal" aria-label={t.label}>
-              <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-[#2B3341] pb-3">
-                <p class="font-label text-[0.8rem] tracking-[0.2em] text-[#4a5464]">{t.numeral}</p>
-                <h3 class="font-label text-[0.88rem] uppercase tracking-[0.18em] text-amber">
-                  {t.label}
-                </h3>
-                {!isEn && <p class="font-display text-base text-[#E9E6DF]">{t.labelJa}</p>}
-                <p class="font-display text-sm text-[#9AA4B4]">{isEn ? t.noteEn : t.note}</p>
-                <p class="ml-auto font-label text-[0.75rem] tracking-[0.12em] text-[#6E7889]">
-                  {tierTotal}
-                </p>
-              </div>
-
-              <ul class="mt-5 space-y-4 md:pl-8">
-                {rows.map((s) => {
-                  const stat = stats[s.id];
-                  const related = domains.filter((d) => domainStage[d.slug] === s.id);
-                  return (
-                    <li class="grid gap-2 md:grid-cols-[13rem_1fr_3rem] md:items-baseline md:gap-6">
-                      <div>
-                        <p class="font-label text-[0.78rem] uppercase tracking-[0.14em] text-[#B8B4AC]">
-                          {s.label}
-                        </p>
-                        {!isEn && (
-                          <p class="mt-0.5 font-display text-base text-[#E9E6DF]">{s.labelJa}</p>
-                        )}
-                      </div>
-
-                      <div>
-                        <div class="flex flex-wrap items-center gap-[0.3rem]">
-                          {stat.pubs.map((pub) => (
-                            <span
-                              class={`inline-block h-2.5 w-2.5 rounded-full ${dotClass(pub)}`}
-                              title={`${pub.title} (${pub.venue}, ${pub.year})`}
-                            />
-                          ))}
-                        </div>
-                        <p class="mt-2.5 font-display text-sm leading-relaxed text-[#9AA4B4]">
-                          {isEn ? s.noteEn : s.note}
-                        </p>
-                        {related.length > 0 && (
-                          <p class="mt-1.5 flex flex-wrap gap-x-4 gap-y-1">
-                            {related.map((d) => (
-                              <a
-                                href={`${prefix}/research/${d.slug}/`}
-                                class="font-display text-sm text-[#8C96A6] underline-offset-4 hover:text-amber hover:underline"
-                              >
-                                {d.title}
-                              </a>
-                            ))}
-                          </p>
-                        )}
-                      </div>
-
-                      <p class="font-label text-[0.78rem] tracking-[0.12em] text-[#6E7889] md:text-right">
-                        {stat.total}
-                      </p>
-                    </li>
-                  );
-                })}
-              </ul>
-            </section>
-          );
-        })
-      }
-    </div>
-
-    <!-- AI research outside affective AI: shown, but kept off the map. -->
-    <div class="reveal mt-12 border-t border-[#2B3341] pt-7">
-      <div class="grid gap-3 md:grid-cols-[13rem_1fr_3rem] md:items-baseline md:gap-6">
-        <div>
-          <p class="font-label text-[0.78rem] uppercase tracking-[0.14em] text-[#6E7889]">
-            Beyond affect
-          </p>
-          {!isEn && <p class="mt-0.5 font-display text-base text-[#8C96A6]">感情AIの外側</p>}
-        </div>
-        <div>
-          <div class="flex flex-wrap items-center gap-[0.3rem] opacity-60">
-            {beyond.pubs.map((pub) => (
-              <span
-                class={`inline-block h-2.5 w-2.5 rounded-full ${dotClass(pub)}`}
-                title={`${pub.title} (${pub.venue}, ${pub.year})`}
-              />
-            ))}
-          </div>
-          <p class="mt-2.5 max-w-prose font-display text-sm leading-relaxed text-[#6E7889]">
-            {
-              isEn
-                ? "AI research outside affective computing — scientific naming, conflict-structure corpora, model merging. Counted here rather than on the map."
-                : "感情AI以外のAI研究——学名の語源分析、紛争構造コーパス、モデルマージなど。地図とは分けて数えている。"
-            }
-          </p>
-        </div>
-        <p class="font-label text-[0.78rem] tracking-[0.12em] text-[#3d4653] md:text-right">
-          {beyond.total}
-        </p>
-      </div>
-    </div>
-
-    <!-- How the map is built, stated so the numbers can be checked. -->
-    <p class="reveal mt-12 max-w-prose font-display text-sm leading-relaxed text-[#8C96A6]">
-      {
-        isEn
-          ? `Every publication on this site was read and placed at the single stage it contributes to most; work spanning several stages is counted once. ${caiTotal} sit on the map and ${beyond.total} outside it${unmapped > 0 ? `, with ${unmapped} not yet placed` : ""}.`
-          : `本サイトに掲載している業績を一件ずつ読み、最も寄与する段ひとつに置いた。複数の段にまたがる研究も一度だけ数えている。地図の上に ${caiTotal} 件、その外側に ${beyond.total} 件${unmapped > 0 ? `（未割り当て ${unmapped} 件）` : ""}。`
-      }
-      <a
-        href={`${prefix}/publications/`}
-        class="ml-2 text-amber underline underline-offset-4 hover:text-[#d3a95f]"
+    <!-- The map -->
+    <figure class="reveal mt-12">
+      <svg
+        viewBox="0 0 1110 600"
+        class="h-auto w-full"
+        role="group"
+        aria-label={isEn ? "Map of the CAI stages" : "CAI の段の地図"}
+        data-map
       >
-        {isEn ? "Publications" : "Publications を見る"} &rarr;
-      </a>
-    </p>
+        <defs>
+          <radialGradient id="placeFill" cx="38%" cy="32%">
+            <stop offset="0%" stop-color="#C4974A" stop-opacity="0.55" />
+            <stop offset="100%" stop-color="#C4974A" stop-opacity="0.16" />
+          </radialGradient>
+          <radialGradient id="placeFillEmpty" cx="38%" cy="32%">
+            <stop offset="0%" stop-color="#7C8798" stop-opacity="0.20" />
+            <stop offset="100%" stop-color="#7C8798" stop-opacity="0.05" />
+          </radialGradient>
+        </defs>
+
+        <!-- Tier bands: the four divisions of the field, named along the top. -->
+        {
+          tiers.filter((t) => t.id !== "beyond").map((t) => {
+            const b = BANDS[t.id];
+            return (
+              <g aria-hidden="true">
+                <rect x={b.x} y={30} width={b.w} height={540} fill="#E9E6DF" fill-opacity="0.02" />
+                <text x={b.x + 10} y={56} class="map-tier" fill="#5A6472">
+                  {t.numeral} · {t.label.toUpperCase()}
+                </text>
+              </g>
+            );
+          })
+        }
+
+        <!-- Route between the places, in order. -->
+        <polyline
+          points={places.map((p) => `${p.x},${p.y}`).join(" ")}
+          fill="none"
+          stroke="#E9E6DF"
+          stroke-opacity="0.13"
+          stroke-width="1.5"
+          stroke-dasharray="5 7"
+          aria-hidden="true"
+        />
+
+        {
+          places.map((p) => (
+            <g
+              class="map-place"
+              data-place={p.id}
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+              aria-label={`${p.stage.label} — ${p.total} ${isEn ? "publications" : "件"}`}
+            >
+              {/* Contour rings: a place with more behind it has more of them. */}
+              <circle cx={p.x} cy={p.y} r={p.r + 20} fill="none" stroke="#E9E6DF" stroke-opacity="0.07" />
+              {p.total > 0 && (
+                <circle cx={p.x} cy={p.y} r={p.r + 10} fill="none" stroke="#E9E6DF" stroke-opacity="0.11" />
+              )}
+              <circle
+                class="map-disc"
+                cx={p.x}
+                cy={p.y}
+                r={p.r}
+                fill={p.total > 0 ? "url(#placeFill)" : "url(#placeFillEmpty)"}
+                stroke={p.total > 0 ? "#C4974A" : "#7C8798"}
+                stroke-opacity={p.total > 0 ? "0.75" : "0.4"}
+                stroke-dasharray={p.total > 0 ? "none" : "4 5"}
+              />
+              <text x={p.x} y={p.y + 7} text-anchor="middle" class="map-count" fill="#F4F2ED">
+                {p.total}
+              </text>
+              <text x={p.x} y={p.y + p.r + 26} text-anchor="middle" class="map-name" fill="#E9E6DF">
+                {p.stage.label}
+              </text>
+              {!isEn && (
+                <text x={p.x} y={p.y + p.r + 45} text-anchor="middle" class="map-name-ja" fill="#9AA4B4">
+                  {p.stage.labelJa}
+                </text>
+              )}
+            </g>
+          ))
+        }
+      </svg>
+      <figcaption class="mt-4 font-display text-sm text-[#6E7889]">
+        {
+          isEn
+            ? "Circle area is proportional to the number of publications placed there; a dashed outline means nothing yet."
+            : "円の面積は、そこに置かれた業績の数に比例する。破線はまだ何もない場所。"
+        }
+      </figcaption>
+    </figure>
+
+    <!-- The work at the selected place. Every list is rendered; the script
+         shows one at a time, so this still reads without JavaScript. -->
+    <div class="mt-14" data-map-panels>
+      {
+        places.map((p, i) => (
+          <div class="map-panel" data-panel={p.id} hidden={i !== 0}>
+            <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-[#2B3341] pb-3">
+              <h3 class="font-label text-[0.9rem] uppercase tracking-[0.18em] text-amber">
+                {p.stage.label}
+              </h3>
+              {!isEn && <p class="font-display text-lg text-[#E9E6DF]">{p.stage.labelJa}</p>}
+              <p class="font-display text-sm text-[#9AA4B4]">{isEn ? p.stage.noteEn : p.stage.note}</p>
+              <p class="ml-auto font-label text-[0.75rem] tracking-[0.12em] text-[#6E7889]">
+                {p.total}
+              </p>
+            </div>
+
+            {p.pubs.length > 0 ? (
+              <ul class="mt-5 divide-y divide-[#2B3341]">
+                {p.pubs.map((pub) => (
+                  <li class="py-4">
+                    <p class="font-display text-base leading-snug text-[#F4F2ED]">
+                      {pub.href ? (
+                        <a
+                          href={pub.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="underline-offset-4 hover:text-amber hover:underline"
+                        >
+                          {pub.title}
+                        </a>
+                      ) : (
+                        pub.title
+                      )}
+                    </p>
+                    <p class="mt-1.5 flex flex-wrap items-center gap-x-2 font-sans text-sm text-[#8C96A6]">
+                      <span>{pub.authors}</span>
+                      <span class="text-[#3d4653]">·</span>
+                      <span>{pub.venue}</span>
+                      <span class="text-[#3d4653]">·</span>
+                      <span>{fmtDate(pub.date)}</span>
+                      {pub.award && (
+                        <span class="font-label text-[0.68rem] uppercase tracking-[0.1em] text-amber">
+                          {pub.award}
+                        </span>
+                      )}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="mt-5 max-w-prose font-display text-base leading-relaxed text-[#9AA4B4]">
+                {
+                  isEn
+                    ? "Nothing published here yet. This is where the work goes next — and where we are looking for people."
+                    : "ここにはまだ何もない。次に向かうのはここで、人を探しているのもここだ。"
+                }
+                <a
+                  href={`${prefix}/member/`}
+                  class="ml-2 text-amber underline underline-offset-4 hover:text-[#d3a95f]"
+                >
+                  {isEn ? "Open positions" : "募集を見る"} &rarr;
+                </a>
+              </p>
+            )}
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Everything outside the map, and how the map was built. -->
+    <div class="reveal mt-14 border-t border-[#2B3341] pt-7">
+      <p class="max-w-prose font-display text-sm leading-relaxed text-[#6E7889]">
+        {
+          isEn
+            ? `Beyond the map: ${beyond.total} publications in AI research outside affective computing — scientific naming, conflict-structure corpora, model merging. Every publication on this site was read and placed at the single stage it contributes to most; work spanning several stages is counted once${unmapped > 0 ? `, and ${unmapped} are not yet placed` : ""}.`
+            : `地図の外側に、感情AI以外のAI研究が ${beyond.total} 件（学名の語源分析、紛争構造コーパス、モデルマージなど）。掲載している業績は一件ずつ読み、最も寄与する段ひとつに置いた。複数にまたがる研究も一度だけ数えている${unmapped > 0 ? `（未割り当て ${unmapped} 件）` : ""}。`
+        }
+        <a
+          href={`${prefix}/publications/`}
+          class="ml-2 text-amber underline underline-offset-4 hover:text-[#d3a95f]"
+        >
+          {isEn ? "All publications" : "Publications を見る"} &rarr;
+        </a>
+      </p>
+    </div>
   </div>
 </section>
+
+<style>
+  .map-tier {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+  }
+  .map-name {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .map-name-ja {
+    font-family: "Times New Roman", "Noto Serif JP", serif;
+    font-size: 14px;
+  }
+  .map-count {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 20px;
+  }
+  .map-place {
+    cursor: pointer;
+  }
+  .map-place .map-disc {
+    transition: stroke-opacity 200ms ease, filter 200ms ease;
+  }
+  .map-place:hover .map-disc,
+  .map-place:focus-visible .map-disc,
+  .map-place[aria-pressed="true"] .map-disc {
+    stroke-opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(196, 151, 74, 0.45));
+  }
+  .map-place:focus-visible {
+    outline: none;
+  }
+  .map-place:focus-visible .map-disc {
+    stroke: #f4f2ed;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .map-place .map-disc {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Selecting a place swaps the list below it. Every list is in the DOM, so
+  // without JavaScript the first one is simply visible.
+  const map = document.querySelector<SVGElement>("[data-map]");
+  const panelHost = document.querySelector<HTMLElement>("[data-map-panels]");
+  if (map && panelHost) {
+    const places = map.querySelectorAll<SVGGElement>("[data-place]");
+    const panels = panelHost.querySelectorAll<HTMLElement>("[data-panel]");
+
+    function select(id: string) {
+      places.forEach((g) => g.setAttribute("aria-pressed", String(g.dataset.place === id)));
+      panels.forEach((p) => {
+        p.hidden = p.dataset.panel !== id;
+      });
+    }
+
+    places.forEach((g) => {
+      const id = g.dataset.place;
+      if (!id) return;
+      g.addEventListener("click", () => select(id));
+      g.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          select(id);
+        }
+      });
+    });
+
+    const first = places[0]?.dataset.place;
+    if (first) select(first);
+  }
+</script>

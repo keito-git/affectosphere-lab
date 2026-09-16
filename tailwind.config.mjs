@@ -29,23 +29,16 @@ export default {
         display: ['"Times New Roman"', '"Noto Serif JP"', "Times", "serif"],
         serif: ['"Times New Roman"', '"Noto Serif JP"', "Times", "serif"],
         heading: ['"Times New Roman"', '"Noto Serif JP"', "Times", "serif"],
-        // Metadata (authors, dates, captions). A real sans, taken from the
-        // operating system so it costs no extra font download.
-        sans: [
-          "system-ui",
-          "-apple-system",
-          '"Hiragino Sans"',
-          '"Noto Sans JP"',
-          '"Segoe UI"',
-          "sans-serif",
-        ],
+        // Metadata (authors, dates, captions). Same serif as everything else:
+        // all Japanese on the site renders in Noto Serif JP.
+        sans: ['"Times New Roman"', '"Noto Serif JP"', "Times", "serif"],
         // Instrument labels: counts, coordinates, domain codes, eyebrows.
         // JetBrains Mono is already loaded for <code>.
         label: [
           '"JetBrains Mono"',
           "ui-monospace",
           "SFMono-Regular",
-          '"Hiragino Sans"',
+          '"Noto Serif JP"',
           "monospace",
         ],
         // Monospace (kept for <code> / <pre> blocks only).

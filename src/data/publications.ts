@@ -221,7 +221,6 @@ const rawPublications: Publication[] = [
     kind: "journal-international",
     firstAuthor: true,
     reviewed: true,
-    status: "Accepted, in press",
     href: "https://doi.org/10.1007/s00146-026-03324-y",
     impact: "IF 6.1",
     sjr: "Q1",

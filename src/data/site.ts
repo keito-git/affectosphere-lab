@@ -29,14 +29,13 @@ export type NavItem = {
 // header, footer, and mobile drawer.
 // All nav labels are in English (page content remains Japanese).
 // All tabs share the same single navigation row.
-// Primary row: what the lab is and what it has produced — the reason most
-// visitors arrive. Secondary row: who we are and how to reach us.
+// One row, every tab at the same weight.
 export const navItems: NavItem[] = [
-  { label: "Affectosphere", href: "/affectosphere/", primary: true },
-  { label: "Research", href: "/research/", primary: true },
-  { label: "Publications", href: "/publications/", primary: true },
-  { label: "Column", href: "/column/", primary: true },
-  { label: "News", href: "/news/", primary: true },
+  { label: "Affectosphere", href: "/affectosphere/" },
+  { label: "Research", href: "/research/" },
+  { label: "Publications", href: "/publications/" },
+  { label: "Column", href: "/column/" },
+  { label: "News", href: "/news/" },
   { label: "About", href: "/about/" },
   { label: "Member", href: "/member/" },
   { label: "Awards", href: "/awards/" },
