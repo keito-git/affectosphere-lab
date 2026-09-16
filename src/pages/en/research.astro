@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import { researchDomains } from "../../data/research-domains.en";
+import { webp } from "../../lib/images";
 ---
 
 <BaseLayout
@@ -27,7 +28,7 @@ import { researchDomains } from "../../data/research-domains.en";
           >
             <div
               class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
-              style={`background-image: url('${d.image}');`}
+              style={`background-image: url('${webp(d.image, 800)}');`}
               aria-hidden="true"
             />
             <div
@@ -41,7 +42,7 @@ import { researchDomains } from "../../data/research-domains.en";
               <p class="mt-4 font-display text-base font-bold leading-relaxed text-charcoal">
                 {d.summary}
               </p>
-              <span class="mt-auto pt-6 font-heading text-sm font-bold tracking-wide text-charcoal transition-colors group-hover:text-amber">
+              <span class="mt-auto pt-6 font-heading text-sm font-bold tracking-wide text-charcoal transition-colors group-hover:text-amber-deep">
                 Read more &rarr;
               </span>
             </div>

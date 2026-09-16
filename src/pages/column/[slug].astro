@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Img from "../../components/Img.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("column-ja");
@@ -80,7 +81,7 @@ const articleJsonLd = {
       </p>
       <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 font-sans text-sm text-slate">
         <time datetime={post.data.date}>{formatDate(post.data.date)}</time>
-        <span class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-amber">
+        <span class="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-amber-deep">
           {post.data.readingMinutes} 分で読める
         </span>
         {hasEnglish && (
@@ -96,12 +97,7 @@ const articleJsonLd = {
 
     {post.data.image && (
       <figure class="reveal mx-auto mt-12 max-w-4xl">
-        <img
-          src={post.data.image}
-          alt={post.data.imageAlt ?? ""}
-          class="w-full border border-stone shadow-card"
-          loading="eager"
-        />
+        <Img src={post.data.image} alt={post.data.imageAlt ?? ""} class="w-full border border-stone shadow-card" eager />
       </figure>
     )}
 

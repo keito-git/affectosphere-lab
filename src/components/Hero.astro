@@ -1,88 +1,162 @@
 ---
-import { site } from "../data/site";
-
 interface Props {
   locale?: "ja" | "en";
 }
 const { locale = "ja" } = Astro.props;
 const prefix = locale === "en" ? "/en" : "";
+const isEn = locale === "en";
 
-const headline =
-  locale === "en"
-    ? "Creating space in the age of AI through emotion."
-    : "AI時代に、感情でゆとりをつくる。";
-const subtitle =
-  locale === "en"
-    ? "Measuring emotion and returning it to society. Toward a time when everyone can breathe a little easier."
-    : "感情をはかり、社会に返す。誰もが、すこし息のしやすい時代へ。";
-const ctaPrimary =
-  locale === "en" ? "About Affectosphere" : "Affectosphereとは";
-const ctaSecondary = locale === "en" ? "Research" : "研究テーマ";
+// The claim at the top of the site: the goal we are working toward, stated as
+// an aim rather than as an achievement.
+const headlineLead = isEn ? "Building the world's most advanced" : "世界一の";
+const headlineTerm = "Computational Affective Intelligence";
+const headlineTail = isEn ? "" : "をつくる。";
+
+const subtitle = isEn
+  ? "Emotion has become the medium society runs on. We measure that medium, keep its ambiguity intact, and turn AI toward raising human emotional intelligence."
+  : "感情は、社会を満たす環境になった。その環境を測り、曖昧さを保ったまま、人の感情知性を高める側へAIを据え直す。";
+
+const ctaPrimary = isEn ? "What is CAI" : "CAIとは";
+const ctaSecondary = isEn ? "The research map" : "研究の地図";
 ---
 
 <section
-  class="relative flex min-h-screen flex-col justify-between overflow-hidden bg-ivory"
+  class="surface-ink relative flex min-h-screen flex-col justify-center overflow-hidden"
   aria-labelledby="hero-heading"
 >
-  <!-- Background video.  Absolutely positioned to fill the section.
-       Note: prefers-reduced-motion is NOT honored here on purpose — the
-       video is the lab's signature visual and the wash keeps it gentle. -->
+  <!-- Background clip. Attached by the script below only on wide viewports
+       with motion allowed; elsewhere the 25 KB poster stands in. -->
   <video
-    class="absolute top-0 left-0 z-0 h-full w-full object-cover"
-    autoplay
+    class="absolute inset-0 z-0 h-full w-full object-cover opacity-35"
+    data-hero-video
+    data-src-webm="/video/hero-720.webm"
+    data-src-mp4="/video/hero-720.mp4"
+    poster="/video/hero-poster.webp"
     muted
     loop
     playsinline
-    preload="auto"
+    preload="none"
+    aria-hidden="true"></video>
+
+  <!-- Ink wash: holds the headline at AA contrast over any frame of the clip. -->
+  <div
+    class="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-ink/95 via-ink/86 to-ink/97"
     aria-hidden="true"
   >
-    <source src="/video/hero.mp4" type="video/mp4" />
-  </video>
+  </div>
 
-  <!-- Ivory wash to lift the headline off the video.  Strongest at the top
-       where the headline sits, then transparent through the middle so the
-       video remains visible, then a soft pad at the bottom for the footer
-       caption. -->
-  <div
-    class="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-ivory/70 via-transparent to-ivory/50"
+  <!-- Measurement grid + concentric sweep: the same figure as the logo and the
+       research map, so the three read as one instrument. -->
+  <div class="ink-grid pointer-events-none absolute inset-0 z-[2] opacity-60" aria-hidden="true"></div>
+  <svg
+    class="pointer-events-none absolute left-1/2 top-1/2 z-[2] h-[150vmin] w-[150vmin] -translate-x-1/2 -translate-y-1/2"
+    viewBox="0 0 200 200"
+    fill="none"
     aria-hidden="true"
-  ></div>
-
-  <!-- Foreground content.  z-10 keeps it above the video and wash. -->
-  <div
-    class="relative z-10 mx-auto flex w-full max-w-content flex-1 flex-col items-center justify-start text-center page-x"
-    style="padding-top: 22vh;"
   >
-    <p class="eyebrow reveal" style="text-shadow: 0 0 20px rgba(250,250,247,0.85);">
-      {site.name}
+    <g stroke="#E9E6DF" stroke-width="0.2" opacity="0.3">
+      <circle cx="100" cy="100" r="24"></circle>
+      <circle cx="100" cy="100" r="40"></circle>
+      <circle cx="100" cy="100" r="58"></circle>
+      <circle cx="100" cy="100" r="78"></circle>
+      <circle cx="100" cy="100" r="98"></circle>
+    </g>
+    <circle
+      class="hero-sweep"
+      cx="100"
+      cy="100"
+      r="24"
+      stroke="#C4974A"
+      stroke-width="0.3"
+      opacity="0.5"></circle>
+  </svg>
+
+  <!-- Foreground content. -->
+  <div
+    class="relative z-10 mx-auto flex w-full max-w-content flex-col items-center py-24 text-center page-x"
+  >
+    <p class="eyebrow reveal">
+      Affectosphere Group<span class="mx-2 text-[#4a5464]">/</span>CAI
     </p>
 
     <h1
       id="hero-heading"
-      class="reveal mt-6 font-display font-semibold tracking-tight text-charcoal"
-      style="font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.12; text-shadow: 0 1px 2px rgba(250,250,247,0.7), 0 0 28px rgba(250,250,247,0.9);"
+      class="reveal mt-8 w-full font-display font-semibold tracking-tight text-[#F4F2ED]"
+      style="font-size: clamp(1.9rem, 3.7vw, 3.4rem); line-height: 1.24; overflow-wrap: anywhere;"
     >
-      {headline}
+      <span class="block">{headlineLead}</span>
+      <span class="block text-amber" style="font-size: 0.92em; letter-spacing: -0.01em;">
+        {headlineTerm}
+      </span>
+      {headlineTail && <span class="block">{headlineTail}</span>}
     </h1>
 
     <p
-      class="reveal mt-10 max-w-prose font-display font-medium text-charcoal"
-      style="font-size: clamp(1.125rem, 1.5vw, 1.5rem); line-height: 1.7; text-shadow: 0 1px 2px rgba(250,250,247,0.65), 0 0 20px rgba(250,250,247,0.75);"
+      class="reveal mt-10 w-full max-w-prose font-display text-[#CFCBC2]"
+      style="font-size: clamp(1rem, 1.35vw, 1.3rem); line-height: 1.85; overflow-wrap: anywhere;"
     >
       {subtitle}
     </p>
 
     <div class="reveal mt-12 flex flex-wrap items-center justify-center gap-4">
-      <a href={`${prefix}/affectosphere/`} class="btn-solid">
+      <a href={`${prefix}/affectosphere/`} class="btn-solid-ink">
         {ctaPrimary}
         <span aria-hidden="true">&rarr;</span>
       </a>
-      <a href={`${prefix}/research/`} class="btn-ghost">
+      <a href="#research-map" class="btn-ghost-ink">
         {ctaSecondary}
-        <span aria-hidden="true">&rarr;</span>
+        <span aria-hidden="true">&darr;</span>
       </a>
     </div>
   </div>
-
-  <div class="pb-10" aria-hidden="true"></div>
 </section>
+
+<style>
+  /* Slow sweep outward, like a single ping on an observation screen. */
+  .hero-sweep {
+    transform-origin: 100px 100px;
+    animation: hero-ping 7s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+  }
+  @keyframes hero-ping {
+    0% {
+      transform: scale(0.35);
+      opacity: 0;
+    }
+    12% {
+      opacity: 0.55;
+    }
+    100% {
+      transform: scale(4.1);
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-sweep {
+      animation: none;
+      opacity: 0.3;
+    }
+  }
+</style>
+
+<script>
+  // Attach the clip only where it is worth ~900 KB: wide viewports, motion
+  // allowed. Everywhere else the poster frame stands in for it.
+  const video = document.querySelector<HTMLVideoElement>("[data-hero-video]");
+  if (video) {
+    const wideEnough = window.matchMedia("(min-width: 768px)").matches;
+    const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (wideEnough && motionOk) {
+      const webm = video.dataset.srcWebm;
+      const mp4 = video.dataset.srcMp4;
+      if (webm && video.canPlayType("video/webm")) {
+        video.src = webm;
+      } else if (mp4) {
+        video.src = mp4;
+      }
+      video.load();
+      video.play().catch(() => {
+        // Autoplay refused (power saving, for instance): the poster remains.
+      });
+    }
+  }
+</script>

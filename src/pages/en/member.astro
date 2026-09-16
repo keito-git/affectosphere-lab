@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { members } from "../../data/people.en";
+import Img from "../../components/Img.astro";
 
 // Grouped by role.  Until we have more people, only "Principal Investigator"
 // has entries.  TODO(inoshita): add roles as collaborators / students join.
@@ -65,12 +66,7 @@ function initials(name: string): string {
               <!-- Portrait slot.  Render initials block until a portrait
                    image is supplied. -->
               {p.portrait ? (
-                <img
-                  src={p.portrait}
-                  alt={`Portrait of ${p.name}`}
-                  class="aspect-square w-full border border-stone object-cover"
-                  loading="lazy"
-                />
+                <Img src={p.portrait} alt={`Portrait of ${p.name}`} class="aspect-square w-full border border-stone object-cover" />
               ) : (
                 <div class="flex aspect-square w-full items-center justify-center border border-stone bg-ivory">
                   <span class="font-display text-4xl text-charcoal/30">

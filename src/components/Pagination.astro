@@ -29,7 +29,7 @@ for (let p = 1; p <= total; p++) {
       {current > 1 ? (
         <a
           href={pageUrl(current - 1)}
-          class="border border-stone px-3 py-2 text-charcoal transition-colors hover:border-amber hover:text-amber"
+          class="border border-stone px-3 py-2 text-charcoal transition-colors hover:border-amber hover:text-amber-deep"
           rel="prev"
         >
           &larr; Prev
@@ -51,7 +51,7 @@ for (let p = 1; p <= total; p++) {
         ) : (
           <a
             href={pageUrl(p)}
-            class="border border-stone px-3 py-2 text-charcoal transition-colors hover:border-amber hover:text-amber"
+            class="border border-stone px-3 py-2 text-charcoal transition-colors hover:border-amber hover:text-amber-deep"
           >
             {p}
           </a>
@@ -61,7 +61,7 @@ for (let p = 1; p <= total; p++) {
       {current < total ? (
         <a
           href={pageUrl(current + 1)}
-          class="border border-stone px-3 py-2 text-charcoal transition-colors hover:border-amber hover:text-amber"
+          class="border border-stone px-3 py-2 text-charcoal transition-colors hover:border-amber hover:text-amber-deep"
           rel="next"
         >
           Next &rarr;

@@ -10,10 +10,17 @@ export default {
         charcoal: "#1A1A1A",
         slate: "#6B7280",
         amber: "#C4974A",
+        // AA-compliant amber for text on ivory (5.64:1); see global.css.
+        "amber-deep": "#7B5E28",
         steel: "#3D6B8C",
         rose: "#B5737A",
         sage: "#6B8F7A",
         deepslate: "#1E2A38",
+        // Observation surface: the dark ground the hero and the research map
+        // are drawn on.
+        ink: "#111318",
+        "ink-soft": "#1B2029",
+        "ink-line": "#2B3341",
       },
       fontFamily: {
         // Unified serif stack: English uses Times New Roman, Japanese uses
@@ -22,7 +29,25 @@ export default {
         display: ['"Times New Roman"', '"Noto Serif JP"', "Times", "serif"],
         serif: ['"Times New Roman"', '"Noto Serif JP"', "Times", "serif"],
         heading: ['"Times New Roman"', '"Noto Serif JP"', "Times", "serif"],
-        sans: ['"Times New Roman"', '"Noto Serif JP"', "Times", "serif"],
+        // Metadata (authors, dates, captions). A real sans, taken from the
+        // operating system so it costs no extra font download.
+        sans: [
+          "system-ui",
+          "-apple-system",
+          '"Hiragino Sans"',
+          '"Noto Sans JP"',
+          '"Segoe UI"',
+          "sans-serif",
+        ],
+        // Instrument labels: counts, coordinates, domain codes, eyebrows.
+        // JetBrains Mono is already loaded for <code>.
+        label: [
+          '"JetBrains Mono"',
+          "ui-monospace",
+          "SFMono-Regular",
+          '"Hiragino Sans"',
+          "monospace",
+        ],
         // Monospace (kept for <code> / <pre> blocks only).
         mono: ['"JetBrains Mono"', "ui-monospace", "SFMono-Regular", "monospace"],
       },

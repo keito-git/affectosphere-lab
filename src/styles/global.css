@@ -16,10 +16,15 @@
     --color-charcoal: #1a1a1a;
     --color-slate: #6b7280;
     --color-amber: #c4974a;
+    /* Amber for text on the ivory background. The display amber above is
+       2.55:1 there — below the WCAG AA floor — so body copy and links use
+       this darker cut, which measures 5.64:1. */
+    --color-amber-deep: #7b5e28;
     --color-steel: #3d6b8c;
     --color-rose: #b5737a;
     --color-sage: #6b8f7a;
     --color-deepslate: #1e2a38;
+    --color-ink: #111318;
   }
 
   html {
@@ -104,6 +109,20 @@
            focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber;
   }
 
+  /* CTAs for the dark observation surface. Amber on ink measures 6.97:1, so
+   * ink text on an amber fill clears AA in both directions. */
+  .btn-solid-ink {
+    @apply inline-flex items-center gap-2 bg-amber px-5 py-2.5 font-heading text-sm
+           tracking-wide text-ink transition-colors hover:bg-[#d3a95f]
+           focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ivory;
+  }
+  .btn-ghost-ink {
+    @apply inline-flex items-center gap-2 border border-[#4a5464] bg-transparent px-5
+           py-2.5 font-heading text-sm tracking-wide text-[#e9e6df] transition-colors
+           hover:border-[#e9e6df] focus-visible:outline-none focus-visible:ring-1
+           focus-visible:ring-ivory;
+  }
+
   /* Card surface. */
   .surface-card {
     @apply rounded-none border border-stone bg-cream p-6 shadow-card transition-all
@@ -113,9 +132,28 @@
     @apply -translate-y-1 shadow-card-hover;
   }
 
-  /* Eyebrow / kicker label. */
+  /* Eyebrow / kicker label. Monospaced so section markers read as instrument
+   * labels rather than as more prose. */
   .eyebrow {
-    @apply font-sans text-[0.75rem] uppercase tracking-[0.14em] text-slate font-medium;
+    @apply font-label text-[0.72rem] uppercase tracking-[0.18em] text-slate;
+  }
+
+  /* Dark observation surface: the ground the hero and the research map sit on.
+   * Body copy stays on ivory; only these panels invert. */
+  .surface-ink {
+    background-color: var(--color-ink);
+    color: #e9e6df;
+  }
+  .surface-ink .eyebrow {
+    color: #9aa4b4;
+  }
+
+  /* Faint measurement grid drawn over a dark panel. */
+  .ink-grid {
+    background-image:
+      linear-gradient(to right, rgba(233, 230, 223, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(233, 230, 223, 0.05) 1px, transparent 1px);
+    background-size: 72px 72px;
   }
 }
 
@@ -130,6 +168,21 @@
   .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Reduced motion: show everything immediately and stop the smooth scroll.
+   * .reveal starts at opacity 0, so without this the page stays blank for
+   * anyone whose system asks for less animation. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    .reveal,
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 
   /* Tight page-edge padding so the layout truly reaches the viewport edges

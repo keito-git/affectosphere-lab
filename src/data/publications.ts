@@ -84,6 +84,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita",
     kind: "preprint",
     firstAuthor: true,
+    href: "https://arxiv.org/abs/2601.08692",
   },
   {
     slug: "inoshita-name-remind-2026",
@@ -95,6 +96,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita",
     kind: "preprint",
     firstAuthor: true,
+    href: "https://arxiv.org/abs/2601.12771",
   },
   {
     slug: "inoshita-argument-rarity-2026",
@@ -105,6 +107,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita, Michiaki Omura, Tsukasa Yamanaka, Go Maeda, Kentaro Tsuji",
     kind: "preprint",
     firstAuthor: true,
+    href: "https://arxiv.org/abs/2602.01560",
   },
   {
     slug: "nojiri-etymology-2026",
@@ -116,6 +119,7 @@ const rawPublications: Publication[] = [
     authors: "Kota Nojiri, Keito Inoshita, Haruto Sugeno, Takumi Taga",
     kind: "journal-international",
     reviewed: true,
+    href: "https://doi.org/10.1371/journal.pone.0353612",
   },
   {
     slug: "inoshita-ai-homogenize-2026",
@@ -127,6 +131,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita, Michiaki Omura, Tsukasa Yamanaka, Go Maeda, Kentaro Tsuji",
     kind: "preprint",
     firstAuthor: true,
+    href: "https://arxiv.org/abs/2603.21228",
   },
   {
     slug: "inoshita-cognitive-causal-2026",
@@ -138,6 +143,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita, Nobuhiro Hayashida, Akira Imanishi",
     kind: "preprint",
     firstAuthor: true,
+    href: "https://arxiv.org/abs/2604.07651",
   },
   {
     slug: "inoshita-llm-emotion-uncertainty-2026",
@@ -149,6 +155,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita, Xiaokang Zhou, Akira Kawai, Katsutoshi Yada",
     kind: "preprint",
     firstAuthor: true,
+    href: "https://arxiv.org/abs/2604.27345",
   },
   {
     slug: "nojiri-gliding-2026",
@@ -159,6 +166,7 @@ const rawPublications: Publication[] = [
     year: 2026,
     authors: "Kota Nojiri, Haruto Sugeno, Keito Inoshita",
     kind: "preprint",
+    href: "https://doi.org/10.64898/2026.04.30.721856",
   },
   {
     slug: "inoshita-affective-silos-2026",
@@ -172,6 +180,7 @@ const rawPublications: Publication[] = [
     firstAuthor: true,
     reviewed: true,
     status: "Accepted, in press",
+    href: "https://doi.org/10.1007/s00146-026-03324-y",
   },
   {
     slug: "inoshita-uncertainty-decomp-2026",
@@ -183,6 +192,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita, Takato Ueno",
     kind: "preprint",
     firstAuthor: true,
+    href: "https://arxiv.org/abs/2605.24773",
   },
   {
     slug: "inoshita-bayesian-spectral-2026",
@@ -196,6 +206,7 @@ const rawPublications: Publication[] = [
     firstAuthor: true,
     reviewed: true,
     status: "Accepted, to appear",
+    href: "https://arxiv.org/abs/2606.01906",
   },
   {
     slug: "inoshita-driver-intervention-2026",
@@ -207,6 +218,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita",
     kind: "preprint",
     firstAuthor: true,
+    href: "https://arxiv.org/abs/2606.22706",
   },
   {
     slug: "inoshita-uncertainty-routing-2026",
@@ -218,6 +230,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita, Takato Ueno",
     kind: "preprint",
     firstAuthor: true,
+    href: "https://arxiv.org/abs/2606.22725",
   },
   {
     slug: "inoshita-affective-sovereignty-2026",
@@ -229,6 +242,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita",
     kind: "preprint",
     firstAuthor: true,
+    href: "https://arxiv.org/abs/2606.31442",
   },
   // ---- 国際ジャーナル (2026) ----
   {
@@ -242,6 +256,7 @@ const rawPublications: Publication[] = [
     kind: "journal-international",
     firstAuthor: true,
     reviewed: true,
+    href: "https://arxiv.org/abs/2507.13380",
   },
   {
     slug: "kdda-2026",
@@ -264,6 +279,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita, Shinnosuke Mizuno",
     kind: "journal-international",
     firstAuthor: true,
+    href: "https://doi.org/10.1007/s44163-026-01360-7",
   },
   // ---- 国際会議 (2026) ----
   {
@@ -276,6 +292,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita",
     kind: "international-conference",
     firstAuthor: true,
+    href: "https://doi.org/10.1109/zinc69910.2026.11655671",
   },
   // ---- 国内会議 (2026) ----
   {
@@ -301,6 +318,7 @@ const rawPublications: Publication[] = [
     authors: "Kota Nojiri, Keito Inoshita, Haruto Sugeno",
     kind: "journal-international",
     reviewed: true,
+    href: "https://doi.org/10.2108/zs250025",
   },
   // ---- 国際会議 (2025) ----
   {
@@ -315,6 +333,7 @@ const rawPublications: Publication[] = [
     firstAuthor: true,
     reviewed: true,
     award: "Best Paper Award",
+    href: "https://doi.org/10.1007/978-3-031-97141-9_1",
   },
   {
     slug: "ieee-iaict-2025-naming",
@@ -327,6 +346,7 @@ const rawPublications: Publication[] = [
     kind: "international-conference",
     firstAuthor: true,
     reviewed: true,
+    href: "https://doi.org/10.1109/iaict65714.2025.11100523",
   },
   {
     slug: "ieee-iaict-2025-sarcasm",
@@ -338,6 +358,7 @@ const rawPublications: Publication[] = [
     authors: "Takato Ueno, Keito Inoshita",
     kind: "international-conference",
     reviewed: true,
+    href: "https://doi.org/10.1109/iaict65714.2025.11101504",
   },
   {
     slug: "ieee-hpcc-2025",
@@ -363,6 +384,7 @@ const rawPublications: Publication[] = [
     firstAuthor: true,
     reviewed: true,
     award: "Best Paper Award",
+    href: "https://doi.org/10.1109/icoailo66760.2025.11155956",
   },
   {
     slug: "ieee-gcce-2025",
@@ -375,6 +397,7 @@ const rawPublications: Publication[] = [
     kind: "international-conference",
     firstAuthor: true,
     reviewed: true,
+    href: "https://doi.org/10.1109/gcce65946.2025.11275259",
   },
   {
     slug: "ieee-picom-2025",
@@ -386,6 +409,7 @@ const rawPublications: Publication[] = [
     authors: "Takato Ueno, Keito Inoshita",
     kind: "international-conference",
     reviewed: true,
+    href: "https://doi.org/10.1109/picom68402.2025.00011",
   },
   {
     slug: "ai-dhwp-2025",
@@ -397,6 +421,7 @@ const rawPublications: Publication[] = [
     authors: "Rushia Harada, Yuken Kimura, Keito Inoshita",
     kind: "international-conference",
     reviewed: true,
+    href: "https://doi.org/10.1109/cyberscitech68397.2025.00101",
   },
   // ---- 国内ジャーナル (2025) ----
   {
@@ -538,6 +563,7 @@ const rawPublications: Publication[] = [
     authors: "Haruto Sugeno, Keito Inoshita, Kota Nojiri",
     kind: "journal-international",
     reviewed: true,
+    href: "https://doi.org/10.1093/plankt/fbag061",
   },
   {
     slug: "c-dira-2025",
@@ -549,6 +575,7 @@ const rawPublications: Publication[] = [
     authors: "Keito Inoshita",
     kind: "preprint",
     firstAuthor: true,
+    href: "https://arxiv.org/abs/2512.08647",
   },
   {
     slug: "geometric-control-2025",
@@ -595,6 +622,7 @@ const rawPublications: Publication[] = [
     kind: "international-conference",
     firstAuthor: true,
     reviewed: true,
+    href: "https://doi.org/10.1109/times-icon61890.2024.10630720",
   },
   {
     slug: "ieee-ithings-2024",
@@ -607,6 +635,7 @@ const rawPublications: Publication[] = [
     kind: "international-conference",
     firstAuthor: true,
     reviewed: true,
+    href: "https://doi.org/10.1109/ithings-greencom-cpscom-smartdata-cybermatics62450.2024.00045",
   },
   {
     slug: "icitacee-2024",
@@ -620,6 +649,7 @@ const rawPublications: Publication[] = [
     firstAuthor: true,
     reviewed: true,
     award: "Best Paper Award",
+    href: "https://doi.org/10.1109/icitacee62763.2024.10762783",
   },
   {
     slug: "diges-grace-2024",
@@ -632,6 +662,7 @@ const rawPublications: Publication[] = [
     kind: "international-conference",
     firstAuthor: true,
     reviewed: true,
+    href: "https://doi.org/10.1051/shsconf/202420403012",
   },
   {
     slug: "icelitics-2024",
@@ -644,6 +675,7 @@ const rawPublications: Publication[] = [
     kind: "international-conference",
     firstAuthor: true,
     reviewed: true,
+    href: "https://doi.org/10.1109/iceltics62730.2024.10776050",
   },
   {
     slug: "ieee-bdcloud-2024",
@@ -657,6 +689,7 @@ const rawPublications: Publication[] = [
     firstAuthor: true,
     reviewed: true,
     award: "Best Paper Award",
+    href: "https://doi.org/10.1109/bdcloud63169.2024.00008",
   },
   {
     slug: "nlp4dh-emnlp-2024",
@@ -669,6 +702,7 @@ const rawPublications: Publication[] = [
     kind: "international-conference",
     firstAuthor: true,
     reviewed: true,
+    href: "https://doi.org/10.18653/v1/2024.nlp4dh-1.49",
   },
   {
     slug: "ieee-iotais-2024-evolutionary",
@@ -682,6 +716,7 @@ const rawPublications: Publication[] = [
     firstAuthor: true,
     reviewed: true,
     award: "Best Paper Award",
+    href: "https://doi.org/10.1109/iotais64014.2024.10799461",
   },
   {
     slug: "ieee-iotais-2024-multifaceted",
@@ -694,6 +729,7 @@ const rawPublications: Publication[] = [
     kind: "international-conference",
     firstAuthor: true,
     reviewed: true,
+    href: "https://doi.org/10.1109/iotais64014.2024.10799391",
   },
   {
     slug: "3ict-2024",
@@ -705,6 +741,7 @@ const rawPublications: Publication[] = [
     kind: "international-conference",
     firstAuthor: true,
     reviewed: true,
+    href: "https://doi.org/10.1109/3ict64318.2024.10824669",
   },
   {
     slug: "ieee-dss-2024",
@@ -718,6 +755,7 @@ const rawPublications: Publication[] = [
     firstAuthor: true,
     reviewed: true,
     award: "Best Paper Award",
+    href: "https://doi.org/10.1109/dss64273.2024.00018",
   },
   // ---- 国内会議 (2024) ----
   {

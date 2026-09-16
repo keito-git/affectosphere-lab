@@ -26,14 +26,14 @@ const more = locale === "en" ? "Details →" : "詳細 →";
   <time class="font-sans text-xs text-slate font-medium" datetime={item.date}>
     {display}
   </time>
-  <span class="font-sans text-xs uppercase tracking-[0.14em] text-amber font-medium">
+  <span class="font-sans text-xs uppercase tracking-[0.14em] text-amber-deep font-medium">
     {item.label}
   </span>
   <div>
     {href ? (
       <a href={href} class="link-amber text-sm text-charcoal md:text-base">
         {item.body}
-        <span class="ml-2 whitespace-nowrap font-sans text-xs text-amber">{more}</span>
+        <span class="ml-2 whitespace-nowrap font-sans text-xs text-amber-deep">{more}</span>
       </a>
     ) : (
       <p class="text-sm text-charcoal md:text-base">{item.body}</p>

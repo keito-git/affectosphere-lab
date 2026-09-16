@@ -22,12 +22,17 @@ interface Props {
 
 const {
   title,
-  description = site.description,
+  description,
   fullBleed = false,
   locale = "ja",
   ogImage,
   jsonLd,
 } = Astro.props;
+
+// Locale-aware fallback: /en pages that pass no description must not inherit
+// the Japanese sentence.
+const pageDescription =
+  description ?? (locale === "en" ? site.descriptionEn : site.description);
 
 const pageTitle = title ? `${title} | ${site.name}` : site.name;
 const pathname = Astro.url.pathname;
@@ -51,11 +56,43 @@ const ogImageAbsolute = ogImagePath.startsWith("http")
   ? ogImagePath
   : `${origin}${ogImagePath}`;
 
-const jsonLdArray = jsonLd
-  ? Array.isArray(jsonLd)
-    ? jsonLd
-    : [jsonLd]
-  : [];
+// Site-wide structured data. Search engines read the lab as an organisation
+// with a named founder; page-level entries (Person, Article, …) are appended.
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "ResearchOrganization",
+  "@id": `${origin}/#organization`,
+  name: site.name,
+  url: `${origin}/`,
+  logo: `${origin}/og/default.png`,
+  description: locale === "en" ? site.descriptionEn : site.description,
+  founder: {
+    "@type": "Person",
+    name: "Keito Inoshita",
+    alternateName: "井下 敬翔",
+  },
+  parentOrganization: {
+    "@type": "CollegeOrUniversity",
+    name: locale === "en" ? "Kansai University" : "関西大学",
+  },
+  sameAs: [
+    "https://x.com/FdijrzwEnp5XMTa",
+    "https://www.facebook.com/profile.php?id=61590251833407",
+  ],
+};
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${origin}/#website`,
+  name: site.name,
+  url: `${origin}/`,
+  inLanguage: htmlLang,
+  publisher: { "@id": `${origin}/#organization` },
+};
+
+const pageJsonLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const jsonLdArray = [organizationLd, websiteLd, ...pageJsonLd];
 ---
 
 <!doctype html>
@@ -65,7 +102,7 @@ const jsonLdArray = jsonLd
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={pageDescription} />
 
     <!-- Google Search Console site verification. -->
     <meta name="google-site-verification" content="OSnSka7rSmEHO5kcN_ZIGGYxVezPaSa1GXCBQpraRW8" />
@@ -91,27 +128,29 @@ const jsonLdArray = jsonLd
     <!-- Open Graph / social -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageAbsolute} />
     <meta property="og:locale" content={locale === "en" ? "en_US" : "ja_JP"} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImageAbsolute} />
 
-    <!-- Favicon (lab logo, light-bg variant for browser tabs on white). -->
-    <link rel="icon" type="image/png" href="/logo/mark.png" />
-    <link rel="apple-touch-icon" href="/logo/mark.png" />
+    <!-- Favicon: the concentric mark as SVG (353 B) rather than the 485 KB PNG.
+         apple-touch-icon needs a raster, so a 180px variant is used there. -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/logo/apple-touch-icon.png" />
 
-    <!-- Google Fonts: Noto Serif JP for Japanese, JetBrains Mono for code only.
-         English uses Times New Roman (system font, no loading needed). -->
+    <!-- Google Fonts: Noto Serif JP for Japanese, JetBrains Mono for figures
+         and code. English uses Times New Roman (system font, no loading).
+         Weight 300 is never used in the styles, so it is not requested. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     />
 
     {

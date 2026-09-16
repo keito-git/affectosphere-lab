@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { researchDomains } from "../../data/research-domains";
+import Img from "../../components/Img.astro";
 
 export function getStaticPaths() {
   return researchDomains.map((d) => ({
@@ -109,12 +110,7 @@ const narrative = domain.narrative ?? [];
                 {block.text}
               </p>
               <figure class="md:max-w-[28rem]">
-                <img
-                  src={block.figure.src}
-                  alt={block.figure.alt}
-                  loading="lazy"
-                  class="w-full border border-stone bg-white shadow-card"
-                />
+                <Img src={block.figure.src} alt={block.figure.alt} class="w-full border border-stone bg-white shadow-card" />
                 <figcaption class="mt-3 font-display text-sm italic leading-relaxed text-slate">
                   {block.figure.caption}
                 </figcaption>

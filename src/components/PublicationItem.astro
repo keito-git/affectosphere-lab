@@ -48,13 +48,22 @@ const dateLabel =
 >
   <div class="flex-1">
     <div class="mb-2 flex flex-wrap items-center gap-3">
-      <span class="inline-block bg-amber/15 px-2 py-0.5 text-[0.7rem] font-medium tracking-wide text-amber">
+      <span class="inline-block bg-amber/15 px-2 py-0.5 text-[0.7rem] font-medium tracking-wide text-amber-deep">
         {categoryLabel}
       </span>
     </div>
     <p class="font-display text-xl leading-snug text-charcoal">
       {pub.href ? (
-        <a href={pub.href} class="link-amber">{pub.title}</a>
+        <a
+          href={pub.href}
+          class="link-amber"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {pub.title}
+          <span class="ml-1 align-middle text-[0.7em] text-slate" aria-hidden="true">&#8599;</span>
+          <span class="sr-only">{locale === "en" ? "(opens the publisher page)" : "（出版社ページを開きます）"}</span>
+        </a>
       ) : (
         pub.title
       )}
@@ -66,7 +75,7 @@ const dateLabel =
   </div>
   {pub.status && !hideStatus && (
     <div class="md:pt-1 md:text-right">
-      <span class="font-sans text-[0.75rem] uppercase tracking-[0.14em] text-amber font-medium">
+      <span class="font-sans text-[0.75rem] uppercase tracking-[0.14em] text-amber-deep font-medium">
         {pub.status}
       </span>
     </div>

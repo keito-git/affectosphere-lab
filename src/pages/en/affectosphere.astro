@@ -5,6 +5,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 // without touching Astro code; the page re-renders on save.
 // @ts-ignore - Vite's ?raw import is not in the default type set.
 import manifestoRaw from "../../../MANIFESTO.en.md?raw";
+import Img from "../../components/Img.astro";
 const manifestoBody: string | null =
   typeof manifestoRaw === "string" && manifestoRaw.trim().length > 0
     ? manifestoRaw.trim()
@@ -166,12 +167,7 @@ const blocks: Block[] = manifestoBody ? parseMarkdown(manifestoBody) : [];
         </p>
       </div>
       <div class="reveal flex items-center justify-center">
-        <img
-          src="/logo/mark.png"
-          alt="Affectosphere Group emblem"
-          class="w-full max-w-[24rem] aspect-square object-contain"
-          loading="eager"
-        />
+        <Img src="/logo/mark.png" alt="Affectosphere Group emblem" class="w-full max-w-[24rem] aspect-square object-contain" eager />
       </div>
     </div>
   </section>
@@ -261,7 +257,7 @@ const blocks: Block[] = manifestoBody ? parseMarkdown(manifestoBody) : [];
         </div>
       ) : (
         <div class="reveal mx-auto max-w-prose border border-stone bg-cream p-8 text-center">
-          <p class="font-display text-sm italic uppercase tracking-[0.18em] text-amber">
+          <p class="font-display text-sm italic uppercase tracking-[0.18em] text-amber-deep">
             Coming soon
           </p>
           <h2 class="mt-3 font-display text-2xl text-charcoal">Manifesto in preparation</h2>

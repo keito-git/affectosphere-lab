@@ -1,0 +1,33 @@
+---
+// Raster image served from public/ as WebP, with intrinsic width/height set
+// so the browser reserves the box before the file arrives (no layout shift).
+//
+// Pass the ORIGINAL path (e.g. "/award-images/foo.jpg"); the variants written
+// by scripts/optimize-images.mjs are resolved here.
+import { webp, webpSrcset, intrinsic } from "../lib/images";
+
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  /** Layout hint for picking a variant. Defaults to full viewport width. */
+  sizes?: string;
+  /** Set for above-the-fold art that should not be deferred. */
+  eager?: boolean;
+}
+
+const { src, alt, class: className, sizes = "100vw", eager = false } = Astro.props;
+const { width, height } = intrinsic(src);
+---
+
+<img
+  src={webp(src, 800)}
+  srcset={webpSrcset(src)}
+  sizes={sizes}
+  width={width ?? undefined}
+  height={height ?? undefined}
+  alt={alt}
+  class={className}
+  loading={eager ? "eager" : "lazy"}
+  decoding="async"
+/>

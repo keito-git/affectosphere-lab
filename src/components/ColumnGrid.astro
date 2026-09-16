@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { webp, webpSrcset, intrinsic } from "../lib/images";
 
 interface Props {
   posts: (CollectionEntry<"column-ja"> | CollectionEntry<"column-en">)[];
@@ -16,35 +17,45 @@ function formatDate(iso: string): string {
 
 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
   {
-    posts.map((post) => (
-      <a
-        href={`${hrefBase}/${post.slug}/`}
-        class="surface-card reveal flex h-full flex-col"
-      >
-        {post.data.image && (
-          <img
-            src={post.data.image}
-            alt={post.data.imageAlt ?? ""}
-            class="-m-6 mb-4 aspect-[16/9] w-[calc(100%+3rem)] max-w-none border-b border-stone object-cover"
-            loading="lazy"
-          />
-        )}
-        <p class="eyebrow">{formatDate(post.data.date)}</p>
-        <h3 class="mt-3 font-heading text-lg font-medium text-charcoal">
-          {post.data.title}
-        </h3>
-        <p class="mt-3 text-sm leading-relaxed text-charcoal/85">
-          {post.data.excerpt}
-        </p>
-        <div class="mt-auto pt-6 flex items-center justify-between">
-          <span class="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-slate">
-            {post.data.readingMinutes} min read
-          </span>
-          <span class="link-amber font-heading text-sm tracking-wide">
-            Read &rarr;
-          </span>
-        </div>
-      </a>
-    ))
+    posts.map((post) => {
+      // Card art is served as WebP; the PNG original stays in public/ untouched.
+      const art = post.data.image;
+      const dim = art ? intrinsic(art) : { width: null, height: null };
+      return (
+        <a
+          href={`${hrefBase}/${post.slug}/`}
+          class="surface-card reveal flex h-full flex-col"
+        >
+          {art && (
+            <img
+              src={webp(art, 800)}
+              srcset={webpSrcset(art)}
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              width={dim.width ?? undefined}
+              height={dim.height ?? undefined}
+              alt={post.data.imageAlt ?? ""}
+              class="-m-6 mb-4 aspect-[16/9] w-[calc(100%+3rem)] max-w-none border-b border-stone object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+          <p class="eyebrow">{formatDate(post.data.date)}</p>
+          <h3 class="mt-3 font-heading text-lg font-medium text-charcoal">
+            {post.data.title}
+          </h3>
+          <p class="mt-3 text-sm leading-relaxed text-charcoal/85">
+            {post.data.excerpt}
+          </p>
+          <div class="mt-auto pt-6 flex items-center justify-between">
+            <span class="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-slate">
+              {post.data.readingMinutes} min read
+            </span>
+            <span class="link-amber font-heading text-sm tracking-wide">
+              Read &rarr;
+            </span>
+          </div>
+        </a>
+      );
+    })
   }
 </div>

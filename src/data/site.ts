@@ -5,6 +5,10 @@ export const site = {
   tagline: "AI時代に、感情でゆとりをつくる。",
   description:
     "Affectosphere Groupは、感情を確率としてとらえ、社会の構造と共に研究することで、誰もが息のしやすい時代を目指すラボです。",
+  // English default for the /en subtree. Pages under /en that omit their own
+  // description fall back to this instead of the Japanese sentence above.
+  descriptionEn:
+    "Affectosphere Group studies emotion as a probability distribution and reads it together with the structure of society, working toward a time when everyone can breathe a little easier.",
   affiliation: "関西大学",
   pillars: ["感情コンピューティング", "不確実性", "社会"] as const,
   url: "https://lab.affectosphere.group",
