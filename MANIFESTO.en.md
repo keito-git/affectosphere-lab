@@ -2,7 +2,7 @@
 
 > "In an age when emotion envelops society like an atmosphere, we ask what to measure, what to preserve, and what we will never yield."
 
-The Affectosphere Group, directed by Keito Inoshita, looks beyond affective computing toward the arrival of the **"Affectosphere."** The Affectosphere is a sphere in which emotion exists ubiquitously like the atmosphere of society, becomes computable, and is observed by AI every day. Our lab reconceives the theory, data, modeling, dialogue, social applications, and ethics of this sphere as a single, coherent socio-technical system, and re-examines — from both technological and philosophical sides — what AI that handles emotion means for people and for society.
+The Affectosphere Group, directed by Keito Inoshita, looks beyond affective computing toward the arrival of the **"Affectosphere."** The Affectosphere is a sphere in which emotion exists ubiquitously like the atmosphere of society, becomes computable, and is observed by AI every day. Our lab reconceives that sphere as an object of computation, and re-examines — from both technological and philosophical sides — what AI that handles emotion means for people and for society.
 
 ---
 
@@ -18,7 +18,7 @@ In such a world, the question we pose is not "whether to give AI emotion." It is
 
 At the core of that design, we place the principle of **Affective Sovereignty**. No matter how precisely AI comes to measure emotion, the one who ultimately determines its meaning is the user themselves. This is a natural extension of the right to self-determination in medicine and in personal information, and it is positioned as a new human-rights concept for an age in which technologies that handle emotion become widespread.
 
-The Affectosphere Group treats affective AI as a six-layered socio-technical system (theory, data, model, dialogue, social applications, ethics) and diagnoses the structural fractures present in each layer as "silo bridges." Through five design criteria — making emotion theory explicit, designing the boundary between inference and intervention, longitudinal evaluation of interaction, accountability tailored to deployment context, and the preservation of affective sovereignty — we aim to prepare the soil in which affective AI can grow soundly.
+Our paper *Bridging the Silos in Affective AI* (2026) sets out affective AI research as a six-layered socio-technical system (theory, data, model, dialogue, social applications, ethics) and diagnoses the structural fractures that recur between those layers as "silo bridges." Working from the five design criteria it derives — making emotion theory explicit, designing the boundary between inference and intervention, longitudinal evaluation of interaction, accountability tailored to deployment context, and the preservation of affective sovereignty — we aim to prepare the soil in which affective AI can grow soundly.
 
 The Affectosphere is not a phenomenon that suddenly appears in the future. It already exists, and a new layer is formed each time AI is implemented as a technology that reads emotion. What we aim for is a future in which **AI endowed with an EQ that surpasses humans** is realized not as a being that dominates people but as a **"being that exists alongside us."**
 
