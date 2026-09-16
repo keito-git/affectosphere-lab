@@ -8,7 +8,16 @@
 // One colour throughout: size and fill encode magnitude, not identity, so the
 // map needs no legend of hues. Venue tier is carried by the dots in the list
 // below, where a label sits beside every mark.
-import { stages, tiers, stageTier, stageStats, publicationStage, unmappedCount, tier as venueTier } from "../data/research-map";
+import {
+  stages,
+  tiers,
+  stageTier,
+  stageStats,
+  publicationStage,
+  unmappedCount,
+  tier as venueTier,
+  type StageId,
+} from "../data/research-map";
 import { allPublications } from "../data/publications";
 import { allPublications as allPublicationsEn } from "../data/publications.en";
 
@@ -22,7 +31,7 @@ const stats = stageStats();
 
 // Coordinates are hand-placed so the map reads left-to-right as the work moves
 // from understanding a person to placing a system among people.
-const PLACES: { id: string; x: number; y: number }[] = [
+const PLACES: { id: StageId; x: number; y: number }[] = [
   { id: "human-affect", x: 140, y: 250 },
   { id: "perception", x: 360, y: 170 },
   { id: "representation", x: 470, y: 400 },
@@ -119,7 +128,7 @@ const fmtDate = (iso: string) => {
 
         <!-- Tier bands: the four divisions of the field, named along the top. -->
         {
-          tiers.filter((t) => t.id !== "beyond").map((t) => {
+          tiers.map((t) => {
             const b = BANDS[t.id];
             return (
               <g aria-hidden="true">
