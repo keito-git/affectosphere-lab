@@ -7,8 +7,9 @@ const prefix = locale === "en" ? "/en" : "";
 const isEn = locale === "en";
 
 // The claim at the top of the site: the goal we are working toward, stated as
-// an aim rather than as an achievement.
-const headlineLead = isEn ? "Building the world's most advanced" : "世界一の";
+// an aim rather than as an achievement, and anchored to the era it answers.
+const headlineEra = isEn ? "For the Affectosphere era," : "Affectosphere時代に、";
+const headlineLead = isEn ? "building the world's most advanced" : "世界一の";
 const headlineTerm = "Computational Affective Intelligence";
 const headlineTail = isEn ? "" : "をつくる。";
 
@@ -16,8 +17,8 @@ const subtitle = isEn
   ? "Emotion has become the medium society runs on. We measure that medium, keep its ambiguity intact, and turn AI toward raising human emotional intelligence."
   : "感情は、社会を満たす環境になった。その環境を測り、曖昧さを保ったまま、人の感情知性を高める側へAIを据え直す。";
 
-const ctaPrimary = isEn ? "What is CAI" : "CAIとは";
-const ctaSecondary = isEn ? "The research map" : "研究の地図";
+const ctaPrimary = isEn ? "What is Affectosphere" : "Affectosphereとは";
+const ctaSecondary = isEn ? "What is CAI" : "CAIとは";
 ---
 
 <section
@@ -84,6 +85,7 @@ const ctaSecondary = isEn ? "The research map" : "研究の地図";
       class="reveal mt-8 w-full font-display font-semibold tracking-tight text-[#F4F2ED]"
       style="font-size: clamp(1.9rem, 3.7vw, 3.4rem); line-height: 1.24; overflow-wrap: anywhere;"
     >
+      <span class="mb-3 block text-[#CFCBC2]" style="font-size: 0.62em; letter-spacing: 0.02em;">{headlineEra}</span>
       <span class="block">{headlineLead}</span>
       <span class="block text-amber" style="font-size: 0.92em; letter-spacing: -0.01em;">
         {headlineTerm}
@@ -103,7 +105,7 @@ const ctaSecondary = isEn ? "The research map" : "研究の地図";
         {ctaPrimary}
         <span aria-hidden="true">&rarr;</span>
       </a>
-      <a href={`${prefix}/research-map/`} class="btn-ghost-ink">
+      <a href={`${prefix}/cai/`} class="btn-ghost-ink">
         {ctaSecondary}
         <span aria-hidden="true">&rarr;</span>
       </a>

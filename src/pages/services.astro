@@ -6,9 +6,9 @@ const serviceLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": "https://lab.affectosphere.group/services/#service",
-  name: "Affectosphere Group — 感情AI・LLMの企業向けサービス",
+  name: "Affectosphere Group — CAI・LLMの企業向けサービス",
   description:
-    "感情 AI と大規模言語モデルの研究知見を、企業内研修・講演・導入支援という形で実務に届けます。不確実性の扱い、バイアス監査、AI に任せる範囲の設計まで。",
+    "CAI と大規模言語モデルの研究知見を、企業内研修・講演・導入支援という形で実務に届けます。不確実性の扱い、バイアス監査、AI に任せる範囲の設計まで。",
   url: "https://lab.affectosphere.group/services/",
   provider: { "@id": "https://lab.affectosphere.group/#organization" },
   areaServed: { "@type": "Country", name: "日本" },
@@ -17,7 +17,7 @@ const serviceLd = {
     "@type": "OfferCatalog",
     name: "サービス",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "企業内研修・勉強会", description: "感情AI、LLMガバナンス、AI倫理、機械学習の不確実性。経営層から実務者まで、テーマと深さを調整します。" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "企業内研修・勉強会", description: "CAI、LLMガバナンス、AI倫理、機械学習の不確実性。経営層から実務者まで、テーマと深さを調整します。" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "講演・登壇", description: "業界カンファレンス、社内イベント、自治体の有識者枠まで。" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "導入支援・コンサルティング", description: "AI戦略の方針づくり、製品仕様の妥当性確認、リスク評価、ガバナンス整備。" } },
     ],
@@ -26,8 +26,8 @@ const serviceLd = {
 ---
 
 <BaseLayout jsonLd={serviceLd}
-  title="企業向け — 感情AI・LLMの研修／講演／導入支援"
-  description="Affectosphere Group の企業向けサービス。AI 研修・講演・コンサルティングを通じて、感情 AI と LLM の最前線を実務に届けます。"
+  title="企業向け — CAI・LLMの研修／講演／導入支援"
+  description="Affectosphere Group の企業向けサービス。AI 研修・講演・コンサルティングを通じて、CAI と LLM の最前線を実務に届けます。"
   fullBleed
 >
   <!-- Hero -->
@@ -72,7 +72,7 @@ const serviceLd = {
           class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
           style="line-height: 1.85;"
         >
-          既存の感情 AI の多くは「顔や声から感情を当てる」方向に進んできました。私たちが向かうのはその先です。感情を読み取るだけでなく、確率として保持し、それを前提に考え、人に返す。この一連の働きを LLM やエージェントに持たせるための土台を、私たちは <span class="text-amber-deep">Affective Intelligence Layer</span>（感情知能レイヤー）と呼んでいます。
+          既存の感情認識AIの多くは「顔や声から感情を当てる」方向に進んできました。私たちが向かうのはその先です。感情を読み取るだけでなく、確率として保持し、それを前提に考え、人に返す。この一連の働きを LLM やエージェントに持たせるための土台を、私たちは <span class="text-amber-deep">Affective Intelligence Layer</span>（感情知能レイヤー）と呼んでいます。
         </p>
         <p
           class="mt-5 font-display text-lg leading-relaxed text-charcoal md:text-xl"
@@ -107,14 +107,14 @@ const serviceLd = {
           企業内研修・勉強会
         </h3>
         <p class="mt-5 font-display text-base leading-relaxed text-charcoal" style="line-height:1.85;">
-          感情 AI、LLM ガバナンス、AI 倫理、機械学習の不確実性 ── 経営層・マネージャー・エンジニア・コンプライアンス担当のいずれにも届くよう、テーマと深さを調整します。1 回 90 分の単発から、複数回シリーズまで柔軟に対応します。
+          CAI、LLM ガバナンス、AI 倫理、機械学習の不確実性 ── 経営層・マネージャー・エンジニア・コンプライアンス担当のいずれにも届くよう、テーマと深さを調整します。1 回 90 分の単発から、複数回シリーズまで柔軟に対応します。
         </p>
         <p class="mt-6 font-sans text-xs uppercase tracking-[0.14em] text-slate font-medium">
           こんなテーマで
         </p>
         <ul class="mt-3 space-y-2 font-display text-sm text-charcoal">
           <li>・LLM 時代のリスク管理(GDPR / EU AI Act 入門)</li>
-          <li>・感情 AI を業務に取り入れる際の設計原則</li>
+          <li>・CAI を業務に取り入れる際の設計原則</li>
           <li>・AI の不確実性をビジネス判断にどう使うか</li>
           <li>・コンテンツ AI とユーザー保護の境界線</li>
         </ul>
@@ -133,7 +133,7 @@ const serviceLd = {
           得意な切り口
         </p>
         <ul class="mt-3 space-y-2 font-display text-sm text-charcoal">
-          <li>・感情 AI の社会実装と倫理的境界</li>
+          <li>・CAI の社会実装と倫理的境界</li>
           <li>・LLM が生む新しいバイアスと監査の実務</li>
           <li>・AI for Science ── 各分野での AI 活用事例</li>
           <li>・生成 AI 時代の働き方とウェルビーイング</li>
@@ -192,7 +192,7 @@ const serviceLd = {
       <div>
         <p class="font-display text-lg leading-relaxed text-charcoal md:text-xl" style="line-height: 1.85;">
           企業の研究所から中学校の教室まで、相手の前提がまったく違う場で話してきました。
-          感情 AI は、技術としてよりも先に「これをどこまで人に向けてよいのか」が問われる領域です。
+          CAI は、技術としてよりも先に「これをどこまで人に向けてよいのか」が問われる領域です。
           その問いは、現場ごとに形を変えて現れます。
         </p>
 
@@ -200,19 +200,19 @@ const serviceLd = {
           <li class="grid gap-2 py-6 md:grid-cols-[18rem_1fr] md:gap-8">
             <p class="font-display text-base font-medium text-charcoal">自動車メーカー・同社中央研究所</p>
             <p class="font-display text-base leading-relaxed text-slate">
-              AI 技術の導入支援、および感情 AI に関するワークショップの開催。
+              AI 技術の導入支援、およびCAI に関するワークショップの開催。
             </p>
           </li>
           <li class="grid gap-2 py-6 md:grid-cols-[18rem_1fr] md:gap-8">
             <p class="font-display text-base font-medium text-charcoal">民間事業会社</p>
             <p class="font-display text-base leading-relaxed text-slate">
-              AI 技術の導入支援、および感情 AI に関するワークショップの開催。
+              AI 技術の導入支援、およびCAI に関するワークショップの開催。
             </p>
           </li>
           <li class="grid gap-2 py-6 md:grid-cols-[18rem_1fr] md:gap-8">
             <p class="font-display text-base font-medium text-charcoal">国立大学教育学部附属中学校</p>
             <p class="font-display text-base leading-relaxed text-slate">
-              生徒に向けた感情 AI の解説と質疑応答。
+              生徒に向けたCAI の解説と質疑応答。
             </p>
           </li>
         </ul>

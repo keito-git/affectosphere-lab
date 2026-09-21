@@ -1,21 +1,21 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHeader from "../../components/PageHeader.astro";
-import { researchDomains } from "../../data/research-domains.en";
+import { researchDomains, aiForScienceImage } from "../../data/research-domains.en";
 import { caiStages, domainStage } from "../../data/research-map";
 import { webp } from "../../lib/images";
 ---
 
 <BaseLayout
-  title="Research — affective AI from ethics to perception and deployment"
-  description="Affectosphere Group's ten research domains around affective AI — from ethics to perception, internal understanding, human interaction, business, and development."
+  title="Research — CAI from ethics to perception and deployment"
+  description="Affectosphere Group's 10 research domains: nine within CAI — from ethics to perception, internal understanding, human interaction, business, and development — and AI for Science."
   fullBleed
   locale="en"
 >
   <PageHeader
     eyebrow="Research"
-    title="Ten research domains."
-    subtitle="Ten research domains pursued by Affectosphere Group around affective AI. Each domain is deepened independently while remaining in dialogue with the others to weave the larger whole."
+    title="10 research domains."
+    subtitle="Nine domains that make up Computational Affective Intelligence (CAI), and a tenth, AI for Science, that carries its methods into other fields. Each is deepened on its own while staying in dialogue with the others."
     wideSubtitle
   />
 
@@ -63,6 +63,44 @@ import { webp } from "../../lib/images";
         );
       })
     }
+    <div class="mt-16">
+      <div class="reveal flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-stone pb-3">
+        <h2 class="font-label text-[0.78rem] uppercase tracking-[0.2em] text-amber-deep">
+          Beyond CAI
+        </h2>
+        <p class="font-display text-sm text-slate">Where the methods built in CAI are carried into other sciences.</p>
+      </div>
+      <div class="mt-6 grid gap-6">
+        <a
+          href="/en/ai-for-science/"
+          class="reveal group relative flex h-full flex-col overflow-hidden border border-stone shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover"
+        >
+          <div
+            class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
+            style={`background-image: url('${webp(aiForScienceImage, 1600)}');`}
+            aria-hidden="true"
+          />
+          <div
+            class="absolute inset-0 bg-ivory/70 transition-colors duration-300 group-hover:bg-ivory/60"
+            aria-hidden="true"
+          />
+          <div class="relative z-10 flex h-full flex-col p-6 min-h-[240px]">
+            <h3 class="font-display text-2xl font-bold text-charcoal">AI for Science</h3>
+            <p class="mt-4 max-w-prose font-display text-base font-bold leading-relaxed text-charcoal">
+              Education, political science, ecology and law: taking the lab's way of treating human judgement as data into other fields, and learning where AI can and cannot be trusted there.
+            </p>
+            <span class="mt-auto pt-6 font-heading text-sm font-bold tracking-wide text-charcoal transition-colors group-hover:text-amber-deep">
+              Read more &rarr;
+            </span>
+          </div>
+        </a>
+      </div>
+      <p class="reveal mt-6">
+        <a href="/en/research/other-ai-research/" class="link-amber font-display text-sm text-slate">
+          Other AI research, outside CAI and AI for Science &rarr;
+        </a>
+      </p>
+    </div>
   </section>
 
   <div class="h-section-sm" aria-hidden="true"></div>

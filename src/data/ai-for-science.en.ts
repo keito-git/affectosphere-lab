@@ -14,7 +14,7 @@ export type NarrativeBlock = {
 };
 
 export const aiForScienceLongDescription =
-  "AI for Science brings AI in as a new instrument of observation, replacing knowledge production that depended on experience and judgement with procedures that can be measured and repeated. Affectosphere Group works with researchers across education, political science, ecology and law, carrying over the techniques built in affective AI for treating the variance in human judgement as data.";
+  "AI for Science brings AI in as a new instrument of observation, replacing knowledge production that depended on experience and judgement with procedures that can be measured and repeated. Affectosphere Group works with researchers across education, political science, ecology and law, carrying over the techniques built in CAI for treating the variance in human judgement as data.";
 
 export const aiForScienceFindings =
   "One structure recurs across fields: an LLM produces the plausible average at high quality, and systematically drops the tails — the rare argument, the minority state, the long tail of naming, the domain-specific rule. AI for Science is less the application of a method than the work of deciding, field by field, what may be delegated and what may not.";
@@ -43,6 +43,6 @@ export const aiForScienceNarrative: NarrativeBlock[] = [
     text: "Given ten years of the Japanese real-estate transaction licence exam, no model reached the pass mark. Not a stage of full substitution, then, but promising as support for a learner or an assistant to a legal team.",
   },
   {
-    text: "It is where diagnostic technique built in affective AI is carried out to questions that matter socially — and, through the exchange with domain experts, where affective AI's own methodology gets reworked.",
+    text: "It is where diagnostic technique built in CAI is carried out to questions that matter socially — and, through the exchange with domain experts, where CAI's own methodology gets reworked.",
   },
 ];

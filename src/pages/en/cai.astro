@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CaiPage from "../../components/CaiPage.astro";
+
+const termLd = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  name: "Computational Affective Intelligence",
+  alternateName: ["CAI"],
+  description:
+    "The study of how affect is represented, inferred, generated, learned, and utilized by artificial intelligence systems.",
+  url: "https://lab.affectosphere.group/en/cai/",
+};
+---
+
+<BaseLayout
+  title="What is CAI — Computational Affective Intelligence"
+  description="What Computational Affective Intelligence (CAI) is: its definition, how it widens emotion recognition and affective computing, why the LLM era needs it, and its four tiers."
+  jsonLd={termLd}
+  fullBleed
+  locale="en"
+>
+  <CaiPage locale="en" />
+</BaseLayout>

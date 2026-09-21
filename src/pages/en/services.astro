@@ -5,29 +5,29 @@ import { webp } from "../../lib/images";
 const serviceLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "@id": "https://lab.affectosphere.group/services/#service",
-  name: "Affectosphere Group — 感情AI・LLMの企業向けサービス",
+  "@id": "https://lab.affectosphere.group/en/services/#service",
+  name: "Affectosphere Group — CAI and LLM services for business",
   description:
-    "感情 AI と大規模言語モデルの研究知見を、企業内研修・講演・導入支援という形で実務に届けます。不確実性の扱い、バイアス監査、AI に任せる範囲の設計まで。",
-  url: "https://lab.affectosphere.group/services/",
+    "Research on CAI and large language models, delivered to practice as in-house training, talks and adoption support: handling uncertainty, auditing bias, and deciding what to leave to AI.",
+  url: "https://lab.affectosphere.group/en/services/",
   provider: { "@id": "https://lab.affectosphere.group/#organization" },
-  areaServed: { "@type": "Country", name: "日本" },
+  areaServed: { "@type": "Country", name: "Japan" },
   availableLanguage: ["ja", "en"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "サービス",
+    name: "Services",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "企業内研修・勉強会", description: "感情AI、LLMガバナンス、AI倫理、機械学習の不確実性。経営層から実務者まで、テーマと深さを調整します。" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "講演・登壇", description: "業界カンファレンス、社内イベント、自治体の有識者枠まで。" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "導入支援・コンサルティング", description: "AI戦略の方針づくり、製品仕様の妥当性確認、リスク評価、ガバナンス整備。" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "In-house training and study sessions", description: "CAI, LLM governance, AI ethics, uncertainty in machine learning. Topic and depth adjusted from executives to practitioners." } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Talks", description: "Industry conferences, internal events, and expert slots for local government." } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Adoption support and consulting", description: "AI strategy, validation of product specifications, risk assessment, and governance." } },
     ],
   },
 };
 ---
 
 <BaseLayout jsonLd={serviceLd}
-  title="For business — affective AI and LLM training, talks, adoption support"
-  description="Affectosphere Group's services for enterprises. We deliver the frontier of affective AI and LLM research to business practice through training, talks, and consulting."
+  title="For business — CAI and LLM training, talks, adoption support"
+  description="Affectosphere Group's services for enterprises. We deliver the frontier of CAI and LLM research to business practice through training, talks, and consulting."
   fullBleed
   locale="en"
 >
@@ -73,7 +73,7 @@ const serviceLd = {
           class="font-display text-lg leading-relaxed text-charcoal md:text-xl"
           style="line-height: 1.85;"
         >
-          Most affective AI has moved toward guessing a feeling from a face or a voice. We are headed past that. Not only reading emotion, but holding it as a probability, reasoning from it, and giving it back to a person &mdash; the layer that adds those abilities to LLMs and agents is what we call the <span class="text-amber-deep">Affective Intelligence Layer</span>.
+          Most emotion-recognition AI has moved toward guessing a feeling from a face or a voice. We are headed past that. Not only reading emotion, but holding it as a probability, reasoning from it, and giving it back to a person &mdash; the layer that adds those abilities to LLMs and agents is what we call the <span class="text-amber-deep">Affective Intelligence Layer</span>.
         </p>
         <p
           class="mt-5 font-display text-lg leading-relaxed text-charcoal md:text-xl"
@@ -115,7 +115,7 @@ const serviceLd = {
         </p>
         <ul class="mt-3 space-y-2 font-display text-sm text-charcoal">
           <li>· Risk management in the LLM era (GDPR / EU AI Act primer)</li>
-          <li>· Design principles for adopting affective AI</li>
+          <li>· Design principles for adopting CAI</li>
           <li>· Using AI uncertainty in business decisions</li>
           <li>· Drawing the line between content AI and user protection</li>
         </ul>
@@ -134,7 +134,7 @@ const serviceLd = {
           Strongest angles
         </p>
         <ul class="mt-3 space-y-2 font-display text-sm text-charcoal">
-          <li>· Social implementation and ethical boundaries of affective AI</li>
+          <li>· Social implementation and ethical boundaries of CAI</li>
           <li>· New biases produced by LLMs and the practice of auditing</li>
           <li>· AI for Science — cross-disciplinary use cases</li>
           <li>· Ways of working and well-being in the generative AI era</li>
@@ -193,7 +193,7 @@ const serviceLd = {
       <div>
         <p class="font-display text-lg leading-relaxed text-charcoal md:text-xl" style="line-height: 1.85;">
           From a corporate research lab to a middle-school classroom &mdash; rooms whose starting
-          assumptions could hardly be further apart. With affective AI, the question that arrives
+          assumptions could hardly be further apart. With CAI, the question that arrives
           before the technology is always the same: how far may this be pointed at a person? It
           simply takes a different shape in each room.
         </p>
@@ -202,19 +202,19 @@ const serviceLd = {
           <li class="grid gap-2 py-6 md:grid-cols-[18rem_1fr] md:gap-8">
             <p class="font-display text-base font-medium text-charcoal">An automotive manufacturer and its central research laboratory</p>
             <p class="font-display text-base leading-relaxed text-slate">
-              Support for adopting AI technology, and workshops on affective AI.
+              Support for adopting AI technology, and workshops on CAI.
             </p>
           </li>
           <li class="grid gap-2 py-6 md:grid-cols-[18rem_1fr] md:gap-8">
             <p class="font-display text-base font-medium text-charcoal">A private-sector company</p>
             <p class="font-display text-base leading-relaxed text-slate">
-              Support for adopting AI technology, and workshops on affective AI.
+              Support for adopting AI technology, and workshops on CAI.
             </p>
           </li>
           <li class="grid gap-2 py-6 md:grid-cols-[18rem_1fr] md:gap-8">
             <p class="font-display text-base font-medium text-charcoal">A national university&rsquo;s affiliated junior high school</p>
             <p class="font-display text-base leading-relaxed text-slate">
-              A talk on affective AI for students, with an open question-and-answer session.
+              A talk on CAI for students, with an open question-and-answer session.
             </p>
           </li>
         </ul>

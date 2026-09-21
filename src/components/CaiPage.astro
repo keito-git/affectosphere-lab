@@ -1,0 +1,337 @@
+---
+// "What is CAI": the definition, how it widens what came before, the questions
+// it asks, and the four tiers — with the lab's own domains and publication
+// counts placed on each tier, read from the same data as the research map.
+import { researchDomains as domainsJa } from "../data/research-domains";
+import { researchDomains as domainsEn } from "../data/research-domains.en";
+import { stages, tiers, stageTier, domainStage, stageStats } from "../data/research-map";
+
+interface Props {
+  locale?: "ja" | "en";
+}
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+const p = isEn ? "/en" : "";
+const domains = isEn ? domainsEn : domainsJa;
+const stats = stageStats();
+
+const tierColumns = tiers.map((t) => {
+  const tierStages = stages.filter((s) => stageTier[s.id] === t.id);
+  const ids = tierStages.map((s) => s.id);
+  return {
+    tier: t,
+    stages: tierStages,
+    domains: domains.filter((d) => ids.includes(domainStage[d.slug])),
+    count: ids.reduce((n, id) => n + (stats[id]?.total ?? 0), 0),
+  };
+});
+
+// Emotion Recognition -> Affective Computing -> CAI: each widens the last.
+const lineage = isEn
+  ? [
+      { name: "Emotion Recognition", does: "Guesses the emotion." },
+      {
+        name: "Affective Computing",
+        does: "Builds computational systems that recognise, generate and respond to emotion.",
+      },
+      {
+        name: "Computational Affective Intelligence",
+        does: "Goes on to ask how an AI understands emotion, how it structures it inside, and how it uses it in reasoning and decisions.",
+      },
+    ]
+  : [
+      { name: "Emotion Recognition", does: "感情を当てる。" },
+      { name: "Affective Computing", does: "感情を認識・生成・応答する計算システムをつくる。" },
+      {
+        name: "Computational Affective Intelligence",
+        does: "AIが感情をどう理解し、内部でどう構造化し、推論や意思決定にどう使うかまでを扱う。",
+      },
+    ];
+
+const questions = isEn
+  ? [
+      "How is human emotion represented inside an AI?",
+      "How should an AI handle the ambiguity of emotion labels, and the differences between people?",
+      "On what grounds does an LLM judge anger, sadness or empathy?",
+      "What structure, and what bias, sits in the emotional expression an AI produces?",
+      "Is there any sense in giving an AI emotional states or emotional reasoning?",
+      "How should emotional interaction between people and AI be designed and evaluated?",
+      "What does the technology do to society, ethics and culture?",
+    ]
+  : [
+      "人間の感情は、AIの内部でどのように表象されるのか。",
+      "感情ラベルの曖昧さや個人差を、AIはどう扱うべきか。",
+      "LLMは「怒り」「悲しみ」「共感」を、何に基づいて判断しているのか。",
+      "AI自身が生成する感情表現には、どんな構造やバイアスがあるのか。",
+      "AIに感情状態や感情的推論を持たせることに、意味はあるのか。",
+      "人間とAIの感情的相互作用を、どう設計し、どう評価すべきか。",
+      "その技術は、社会・倫理・文化にどんな影響を与えるのか。",
+    ];
+---
+
+<!-- Header on the dark observation surface, as on the home page. -->
+<section class="surface-ink relative overflow-hidden" aria-labelledby="cai-heading">
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-content page-x pb-20 pt-28 md:pb-24 md:pt-36">
+    <p class="eyebrow reveal">Computational Affective Intelligence</p>
+    <h1
+      id="cai-heading"
+      class="reveal mt-5 font-display font-semibold tracking-tight text-[#F4F2ED]"
+      style="font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.1;"
+    >
+      {isEn ? "What is CAI" : "CAIとは"}
+    </h1>
+    <p class="reveal mt-3 font-display text-xl text-amber md:text-2xl">
+      {isEn ? "Computational Affective Intelligence" : "計算的感情知能"}
+    </p>
+    <p
+      class="reveal mt-8 max-w-prose font-display text-[#CFCBC2]"
+      style="font-size: clamp(1.05rem, 1.35vw, 1.25rem); line-height: 1.85;"
+    >
+      {
+        isEn
+          ? "A research framework that treats emotion computationally all the way through an AI: recognition, reasoning, generation, internal representation, and social interaction."
+          : "感情を、AIの認識・推論・生成・内部表現・社会的相互作用まで含めて、計算論的に扱う研究の枠組み。"
+      }
+    </p>
+  </div>
+</section>
+
+<!-- 1. Definition -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-def">
+  <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-12">
+    <div>
+      <p class="eyebrow reveal">01 — Definition</p>
+      <h2 id="cai-def" class="reveal mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+        {isEn ? "Definition" : "定義"}
+      </h2>
+    </div>
+    <div>
+      <p
+        class="reveal border-l-2 border-amber pl-6 font-display text-xl leading-relaxed text-charcoal md:text-2xl"
+        style="line-height: 1.75;"
+      >
+        {
+          isEn ? (
+            <>
+              Computational Affective Intelligence is the study of how affect is
+              <span class="text-amber-deep"> represented, inferred, generated, learned, and utilized</span>
+              by artificial intelligence systems.
+            </>
+          ) : (
+            <>
+              Computational Affective Intelligence とは、人間および人工知能における感情・情動を、
+              <span class="text-amber-deep">表現・認識・推論・生成・学習・利用</span>
+              という観点から計算論的に理解し、設計する研究領域である。
+            </>
+          )
+        }
+      </p>
+      {
+        !isEn && (
+          <p class="reveal mt-5 pl-6 font-display text-base italic leading-relaxed text-slate">
+            Computational Affective Intelligence is the study of how affect is represented, inferred,
+            generated, learned, and utilized by artificial intelligence systems.
+          </p>
+        )
+      }
+      <p class="reveal mt-8 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.9;">
+        {
+          isEn
+            ? "Affective Computing has traditionally been built around human-centred emotion technology: detecting emotion, responding to it, expressing it. CAI takes in more than human emotion. It also asks how an AI expresses, interprets, reasons over and generates emotion, and how it holds the uncertainty and the value judgements that come with it."
+            : "Affective Computing は伝統的に、「人間の感情を検出する」「感情に反応する」「感情を表現する」といった、人間中心の感情技術を核としてきた。CAIが対象とするのは、人間の感情だけではない。AIが感情をどう表現し、どう解釈し、どう推論し、どう生成するのか。感情に関する不確実性や価値判断を、内部にどう持つのか。そこまでを扱う。"
+        }
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Lineage: each stage widens the one before it. -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-lineage">
+  <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-12">
+    <div>
+      <p class="eyebrow reveal">02 — Lineage</p>
+      <h2 id="cai-lineage" class="reveal mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+        {isEn ? "Not another name for emotion recognition" : "感情認識AIの言い換えではない"}
+      </h2>
+    </div>
+    <div>
+      <p class="reveal font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.9;">
+        {
+          isEn
+            ? "What is usually called emotion AI has mostly meant the two inner boxes below. CAI contains them, and widens the question outward."
+            : "一般に「感情AI」と呼ばれてきた技術の多くは、下の図の内側の2つにあたる。CAIはそれらを含んだうえで、問いを外側へ広げる。"
+        }
+      </p>
+      <!-- Nested scopes, drawn in HTML so the text stays legible on a phone. -->
+      <figure class="reveal mt-8" aria-label={isEn ? "Three nested scopes" : "入れ子になった3つの範囲"}>
+        <div class="border border-amber bg-amber/5 p-4 md:p-6">
+          <p class="font-label text-[0.72rem] uppercase tracking-[0.16em] text-amber-deep">{lineage[2].name}</p>
+          <p class="mt-2 font-display text-base leading-relaxed text-charcoal">{lineage[2].does}</p>
+          <div class="mt-5 border border-stone bg-cream p-4 md:p-5">
+            <p class="font-label text-[0.72rem] uppercase tracking-[0.16em] text-slate">{lineage[1].name}</p>
+            <p class="mt-2 font-display text-base leading-relaxed text-charcoal">{lineage[1].does}</p>
+            <div class="mt-4 border border-stone bg-ivory p-4">
+              <p class="font-label text-[0.72rem] uppercase tracking-[0.16em] text-slate">{lineage[0].name}</p>
+              <p class="mt-2 font-display text-base leading-relaxed text-charcoal">{lineage[0].does}</p>
+            </div>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Why now -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-why">
+  <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-12">
+    <div>
+      <p class="eyebrow reveal">03 — Why now</p>
+      <h2 id="cai-why" class="reveal mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+        {isEn ? "Why the LLM era needs it" : "なぜ、LLMの時代に必要か"}
+      </h2>
+    </div>
+    <div class="space-y-6 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.9;">
+      <p class="reveal">
+        {
+          isEn
+            ? "The central problem used to be estimating an emotion label from a face, a voice or a sentence. Now the LLM itself reasons about emotion, reaches different emotional judgements depending on persona, values and culture, and produces emotional responses of its own."
+            : "これまでの中心は、入力された顔・音声・文章から感情ラベルを推定する問題だった。いまはLLM自身が感情について推論し、人格・価値観・文化によって異なる感情判断をし、感情的な応答を生成する。"
+        }
+      </p>
+      <p class="reveal">
+        {
+          isEn
+            ? "Recognition alone no longer covers that. Emotional intelligence itself has to be studied as an object of computation."
+            : "そうなると、「認識」だけでは足りない。感情知能そのものを、計算の対象として研究する必要がある。"
+        }
+      </p>
+      <p class="reveal">
+        {
+          isEn ? (
+            <>
+              And once emotion surrounds society like an atmosphere — what we call the
+              <a href={`${p}/affectosphere/`} class="link-amber text-amber-deep">Affectosphere</a>
+              — the AI that reads it has to be designed as an intelligence, with its uncertainty and its
+              limits in view, not only as a sensor.
+            </>
+          ) : (
+            <>
+              感情が大気のように社会を包む
+              <a href={`${p}/affectosphere/`} class="link-amber text-amber-deep">Affectosphere</a>
+              の時代には、それを読むAIを、センサーとしてではなく、不確実性と限界まで含めた知能として設計しなければならない。
+            </>
+          )
+        }
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Questions -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-questions">
+  <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-12">
+    <div>
+      <p class="eyebrow reveal">04 — Questions</p>
+      <h2 id="cai-questions" class="reveal mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+        {isEn ? "What CAI asks" : "CAIが問うこと"}
+      </h2>
+    </div>
+    <ol class="border-t border-stone">
+      {
+        questions.map((q, i) => (
+          <li class="reveal flex gap-5 border-b border-stone py-4">
+            <span class="w-6 shrink-0 pt-1 font-label text-sm text-amber-deep">{i + 1}</span>
+            <span class="font-display text-base leading-relaxed text-charcoal md:text-lg">{q}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<!-- 5. Four tiers, with the lab's domains placed on each. -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-tiers">
+  <div class="max-w-prose">
+    <p class="eyebrow reveal">05 — Structure</p>
+    <h2 id="cai-tiers" class="reveal mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "Four tiers" : "4つの層"}
+    </h2>
+    <p class="reveal mt-5 font-display text-base leading-relaxed text-slate md:text-lg">
+      {
+        isEn
+          ? "Understanding human emotion, holding it computationally inside an AI, letting the AI reason and act with it, and placing the result among people. Under each tier: the lab's domains that work there, and how many of our publications sit on it."
+          : "人間の感情を理解し、AIの内部で計算表現にし、AIがそれで推論・生成・判断し、人と社会のあいだに置き直す。各層の下に、そこで研究しているラボの領域と、その層に置かれる業績の数を示す。"
+      }
+    </p>
+  </div>
+
+  <ol class="mt-10 grid gap-px border border-stone bg-stone md:grid-cols-4">
+    {
+      tierColumns.map((c, i) => (
+        <li class="reveal relative flex flex-col bg-ivory p-6">
+          <p class="font-label text-[0.72rem] tracking-[0.16em] text-amber-deep">
+            {c.tier.numeral}
+            {i < tierColumns.length - 1 && (
+              <span class="ml-2 text-slate" aria-hidden="true">&rarr;</span>
+            )}
+          </p>
+          <h3 class="mt-2 font-display text-xl font-medium leading-snug text-charcoal">{c.tier.label}</h3>
+          {!isEn && <p class="font-display text-base text-slate">{c.tier.labelJa}</p>}
+          <p class="mt-3 font-display text-sm leading-relaxed text-charcoal">
+            {isEn ? c.tier.noteEn : c.tier.note}
+          </p>
+
+          <p class="mt-5 font-label text-[0.68rem] uppercase tracking-[0.14em] text-slate">
+            {isEn ? "Stages" : "段"}
+          </p>
+          <p class="mt-1 font-display text-sm text-charcoal">
+            {c.stages.map((s) => (isEn ? s.label : s.labelJa)).join(isEn ? " · " : "・")}
+          </p>
+
+          <p class="mt-5 font-label text-[0.68rem] uppercase tracking-[0.14em] text-slate">
+            {isEn ? "Our domains" : "ラボの領域"}
+          </p>
+          <ul class="mt-1 space-y-1">
+            {c.domains.map((d) => (
+              <li>
+                <a href={`${p}/research/${d.slug}/`} class="link-amber font-display text-sm text-charcoal">
+                  {d.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <p class="mt-auto flex items-baseline gap-2 pt-6">
+            <span class="font-label text-2xl text-charcoal">{c.count}</span>
+            <span class="font-display text-sm text-slate">{isEn ? "publications" : "件の業績"}</span>
+          </p>
+        </li>
+      ))
+    }
+  </ol>
+  <p class="reveal mt-4 font-display text-sm text-slate">
+    {
+      isEn
+        ? "Each publication is counted once, at the stage it contributes to most."
+        : "業績は1件ずつ読み、最も貢献している段に1回だけ数えている。"
+    }
+  </p>
+</section>
+
+<!-- Onward -->
+<section class="mx-auto mt-section max-w-content page-x">
+  <div class="reveal flex flex-wrap gap-4 border-t border-stone pt-10">
+    <a href={`${p}/research-map/`} class="btn-solid">
+      {isEn ? "See the research map" : "研究の地図を見る"} <span aria-hidden="true">&rarr;</span>
+    </a>
+    <a href={`${p}/research/`} class="btn-ghost">
+      {isEn ? "The 10 research domains" : "10の研究領域"} <span aria-hidden="true">&rarr;</span>
+    </a>
+    <a href={`${p}/affectosphere/`} class="btn-ghost">
+      {isEn ? "What is Affectosphere" : "Affectosphereとは"} <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<div class="h-section-sm" aria-hidden="true"></div>

@@ -30,6 +30,7 @@ export type NavItem = {
 export const navItems: NavItem[] = [
   // What the lab believes
   { label: "Affectosphere", href: "/affectosphere/" },
+  { label: "CAI", href: "/cai/" },
   // What it studies
   { groupStart: true, label: "Research", href: "/research/" },
   { label: "Research Map", href: "/research-map/" },

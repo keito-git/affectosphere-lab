@@ -1,20 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeader from "../components/PageHeader.astro";
-import { researchDomains } from "../data/research-domains";
+import { researchDomains, aiForScienceImage } from "../data/research-domains";
 import { caiStages, domainStage } from "../data/research-map";
 import { webp } from "../lib/images";
 ---
 
 <BaseLayout
-  title="研究領域 — 感情AIの倫理・認識・生成・社会実装"
-  description="Affectosphere Groupの十の研究領域 ― 感情AIの倫理から、認識・内部理解・人間とのインタラクション、ビジネス、開発まで。"
+  title="研究領域 — CAIの倫理・認識・生成・社会実装"
+  description="Affectosphere Groupの10の研究領域 ― CAIの倫理から、認識・内部理解・人間とのインタラクション、ビジネス、開発までの9領域と、AI for Science。"
   fullBleed
 >
   <PageHeader
     eyebrow="Research"
-    title="十の研究領域。"
-    subtitle="Affectosphere Group が取り組んでいる、感情AIをめぐる十の研究領域です。それぞれの領域は独立に深められつつも、互いに往復しながら全体を編んでいます。"
+    title="10の研究領域。"
+    subtitle="Computational Affective Intelligence（CAI）を形づくる9つの領域と、その方法を他の科学へ持ち出す10番目の領域、AI for Science。それぞれは独立に深められつつも、互いに往復しながら全体を編んでいます。"
     wideSubtitle
   />
 
@@ -65,6 +65,44 @@ import { webp } from "../lib/images";
         );
       })
     }
+    <div class="mt-16">
+      <div class="reveal flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-stone pb-3">
+        <h2 class="font-label text-[0.78rem] uppercase tracking-[0.2em] text-amber-deep">
+          Beyond CAI<span class="ml-3 font-display text-base normal-case tracking-normal text-charcoal">CAIの外へ</span>
+        </h2>
+        <p class="font-display text-sm text-slate">CAIで培った方法を、ほかの科学の問いへ持ち出す。</p>
+      </div>
+      <div class="mt-6 grid gap-6">
+        <a
+          href="/ai-for-science/"
+          class="reveal group relative flex h-full flex-col overflow-hidden border border-stone shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover"
+        >
+          <div
+            class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
+            style={`background-image: url('${webp(aiForScienceImage, 1600)}');`}
+            aria-hidden="true"
+          />
+          <div
+            class="absolute inset-0 bg-ivory/70 transition-colors duration-300 group-hover:bg-ivory/60"
+            aria-hidden="true"
+          />
+          <div class="relative z-10 flex h-full flex-col p-6 min-h-[240px]">
+            <h3 class="font-display text-2xl font-bold text-charcoal">AI for Science</h3>
+            <p class="mt-4 max-w-prose font-display text-base font-bold leading-relaxed text-charcoal">
+              教育学・政治学・生態学・法律学。人間判断の揺らぎをデータとして扱う技法を他分野に持ち出し、AIに任せられることと任せてはならないことの境界を見極める。
+            </p>
+            <span class="mt-auto pt-6 font-heading text-sm font-bold tracking-wide text-charcoal transition-colors group-hover:text-amber-deep">
+              詳しく見る &rarr;
+            </span>
+          </div>
+        </a>
+      </div>
+      <p class="reveal mt-6">
+        <a href="/research/other-ai-research/" class="link-amber font-display text-sm text-slate">
+          CAIにもAI for Scienceにも収まらない、その他のAI研究 &rarr;
+        </a>
+      </p>
+    </div>
   </section>
 
   <div class="h-section-sm" aria-hidden="true"></div>

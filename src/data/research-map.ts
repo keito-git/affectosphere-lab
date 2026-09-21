@@ -85,8 +85,8 @@ export const stages: Stage[] = [
   {
     id: "beyond",
     label: "Beyond affect",
-    labelJa: "感情AIの外側",
-    note: "感情AIの外側で進めている、AI研究そのもの。",
+    labelJa: "CAIの外側",
+    note: "CAIの外側で進めている、AI研究そのもの。",
     noteEn: "AI research pursued outside affective computing.",
   },
 ];
@@ -271,7 +271,7 @@ export const publicationStage: Record<string, StageId> = {
  * the lab's ten research areas it belongs to. Assigned by reading each entry.
  */
 export const publicationDomain: Record<string, string> = {
-  // 感情AIの倫理と哲学
+  // CAIの倫理と哲学
   "inoshita-ai-homogenize-2026": "ethics-philosophy",
   "inoshita-affective-silos-2026": "ethics-philosophy",
   "inoshita-affective-sovereignty-2026": "ethics-philosophy",
@@ -281,7 +281,7 @@ export const publicationDomain: Record<string, string> = {
   // 人間の感情理解
   "inoshita-bayesian-spectral-2026": "human-emotion-understanding",
 
-  // 感情AIの内部理解
+  // CAIの内部理解
   "inoshita-llm-emotion-uncertainty-2026": "interpretability",
   "inoshita-uncertainty-decomp-2026": "interpretability",
   "inoshita-uncertainty-routing-2026": "interpretability",
@@ -311,10 +311,10 @@ export const publicationDomain: Record<string, string> = {
   "c-dira-2025": "emotion-recognition",
   "ieee-ithings-2024": "emotion-recognition",
 
-  // 感情AIと人間のインタラクション
+  // CAIと人間のインタラクション
   "matsuo-self-reflective-2026": "human-ai-interaction",
 
-  // 感情AIとビジネス
+  // CAIとビジネス
   "ieee-zinc-2026": "business",
   "joho-chishiki-multimodal-2025": "business",
   "joho-chishiki-tourism-2025": "business",
@@ -322,7 +322,7 @@ export const publicationDomain: Record<string, string> = {
   "rikoukei-essay-2025": "business",
   "hito-shigoto-2024": "business",
 
-  // 感情AIに基づく開発
+  // CAIに基づく開発
   "inoshita-cognitive-causal-2026": "application-development",
   "inoshita-driver-intervention-2026": "application-development",
   "ieee-hpcc-2025": "application-development",

@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CaiPage from "../components/CaiPage.astro";
+
+const termLd = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  name: "Computational Affective Intelligence",
+  alternateName: ["CAI", "計算的感情知能"],
+  description:
+    "人間および人工知能における感情・情動を、表現・認識・推論・生成・学習・利用という観点から計算論的に理解し、設計する研究領域。",
+  url: "https://lab.affectosphere.group/cai/",
+};
+---
+
+<BaseLayout
+  title="CAIとは — 計算的感情知能（Computational Affective Intelligence）"
+  description="Computational Affective Intelligence（CAI・計算的感情知能）とは何か。定義、感情認識・Affective Computingとの違い、LLMの時代に必要な理由、4つの層と研究領域。"
+  jsonLd={termLd}
+  fullBleed
+>
+  <CaiPage locale="ja" />
+</BaseLayout>

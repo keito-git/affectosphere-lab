@@ -36,12 +36,12 @@ export const researchDomains: ResearchDomain[] = [
   // ===================================================================
   {
     slug: "ethics-philosophy",
-    title: "Ethics and Philosophy of Affective AI",
+    title: "Ethics and Philosophy of CAI",
     image: fieldImage("感情AIの倫理と哲学.png"),
     summary:
       "We keep asking who emotion-measuring technologies are for, and how they should be used. We reexamine, in the language of philosophy, the norms that lie between technology and the human.",
     longDescription:
-      "Affective AI is a socio-technical system layered out of psychological theory, annotation, modeling, dialogue design, social application, and ethics. Yet existing research tends to advance within each layer in isolation, and structural arguments that cut across layers — or critique that bridges the technical and the humanistic — remain limited. This domain calls for rethinking affective AI not as a single technology but as a layered structure, and for philosophically revisiting the guiding principles of responsible design and social deployment.",
+      "CAI is a socio-technical system layered out of psychological theory, annotation, modeling, dialogue design, social application, and ethics. Yet existing research tends to advance within each layer in isolation, and structural arguments that cut across layers — or critique that bridges the technical and the humanistic — remain limited. This domain calls for rethinking CAI not as a single technology but as a layered structure, and for philosophically revisiting the guiding principles of responsible design and social deployment.",
     findings:
       "Stacking layer-by-layer optimizations is not enough: upstream assumptions structurally induce downstream failures. Recurrent patterns of disconnection appear in specific combinations — mismatch between theory and data, cognitive mismatch between models and dialogue interfaces, the splintering of responsibility between technology and ethics — and these are not isolated bugs but cascades that chain across layers. Addressing them requires cross-cutting design principles: longitudinal evaluation, deployment-specific accountability, and preservation of users' interpretive authority.",
     narrative: [
@@ -63,8 +63,8 @@ export const researchDomains: ResearchDomain[] = [
           src: "",
           svg: "silos",
           caption:
-            "感情AIは六つの層でできている。層はそれぞれ独立に深まり、問題は層と層のあいだ——責任が落ちる場所——に生じる。",
-          alt: "六つの層が積み重なり、その境界に隙間があることを示した図",
+            "Affective AIは6つの層でできている。層はそれぞれ独立に深まり、問題は層と層のあいだ——責任が落ちる場所——に生じる。",
+          alt: "6つの層が積み重なり、その境界に隙間があることを示した図",
         },
       },
       {
@@ -75,22 +75,22 @@ export const researchDomains: ResearchDomain[] = [
       {
         heading: "Five design criteria",
         text:
-          "As a response, the paper proposes five interlocking Design Criteria (DC). DC1, 'theory disclosure,' requires that the adopted emotion theory be explicitly stated in both papers and implementations. DC2, 'intervention boundaries,' requires that the scope of legitimate intervention by affective AI be defined in advance and that the design prevent overreach. DC3, 'longitudinal evaluation,' makes it essential to track effects over time rather than measure accuracy at a single moment. DC4, 'deployment-specific accountability,' requires that — across research prototypes, field trials, and commercial deployment — it be made explicit who bears responsibility for what. DC5, 'preservation of users' interpretive authority,' bakes into the design the principle that the final right to interpret an AI output belongs to the user. These five are not independent rules but a mutually reinforcing normative system.",
+          "As a response, the paper proposes five interlocking Design Criteria (DC). DC1, 'theory disclosure,' requires that the adopted emotion theory be explicitly stated in both papers and implementations. DC2, 'intervention boundaries,' requires that the scope of legitimate intervention by CAI be defined in advance and that the design prevent overreach. DC3, 'longitudinal evaluation,' makes it essential to track effects over time rather than measure accuracy at a single moment. DC4, 'deployment-specific accountability,' requires that — across research prototypes, field trials, and commercial deployment — it be made explicit who bears responsibility for what. DC5, 'preservation of users' interpretive authority,' bakes into the design the principle that the final right to interpret an AI output belongs to the user. These five are not independent rules but a mutually reinforcing normative system.",
       },
       {
         heading: "Affective sovereignty",
         text:
-          "DC5 — preservation of users' interpretive authority — sits at the core of the 'emotional sovereignty' concept that this domain puts forward. Emotional sovereignty is the normative position that the final right to interpret, record, and disclose one's own emotions belongs to the person experiencing them. It demands that the asymmetric power relation between an AI saying 'you are angry' and a person replying 'I do not feel that way' be consciously dissolved at the design stage. The concept is positioned as an extension of the right to self-determination in medicine and the right to informational self-control in data protection, and is proposed as a new human-rights notion for the age of affective AI.",
+          "DC5 — preservation of users' interpretive authority — sits at the core of the 'emotional sovereignty' concept that this domain puts forward. Emotional sovereignty is the normative position that the final right to interpret, record, and disclose one's own emotions belongs to the person experiencing them. It demands that the asymmetric power relation between an AI saying 'you are angry' and a person replying 'I do not feel that way' be consciously dissolved at the design stage. The concept is positioned as an extension of the right to self-determination in medicine and the right to informational self-control in data protection, and is proposed as a new human-rights notion for an age when AI reads emotion.",
       },
       {
         heading: "Why the normative question, now",
         text:
-          "The social and academic reasons that philosophical and normative work on affective AI is needed right now are clear. First, the rapid spread of generative AI is pouring systems that read and respond to emotion into everyday life, and treating their behavior as a problem only after the fact is no longer fast enough. Second, even though emotional data is sensitive personal information, large areas of it are not adequately covered by current law. Third, a shared language among engineers, users, and regulators has yet to mature, and discussion tends to split between technical and ethical registers. Research in this domain aims to present a framework that fills these three gaps.",
+          "The social and academic reasons that philosophical and normative work on CAI is needed right now are clear. First, the rapid spread of generative AI is pouring systems that read and respond to emotion into everyday life, and treating their behavior as a problem only after the fact is no longer fast enough. Second, even though emotional data is sensitive personal information, large areas of it are not adequately covered by current law. Third, a shared language among engineers, users, and regulators has yet to mature, and discussion tends to split between technical and ethical registers. Research in this domain aims to present a framework that fills these three gaps.",
       },
       {
         heading: "The thread through everything else",
         text:
-          "This position paper is not a technical paper but a map for re-situating affective AI as a socio-technical system, and it functions as a reference frame for subsequent implementation research and ethical debate. The other domains of our lab — augmenting emotional data, understanding the inside of affective AI, human–AI interaction, business application, and psychological-support development — can each be understood as concrete research carrying one of the layers in this map. Ethics and philosophy serve as the warp thread that runs through all the other research.",
+          "This position paper is not a technical paper but a map for re-situating CAI as a socio-technical system, and it functions as a reference frame for subsequent implementation research and ethical debate. The other domains of our lab — augmenting emotional data, understanding the inside of CAI, human–AI interaction, business application, and psychological-support development — can each be understood as concrete research carrying one of the layers in this map. Ethics and philosophy serve as the warp thread that runs through all the other research.",
       },
     ],
   },
@@ -109,7 +109,7 @@ export const researchDomains: ResearchDomain[] = [
       {
         heading: "Look at people first",
         text:
-          "Before we build affective AI, we must understand 'how humans actually experience and express emotion in the first place.' Psychology, cognitive science, and neuroscience have long histories of addressing this question and have proposed numerous theories for classifying, describing, and predicting emotion. This domain aims to re-read those theoretical traditions as the foundation for AI research and to embed them in machine-learning design. For affective AI to escape mere surface-pattern learning and to produce predictions that reflect the structure of human emotional experience, dialogue with psychology is indispensable.",
+          "Before we build CAI, we must understand 'how humans actually experience and express emotion in the first place.' Psychology, cognitive science, and neuroscience have long histories of addressing this question and have proposed numerous theories for classifying, describing, and predicting emotion. This domain aims to re-read those theoretical traditions as the foundation for AI research and to embed them in machine-learning design. For CAI to escape mere surface-pattern learning and to produce predictions that reflect the structure of human emotional experience, dialogue with psychology is indispensable.",
       },
       {
         heading: "Frameworks from psychology",
@@ -120,7 +120,7 @@ export const researchDomains: ResearchDomain[] = [
           svg: "disagreement-kept",
           caption:
             "同じ発話に、人は違う感情を読む。その食い違いを多数決で潰さず分布として保つと、隣接する感情は入れ替わりやすく、反対の感情は入れ替わりにくいという構造が残る。",
-          alt: "三者の異なる判断を、多数決で一つに潰す場合と、分布として保つ場合を並べた図",
+          alt: "3者の異なる判断を、多数決で一つに潰す場合と、分布として保つ場合を並べた図",
         },
       },
       {
@@ -151,7 +151,7 @@ export const researchDomains: ResearchDomain[] = [
       {
         heading: "Designing around the distribution",
         text:
-          "The implication is that 'statistical designs that respect the distribution of human judgments' can serve as a new route to psychologically valid emotion understanding. Variability in annotator judgment is not measurement error but the very diversity of emotional interpretation across human populations. Preserving it through statistical processing lets AI learn 'the distribution of interpretations that a population produces' rather than 'the judgment that the average human would make.' This domain is positioned as foundational research for a next-generation affective AI that respects the subjectivity of emotion.",
+          "The implication is that 'statistical designs that respect the distribution of human judgments' can serve as a new route to psychologically valid emotion understanding. Variability in annotator judgment is not measurement error but the very diversity of emotional interpretation across human populations. Preserving it through statistical processing lets AI learn 'the distribution of interpretations that a population produces' rather than 'the judgment that the average human would make.' This domain is positioned as foundational research for a next-generation CAI that respects the subjectivity of emotion.",
       },
     ],
   },
@@ -165,12 +165,12 @@ export const researchDomains: ResearchDomain[] = [
     longDescription:
       "Affective-AI training requires emotion-labeled data produced by humans, yet collection is constrained both structurally and ethically: psychological burden on annotators, privacy, annotator idiosyncrasy (individual bias), and difficulty of collecting data from particular populations such as children or older adults. This domain studies non-individual data generation that does not rely on personalized collection, together with methods that augment existing data semantically and distributionally. Approaches include LLM-based synthesis, knowledge-driven conditional generation, persona conditioning, and developmental-stage adaptation, all running in parallel.",
     findings:
-      "LLM-based emotion-data generation can — beyond mere paraphrasing — reach distributional alignment and diversity comparable to real data when geometric, knowledge-based, persona-based, and developmental controls are combined. 'Directional control' that targets underpopulated emotional regions, 'knowledge-driven' designs that embed human knowledge as statistical features, and multi-stage 'persona conditioning' have emerged as keys to achieving distributional alignment and diversity simultaneously. These open paths to deploying affective AI even in areas where collection is ethically difficult.",
+      "LLM-based emotion-data generation can — beyond mere paraphrasing — reach distributional alignment and diversity comparable to real data when geometric, knowledge-based, persona-based, and developmental controls are combined. 'Directional control' that targets underpopulated emotional regions, 'knowledge-driven' designs that embed human knowledge as statistical features, and multi-stage 'persona conditioning' have emerged as keys to achieving distributional alignment and diversity simultaneously. These open paths to deploying CAI even in areas where collection is ethically difficult.",
     narrative: [
       {
         heading: "The constraint is collection",
         text:
-          "Affective-AI training requires emotion-labeled data produced by humans, but collection is not merely a matter of workflow efficiency — it runs into structural and ethical constraints. First, emotion annotation can impose a psychological burden on annotators: repeatedly reading and judging text or video laced with pain, sadness, and fear can produce secondary mental harm. Second, since emotional data describes a person's interior directly, demands for privacy protection are extreme. Third, there are populations — children, older adults, specific cultural groups — from which direct collection is ethically difficult. This domain centers on the question of how to secure the data that affective AI needs while honoring these constraints.",
+          "Affective-AI training requires emotion-labeled data produced by humans, but collection is not merely a matter of workflow efficiency — it runs into structural and ethical constraints. First, emotion annotation can impose a psychological burden on annotators: repeatedly reading and judging text or video laced with pain, sadness, and fear can produce secondary mental harm. Second, since emotional data describes a person's interior directly, demands for privacy protection are extreme. Third, there are populations — children, older adults, specific cultural groups — from which direct collection is ethically difficult. This domain centers on the question of how to secure the data that CAI needs while honoring these constraints.",
       },
       {
         heading: "Person-dependent, person-independent",
@@ -202,7 +202,7 @@ export const researchDomains: ResearchDomain[] = [
       {
         heading: "Reproducing developmental features",
         text:
-          "Reproducing Developmental Features and Preserving Semantics in Child-Style Text Generation Using LLM (2025) responds to the ethical difficulty of collecting data directly from children. Adult-oriented Japanese sentences are rewritten across sixteen developmental stages from first grade through fourth-year university, and the work examines semantic preservation and the reproducibility of developmental features. With few-shot prompting, semantic similarity is maintained at 0.82–0.99 while kanji-to-kana ratios and readability indices change in step with grade level. Without accessing children directly, the approach shows the feasibility of synthesizing the 'child-like' style needed for educational affective AI and children's content design.",
+          "Reproducing Developmental Features and Preserving Semantics in Child-Style Text Generation Using LLM (2025) responds to the ethical difficulty of collecting data directly from children. Adult-oriented Japanese sentences are rewritten across sixteen developmental stages from first grade through fourth-year university, and the work examines semantic preservation and the reproducibility of developmental features. With few-shot prompting, semantic similarity is maintained at 0.82–0.99 while kanji-to-kana ratios and readability indices change in step with grade level. Without accessing children directly, the approach shows the feasibility of synthesizing the 'child-like' style needed for educational CAI and children's content design.",
       },
       {
         heading: "What technique cannot settle",
@@ -212,31 +212,31 @@ export const researchDomains: ResearchDomain[] = [
       {
         heading: "A question of where, not how much",
         text:
-          "The implication is that LLM-based emotion-data generation, when combined with geometric, knowledge-based, persona-based, and developmental controls, can — beyond mere paraphrasing — reach distributional alignment and diversity comparable to real data. In particular, 'directional control' that targets underpopulated emotional regions (CIEGAD), 'knowledge-driven' designs that embed human knowledge as statistical features (KDDA), 'persona conditioning' that builds personas in multiple stages (PersonaGen), and 'age adaptation' that controls developmental stage (child-style) each complement data limitations along different axes. These techniques are opening paths to deploying affective AI even in domains where collection is ethically difficult.",
+          "The implication is that LLM-based emotion-data generation, when combined with geometric, knowledge-based, persona-based, and developmental controls, can — beyond mere paraphrasing — reach distributional alignment and diversity comparable to real data. In particular, 'directional control' that targets underpopulated emotional regions (CIEGAD), 'knowledge-driven' designs that embed human knowledge as statistical features (KDDA), 'persona conditioning' that builds personas in multiple stages (PersonaGen), and 'age adaptation' that controls developmental stage (child-style) each complement data limitations along different axes. These techniques are opening paths to deploying CAI even in domains where collection is ethically difficult.",
       },
     ],
   },
   // ===================================================================
   {
     slug: "interpretability",
-    title: "Understanding the Inside of Affective AI",
+    title: "Understanding the Inside of CAI",
     image: fieldImage("感情AIの内部理解.png"),
     summary:
       "We unravel what models actually base their emotion judgments on and make the underlying behavior visible.",
     longDescription:
-      "Affective AI, and Large Language Models (LLMs) in particular, may look as if they are assigning labels correctly on the surface, yet the basis for their judgments is opaque. For emotion tasks, where subjectivity is essential, we must quantify — from distributional and Bayesian perspectives — whether models reproduce the 'hesitation' and 'wavering' of humans, whether confidence aligns with correctness, and how internal knowledge is elicited and used. This domain advances research that clarifies not just output-label accuracy but the shape of the output distribution, the structure of uncertainty, and how internal knowledge is brought to bear.",
+      "CAI, and Large Language Models (LLMs) in particular, may look as if they are assigning labels correctly on the surface, yet the basis for their judgments is opaque. For emotion tasks, where subjectivity is essential, we must quantify — from distributional and Bayesian perspectives — whether models reproduce the 'hesitation' and 'wavering' of humans, whether confidence aligns with correctness, and how internal knowledge is elicited and used. This domain advances research that clarifies not just output-label accuracy but the shape of the output distribution, the structure of uncertainty, and how internal knowledge is brought to bear.",
     findings:
       "Large-scale distributional analyses show that LLMs capture the dominant emotion label (the majority answer) but cannot structurally reproduce the 'shape of wavering' among human annotators. The quality of the gap differs between lexically explicit emotions and emotions that require contextual inference, and post-hoc calibration has limits. Meanwhile, combining Bayesian sampling (cSG-MCMC) with soft-label learning provides a framework that separates data-borne from knowledge-borne uncertainty, enabling more honest uncertainty expression for subjective tasks.",
     narrative: [
       {
         heading: "Right answer, invisible reason",
         text:
-          "Affective AI, and Large Language Models (LLMs) in particular, may appear to assign labels correctly on the surface, yet the basis for their judgments is opaque. This is the classical 'black-box problem' of deep learning: what happens inside the model, and on which input features the output depends, cannot be directly observed by humans. In affective AI, black-boxness is not merely a technical inconvenience but harbors a serious ethical concern. If the AI cannot explain why it ruled 'you are sad,' the user has no basis for accepting or rejecting that ruling. This domain aims to unravel the inside of affective AI and make the underlying behavior visible.",
+          "CAI, and Large Language Models (LLMs) in particular, may appear to assign labels correctly on the surface, yet the basis for their judgments is opaque. This is the classical 'black-box problem' of deep learning: what happens inside the model, and on which input features the output depends, cannot be directly observed by humans. In CAI, black-boxness is not merely a technical inconvenience but harbors a serious ethical concern. If the AI cannot explain why it ruled 'you are sad,' the user has no basis for accepting or rejecting that ruling. This domain aims to unravel the inside of CAI and make the underlying behavior visible.",
       },
       {
         heading: "Problems without one answer",
         text:
-          "Another distinctive feature of emotion tasks is that there is no objectively fixed 'correct answer' — they are subjective problems. The question 'is this text anger or disgust?' divides human annotators. Therefore, evaluation of affective AI should be measured not by agreement with a single ground-truth label but by how faithfully the model reproduces the distribution of human judgments. Concretely, internal understanding must be advanced from three perspectives: (i) whether the model reproduces human 'hesitation' and 'wavering,' (ii) whether confidence aligns with correctness (calibration), and (iii) what knowledge is elicited and how it is used to judge.",
+          "Another distinctive feature of emotion tasks is that there is no objectively fixed 'correct answer' — they are subjective problems. The question 'is this text anger or disgust?' divides human annotators. Therefore, evaluation of CAI should be measured not by agreement with a single ground-truth label but by how faithfully the model reproduces the distribution of human judgments. Concretely, internal understanding must be advanced from three perspectives: (i) whether the model reproduces human 'hesitation' and 'wavering,' (ii) whether confidence aligns with correctness (calibration), and (iii) what knowledge is elicited and how it is used to judge.",
         figure: {
           src: "",
           svg: "uncertainty-shape",
@@ -273,7 +273,7 @@ export const researchDomains: ResearchDomain[] = [
       {
         heading: "An axis other than accuracy",
         text:
-          "The implication is that the internal understanding of affective AI requires evaluation axes distinct from 'improving accuracy.' Concretely, three perspectives are being established as reliability indicators when deploying affective AI in society: (i) distributional alignment (how well the model output distribution matches the human judgment distribution), (ii) calibration quality (how well confidence matches accuracy), and (iii) structural decomposition of uncertainty (the separation of epistemic and aleatoric components). These perspectives connect tightly to other domains in our lab, especially to safety design in applied development and accountability discussions in ethics.",
+          "The implication is that the internal understanding of CAI requires evaluation axes distinct from 'improving accuracy.' Concretely, three perspectives are being established as reliability indicators when deploying CAI in society: (i) distributional alignment (how well the model output distribution matches the human judgment distribution), (ii) calibration quality (how well confidence matches accuracy), and (iii) structural decomposition of uncertainty (the separation of epistemic and aleatoric components). These perspectives connect tightly to other domains in our lab, especially to safety design in applied development and accountability discussions in ethics.",
       },
     ],
   },
@@ -292,7 +292,7 @@ export const researchDomains: ResearchDomain[] = [
       {
         heading: "The task at the centre",
         text:
-          "Emotion recognition is a central task in affective AI and covers many modalities including text, speech, physiological signals, and video. Text-based emotion recognition is widely used in social-media analysis and customer support; speech-based recognition appears in call centers and voice assistants; physiological-signal recognition (heart rate, electrodermal activity, EEG) is deployed in medical and wellbeing applications; and video-based recognition has spread to driver support and educational assessment. Each modality has distinct strengths: text excels in semantic richness, speech offers prosody, physiological signals reach subconscious affective states, and video provides dynamic information from facial expression and posture.",
+          "Emotion recognition is a central task in CAI and covers many modalities including text, speech, physiological signals, and video. Text-based emotion recognition is widely used in social-media analysis and customer support; speech-based recognition appears in call centers and voice assistants; physiological-signal recognition (heart rate, electrodermal activity, EEG) is deployed in medical and wellbeing applications; and video-based recognition has spread to driver support and educational assessment. Each modality has distinct strengths: text excels in semantic richness, speech offers prosody, physiological signals reach subconscious affective states, and video provides dynamic information from facial expression and posture.",
       },
       {
         heading: "From polarity to sarcasm and state",
@@ -339,31 +339,31 @@ export const researchDomains: ResearchDomain[] = [
       {
         heading: "Split by viewpoint, expert and stage",
         text:
-          "The implication is that the key to improving emotion recognition lies not in improving single-model one-shot prediction but in decomposing inference across 'perspectives, experts, and stages.' Sarcasm understanding improves via two streams of literal and intended (DBDA-EDL) and via the chain of norm prediction and intent inference (WM-SAR); driving recognition improves via the cognitive-causal chain (CauPsi) and via a cultural deliberation process (Kairanban). Each simultaneously improves accuracy, explainability, and the quality of uncertainty expression. These designs connect directly to the concern raised in our lab's 'Understanding the Inside of Affective AI' domain — that evaluation must be multifaceted, not merely accuracy-based — and dialogue between design and evaluation is advancing across domains.",
+          "The implication is that the key to improving emotion recognition lies not in improving single-model one-shot prediction but in decomposing inference across 'perspectives, experts, and stages.' Sarcasm understanding improves via two streams of literal and intended (DBDA-EDL) and via the chain of norm prediction and intent inference (WM-SAR); driving recognition improves via the cognitive-causal chain (CauPsi) and via a cultural deliberation process (Kairanban). Each simultaneously improves accuracy, explainability, and the quality of uncertainty expression. These designs connect directly to the concern raised in our lab's 'Understanding the Inside of CAI' domain — that evaluation must be multifaceted, not merely accuracy-based — and dialogue between design and evaluation is advancing across domains.",
       },
     ],
   },
   // ===================================================================
   {
     slug: "human-ai-interaction",
-    title: "Affective AI and Human Interaction",
+    title: "CAI and Human Interaction",
     image: fieldImage("感情AIと人間のインタラクション.png"),
     summary:
       "How should we design the place where people and models face each other? Self-reflection, dialogue, and the problem of co-presence.",
     longDescription:
-      "When affective AI enters society, new relations arise between humans and models. Does it support self-reflection? Does it invite people to defer judgment to it? Does it become a partner in co-presence? Designing that interface requires a logic distinct from technical accuracy. This domain is beginning to launch research that rethinks the relationship itself, across dialogue design, self-reflection support, and HCI mediated by emotion.",
+      "When CAI enters society, new relations arise between humans and models. Does it support self-reflection? Does it invite people to defer judgment to it? Does it become a partner in co-presence? Designing that interface requires a logic distinct from technical accuracy. This domain is beginning to launch research that rethinks the relationship itself, across dialogue design, self-reflection support, and HCI mediated by emotion.",
     findings:
       "This domain is ongoing. Self-reflection support functions in dialogue AI and design principles for co-presence interfaces are being formulated. In emotion-mediated HCI, a hypothesis is taking shape that designs in which AI functions as a 'mirror' or 'conversational partner' — rather than as a 'judge' — contribute to deepening self-understanding. Details will be released as work progresses.",
     narrative: [
       {
         heading: "Not command and response",
         text:
-          "When affective AI enters society, new relations arise between humans and models. Our relations with computers have so far been primarily instrumental — input commands, receive results. But affective AI has the potential to construct deeper relationships as an entity that reads the user's interior, responds to the user, and influences the user's emotion. This domain centers on the question of how to design the 'place' where people and AI face each other through emotion. The object of study is not the improvement of technical accuracy but a logic distinct from it — the design of the relationship itself.",
+          "When CAI enters society, new relations arise between humans and models. Our relations with computers have so far been primarily instrumental — input commands, receive results. But CAI has the potential to construct deeper relationships as an entity that reads the user's interior, responds to the user, and influences the user's emotion. This domain centers on the question of how to design the 'place' where people and AI face each other through emotion. The object of study is not the improvement of technical accuracy but a logic distinct from it — the design of the relationship itself.",
       },
       {
         heading: "Where the AI stands",
         text:
-          "There are several possible stances for the relationship between people and affective AI. The first is the position of 'supporter of self-reflection,' in which the AI helps the user understand and articulate their own emotion. The second is the position of 'authority to which judgment is deferred,' in which the user acts according to the AI's judgment. The third is the position of 'partner in co-presence,' in which the AI functions not as a judge or a supporter but simply as a presence that is there. Each stance carries different design principles and ethical implications. Our lab emphasizes especially the first and the third — stances that respect the non-intrusiveness of AI.",
+          "There are several possible stances for the relationship between people and CAI. The first is the position of 'supporter of self-reflection,' in which the AI helps the user understand and articulate their own emotion. The second is the position of 'authority to which judgment is deferred,' in which the user acts according to the AI's judgment. The third is the position of 'partner in co-presence,' in which the AI functions not as a judge or a supporter but simply as a presence that is there. Each stance carries different design principles and ethical implications. Our lab emphasizes especially the first and the third — stances that respect the non-intrusiveness of AI.",
         figure: {
           src: "",
           svg: "mirror-not-judge",
@@ -375,36 +375,36 @@ export const researchDomains: ResearchDomain[] = [
       {
         heading: "Supporting the noticing, not the answer",
         text:
-          "Self-reflection support is a design principle in which the AI does not hand the user an 'answer' but supports the process through which the user arrives at insight on their own. In the Rogerian tradition of psychotherapy (client-centered therapy), the therapist refrains from offering answers and, by reflecting, summarizing, and clarifying the client's speech, deepens the client's self-understanding. When affective AI plays a similar role, the AI functions as a 'mirror' rather than as a judge: it reflects the user's emotional expression, offers help in objectifying their own emotion, but leaves the final interpretation and meaning-making to the user. This is also a practical application of the earlier 'emotional sovereignty' concept.",
+          "Self-reflection support is a design principle in which the AI does not hand the user an 'answer' but supports the process through which the user arrives at insight on their own. In the Rogerian tradition of psychotherapy (client-centered therapy), the therapist refrains from offering answers and, by reflecting, summarizing, and clarifying the client's speech, deepens the client's self-understanding. When CAI plays a similar role, the AI functions as a 'mirror' rather than as a judge: it reflects the user's emotional expression, offers help in objectifying their own emotion, but leaves the final interpretation and meaning-making to the user. This is also a practical application of the earlier 'emotional sovereignty' concept.",
       },
       {
         heading: "Designing for something always present",
         text:
-          "Co-presence interfaces are a newer design area. The AI is designed as a presence that runs continuously, shares space with the user, and responds quietly only when needed. It sits in the lineage of smart speakers and ambient computing, but for affective AI it is not mere voice response: adjusting the sense of distance according to the user's emotional state is key. The design target is behavior tuned to emotion — drawing close when the user is down, stepping back when they are focused, presenting options when they are conflicted. This is at the frontier of HCI (Human–Computer Interaction) mediated by emotion.",
+          "Co-presence interfaces are a newer design area. The AI is designed as a presence that runs continuously, shares space with the user, and responds quietly only when needed. It sits in the lineage of smart speakers and ambient computing, but for CAI it is not mere voice response: adjusting the sense of distance according to the user's emotional state is key. The design target is behavior tuned to emotion — drawing close when the user is down, stepping back when they are focused, presenting options when they are conflicted. This is at the frontier of HCI (Human–Computer Interaction) mediated by emotion.",
       },
       {
         heading: "Still opening up",
         text:
-          "At present this domain is at a stage of launching projects, and the number of published papers is limited. The problem statement, however, is clear: the more affective AI is deployed in society, the more the relationship itself between humans and AI must be designed. Unlike other domains that chase technical accuracy, this domain develops research at the intersection of design and ethics — 'how to make highly accurate AI coexist with people.' It plays the role of binding together, in implementation, the emotional-sovereignty concept of our ethics-and-philosophy domain and the psychological-support design of our applied-development domain.",
+          "At present this domain is at a stage of launching projects, and the number of published papers is limited. The problem statement, however, is clear: the more CAI is deployed in society, the more the relationship itself between humans and AI must be designed. Unlike other domains that chase technical accuracy, this domain develops research at the intersection of design and ethics — 'how to make highly accurate AI coexist with people.' It plays the role of binding together, in implementation, the emotional-sovereignty concept of our ethics-and-philosophy domain and the psychological-support design of our applied-development domain.",
       },
     ],
   },
   // ===================================================================
   {
     slug: "business",
-    title: "Affective AI and Business",
+    title: "CAI and Business",
     image: fieldImage("感情AIとビジネス.png"),
     summary:
       "We re-frame the meeting point of uncertainty, acceptance, and ethics in industrial deployment as practitioner knowledge.",
     longDescription:
-      "When affective AI is built into corporate activity, technical accuracy alone is not enough in scene after scene. User acceptability, operational uncertainty, accountability, and the ethical considerations specific to services that touch emotion — these multiple axes of constraint must be satisfied simultaneously. This domain takes as its object the design of affective AI not for 'selling' but for 'delivering while protecting people,' and explores diverse applications including recommendation, content moderation, and decision support.",
+      "When CAI is built into corporate activity, technical accuracy alone is not enough in scene after scene. User acceptability, operational uncertainty, accountability, and the ethical considerations specific to services that touch emotion — these multiple axes of constraint must be satisfied simultaneously. This domain takes as its object the design of CAI not for 'selling' but for 'delivering while protecting people,' and explores diverse applications including recommendation, content moderation, and decision support.",
     findings:
-      "Studies of multimodal recommendation and consumer protection have made the essentials of implementing affective AI visible: designs that extract latent orientations such as 'lifestyle,' techniques that adjust the affective intensity of stimulating information while preserving meaning, and longitudinal monitoring of use context. These are effective for simultaneously satisfying technical accuracy and social acceptability.",
+      "Studies of multimodal recommendation and consumer protection have made the essentials of implementing CAI visible: designs that extract latent orientations such as 'lifestyle,' techniques that adjust the affective intensity of stimulating information while preserving meaning, and longitudinal monitoring of use context. These are effective for simultaneously satisfying technical accuracy and social acceptability.",
     narrative: [
       {
         heading: "Where accuracy is not enough",
         text:
-          "When affective AI is built into corporate activity, technical accuracy alone is not enough in scene after scene. A recommender system reads the user's emotion too well and invades privacy; content delivery competes on stimulation and worsens users' mental state; customer-service AI accumulates personal emotional information and leaks it to third parties — all are problems that surface only in deployment. This domain takes as its object the design of affective AI not for 'selling' but for 'delivering while protecting people,' and explores diverse applications including recommendation, content moderation, and decision support.",
+          "When CAI is built into corporate activity, technical accuracy alone is not enough in scene after scene. A recommender system reads the user's emotion too well and invades privacy; content delivery competes on stimulation and worsens users' mental state; customer-service AI accumulates personal emotional information and leaks it to third parties — all are problems that surface only in deployment. This domain takes as its object the design of CAI not for 'selling' but for 'delivering while protecting people,' and explores diverse applications including recommendation, content moderation, and decision support.",
       },
       {
         heading: "Acceptance, cost, accountability",
@@ -415,7 +415,7 @@ export const researchDomains: ResearchDomain[] = [
           svg: "accuracy-acceptance",
           caption:
             "技術精度と社会的受容は別の軸である。当たるが受け入れられない実装も、好かれるが当たらない実装も、現場では使えない。",
-          alt: "技術精度と社会的受容を二軸に取り、両立する領域を示した図",
+          alt: "技術精度と社会的受容を2軸に取り、両立する領域を示した図",
         },
       },
       {
@@ -436,26 +436,26 @@ export const researchDomains: ResearchDomain[] = [
       {
         heading: "Not to sell, but to deliver safely",
         text:
-          "Both studies share the orientation of designing AI not for 'selling' but for 'delivering while protecting people.' MALLET deliberately reduces affective intensity to prioritize long-term user wellbeing over short-term attention maximization. GNN-Enhanced Multimodal Fusion prioritizes long-term lifestyle alignment over short-term preference matching. Both are studies that articulate the 'point where accuracy and ethics balance' in industrial deployment as concrete design choices. This domain will concretize, application by application, this 'people-centered way of deploying affective AI.'",
+          "Both studies share the orientation of designing AI not for 'selling' but for 'delivering while protecting people.' MALLET deliberately reduces affective intensity to prioritize long-term user wellbeing over short-term attention maximization. GNN-Enhanced Multimodal Fusion prioritizes long-term lifestyle alignment over short-term preference matching. Both are studies that articulate the 'point where accuracy and ethics balance' in industrial deployment as concrete design choices. This domain will concretize, application by application, this 'people-centered way of deploying CAI.'",
       },
     ],
   },
   // ===================================================================
   {
     slug: "affective-ai-art",
-    title: "Affective AI and Art",
+    title: "CAI and Art",
     image: fieldImage("感情AIとアート.png"),
     summary:
       "Art as the place where emotion and expression meet — a domain in which AI moves among three positions: 'making,' 'reading,' and 'inspiring.'",
     longDescription:
       "Art is the densest expression of emotion and at the same time the most open site of interpretation. With the rise of generative AI, three positions have come into being at once: AI as a tool that assists human expression, AI that interprets human works, and AI that itself generates works. This domain explores how AI that handles emotion can function in the territory of art, and how it can extend or constrain human creativity and sensibility.",
     findings:
-      "The intersection of affective AI and art is ongoing, and themes are emerging: ethics of creation by generative AI, extension of human sensibility, pluralization of work interpretation. The perspective that AI can occupy not only the position of 'making' but also of 'reading' and 'inspiring' is growing in importance for both creative support and the realms of criticism and education. Research content and findings will be released as work progresses.",
+      "The intersection of CAI and art is ongoing, and themes are emerging: ethics of creation by generative AI, extension of human sensibility, pluralization of work interpretation. The perspective that AI can occupy not only the position of 'making' but also of 'reading' and 'inspiring' is growing in importance for both creative support and the realms of criticism and education. Research content and findings will be released as work progresses.",
     narrative: [
       {
         heading: "The densest expression of feeling",
         text:
-          "Art is the densest expression of emotion and at the same time the most open site of interpretation. Painting, music, literature, and the performing arts all transmit the creator's emotional experience to the receiver through a medium and evoke emotional experience on the receiver's side. Since antiquity, art has functioned as a cultural device for understanding and sharing human emotion. The intersection of affective AI and art is a domain that adds a new technical layer to this cultural tradition. This domain explores how AI that handles emotion can function in the territory of art and how it can extend or constrain human creativity and sensibility.",
+          "Art is the densest expression of emotion and at the same time the most open site of interpretation. Painting, music, literature, and the performing arts all transmit the creator's emotional experience to the receiver through a medium and evoke emotional experience on the receiver's side. Since antiquity, art has functioned as a cultural device for understanding and sharing human emotion. The intersection of CAI and art is a domain that adds a new technical layer to this cultural tradition. This domain explores how AI that handles emotion can function in the territory of art and how it can extend or constrain human creativity and sensibility.",
       },
       {
         heading: "Making, reading, provoking",
@@ -466,42 +466,42 @@ export const researchDomains: ResearchDomain[] = [
           svg: "three-positions",
           caption:
             "AIは作る側にも、読む側にも、人の表現を動かす側にも立つ。ひとつの作品のなかで、その位置を移っていく。",
-          alt: "作る・読む・触発するという三つの位置と、その間の移動を示した図",
+          alt: "作る・読む・触発するという3つの位置と、その間の移動を示した図",
         },
       },
       {
         heading: "Copyright, and the question of authorship",
         text:
-          "Numerous serious ethical issues surround AI art. First, copyright of training data: generative AI uses large numbers of existing works as training data, yet their creators have typically not consented to such use. Second, ownership of copyright in AI-generated works: which entity owns the copyright in works generated by AI is a question that is still being worked out across jurisdictions. Third, the problem of substituting for or suppressing human creativity: if cheap AI generation becomes commonplace, the economic foundation of human artists can be destroyed. Fourth, cultural diversity: generative AI reflects the bias of its training data and tends to generate output biased toward particular cultural styles, which can reduce cultural diversity as a result. This domain proceeds in parallel with these issues and conducts art research that draws on the distinctive features of affective AI.",
+          "Numerous serious ethical issues surround AI art. First, copyright of training data: generative AI uses large numbers of existing works as training data, yet their creators have typically not consented to such use. Second, ownership of copyright in AI-generated works: which entity owns the copyright in works generated by AI is a question that is still being worked out across jurisdictions. Third, the problem of substituting for or suppressing human creativity: if cheap AI generation becomes commonplace, the economic foundation of human artists can be destroyed. Fourth, cultural diversity: generative AI reflects the bias of its training data and tends to generate output biased toward particular cultural styles, which can reduce cultural diversity as a result. This domain proceeds in parallel with these issues and conducts art research that draws on the distinctive features of CAI.",
       },
       {
         heading: "Interpretation, and adjustment",
         text:
-          "The distinctive contribution affective AI can offer to art is 'fine-grained interpretation of emotion' and 'adjustment of expression according to emotion.' Examples include museum interfaces that change how a work is presented according to the user's current emotional state, tools that visualize the emotion curves of literary works to support criticism, and systems that analyze the affective structure of music to support composition — there are many possible combinations of affective AI and art. The techniques accumulated in our lab's domains of emotion recognition, data augmentation, and interpretability can all serve as foundations for application in art.",
+          "The distinctive contribution CAI can offer to art is 'fine-grained interpretation of emotion' and 'adjustment of expression according to emotion.' Examples include museum interfaces that change how a work is presented according to the user's current emotional state, tools that visualize the emotion curves of literary works to support criticism, and systems that analyze the affective structure of music to support composition — there are many possible combinations of CAI and art. The techniques accumulated in our lab's domains of emotion recognition, data augmentation, and interpretability can all serve as foundations for application in art.",
       },
       {
         heading: "Still opening up",
         text:
-          "At present this domain is at a stage of launching projects, and the number of published papers is limited. Nonetheless, the intersection of affective AI and art is positioned as an important axis for the lab's future development. In parallel with exploring technical possibilities, we will develop research that consciously connects to humanistic practices — creation, criticism, education, curation. By moving deliberately among the three positions of 'making,' 'reading,' and 'inspiring,' we aim to present new forms of art in which human sensibility and AI capability complement each other.",
+          "At present this domain is at a stage of launching projects, and the number of published papers is limited. Nonetheless, the intersection of CAI and art is positioned as an important axis for the lab's future development. In parallel with exploring technical possibilities, we will develop research that consciously connects to humanistic practices — creation, criticism, education, curation. By moving deliberately among the three positions of 'making,' 'reading,' and 'inspiring,' we aim to present new forms of art in which human sensibility and AI capability complement each other.",
       },
     ],
   },
   // ===================================================================
   {
     slug: "application-development",
-    title: "Development Based on Affective AI",
+    title: "Development Based on CAI",
     image: fieldImage("感情AIに基づく開発.png"),
     summary:
       "Development research that implements emotion-reading AI as applied systems and delivers them to society.",
     longDescription:
-      "Whether affective AI is truly useful depends on whether it can function safely in psychologically delicate settings. In domains where the parties involved are highly vulnerable — family relationships, mental health, classrooms — implementation calls for the safety, empathy, and calibration of the design more than for the technical accuracy of the model. This domain takes as its object the methodology of implementing emotion-handling AI as applied systems and explores how to design psychologically safe, empathic, and practical feedback.",
+      "Whether CAI is truly useful depends on whether it can function safely in psychologically delicate settings. In domains where the parties involved are highly vulnerable — family relationships, mental health, classrooms — implementation calls for the safety, empathy, and calibration of the design more than for the technical accuracy of the model. This domain takes as its object the methodology of implementing emotion-handling AI as applied systems and explores how to design psychologically safe, empathic, and practical feedback.",
     findings:
-      "Implementations of affective AI in psychologically delicate domains have yielded design knowledge that goes beyond technical accuracy. A design in which multiple LLM agents with specialist knowledge engage in role-play and multi-stage discussion is effective for producing empathic and practical feedback. At the same time, systems tend to exhibit excessive confidence in their own judgments, and calibration is shown to be indispensable for psychological-support applications.",
+      "Implementations of CAI in psychologically delicate domains have yielded design knowledge that goes beyond technical accuracy. A design in which multiple LLM agents with specialist knowledge engage in role-play and multi-stage discussion is effective for producing empathic and practical feedback. At the same time, systems tend to exhibit excessive confidence in their own judgments, and calibration is shown to be indispensable for psychological-support applications.",
     narrative: [
       {
         heading: "Working where it must not break",
         text:
-          "Whether affective AI is truly useful depends on whether it can function safely in psychologically delicate settings. Implementations in domains where the parties involved are highly vulnerable — family relationships, mental health, classrooms, elder care — carry challenges of a different order from lab-based accuracy evaluation. Users stand in a position where they can be deeply harmed by AI judgments, and a mistaken judgment from the AI can damage real human relationships. This domain takes as its object the methodology of implementing emotion-handling AI as applied systems and explores how to design psychologically safe, empathic, and practical feedback.",
+          "Whether CAI is truly useful depends on whether it can function safely in psychologically delicate settings. Implementations in domains where the parties involved are highly vulnerable — family relationships, mental health, classrooms, elder care — carry challenges of a different order from lab-based accuracy evaluation. Users stand in a position where they can be deeply harmed by AI judgments, and a mistaken judgment from the AI can damage real human relationships. This domain takes as its object the methodology of implementing emotion-handling AI as applied systems and explores how to design psychologically safe, empathic, and practical feedback.",
       },
       {
         heading: "The constraint of clinical safety",
@@ -533,12 +533,12 @@ export const researchDomains: ResearchDomain[] = [
       {
         heading: "What accuracy cannot measure",
         text:
-          "Evaluation of affective AI in psychological-support domains has facets that ordinary NLP-task evaluation cannot capture. Beyond technical accuracy (agreement with ground-truth labels), a multifaceted set of indicators is required: (i) empathy (whether the user feels emotionally received), (ii) practicality (whether it leads to concrete behavioral change), (iii) safety (whether the response avoids harming the user), (iv) explainability (whether the system can state why it gives a given piece of advice), and (v) calibration (whether confidence expression is appropriate). This work shows one example of such a multifaceted evaluation framework and makes a pioneering contribution to how affective AI should be evaluated in delicate domains.",
+          "Evaluation of CAI in psychological-support domains has facets that ordinary NLP-task evaluation cannot capture. Beyond technical accuracy (agreement with ground-truth labels), a multifaceted set of indicators is required: (i) empathy (whether the user feels emotionally received), (ii) practicality (whether it leads to concrete behavioral change), (iii) safety (whether the response avoids harming the user), (iv) explainability (whether the system can state why it gives a given piece of advice), and (v) calibration (whether confidence expression is appropriate). This work shows one example of such a multifaceted evaluation framework and makes a pioneering contribution to how CAI should be evaluated in delicate domains.",
       },
       {
         heading: "A template for delicate ground",
         text:
-          "This work offers a methodological template for deploying affective AI to delicate interpersonal domains. Designing the safety and explainability of the system's behavior together with the technology itself is becoming a central concern of implementation research. Going forward we plan to extend beyond family relationships to education, elder care, workplace mental health, and other applied areas. We will advance the social deployment of affective AI in concert with normative debate in the ethics-and-philosophy domain, uncertainty research in the interpretability domain, and the design of relationships in the human–AI interaction domain.",
+          "This work offers a methodological template for deploying CAI to delicate interpersonal domains. Designing the safety and explainability of the system's behavior together with the technology itself is becoming a central concern of implementation research. Going forward we plan to extend beyond family relationships to education, elder care, workplace mental health, and other applied areas. We will advance the social deployment of CAI in concert with normative debate in the ethics-and-philosophy domain, uncertainty research in the interpretability domain, and the design of relationships in the human–AI interaction domain.",
       },
     ],
   },
@@ -548,21 +548,21 @@ export const researchDomains: ResearchDomain[] = [
     title: "Other AI Research",
     image: fieldImage("その他AI研究.png"),
     summary:
-      "Themes of AI research that are not directly part of affective AI but that our lab pursues.",
+      "Themes of AI research that are not directly part of CAI but that our lab pursues.",
     longDescription:
-      "Affectosphere Group centers on affective AI, but research in adjacent areas often arises in the course of the work. Generalization of multi-agent design, elucidation of the internal representations of LLMs, and general-purpose foundations for educational and industrial deployment — work that is not directly aimed at emotion but forms the soil of affective AI is gathered here. The question of what world knowledge LLMs draw on, and how, is two sides of the same coin with research on understanding the inside of affective AI, and is a principal concern of this domain.",
+      "Affectosphere Group centers on CAI, but research in adjacent areas often arises in the course of the work. Generalization of multi-agent design, elucidation of the internal representations of LLMs, and general-purpose foundations for educational and industrial deployment — work that is not directly aimed at emotion but forms the soil of CAI is gathered here. The question of what world knowledge LLMs draw on, and how, is two sides of the same coin with research on understanding the inside of CAI, and is a principal concern of this domain.",
     findings:
       "As a way to elicit internal knowledge from LLMs, the property is emerging that associative recall of concrete instances is more reliable than abstract reasoning. Frameworks of parallel recall and voting by multiple agents can achieve higher accuracy than reasoning from a single prompt. Furthermore, on world-knowledge-dependent tasks such as predicting nationality from a name, LLMs surpass conventional neural models at every granularity, confirming the effectiveness of designs that exploit the world knowledge LLMs acquire during pretraining.",
     narrative: [
       {
         heading: "Questions that rise alongside",
         text:
-          "Affectosphere Group centers on affective AI, but research in adjacent areas often arises along the way. Techniques developed to build affective AI can extend to general problems independent of emotion itself. This domain is the place where general-purpose AI-research themes that branch off from the affective-AI work are gathered. We position research that is not directly aimed at emotion but forms the soil of affective AI — generalization of multi-agent design, elucidation of the internal representations of LLMs, and general-purpose foundations for educational and industrial deployment — here.",
+          "Affectosphere Group centers on CAI, but research in adjacent areas often arises along the way. Techniques developed to build CAI can extend to general problems independent of emotion itself. This domain is the place where general-purpose AI-research themes that branch off from the affective-AI work are gathered. We position research that is not directly aimed at emotion but forms the soil of CAI — generalization of multi-agent design, elucidation of the internal representations of LLMs, and general-purpose foundations for educational and industrial deployment — here.",
       },
       {
         heading: "Getting at the knowledge inside",
         text:
-          "What this domain emphasizes most is the question of how the world knowledge inside LLMs is drawn out. LLMs acquire knowledge about the world from vast amounts of text during pretraining, but drawing on that knowledge requires appropriate prompt design and inference strategies. Capacities such as associative-memory-like chained recall from a cue, reasoning that exploits world knowledge, and elucidation of which forms of knowledge elicitation are reliable are central to deploying LLMs in practice. This is two sides of the same coin with research on the inside of affective AI and constitutes one of the two wheels of our lab's basic research.",
+          "What this domain emphasizes most is the question of how the world knowledge inside LLMs is drawn out. LLMs acquire knowledge about the world from vast amounts of text during pretraining, but drawing on that knowledge requires appropriate prompt design and inference strategies. Capacities such as associative-memory-like chained recall from a cue, reasoning that exploits world knowledge, and elucidation of which forms of knowledge elicitation are reliable are central to deploying LLMs in practice. This is two sides of the same coin with research on the inside of CAI and constitutes one of the two wheels of our lab's basic research.",
         figure: {
           src: "",
           svg: "recall-over-reasoning",
@@ -592,9 +592,9 @@ export const researchDomains: ResearchDomain[] = [
           "An interesting side finding of this work is that the 'quality of errors' differs between LLMs and neural models. LLM errors tend to be 'misses into nearby regions' — for example, predicting a Japanese name as Vietnamese, a typical East-Asian-region confusion. Neural models, in contrast, err in ways that lean toward high-frequency classes (the United States, China), directly reflecting biases in the training-data distribution. The qualitative difference in error patterns reflects a difference in knowledge structure between the two and provides material for choosing between them in applied design. The work supports the establishment of selection guidelines — LLMs for tasks that require world knowledge, neural models for tasks that exploit the characteristics of training-data distribution.",
       },
       {
-        heading: "Why this is contiguous with affective AI",
+        heading: "Why this is contiguous with CAI",
         text:
-          "Research that gathers in this domain is not directly aimed at affective AI but is continuous with the basic technologies of affective AI. The properties of LLM internal-knowledge elicitation are closely related to uncertainty research on emotion judgment. The methodology of multi-agent design shares design ideas with Kairanban-IBC for emotion recognition and with the five-agent debate for psychological support. This domain functions as a 'reservoir of foundational technology' that accumulates general technical insight branching off from affective AI and feeds it back into affective-AI research. We will continue to accumulate work on themes such as LLMs, multi-agent design, and knowledge elicitation.",
+          "Research that gathers in this domain is not directly aimed at CAI but is continuous with the basic technologies of CAI. The properties of LLM internal-knowledge elicitation are closely related to uncertainty research on emotion judgment. The methodology of multi-agent design shares design ideas with Kairanban-IBC for emotion recognition and with the five-agent debate for psychological support. This domain functions as a 'reservoir of foundational technology' that accumulates general technical insight branching off from CAI and feeds it back into affective-AI research. We will continue to accumulate work on themes such as LLMs, multi-agent design, and knowledge elicitation.",
       },
     ],
   },

@@ -9,13 +9,14 @@ import { researchDomains, aiForScienceImage } from "../../data/research-domains.
 import { webp } from "../../lib/images";
 import Img from "../../components/Img.astro";
 
-// Home grid: the ten affective-AI domains shown as 5 rows × 2 cols,
-// followed by the AI for Science card spanning both columns on row 5.
-// Each affective-AI domain links to /en/research/<slug>/; AI for Science
-// links to its own top-level page.
+// Home grid: the nine CAI domains plus AI for Science as the tenth card,
+// 5 rows × 2 cols. "Other AI research" is linked under the grid rather
+// than counted as a domain.
 type DomainCard = { title: string; summary: string; href: string; image: string };
 
-const affectiveDomainCards: DomainCard[] = researchDomains.map((d) => ({
+const affectiveDomainCards: DomainCard[] = researchDomains
+  .filter((d) => d.slug !== "other-ai-research")
+  .map((d) => ({
   title: d.title,
   summary: d.summary,
   href: `/en/research/${d.slug}/`,
@@ -98,13 +99,18 @@ const aiForScienceCard: DomainCard = {
           differently depending on persona and culture, recognition alone no longer covers the
           question. Emotional intelligence itself has to become the object of computation.
         </p>
+        <p class="reveal mt-7">
+          <a href="/en/cai/" class="link-amber font-heading text-sm tracking-wide">
+            Read: What CAI is &rarr;
+          </a>
+        </p>
       </div>
     </div>
 
   </section>
 
 
-  <!-- Section 3: Ten research domains (2 columns × 5 rows) -->
+  <!-- Section 3: 10 research domains (2 columns × 5 rows) -->
   <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="research-domains">
     <header class="reveal mb-10 max-w-prose md:mb-14">
       <p class="font-sans text-lg font-medium tracking-wide text-slate">
@@ -117,7 +123,7 @@ const aiForScienceCard: DomainCard = {
         Research domains of the lab.
       </h2>
       <p class="mt-4 font-display text-base leading-relaxed text-slate md:text-lg">
-        Emotion and society, technology and ethics. Ten domains explored by Affectosphere Group.
+        Nine domains that make up CAI, and AI for Science as the tenth.
       </p>
     </header>
 
@@ -153,7 +159,7 @@ const aiForScienceCard: DomainCard = {
       }
       <a
         href={aiForScienceCard.href}
-        class="reveal group relative flex h-full flex-col overflow-hidden border border-stone shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover md:col-span-2"
+        class="reveal group relative flex h-full flex-col overflow-hidden border border-stone shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover"
       >
         <div
           class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
@@ -182,6 +188,9 @@ const aiForScienceCard: DomainCard = {
       <a href="/en/research/" class="link-amber font-heading text-sm tracking-wide">
         See all research themes &rarr;
       </a>
+      <a href="/en/research/other-ai-research/" class="link-amber ml-8 font-display text-sm text-slate">
+        Other AI research &rarr;
+      </a>
     </div>
   </section>
 
@@ -197,11 +206,11 @@ const aiForScienceCard: DomainCard = {
         id="lp-collab"
         class="font-display text-2xl font-medium text-charcoal md:text-3xl"
       >
-        We are recruiting collaborators in affective AI
+        We are recruiting collaborators in CAI
       </h2>
       <p class="mt-4 font-display text-base leading-relaxed text-charcoal md:text-lg">
         We welcome students, collaborators, and industry partners
-        interested in building and applying affective AI, across a broad range of backgrounds.
+        interested in building and applying CAI, across a broad range of backgrounds.
       </p>
       <p class="mt-6">
         <a href="/en/contact/" class="link-amber font-heading text-sm tracking-wide">
