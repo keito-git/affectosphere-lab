@@ -42,7 +42,7 @@ export const allNews: NewsItem[] = [
         title:
           "Safety-Aware Evaluation of LLM-Generated Driver Intervention Messages through Multi-Task Risk Fusion",
         authors: "Keito Inoshita",
-        venue: "Applied Soft Computing (Elsevier)",
+        venue: "Applied Soft Computing (Elsevier, IF 7.8)",
         summary:
           "LLMが生成する運転者向けの介入メッセージを、安全性の観点から評価する枠組み。複数のリスク次元をマルチタスクで統合し、メッセージを多面的に採点する。",
       },

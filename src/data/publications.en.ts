@@ -278,6 +278,8 @@ const rawPublications: Publication[] = [
     reviewed: true,
     status: "in press",
     href: "https://arxiv.org/abs/2606.22706",
+    impact: "IF 7.8",
+    sjr: "Q1",
   },
   {
     slug: "inoshita-uncertainty-routing-2026",
