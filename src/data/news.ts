@@ -32,6 +32,23 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-10-15",
+    label: "論文",
+    body: "井下の単著論文が Applied Soft Computing に採択されました。",
+    slug: "20261015-asc-driver-intervention",
+    title: "井下の単著論文が Applied Soft Computing に採択",
+    entries: [
+      {
+        title:
+          "Safety-Aware Evaluation of LLM-Generated Driver Intervention Messages through Multi-Task Risk Fusion",
+        authors: "Keito Inoshita",
+        venue: "Applied Soft Computing (Elsevier)",
+        summary:
+          "LLMが生成する運転者向けの介入メッセージを、安全性の観点から評価する枠組み。複数のリスク次元をマルチタスクで統合し、メッセージを多面的に採点する。",
+      },
+    ],
+  },
+  {
     date: "2026-09-16",
     label: "論文",
     body: "井下の単著論文が 情報処理学会論文誌デジタルプラクティス に採録されました。",

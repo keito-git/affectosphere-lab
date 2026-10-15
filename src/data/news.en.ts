@@ -23,6 +23,23 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-10-15",
+    label: "Paper",
+    body: "A single-author paper by Inoshita was accepted to Applied Soft Computing.",
+    slug: "20261015-asc-driver-intervention",
+    title: "Single-author paper accepted to Applied Soft Computing",
+    entries: [
+      {
+        title:
+          "Safety-Aware Evaluation of LLM-Generated Driver Intervention Messages through Multi-Task Risk Fusion",
+        authors: "Keito Inoshita",
+        venue: "Applied Soft Computing (Elsevier)",
+        summary:
+          "A framework for evaluating LLM-generated driver intervention messages from a safety standpoint, fusing several risk dimensions through multi-task scoring.",
+      },
+    ],
+  },
+  {
     date: "2026-09-16",
     label: "Paper",
     body: "A single-authored paper by Inoshita has been accepted to IPSJ Transactions on Digital Practices.",

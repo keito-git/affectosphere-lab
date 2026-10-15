@@ -269,12 +269,14 @@ const rawPublications: Publication[] = [
     slug: "inoshita-driver-intervention-2026",
     title:
       "Safety-Aware Evaluation of LLM-Generated Driver Intervention Messages through Multi-Task Risk Fusion",
-    venue: "arXiv",
-    date: "2026-06-01",
+    venue: "Applied Soft Computing",
+    date: "2026-10-15",
     year: 2026,
     authors: "Keito Inoshita",
-    kind: "preprint",
+    kind: "journal-international",
     firstAuthor: true,
+    reviewed: true,
+    status: "in press",
     href: "https://arxiv.org/abs/2606.22706",
   },
   {
