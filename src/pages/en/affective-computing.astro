@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AffectiveComputingPage from "../../components/AffectiveComputingPage.astro";
+
+const termLd = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  name: "Affective Computing",
+  alternateName: ["AC"],
+  description:
+    "The study of computing that relates to, arises from, or deliberately influences human emotion. The subject of emotion is the person; the machine observes, estimates and responds.",
+  url: "https://lab.affectosphere.group/en/affective-computing/",
+};
+---
+
+<BaseLayout
+  title="What is Affective Computing — measuring human emotion and acting on it"
+  description="What affective computing is: its definition, the five steps from capture to response, the channels it listens on, categorical and valence-arousal models, how a reading actually looks, what it is used for, where it is hard, and how it differs from CAI."
+  jsonLd={termLd}
+  fullBleed
+  locale="en"
+>
+  <AffectiveComputingPage locale="en" />
+</BaseLayout>

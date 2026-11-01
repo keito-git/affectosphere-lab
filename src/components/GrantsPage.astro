@@ -1,0 +1,164 @@
+---
+// "Grants": the competitive funding list, shared by /grants/ and /en/grants/.
+// Split into funding that is still running and funding that has finished,
+// because that is what a reader checks first. No totals and no count charts.
+import { grants as grantsJa, type Grant } from "../data/grants";
+import { grants as grantsEn } from "../data/grants.en";
+
+interface Props {
+  locale?: "ja" | "en";
+}
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+
+const grants: Grant[] = isEn ? grantsEn : grantsJa;
+
+const copy = isEn
+  ? {
+      eyebrow: "Grants",
+      heading: "Grants",
+      lead: "Competitive grants and research funding awarded to the lab, with the period, the scheme, the awarding body and the role on each. Funding that is still running comes first.",
+      sections: { ongoing: "Ongoing funding", completed: "Completed funding" },
+      labels: { role: "Role", amount: "Amount", co: "Co-investigators" },
+    }
+  : {
+      eyebrow: "Grants",
+      heading: "研究費",
+      lead: "獲得した競争的資金と研究助成の一覧。期間・制度・配分機関・役割を並べている。進行中のものを先に置いた。",
+      sections: { ongoing: "進行中の助成", completed: "終了した助成" },
+      labels: { role: "役割", amount: "金額", co: "共同研究者" },
+    };
+
+// Period strings look like "2025/4 – 2028/3". Turn each end into a comparable
+// month number so the list can be split by whether the funding is still
+// running. This is decided at build time, so a grant that ends between two
+// deploys keeps showing as ongoing until the next build.
+function monthValue(part: string): number | null {
+  const m = part.trim().match(/^(\d{4})\s*\/\s*(\d{1,2})$/);
+  if (!m) return null;
+  return Number(m[1]) * 12 + Number(m[2]);
+}
+
+function periodEnd(period: string): number | null {
+  const parts = period.split(/[–—~-]/);
+  return monthValue(parts[parts.length - 1] ?? "");
+}
+
+const now = new Date();
+const nowValue = now.getFullYear() * 12 + (now.getMonth() + 1);
+
+// An unparsable period is treated as ongoing rather than silently filed as
+// finished, so a data change can never quietly retire a live grant.
+function isOngoing(g: Grant): boolean {
+  const end = periodEnd(g.period);
+  return end === null || end >= nowValue;
+}
+
+// "2025/4 – 2028/3" -> "2025.04 – 2028.03", so the column lines up.
+function formatPeriod(period: string): string {
+  return period
+    .split(/\s*[–—~-]\s*/)
+    .map((part) => {
+      const m = part.trim().match(/^(\d{4})\s*\/\s*(\d{1,2})$/);
+      return m ? `${m[1]}.${m[2].padStart(2, "0")}` : part.trim();
+    })
+    .join(" – ");
+}
+
+const sections = [
+  { key: "ongoing", label: copy.sections.ongoing, items: grants.filter(isOngoing) },
+  { key: "completed", label: copy.sections.completed, items: grants.filter((g) => !isOngoing(g)) },
+].filter((s) => s.items.length > 0);
+---
+
+<!-- Header on the dark observation surface, as on the other sections. -->
+<section class="surface-ink relative overflow-hidden" aria-labelledby="grants-heading">
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-content page-x pb-12 pt-16 md:pb-16 md:pt-20">
+    <p class="eyebrow reveal">{copy.eyebrow}</p>
+    <h1
+      id="grants-heading"
+      class="reveal mt-5 font-display font-semibold tracking-tight text-[#F4F2ED]"
+      style="font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.1;"
+    >
+      {copy.heading}
+    </h1>
+    <p
+      class="reveal mt-8 max-w-[72rem] font-display text-[#CFCBC2]"
+      style="font-size: clamp(0.95rem, 1.1vw, 1.12rem); line-height: 1.72;"
+    >
+      {copy.lead}
+    </p>
+  </div>
+</section>
+
+{
+  sections.map((section, si) => (
+    <section
+      class="mx-auto mt-section max-w-content page-x"
+      aria-labelledby={`grant-section-${section.key}`}
+    >
+      <header class="reveal">
+        <p class="eyebrow">
+          {String(si + 1).padStart(2, "0")} &mdash; {section.key === "ongoing" ? "Ongoing" : "Completed"}
+        </p>
+        <h2
+          id={`grant-section-${section.key}`}
+          class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl"
+        >
+          {section.label}
+        </h2>
+      </header>
+
+      <ul class="mt-10">
+        {section.items.map((g) => (
+          <li class="reveal grid gap-x-8 gap-y-3 border-b border-stone py-7 md:grid-cols-[11rem_minmax(0,1fr)] md:items-start">
+            <span class="whitespace-nowrap font-label text-[0.72rem] tabular-nums tracking-[0.1em] text-slate">
+              {formatPeriod(g.period)}
+            </span>
+
+            <div class="min-w-0">
+              <h3 class="font-display text-lg leading-snug text-charcoal md:text-xl">
+                {g.projectTitle}
+              </h3>
+
+              <div class="mt-2.5 border-l border-amber/50 pl-3">
+                <p class="font-display text-sm leading-relaxed text-charcoal/85 md:text-base">
+                  {g.program}
+                </p>
+                {g.organization && (
+                  <p class="mt-1 font-sans text-xs leading-relaxed text-slate md:text-sm">
+                    {g.organization}
+                  </p>
+                )}
+              </div>
+
+              <dl class="mt-3.5 flex flex-wrap gap-x-5 gap-y-1.5 font-sans text-xs text-slate md:text-sm">
+                {g.role && (
+                  <div class="flex gap-1.5">
+                    <dt class="text-slate/70">{copy.labels.role}</dt>
+                    <dd class="text-charcoal/70">{g.role}</dd>
+                  </div>
+                )}
+                {g.amount && (
+                  <div class="flex gap-1.5">
+                    <dt class="text-slate/70">{copy.labels.amount}</dt>
+                    <dd class="tabular-nums text-charcoal/70">{g.amount}</dd>
+                  </div>
+                )}
+                {g.coInvestigators && (
+                  <div class="flex gap-1.5">
+                    <dt class="text-slate/70">{copy.labels.co}</dt>
+                    <dd class="text-charcoal/70">{g.coInvestigators}</dd>
+                  </div>
+                )}
+              </dl>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))
+}
+
+<div class="h-section-sm" aria-hidden="true"></div>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AffectiveComputingPage from "../components/AffectiveComputingPage.astro";
+
+const termLd = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  name: "Affective Computing",
+  alternateName: ["AC", "感情計算"],
+  description:
+    "人間の感情に関わり、感情から生じ、あるいは感情に意図的に働きかける計算の研究領域。感情の主体は人間にあり、機械は観測・推定・応答の側に立つ。",
+  url: "https://lab.affectosphere.group/affective-computing/",
+};
+---
+
+<BaseLayout
+  title="Affective Computingとは — 人間の感情を計測し、働きかける"
+  description="Affective Computing（感情計算）とは何か。定義、観測から応答までの5段、表情・音声・言語・生体信号の経路、離散モデルと快不快×覚醒の2軸、推定結果の読み方、応用と限界、そしてCAIとの違い。"
+  jsonLd={termLd}
+  fullBleed
+>
+  <AffectiveComputingPage locale="ja" />
+</BaseLayout>

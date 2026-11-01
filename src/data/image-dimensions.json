@@ -123,44 +123,88 @@
     "width": 1672,
     "height": 941
   },
+  "/field-images/affective-ai-art-flat.png": {
+    "width": 1024,
+    "height": 1024
+  },
   "/field-images/affective-ai-art.png": {
     "width": 1536,
+    "height": 1024
+  },
+  "/field-images/ai-for-science-flat.png": {
+    "width": 1024,
     "height": 1024
   },
   "/field-images/ai-for-science.png": {
     "width": 1536,
     "height": 1024
   },
+  "/field-images/application-development-flat.png": {
+    "width": 1024,
+    "height": 1024
+  },
   "/field-images/application-development.png": {
     "width": 1536,
+    "height": 1024
+  },
+  "/field-images/business-flat.png": {
+    "width": 1024,
     "height": 1024
   },
   "/field-images/business.png": {
     "width": 1536,
     "height": 1024
   },
+  "/field-images/data-augmentation-flat.png": {
+    "width": 1024,
+    "height": 1024
+  },
   "/field-images/data-augmentation.png": {
     "width": 1536,
+    "height": 1024
+  },
+  "/field-images/emotion-recognition-flat.png": {
+    "width": 1024,
     "height": 1024
   },
   "/field-images/emotion-recognition.png": {
     "width": 1536,
     "height": 1024
   },
+  "/field-images/ethics-philosophy-flat.png": {
+    "width": 1024,
+    "height": 1024
+  },
   "/field-images/ethics-philosophy.png": {
     "width": 1536,
+    "height": 1024
+  },
+  "/field-images/human-ai-interaction-flat.png": {
+    "width": 1024,
     "height": 1024
   },
   "/field-images/human-ai-interaction.png": {
     "width": 1536,
     "height": 1024
   },
+  "/field-images/human-emotion-understanding-flat.png": {
+    "width": 1024,
+    "height": 1024
+  },
   "/field-images/human-emotion-understanding.png": {
     "width": 1536,
     "height": 1024
   },
+  "/field-images/interpretability-flat.png": {
+    "width": 1024,
+    "height": 1024
+  },
   "/field-images/interpretability.png": {
     "width": 1536,
+    "height": 1024
+  },
+  "/field-images/other-ai-research-flat.png": {
+    "width": 1024,
     "height": 1024
   },
   "/field-images/other-ai-research.png": {

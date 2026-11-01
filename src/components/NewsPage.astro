@@ -1,0 +1,245 @@
+---
+// "News": the timeline, grouped by year and filterable by tag. Same shell as
+// the other list pages: dark header, a sticky filter bar, then year sections.
+import { allNews as newsJa, type NewsItem } from "../data/news";
+import { allNews as newsEn } from "../data/news.en";
+
+interface Props {
+  locale?: "ja" | "en";
+}
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+const prefix = isEn ? "/en" : "";
+
+const items: NewsItem[] = isEn ? newsEn : newsJa;
+
+// One colour per kind of news, in both languages: the same mapping the home
+// page panel uses, so a tag means the same thing wherever it appears.
+const tagStyles: Record<string, string> = {
+  論文: "border-steel/70 bg-steel/25 text-[#2C5272]",
+  Paper: "border-steel/70 bg-steel/25 text-[#2C5272]",
+  受賞: "border-amber bg-amber/35 text-[#6B4E1C]",
+  Award: "border-amber bg-amber/35 text-[#6B4E1C]",
+  ラボ: "border-sage/70 bg-sage/25 text-[#4C7361]",
+  Lab: "border-sage/70 bg-sage/25 text-[#4C7361]",
+};
+const tagFallback = "border-stone bg-cream text-slate";
+
+const byYear = items.reduce<Record<string, NewsItem[]>>((acc, item) => {
+  const year = item.date.slice(0, 4);
+  (acc[year] ||= []).push(item);
+  return acc;
+}, {});
+const years = Object.keys(byYear).sort((a, b) => Number(b) - Number(a));
+
+// Tags present in the data, most frequent first.
+const tags = [...new Set(items.map((n) => n.label))]
+  .map((label) => ({ label, count: items.filter((n) => n.label === label).length }))
+  .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+
+const monthsEn = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+function displayDate(iso: string): string {
+  const [y, m, d] = iso.split("-");
+  return isEn ? `${monthsEn[Number(m) - 1]} ${Number(d)}, ${y}` : `${y}.${m}.${d}`;
+}
+
+const copy = isEn
+  ? {
+      eyebrow: "News",
+      heading: "News",
+      lead: "Papers, awards and what happens around the lab, newest first. Use the tags to narrow the list down to one kind.",
+      filterLabel: "Filter by tag",
+      all: "All",
+      reset: "Reset",
+      countTemplate: "%d shown",
+      empty: "Nothing matches that combination.",
+      more: "Details →",
+    }
+  : {
+      eyebrow: "News",
+      heading: "ニュース",
+      lead: "論文・受賞・ラボまわりの出来事を新しい順に並べている。タグを押すと、その種類だけに絞り込める。",
+      filterLabel: "タグで絞り込む",
+      all: "すべて",
+      reset: "解除",
+      countTemplate: "該当 %d件",
+      empty: "この条件に当てはまるものはありません。",
+      more: "詳細 →",
+    };
+---
+
+<!-- Header on the dark observation surface, as on the other sections. -->
+<section class="surface-ink relative overflow-hidden" aria-labelledby="news-heading">
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-content page-x pb-12 pt-16 md:pb-16 md:pt-20">
+    <p class="eyebrow reveal">{copy.eyebrow}</p>
+    <h1
+      id="news-heading"
+      class="reveal mt-5 font-display font-semibold tracking-tight text-[#F4F2ED]"
+      style="font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.1;"
+    >
+      {copy.heading}
+    </h1>
+    <p
+      class="reveal mt-8 max-w-[72rem] font-display text-[#CFCBC2]"
+      style="font-size: clamp(0.95rem, 1.1vw, 1.12rem); line-height: 1.72;"
+    >
+      {copy.lead}
+    </p>
+  </div>
+</section>
+
+<!-- Tag filter. Sticky from md up only: on a phone the bar is tall enough
+     that docking it would eat the list. -->
+<div
+  class="z-20 border-b border-stone bg-ivory/95 backdrop-blur supports-[backdrop-filter]:bg-ivory/85 md:sticky"
+  style="top: 0px"
+  data-news-filter
+>
+  <div class="mx-auto max-w-content page-x py-3">
+    <div class="flex flex-wrap items-center gap-2" role="group" aria-label={copy.filterLabel}>
+      <button type="button" class="chip-filter" data-tag="all" aria-pressed="true">
+        {copy.all}
+        <span class="chip-count">{items.length}</span>
+      </button>
+      {
+        tags.map((t) => (
+          <button type="button" class="chip-filter" data-tag={t.label} aria-pressed="false">
+            {t.label}
+            <span class="chip-count">{t.count}</span>
+          </button>
+        ))
+      }
+      <span
+        class="ml-1 font-label text-[0.7rem] tabular-nums tracking-[0.1em] text-slate"
+        data-news-count
+        data-template={copy.countTemplate}></span>
+      <button
+        type="button"
+        class="ml-auto hidden font-sans text-[0.78rem] text-slate underline-offset-4 hover:text-charcoal hover:underline"
+        data-news-reset
+      >
+        {copy.reset}
+      </button>
+    </div>
+  </div>
+</div>
+
+{
+  years.map((year) => (
+    <section
+      class="mx-auto mt-section-sm max-w-content page-x"
+      aria-labelledby={`news-year-${year}`}
+      data-news-year
+    >
+      <h2
+        id={`news-year-${year}`}
+        class="reveal scroll-mt-[14rem] font-display text-2xl font-medium tabular-nums text-charcoal md:text-3xl"
+      >
+        {year}
+      </h2>
+
+      <ul class="mt-6 border-t border-stone">
+        {byYear[year].map((item) => (
+          <li
+            class="reveal grid gap-x-8 gap-y-2 border-b border-stone py-5 md:grid-cols-[7rem_7rem_minmax(0,1fr)] md:items-baseline"
+            data-news-label={item.label}
+          >
+            <time
+              class="whitespace-nowrap font-label text-[0.72rem] tabular-nums tracking-[0.1em] text-slate"
+              datetime={item.date}
+            >
+              {displayDate(item.date)}
+            </time>
+            <span
+              class:list={[
+                "justify-self-start border px-2 py-0.5 font-sans text-[0.72rem] leading-snug",
+                tagStyles[item.label] ?? tagFallback,
+              ]}
+            >
+              {item.label}
+            </span>
+            <div class="min-w-0 max-w-[52rem]">
+              {item.slug ? (
+                <a
+                  href={`${prefix}/news/${item.slug}/`}
+                  class="link-amber font-display text-sm leading-relaxed text-charcoal md:text-base"
+                >
+                  {item.body}
+                  <span class="ml-2 whitespace-nowrap font-sans text-xs text-amber-deep">
+                    {copy.more}
+                  </span>
+                </a>
+              ) : (
+                <p class="font-display text-sm leading-relaxed text-charcoal md:text-base">
+                  {item.body}
+                </p>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))
+}
+
+<p
+  class="mx-auto mt-section-sm hidden max-w-content page-x font-display text-base text-slate"
+  data-news-empty
+>
+  {copy.empty}
+</p>
+
+<div class="h-section-sm" aria-hidden="true"></div>
+
+<script>
+  // One axis: the tag. Year sections hide when they empty out. Without this
+  // script every item simply stays visible.
+  const bar = document.querySelector<HTMLDivElement>("[data-news-filter]");
+  if (bar) {
+    const barEl = bar;
+    const buttons = Array.from(barEl.querySelectorAll<HTMLButtonElement>("[data-tag]"));
+    const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-news-year]"));
+    const rows = Array.from(document.querySelectorAll<HTMLElement>("[data-news-label]"));
+    const countOut = barEl.querySelector<HTMLElement>("[data-news-count]");
+    const resetBtn = barEl.querySelector<HTMLButtonElement>("[data-news-reset]");
+    const empty = document.querySelector<HTMLElement>("[data-news-empty]");
+    const template = countOut?.dataset.template ?? "%d";
+
+    // Dock the bar under the site header, whatever height it ends up at.
+    const header = document.querySelector<HTMLElement>("header");
+    function dock() {
+      if (header) barEl.style.top = `${header.offsetHeight}px`;
+    }
+    dock();
+    window.addEventListener("resize", dock);
+    if (document.fonts?.ready) document.fonts.ready.then(dock);
+
+    function apply(want: string) {
+      let visible = 0;
+      rows.forEach((row) => {
+        const match = want === "all" || row.dataset.newsLabel === want;
+        row.classList.toggle("hidden", !match);
+        if (match) visible += 1;
+      });
+      sections.forEach((section) => {
+        const any = Array.from(
+          section.querySelectorAll<HTMLElement>("[data-news-label]")
+        ).some((row) => !row.classList.contains("hidden"));
+        section.classList.toggle("hidden", !any);
+      });
+      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.tag === want)));
+      if (countOut) countOut.textContent = want === "all" ? "" : template.replace("%d", String(visible));
+      resetBtn?.classList.toggle("hidden", want === "all");
+      empty?.classList.toggle("hidden", visible > 0);
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => apply(btn.dataset.tag ?? "all"));
+    });
+    resetBtn?.addEventListener("click", () => apply("all"));
+  }
+</script>

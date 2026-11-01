@@ -1,0 +1,405 @@
+---
+// "What is Affectosphere": the sphere the lab says is arriving, told as the
+// three things that happen to emotion in a space once it can be computed —
+// it is tracked, it is analysed, and the result is returned to each person.
+// The town from the home page runs in section 01, with the instruments that
+// read it; the header above it is the dark surface the other concept pages use.
+import TownScene from "./TownScene.astro";
+import TownPanels from "./TownPanels.astro";
+
+interface Props {
+  locale?: "ja" | "en";
+}
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+const p = isEn ? "/en" : "";
+
+const stages = isEn
+  ? [
+      {
+        no: "01",
+        title: "The space is tracked",
+        img: "/figures/aff-tracking.webp",
+        alt: "A town seen from above, with soft coloured auras resting over the squares and crossings where people gather.",
+        body: "A street, a platform, a shop floor, a classroom. Each place carries a state, and that state can be estimated without identifying anyone in it. Faces, voices, the rhythm of movement, how long people linger: the readings are of the place, and they accumulate over time.",
+        note: "Nobody has to be named for a place to be measured.",
+      },
+      {
+        no: "02",
+        title: "The reading is analysed",
+        img: "/figures/aff-analysis.webp",
+        alt: "The coloured layers of a town lifted off it and separated into three translucent sheets stacked in the air above.",
+        body: "What is collected does not stay a single number. It is separated into layers and read: where the air is dense and where it is clear, what made it dense, what it will do next. The interference of many people becomes a surface that can be looked at.",
+        note: "A field, not a feeling. The unit of analysis stops being the individual.",
+      },
+      {
+        no: "03",
+        title: "It comes back, fitted to one person",
+        img: "/figures/aff-personal.webp",
+        alt: "A person walking a quiet street while the lamp, the sign, a small device and a bench light all adjust toward them.",
+        body: "The result returns to the people who are standing in it. The light warms, the notification waits, the answer softens, the route changes. Each adjustment is small and each is aimed at one person. This is the part that is convenient, and the part that decides what the sphere is like to live in.",
+        note: "The optimisation is personal even though the measurement was not.",
+      },
+    ]
+  : [
+      {
+        no: "01",
+        title: "空間が追跡される",
+        img: "/figures/aff-tracking.webp",
+        alt: "上空から見た街。人が集まる広場や交差点の上に、やわらかな色の層が乗っている。",
+        body: "通り、ホーム、売り場、教室。場にはそれぞれ状態があり、その状態は、そこにいる誰かを特定しなくても推定できる。表情、声、動きのリズム、滞在の長さ。読まれているのは場であり、その読みは時間とともに積み上がる。",
+        note: "場を測るのに、個人の名前はいらない。",
+      },
+      {
+        no: "02",
+        title: "読みが解析される",
+        img: "/figures/aff-analysis.webp",
+        alt: "街から持ち上げられた色の層が、空中で3枚の薄いシートに分けて重なっている。",
+        body: "集められたものは、ひとつの数字のままでは終わらない。層に分けて読まれる。どこが濃く、どこが澄んでいるか。何がその濃さを作ったか。次にどう動くか。多くの人の干渉が、眺められる面になる。",
+        note: "個人ではなく、場が解析の単位になる。",
+      },
+      {
+        no: "03",
+        title: "一人ひとりに最適化されて返る",
+        img: "/figures/aff-personal.webp",
+        alt: "静かな通りを歩く人に向けて、街灯・看板・小さな装置・ベンチの灯りがそれぞれ調整されている。",
+        body: "結果は、そこに立っている人に返る。照明が暖かくなり、通知が待ち、返答がやわらぎ、経路が変わる。どの調整も小さく、どれも一人に向いている。便利なのはこの部分であり、この圏域がどんな住み心地になるかを決めるのも、この部分である。",
+        note: "測るのは場だが、最適化されるのは個人である。",
+      },
+    ];
+
+const ubiquity = isEn
+  ? [
+      {
+        no: "01",
+        t: "AI you can talk to",
+        d: "Active dialogue, extended into cars, appliances, furniture and city infrastructure. You address it, and it understands.",
+      },
+      {
+        no: "02",
+        t: "AI you do not have to talk to",
+        d: "Passive inference. The environment reads the state without being addressed. This is the extreme of convenience, and also the world in which your emotion is read continuously without your noticing.",
+      },
+    ]
+  : [
+      {
+        no: "01",
+        t: "「話せばわかる」AIの遍在",
+        d: "能動的対話の拡張。車、家電、家具、都市インフラに入り込み、こちらが話しかければ理解する。",
+      },
+      {
+        no: "02",
+        t: "「話さなくてもわかる」AIの遍在",
+        d: "受動的推論による環境の理解。話しかけなくても、環境が状態を読む。便利さの極致であると同時に、気づかないところで自分の感情が読まれ続ける世界でもある。",
+      },
+    ];
+---
+
+<!-- Header on the dark observation surface, as on the CAI page. -->
+<section class="surface-ink relative overflow-hidden" aria-labelledby="affecto-hero">
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-content page-x pb-12 pt-16 md:pb-16 md:pt-20">
+    <p class="eyebrow reveal">Vision</p>
+    <h1
+      id="affecto-hero"
+      class="reveal mt-5 font-display font-semibold tracking-tight text-[#F4F2ED]"
+      style="font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.1;"
+    >
+      Affectosphere
+    </h1>
+    <p class="reveal mt-3 font-display text-xl text-amber md:text-2xl">
+      {isEn ? "The sphere of affect" : "情動圏"}
+    </p>
+    <p
+      class="reveal mt-8 max-w-[72rem] font-display text-[#CFCBC2]"
+      style="font-size: clamp(0.95rem, 1.1vw, 1.12rem); line-height: 1.72;"
+    >
+      {
+        isEn
+          ? "A sphere in which emotion surrounds society like an atmosphere: everywhere, computable, observed daily by AI, and still a private experience to the person it belongs to."
+          : "感情が大気のように社会を包む圏域。遍在し、計算可能になり、AIによって日々観測されながら、本人にとっては依然として個人的な経験として残り続ける。"
+      }
+    </p>
+  </div>
+</section>
+
+<!-- 1. The town, running, with the instruments that read it. -->
+<section
+  class="relative flex min-h-[80vh] flex-col justify-center overflow-hidden bg-ivory"
+  aria-labelledby="aff-scene"
+>
+  <TownScene />
+
+  <!-- No wash over the scene: the town is the point of this section. Only the
+       text carries its own ivory backing, faded out to the right so the
+       instruments and the streets stay at full strength. -->
+
+  <div
+    class="relative z-10 mx-auto grid w-full max-w-content items-start gap-10 page-x py-24
+           xl:grid-cols-[minmax(0,1fr)_16.5rem] xl:gap-16"
+  >
+    <div
+      class="-ml-6 max-w-[56rem] pb-16 pl-6 pr-24 pt-8 md:-ml-10 md:pl-10"
+      style="background: linear-gradient(to right,
+        rgba(250,250,247,0.94) 0%, rgba(250,250,247,0.92) 58%, rgba(250,250,247,0) 100%);
+        -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+        mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);"
+    >
+      <p class="eyebrow reveal text-[#4C535C]">01 &mdash; The scene</p>
+      <h2
+        id="aff-scene"
+        class="reveal mt-3 font-display text-3xl font-medium text-[#0D0D0D] md:text-4xl"
+      >
+        {isEn ? "What is happening in this town" : "この街で起きていること"}
+      </h2>
+      <div
+        class="reveal mt-6 space-y-5 font-display text-[#1A1A1A]"
+        style="font-size: clamp(0.95rem, 1.05vw, 1.1rem); line-height: 1.78;"
+      >
+        <p>
+          {
+            isEn
+              ? "A town on a clear day. The emotion of each person walking it is broadcast as a probability distribution. The broadcasts overlap, interfere, and become the air of the streets and the square. The layer that accumulates above the town is the Affectosphere."
+              : "晴れた日の、ある街。行き交う一人ひとりの感情は、確率分布として放たれる。それは重なり、干渉し、通りや広場の空気になる。街の上に積み重なるその層が、情動圏である。"
+          }
+        </p>
+        <p>
+          {
+            isEn
+              ? "The panels beside it are the instruments reading that town. One reads the field as a whole; the other follows a single person through it. Both are illustrative, and both are the shape the rest of this page is about."
+              : "脇の2枚は、その街をいま読んでいる計器である。上は場の側、下はそこを歩く一人の側。どちらも例示だが、このページがこれから書くのは、この形のことである。"
+          }
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal hidden xl:block">
+      <p class="mb-3 font-label text-[0.6rem] uppercase tracking-[0.16em] text-[#6B7280]">
+        {isEn ? "Being read, now" : "いま、読まれているところ"}
+      </p>
+      <TownPanels locale={locale} layout="stack" />
+    </div>
+  </div>
+
+  <!-- Closing band, as on the home page. -->
+  <div class="absolute inset-x-0 bottom-0 z-20 h-10 bg-softink" aria-hidden="true"></div>
+</section>
+
+<!-- 2. What the sphere is -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="aff-what">
+  <header class="reveal">
+    <p class="eyebrow">02 &mdash; The sphere</p>
+    <h2 id="aff-what" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "Emotion has left the inside of a person" : "感情は、個人の内側から出た"}
+    </h2>
+  </header>
+
+  <div class="mt-8 max-w-[78rem] space-y-6 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+    <p class="reveal">
+      {
+        isEn
+          ? "Emotion research has treated feeling as something closed inside an individual. Psychology described it as subjective experience, philosophy as normative experience, neuroscience as physiology, and in all three the object sat inside one person."
+          : "これまでの感情研究は、感情を個人の内側に閉じた現象として扱ってきた。心理学は主観的体験として、哲学は規範的経験として、神経科学は神経生理の表現として記述し、そのいずれでも対象は一人の中に閉じていた。"
+      }
+    </p>
+    <p class="reveal">
+      {
+        isEn
+          ? "Text, expression, voice, physiology, the rhythm of a conversation, the lighting of a shop, the mood of a feed, the silence of an organisation. Emotion is already being produced, carried and shaped everywhere in society. It is no longer only inside a person: it is woven into the structure of the society itself, like an atmosphere. That is the sphere this lab works in."
+          : "テキスト、表情、音声、生理信号、対話のリズム、店舗の照明、SNSの空気感、組織の沈黙。社会のあらゆる場所で、感情はすでに生成され、伝播し、関係を形づくっている。感情はもはや個人の中だけにあるのではなく、社会の構造そのものに織り込まれた大気のような存在になりつつある。この圏域が、この研究室の対象である。"
+      }
+    </p>
+  </div>
+</section>
+
+<!-- 3. The society that is arriving -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="aff-coming">
+  <header class="reveal">
+    <p class="eyebrow">03 &mdash; What is arriving</p>
+    <h2 id="aff-coming" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {
+        isEn
+          ? "Tracked, analysed, and returned to each person"
+          : "空間の感情が追跡され、解析され、個人に最適化される"
+      }
+    </h2>
+    <p class="mt-5 max-w-[78rem] font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+      {
+        isEn
+          ? "Three things happen in order, and each is already partly built. Taken together they describe the society the sphere produces."
+          : "3つのことが順に起きる。どれもすでに部分的には作られている。3つを合わせたものが、この圏域が生む社会の姿である。"
+      }
+    </p>
+  </header>
+
+  <div class="mt-12 space-y-16 md:space-y-24">
+    {
+      stages.map((s, i) => (
+        <article class="reveal grid gap-8 lg:grid-cols-[30rem_minmax(0,1fr)] lg:gap-14">
+          <figure class={`self-start ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+            <img
+              src={s.img}
+              alt={s.alt}
+              width="1024"
+              height="1024"
+              loading="lazy"
+              decoding="async"
+              class="w-full border border-stone bg-cream"
+            />
+          </figure>
+          <div class={i % 2 === 1 ? "lg:order-1" : ""}>
+            <p class="font-label text-[2.4rem] leading-none text-amber/45 md:text-[3.2rem]">{s.no}</p>
+            <h3 class="mt-4 font-display text-2xl font-medium text-charcoal md:text-3xl">{s.title}</h3>
+            <p class="mt-5 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+              {s.body}
+            </p>
+            <p class="mt-6 border-l-2 border-amber pl-5 font-display text-base italic leading-relaxed text-slate md:text-lg">
+              {s.note}
+            </p>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<!-- 4. Two stages of ubiquity, on the dark surface -->
+<section class="surface-ink relative mt-section overflow-hidden" aria-labelledby="aff-ubiquity">
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-content page-x py-20 md:py-28">
+    <header class="reveal">
+      <p class="eyebrow">04 &mdash; Ubiquity</p>
+      <h2 id="aff-ubiquity" class="mt-3 font-display text-3xl font-medium text-[#F4F2ED] md:text-4xl">
+        {isEn ? "Two stages, and the second is the quiet one" : "遍在には二段階あり、静かなのは二段目である"}
+      </h2>
+      <p class="mt-5 max-w-[78rem] font-display text-base leading-relaxed text-[#CFCBC2] md:text-lg" style="line-height: 1.78;">
+        {
+          isEn
+            ? "Within ten years, AI that can be spoken with will be present in cars, appliances, furniture and city infrastructure. Its arrival comes in two stages."
+            : "今後10年で、対話可能なAIは車・家電・家具・都市インフラに遍在する。その遍在には、二つの段階がある。"
+        }
+      </p>
+    </header>
+
+    <ol class="mt-12 grid gap-px border border-ink-line bg-ink-line md:grid-cols-2">
+      {
+        ubiquity.map((u) => (
+          <li class="reveal bg-ink-soft p-7 md:p-10">
+            <p class="font-label text-[2.4rem] leading-none text-amber/45 md:text-[3.2rem]">{u.no}</p>
+            <h3 class="mt-4 font-display text-xl font-medium text-[#F4F2ED] md:text-2xl">{u.t}</h3>
+            <p class="mt-4 font-display text-base leading-relaxed text-[#CFCBC2] md:text-lg" style="line-height: 1.78;">
+              {u.d}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<!-- 5. Affective sovereignty -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="aff-sovereignty">
+  <header class="reveal">
+    <p class="eyebrow">05 &mdash; The principle</p>
+    <h2 id="aff-sovereignty" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "Affective sovereignty" : "感情主権"}
+    </h2>
+  </header>
+
+  <div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_30rem] lg:gap-14">
+    <div class="space-y-6 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+      <p
+        class="reveal border-l-2 border-amber pl-6 font-display text-charcoal md:pl-8"
+        style="font-size: clamp(1.1rem, 1.55vw, 1.45rem); line-height: 1.7;"
+      >
+        {
+          isEn
+            ? "However precisely an AI comes to measure emotion, the one who decides what it means is the person it belongs to."
+            : "AIがどれほど感情を精密に測れるようになっても、その意味を最終的に決めるのは、本人である。"
+        }
+      </p>
+      <p class="reveal">
+        {
+          isEn
+            ? "This is the natural extension of self-determination in medicine and in personal data, and it is where the design of this sphere starts. A world in which a machine keeps announcing that you are angry, or that you look sad, quietly erodes the most basic right there is: to decide for yourself what you are feeling."
+            : "これは医療における自己決定権、個人情報における自己決定権の自然な延長であり、この圏域の設計はここから始まる。AIが一方的に「あなたは怒っていますね」「悲しそうですね」と解釈し続ける世界では、自分の感情を自分でどう理解するかという、最も基本的な権利が静かに侵食されていく。"
+        }
+      </p>
+      <p class="reveal">
+        {
+          isEn
+            ? "The sphere is not a thing that appears all at once in the future. It exists already, and a new layer forms every time a technology that reads emotion is deployed. What is designed into those layers now is what the sphere will be."
+            : "この圏域は、未来に突然現れるものではない。すでに存在していて、感情を読む技術が実装されるたびに新しい層が重なっていく。いま各層に何を設計するかが、この圏域の姿になる。"
+        }
+      </p>
+      <p class="reveal">
+        {
+          isEn ? (
+            <>
+              The field that designs and evaluates it is
+              <a href={`${p}/cai/`} class="link-amber mx-1 text-amber-deep">CAI</a>.
+            </>
+          ) : (
+            <>
+              その設計と評価を担う研究領域が
+              <a href={`${p}/cai/`} class="link-amber mx-1 text-amber-deep">CAI</a>
+              である。
+            </>
+          )
+        }
+      </p>
+    </div>
+
+    <figure class="reveal self-start">
+      <img
+        src="/figures/aff-sovereignty.webp"
+        alt={isEn
+          ? "A person holding a small dial connected to them, while three machines around them hold up cards with different marks, none of which is connected."
+          : "自分につながった小さなダイヤルを持つ人。まわりの3体の機械は、それぞれ違う印のカードを差し出しているが、どれも本人につながってはいない。"}
+        width="1024"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+        class="w-full border border-stone bg-cream"
+      />
+      <figcaption class="mt-3 font-label text-[0.7rem] leading-relaxed text-slate">
+        {
+          isEn
+            ? "Readings can be offered. The dial stays with the person."
+            : "読みは差し出せる。ダイヤルは本人の手に残る。"
+        }
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 6. The manifesto in full -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="aff-manifesto">
+  <header class="reveal border-t border-stone pt-10">
+    <p class="eyebrow">06 &mdash; Manifesto</p>
+    <h2 id="aff-manifesto" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "The vision in full" : "ビジョン全文"}
+    </h2>
+  </header>
+
+  <div class="mt-10 max-w-[78rem]">
+    <slot />
+  </div>
+</section>
+
+<section class="mx-auto mt-section max-w-content page-x">
+  <div class="reveal flex flex-wrap gap-4 border-t border-stone pt-10">
+    <a href={`${p}/cai/`} class="btn-solid">
+      {isEn ? "What is CAI" : "CAIとは"} <span aria-hidden="true">&rarr;</span>
+    </a>
+    <a href={`${p}/affective-computing/`} class="btn-ghost">
+      {isEn ? "What is Affective Computing" : "Affective Computingとは"}
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+    <a href={`${p}/research-map/`} class="btn-ghost">
+      {isEn ? "See the research map" : "研究の地図を見る"} <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<div class="h-section-sm" aria-hidden="true"></div>

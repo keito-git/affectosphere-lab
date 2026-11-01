@@ -8,6 +8,9 @@ export default {
         cream: "#F4F0E8",
         stone: "#E2DDD6",
         charcoal: "#1A1A1A",
+        // Soft black for navigation: reads as black, one step back
+        // from the charcoal used for the current page.
+        softink: "#2E2E2E",
         slate: "#6B7280",
         amber: "#C4974A",
         // AA-compliant amber for text on ivory (5.64:1); see global.css.
@@ -55,17 +58,34 @@ export default {
         manifesto: "58ch",
       },
       spacing: {
-        section: "8rem",
-        "section-sm": "4rem",
+        section: "5rem",
+        "section-sm": "2.75rem",
       },
       lineHeight: {
         relaxed: "1.7",
         manifesto: "1.85",
       },
+      // The whole type scale, one step tighter than Tailwind's default. The
+      // reduction grows with the size: captions and labels are left alone,
+      // body copy loses a few percent, and headings lose the most, since the
+      // display sizes were what kept so little of a page on screen at once.
+      // Every size carries its own line-height, because overriding a key here
+      // drops Tailwind's paired default.
       fontSize: {
+        xs: ["0.75rem", { lineHeight: "1.05rem" }],
+        sm: ["0.85rem", { lineHeight: "1.3rem" }],
+        base: ["0.95rem", { lineHeight: "1.55rem" }],
+        lg: ["1.05rem", { lineHeight: "1.7rem" }],
+        xl: ["1.15rem", { lineHeight: "1.65rem" }],
+        "2xl": ["1.35rem", { lineHeight: "1.85rem" }],
+        "3xl": ["1.6rem", { lineHeight: "2rem" }],
+        "4xl": ["1.9rem", { lineHeight: "2.2rem" }],
+        "5xl": ["2.4rem", { lineHeight: "1.1" }],
+        "6xl": ["2.9rem", { lineHeight: "1.08" }],
+        "7xl": ["3.4rem", { lineHeight: "1.05" }],
         // Fluid display via clamp() expressed as a custom value.
-        display: ["clamp(2.5rem, 5vw, 4.5rem)", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
-        manifesto: ["clamp(3rem, 6vw, 5.5rem)", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
+        display: ["clamp(2rem, 3.6vw, 3.2rem)", { lineHeight: "1.12", letterSpacing: "-0.02em" }],
+        manifesto: ["clamp(2.4rem, 4.4vw, 3.9rem)", { lineHeight: "1.08", letterSpacing: "-0.02em" }],
       },
       transitionDuration: {
         DEFAULT: "200ms",

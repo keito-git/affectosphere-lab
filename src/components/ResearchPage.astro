@@ -1,0 +1,158 @@
+---
+// "Research": the ten domains the lab works on, each carrying the stage of
+// the CAI stack it belongs to. The stack itself, and the publication counts
+// placed on it, live on the research map.
+import { researchDomains as domainsJa, aiForScienceImage } from "../data/research-domains";
+import { researchDomains as domainsEn } from "../data/research-domains.en";
+import { caiStages, domainStage } from "../data/research-map";
+import { webp } from "../lib/images";
+
+interface Props {
+  locale?: "ja" | "en";
+}
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+const p = isEn ? "/en" : "";
+
+const domains = isEn ? domainsEn : domainsJa;
+const stageOf = (slug: string) => caiStages.find((s) => s.id === domainStage[slug]);
+
+const copy = isEn
+  ? {
+      lead: "Nine domains that make up Computational Affective Intelligence, and a tenth that carries its methods into other fields. Each is deepened on its own while staying in dialogue with the others.",
+      domainsTitle: "The ten domains",
+      more: "Read more",
+      beyondTitle: "Beyond CAI",
+      beyondLead: "Carrying the methods built inside CAI out to questions in other sciences.",
+      aiForScience: "Education, political science, ecology, law. The techniques for treating the variability of human judgment as data are carried into other fields, to find the line between what can be left to an AI and what cannot.",
+      other: "AI research that fits neither CAI nor AI for Science",
+    }
+  : {
+      lead: "Computational Affective Intelligence（CAI）を形づくる9つの領域と、その方法を他の科学へ持ち出す10番目の領域。それぞれは独立に深められつつ、互いに往復しながら全体を編んでいる。",
+      domainsTitle: "10の研究領域",
+      more: "詳しく見る",
+      beyondTitle: "CAIの外へ",
+      beyondLead: "CAIの内側で培った方法を、ほかの科学の問いへ持ち出す。",
+      aiForScience: "教育学・政治学・生態学・法律学。人間判断の揺らぎをデータとして扱う技法を他分野に持ち出し、AIに任せられることと任せてはならないことの境界を見極める。",
+      other: "CAIにもAI for Scienceにも収まらない、その他のAI研究",
+    };
+---
+
+<!-- Header on the dark observation surface, as on the concept pages. -->
+<section class="surface-ink relative overflow-hidden" aria-labelledby="research-heading">
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-content page-x pb-12 pt-16 md:pb-16 md:pt-20">
+    <p class="eyebrow reveal">Research</p>
+    <h1
+      id="research-heading"
+      class="reveal mt-5 font-display font-semibold tracking-tight text-[#F4F2ED]"
+      style="font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.1;"
+    >
+      {isEn ? "Ten research domains" : "10の研究領域"}
+    </h1>
+    <p
+      class="reveal mt-8 max-w-[72rem] font-display text-[#CFCBC2]"
+      style="font-size: clamp(0.95rem, 1.1vw, 1.12rem); line-height: 1.72;"
+    >
+      {copy.lead}
+    </p>
+  </div>
+</section>
+
+  <!-- 1. The domains themselves. -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="research-domains">
+    <header class="reveal">
+      <p class="eyebrow">01 &mdash; Domains</p>
+      <h2 id="research-domains" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+        {copy.domainsTitle}
+      </h2>
+    </header>
+
+    <ul class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {
+        domains.map((d) => {
+          const st = stageOf(d.slug);
+          return (
+            <li class="reveal">
+              <a
+                href={`${p}/research/${d.slug}/`}
+                class="group flex h-full flex-col border border-stone bg-ivory transition-all duration-300 ease-out hover:-translate-y-1 hover:border-amber/70"
+              >
+                <img
+                  src={webp(d.image, 800)}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                  class="aspect-[16/7] w-full border-b border-stone object-cover"
+                />
+                <div class="flex h-full flex-col p-6">
+                  {st && (
+                    <p class="font-label text-[0.64rem] uppercase tracking-[0.14em] text-amber-deep">
+                      {st.label}
+                    </p>
+                  )}
+                  <h3 class="mt-2 font-display text-xl font-medium text-charcoal md:text-2xl">
+                    {d.title}
+                  </h3>
+                  <p class="mt-3 font-display text-base leading-relaxed text-charcoal">
+                    {d.summary}
+                  </p>
+                  <span class="mt-auto pt-6 font-heading text-sm tracking-wide text-slate transition-colors group-hover:text-amber-deep">
+                    {copy.more} &rarr;
+                  </span>
+                </div>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+</section>
+
+<!-- 2. Beyond CAI -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="research-beyond">
+  <header class="reveal">
+    <p class="eyebrow">02 &mdash; Beyond</p>
+    <h2 id="research-beyond" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {copy.beyondTitle}
+    </h2>
+    <p class="mt-5 max-w-[78rem] font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+      {copy.beyondLead}
+    </p>
+  </header>
+
+  <a
+    href={`${p}/ai-for-science/`}
+    class="reveal group mt-10 grid border border-stone bg-ivory transition-all duration-300 ease-out hover:-translate-y-1 hover:border-amber/70 lg:grid-cols-[30rem_minmax(0,1fr)]"
+  >
+    <img
+      src={webp(aiForScienceImage, 1600)}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+      class="aspect-[16/9] w-full border-b border-stone object-cover lg:aspect-auto lg:h-full lg:border-b-0 lg:border-r"
+    />
+    <div class="flex flex-col p-7 md:p-10">
+      <p class="font-label text-[0.64rem] uppercase tracking-[0.14em] text-amber-deep">
+        Beyond affect
+      </p>
+      <h3 class="mt-2 font-display text-2xl font-medium text-charcoal md:text-3xl">AI for Science</h3>
+      <p class="mt-4 max-w-[52rem] font-display text-base leading-relaxed text-charcoal md:text-lg">
+        {copy.aiForScience}
+      </p>
+      <span class="mt-auto pt-8 font-heading text-sm tracking-wide text-slate transition-colors group-hover:text-amber-deep">
+        {copy.more} &rarr;
+      </span>
+    </div>
+  </a>
+
+  <p class="reveal mt-6">
+    <a href={`${p}/research/other-ai-research/`} class="link-amber font-display text-sm text-slate">
+      {copy.other} &rarr;
+    </a>
+  </p>
+</section>
+
+<div class="h-section-sm" aria-hidden="true"></div>

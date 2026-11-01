@@ -1,0 +1,735 @@
+---
+// "What is Affective Computing": the field whose subject of emotion is the
+// human. What it observes, how it models what it observes, what a reading
+// actually looks like, what it does with the reading, and where it is hard.
+//
+// The console in section 04 is a worked example. Its nine frames are invented,
+// but every number under them is computed here from the distribution, so the
+// trace, the indices and the bars always agree with each other.
+interface Props {
+  locale?: "ja" | "en";
+}
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+const p = isEn ? "/en" : "";
+
+// The eight emotions, in one fixed order, with the colours used across the
+// site and the valence / arousal priors the indices are computed from.
+const EMO = (
+  isEn
+    ? ["joy", "trust", "fear", "surprise", "sadness", "disgust", "anger", "anticipation"]
+    : ["喜び", "信頼", "恐れ", "驚き", "悲しみ", "嫌悪", "怒り", "期待"]
+).map((name, i) => ({
+  name,
+  hex: ["#C4974A", "#8DB462", "#6B8F7A", "#547B84", "#3D6B8C", "#6E5584", "#B5737A", "#BD8560"][i],
+  v: [0.8, 0.6, -0.7, 0.1, -0.7, -0.6, -0.6, 0.4][i],
+  a: [0.65, 0.3, 0.8, 0.95, 0.2, 0.5, 0.9, 0.55][i],
+}));
+
+// Valence / arousal plane: x is valence (-1..1), y is arousal (0..1, up).
+const PX = (v: number) => 60 + ((v + 1) / 2) * 420;
+const PY = (a: number) => 290 - a * 250;
+
+// What the field observes, and what each channel costs.
+const channels = isEn
+  ? [
+      { ch: "Face", reads: "expression, micro-movement, gaze", note: "easy to capture, easy to pose" },
+      { ch: "Voice", reads: "pitch, speed, intensity, pauses", note: "carries arousal well, valence poorly" },
+      { ch: "Language", reads: "word choice, context, who is speaking to whom", note: "needs the situation to read it" },
+      { ch: "Body signals", reads: "heart rate, skin conductance, breathing", note: "hard to fake, hard to interpret" },
+      { ch: "Behaviour", reads: "operation logs, pauses, what was abandoned", note: "cheap, but indirect" },
+    ]
+  : [
+      { ch: "表情", reads: "顔の動き、微表情、視線", note: "取りやすいが、つくれてしまう" },
+      { ch: "音声", reads: "高さ、速さ、強さ、間", note: "覚醒度はよく出るが、快不快は出にくい" },
+      { ch: "言語", reads: "語の選び方、文脈、誰に向けた発話か", note: "状況がないと読めない" },
+      { ch: "生体信号", reads: "心拍、皮膚電気活動、呼吸", note: "偽りにくいが、解釈が難しい" },
+      { ch: "行動", reads: "操作ログ、停滞、やめた箇所", note: "安価だが、間接的" },
+    ];
+
+// What the reading is used for.
+const uses = isEn
+  ? [
+      { t: "Conversational agents", d: "Change how an answer is worded, how fast it comes and how far it goes, according to the state of the person asking." },
+      { t: "Safety at the wheel and on the job", d: "Catch drowsiness, irritation and overload before they turn into an error, and intervene early." },
+      { t: "Learning support", d: "Read where a learner gave up or lost confidence, and change what comes next." },
+      { t: "Mental health", d: "Follow the slow drift of mood over days and weeks, and hand clinicians something they can act on." },
+    ]
+  : [
+      { t: "対話エージェント", d: "相手の状態に応じて、答え方・速さ・踏み込み方を変える。" },
+      { t: "運転・作業の安全", d: "眠気、苛立ち、過負荷をエラーになる前に捉え、早い段階で介入する。" },
+      { t: "学習支援", d: "学習者がどこでつまずき、どこで自信を失ったかを読み、次に出すものを変える。" },
+      { t: "メンタルヘルス", d: "日や週の単位でゆっくり動く気分の変化を追い、臨床の判断材料にする。" },
+    ];
+
+// The two ways of holding a feeling, stated next to the plane that shows them.
+const models = isEn
+  ? [
+      {
+        t: "Categories",
+        d: "Joy, trust, fear and the rest. Eight in Plutchik's set, each carrying a probability that sums to one. Easy to report, easy to act on, and blunt whenever a feeling sits between two names.",
+      },
+      {
+        t: "Axes",
+        d: "How pleasant the state is, and how activated. Two continuous numbers instead of eight names. Good at gradual change and at states no label fits, poor at saying which word a person would use.",
+      },
+    ]
+  : [
+      {
+        t: "カテゴリで持つ",
+        d: "喜び、信頼、恐れ。プルチックの区分なら8つで、合計が1になる確率がそれぞれにつく。報告しやすく、処理に移しやすい。ただし、二つの名前の中間にある状態には鈍い。",
+      },
+      {
+        t: "軸で持つ",
+        d: "どれだけ快か、どれだけ覚醒しているか。8つの名前のかわりに、2つの連続値で表す。ゆるやかな変化や、名前のつかない状態に強い。その人がどの語を選ぶかは言えない。",
+      },
+    ];
+
+const limits = isEn
+  ? [
+      { t: "Labels are not sharp", d: "The same face is read as anger by one annotator and as concentration by another. The correct answer is itself a distribution." },
+      { t: "People differ", d: "How much a feeling shows on the outside varies between individuals, and a model trained on the average fits few of them." },
+      { t: "Culture differs", d: "What counts as an appropriate expression, and how much of it is shown, changes with language and with place." },
+      { t: "Outside is not inside", d: "What is observed is expression. What the person holds inside need not match it, and sometimes must not." },
+      { t: "The data is personal", d: "Faces, voices and body signals identify a person. Consent, retention and purpose have to be designed with the model." },
+    ]
+  : [
+      { t: "ラベルは鋭くない", d: "同じ顔を、ある注釈者は怒りと読み、別の注釈者は集中と読む。正解そのものが分布である。" },
+      { t: "個人差がある", d: "感情が外にどれだけ出るかは人によって違い、平均で学習したモデルは誰にも合わない。" },
+      { t: "文化差がある", d: "どの表出が適切とされ、どこまで出すかは、言語や地域によって変わる。" },
+      { t: "外と内は別である", d: "観測できるのは表出であって、本人が内側に持っているものと一致するとは限らない。" },
+      { t: "データが個人を指す", d: "顔・声・生体信号は個人を特定する。同意・保存・利用目的を、モデルと一緒に設計する必要がある。" },
+    ];
+
+// ── The worked session ───────────────────────────────────────────────────
+// Nine frames, twenty seconds apart. The distributions are invented; the
+// valence, arousal and certainty under each one are computed from them.
+const RAW: { t: string; p: number[] }[] = [
+  { t: "00:00", p: [0.18, 0.4, 0.03, 0.03, 0.1, 0.03, 0.03, 0.2] },
+  { t: "00:20", p: [0.22, 0.2, 0.05, 0.14, 0.05, 0.03, 0.05, 0.26] },
+  { t: "00:40", p: [0.1, 0.1, 0.1, 0.34, 0.06, 0.05, 0.09, 0.16] },
+  { t: "01:00", p: [0.05, 0.06, 0.16, 0.18, 0.09, 0.09, 0.25, 0.12] },
+  { t: "01:20", p: [0.03, 0.04, 0.18, 0.09, 0.12, 0.1, 0.38, 0.06] },
+  { t: "01:40", p: [0.04, 0.05, 0.26, 0.07, 0.18, 0.08, 0.22, 0.1] },
+  { t: "02:00", p: [0.08, 0.1, 0.14, 0.06, 0.24, 0.07, 0.13, 0.18] },
+  { t: "02:20", p: [0.16, 0.34, 0.04, 0.03, 0.14, 0.02, 0.03, 0.24] },
+  { t: "02:40", p: [0.32, 0.28, 0.02, 0.04, 0.05, 0.02, 0.02, 0.25] },
+];
+
+function derive(probs: number[]) {
+  let valence = 0, arousal = 0, h = 0, top = 0;
+  probs.forEach((q, k) => {
+    valence += q * EMO[k].v;
+    arousal += q * EMO[k].a;
+    if (q > 0) h -= q * Math.log(q);
+    if (q > probs[top]) top = k;
+  });
+  return { valence, arousal, certainty: 1 - h / Math.log(EMO.length), top };
+}
+const frames = RAW.map((f) => ({ ...f, ...derive(f.p) }));
+const SELECTED = 4;
+
+// Each band is drawn over its own range, so the shape is visible rather than
+// flattened against a 0-to-1 axis. The ranges are printed beside the bands.
+const BAR_MAX = 0.45;
+const CX0 = 40, CX1 = 520;
+const V_TOP = 22, V_BOT = 98, V_MAX = 0.5;
+const A_TOP = 132, A_BOT = 208, A_MIN = 0.42, A_MAX = 0.75;
+const cx = (i: number) => CX0 + (i / (frames.length - 1)) * (CX1 - CX0);
+const vy = (v: number) => V_TOP + ((V_MAX - v) / (2 * V_MAX)) * (V_BOT - V_TOP);
+const ay = (a: number) => A_TOP + ((A_MAX - a) / (A_MAX - A_MIN)) * (A_BOT - A_TOP);
+const vLine = frames.map((f, i) => `${cx(i).toFixed(1)},${vy(f.valence).toFixed(1)}`).join(" ");
+const aLine = frames.map((f, i) => `${cx(i).toFixed(1)},${ay(f.arousal).toFixed(1)}`).join(" ");
+
+// Handed to the console script, which only ever writes numbers.
+const payload = {
+  barMax: BAR_MAX,
+  emo: EMO.map((e) => ({ name: e.name, hex: e.hex })),
+  frames: frames.map((f, i) => ({
+    t: f.t,
+    p: f.p,
+    v: f.valence,
+    a: f.arousal,
+    c: f.certainty,
+    top: f.top,
+    x: cx(i),
+    vy: vy(f.valence),
+    ay: ay(f.arousal),
+  })),
+};
+---
+
+<!-- Header on the dark observation surface, as on the CAI page. -->
+<section class="surface-ink relative overflow-hidden" aria-labelledby="ac-heading">
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-content page-x pb-12 pt-16 md:pb-16 md:pt-20">
+    <p class="eyebrow reveal">Affective Computing</p>
+    <h1
+      id="ac-heading"
+      class="reveal mt-5 font-display font-semibold tracking-tight text-[#F4F2ED]"
+      style="font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.1;"
+    >
+      {isEn ? "What is Affective Computing" : "Affective Computingとは"}
+    </h1>
+    <p class="reveal mt-3 font-display text-xl text-amber md:text-2xl">
+      {isEn ? "The human as the subject of emotion" : "感情の主体を人間に置く"}
+    </p>
+    <p
+      class="reveal mt-8 max-w-[72rem] font-display text-[#CFCBC2]"
+      style="font-size: clamp(0.95rem, 1.1vw, 1.12rem); line-height: 1.72;"
+    >
+      {
+        isEn
+          ? "The field that measures human emotion and acts on what it measures. The subject of emotion is the person: the machine observes, estimates and responds."
+          : "人間の感情を計測し、その結果にもとづいて働きかける研究領域。感情の主体はあくまで人間にあり、機械は観測し、推定し、応答する側に立つ。"
+      }
+    </p>
+  </div>
+</section>
+
+<!-- 1. Definition -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="ac-def">
+  <header class="reveal">
+    <p class="eyebrow">01 &mdash; Definition</p>
+    <h2 id="ac-def" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "Definition" : "定義"}
+    </h2>
+  </header>
+
+  <p
+    class="reveal mt-8 border-l-2 border-amber pl-6 font-display text-charcoal md:pl-8"
+    style="font-size: clamp(1.2rem, 1.7vw, 1.6rem); line-height: 1.7;"
+  >
+    {
+      isEn
+        ? "Affective Computing is the study of computing that relates to, arises from, or deliberately influences human emotion."
+        : "Affective Computing とは、人間の感情に関わり、感情から生じ、あるいは感情に意図的に働きかける計算の研究である。"
+    }
+  </p>
+
+  <div class="mt-10 max-w-[78rem] space-y-6 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+    <p class="reveal">
+      {
+        isEn
+          ? "The field was named by Rosalind Picard at MIT, in a 1997 book of that title. Its question has been consistent since: can a machine read what a person feels, and should it do anything about it."
+          : "1997年、MITのRosalind Picardが同名の著書でこの領域に名前を与えた。問いはそれ以来一貫している。機械は人の感じていることを読めるのか、そして読んだうえで何かをすべきなのか。"
+      }
+    </p>
+    <p class="reveal">
+      {
+        isEn
+          ? "Whatever the method, the structure stays the same. The emotion belongs to the person. The machine observes it from outside, estimates it, and acts back on the person with what it found."
+          : "手法が変わっても、構造は変わらない。感情は人間のものであり、機械はそれを外から観測し、推定し、結果をもって人に働きかける。"
+      }
+    </p>
+  </div>
+</section>
+
+<!-- 2. The pipeline -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="ac-pipeline">
+  <header class="reveal">
+    <p class="eyebrow">02 &mdash; Pipeline</p>
+    <h2 id="ac-pipeline" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "Observe, estimate, respond" : "観測し、推定し、応答する"}
+    </h2>
+    <p class="mt-5 max-w-[72rem] font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+      {
+        isEn
+          ? "Almost every system in this field has the same five steps. What differs is which channel it listens on and what it does at the end."
+          : "この領域のシステムは、ほとんどが同じ5つの段を持つ。違うのは、どの経路で聴くかと、最後に何をするかである。"
+      }
+    </p>
+  </header>
+
+  <figure class="reveal mt-10" aria-label={isEn ? "Five steps" : "5つの段"}>
+    <ol class="grid gap-px border border-stone bg-stone sm:grid-cols-5">
+      {
+        (isEn
+          ? ["Capture", "Features", "Emotion model", "Estimate", "Response"]
+          : ["観測", "特徴量", "感情モデル", "推定", "応答"]
+        ).map((step, i) => (
+          <li class="relative bg-ivory px-5 py-8">
+            <p class="font-label text-[2rem] leading-none text-amber/45 md:text-[2.6rem]">0{i + 1}</p>
+            <p class="mt-3 font-display text-lg font-medium text-charcoal md:text-xl">{step}</p>
+            {i < 4 && (
+              <span class="absolute right-3 top-1/2 hidden -translate-y-1/2 font-label text-lg text-stone sm:block" aria-hidden="true">
+                &rarr;
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </figure>
+
+  <h3 class="reveal mt-14 font-display text-xl font-medium text-charcoal md:text-2xl">
+    {isEn ? "What it listens on" : "どの経路で聴くか"}
+  </h3>
+  <div class="reveal mt-5 overflow-x-auto">
+    <table class="w-full min-w-[34rem] border-collapse text-left">
+      <thead>
+        <tr class="border-b border-charcoal">
+          <th class="w-[14%] py-3 pr-6 font-label text-[0.7rem] uppercase tracking-[0.14em] text-slate">
+            {isEn ? "Channel" : "経路"}
+          </th>
+          <th class="w-[43%] py-3 pr-6 font-label text-[0.7rem] uppercase tracking-[0.14em] text-slate">
+            {isEn ? "What is taken" : "取るもの"}
+          </th>
+          <th class="py-3 font-label text-[0.7rem] uppercase tracking-[0.14em] text-slate">
+            {isEn ? "Where it is weak" : "弱いところ"}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          channels.map((c) => (
+            <tr class="border-b border-stone align-top">
+              <td class="py-4 pr-6 font-display text-lg font-medium text-charcoal">{c.ch}</td>
+              <td class="py-4 pr-6 font-display text-base leading-relaxed text-charcoal">{c.reads}</td>
+              <td class="py-4 font-display text-base leading-relaxed text-slate">{c.note}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 3. How emotion is modelled -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="ac-model">
+  <header class="reveal">
+    <p class="eyebrow">03 &mdash; Model</p>
+    <h2 id="ac-model" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "Two ways to hold a feeling" : "感情の持ち方は二通りある"}
+    </h2>
+    <p class="mt-5 max-w-[72rem] font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+      {
+        isEn
+          ? "Most systems carry both, because each answers a question the other cannot."
+          : "多くのシステムは両方を持つ。片方では答えられない問いが、それぞれにあるからだ。"
+      }
+    </p>
+  </header>
+
+  <div class="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_24rem] lg:gap-12">
+    <figure class="reveal border border-stone bg-ivory p-5 md:p-8">
+      <figcaption class="font-label text-[0.64rem] uppercase tracking-[0.16em] text-slate">
+        {isEn ? "The eight, placed on the two axes" : "8つの感情を、2つの軸の上に置く"}
+      </figcaption>
+      <svg class="mt-4 w-full" viewBox="0 0 520 340" role="img" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="270" y1="30" x2="270" y2="298" stroke="#1A1A1A" stroke-width="1" opacity="0.3" />
+        <line x1="52" y1="290" x2="488" y2="290" stroke="#1A1A1A" stroke-width="1" opacity="0.3" />
+        <g font-family="JetBrains Mono, monospace" font-size="10" fill="#6B7280">
+          <text x="56" y="312">{isEn ? "unpleasant" : "不快"}</text>
+          <text x="484" y="312" text-anchor="end">{isEn ? "pleasant" : "快"}</text>
+          <text x="276" y="26">{isEn ? "activated" : "覚醒"}</text>
+          <text x="276" y="286">{isEn ? "calm" : "鎮静"}</text>
+        </g>
+        {
+          EMO.map((e) => (
+            <g>
+              <circle cx={PX(e.v)} cy={PY(e.a)} r="6" fill={e.hex} opacity="0.85" />
+              <text
+                x={e.v < 0 ? PX(e.v) - 11 : PX(e.v) + 11}
+                y={PY(e.a) + 4}
+                text-anchor={e.v < 0 ? "end" : "start"}
+                font-family="JetBrains Mono, monospace"
+                font-size="10"
+                fill="#1A1A1A"
+              >
+                {e.name}
+              </text>
+            </g>
+          ))
+        }
+      </svg>
+      <p class="mt-4 font-display text-sm leading-relaxed text-slate">
+        {
+          isEn
+            ? "Positions are conventional, not measured. Fear and anger sit close on these axes, which is one reason a system confuses them."
+            : "位置は慣例的なもので、計測値ではない。恐れと怒りはこの2軸の上では近く、システムが両者を取り違える理由のひとつになっている。"
+        }
+      </p>
+    </figure>
+
+    <ul class="grid gap-px self-start border border-stone bg-stone">
+      {
+        models.map((m) => (
+          <li class="reveal bg-ivory p-6 md:p-7">
+            <h3 class="font-display text-xl font-medium text-charcoal">{m.t}</h3>
+            <p class="mt-3 font-display text-base leading-relaxed text-charcoal">{m.d}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- 4. A worked reading, on the dark observation surface and clickable. -->
+<section class="surface-ink relative mt-section overflow-hidden" aria-labelledby="ac-console">
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-content page-x py-20 md:py-28">
+    <header class="reveal">
+      <p class="eyebrow">04 &mdash; A reading</p>
+      <h2 id="ac-console" class="mt-3 font-display text-3xl font-medium text-[#F4F2ED] md:text-4xl">
+        {isEn ? "What a reading looks like" : "推定は、こう出る"}
+      </h2>
+      <p class="mt-5 max-w-[72rem] font-display text-base leading-relaxed text-[#CFCBC2] md:text-lg" style="line-height: 1.78;">
+        {
+          isEn
+            ? "One session, read frame by frame. Pick a moment on the timeline and watch the estimate change."
+            : "ひとつのセッションを、フレームごとに読むと、こう出る。下の時間軸をたどると、推定の変わり方が見える。"
+        }
+      </p>
+    </header>
+
+    <div
+      class="reveal mt-10 border border-ink-line bg-ink-soft"
+      data-ac-console
+      data-payload={JSON.stringify(payload)}
+    >
+      <div class="flex flex-wrap items-center justify-between gap-2 border-b border-ink-line px-6 py-3">
+        <p class="font-label text-[0.64rem] uppercase tracking-[0.16em] text-[#9aa4b4]">
+          Affect analysis &middot; session 0421
+        </p>
+        <p class="font-label text-[0.64rem] tracking-wide text-amber">
+          {isEn ? "example" : "例"}
+        </p>
+      </div>
+
+      <div class="grid gap-px bg-ink-line lg:grid-cols-[22rem_minmax(0,1fr)]">
+        <!-- Camera feed -->
+        <div class="bg-ink-soft p-6">
+          <p class="font-label text-[0.62rem] uppercase tracking-[0.16em] text-[#9aa4b4]">
+            Camera &middot; <span data-f="clock">00:00</span>
+          </p>
+          <div class="relative mt-3 aspect-square w-full overflow-hidden border border-ink-line bg-[#11141A]">
+            <img
+              src="/figures/ac-face.webp"
+              alt={isEn
+                ? "An illustrated face, shown as the frame the system is reading."
+                : "システムが読んでいるフレームとして示した、イラストの顔。"}
+              width="1024"
+              height="1024"
+              loading="lazy"
+              decoding="async"
+              class="h-full w-full object-cover"
+            />
+            <span class="pointer-events-none absolute left-[29%] top-[25%] h-[48%] w-[42%] border border-amber" aria-hidden="true">
+              <span class="absolute -left-px -top-px h-3 w-3 border-l-2 border-t-2 border-amber"></span>
+              <span class="absolute -right-px -top-px h-3 w-3 border-r-2 border-t-2 border-amber"></span>
+              <span class="absolute -bottom-px -left-px h-3 w-3 border-b-2 border-l-2 border-amber"></span>
+              <span class="absolute -bottom-px -right-px h-3 w-3 border-b-2 border-r-2 border-amber"></span>
+            </span>
+            {
+              [[42, 46], [56, 46], [49, 55], [41, 41], [57, 41]].map(([lx, ly]) => (
+                <span
+                  class="pointer-events-none absolute h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber"
+                  style={`left:${lx}%;top:${ly}%;`}
+                  aria-hidden="true"
+                />
+              ))
+            }
+          </div>
+          <p class="mt-3 flex items-center gap-2 font-label text-[0.72rem] text-[#9aa4b4]">
+            <span data-f="top-dot" class="inline-block h-2.5 w-2.5 rounded-full bg-amber" aria-hidden="true"></span>
+            <span data-f="top-name" class="text-[#F4F2ED]">&ndash;</span>
+            <span data-f="top-value" class="tabular-nums">&ndash;</span>
+          </p>
+        </div>
+
+        <!-- Estimate for the selected frame -->
+        <div class="bg-ink-soft p-6 md:p-8">
+          <p class="font-label text-[0.62rem] uppercase tracking-[0.16em] text-[#9aa4b4]">
+            {isEn ? "Estimate for this frame" : "このフレームの推定"}
+          </p>
+          <div class="mt-4 grid gap-8 xl:grid-cols-[minmax(0,1fr)_18rem] xl:gap-12">
+            <ul class="space-y-2.5">
+              {
+                EMO.map((e, k) => (
+                  <li class="flex items-center gap-4">
+                    <span class="w-[5.4rem] shrink-0 truncate font-display text-base text-[#E3E0D9]">{e.name}</span>
+                    <span class="relative h-[7px] grow bg-white/10">
+                      <span
+                        class="dash-bar absolute inset-y-0 left-0"
+                        data-bar={k}
+                        style={`width:0%;background-color:${e.hex};`}
+                      />
+                    </span>
+                    <span
+                      class="w-[2.8rem] shrink-0 text-right font-label text-[0.7rem] tabular-nums text-[#9aa4b4]"
+                      data-val={k}>&ndash;</span>
+                  </li>
+                ))
+              }
+            </ul>
+            <div class="self-start">
+              <dl class="grid grid-cols-[1fr_auto] gap-y-2 border-t border-ink-line pt-3 font-label text-[0.72rem]">
+                <dt class="text-[#9aa4b4]">{isEn ? "valence" : "快 / 不快"}</dt>
+                <dd data-f="v" class="text-right tabular-nums text-[#F4F2ED]">&ndash;</dd>
+                <dt class="text-[#9aa4b4]">{isEn ? "arousal" : "覚醒度"}</dt>
+                <dd data-f="a" class="text-right tabular-nums text-[#F4F2ED]">&ndash;</dd>
+                <dt class="text-[#9aa4b4]">{isEn ? "certainty" : "確信度"}</dt>
+                <dd data-f="c" class="text-right tabular-nums text-[#F4F2ED]">&ndash;</dd>
+              </dl>
+              <p class="mt-4 font-display text-sm leading-relaxed text-[#9aa4b4]">
+                {
+                  isEn
+                    ? "Certainty falls as the mass spreads. A system that reports only the top label says nothing about the doubt."
+                    : "確率が散るほど、確信度は下がる。上位ラベルだけを返すシステムは、その迷いについて何も言わない。"
+                }
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The session over time -->
+      <div class="border-t border-ink-line bg-ink-soft p-6 md:p-8">
+        <p class="font-label text-[0.62rem] uppercase tracking-[0.16em] text-[#9aa4b4]">
+          {isEn ? "The session, 00:00 to 02:40" : "セッション全体 00:00–02:40"}
+        </p>
+
+        <svg
+          class="mt-4 w-full"
+          viewBox="0 0 540 230"
+          preserveAspectRatio="none"
+          style="height: 17rem;"
+          role="img"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-label={isEn ? "Valence and arousal over the session" : "セッション中の快不快と覚醒度"}
+        >
+          <!-- Valence band -->
+          <line x1={CX0} y1={V_TOP} x2={CX1} y2={V_TOP} stroke="#F4F2ED" stroke-width="1" opacity="0.08" vector-effect="non-scaling-stroke" />
+          <line x1={CX0} y1={(V_TOP + V_BOT) / 2} x2={CX1} y2={(V_TOP + V_BOT) / 2} stroke="#F4F2ED" stroke-width="1" opacity="0.22" vector-effect="non-scaling-stroke" />
+          <line x1={CX0} y1={V_BOT} x2={CX1} y2={V_BOT} stroke="#F4F2ED" stroke-width="1" opacity="0.08" vector-effect="non-scaling-stroke" />
+          <polyline points={vLine} stroke="#C4974A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+
+          <!-- Arousal band -->
+          <line x1={CX0} y1={A_TOP} x2={CX1} y2={A_TOP} stroke="#F4F2ED" stroke-width="1" opacity="0.08" vector-effect="non-scaling-stroke" />
+          <line x1={CX0} y1={A_BOT} x2={CX1} y2={A_BOT} stroke="#F4F2ED" stroke-width="1" opacity="0.08" vector-effect="non-scaling-stroke" />
+          <polyline points={aLine} stroke="#6FA0C4" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+
+          <!-- Playhead -->
+          <line data-f="playhead" x1={cx(SELECTED)} y1="10" x2={cx(SELECTED)} y2="220"
+                stroke="#C4974A" stroke-width="1" stroke-dasharray="4 4" opacity="0.8" vector-effect="non-scaling-stroke" />
+        </svg>
+
+        <!-- Band scales and legend, outside the plot so nothing overlaps -->
+        <div class="mt-3 flex flex-wrap items-center gap-x-8 gap-y-2 font-label text-[0.7rem] text-[#9aa4b4]">
+          <span class="flex items-center gap-2">
+            <span class="inline-block h-[3px] w-6 bg-amber" aria-hidden="true"></span>
+            {isEn ? "valence" : "快 / 不快"} <span class="text-[#6c7686]">+0.5 &hellip; &minus;0.5</span>
+          </span>
+          <span class="flex items-center gap-2">
+            <span class="inline-block h-[3px] w-6 bg-[#6FA0C4]" aria-hidden="true"></span>
+            {isEn ? "arousal" : "覚醒度"} <span class="text-[#6c7686]">0.75 &hellip; 0.42</span>
+          </span>
+        </div>
+
+        <!-- The timeline itself: one button per frame -->
+        <div class="mt-5" style="padding-left: 7.4%; padding-right: 3.7%;">
+          <div class="flex items-start justify-between">
+            {
+              frames.map((f, i) => (
+                <button
+                  type="button"
+                  data-frame={i}
+                  aria-pressed={i === SELECTED ? "true" : "false"}
+                  class="dash-tick group flex flex-col items-center gap-2 px-1 py-1 font-label text-[0.66rem] text-[#8d96a5]"
+                >
+                  <span class="dash-tick-dot inline-block h-2.5 w-2.5 rounded-full border border-[#6c7686]"></span>
+                  <span class="dash-tick-label tabular-nums">{f.t}</span>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <p class="mt-6 max-w-[72rem] font-display text-base leading-relaxed text-[#9aa4b4]">
+          {
+            isEn
+              ? "A single frame says little. The shape over two and a half minutes is what a system acts on: something happened around a minute in, and it had passed by the end."
+              : "1フレームだけでは、ほとんど何も言えない。システムが拠りどころにするのは2分半の形のほうで、1分あたりで何かが起き、終わりまでには収まっている。"
+          }
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. What it does with the reading -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="ac-use">
+  <header class="reveal">
+    <p class="eyebrow">05 &mdash; Interaction</p>
+    <h2 id="ac-use" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "Reading it is half the work" : "読むだけでは終わらない"}
+    </h2>
+    <p class="mt-5 max-w-[72rem] font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+      {
+        isEn
+          ? "An estimate that changes nothing is not worth taking. The second half of the field is the response: what the system does differently once it has read the person, and whether that leaves them better off."
+          : "何も変えない推定なら、取る意味がない。この領域の後半は応答である。読んだうえでシステムが何を変えるのか、そしてそれが相手にとって良い変化なのか。"
+      }
+    </p>
+  </header>
+
+  <div class="mt-10 grid gap-8 lg:grid-cols-[26rem_minmax(0,1fr)] lg:gap-12">
+    <figure class="reveal self-start">
+      <img
+        src="/figures/ac-interaction.webp"
+        alt={isEn
+          ? "A person speaking to a small machine, which answers more softly; a band between them rises and falls with the conversation."
+          : "人が小さな機械に話しかけ、機械がやわらかく答え返す。二人のあいだの帯が会話に合わせて上下している。"}
+        width="1024"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+        class="w-full border border-stone bg-ivory"
+      />
+    </figure>
+    <ul class="grid gap-px self-start border border-stone bg-stone sm:grid-cols-2">
+      {
+        uses.map((u) => (
+          <li class="reveal bg-ivory p-6 md:p-7">
+            <h3 class="font-display text-xl font-medium text-charcoal">{u.t}</h3>
+            <p class="mt-3 font-display text-base leading-relaxed text-charcoal">{u.d}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- 6. Where it is hard -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="ac-limits">
+  <header class="reveal">
+    <p class="eyebrow">06 &mdash; Limits</p>
+    <h2 id="ac-limits" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "Where it is hard" : "難しいところ"}
+    </h2>
+  </header>
+
+  <ol class="mt-10 border-t border-stone">
+    {
+      limits.map((l, i) => (
+        <li class="reveal grid gap-2 border-b border-stone py-6 md:grid-cols-[3rem_20rem_minmax(0,1fr)] md:gap-8">
+          <span class="font-label text-sm text-amber-deep">{String(i + 1).padStart(2, "0")}</span>
+          <h3 class="font-display text-xl font-medium text-charcoal">{l.t}</h3>
+          <p class="font-display text-base leading-relaxed text-charcoal md:text-lg">{l.d}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<!-- 7. Onward to CAI -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="ac-onward">
+  <header class="reveal">
+    <p class="eyebrow">07 &mdash; Onward</p>
+    <h2 id="ac-onward" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "Then whose feeling is it" : "では、誰の感情なのか"}
+    </h2>
+  </header>
+
+  <div class="mt-8 max-w-[78rem] space-y-6 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+    <p class="reveal">
+      {
+        isEn
+          ? "Everything on this page holds the subject of emotion in one place: the person. The machine stays outside, reading in."
+          : "このページの内容は、感情の主体を一か所に置いている。人間である。機械はその外側にいて、内側を読む。"
+      }
+    </p>
+    <p class="reveal">
+      {
+        isEn ? (
+          <>
+            Move the subject into the machine and the questions change: what structure an AI holds
+            inside, how it is given, how it is found and how it is adjusted. That is the other field
+            this lab works in.
+            <a href={`${p}/cai/`} class="link-amber ml-1 text-amber-deep">What is CAI</a>.
+          </>
+        ) : (
+          <>
+            主体を機械の側に移すと、問いが変わる。AIが内側にどんな構造を持ち、それをどう与え、どう特定し、どう調整するのか。ラボがもう一方で扱っているのは、そちらである。
+            <a href={`${p}/cai/`} class="link-amber ml-1 text-amber-deep">CAIとは</a>。
+          </>
+        )
+      }
+    </p>
+  </div>
+</section>
+
+<section class="mx-auto mt-section max-w-content page-x">
+  <div class="reveal flex flex-wrap gap-4 border-t border-stone pt-10">
+    <a href={`${p}/cai/`} class="btn-solid">
+      {isEn ? "What is CAI" : "CAIとは"} <span aria-hidden="true">&rarr;</span>
+    </a>
+    <a href={`${p}/research/`} class="btn-ghost">
+      {isEn ? "The research domains" : "研究領域"} <span aria-hidden="true">&rarr;</span>
+    </a>
+    <a href={`${p}/affectosphere/`} class="btn-ghost">
+      {isEn ? "What is Affectosphere" : "Affectosphereとは"} <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<div class="h-section-sm" aria-hidden="true"></div>
+
+<script>
+  // The console: picking a moment on the timeline rewrites the readout. Only
+  // numbers move; every word on the panel is rendered by the page.
+  const root = document.querySelector<HTMLElement>("[data-ac-console]");
+  if (root && root.dataset.payload) {
+    type Frame = {
+      t: string; p: number[]; v: number; a: number; c: number;
+      top: number; x: number; vy: number; ay: number;
+    };
+    const data = JSON.parse(root.dataset.payload) as {
+      barMax: number;
+      emo: { name: string; hex: string }[];
+      frames: Frame[];
+    };
+
+    const bars = Array.from(root.querySelectorAll<HTMLElement>("[data-bar]"));
+    const vals = Array.from(root.querySelectorAll<HTMLElement>("[data-val]"));
+    const ticks = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-frame]"));
+    const slot = (n: string) => root.querySelector<HTMLElement>(`[data-f="${n}"]`);
+    const playhead = root.querySelector<SVGLineElement>('[data-f="playhead"]');
+
+    function show(i: number) {
+      const f = data.frames[i];
+      if (!f) return;
+      bars.forEach((b, k) => {
+        b.style.width = Math.max(1, (f.p[k] / data.barMax) * 100) + "%";
+      });
+      vals.forEach((v, k) => { v.textContent = f.p[k].toFixed(2); });
+
+      const clock = slot("clock");
+      if (clock) clock.textContent = f.t;
+      const name = slot("top-name");
+      if (name) name.textContent = data.emo[f.top].name;
+      const dot = slot("top-dot");
+      if (dot) dot.style.backgroundColor = data.emo[f.top].hex;
+      const topv = slot("top-value");
+      if (topv) topv.textContent = f.p[f.top].toFixed(2);
+
+      const v = slot("v"); if (v) v.textContent = f.v.toFixed(2);
+      const a = slot("a"); if (a) a.textContent = f.a.toFixed(2);
+      const c = slot("c"); if (c) c.textContent = f.c.toFixed(2);
+
+      if (playhead) {
+        playhead.setAttribute("x1", String(f.x));
+        playhead.setAttribute("x2", String(f.x));
+      }
+      ticks.forEach((t, k) => t.setAttribute("aria-pressed", k === i ? "true" : "false"));
+    }
+
+    ticks.forEach((t, i) => {
+      t.addEventListener("click", () => show(i));
+      t.addEventListener("mouseenter", () => show(i));
+    });
+    show(ticks.findIndex((t) => t.getAttribute("aria-pressed") === "true") || 0);
+  }
+</script>

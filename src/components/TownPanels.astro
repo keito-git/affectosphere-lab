@@ -1,0 +1,137 @@
+---
+// The two instrument panels over the moving town: the field on one side, one
+// tracked person on the other. /js/hero-dash.js writes the numbers, driving
+// them on its own and handing over to the live scene when that is running.
+// Every word here is rendered by the page; the eight emotions are Plutchik's,
+// in the same order and the same colours as the scene.
+//
+// `layout` says how the parent wants them: docked in the top corners of a
+// full-bleed hero, or stacked in a column beside something else.
+interface Props {
+  locale?: "ja" | "en";
+  layout?: "corners" | "stack";
+}
+const { locale = "ja", layout = "corners" } = Astro.props;
+const isEn = locale === "en";
+
+const corners = layout === "corners";
+const wrapClass = corners
+  ? "pointer-events-none absolute inset-0 z-0 hidden xl:block"
+  : "pointer-events-none hidden w-[16.5rem] flex-col gap-4 xl:flex";
+const panelClass = corners
+  ? "hero-dash absolute left-8 top-8 w-[15.5rem]"
+  : "hero-dash w-full";
+const panelClass2 = corners
+  ? "hero-dash absolute right-8 top-8 w-[15.5rem]"
+  : "hero-dash w-full";
+
+const emotionNames = isEn
+  ? ["joy", "trust", "fear", "surprise", "sadness", "disgust", "anger", "anticipation"]
+  : ["喜び", "信頼", "恐れ", "驚き", "悲しみ", "嫌悪", "怒り", "期待"];
+
+const dash = isEn
+  ? {
+      fieldTitle: "Tracking emotion in space",
+      observed: "observed",
+      unit: "",
+      certainty: "field certainty",
+      agreement: "interference",
+      personTitle: "Tracking one person",
+      modes: ["on the street", "in the park"],
+      strongest: "strongest",
+      personCertainty: "certainty",
+      arousal: "arousal",
+      note: "Illustrative distribution, not measured data",
+    }
+  : {
+      fieldTitle: "空間の感情を追う",
+      observed: "観測",
+      unit: "人",
+      certainty: "場の確信度",
+      agreement: "干渉の強さ",
+      personTitle: "個人の感情を追う",
+      modes: ["通りを歩行", "公園にいる"],
+      strongest: "最も強い感情",
+      personCertainty: "確信度",
+      arousal: "覚醒度",
+      note: "例示分布（実データではありません）",
+    };
+---
+
+<div class={wrapClass} aria-hidden="true">
+    <div
+      data-hero-dash="field"
+      data-names={JSON.stringify(emotionNames)}
+      class={panelClass}
+    >
+      <p class="font-label text-[0.56rem] uppercase tracking-[0.16em] text-[#6B7280]">
+        Affectosphere &middot; Field
+      </p>
+      <p class="mt-1 font-display text-[0.92rem] font-medium text-[#1A1A1A]">
+        {dash.fieldTitle}
+      </p>
+
+      <div class="mt-3 flex items-baseline justify-between font-label text-[0.62rem] text-[#6B7280]">
+        <span>{dash.observed}</span>
+        <span class="tabular-nums text-[#1A1A1A]"><span data-f="n">&ndash;</span>{dash.unit}</span>
+      </div>
+
+      <ul data-f="bars" class="mt-2.5 space-y-1.5"></ul>
+
+      <dl class="mt-3 grid grid-cols-[1fr_auto] gap-y-1 border-t border-stone/70 pt-2
+                 font-label text-[0.62rem]">
+        <dt class="text-[#6B7280]">{dash.certainty}</dt>
+        <dd data-f="certainty" class="text-right tabular-nums text-[#1A1A1A]">&ndash;</dd>
+        <dt class="text-[#6B7280]">{dash.agreement}</dt>
+        <dd data-f="agreement" class="text-right tabular-nums text-[#1A1A1A]">&ndash;</dd>
+      </dl>
+
+      <p class="mt-2 font-label text-[0.54rem] leading-snug text-[#8C939B]">{dash.note}</p>
+    </div>
+
+    <div
+      data-hero-dash="person"
+      data-modes={JSON.stringify(dash.modes)}
+      class={panelClass2}
+    >
+      <p class="font-label text-[0.56rem] uppercase tracking-[0.16em] text-[#6B7280]">
+        Person &middot; Tracking
+      </p>
+      <p class="mt-1 font-display text-[0.92rem] font-medium text-[#1A1A1A]">
+        {dash.personTitle}
+      </p>
+
+      <div class="mt-3 flex items-baseline justify-between font-label text-[0.62rem]">
+        <span data-f="id" class="tabular-nums text-[#1A1A1A]">&ndash;</span>
+        <span data-f="mode" class="text-[#6B7280]">&ndash;</span>
+      </div>
+
+      <svg class="mt-2 h-9 w-full" viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true">
+        <path data-f="spark-area" d="" fill="#C4974A" fill-opacity="0.14"></path>
+        <polyline
+          data-f="spark"
+          points=""
+          fill="none"
+          stroke="#C4974A"
+          stroke-width="1.4"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          vector-effect="non-scaling-stroke"></polyline>
+      </svg>
+
+      <dl class="mt-2 grid grid-cols-[1fr_auto] gap-y-1 border-t border-stone/70 pt-2
+                 font-label text-[0.62rem]">
+        <dt class="text-[#6B7280]">{dash.strongest}</dt>
+        <dd class="text-right tabular-nums">
+          <span data-f="top" class="font-display text-[0.72rem]">&ndash;</span>
+          <span data-f="topv" class="ml-1 text-[#1A1A1A]">&ndash;</span>
+        </dd>
+        <dt class="text-[#6B7280]">{dash.personCertainty}</dt>
+        <dd data-f="pcertainty" class="text-right tabular-nums text-[#1A1A1A]">&ndash;</dd>
+        <dt class="text-[#6B7280]">{dash.arousal}</dt>
+        <dd data-f="arousal" class="text-right tabular-nums text-[#1A1A1A]">&ndash;</dd>
+      </dl>
+
+      <p class="mt-2 font-label text-[0.54rem] leading-snug text-[#8C939B]">{dash.note}</p>
+    </div>
+</div>

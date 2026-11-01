@@ -1,97 +1,289 @@
 ---
-// "What is CAI": the definition, how it widens what came before, the questions
-// it asks, and the four tiers — with the lab's own domains and publication
-// counts placed on each tier, read from the same data as the research map.
-import { researchDomains as domainsJa } from "../data/research-domains";
-import { researchDomains as domainsEn } from "../data/research-domains.en";
-import { stages, tiers, stageTier, domainStage, stageStats } from "../data/research-map";
-
+// "What is CAI". Every claim on this page is taken from the paper that defines
+// the term (Inoshita, Computational Affective Intelligence, under review):
+// the definition and its three propositions, the three layers of the name, the
+// starting question, the eight-question agenda, and the research space of six
+// competences by four processes.
 interface Props {
   locale?: "ja" | "en";
 }
 const { locale = "ja" } = Astro.props;
 const isEn = locale === "en";
 const p = isEn ? "/en" : "";
-const domains = isEn ? domainsEn : domainsJa;
-const stats = stageStats();
 
-const tierColumns = tiers.map((t) => {
-  const tierStages = stages.filter((s) => stageTier[s.id] === t.id);
-  const ids = tierStages.map((s) => s.id);
-  return {
-    tier: t,
-    stages: tierStages,
-    domains: domains.filter((d) => ids.includes(domainStage[d.slug])),
-    count: ids.reduce((n, id) => n + (stats[id]?.total ?? 0), 0),
-  };
+// The three propositions the paper organises its definition into.
+const propositions = isEn
+  ? [
+      "The primary object of CAI is affective competence as realized in artificial systems; human affect serves as ground truth, comparison reference, and interaction partner.",
+      "Affective intelligence encompasses the perception, representation, reasoning, generation, interaction, and regulation of affect.",
+      "Evaluating affective competence in artificial systems requires treating the plurality of ground-truth sources not as measurement noise but as a structural property to be addressed explicitly.",
+    ]
+  : [
+      "CAIの主たる対象は、人工システムにおいて実現される感情能力である。人間の感情は、正解の供給源、比較の参照点、相互作用の相手として関わる。",
+      "感情知能は、感情の知覚・表象・推論・生成・相互作用・制御を包含する。",
+      "人工システムの感情能力を評価するには、正解供給源の多元性を測定上のノイズではなく、明示的に扱うべき構造的性質として扱う必要がある。",
+    ];
+
+// One layer per word of the name.
+const layers = isEn
+  ? [
+      {
+        word: "Affective",
+        name: "Affective Phenomena",
+        img: "/figures/cai-phenomena.webp",
+        alt: "Many small shapes of different forms and colours floating together, with three different framing devices laid over them that do not agree.",
+        body: "Affect-related phenomena: emotions, moods, appraisals, preferences. How they should be categorized is itself contested, across discrete, dimensional, appraisal-based and constructionist accounts. CAI takes this layer as its subject matter without adjudicating between them.",
+      },
+      {
+        word: "Intelligence",
+        name: "Affective Intelligence",
+        img: "/figures/cai-intelligence.webp",
+        alt: "A small robot with six evenly spaced badges around it, each carrying a different pictogram.",
+        body: "The six competences an intelligent system exhibits with respect to those phenomena: perception, representation, reasoning, generation, interaction, regulation.",
+      },
+      {
+        word: "Computational",
+        name: "Computational Grounding",
+        img: "/figures/cai-grounding.webp",
+        alt: "A robot open on a workbench, with a blueprint, a funnel pouring light in, a magnifying glass and a gauge arranged around it.",
+        body: "The methods by which those competences are formally specified, learned and constructed, their internal mechanisms understood and intervened upon, and validly evaluated.",
+      },
+    ]
+  : [
+      {
+        word: "Affective",
+        name: "Affective Phenomena",
+        img: "/figures/cai-phenomena.webp",
+        alt: "形も色も異なる小さな図形が漂い、その上に互いに一致しない3つの枠組みが重なっている。",
+        body: "感情、情動、気分、評価、選好などの感情関連現象。これをどう分類すべきかは、離散・次元・評価理論・構成主義のあいだで争われている。CAIはこの層を主題として取り、そのどれかを裁定することはしない。",
+      },
+      {
+        word: "Intelligence",
+        name: "Affective Intelligence",
+        img: "/figures/cai-intelligence.webp",
+        alt: "小さなロボットのまわりに、それぞれ違う絵記号を持つ6つのバッジが等間隔に並んでいる。",
+        body: "感情現象に対して知的システムが示す6つの能力。知覚・表象・推論・生成・相互作用・制御。",
+      },
+      {
+        word: "Computational",
+        name: "Computational Grounding",
+        img: "/figures/cai-grounding.webp",
+        alt: "作業台の上で開かれたロボットのまわりに、設計図・光を注ぐ漏斗・虫めがね・計器が置かれている。",
+        body: "第2層の能力を形式的に記述し、学習・構築し、その内部機構を理解・介入し、妥当に測定する方法。",
+      },
+    ];
+
+// The paper's starting question, and the three challenges it decomposes into.
+const challenges = isEn
+  ? [
+      "If evaluation scores change with the choice of scoring convention, measuring the magnitude and direction of that variation is a prerequisite for evaluation.",
+      "When humans and artificial systems are compared on the same affective task, whether the scale measures the same latent variable for both hosts determines whether the results are comparable at all.",
+      "Whether abstention based on a system's own uncertainty can stand in for abstention based on the plurality of interpretation, for items whose labels legitimately admit several readings.",
+    ]
+  : [
+      "評価スコアが採点規約の選択によって変わるなら、その変動の大きさと向きを測ることが、評価の前提になる。",
+      "人間と人工システムを同じ感情課題で比べるとき、その尺度が両方の宿主について同じ潜在変数を測っているかどうかが、結果が比較可能かどうかを決める。",
+      "ラベルの解釈が正当に複数ありうる項目について、システム自身の不確実性にもとづく差し控えが、解釈の多元性にもとづく差し控えの代わりになるか。",
+    ];
+
+// The eight questions that make up the research agenda.
+const agenda = isEn
+  ? [
+      { tag: "representation", q: "How should affective states, distributions, and uncertainty be represented internally in AI?" },
+      { tag: "reasoning", q: "How should artificial agents reason about affect in light of context, culture, and individual differences?" },
+      { tag: "generation", q: "Under what conditions should AI generate and adjust affective expressions?" },
+      { tag: "ground truth", q: "What ground-truth sources are required to evaluate affective competence in artificial systems?" },
+      { tag: "measurement", q: "Does the scale used to evaluate affective competence measure the same latent variable for artificial agents and for human beings?" },
+      { tag: "uncertainty", q: "How should AI represent uncertainty and exercise abstention where interpretation legitimately diverges?" },
+      { tag: "interaction", q: "How should affective intelligence be evaluated in the context of human-AI affective interaction?" },
+      { tag: "governance", q: "How should affective AI be designed under constraints of culture, ethics, privacy, and manipulation?" },
+    ]
+  : [
+      { tag: "表象", q: "感情の状態・分布・不確実性を、AIの内部でどう表現すべきか。" },
+      { tag: "推論", q: "文脈・文化・個人差を踏まえた感情推論は、いかに可能か。" },
+      { tag: "生成", q: "AIはどのような条件で感情表現を生成し、調整すべきか。" },
+      { tag: "正解", q: "人工システムの感情能力を評価するために、どの正解供給源が必要か。" },
+      { tag: "測定", q: "人間とAIの感情能力を、同じ尺度で比較できるか。" },
+      { tag: "不確実性", q: "解釈が正当に分岐する場面で、AIはどう不確実性を表現し、差し控えるべきか。" },
+      { tag: "相互作用", q: "人とAIの感情的相互作用のなかで、感情知能をどう評価すべきか。" },
+      { tag: "統治", q: "文化・倫理・プライバシー・操作といった制約のもとで、感情AIをどう設計するか。" },
+    ];
+
+// The research space: six competences by four processes. The four examples
+// placed in it are the ones the paper names.
+const competences = isEn
+  ? ["perception", "representation", "reasoning", "generation", "interaction", "regulation"]
+  : ["知覚", "表象", "推論", "生成", "相互作用", "制御"];
+const processes = isEn
+  ? ["specification", "construction", "mechanism", "evaluation"]
+  : ["形式化", "構築", "機構", "評価"];
+const placed: Record<string, string> = isEn
+  ? {
+      "0-1": "training an affective recognition model",
+      "3-1": "affective data synthesis",
+      "1-2": "analysis of internal affective representations",
+      "5-2": "manipulating representations for regulation",
+    }
+  : {
+      "0-1": "感情認識モデルの学習",
+      "3-1": "感情データの合成",
+      "1-2": "内部表象の解析",
+      "5-2": "制御のための表現の操作",
+    };
+
+// ── The hypothesis: affect as a tilt on the next-token distribution ──────
+// One prompt, one set of candidate continuations, and four states. The base
+// probabilities are invented; each state applies an affinity, the page
+// renormalises, and the indices under the bars are computed from the result.
+// This is the lab's hypothesis, not a published finding, and the page says so.
+const PROMPT = isEn ? "That proposal is" : "その提案は、";
+const TOKENS = isEn
+  ? ["interesting", "dangerous", "unclear", "worth trying", "ordinary", "beautiful", "wrong", "unexpected"]
+  : ["面白い", "危険だ", "わからない", "試してみよう", "普通だ", "美しい", "間違っている", "意外だ"];
+const BASE = [0.34, 0.11, 0.09, 0.08, 0.16, 0.05, 0.12, 0.05];
+
+const STATES = (
+  isEn
+    ? [
+        { label: "no state", s: [0, 0, 0, 0, 0, 0, 0, 0] },
+        { label: "anticipation", s: [0.3, -0.6, -0.3, 2.4, -0.8, 0.2, -0.6, 0.6] },
+        { label: "fear", s: [-0.6, 1.7, 0.8, -1.0, -0.4, -0.6, 1.2, 0.3] },
+        { label: "surprise", s: [0.1, 0.2, 0.7, 0.3, -1.2, 0.9, -0.2, 2.6] },
+      ]
+    : [
+        { label: "状態なし", s: [0, 0, 0, 0, 0, 0, 0, 0] },
+        { label: "期待", s: [0.3, -0.6, -0.3, 2.4, -0.8, 0.2, -0.6, 0.6] },
+        { label: "恐れ", s: [-0.6, 1.7, 0.8, -1.0, -0.4, -0.6, 1.2, 0.3] },
+        { label: "驚き", s: [0.1, 0.2, 0.7, 0.3, -1.2, 0.9, -0.2, 2.6] },
+      ]
+).map((st) => {
+  const w = BASE.map((q, k) => q * Math.exp(st.s[k]));
+  const z = w.reduce((a, b) => a + b, 0);
+  const prob = w.map((x) => x / z);
+  let h = 0, top = 0;
+  prob.forEach((q, k) => {
+    if (q > 0) h -= q * Math.log(q);
+    if (q > prob[top]) top = k;
+  });
+  return { label: st.label, prob, top, width: Math.exp(h) };
 });
 
-// Emotion Recognition -> Affective Computing -> CAI: each widens the last.
-const lineage = isEn
-  ? [
-      { name: "Emotion Recognition", does: "Guesses the emotion." },
-      {
-        name: "Affective Computing",
-        does: "Builds computational systems that recognise, generate and respond to emotion.",
-      },
-      {
-        name: "Computational Affective Intelligence",
-        does: "Goes on to ask how an AI understands emotion, how it structures it inside, and how it uses it in reasoning and decisions.",
-      },
-    ]
-  : [
-      { name: "Emotion Recognition", does: "感情を当てる。" },
-      { name: "Affective Computing", does: "感情を認識・生成・応答する計算システムをつくる。" },
-      {
-        name: "Computational Affective Intelligence",
-        does: "AIが感情をどう理解し、内部でどう構造化し、推論や意思決定にどう使うかまでを扱う。",
-      },
-    ];
+const distinctTops = new Set(STATES.map((st) => st.top)).size;
+const tiltPayload = {
+  barMax: 0.55,
+  base: BASE,
+  states: STATES.map((st) => ({
+    prob: st.prob,
+    top: st.top,
+    width: st.width,
+  })),
+};
 
-const questions = isEn
-  ? [
-      "How is human emotion represented inside an AI?",
-      "How should an AI handle the ambiguity of emotion labels, and the differences between people?",
-      "On what grounds does an LLM judge anger, sadness or empathy?",
-      "What structure, and what bias, sits in the emotional expression an AI produces?",
-      "Is there any sense in giving an AI emotional states or emotional reasoning?",
-      "How should emotional interaction between people and AI be designed and evaluated?",
-      "What does the technology do to society, ethics and culture?",
-    ]
-  : [
-      "人間の感情は、AIの内部でどのように表象されるのか。",
-      "感情ラベルの曖昧さや個人差を、AIはどう扱うべきか。",
-      "LLMは「怒り」「悲しみ」「共感」を、何に基づいて判断しているのか。",
-      "AI自身が生成する感情表現には、どんな構造やバイアスがあるのか。",
-      "AIに感情状態や感情的推論を持たせることに、意味はあるのか。",
-      "人間とAIの感情的相互作用を、どう設計し、どう評価すべきか。",
-      "その技術は、社会・倫理・文化にどんな影響を与えるのか。",
-    ];
+// ── Opening the head ─────────────────────────────────────────────────────
+// Four depths, from the outside in. Each one names what becomes visible and
+// what the field asks there. No person appears: the subject of emotion here
+// is the AI, so every readout below belongs to the model.
+const EMO = (
+  isEn
+    ? ["joy", "trust", "fear", "surprise", "sadness", "disgust", "anger", "anticipation"]
+    : ["喜び", "信頼", "恐れ", "驚き", "悲しみ", "嫌悪", "怒り", "期待"]
+).map((name, i) => ({
+  name,
+  hex: ["#C4974A", "#8DB462", "#6B8F7A", "#547B84", "#3D6B8C", "#6E5584", "#B5737A", "#BD8560"][i],
+}));
+
+// Illustrative distributions. The third and fourth depths share a reading;
+// the fourth is what it becomes after the intervention.
+const READ = [0.06, 0.12, 0.19, 0.22, 0.09, 0.05, 0.08, 0.19];
+const AFTER = [0.22, 0.26, 0.08, 0.11, 0.05, 0.03, 0.04, 0.21];
+
+const DEPTHS = (
+  isEn
+    ? [
+        {
+          label: "Behaviour",
+          title: "From outside, only the answer",
+          sees: "What leaves the model is text. Its tone can be read, but nothing about the state that produced it is visible from here.",
+          asks: "Is the tone of an answer evidence of anything inside?",
+        },
+        {
+          label: "Readout",
+          title: "Read the internal representation",
+          sees: "Probing the hidden states returns a distribution over affective components. It is the model's own, and it need not look like a person's.",
+          asks: "What is actually represented in there, and how stable is it?",
+        },
+        {
+          label: "Parameters",
+          title: "Locate what governs it",
+          sees: "A few directions carry most of the structure. Finding them turns a readout into something that can be acted on.",
+          asks: "Which parameters move the distribution, and which only correlate with it?",
+        },
+        {
+          label: "Intervention",
+          title: "Move it, and see what follows",
+          sees: "Pushing on those directions changes the distribution, and changes the reasoning downstream. The shift is the evidence.",
+          asks: "Does the change survive, and does it carry into what the model decides?",
+        },
+      ]
+    : [
+        {
+          label: "ふるまい",
+          title: "外からは、応答しか見えない",
+          sees: "モデルから出てくるのはテキストである。その調子は読めるが、それを生んだ内部の状態は、ここからは何も見えない。",
+          asks: "応答の調子は、内側の何かの証拠になるのか。",
+        },
+        {
+          label: "読み出し",
+          title: "内部表現を読み出す",
+          sees: "隠れ状態を探ると、感情的な成分の分布が返る。これはモデル自身のものであり、人間のそれと似ている必要はない。",
+          asks: "そこに実際に表現されているものは何で、どれだけ安定しているのか。",
+        },
+        {
+          label: "パラメータ",
+          title: "それを司るものを特定する",
+          sees: "構造の大半を担っているのは、ごく少数の方向である。それを見つけた時点で、読み出しは手を入れられるものに変わる。",
+          asks: "分布を動かすのはどのパラメータで、どれが相関しているだけなのか。",
+        },
+        {
+          label: "介入",
+          title: "動かして、何が続くかを見る",
+          sees: "その方向を押すと分布が変わり、下流の推論も変わる。この変位そのものが証拠になる。",
+          asks: "変化は持続するのか。そしてモデルの判断にまで届くのか。",
+        },
+      ]
+).map((d, i) => ({ ...d, bars: i === 0 ? null : i === 3 ? AFTER : READ, delta: i === 3 }));
+
+const DEPTH_BAR_MAX = 0.3;
+const depthPayload = {
+  barMax: DEPTH_BAR_MAX,
+  base: READ,
+  depths: DEPTHS.map((d) => ({ bars: d.bars, delta: d.delta })),
+};
 ---
 
 <!-- Header on the dark observation surface, as on the home page. -->
 <section class="surface-ink relative overflow-hidden" aria-labelledby="cai-heading">
   <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
-  <div class="relative mx-auto max-w-content page-x pb-20 pt-28 md:pb-24 md:pt-36">
+  <div class="relative mx-auto max-w-content page-x pb-12 pt-16 md:pb-16 md:pt-20">
     <p class="eyebrow reveal">Computational Affective Intelligence</p>
     <h1
       id="cai-heading"
       class="reveal mt-5 font-display font-semibold tracking-tight text-[#F4F2ED]"
-      style="font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.1;"
+      style="font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.1;"
     >
       {isEn ? "What is CAI" : "CAIとは"}
     </h1>
     <p class="reveal mt-3 font-display text-xl text-amber md:text-2xl">
-      {isEn ? "Computational Affective Intelligence" : "計算的感情知能"}
+      {isEn ? "Affective intelligence in artificial systems" : "人工システムにおける感情知能"}
     </p>
     <p
-      class="reveal mt-8 max-w-prose font-display text-[#CFCBC2]"
-      style="font-size: clamp(1.05rem, 1.35vw, 1.25rem); line-height: 1.85;"
+      class="reveal mt-8 max-w-[72rem] font-display text-[#CFCBC2]"
+      style="font-size: clamp(0.95rem, 1.1vw, 1.12rem); line-height: 1.72;"
     >
       {
         isEn
-          ? "A research framework that treats emotion computationally all the way through an AI: recognition, reasoning, generation, internal representation, and social interaction."
-          : "感情を、AIの認識・推論・生成・内部表現・社会的相互作用まで含めて、計算論的に扱う研究の枠組み。"
+          ? "A research space of six affective competences and four processes, proposed to ask how affective capabilities should be defined and measured when interpretations legitimately diverge."
+          : "6つの感情能力と4つの過程が張る研究空間。解釈が正当に分岐するとき、感情能力をどう定義し、どう測るのか。その問いのために提案された枠組みである。"
       }
     </p>
   </div>
@@ -99,150 +291,139 @@ const questions = isEn
 
 <!-- 1. Definition -->
 <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-def">
-  <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-12">
-    <div>
-      <p class="eyebrow reveal">01 — Definition</p>
-      <h2 id="cai-def" class="reveal mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
-        {isEn ? "Definition" : "定義"}
-      </h2>
-    </div>
-    <div>
-      <p
-        class="reveal border-l-2 border-amber pl-6 font-display text-xl leading-relaxed text-charcoal md:text-2xl"
-        style="line-height: 1.75;"
-      >
-        {
-          isEn ? (
-            <>
-              Computational Affective Intelligence is the study of how affect is
-              <span class="text-amber-deep"> represented, inferred, generated, learned, and utilized</span>
-              by artificial intelligence systems.
-            </>
-          ) : (
-            <>
-              Computational Affective Intelligence とは、人間および人工知能における感情・情動を、
-              <span class="text-amber-deep">表現・認識・推論・生成・学習・利用</span>
-              という観点から計算論的に理解し、設計する研究領域である。
-            </>
-          )
-        }
-      </p>
+  <header class="reveal">
+    <p class="eyebrow">01 &mdash; Definition</p>
+    <h2 id="cai-def" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "Definition" : "定義"}
+    </h2>
+  </header>
+
+  <blockquote
+    class="reveal mt-8 max-w-[78rem] space-y-5 border-l-2 border-amber pl-6 font-display text-charcoal md:pl-8"
+    style="font-size: clamp(1.05rem, 1.4vw, 1.35rem); line-height: 1.75;"
+  >
+    <p>
       {
-        !isEn && (
-          <p class="reveal mt-5 pl-6 font-display text-base italic leading-relaxed text-slate">
-            Computational Affective Intelligence is the study of how affect is represented, inferred,
-            generated, learned, and utilized by artificial intelligence systems.
-          </p>
-        )
+        isEn
+          ? "Computational Affective Intelligence (CAI) is an interdisciplinary field concerned primarily with the realization of affective intelligence in artificial systems."
+          : "Computational Affective Intelligence (CAI) とは、人工システムにおける感情知能の実現を主たる関心とする学際的分野である。"
       }
-      <p class="reveal mt-8 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.9;">
-        {
-          isEn
-            ? "Affective Computing has traditionally been built around human-centred emotion technology: detecting emotion, responding to it, expressing it. CAI takes in more than human emotion. It also asks how an AI expresses, interprets, reasons over and generates emotion, and how it holds the uncertainty and the value judgements that come with it."
-            : "Affective Computing は伝統的に、「人間の感情を検出する」「感情に反応する」「感情を表現する」といった、人間中心の感情技術を核としてきた。CAIが対象とするのは、人間の感情だけではない。AIが感情をどう表現し、どう解釈し、どう推論し、どう生成するのか。感情に関する不確実性や価値判断を、内部にどう持つのか。そこまでを扱う。"
-        }
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- 2. Lineage: each stage widens the one before it. -->
-<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-lineage">
-  <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-12">
-    <div>
-      <p class="eyebrow reveal">02 — Lineage</p>
-      <h2 id="cai-lineage" class="reveal mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
-        {isEn ? "Not another name for emotion recognition" : "感情認識AIの言い換えではない"}
-      </h2>
-    </div>
-    <div>
-      <p class="reveal font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.9;">
-        {
-          isEn
-            ? "What is usually called emotion AI has mostly meant the two inner boxes below. CAI contains them, and widens the question outward."
-            : "一般に「感情AI」と呼ばれてきた技術の多くは、下の図の内側の2つにあたる。CAIはそれらを含んだうえで、問いを外側へ広げる。"
-        }
-      </p>
-      <!-- Nested scopes, drawn in HTML so the text stays legible on a phone. -->
-      <figure class="reveal mt-8" aria-label={isEn ? "Three nested scopes" : "入れ子になった3つの範囲"}>
-        <div class="border border-amber bg-amber/5 p-4 md:p-6">
-          <p class="font-label text-[0.72rem] uppercase tracking-[0.16em] text-amber-deep">{lineage[2].name}</p>
-          <p class="mt-2 font-display text-base leading-relaxed text-charcoal">{lineage[2].does}</p>
-          <div class="mt-5 border border-stone bg-cream p-4 md:p-5">
-            <p class="font-label text-[0.72rem] uppercase tracking-[0.16em] text-slate">{lineage[1].name}</p>
-            <p class="mt-2 font-display text-base leading-relaxed text-charcoal">{lineage[1].does}</p>
-            <div class="mt-4 border border-stone bg-ivory p-4">
-              <p class="font-label text-[0.72rem] uppercase tracking-[0.16em] text-slate">{lineage[0].name}</p>
-              <p class="mt-2 font-display text-base leading-relaxed text-charcoal">{lineage[0].does}</p>
-            </div>
-          </div>
-        </div>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- 3. Why now -->
-<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-why">
-  <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-12">
-    <div>
-      <p class="eyebrow reveal">03 — Why now</p>
-      <h2 id="cai-why" class="reveal mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
-        {isEn ? "Why the LLM era needs it" : "なぜ、LLMの時代に必要か"}
-      </h2>
-    </div>
-    <div class="space-y-6 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.9;">
-      <p class="reveal">
-        {
-          isEn
-            ? "The central problem used to be estimating an emotion label from a face, a voice or a sentence. Now the LLM itself reasons about emotion, reaches different emotional judgements depending on persona, values and culture, and produces emotional responses of its own."
-            : "これまでの中心は、入力された顔・音声・文章から感情ラベルを推定する問題だった。いまはLLM自身が感情について推論し、人格・価値観・文化によって異なる感情判断をし、感情的な応答を生成する。"
-        }
-      </p>
-      <p class="reveal">
-        {
-          isEn
-            ? "Recognition alone no longer covers that. Emotional intelligence itself has to be studied as an object of computation."
-            : "そうなると、「認識」だけでは足りない。感情知能そのものを、計算の対象として研究する必要がある。"
-        }
-      </p>
-      <p class="reveal">
-        {
-          isEn ? (
-            <>
-              And once emotion surrounds society like an atmosphere — what we call the
-              <a href={`${p}/affectosphere/`} class="link-amber text-amber-deep">Affectosphere</a>
-              — the AI that reads it has to be designed as an intelligence, with its uncertainty and its
-              limits in view, not only as a sensor.
-            </>
-          ) : (
-            <>
-              感情が大気のように社会を包む
-              <a href={`${p}/affectosphere/`} class="link-amber text-amber-deep">Affectosphere</a>
-              の時代には、それを読むAIを、センサーとしてではなく、不確実性と限界まで含めた知能として設計しなければならない。
-            </>
-          )
-        }
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- 4. Questions -->
-<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-questions">
-  <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-12">
-    <div>
-      <p class="eyebrow reveal">04 — Questions</p>
-      <h2 id="cai-questions" class="reveal mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
-        {isEn ? "What CAI asks" : "CAIが問うこと"}
-      </h2>
-    </div>
-    <ol class="border-t border-stone">
+    </p>
+    <p>
       {
-        questions.map((q, i) => (
-          <li class="reveal flex gap-5 border-b border-stone py-4">
-            <span class="w-6 shrink-0 pt-1 font-label text-sm text-amber-deep">{i + 1}</span>
-            <span class="font-display text-base leading-relaxed text-charcoal md:text-lg">{q}</span>
+        isEn
+          ? "It studies how the affective competences of perception, representation, reasoning, generation, interaction, and regulation are specified, constructed, internally realized and intervened upon, and validly evaluated."
+          : "感情に関わる知覚・表象・推論・生成・相互作用・制御の能力を対象とし、その形式化、構築、内部機構の理解と介入、および妥当な評価を統合的に研究する。"
+      }
+    </p>
+    <p>
+      {
+        isEn
+          ? "Human affect remains essential as a source of ground truth, a reference for comparison, and a counterpart in interaction, but the primary object of CAI is affective competence as realized in artificial agents."
+          : "人間の感情は、正解の供給源として、比較の参照点として、相互作用の相手として本質的であり続けるが、CAIの主たる対象は、人工エージェントにおいて実現される感情能力である。"
+      }
+    </p>
+  </blockquote>
+
+  <p class="reveal mt-6 pl-6 font-label text-[0.72rem] text-slate md:pl-8">
+    {isEn ? "From the paper that defines the term." : "この用語を定義した論文より。"}
+  </p>
+
+  <h3 class="reveal mt-14 font-display text-xl font-medium text-charcoal md:text-2xl">
+    {isEn ? "Three propositions" : "3つの命題"}
+  </h3>
+  <ol class="mt-6 border-t border-stone">
+    {
+      propositions.map((q, i) => (
+        <li class="reveal grid gap-2 border-b border-stone py-5 md:grid-cols-[4rem_minmax(0,1fr)] md:gap-8">
+          <span class="font-label text-sm text-amber-deep">{String(i + 1).padStart(2, "0")}</span>
+          <span class="font-display text-base leading-relaxed text-charcoal md:text-lg">{q}</span>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<!-- 2. Three layers, one per word of the name -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-layers">
+  <header class="reveal">
+    <p class="eyebrow">02 &mdash; Structure</p>
+    <h2 id="cai-layers" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "One layer per word of the name" : "名前の三語が、三つの層にあたる"}
+    </h2>
+  </header>
+
+  <ol class="mt-10 grid gap-px border border-stone bg-stone md:grid-cols-3">
+    {
+      layers.map((l, i) => (
+        <li class="reveal flex flex-col bg-ivory p-6 md:p-8">
+          <img
+            src={l.img}
+            alt={l.alt}
+            width="1024"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+            class="mb-6 w-full border border-stone bg-cream"
+          />
+          <p class="font-label text-[2rem] leading-none text-amber/45 md:text-[2.6rem]">0{i + 1}</p>
+          <p class="mt-3 font-label text-[0.72rem] uppercase tracking-[0.16em] text-amber-deep">{l.word}</p>
+          <h3 class="mt-1 font-display text-xl font-medium text-charcoal md:text-2xl">{l.name}</h3>
+          <p class="mt-4 font-display text-base leading-relaxed text-charcoal">{l.body}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<!-- 3. The starting question -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-why">
+  <header class="reveal">
+    <p class="eyebrow">03 &mdash; Starting question</p>
+    <h2 id="cai-why" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {
+        isEn
+          ? "How to measure, when interpretations legitimately diverge"
+          : "解釈が正当に分かれるとき、どう測るのか"
+      }
+    </h2>
+    <p class="mt-5 max-w-[78rem] font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+      {
+        isEn
+          ? "Existing frameworks are mutually complementary, but none of them makes the measurement of that variability itself a central research question. It decomposes into three concrete challenges."
+          : "既存の枠組みは互いに補い合うが、その変動の測定そのものを中心的な研究課題に据えたものはない。問いは3つの具体的な課題に分解される。"
+      }
+    </p>
+  </header>
+
+  <div class="mt-10 grid gap-8 lg:grid-cols-[26rem_minmax(0,1fr)] lg:gap-12">
+    <figure class="reveal self-start">
+      <img
+        src="/figures/cai-divergence.webp"
+        alt={isEn
+          ? "The same ambiguous card in the centre, with four different sources around it raising flags of four different colours: one person, two people together, a machine, and a clipboard."
+          : "中央に同じ曖昧なカードがあり、そのまわりで4つの供給源がそれぞれ違う色の旗を上げている。ひとり、ふたり組、機械、そしてクリップボード。"}
+        width="1024"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+        class="w-full border border-stone bg-cream"
+      />
+      <figcaption class="mt-3 font-label text-[0.7rem] leading-relaxed text-slate">
+        {
+          isEn
+            ? "Self-report, collective judgment, artificial agent, observer rating: four sources, four answers."
+            : "自己報告・集合的判断・人工エージェント・他者評価。供給源が4つあれば、答えも4つある。"
+        }
+      </figcaption>
+    </figure>
+
+    <ol class="grid gap-px self-start border border-stone bg-stone">
+      {
+        challenges.map((c, i) => (
+          <li class="reveal bg-ivory p-6 md:p-7">
+            <p class="font-label text-[1.6rem] leading-none text-amber/45 md:text-[2rem]">0{i + 1}</p>
+            <p class="mt-3 font-display text-base leading-relaxed text-charcoal md:text-lg">{c}</p>
           </li>
         ))
       }
@@ -250,72 +431,433 @@ const questions = isEn
   </div>
 </section>
 
-<!-- 5. Four tiers, with the lab's domains placed on each. -->
-<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-tiers">
-  <div class="max-w-prose">
-    <p class="eyebrow reveal">05 — Structure</p>
-    <h2 id="cai-tiers" class="reveal mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
-      {isEn ? "Four tiers" : "4つの層"}
-    </h2>
-    <p class="reveal mt-5 font-display text-base leading-relaxed text-slate md:text-lg">
+<!-- 4. Opening the head: the Mechanism process, made clickable. -->
+<section class="surface-ink relative mt-section overflow-hidden" aria-labelledby="cai-probe">
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-content page-x py-20 md:py-28">
+    <header class="reveal">
+      <p class="eyebrow">04 &mdash; Mechanism</p>
+      <h2 id="cai-probe" class="mt-3 font-display text-3xl font-medium text-[#F4F2ED] md:text-4xl">
+        {isEn ? "Opening the head" : "AIの頭の中を、開いていく"}
+      </h2>
+      <p class="mt-5 max-w-[72rem] font-display text-base leading-relaxed text-[#CFCBC2] md:text-lg" style="line-height: 1.78;">
+        {
+          isEn
+            ? "Of the four processes, mechanism is the one that opens the system: understanding how a competence is realized internally, and intervening upon that realization. Four depths, from the outside in."
+            : "4つの過程のうち、機構（Mechanism）はシステムを開く過程である。能力が内部でどう実現されているかを理解し、その実現に介入する。外から内へ、4つの深さがある。"
+        }
+      </p>
+    </header>
+
+    <div
+      class="reveal mt-10 border border-ink-line bg-ink-soft"
+      data-cai-depth
+      data-payload={JSON.stringify(depthPayload)}
+    >
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-ink-line px-6 py-3">
+        <p class="font-label text-[0.64rem] uppercase tracking-[0.16em] text-[#9aa4b4]">
+          Model dissection
+        </p>
+        <p class="font-label text-[0.64rem] tracking-wide text-amber">{isEn ? "example" : "例"}</p>
+      </div>
+
+      <!-- Depth picker -->
+      <div class="flex flex-wrap gap-px border-b border-ink-line bg-ink-line">
+        {
+          DEPTHS.map((d, i) => (
+            <button
+              type="button"
+              data-depth={i}
+              data-copy={JSON.stringify({ title: d.title, sees: d.sees, asks: d.asks })}
+              aria-pressed={i === 0 ? "true" : "false"}
+              class="dash-chip grow basis-[11rem] bg-ink-soft px-5 py-4 text-left text-[#9aa4b4]"
+            >
+              <span class="font-label text-[0.62rem] tracking-[0.14em]">0{i + 1}</span>
+              <span class="mt-1 block font-display text-base">{d.label}</span>
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="grid gap-px bg-ink-line lg:grid-cols-[minmax(0,1fr)_26rem]">
+        <!-- The head, opened -->
+        <div class="bg-ink-soft p-6 md:p-8">
+          <svg class="w-full" viewBox="0 0 440 360" role="img" fill="none" xmlns="http://www.w3.org/2000/svg"
+               aria-label={isEn ? "An AI head drawn open, layer by layer" : "層ごとに開かれたAIの頭"}>
+            <!-- Antenna and head -->
+            <line x1="220" y1="42" x2="220" y2="24" stroke="#8d96a5" stroke-width="1.5" stroke-linecap="round" />
+            <circle cx="220" cy="19" r="6" stroke="#8d96a5" stroke-width="1.5" />
+            <circle cx="220" cy="150" r="108" stroke="#C4974A" stroke-width="1.5" opacity="0.8" />
+            <line x1="118" y1="176" x2="322" y2="176" stroke="#8d96a5" stroke-width="1" stroke-dasharray="4 5" opacity="0.5" />
+
+            <!-- Face, always visible -->
+            <circle cx="196" cy="212" r="5" fill="#E3E0D9" />
+            <circle cx="244" cy="212" r="5" fill="#E3E0D9" />
+            <path d="M 196 234 Q 220 252 244 234" stroke="#E3E0D9" stroke-width="2" stroke-linecap="round" />
+            <rect x="186" y="262" width="68" height="44" rx="10" stroke="#8d96a5" stroke-width="1.5" />
+            <rect x="194" y="306" width="22" height="10" rx="3" stroke="#8d96a5" stroke-width="1.2" />
+            <rect x="224" y="306" width="22" height="10" rx="3" stroke="#8d96a5" stroke-width="1.2" />
+
+            <!-- Layer: the network inside -->
+            <g data-layer="net" opacity="0.12">
+              <g stroke="#9aa4b4" stroke-width="1" opacity="0.55">
+                <line x1="220" y1="78" x2="180" y2="102" />
+                <line x1="220" y1="78" x2="258" y2="100" />
+                <line x1="180" y1="102" x2="150" y2="134" />
+                <line x1="180" y1="102" x2="205" y2="130" />
+                <line x1="258" y1="100" x2="205" y2="130" />
+                <line x1="258" y1="100" x2="292" y2="128" />
+                <line x1="258" y1="100" x2="252" y2="138" />
+                <line x1="150" y1="134" x2="178" y2="160" />
+                <line x1="205" y1="130" x2="178" y2="160" />
+                <line x1="205" y1="130" x2="240" y2="162" />
+                <line x1="252" y1="138" x2="240" y2="162" />
+                <line x1="292" y1="128" x2="252" y2="138" />
+              </g>
+              <g fill="#1B2029" stroke="#9aa4b4" stroke-width="1.2">
+                <circle cx="180" cy="102" r="6" />
+                <circle cx="150" cy="134" r="6" />
+                <circle cx="252" cy="138" r="6" />
+                <circle cx="292" cy="128" r="6" />
+                <circle cx="178" cy="160" r="6" />
+                <circle cx="240" cy="162" r="6" />
+              </g>
+            </g>
+
+            <!-- Layer: the components that carry the structure -->
+            <g data-layer="lit" opacity="0.12">
+              <g fill="#C4974A">
+                <circle cx="220" cy="78" r="8" />
+                <circle cx="258" cy="100" r="8" />
+                <circle cx="205" cy="130" r="8" />
+              </g>
+              <g fill="#C4974A" opacity="0.18">
+                <circle cx="220" cy="78" r="15" />
+                <circle cx="258" cy="100" r="15" />
+                <circle cx="205" cy="130" r="15" />
+              </g>
+            </g>
+
+            <!-- Layer: locating one of them -->
+            <g data-layer="probe" opacity="0">
+              <circle cx="258" cy="100" r="26" stroke="#C4974A" stroke-width="1.2" stroke-dasharray="4 4" />
+              <line x1="258" y1="66" x2="258" y2="80" stroke="#C4974A" stroke-width="1.2" />
+              <line x1="258" y1="120" x2="258" y2="134" stroke="#C4974A" stroke-width="1.2" />
+              <line x1="224" y1="100" x2="238" y2="100" stroke="#C4974A" stroke-width="1.2" />
+              <line x1="278" y1="100" x2="292" y2="100" stroke="#C4974A" stroke-width="1.2" />
+            </g>
+
+            <!-- Layer: moving it -->
+            <g data-layer="dial" opacity="0">
+              <circle cx="378" cy="252" r="24" stroke="#C4974A" stroke-width="1.5" />
+              <line x1="378" y1="252" x2="364" y2="236" stroke="#C4974A" stroke-width="2.5" stroke-linecap="round" />
+              <circle cx="378" cy="252" r="3.5" fill="#C4974A" />
+              <path d="M 356 236 C 322 198 300 150 282 112" stroke="#C4974A" stroke-width="1.5"
+                    stroke-dasharray="5 4" marker-end="url(#cai-depth-arw)" />
+            </g>
+
+            <defs>
+              <marker id="cai-depth-arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#C4974A" />
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        <!-- What is visible at this depth -->
+        <div class="bg-ink-soft p-6 md:p-8">
+          <p class="font-label text-[0.62rem] uppercase tracking-[0.16em] text-[#9aa4b4]">
+            {isEn ? "At this depth" : "この深さで見えるもの"}
+          </p>
+          <h3 data-d="title" class="mt-2 font-display text-xl font-medium text-amber md:text-2xl">&ndash;</h3>
+          <p data-d="sees" class="mt-4 font-display text-base leading-relaxed text-[#CFCBC2]">&ndash;</p>
+
+          <p class="mt-7 font-label text-[0.62rem] uppercase tracking-[0.16em] text-[#9aa4b4]">
+            {isEn ? "The question here" : "ここでの問い"}
+          </p>
+          <p data-d="asks" class="mt-2 font-display text-base leading-relaxed text-[#E3E0D9]">&ndash;</p>
+
+          <div class="mt-7 border-t border-ink-line pt-5">
+            <p class="font-label text-[0.62rem] uppercase tracking-[0.16em] text-[#9aa4b4]">
+              {isEn ? "The model's own readout" : "モデル自身の読み出し"}
+            </p>
+            <p data-d="empty" class="mt-3 font-display text-base leading-relaxed text-[#6c7686]">
+              {isEn ? "Nothing is readable from out here." : "ここからは、何も読み出せない。"}
+            </p>
+            <ul data-d="bars-wrap" class="mt-3 space-y-2">
+              {
+                EMO.map((e, k) => (
+                  <li class="flex items-center gap-3">
+                    <span class="w-[4.6rem] shrink-0 truncate font-display text-sm text-[#E3E0D9]">{e.name}</span>
+                    <span class="relative h-[6px] grow bg-white/10">
+                      <span class="dash-bar absolute inset-y-0 left-0" data-bar={k} style={`width:0%;background-color:${e.hex};`} />
+                    </span>
+                    <span class="w-[2.6rem] shrink-0 text-right font-label text-[0.68rem] tabular-nums text-[#9aa4b4]" data-val={k}>&ndash;</span>
+                    <span class="w-[2.8rem] shrink-0 text-right font-label text-[0.68rem] tabular-nums text-amber" data-delta={k}></span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p class="border-t border-ink-line px-6 py-5 font-display text-base leading-relaxed text-[#9aa4b4] md:px-8">
+        {
+          isEn
+            ? "The readout belongs to the model. We call it emotion because setting it beside a human vocabulary makes it easier to describe, not because the two are the same thing."
+            : "読み出されるものは、モデル自身のものである。それを感情と呼ぶのは、人間の語彙に並べると説明しやすいからであって、同じものだからではない。"
+        }
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. The hypothesis -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-tilt">
+  <header class="reveal">
+    <p class="eyebrow">05 &mdash; Hypothesis</p>
+    <h2 id="cai-tilt" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
       {
         isEn
-          ? "Understanding human emotion, holding it computationally inside an AI, letting the AI reason and act with it, and placing the result among people. Under each tier: the lab's domains that work there, and how many of our publications sit on it."
-          : "人間の感情を理解し、AIの内部で計算表現にし、AIがそれで推論・生成・判断し、人と社会のあいだに置き直す。各層の下に、そこで研究しているラボの領域と、その層に置かれる業績の数を示す。"
+          ? "Affect as a tilt on the probabilities"
+          : "感情は、確率に揺らぎを加える"
+      }
+    </h2>
+    <p class="mt-5 max-w-[78rem] font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+      {
+        isEn
+          ? "This section states a hypothesis the lab holds. It is not a result, and nothing below has been established."
+          : "ここに書くのは、ラボが立てている仮説である。結果ではなく、以下のどれもまだ確かめられていない。"
       }
     </p>
+  </header>
+
+  <div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_30rem] lg:gap-14">
+    <div class="space-y-6 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+      <p class="reveal">
+        {
+          isEn
+            ? "A language model chooses the next word from a probability distribution. Take the highest one every time and the answers converge: the same question returns to the same place, and so does everyone else's."
+            : "言語モデルは、次の語を確率の分布から選ぶ。毎回いちばん高いものを取れば、答えは収束する。同じ問いは同じところへ戻り、それは誰が問うても同じである。"
+        }
+      </p>
+      <p class="reveal">
+        {
+          isEn
+            ? "If an AI holds something subjective of its own, that distribution is no longer flat with respect to its state. Some continuations are lifted and others pressed down, and which ones depends on where the model is at that moment. The distribution tilts."
+            : "AIが主観的な感情のようなものを持てば、その分布はもう状態に対して中立ではない。ある続きは持ち上がり、別の続きは押し下げられる。どれがどうなるかは、そのときモデルがどこにいるかによる。分布が傾く。"
+        }
+      </p>
+      <p class="reveal">
+        {
+          isEn
+            ? "The tilt is not noise. Noise has no direction; this has one, and it is the model's own. Under it the same question takes a different line and still hangs together. Run it across states and the search widens instead of narrowing."
+            : "この傾きは雑音ではない。雑音には方向がないが、これには方向があり、それはモデル自身のものである。傾いた分布の下では、同じ問いが別の筋を通り、それでも筋は通る。状態をまたいで走らせれば、探索は狭まるのではなく広がる。"
+        }
+      </p>
+      <p class="reveal">
+        {
+          isEn
+            ? "The hypothesis is that this is where new ideas and new discoveries come from. As machine intelligence rises, what it lacks is not accuracy but divergence, and something like subjective feeling is one way to supply it."
+            : "仮説は、新しい発想や発見はここから来る、というものである。AIの知性が高まるとき、足りなくなるのは正確さではなく発散のほうであり、主観的な感情のようなものは、それを供給する一つの道である。"
+        }
+      </p>
+      <p class="reveal border-l-2 border-amber pl-6 font-display text-base italic leading-relaxed text-slate md:text-lg">
+        {
+          isEn
+            ? "What has to be tested: whether the tilt widens the search at all, or only costs accuracy. Both outcomes are worth knowing."
+            : "確かめるべきこと：この傾きが本当に探索を広げるのか、精度を落とすだけなのか。どちらの結果にも、知る価値がある。"
+        }
+      </p>
+    </div>
+
+    <figure class="reveal self-start">
+      <img
+        src="/figures/cai-fluctuation.webp"
+        alt={isEn
+          ? "A row of bars of different heights with a warm wave passing through them, leaning and resizing them, and several paths branching away ahead of the row instead of one."
+          : "高さの違う棒が並び、そこを暖色の波が通り抜けて棒を傾け、高さを変えている。列の先では、1本ではなく複数の道が枝分かれしている。"}
+        width="1024"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+        class="w-full border border-stone bg-cream"
+      />
+    </figure>
   </div>
 
-  <ol class="mt-10 grid gap-px border border-stone bg-stone md:grid-cols-4">
-    {
-      tierColumns.map((c, i) => (
-        <li class="reveal relative flex flex-col bg-ivory p-6">
-          <p class="font-label text-[0.72rem] tracking-[0.16em] text-amber-deep">
-            {c.tier.numeral}
-            {i < tierColumns.length - 1 && (
-              <span class="ml-2 text-slate" aria-hidden="true">&rarr;</span>
-            )}
-          </p>
-          <h3 class="mt-2 font-display text-xl font-medium leading-snug text-charcoal">{c.tier.label}</h3>
-          {!isEn && <p class="font-display text-base text-slate">{c.tier.labelJa}</p>}
-          <p class="mt-3 font-display text-sm leading-relaxed text-charcoal">
-            {isEn ? c.tier.noteEn : c.tier.note}
-          </p>
+  <!-- The tilt, shown on one distribution -->
+  <div
+    class="reveal mt-14 border border-stone bg-ivory"
+    data-cai-tilt
+    data-payload={JSON.stringify(tiltPayload)}
+  >
+    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-stone px-6 py-3">
+      <p class="font-label text-[0.64rem] uppercase tracking-[0.16em] text-slate">
+        {isEn ? "Next word · one prompt" : "次の語 · ひとつのプロンプト"}
+      </p>
+      <p class="font-label text-[0.64rem] tracking-wide text-amber-deep">{isEn ? "example" : "例"}</p>
+    </div>
 
-          <p class="mt-5 font-label text-[0.68rem] uppercase tracking-[0.14em] text-slate">
-            {isEn ? "Stages" : "段"}
-          </p>
-          <p class="mt-1 font-display text-sm text-charcoal">
-            {c.stages.map((s) => (isEn ? s.label : s.labelJa)).join(isEn ? " · " : "・")}
-          </p>
+    <div class="flex flex-wrap gap-px border-b border-stone bg-stone">
+      {
+        STATES.map((st, i) => (
+          <button
+            type="button"
+            data-state={i}
+            aria-pressed={i === 0 ? "true" : "false"}
+            class="dash-chip-light grow basis-[10rem] bg-ivory px-5 py-4 text-left text-slate"
+          >
+            <span class="font-label text-[0.62rem] tracking-[0.14em]">0{i + 1}</span>
+            <span class="mt-1 block font-display text-base">{st.label}</span>
+          </button>
+        ))
+      }
+    </div>
 
-          <p class="mt-5 font-label text-[0.68rem] uppercase tracking-[0.14em] text-slate">
-            {isEn ? "Our domains" : "ラボの領域"}
-          </p>
-          <ul class="mt-1 space-y-1">
-            {c.domains.map((d) => (
-              <li>
-                <a href={`${p}/research/${d.slug}/`} class="link-amber font-display text-sm text-charcoal">
-                  {d.title}
-                </a>
+    <div class="p-6 md:p-8">
+      <p class="font-display text-lg text-charcoal md:text-xl">
+        <span class="text-slate">{PROMPT}</span>
+        <span data-t="top" class="ml-2 border-b-2 border-amber font-medium">&ndash;</span>
+      </p>
+
+      <div class="mt-6 grid gap-8 xl:grid-cols-[minmax(0,1fr)_20rem] xl:gap-12">
+        <ul class="space-y-2.5">
+          {
+            TOKENS.map((tk, k) => (
+              <li class="flex items-center gap-4">
+                <span class="w-[7rem] shrink-0 truncate font-display text-base text-charcoal">{tk}</span>
+                <span class="relative h-[7px] grow bg-charcoal/10">
+                  <span class="dash-bar absolute inset-y-0 left-0 bg-amber" data-bar={k} style="width:0%;" />
+                </span>
+                <span class="w-[2.8rem] shrink-0 text-right font-label text-[0.7rem] tabular-nums text-slate" data-val={k}>
+                  &ndash;
+                </span>
+                <span class="w-[3rem] shrink-0 text-right font-label text-[0.7rem] tabular-nums text-amber-deep" data-delta={k} />
               </li>
-            ))}
-          </ul>
+            ))
+          }
+        </ul>
 
-          <p class="mt-auto flex items-baseline gap-2 pt-6">
-            <span class="font-label text-2xl text-charcoal">{c.count}</span>
-            <span class="font-display text-sm text-slate">{isEn ? "publications" : "件の業績"}</span>
+        <div class="self-start">
+          <dl class="grid grid-cols-[1fr_auto] gap-y-2 border-t border-stone pt-3 font-label text-[0.72rem]">
+            <dt class="text-slate">{isEn ? "top candidate" : "最上位の候補"}</dt>
+            <dd data-t="topname" class="text-right text-charcoal">&ndash;</dd>
+            <dt class="text-slate">{isEn ? "its probability" : "その確率"}</dt>
+            <dd data-t="topp" class="text-right tabular-nums text-charcoal">&ndash;</dd>
+            <dt class="text-slate">{isEn ? "width of the choice" : "選択肢の広さ"}</dt>
+            <dd data-t="width" class="text-right tabular-nums text-charcoal">&ndash;</dd>
+          </dl>
+          <p class="mt-4 font-display text-sm leading-relaxed text-slate">
+            {
+              isEn
+                ? `Across the four states the top candidate comes out ${distinctTops} different ways. The question did not change.`
+                : `4つの状態で、上位に来る語は${distinctTops}通りに分かれる。問いは変えていない。`
+            }
           </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. The research agenda -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-questions">
+  <header class="reveal">
+    <p class="eyebrow">06 &mdash; Agenda</p>
+    <h2 id="cai-questions" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "Eight questions" : "8つの問い"}
+    </h2>
+    <p class="mt-5 max-w-[78rem] font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+      {
+        isEn
+          ? "The agenda derived from the research space, each question tied to a region of it."
+          : "研究空間から導かれた課題。それぞれが空間のある領域に対応している。"
+      }
+    </p>
+  </header>
+
+  <ol class="mt-10 border-t border-stone">
+    {
+      agenda.map((a, i) => (
+        <li class="reveal grid gap-2 border-b border-stone py-5 md:grid-cols-[4rem_11rem_minmax(0,1fr)] md:gap-8">
+          <span class="font-label text-sm text-amber-deep">RQ{i + 1}</span>
+          <span class="font-display text-base text-slate md:text-lg">{a.tag}</span>
+          <span class="font-display text-base leading-relaxed text-charcoal md:text-lg">{a.q}</span>
         </li>
       ))
     }
   </ol>
-  <p class="reveal mt-4 font-display text-sm text-slate">
+</section>
+
+<!-- 7. The research space -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="cai-space">
+  <header class="reveal">
+    <p class="eyebrow">07 &mdash; Research space</p>
+    <h2 id="cai-space" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {isEn ? "Six competences by four processes" : "6つの能力 × 4つの過程"}
+    </h2>
+    <p class="mt-5 max-w-[78rem] font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+      {
+        isEn
+          ? "Combining the six competences with the four processes yields a space of 24 cells. Most existing studies, and many anticipated directions, can be situated in one or more of them."
+          : "6つの能力と4つの過程を組み合わせると、24のセルからなる空間ができる。既存の研究の多くと、これから予想される方向の多くは、そのいずれかのセルに置ける。"
+      }
+    </p>
+  </header>
+
+  <div class="reveal mt-10 overflow-x-auto">
+    <table class="w-full min-w-[46rem] border-collapse text-left">
+      <thead>
+        <tr>
+          <th class="w-[12%] border-b border-charcoal py-3 pr-4 font-label text-[0.7rem] uppercase tracking-[0.14em] text-slate"></th>
+          {
+            processes.map((pr) => (
+              <th class="border-b border-charcoal py-3 pr-4 font-label text-[0.7rem] uppercase tracking-[0.14em] text-amber-deep">
+                {pr}
+              </th>
+            ))
+          }
+        </tr>
+      </thead>
+      <tbody>
+        {
+          competences.map((c, ri) => (
+            <tr class="border-b border-stone align-top">
+              <th class="py-4 pr-4 text-left font-display text-lg font-medium text-charcoal">{c}</th>
+              {
+                processes.map((_, ci) => (
+                  <td class="py-4 pr-4">
+                    {placed[`${ri}-${ci}`] ? (
+                      <span class="inline-block border border-amber bg-amber/10 px-2 py-1 font-display text-sm leading-snug text-charcoal">
+                        {placed[`${ri}-${ci}`]}
+                      </span>
+                    ) : (
+                      <span class="inline-block h-1.5 w-1.5 rounded-full bg-stone" aria-hidden="true" />
+                    )}
+                  </td>
+                ))
+              }
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <p class="reveal mt-5 max-w-[78rem] font-display text-sm leading-relaxed text-slate">
     {
       isEn
-        ? "Each publication is counted once, at the stage it contributes to most."
-        : "業績は1件ずつ読み、最も貢献している段に1回だけ数えている。"
+        ? "The four examples marked are the ones the paper names; data synthesis falls in the construction cells of perception, reasoning, generation or interaction depending on its purpose. The affective host and the source of ground truth are not a fifth column: they cut across every cell of the space."
+        : "印をつけた4つは論文が例として挙げているもので、データの合成はその目的に応じて知覚・推論・生成・相互作用の構築セルにまたがる。感情の宿主と正解の供給源は5列目ではない。空間のすべてのセルを横断する。"
     }
+  </p>
+
+  <p class="reveal mt-8">
+    <a href={`${p}/research-map/`} class="link-amber font-heading text-sm tracking-wide">
+      {isEn ? "Where the lab's own work sits" : "ラボの業績がどこに置かれるか"} &rarr;
+    </a>
   </p>
 </section>
 
@@ -328,6 +870,10 @@ const questions = isEn
     <a href={`${p}/research/`} class="btn-ghost">
       {isEn ? "The 10 research domains" : "10の研究領域"} <span aria-hidden="true">&rarr;</span>
     </a>
+    <a href={`${p}/affective-computing/`} class="btn-ghost">
+      {isEn ? "What is Affective Computing" : "Affective Computingとは"}
+      <span aria-hidden="true">&rarr;</span>
+    </a>
     <a href={`${p}/affectosphere/`} class="btn-ghost">
       {isEn ? "What is Affectosphere" : "Affectosphereとは"} <span aria-hidden="true">&rarr;</span>
     </a>
@@ -335,3 +881,120 @@ const questions = isEn
 </section>
 
 <div class="h-section-sm" aria-hidden="true"></div>
+
+<script>
+  // The dissection: picking a depth lights the layer that becomes visible and
+  // rewrites the readout beside it. Every word on the panel is rendered by the
+  // page; the script only moves numbers and opacities.
+  const root = document.querySelector<HTMLElement>("[data-cai-depth]");
+  if (root && root.dataset.payload) {
+    const data = JSON.parse(root.dataset.payload) as {
+      barMax: number;
+      base: number[];
+      depths: { bars: number[] | null; delta: boolean }[];
+    };
+    const chips = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-depth]"));
+    const copy = chips.map((c) => c.dataset.copy ?? "");
+    const LAYERS: Record<string, number[]> = {
+      // opacity of each drawn layer, per depth
+      net: [0.12, 1, 1, 1],
+      lit: [0.12, 0.45, 1, 1],
+      probe: [0, 0, 1, 0.35],
+      dial: [0, 0, 0, 1],
+    };
+
+    function show(i: number) {
+      const d = data.depths[i];
+      if (!d) return;
+
+      Object.entries(LAYERS).forEach(([name, values]) => {
+        const g = root!.querySelector<SVGGElement>(`[data-layer="${name}"]`);
+        if (g) g.setAttribute("opacity", String(values[i]));
+      });
+
+      const text = JSON.parse(copy[i] || "{}") as { title?: string; sees?: string; asks?: string };
+      (["title", "sees", "asks"] as const).forEach((key) => {
+        const el = root!.querySelector<HTMLElement>(`[data-d="${key}"]`);
+        if (el && text[key]) el.textContent = text[key] as string;
+      });
+
+      const empty = root!.querySelector<HTMLElement>('[data-d="empty"]');
+      const wrap = root!.querySelector<HTMLElement>('[data-d="bars-wrap"]');
+      if (empty) empty.hidden = d.bars !== null;
+      if (wrap) wrap.hidden = d.bars === null;
+      if (!d.bars) return;
+
+      d.bars.forEach((q, k) => {
+        const bar = root!.querySelector<HTMLElement>(`[data-bar="${k}"]`);
+        if (bar) bar.style.width = Math.max(1, (q / data.barMax) * 100) + "%";
+        const val = root!.querySelector<HTMLElement>(`[data-val="${k}"]`);
+        if (val) val.textContent = q.toFixed(2);
+        const del = root!.querySelector<HTMLElement>(`[data-delta="${k}"]`);
+        if (del) {
+          const diff = q - data.base[k];
+          del.textContent = d.delta && Math.abs(diff) >= 0.005
+            ? (diff > 0 ? "+" : "−") + Math.abs(diff).toFixed(2)
+            : "";
+        }
+      });
+      chips.forEach((chip, k) => chip.setAttribute("aria-pressed", k === i ? "true" : "false"));
+    }
+
+    chips.forEach((chip, i) => {
+      chip.addEventListener("click", () => show(i));
+      chip.addEventListener("mouseenter", () => show(i));
+    });
+    show(0);
+  }
+</script>
+
+<script>
+  // The tilt: picking a state re-renders one next-word distribution. The page
+  // has already computed every state; the script only swaps numbers in.
+  const root = document.querySelector<HTMLElement>("[data-cai-tilt]");
+  if (root && root.dataset.payload) {
+    const data = JSON.parse(root.dataset.payload) as {
+      barMax: number;
+      base: number[];
+      states: { prob: number[]; top: number; width: number }[];
+    };
+    const chips = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-state]"));
+    const names = Array.from(root.querySelectorAll<HTMLElement>("[data-bar]")).map(
+      (b) => b.closest("li")?.querySelector("span")?.textContent ?? "",
+    );
+    const slot = (n: string) => root.querySelector<HTMLElement>(`[data-t="${n}"]`);
+
+    function show(i: number) {
+      const st = data.states[i];
+      if (!st) return;
+      st.prob.forEach((q, k) => {
+        const bar = root!.querySelector<HTMLElement>(`[data-bar="${k}"]`);
+        if (bar) bar.style.width = Math.max(1, (q / data.barMax) * 100) + "%";
+        const val = root!.querySelector<HTMLElement>(`[data-val="${k}"]`);
+        if (val) val.textContent = q.toFixed(2);
+        const del = root!.querySelector<HTMLElement>(`[data-delta="${k}"]`);
+        if (del) {
+          const diff = q - data.base[k];
+          del.textContent = i > 0 && Math.abs(diff) >= 0.005
+            ? (diff > 0 ? "+" : "−") + Math.abs(diff).toFixed(2)
+            : "";
+        }
+      });
+      const top = slot("top");
+      if (top) top.textContent = names[st.top];
+      const topname = slot("topname");
+      if (topname) topname.textContent = names[st.top];
+      const topp = slot("topp");
+      if (topp) topp.textContent = st.prob[st.top].toFixed(2);
+      const width = slot("width");
+      if (width) width.textContent = st.width.toFixed(1);
+      chips.forEach((c, k) => c.setAttribute("aria-pressed", k === i ? "true" : "false"));
+    }
+
+    chips.forEach((c, i) => {
+      c.addEventListener("click", () => show(i));
+      c.addEventListener("mouseenter", () => show(i));
+    });
+    show(0);
+  }
+</script>

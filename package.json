@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.19.19",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "three": "^0.128.0"
   }
 }

@@ -1,7 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PageHeader from "../components/PageHeader.astro";
-import { site } from "../data/site";
 import Img from "../components/Img.astro";
 
 // Education timeline (researchmap, 2026-05-30).  Newest at top.
@@ -57,6 +55,18 @@ const affiliations = [
   },
 ];
 
+// "2025/04 — present" -> "2025.04 – present", so the column lines up with the
+// period column used on the Grants list.
+function formatPeriod(period: string): string {
+  return period
+    .split(/\s*[\u2013\u2014]\s*/)
+    .map((part) => {
+      const m = part.trim().match(/^(\d{4})\s*\/\s*(\d{1,2})$/);
+      return m ? `${m[1]}.${m[2].padStart(2, "0")}` : part.trim();
+    })
+    .join(" \u2013 ");
+}
+
 // External profile links.
 const links = [
   { label: "researchmap", href: "https://researchmap.jp/keito_inoshita" },
@@ -108,17 +118,42 @@ const personLd = {
   description="井下敬翔。AIに感情知能を与える研究者。計算的感情知能（Computational Affective Intelligence）を軸に、感情の認識・表現・推論・生成から倫理まで。経歴・所属・研究業績。"
   fullBleed
 >
-  <PageHeader
-    eyebrow="About"
-    title="Keito Inoshita"
-    subtitle="Computational Affective Intelligence researcher. Founder, Affectosphere Group."
-  />
+  <!-- Header on the dark observation surface, as on the other sections. -->
+  <section class="surface-ink relative overflow-hidden" aria-labelledby="about-heading">
+    <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-content page-x pb-12 pt-16 md:pb-16 md:pt-20">
+      <p class="eyebrow reveal">About</p>
+      <h1
+        id="about-heading"
+        class="reveal mt-5 font-display font-semibold tracking-tight text-[#F4F2ED]"
+        style="font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.1;"
+      >
+        Keito Inoshita
+      </h1>
+      <p class="reveal mt-2 font-display text-[#CFCBC2]" style="font-size: clamp(0.95rem, 1.2vw, 1.2rem);">
+        井下 敬翔
+      </p>
+      <p
+        class="reveal mt-8 max-w-[72rem] font-display text-[#CFCBC2]"
+        style="font-size: clamp(0.95rem, 1.1vw, 1.12rem); line-height: 1.72;"
+      >
+        計算的感情知能（Computational Affective Intelligence）研究者。Affectosphere Group 主宰。
+      </p>
+    </div>
+  </section>
 
-  <!-- Identity card: portrait placeholder + short bio side by side. -->
-  <section
-    class="mx-auto mt-section-sm grid max-w-content gap-10 page-x md:grid-cols-[20rem_1fr] md:gap-14"
-    aria-labelledby="bio"
-  >
+  <!-- Identity card: portrait + short bio side by side. -->
+  <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="about-profile">
+    <header class="reveal">
+      <p class="eyebrow">01 &mdash; Profile</p>
+      <h2
+        id="about-profile"
+        class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl"
+      >
+        プロフィール
+      </h2>
+    </header>
+    <div class="mt-10 grid gap-10 md:grid-cols-[18rem_minmax(0,1fr)] md:gap-14">
     <div class="reveal">
       <div class="aspect-square w-full overflow-hidden border border-stone bg-cream">
         <Img src="/people/keito-inoshita.jpg" alt="Keito Inoshita" class="h-full w-full object-cover" />
@@ -129,13 +164,11 @@ const personLd = {
     </div>
 
     <div>
-      <p class="font-sans text-base font-medium tracking-wide text-slate reveal">
-        Bio
-      </p>
+      <p class="eyebrow reveal">Bio</p>
       <p
         id="bio"
-        class="reveal mt-3 font-display text-lg leading-relaxed text-charcoal md:text-xl"
-        style="line-height: 1.85;"
+        class="reveal mt-3 max-w-[46rem] font-display text-lg leading-relaxed text-charcoal md:text-xl"
+        style="line-height: 1.72;"
       >
         AI に感情知能を与える研究をしている。
         感情の読み取りから、保持・推論・生成・相互作用・社会への定着までをひと続きの体系として扱い、
@@ -149,10 +182,8 @@ const personLd = {
         最終的に目指すのは、人間を超える EQ を備えた AI の実現である。
       </p>
 
-      <p class="font-sans text-base font-medium tracking-wide text-slate reveal mt-12">
-        Research Statement
-      </p>
-      <div class="reveal mt-3 space-y-5 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.85;">
+      <p class="eyebrow reveal mt-12">Research Statement</p>
+      <div class="reveal mt-3 max-w-[46rem] space-y-5 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.72;">
         <p>
           研究の問いは一貫している ―
           <em class="italic">どうすれば、AI は人間の感情をその豊かさを損なわずに扱えるか</em>。
@@ -175,6 +206,7 @@ const personLd = {
         </p>
       </div>
     </div>
+    </div>
   </section>
 
   <!-- Education -->
@@ -182,26 +214,36 @@ const personLd = {
     class="mx-auto mt-section max-w-content page-x"
     aria-labelledby="education"
   >
-    <h2
-      id="education"
-      class="reveal font-heading text-2xl font-medium tracking-tight text-charcoal md:text-3xl"
-    >
-      Education
-    </h2>
-    <ul class="mt-8 w-full">
+    <header class="reveal">
+      <p class="eyebrow">02 &mdash; Education</p>
+      <h2
+        id="education"
+        class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl"
+      >
+        学歴
+      </h2>
+    </header>
+    <ul class="mt-10 border-t border-stone">
       {
         education.map((row) => (
-          <li class="reveal grid gap-2 border-b border-stone py-5 last:border-b-0 md:grid-cols-[12rem_1fr] md:gap-10">
-            <span class="font-display text-sm italic text-slate">
-              {row.period}
+          <li class="reveal grid gap-x-8 gap-y-3 border-b border-stone py-7 md:grid-cols-[11rem_minmax(0,1fr)] md:items-start">
+            <span class="whitespace-nowrap font-label text-[0.72rem] tabular-nums tracking-[0.1em] text-slate">
+              {formatPeriod(row.period)}
             </span>
-            <div>
-              <p class="font-display text-base text-charcoal md:text-lg">
-                {row.degree} &middot; {row.program}
-              </p>
-              <p class="mt-1 font-display text-sm text-slate">{row.institution}</p>
+            <div class="min-w-0">
+              <h3 class="font-display text-lg leading-snug text-charcoal md:text-xl">
+                {row.degree}
+              </h3>
+              <div class="mt-2.5 border-l border-amber/50 pl-3">
+                <p class="font-display text-sm leading-relaxed text-charcoal/85 md:text-base">
+                  {row.program}
+                </p>
+                <p class="mt-1 font-sans text-xs leading-relaxed text-slate md:text-sm">
+                  {row.institution}
+                </p>
+              </div>
               {row.note && (
-                <p class="mt-1 font-display text-sm italic text-slate">{row.note}</p>
+                <p class="mt-3 font-sans text-xs leading-relaxed text-slate md:text-sm">{row.note}</p>
               )}
             </div>
           </li>
@@ -215,23 +257,30 @@ const personLd = {
     class="mx-auto mt-section max-w-content page-x"
     aria-labelledby="affiliations"
   >
-    <h2
-      id="affiliations"
-      class="reveal font-heading text-2xl font-medium tracking-tight text-charcoal md:text-3xl"
-    >
-      Affiliations
-    </h2>
-    <ul class="reveal mt-8 max-w-prose space-y-4 border-l border-stone pl-6 text-base text-charcoal">
+    <header class="reveal">
+      <p class="eyebrow">03 &mdash; Affiliations</p>
+      <h2
+        id="affiliations"
+        class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl"
+      >
+        所属
+      </h2>
+    </header>
+    <ul class="mt-10 border-t border-stone">
       {
         affiliations.map((a) => (
-          <li>
-            <p class="font-display text-base text-charcoal md:text-lg">
-              {a.affiliation}
-            </p>
-            <p class="mt-1 text-sm text-slate">
-              {a.role}
-              <span class="ml-3 font-display text-xs italic">{a.period}</span>
-            </p>
+          <li class="reveal grid gap-x-8 gap-y-3 border-b border-stone py-7 md:grid-cols-[11rem_minmax(0,1fr)] md:items-start">
+            <span class="whitespace-nowrap font-label text-[0.72rem] tabular-nums tracking-[0.1em] text-slate">
+              {formatPeriod(a.period)}
+            </span>
+            <div class="min-w-0">
+              <h3 class="font-display text-lg leading-snug text-charcoal md:text-xl">
+                {a.affiliation}
+              </h3>
+              <p class="mt-2.5 border-l border-amber/50 pl-3 font-sans text-xs leading-relaxed text-slate md:text-sm">
+                {a.role}
+              </p>
+            </div>
           </li>
         ))
       }
@@ -243,14 +292,17 @@ const personLd = {
     class="mx-auto mt-section max-w-content page-x"
     aria-labelledby="links"
   >
-    <h2
-      id="links"
-      class="reveal font-heading text-2xl font-medium tracking-tight text-charcoal md:text-3xl"
-    >
-      Links
-    </h2>
+    <header class="reveal">
+      <p class="eyebrow">04 &mdash; Links</p>
+      <h2
+        id="links"
+        class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl"
+      >
+        リンク
+      </h2>
+    </header>
 
-    <ul class="mt-8 grid gap-3 md:grid-cols-4">
+    <ul class="mt-10 grid gap-3 sm:grid-cols-2 md:grid-cols-4">
       {
         links.map((l) => (
           <li class="reveal">
@@ -258,7 +310,7 @@ const personLd = {
               href={l.href}
               target="_blank"
               rel="noopener noreferrer"
-              class="block border border-stone bg-cream px-4 py-3 font-display text-sm text-charcoal transition-colors hover:border-charcoal"
+              class="block border border-stone bg-cream px-4 py-3 font-display text-sm text-charcoal transition-colors hover:border-amber hover:text-amber-deep"
             >
               <span class="block">{l.label}</span>
             </a>

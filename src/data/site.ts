@@ -24,28 +24,23 @@ export type NavItem = {
   groupStart?: boolean;
 };
 
-// One row, ordered as a reader would move through the lab: what it believes,
-// what it studies, what it has produced, who does it, what is happening, and
-// how to get involved.
+// One row. The lab first (who it is, what it believes, who is in it), then
+// what it studies, what it has produced, what is happening, and how to get
+// involved.
 export const navItems: NavItem[] = [
-  // What the lab believes
+  // The lab itself
+  { label: "About", href: "/about/" },
   { label: "Affectosphere", href: "/affectosphere/" },
   { label: "CAI", href: "/cai/" },
+  { label: "Member", href: "/member/" },
   // What it studies
   { groupStart: true, label: "Research", href: "/research/" },
-  { label: "Research Map", href: "/research-map/" },
-  { label: "AI for Science", href: "/ai-for-science/" },
   // What it has produced
   { groupStart: true, label: "Publications", href: "/publications/" },
   { label: "Awards", href: "/awards/" },
   { label: "Grants", href: "/grants/" },
-  // Who does it
-  { groupStart: true, label: "About", href: "/about/" },
-  { label: "Member", href: "/member/" },
   // What is happening
   { groupStart: true, label: "News", href: "/news/" },
-  { label: "Column", href: "/column/" },
-  // How to get involved
-  { groupStart: true, label: "Services", href: "/services/" },
-  { label: "Contact", href: "/contact/" },
+  // How to get involved. Contact carries the services menu as well.
+  { groupStart: true, label: "Contact", href: "/contact/" },
 ];

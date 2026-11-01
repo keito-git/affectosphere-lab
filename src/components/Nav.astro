@@ -37,7 +37,7 @@ const switcherShort = locale === "en" ? "JP" : "EN";
 >
   <div class="mx-auto max-w-content page-x">
     <!-- Row 1: brand + (mobile) hamburger. -->
-    <div class="flex items-center justify-between py-4">
+    <div class="flex items-center justify-between py-3">
       <a
         href={localizedHref("/")}
         class="group inline-flex min-w-0 items-center gap-2 text-charcoal hover:text-deepslate sm:gap-3"
@@ -46,10 +46,10 @@ const switcherShort = locale === "en" ? "JP" : "EN";
         <!-- Concentric mark: the same figure used for the favicon and for the
              research map, drawn inline so the header costs no extra request. -->
         <svg
-          width="44"
-          height="44"
+          width="36"
+          height="36"
           viewBox="0 0 32 32"
-          class="h-11 w-11 shrink-0 transition-transform duration-200 group-hover:scale-[1.03]"
+          class="h-9 w-9 shrink-0 transition-transform duration-200 group-hover:scale-[1.03]"
           aria-hidden="true"
         >
           <circle cx="16" cy="16" r="12.5" fill="none" stroke="currentColor" stroke-width="1" opacity="0.28"></circle>
@@ -58,10 +58,10 @@ const switcherShort = locale === "en" ? "JP" : "EN";
           <circle cx="16" cy="16" r="1.75" fill="currentColor"></circle>
         </svg>
         <span class="flex min-w-0 flex-col leading-tight">
-          <span class="truncate font-display text-xl font-medium tracking-tight sm:text-2xl">
+          <span class="truncate font-display text-lg font-medium tracking-tight sm:text-xl">
             Affectosphere <span class="text-slate">Group</span>
           </span>
-          <span class="truncate font-sans text-[0.65rem] tracking-wide text-slate sm:mt-0.5 sm:text-[0.7rem]">
+          <span class="truncate font-sans text-[0.62rem] tracking-wide text-slate sm:mt-0.5 sm:text-[0.66rem]">
             Keito Inoshita Laboratory
           </span>
         </span>
@@ -72,7 +72,7 @@ const switcherShort = locale === "en" ? "JP" : "EN";
         <a
           href={otherLocaleHref}
           aria-label={`Switch to ${switcherLabel}`}
-          class="inline-flex h-9 items-center justify-center border border-stone px-3 font-sans text-xs font-medium tracking-wide text-charcoal transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
+          class="inline-flex h-9 items-center justify-center border border-softink/60 px-3 font-sans text-xs font-medium tracking-wide text-softink transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
         >
           {switcherShort}
         </a>
@@ -82,7 +82,7 @@ const switcherShort = locale === "en" ? "JP" : "EN";
           target="_blank"
           rel="noopener noreferrer"
           aria-label="X (Twitter)"
-          class="hidden md:inline-flex h-9 w-9 items-center justify-center border border-stone text-charcoal transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
+          class="hidden md:inline-flex h-9 w-9 items-center justify-center border border-softink/60 text-softink transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -91,7 +91,7 @@ const switcherShort = locale === "en" ? "JP" : "EN";
         <!-- Mobile: a minimal hamburger toggle. -->
         <button
           type="button"
-          class="md:hidden inline-flex h-10 w-10 items-center justify-center border border-stone text-charcoal"
+          class="md:hidden inline-flex h-10 w-10 items-center justify-center border border-softink/60 text-softink"
           aria-label="メニューを開く"
           aria-expanded="false"
           aria-controls="mobile-nav"
@@ -104,31 +104,39 @@ const switcherShort = locale === "en" ? "JP" : "EN";
       </div>
     </div>
 
-    <!-- Row 2: full navigation (desktop only). Tabs spread across the row
-         with consistent spacing; wraps if the viewport is too narrow. -->
-    <nav
-      class="hidden border-t border-stone/50 py-3 md:block"
-      aria-label="主要メニュー"
-    >
-      <ul class="flex flex-wrap items-center gap-x-5 gap-y-2 lg:gap-x-6 xl:gap-x-7">
-        {
-          navItems.map((item) => (
-            <li class:list={[item.groupStart && "md:ml-2.5 lg:ml-4"]}>
-              <a
-                href={localizedHref(item.href)}
-                class:list={[
-                  "link-amber font-heading text-[0.8125rem] tracking-tight whitespace-nowrap lg:text-[0.875rem]",
-                  isActive(item.href) ? "text-charcoal" : "text-slate hover:text-charcoal",
-                ]}
-                aria-current={isActive(item.href) ? "page" : undefined}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
+  </div>
+
+  <!-- Row 2: full navigation (desktop only), carried on a soft-black band that
+       runs the full width of the header. Tabs spread across the row with
+       consistent spacing; wraps if the viewport is too narrow. -->
+  <div class="hidden bg-softink md:block">
+    <div class="mx-auto max-w-content page-x">
+      <nav aria-label="主要メニュー">
+        <!-- One cell per entry, all the same width, separated by hairlines:
+             five across on tablet, all ten in one row from xl up. -->
+        <ul class="flex flex-wrap border-r border-[#4A4A48]">
+          {
+            navItems.map((item) => (
+              <li class="shrink-0 basis-[20%] border-l border-[#4A4A48] xl:flex-1 xl:basis-0">
+                <a
+                  href={localizedHref(item.href)}
+                  class:list={[
+                    "flex items-center justify-center px-1 py-2 text-center font-heading",
+                    "text-[0.75rem] tracking-tight transition-colors xl:text-[0.8125rem]",
+                    isActive(item.href)
+                      ? "bg-[#3E3E3C] font-medium text-ivory shadow-[inset_0_2px_0_0_#C4974A]"
+                      : "text-[#DCD9D2] hover:bg-[#3A3A38] hover:text-ivory",
+                  ]}
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
   </div>
 
   <!-- Mobile drawer (hidden by default). Shows every entry. -->
@@ -145,7 +153,7 @@ const switcherShort = locale === "en" ? "JP" : "EN";
               href={localizedHref(item.href)}
               class:list={[
                 "block py-3 font-heading text-base tracking-wide",
-                isActive(item.href) ? "text-charcoal" : "text-slate",
+                isActive(item.href) ? "font-medium text-charcoal" : "text-softink",
               ]}
             >
               {item.label}

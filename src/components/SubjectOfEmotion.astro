@@ -1,0 +1,180 @@
+---
+// Where the subject of emotion sits: the one difference that separates the two
+// fields this lab works in. Affective computing keeps the subject in the human
+// and has machines understand it and act on it; CAI moves the subject into the
+// AI itself, where something affective is given, studied and adjusted. No
+// person appears in the second figure: the comparison with human emotion is
+// what makes the AI's version explainable, not its model.
+
+interface Props {
+  locale?: "ja" | "en";
+}
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+const prefix = isEn ? "/en" : "";
+
+const copy = isEn
+  ? {
+      eyebrow: "Subject of emotion",
+      heading: "The subject of emotion: the human or the AI",
+      lead:
+        "We work in two fields: one places the subject of emotion in the human, the other in the AI. The weight of the lab is on the second.",
+      ac: {
+        kicker: "Affective Computing",
+        title: "Understanding and intervening in human emotion",
+        body:
+          "The subject of emotion is the human. What a person says, their face and their physiological signals are read to estimate an emotional state, and the system then acts on what it finds. A technology of understanding and intervention aimed at people.",
+        fig: {
+          src: "/figures/ac.webp",
+          alt:
+            "A person holding a small glowing heart. Three cards — a speech bubble, a portrait photo and a heartbeat trace — travel from them into a robot along an amber arrow, and a second arrow curves back from the robot to the person.",
+          caption:
+            "Reading speech, face and biosignals, then acting back on the person",
+        },
+        more: "What is Affective Computing",
+      },
+      cai: {
+        kicker: "Computational Affective Intelligence",
+        badge: "primary focus",
+        title: "Giving an AI something affective, understanding it, intervening in it",
+        body:
+          "The subject of emotion is the AI itself. We give an AI an affective structure, locate the parameters that govern it, and intervene there. We call it emotion because comparing it with human emotion makes it easier to explain, not because the two must be the same.",
+        fig: {
+          src: "/figures/cai.webp",
+          alt:
+            "A robot whose head is open at the top, showing a network of nodes inside with three of them glowing. A capsule pours light into the network, a magnifying glass examines one glowing node and a dial adjusts another. No person appears.",
+          caption:
+            "Giving the affective structure, finding the parameters that carry it, intervening there",
+        },
+      },
+      more: "What is CAI",
+    }
+  : {
+      eyebrow: "Subject of emotion",
+      heading: "感情の主体：人間か、AIか",
+      lead:
+        "感情の主体を人間に置く研究と、AIに置く研究を並行して進めている。重心はCAIにある。",
+      ac: {
+        kicker: "Affective Computing",
+        title: "人間の感情を理解し、介入する",
+        body:
+          "感情の主体は人間にある。話した内容・顔の画像・生体信号から感情を推定し、その人に働きかける。人を理解し、支えるための技術。",
+        fig: {
+          src: "/figures/ac.webp",
+          alt:
+            "小さな感情を抱えた人から、吹き出し・顔写真・心拍の3枚のカードがAIへ流れ込み、AIから人へ矢印が戻っている絵。",
+          caption: "話した内容・顔画像・生体信号を読み取り、人に働きかける",
+        },
+        more: "Affective Computingとは",
+      },
+      cai: {
+        kicker: "Computational Affective Intelligence",
+        badge: "主軸",
+        title: "AIに感情的なものをもたせ、理解し、介入する",
+        body:
+          "感情の主体はAI自身にある。AIに感情的な構造をもたせ、それを司るパラメータを特定し、そこに介入する。感情と呼ぶのは人間の感情と比べると説明しやすいからで、同じものである必要はない。",
+        fig: {
+          src: "/figures/cai.webp",
+          alt:
+            "頭の上半分が開いたAIの中に、節と線のネットワークが見え、3つの節が光っている。左からカプセルが光を注ぎ、右上の虫めがねが光る節を調べ、右下のダイヤルが別の節を調整している。人は出てこない。",
+          caption: "感情をもたせ、それを司るパラメータを特定し、そこに介入する",
+        },
+      },
+      more: "CAIとは",
+    };
+
+// The field name and the sentence under it share one type size, so the pair
+// reads as a single heading instead of a label stuck above a title.
+const kickerClass =
+  "font-display text-xl font-medium leading-snug text-amber-deep md:text-2xl";
+const titleClass = "mt-1 font-display text-xl font-medium text-charcoal md:text-2xl";
+---
+
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="subject-of-emotion">
+  <header class="reveal mb-10 max-w-[46rem] md:mb-14">
+    <p class="eyebrow">{copy.eyebrow}</p>
+    <h2
+      id="subject-of-emotion"
+      class="mt-3 font-display text-3xl font-medium tracking-tight text-charcoal md:text-4xl"
+    >
+      {copy.heading}
+    </h2>
+    <p class="mt-4 font-display text-base leading-relaxed text-charcoal md:text-lg">
+      {copy.lead}
+    </p>
+  </header>
+
+  <div class="grid gap-6 md:grid-cols-2 md:gap-8">
+    <!-- Affective computing: the subject of emotion is the person -->
+    <article class="reveal flex flex-col border border-stone bg-ivory p-6 md:p-8">
+      <p class={kickerClass}>{copy.ac.kicker}</p>
+      <h3 class={titleClass}>{copy.ac.title}</h3>
+
+      <figure class="mt-6">
+        <img
+          src={copy.ac.fig.src}
+          alt={copy.ac.fig.alt}
+          width="1024"
+          height="1024"
+          loading="lazy"
+          decoding="async"
+          class="mx-auto block w-full max-w-[25rem] border border-stone bg-ivory"
+        />
+        <figcaption class="mt-3 text-center font-label text-[0.7rem] leading-relaxed text-slate">
+          {copy.ac.fig.caption}
+        </figcaption>
+      </figure>
+
+      <p class="mt-6 font-display text-base leading-relaxed text-charcoal">
+        {copy.ac.body}
+      </p>
+
+      <p class="mt-6">
+        <a
+          href={`${prefix}/affective-computing/`}
+          class="link-amber font-heading text-sm tracking-wide"
+        >
+          {copy.ac.more} &rarr;
+        </a>
+      </p>
+    </article>
+
+    <!-- CAI: the subject of emotion is the AI; no person appears in the figure -->
+    <article class="reveal flex flex-col border border-amber/70 bg-cream p-6 md:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <p class={kickerClass}>{copy.cai.kicker}</p>
+        <span
+          class="mt-1 shrink-0 border border-amber bg-amber/15 px-2 py-0.5 font-label text-[0.62rem] uppercase tracking-[0.14em] text-amber-deep"
+        >
+          {copy.cai.badge}
+        </span>
+      </div>
+      <h3 class={titleClass}>{copy.cai.title}</h3>
+
+      <figure class="mt-6">
+        <img
+          src={copy.cai.fig.src}
+          alt={copy.cai.fig.alt}
+          width="1024"
+          height="1024"
+          loading="lazy"
+          decoding="async"
+          class="mx-auto block w-full max-w-[25rem] border border-amber/40 bg-ivory"
+        />
+        <figcaption class="mt-3 text-center font-label text-[0.7rem] leading-relaxed text-slate">
+          {copy.cai.fig.caption}
+        </figcaption>
+      </figure>
+
+      <p class="mt-6 font-display text-base leading-relaxed text-charcoal">
+        {copy.cai.body}
+      </p>
+
+      <p class="mt-6">
+        <a href={`${prefix}/cai/`} class="link-amber font-heading text-sm tracking-wide">
+          {copy.more} &rarr;
+        </a>
+      </p>
+    </article>
+  </div>
+</section>

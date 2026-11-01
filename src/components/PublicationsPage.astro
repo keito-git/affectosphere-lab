@@ -1,0 +1,380 @@
+---
+// "Publications": the lab's whole output, ordered newest first and filterable
+// by kind and by year. The page deliberately carries no totals or count
+// charts: what matters here is finding a given piece of work, not the size of
+// the list. The two filters AND together and run client-side, so the list
+// stays one static document.
+import {
+  allPublications as pubsJa,
+  allYears as yearsJa,
+  groupByYear as groupJa,
+  kindLabelJa,
+  kindOrder,
+  type Publication,
+  type PublicationKind,
+} from "../data/publications";
+import {
+  allPublications as pubsEn,
+  allYears as yearsEn,
+  groupByYear as groupEn,
+  kindLabel as kindLabelEn,
+} from "../data/publications.en";
+
+interface Props {
+  locale?: "ja" | "en";
+}
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+
+const pubs = isEn ? pubsEn : pubsJa;
+const years = isEn ? yearsEn : yearsJa;
+const yearGroups = isEn ? groupEn(pubsEn) : groupJa(pubsJa);
+const kindName: Record<PublicationKind, string> = isEn ? kindLabelEn : kindLabelJa;
+
+const copy = isEn
+  ? {
+      eyebrow: "Publications",
+      heading: "Publications",
+      lead: "Everything the lab has published, newest first: international journals and conferences, preprints, domestic venues and technical reports. Narrow the list by kind and by year.",
+      kind: "Kind",
+      year: "Year",
+      all: "All",
+      reset: "Clear filters",
+      countTemplate: "%d shown",
+      none: "Nothing matches this combination.",
+      opens: "(opens the publisher page)",
+    }
+  : {
+      eyebrow: "Publications",
+      heading: "業績",
+      lead: "これまでに発表したものを新しい順に並べている。国際誌・国際会議を中心に、プレプリント、国内発表、研究報告までを含む。種別と年で絞り込める。",
+      kind: "種別",
+      year: "年",
+      all: "すべて",
+      reset: "絞り込みを解除",
+      countTemplate: "該当 %d件",
+      none: "この組み合わせに当てはまるものはありません。",
+      opens: "（出版社ページを開きます）",
+    };
+
+// Only kinds that actually occur get a chip, so the bar never offers an empty
+// filter. Counts sit on the chips: they are a navigation aid, not a tally of
+// the lab's output.
+const kindFilters = kindOrder
+  .map((k) => ({ key: k as string, label: kindName[k], count: pubs.filter((p) => p.kind === k).length }))
+  .filter((f) => f.count > 0);
+
+const yearFilters = years.map((y) => ({
+  key: String(y),
+  label: String(y),
+  count: pubs.filter((p) => p.year === y).length,
+}));
+
+// Journals read as amber, conferences as steel, everything else as slate;
+// international venues carry a fill, domestic ones only an outline. Three
+// hues and two weights are enough to scan 70 entries without a legend.
+const kindBadge: Record<PublicationKind, string> = {
+  "journal-international": "border-amber/60 bg-amber/20 text-amber-deep",
+  "journal-domestic": "border-amber/50 bg-transparent text-amber-deep",
+  "international-conference": "border-steel/50 bg-steel/15 text-steel",
+  "domestic-conference": "border-steel/40 bg-transparent text-steel",
+  preprint: "border-slate/40 bg-slate/10 text-slate",
+  "tech-report": "border-slate/35 bg-transparent text-slate",
+  other: "border-stone bg-transparent text-slate",
+};
+
+const monthsEn = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+function dateLabel(iso: string): string {
+  const [y, m] = iso.split("-");
+  return isEn ? `${monthsEn[Number(m) - 1]} ${y}` : `${y}年${Number(m)}月`;
+}
+
+// The lab's own name is marked in the author line so a reader can see at a
+// glance which entries are the PI's own. Both spellings occur in the list.
+const piNames = new Set(["井下敬翔", "Keito Inoshita"]);
+function authorParts(authors: string): { name: string; pi: boolean }[] {
+  return authors.split(",").map((a) => {
+    const name = a.trim();
+    return { name, pi: piNames.has(name) };
+  });
+}
+
+// Figures as recorded on acceptance in the PI's publication list. Nothing is
+// inferred: an entry without a figure shows none.
+function metricsOf(pub: Publication): string[] {
+  return [pub.impact, pub.sjr ? `SJR ${pub.sjr}` : null, pub.rank ? `Rank ${pub.rank}` : null].filter(
+    Boolean
+  ) as string[];
+}
+---
+
+<!-- Header on the dark observation surface, as on the concept pages. -->
+<section class="surface-ink relative overflow-hidden" aria-labelledby="publications-heading">
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-content page-x pb-12 pt-16 md:pb-16 md:pt-20">
+    <p class="eyebrow reveal">{copy.eyebrow}</p>
+    <h1
+      id="publications-heading"
+      class="reveal mt-5 font-display font-semibold tracking-tight text-[#F4F2ED]"
+      style="font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.1;"
+    >
+      {copy.heading}
+    </h1>
+    <p
+      class="reveal mt-8 max-w-[72rem] font-display text-[#CFCBC2]"
+      style="font-size: clamp(0.95rem, 1.1vw, 1.12rem); line-height: 1.72;"
+    >
+      {copy.lead}
+    </p>
+  </div>
+</section>
+
+<!-- Filters: kind x year, AND-combined. The bar sticks under the header so it
+     stays reachable while scrolling a long list; the script measures the
+     header instead of hard-coding its height. -->
+<div
+  class="z-20 border-b border-stone bg-ivory/95 backdrop-blur supports-[backdrop-filter]:bg-ivory/85 md:sticky"
+  style="top: 0px"
+  data-pub-filter
+>
+  <div class="mx-auto max-w-content page-x py-4 md:py-5">
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-10">
+      <div class="min-w-0 flex-1">
+        <p class="mb-2 font-label text-[0.66rem] uppercase tracking-[0.16em] text-slate">
+          {copy.kind}
+        </p>
+        <div class="flex flex-wrap items-center gap-1.5" data-kind-bar>
+          <button type="button" class="chip-filter" data-filter-kind="all" aria-pressed="true">
+            {copy.all}
+          </button>
+          {
+            kindFilters.map((f) => (
+              <button type="button" class="chip-filter" data-filter-kind={f.key} aria-pressed="false">
+                {f.label}
+                <span class="chip-count">{f.count}</span>
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="shrink-0">
+        <p class="mb-2 font-label text-[0.66rem] uppercase tracking-[0.16em] text-slate">
+          {copy.year}
+        </p>
+        <div class="flex flex-wrap items-center gap-1.5" data-year-bar>
+          <button type="button" class="chip-filter" data-filter-year="all" aria-pressed="true">
+            {copy.all}
+          </button>
+          {
+            yearFilters.map((f) => (
+              <button type="button" class="chip-filter" data-filter-year={f.key} aria-pressed="false">
+                {f.label}
+                <span class="chip-count">{f.count}</span>
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="flex shrink-0 items-center gap-4 lg:self-end lg:pb-1">
+        <p
+          class="font-label text-[0.72rem] tabular-nums text-charcoal"
+          data-pub-count
+          data-template={copy.countTemplate}
+          aria-live="polite"
+        ></p>
+        <button
+          type="button"
+          class="hidden font-sans text-[0.78rem] text-slate underline decoration-stone decoration-1 underline-offset-4 transition-colors hover:text-charcoal hover:decoration-charcoal"
+          data-pub-reset
+        >
+          {copy.reset}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The list itself, one section per year. -->
+{
+  yearGroups.map((group) => (
+    <section
+      class="mx-auto max-w-content page-x pt-14 md:pt-16"
+      aria-labelledby={`year-${group.year}`}
+      data-pub-year-section
+      data-section-year={group.year}
+    >
+      <h2
+        id={`year-${group.year}`}
+        class="reveal scroll-mt-[17rem] border-b-2 border-charcoal pb-2 font-display text-3xl font-medium tabular-nums text-charcoal md:text-4xl"
+      >
+        {group.year}
+      </h2>
+
+      <ul>
+        {group.items.map((pub) => {
+          const metrics = metricsOf(pub);
+          return (
+            <li
+              class="reveal grid gap-x-8 gap-y-3 border-b border-stone py-7 md:grid-cols-[11rem_minmax(0,1fr)]"
+              data-pub-kind={pub.kind}
+            >
+              <div class="flex flex-row flex-wrap items-center gap-x-3 gap-y-2 md:flex-col md:items-start">
+                <span class="font-label text-[0.72rem] tabular-nums tracking-[0.08em] text-slate">
+                  {dateLabel(pub.date)}
+                </span>
+                <span
+                  class:list={[
+                    "inline-block border px-2 py-0.5 font-sans text-[0.72rem] leading-snug",
+                    kindBadge[pub.kind],
+                  ]}
+                >
+                  {kindName[pub.kind]}
+                </span>
+                {pub.award && (
+                  <span class="inline-block border border-amber-deep/50 bg-amber/10 px-2 py-0.5 font-label text-[0.64rem] uppercase tracking-[0.1em] text-amber-deep">
+                    {pub.award}
+                  </span>
+                )}
+              </div>
+
+              <div class="min-w-0">
+                <h3 class="font-display text-lg leading-snug text-charcoal md:text-xl">
+                  {pub.href ? (
+                    <a href={pub.href} class="link-amber" target="_blank" rel="noopener noreferrer">
+                      {pub.title}
+                      <span class="ml-1 align-middle text-[0.7em] text-slate" aria-hidden="true">
+                        &#8599;
+                      </span>
+                      <span class="sr-only">{copy.opens}</span>
+                    </a>
+                  ) : (
+                    pub.title
+                  )}
+                </h3>
+
+                <p class="mt-2 font-sans text-sm leading-relaxed text-slate">
+                  {authorParts(pub.authors).map((a, i) => (
+                    <span class:list={[a.pi && "font-medium text-charcoal"]}>{(i > 0 ? ", " : "") + a.name}</span>
+                  ))}
+                </p>
+
+                <p class="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 font-sans text-sm text-charcoal">
+                  <span class="font-medium">{pub.venue}</span>
+                  {metrics.length > 0 && (
+                    <>
+                      <span class="text-stone" aria-hidden="true">
+                        /
+                      </span>
+                      <span class="font-label text-[0.72rem] tracking-[0.08em] text-amber-deep">
+                        {metrics.join(" / ")}
+                      </span>
+                    </>
+                  )}
+                  {pub.status && (
+                    <span class="inline-block border border-amber-deep/40 px-1.5 py-px font-label text-[0.66rem] uppercase tracking-[0.1em] text-amber-deep">
+                      {pub.status}
+                    </span>
+                  )}
+                </p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  ))
+}
+
+<p
+  class="mx-auto hidden max-w-content page-x pt-16 font-display text-base text-slate"
+  data-pub-empty
+>
+  {copy.none}
+</p>
+
+<div class="h-section-sm" aria-hidden="true"></div>
+
+<script>
+  // Two-axis filter (kind x year). Both default to "all" and AND together.
+  const bar = document.querySelector<HTMLElement>("[data-pub-filter]");
+  if (bar) {
+    const kindButtons = bar.querySelectorAll<HTMLButtonElement>("[data-filter-kind]");
+    const yearButtons = bar.querySelectorAll<HTMLButtonElement>("[data-filter-year]");
+    const reset = bar.querySelector<HTMLButtonElement>("[data-pub-reset]");
+    const countOut = bar.querySelector<HTMLElement>("[data-pub-count]");
+    const sections = document.querySelectorAll<HTMLElement>("[data-pub-year-section]");
+    const empty = document.querySelector<HTMLElement>("[data-pub-empty]");
+    const header = document.querySelector<HTMLElement>("header");
+    const countTemplate = countOut?.dataset.template ?? "";
+
+    // The bar docks under the sticky site header from md up, whose height
+    // changes with the viewport, so it is measured rather than assumed.
+    const barEl = bar;
+    function dock() {
+      if (header) barEl.style.top = `${header.offsetHeight}px`;
+    }
+    dock();
+    window.addEventListener("resize", dock);
+    if (document.fonts?.ready) document.fonts.ready.then(dock);
+
+    let currentKind = "all";
+    let currentYear = "all";
+
+    function setPressed(buttons: NodeListOf<HTMLButtonElement>, attr: string, value: string) {
+      buttons.forEach((b) => {
+        b.setAttribute("aria-pressed", String((b.getAttribute(attr) ?? "all") === value));
+      });
+    }
+
+    function apply() {
+      let total = 0;
+      sections.forEach((section) => {
+        if (currentYear !== "all" && section.dataset.sectionYear !== currentYear) {
+          section.hidden = true;
+          return;
+        }
+        let visible = 0;
+        section.querySelectorAll<HTMLLIElement>("[data-pub-kind]").forEach((li) => {
+          const match = currentKind === "all" || li.dataset.pubKind === currentKind;
+          li.hidden = !match;
+          if (match) visible += 1;
+        });
+        section.hidden = visible === 0;
+        total += visible;
+      });
+
+      const filtered = currentKind !== "all" || currentYear !== "all";
+      if (countOut) countOut.textContent = filtered ? countTemplate.replace("%d", String(total)) : "";
+      if (reset) reset.classList.toggle("hidden", !filtered);
+      if (empty) empty.classList.toggle("hidden", total > 0);
+    }
+
+    kindButtons.forEach((btn) =>
+      btn.addEventListener("click", () => {
+        currentKind = btn.getAttribute("data-filter-kind") ?? "all";
+        setPressed(kindButtons, "data-filter-kind", currentKind);
+        apply();
+      })
+    );
+    yearButtons.forEach((btn) =>
+      btn.addEventListener("click", () => {
+        currentYear = btn.getAttribute("data-filter-year") ?? "all";
+        setPressed(yearButtons, "data-filter-year", currentYear);
+        apply();
+      })
+    );
+    reset?.addEventListener("click", () => {
+      currentKind = "all";
+      currentYear = "all";
+      setPressed(kindButtons, "data-filter-kind", "all");
+      setPressed(yearButtons, "data-filter-year", "all");
+      apply();
+      bar.scrollIntoView({ block: "start" });
+    });
+  }
+</script>

@@ -1,0 +1,276 @@
+---
+// "Member": who is in the lab, and who the lab is looking for. Shared by
+// /member/ and /en/member/. People are rows rather than a card grid, so the
+// page reads the same with two people as with twenty, and matches the other
+// list pages on the site.
+import { members as membersJa, type Person, type Role } from "../data/people";
+import { members as membersEn } from "../data/people.en";
+import Img from "./Img.astro";
+
+interface Props {
+  locale?: "ja" | "en";
+}
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+
+const members: Person[] = isEn ? membersEn : membersJa;
+
+// Role order for the groups. Only roles with people in them are rendered, so
+// the list grows without any layout change.
+const roleOrder: Role[] = [
+  "Principal Investigator",
+  "Member",
+  "Postdoctoral Researcher",
+  "Doctoral Student",
+  "Master's Student",
+  "Undergraduate",
+  "Visiting Researcher",
+  "Collaborator",
+];
+const roleLabel: Record<Role, string> = {
+  "Principal Investigator": "Principal Investigator",
+  Member: "Members",
+  "Postdoctoral Researcher": "Postdoctoral Researchers",
+  "Doctoral Student": "Doctoral Students",
+  "Master's Student": "Master's Students",
+  Undergraduate: "Undergraduates",
+  "Visiting Researcher": "Visiting Researchers",
+  Collaborator: "Collaborators",
+};
+const populatedGroups = roleOrder
+  .map((role) => ({ role, people: members.filter((m) => m.role === role) }))
+  .filter((g) => g.people.length > 0);
+
+// Internal links in the shared data are written without the locale prefix.
+function href(target: string): string {
+  return target.startsWith("http") || !isEn ? target : `/en${target}`;
+}
+
+function initials(name: string): string {
+  return name.split(/\s+/).map((p) => p[0]).slice(0, 2).join("").toUpperCase();
+}
+
+const copy = isEn
+  ? {
+      eyebrow: "Member",
+      heading: "Member",
+      lead: "Affectosphere Group is starting as a small team. Members, visiting researchers and collaborators are listed here as they join, together with what the lab is currently looking for.",
+      peopleTitle: "Current members",
+      openTitle: "Who we are looking for",
+      openLead:
+        "Anyone with an interest in affective computing (AC) or CAI is welcome, whether you come in through research, art or business. Field and background do not matter, and what you work on is decided together.",
+      website: "Website →",
+      details: "Details →",
+      wanted: [
+        {
+          title: "Research",
+          body: "Treating emotion as an object of computation: perception, representation, reasoning, generation and interaction, through to the ethics and philosophy of it. Psychology, cognitive science, HCI and ethics have all worked well alongside the AI side.",
+        },
+        {
+          title: "Art",
+          body: "Turning affective data into work that can be seen and heard. Moving image, sound, interactive pieces: anyone who wants to come at this from the side of expression.",
+        },
+        {
+          title: "Business",
+          body: "Putting AC and CAI in front of real people. A place to deploy, real data, or an idea for a product that needs one.",
+        },
+      ],
+      formsTitle: "How we work together",
+      forms: [
+        {
+          label: "Students",
+          body: "Undergraduate, master's or doctoral. What you work on is decided together.",
+        },
+        {
+          label: "Collaborators",
+          body: "Any institution and any field, including people outside academia.",
+        },
+        {
+          label: "Companies",
+          body: "As partners for joint research and trials: a place to deploy, and real data.",
+        },
+      ],
+      cta: "Get in touch",
+      contact: "/contact/",
+    }
+  : {
+      eyebrow: "Member",
+      heading: "メンバー",
+      lead: "Affectosphere Group は小さなチームとして始まっています。メンバー・客員研究員・共同研究者は参加の順にこのページへ掲載します。あわせて、いま探している人を下に書いています。",
+      peopleTitle: "現在のメンバー",
+      openTitle: "こんな人を募集中",
+      openLead:
+        "Affective Computing（AC）や CAI に興味がある方であれば、どなたでも。研究・アート・ビジネスのいずれの入口でも構いません。分野や経歴は問わず、取り組む内容は一緒に決めます。",
+      website: "個人サイト →",
+      details: "詳細 →",
+      wanted: [
+        {
+          title: "研究",
+          body: "感情を計算の対象として扱う研究。認識・表現・推論・生成・相互作用から、その倫理や哲学まで。心理学・認知科学・HCI・倫理学など、AI の外側に軸足がある方ともよく噛み合っています。",
+        },
+        {
+          title: "アート",
+          body: "感情のデータを、見たり聴いたりできる形にする試み。映像・音・インタラクティブな作品など、表現の側から関わりたい方。",
+        },
+        {
+          title: "ビジネス",
+          body: "AC・CAI を実際の現場に置く試み。実装先や実際のデータ、あるいはそれを必要とする事業のアイデアを持ち込める方。",
+        },
+      ],
+      formsTitle: "受け入れの形",
+      forms: [
+        {
+          label: "学生",
+          body: "学部・修士・博士いずれも。取り組む内容は興味に合わせて一緒に決めます。",
+        },
+        {
+          label: "共同研究者",
+          body: "所属や分野は問いません。学外の方、社会人の方も含みます。",
+        },
+        {
+          label: "企業",
+          body: "共同研究や実証の相手として。実装先と実際のデータを一緒に探します。",
+        },
+      ],
+      cta: "相談してみる",
+      contact: "/contact/",
+    };
+---
+
+<!-- Header on the dark observation surface, as on the other sections. -->
+<section class="surface-ink relative overflow-hidden" aria-labelledby="member-heading">
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-content page-x pb-12 pt-16 md:pb-16 md:pt-20">
+    <p class="eyebrow reveal">{copy.eyebrow}</p>
+    <h1
+      id="member-heading"
+      class="reveal mt-5 font-display font-semibold tracking-tight text-[#F4F2ED]"
+      style="font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.1;"
+    >
+      {copy.heading}
+    </h1>
+    <p
+      class="reveal mt-8 max-w-[72rem] font-display text-[#CFCBC2]"
+      style="font-size: clamp(0.95rem, 1.1vw, 1.12rem); line-height: 1.72;"
+    >
+      {copy.lead}
+    </p>
+  </div>
+</section>
+
+<!-- 01 — People -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="member-people">
+  <header class="reveal">
+    <p class="eyebrow">01 &mdash; People</p>
+    <h2 id="member-people" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {copy.peopleTitle}
+    </h2>
+  </header>
+
+  {
+    populatedGroups.map((group) => (
+      <div class="mt-10">
+        <p class="eyebrow reveal border-b border-stone pb-2">{roleLabel[group.role]}</p>
+        <ul>
+          {group.people.map((p) => (
+            <li class="reveal grid gap-x-8 gap-y-4 border-b border-stone py-7 md:grid-cols-[9rem_minmax(0,1fr)] md:items-start">
+              {p.portrait ? (
+                <Img
+                  src={p.portrait}
+                  alt={`Portrait of ${p.name}`}
+                  class="aspect-square w-28 border border-stone object-cover md:w-full"
+                />
+              ) : (
+                <div class="flex aspect-square w-28 items-center justify-center border border-stone bg-cream md:w-full">
+                  <span class="font-display text-3xl text-charcoal/30">{initials(p.name)}</span>
+                </div>
+              )}
+
+              <div class="min-w-0">
+                <h3 class="font-display text-lg leading-snug text-charcoal md:text-xl">
+                  {p.name}
+                  {p.nameJa && <span class="ml-2 font-display text-sm text-slate">{p.nameJa}</span>}
+                </h3>
+                <p class="mt-1.5 font-sans text-xs leading-relaxed text-slate md:text-sm">
+                  {p.affiliation}
+                </p>
+                <p class="mt-3 max-w-[52rem] border-l border-amber/50 pl-3 font-display text-sm leading-relaxed text-charcoal/85 md:text-base">
+                  {p.blurb}
+                </p>
+                {p.href && (
+                  <p class="mt-3.5">
+                    <a
+                      href={href(p.href)}
+                      class="link-amber font-heading text-xs tracking-wide md:text-sm"
+                      target={p.href.startsWith("http") ? "_blank" : undefined}
+                      rel={p.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    >
+                      {p.href.startsWith("http") ? copy.website : copy.details}
+                    </a>
+                  </p>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</section>
+
+<!-- 02 — Who we are looking for -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="member-open">
+  <header class="reveal">
+    <p class="eyebrow">02 &mdash; Open positions</p>
+    <h2 id="member-open" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {copy.openTitle}
+    </h2>
+    <p
+      class="mt-5 max-w-[48rem] font-display text-charcoal/85"
+      style="font-size: clamp(0.95rem, 1.1vw, 1.12rem); line-height: 1.72;"
+    >
+      {copy.openLead}
+    </p>
+  </header>
+
+  <ul class="mt-10 border-t border-stone">
+    {
+      copy.wanted.map((w, i) => (
+        <li class="reveal grid gap-x-8 gap-y-2 border-b border-stone py-6 md:grid-cols-[3rem_minmax(0,1fr)] md:items-baseline">
+          <span class="font-label text-[0.72rem] tabular-nums tracking-[0.12em] text-amber-deep">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <div class="min-w-0">
+            <p class="font-display text-base font-medium text-charcoal md:text-lg">{w.title}</p>
+            <p class="mt-2 max-w-[52rem] font-sans text-sm leading-relaxed text-slate md:text-[0.95rem]">
+              {w.body}
+            </p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="reveal mt-14 border-t border-stone pt-8">
+    <h3 class="font-display text-base font-medium text-charcoal md:text-lg">{copy.formsTitle}</h3>
+    <dl class="mt-6 space-y-4">
+      {
+        copy.forms.map((f) => (
+          <div class="grid gap-1.5 md:grid-cols-[9rem_minmax(0,1fr)] md:gap-6">
+            <dt class="font-display text-base font-medium text-charcoal">{f.label}</dt>
+            <dd class="max-w-[52rem] font-sans text-sm leading-relaxed text-slate md:text-[0.95rem]">{f.body}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+
+  <p class="reveal mt-10">
+    <a href={href(copy.contact)} class="btn-solid">
+      {copy.cta}
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </p>
+</section>
+
+<div class="h-section-sm" aria-hidden="true"></div>

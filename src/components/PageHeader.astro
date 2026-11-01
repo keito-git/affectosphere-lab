@@ -15,15 +15,15 @@ const { eyebrow, title, subtitle, compact = false, wideSubtitle = false } =
   Astro.props;
 
 const titleFontSize = compact
-  ? "clamp(1.75rem, 3.2vw, 2.75rem)"
-  : "clamp(2.25rem, 4.5vw, 4rem)";
+  ? "clamp(1.5rem, 2.4vw, 2rem)"
+  : "clamp(1.8rem, 3.2vw, 2.75rem)";
 ---
 
 <section class="mx-auto max-w-content page-x pt-24 md:pt-32">
   {eyebrow && <p class="eyebrow reveal">{eyebrow}</p>}
   <h1
     class="reveal mt-4 font-display font-medium tracking-tight text-charcoal"
-    style={`font-size: ${titleFontSize}; line-height: 1.12;`}
+    style={`font-size: ${titleFontSize}; line-height: 1.14;`}
   >
     {title}
   </h1>

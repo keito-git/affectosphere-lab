@@ -1,0 +1,80 @@
+---
+// A small read-out next to the PI's portrait, in the same instrument style as
+// the panels over the hero scene: the eight emotions, the top four as bars,
+// with the same certainty and arousal indices.
+//
+// The numbers are an illustrative estimate, not a measurement of the person in
+// the photograph, and the board says so.
+interface Props {
+  locale?: "ja" | "en";
+}
+const { locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+
+// Same palette and arousal priors as the hero scene (affectoscope.js).
+const rows = isEn
+  ? [
+      { name: "joy", p: 0.52, hex: "#C4974A" },
+      { name: "trust", p: 0.21, hex: "#8DB462" },
+      { name: "anticipation", p: 0.11, hex: "#BD8560" },
+      { name: "surprise", p: 0.06, hex: "#547B84" },
+    ]
+  : [
+      { name: "喜び", p: 0.52, hex: "#C4974A" },
+      { name: "信頼", p: 0.21, hex: "#8DB462" },
+      { name: "期待", p: 0.11, hex: "#BD8560" },
+      { name: "驚き", p: 0.06, hex: "#547B84" },
+    ];
+
+const copy = isEn
+  ? {
+      eyebrow: "Face · Emotion estimate",
+      certainty: "certainty",
+      arousal: "arousal",
+      note: "Illustrative distribution, not measured data",
+    }
+  : {
+      eyebrow: "Face · Emotion estimate",
+      certainty: "確信度",
+      arousal: "覚醒度",
+      note: "例示分布（実データではありません）",
+    };
+
+const top = rows[0].p;
+---
+
+<div class="border border-stone bg-ivory px-4 py-3">
+  <p class="font-label text-[0.56rem] uppercase tracking-[0.16em] text-slate">
+    {copy.eyebrow}
+  </p>
+
+  <ul class="mt-2.5 space-y-1.5">
+    {
+      rows.map((r) => (
+        <li class="flex items-center gap-2">
+          <span class="w-[3.6rem] shrink-0 truncate font-display text-[0.7rem] text-charcoal">
+            {r.name}
+          </span>
+          <span class="relative h-[5px] grow bg-charcoal/10">
+            <span
+              class="absolute inset-y-0 left-0"
+              style={`width:${Math.round((r.p / top) * 100)}%;background-color:${r.hex};`}
+            />
+          </span>
+          <span class="w-[2.3rem] shrink-0 text-right font-label text-[0.6rem] tabular-nums text-slate">
+            {Math.round(r.p * 100)}%
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <dl class="mt-3 grid grid-cols-[1fr_auto] gap-y-1 border-t border-stone/70 pt-2 font-label text-[0.62rem]">
+    <dt class="text-slate">{copy.certainty}</dt>
+    <dd class="text-right tabular-nums text-charcoal">0.31</dd>
+    <dt class="text-slate">{copy.arousal}</dt>
+    <dd class="text-right tabular-nums text-charcoal">0.57</dd>
+  </dl>
+
+  <p class="mt-2 font-label text-[0.54rem] leading-snug text-slate/80">{copy.note}</p>
+</div>

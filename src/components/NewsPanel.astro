@@ -1,0 +1,70 @@
+---
+// News on the home page: one white panel that scrolls inside itself, so the
+// list can stay long without pushing the rest of the page down. The kind of
+// item (paper / award / lab) is carried by the colour of its tag.
+import type { NewsItem } from "../data/news";
+
+interface Props {
+  items: NewsItem[];
+  locale?: "ja" | "en";
+}
+const { items, locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+const prefix = isEn ? "/en" : "";
+
+const monthsEn = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+
+function displayDate(iso: string): string {
+  const [y, m, d] = iso.split("-");
+  return isEn ? `${monthsEn[Number(m) - 1]} ${Number(d)}, ${y}` : `${y}.${m}.${d}`;
+}
+
+// One colour per kind of news, in both languages.
+const tagStyles: Record<string, string> = {
+  論文: "border-steel/70 bg-steel/25 text-[#2C5272]",
+  Paper: "border-steel/70 bg-steel/25 text-[#2C5272]",
+  受賞: "border-amber bg-amber/35 text-[#6B4E1C]",
+  Award: "border-amber bg-amber/35 text-[#6B4E1C]",
+  ラボ: "border-sage/70 bg-sage/25 text-[#4C7361]",
+  Lab: "border-sage/70 bg-sage/25 text-[#4C7361]",
+};
+const tagFallback = "border-stone bg-cream text-slate";
+---
+
+<div class="reveal border border-stone bg-white">
+  <ul class="max-h-[26rem] divide-y divide-stone/70 overflow-y-auto">
+    {
+      items.map((item) => {
+        const href = item.slug ? `${prefix}/news/${item.slug}/` : null;
+        const tag = tagStyles[item.label] ?? tagFallback;
+        return (
+          <li class="flex flex-wrap items-baseline gap-x-4 gap-y-2 px-5 py-4 md:flex-nowrap md:px-7">
+            <time class="w-[6.5rem] shrink-0 font-label text-[0.72rem] tracking-wide text-charcoal" datetime={item.date}>
+              {displayDate(item.date)}
+            </time>
+            <span
+              class:list={[
+                "w-[4.5rem] shrink-0 border px-2 py-0.5 text-center font-label text-[0.66rem] tracking-[0.1em]",
+                tag,
+              ]}
+            >
+              {item.label}
+            </span>
+            <div class="min-w-0 grow">
+              {href ? (
+                <a href={href} class="link-amber font-display text-sm text-charcoal md:text-base">
+                  {item.body}
+                </a>
+              ) : (
+                <p class="font-display text-sm text-charcoal md:text-base">{item.body}</p>
+              )}
+            </div>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>

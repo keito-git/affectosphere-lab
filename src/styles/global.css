@@ -93,6 +93,11 @@
   .link-amber:focus-visible::after {
     transform: scaleX(1);
   }
+  /* Current page: the amber rule stays drawn, since the nav colours are now
+   * close enough that colour alone no longer marks it. */
+  .link-amber[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
 
   /* Pill-shaped CTA link. */
   .btn-ghost {
@@ -100,6 +105,24 @@
            font-heading text-sm tracking-wide text-charcoal transition-colors
            hover:border-charcoal focus-visible:outline-none focus-visible:ring-1
            focus-visible:ring-charcoal;
+  }
+
+  /* Filter chip. The pressed state is driven by aria-pressed so the markup
+   * stays the single source of truth and the script only flips the attribute. */
+  .chip-filter {
+    @apply inline-flex items-center gap-1.5 border border-stone bg-ivory px-3 py-1.5
+           font-sans text-[0.82rem] leading-none text-charcoal transition-colors
+           hover:border-charcoal focus-visible:outline-none focus-visible:ring-1
+           focus-visible:ring-charcoal;
+  }
+  .chip-filter[aria-pressed="true"] {
+    @apply border-charcoal bg-charcoal text-ivory;
+  }
+  .chip-count {
+    @apply font-label text-[0.66rem] tabular-nums text-slate;
+  }
+  .chip-filter[aria-pressed="true"] .chip-count {
+    @apply text-ivory/70;
   }
 
   /* Solid CTA. */
@@ -121,6 +144,79 @@
            py-2.5 font-heading text-sm tracking-wide text-[#e9e6df] transition-colors
            hover:border-[#e9e6df] focus-visible:outline-none focus-visible:ring-1
            focus-visible:ring-ivory;
+  }
+
+  /* Instrument panels docked in the hero's empty corners. They belong to the
+   * background layer, under the ivory wash, so the ground is near-opaque to
+   * keep the figures readable once the wash passes over them. */
+  .hero-dash {
+    @apply border border-stone/80 bg-ivory/95 px-4 py-3 opacity-0
+           transition-opacity duration-700;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Instrument panels on the dark surface: the controls that pick a reading,
+   * and the bars those controls move. Shared by the AC and CAI pages. */
+  .dash-tick {
+    cursor: pointer;
+  }
+  .dash-tick:hover .dash-tick-dot,
+  .dash-tick:focus-visible .dash-tick-dot {
+    border-color: #C4974A;
+  }
+  .dash-tick[aria-pressed="true"] .dash-tick-dot {
+    background-color: #C4974A;
+    border-color: #C4974A;
+  }
+  .dash-tick[aria-pressed="true"] .dash-tick-label {
+    color: #F4F2ED;
+  }
+  .dash-chip {
+    cursor: pointer;
+    transition: color 160ms ease-out, background-color 160ms ease-out;
+  }
+  .dash-chip:hover,
+  .dash-chip:focus-visible {
+    color: #F4F2ED;
+  }
+  .dash-chip[aria-pressed="true"] {
+    background-color: #232A35;
+    color: #F4F2ED;
+    box-shadow: inset 0 2px 0 0 #C4974A;
+  }
+  /* The same control on an ivory surface. */
+  .dash-chip-light {
+    cursor: pointer;
+    transition: color 160ms ease-out, background-color 160ms ease-out;
+  }
+  .dash-chip-light:hover,
+  .dash-chip-light:focus-visible {
+    color: #1A1A1A;
+  }
+  .dash-chip-light[aria-pressed="true"] {
+    background-color: #F4F0E8;
+    color: #1A1A1A;
+    box-shadow: inset 0 2px 0 0 #C4974A;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .dash-bar {
+      transition: width 260ms ease-out;
+    }
+  }
+
+  /* Research stack: picking a stage narrows the domains under it. */
+  .stage-cell {
+    cursor: pointer;
+    transition: background-color 160ms ease-out, box-shadow 160ms ease-out;
+  }
+  .stage-cell:hover,
+  .stage-cell:focus-visible {
+    background-color: #F4F0E8;
+  }
+  .stage-cell[aria-pressed="true"] {
+    background-color: #F4F0E8;
+    box-shadow: inset 0 2px 0 0 #C4974A;
   }
 
   /* Card surface. */

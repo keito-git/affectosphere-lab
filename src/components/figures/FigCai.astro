@@ -1,0 +1,186 @@
+---
+// CAI: no person appears. The AI's head is open, the parameters that carry
+// its affective structure are lit inside, and the three things done to them
+// are given, located and adjusted there.
+// Drawn by the design team for the home page; every label comes from the page
+// so the figure works in both languages.
+interface Props {
+  give: string;
+  find: string;
+  act: string;
+  subject: string;
+}
+const { give, find, act, subject } = Astro.props;
+---
+
+<svg class="mt-6 w-full" role="img" viewBox="0 0 440 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Brain content clipped to inside the large head circle -->
+    <clipPath id="cai-head-clip">
+      <circle cx="185" cy="133" r="64"/>
+    </clipPath>
+    <!-- Amber arrowhead: GIVE (inject emotion) -->
+    <marker id="cai-arw-amber" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C4974A"/>
+    </marker>
+    <!-- Dark arrowhead: FIND / ACT -->
+    <marker id="cai-arw-dark" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1A1A1A" opacity="0.55"/>
+    </marker>
+  </defs>
+
+  <!-- ══ Central AI – emotion subject (no human; all emotion is internal) ══ -->
+  <g id="cai-robot">
+
+    <!-- Antenna -->
+    <line x1="185" y1="68" x2="185" y2="50"
+          stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="185" cy="46" r="5"
+            stroke="#1A1A1A" stroke-width="1.5" fill="#FAFAF7"/>
+
+    <!-- Large head (amber border = emotion subject) -->
+    <circle cx="185" cy="133" r="65"
+            stroke="#C4974A" stroke-width="1.5" fill="#FAFAF7"/>
+
+    <!-- Brain / face dividing line (dashed chord ≈ 60% down head) -->
+    <!-- at y=146: chord half-width = √(65²−13²) ≈ 63.7 -->
+    <line x1="122" y1="146" x2="249" y2="146"
+          stroke="#1A1A1A" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.35"/>
+
+    <!-- Face (lower dome, below the dividing line) -->
+    <circle cx="168" cy="163" r="3.5" fill="#1A1A1A"/>
+    <circle cx="202" cy="163" r="3.5" fill="#1A1A1A"/>
+    <path d="M 166 176 Q 185 190 204 176"
+          stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- ── Brain contents (clipped to head circle) ───────────────────── -->
+    <g id="cai-brain-content" clip-path="url(#cai-head-clip)">
+
+      <!-- Very light amber tint on the brain dome to suggest transparency -->
+      <rect x="120" y="68" width="130" height="80" fill="#C4974A" opacity="0.04"/>
+
+      <!-- Connection lines (opacity raised to 0.40 for readability) -->
+      <line x1="158" y1="96" x2="185" y2="82" stroke="#1A1A1A" stroke-width="1" opacity="0.40"/>
+      <line x1="185" y1="82" x2="213" y2="96" stroke="#1A1A1A" stroke-width="1" opacity="0.40"/>
+      <line x1="158" y1="96" x2="163" y2="108" stroke="#1A1A1A" stroke-width="1" opacity="0.40"/>
+      <line x1="185" y1="82" x2="163" y2="108" stroke="#1A1A1A" stroke-width="1" opacity="0.40"/>
+      <line x1="185" y1="82" x2="210" y2="109" stroke="#1A1A1A" stroke-width="1" opacity="0.40"/>
+      <line x1="213" y1="96" x2="210" y2="109" stroke="#1A1A1A" stroke-width="1" opacity="0.40"/>
+      <line x1="163" y1="108" x2="210" y2="109" stroke="#1A1A1A" stroke-width="1" opacity="0.40"/>
+      <line x1="163" y1="108" x2="185" y2="113" stroke="#1A1A1A" stroke-width="1" opacity="0.40"/>
+      <line x1="210" y1="109" x2="185" y2="113" stroke="#1A1A1A" stroke-width="1" opacity="0.40"/>
+      <line x1="140" y1="103" x2="163" y2="108" stroke="#1A1A1A" stroke-width="1" opacity="0.40"/>
+
+      <!-- Emotion distribution curve (same shape as AC figure – shared symbol) -->
+      <!-- translate so curve sits in the lower brain zone: x range 165–206, y 116–142 -->
+      <g id="cai-emotion-ai" transform="translate(165,115) scale(0.62)">
+        <line x1="-4" y1="44" x2="70" y2="44"
+              stroke="#1A1A1A" stroke-width="1.5" opacity="0.22"/>
+        <path d="M 0 44 C 9 44 11 3 22 3 C 32 3 33 25 43 25
+                 C 51 25 54 44 66 44 L 66 44 L 0 44 Z"
+              fill="#C4974A" opacity="0.18"/>
+        <path d="M 0 44 C 9 44 11 3 22 3 C 32 3 33 25 43 25 C 51 25 54 44 66 44"
+              stroke="#C4974A" stroke-width="3.5"/>
+      </g>
+
+      <!-- Amber glow rings (emotion-governing nodes) -->
+      <circle cx="185" cy="82"  r="11" fill="#C4974A" opacity="0.16"/>
+      <circle cx="163" cy="108" r="9"  fill="#C4974A" opacity="0.14"/>
+      <circle cx="210" cy="109" r="9"  fill="#C4974A" opacity="0.14"/>
+
+      <!-- Amber filled nodes (identified emotion parameters) -->
+      <circle cx="185" cy="82"  r="6"  stroke="#C4974A" stroke-width="1.2" fill="#C4974A" opacity="0.90"/>
+      <circle cx="163" cy="108" r="5"  stroke="#C4974A" stroke-width="1.2" fill="#C4974A" opacity="0.78"/>
+      <circle cx="210" cy="109" r="5"  stroke="#C4974A" stroke-width="1.2" fill="#C4974A" opacity="0.78"/>
+
+      <!-- Gray (non-emotion) nodes -->
+      <circle cx="158" cy="96"  r="4.5" stroke="#1A1A1A" stroke-width="1" fill="#FAFAF7" opacity="0.80"/>
+      <circle cx="213" cy="96"  r="4.5" stroke="#1A1A1A" stroke-width="1" fill="#FAFAF7" opacity="0.80"/>
+      <circle cx="185" cy="113" r="4"   stroke="#1A1A1A" stroke-width="1" fill="#FAFAF7" opacity="0.80"/>
+      <circle cx="140" cy="103" r="4"   stroke="#1A1A1A" stroke-width="1" fill="#FAFAF7" opacity="0.80"/>
+
+    </g><!-- /cai-brain-content -->
+
+    <!-- Small body below head (decorative) -->
+    <rect x="166" y="198" width="38" height="24" rx="6"
+          stroke="#C4974A" stroke-width="1.2" fill="#FAFAF7"/>
+
+    <!-- Feet -->
+    <rect x="168" y="222" width="15" height="8" rx="3"
+          stroke="#1A1A1A" stroke-width="1" fill="#FAFAF7"/>
+    <rect x="191" y="222" width="15" height="8" rx="3"
+          stroke="#1A1A1A" stroke-width="1" fill="#FAFAF7"/>
+
+  </g><!-- /cai-robot -->
+
+  <!-- ══ GIVE: inject / give emotion to the AI ══════════════════════════ -->
+  <g id="cai-give">
+    <!-- Large capsule icon (emotion container) -->
+    <rect x="28" y="106" width="54" height="34" rx="10"
+          stroke="#1A1A1A" stroke-width="1.5" fill="#FAFAF7"/>
+    <!-- Amber core: the emotion being given -->
+    <circle cx="55" cy="123" r="10" fill="#C4974A" opacity="0.85"/>
+
+    <!-- Amber arrow: inject into brain dome (→ N4 area on left side of head) -->
+    <path d="M 83 120 C 100 116 112 112 130 109"
+          stroke="#C4974A" stroke-width="2" marker-end="url(#cai-arw-amber)"/>
+
+    <!-- Label (min 6px gap from icon bottom at y=140) -->
+    <text x="55" y="154" text-anchor="middle"
+          font-family="JetBrains Mono, monospace" font-size="10" fill="#6B7280">{give}</text>
+  </g>
+
+  <!-- ══ FIND: identify emotion-governing nodes ══════════════════════════ -->
+  <g id="cai-find">
+    <!-- Large magnifying glass -->
+    <circle cx="363" cy="90" r="18"
+            stroke="#1A1A1A" stroke-width="1.5" fill="#FAFAF7"/>
+    <line x1="376" y1="103" x2="390" y2="117"
+          stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Crosshair inside lens -->
+    <line x1="353" y1="90" x2="373" y2="90"
+          stroke="#1A1A1A" stroke-width="1" opacity="0.40"/>
+    <line x1="363" y1="80" x2="363" y2="100"
+          stroke="#1A1A1A" stroke-width="1" opacity="0.40"/>
+
+    <!-- Dashed line: magnifying glass → main amber node N2 (185,82) -->
+    <path d="M 345 87 C 305 84 258 82 191 82"
+          stroke="#1A1A1A" stroke-width="1.4" stroke-dasharray="5 3"
+          opacity="0.65" marker-end="url(#cai-arw-dark)"/>
+
+    <!-- Label (min 6px gap from handle bottom at y=117) -->
+    <text x="365" y="131" text-anchor="middle"
+          font-family="JetBrains Mono, monospace" font-size="10" fill="#6B7280">{find}</text>
+  </g>
+
+  <!-- ══ ACT: intervene on emotion parameter ════════════════════════════ -->
+  <g id="cai-act">
+    <!-- Large dial / knob (amber border = active control) -->
+    <circle cx="370" cy="183" r="18"
+            stroke="#C4974A" stroke-width="1.5" fill="#FAFAF7"/>
+    <!-- Dial indicator (~11 o'clock) -->
+    <line x1="370" y1="183" x2="359" y2="169"
+          stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+    <!-- Tick marks (7 / 9 / 11 o'clock) -->
+    <line x1="353" y1="171" x2="349" y2="167" stroke="#1A1A1A" stroke-width="1.2" opacity="0.45"/>
+    <line x1="352" y1="184" x2="347" y2="184" stroke="#1A1A1A" stroke-width="1.2" opacity="0.45"/>
+    <line x1="355" y1="197" x2="351" y2="201" stroke="#1A1A1A" stroke-width="1.2" opacity="0.45"/>
+
+    <!-- Arrow toward N5 (210,109) through head right boundary -->
+    <path d="M 352 176 C 318 160 280 140 250 122"
+          stroke="#1A1A1A" stroke-width="1.6"
+          opacity="0.65" marker-end="url(#cai-arw-dark)"/>
+
+    <!-- Label (min 6px gap from dial bottom at y=201) -->
+    <text x="370" y="215" text-anchor="middle"
+          font-family="JetBrains Mono, monospace" font-size="10" fill="#6B7280">{act}</text>
+  </g>
+
+  <!-- ══ Subject label ══════════════════════════════════════════════════ -->
+  <text x="185" y="249" text-anchor="middle"
+        font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="0.5"
+        fill="#7B5E28">{subject}</text>
+
+</svg>

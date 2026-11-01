@@ -1,0 +1,287 @@
+---
+// One research domain, written as an overview of the field rather than a
+// walk-through of our own studies: what the area is about, what is becoming
+// clear in it, the issues it keeps running into, and only then the lab's own
+// work in it.
+import Img from "./Img.astro";
+import PublicationItem from "./PublicationItem.astro";
+import SilosFigure from "./figures/SilosFigure.astro";
+import DisagreementKeptFigure from "./figures/DisagreementKeptFigure.astro";
+import DirectedGrowthFigure from "./figures/DirectedGrowthFigure.astro";
+import UncertaintyShapeFigure from "./figures/UncertaintyShapeFigure.astro";
+import DecomposedInferenceFigure from "./figures/DecomposedInferenceFigure.astro";
+import MirrorNotJudgeFigure from "./figures/MirrorNotJudgeFigure.astro";
+import AccuracyAndAcceptanceFigure from "./figures/AccuracyAndAcceptanceFigure.astro";
+import ThreePositionsFigure from "./figures/ThreePositionsFigure.astro";
+import OverconfidenceFigure from "./figures/OverconfidenceFigure.astro";
+import RecallOverReasoningFigure from "./figures/RecallOverReasoningFigure.astro";
+import { stages, domainStage } from "../data/research-map";
+import type { ResearchDomain } from "../data/research-domains";
+import type { Publication } from "../data/publications";
+import { webp } from "../lib/images";
+
+interface Props {
+  domain: ResearchDomain;
+  siblings: ResearchDomain[];
+  pubs: Publication[];
+  locale?: "ja" | "en";
+}
+const { domain, siblings, pubs, locale = "ja" } = Astro.props;
+const isEn = locale === "en";
+const p = isEn ? "/en" : "";
+
+const stage = stages.find((s) => s.id === domainStage[domain.slug]);
+const narrative = domain.narrative ?? [];
+
+// Figures redrawn as SVG, keyed by the name a figure declares.
+const FIGURE_COMPONENTS: Record<string, any> = {
+  silos: SilosFigure,
+  "disagreement-kept": DisagreementKeptFigure,
+  "directed-growth": DirectedGrowthFigure,
+  "uncertainty-shape": UncertaintyShapeFigure,
+  "decomposed-inference": DecomposedInferenceFigure,
+  "mirror-not-judge": MirrorNotJudgeFigure,
+  "accuracy-acceptance": AccuracyAndAcceptanceFigure,
+  "three-positions": ThreePositionsFigure,
+  overconfidence: OverconfidenceFigure,
+  "recall-over-reasoning": RecallOverReasoningFigure,
+};
+
+const copy = isEn
+  ? {
+      about: "About this field",
+      aboutTitle: "What the area is about",
+      findings: "What is becoming clear",
+      issues: "Issues",
+      issuesTitle: "What the field keeps running into",
+      work: "Work",
+      workTitle: "Publications in this domain",
+      count: (n: number) => `${n} entries`,
+      allWork: "All publications",
+      others: "The other domains",
+      pending: "This area is in progress; papers and other output will appear here as they are published.",
+    }
+  : {
+      about: "About this field",
+      aboutTitle: "この領域が扱うもの",
+      findings: "分かってきていること",
+      issues: "Issues",
+      issuesTitle: "この分野が繰り返し突き当たるところ",
+      work: "Work",
+      workTitle: "この領域の業績",
+      count: (n: number) => `${n}件`,
+      allWork: "すべての業績を見る",
+      others: "ほかの研究領域",
+      pending: "この領域は現在進行中で、論文や発表物は順次公開予定である。",
+    };
+---
+
+<!-- Header on the dark observation surface, as on the concept pages. -->
+<section class="surface-ink relative overflow-hidden" aria-labelledby="domain-hero">
+  <div class="ink-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-content page-x pb-12 pt-16 md:pb-16 md:pt-20">
+    <p class="eyebrow reveal">Research</p>
+    <h1
+      id="domain-hero"
+      class="reveal mt-5 max-w-[60rem] font-display font-semibold tracking-tight text-[#F4F2ED]"
+      style="font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.14;"
+    >
+      {domain.title}
+    </h1>
+    {
+      stage && (
+        <p class="reveal mt-3 font-display text-xl text-amber md:text-2xl">
+          {stage.label}
+          {!isEn && <span class="ml-3 text-[0.8em] text-[#9aa4b4]">{stage.labelJa}</span>}
+        </p>
+      )
+    }
+    <p
+      class="reveal mt-8 max-w-[72rem] font-display text-[#CFCBC2]"
+      style="font-size: clamp(0.95rem, 1.1vw, 1.12rem); line-height: 1.72;"
+    >
+      {domain.summary}
+    </p>
+  </div>
+</section>
+
+<!-- 1. What the area is about -->
+<section class="mx-auto mt-section max-w-content page-x" aria-labelledby="domain-about">
+  <header class="reveal">
+    <p class="eyebrow">01 &mdash; {copy.about}</p>
+    <h2 id="domain-about" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+      {copy.aboutTitle}
+    </h2>
+  </header>
+
+  <div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_30rem] lg:gap-14">
+    <div class="space-y-6 font-display text-base leading-relaxed text-charcoal md:text-lg" style="line-height: 1.78;">
+      {domain.longDescription && <p class="reveal">{domain.longDescription}</p>}
+      {!domain.longDescription && <p class="reveal">{domain.summary}</p>}
+    </div>
+    <figure class="reveal self-start">
+      <img
+        src={webp(domain.image, 800)}
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        decoding="async"
+        class="w-full border border-stone bg-cream"
+      />
+    </figure>
+  </div>
+</section>
+
+<!-- 2. What is becoming clear -->
+{
+  domain.findings && (
+    <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="domain-findings">
+      <header class="reveal">
+        <p class="eyebrow">02 &mdash; Findings</p>
+        <h2 id="domain-findings" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+          {copy.findings}
+        </h2>
+      </header>
+      <p
+        class="reveal mt-8 max-w-[78rem] font-display text-base leading-relaxed text-charcoal md:text-lg"
+        style="line-height: 1.78;"
+      >
+        {domain.findings}
+      </p>
+    </section>
+  )
+}
+
+<!-- 3. The issues the field runs into -->
+{
+  narrative.length > 0 && (
+    <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="domain-issues">
+      <header class="reveal">
+        <p class="eyebrow">03 &mdash; {copy.issues}</p>
+        <h2 id="domain-issues" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+          {copy.issuesTitle}
+        </h2>
+      </header>
+
+      <ol class="mt-10 border-t border-stone">
+        {narrative.map((block, i) => (
+          <li class="reveal grid gap-6 border-b border-stone py-10 md:grid-cols-[4rem_minmax(0,1fr)] md:gap-10">
+            <span class="font-label text-[1.6rem] leading-none text-amber/50 md:text-[2rem]">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div class={block.figure ? "grid gap-8 lg:grid-cols-[minmax(0,1fr)_26rem] lg:gap-12" : ""}>
+              <div>
+                {block.heading && (
+                  <h3 class="font-display text-xl font-medium text-charcoal md:text-2xl">
+                    {block.heading}
+                  </h3>
+                )}
+                <p
+                  class="mt-4 font-display text-base leading-relaxed text-charcoal md:text-lg"
+                  style="line-height: 1.78;"
+                >
+                  {block.text}
+                </p>
+              </div>
+              {block.figure && (
+                <figure class="self-start">
+                  {block.figure.svg && FIGURE_COMPONENTS[block.figure.svg] ? (
+                    <div class="border border-stone bg-ivory p-5">
+                      {(() => {
+                        const Fig = FIGURE_COMPONENTS[block.figure.svg];
+                        return <Fig locale={locale} />;
+                      })()}
+                    </div>
+                  ) : (
+                    <Img
+                      src={block.figure.src}
+                      alt={block.figure.alt}
+                      class="w-full border border-stone bg-white"
+                    />
+                  )}
+                  <figcaption class="mt-3 font-label text-[0.7rem] leading-relaxed text-slate">
+                    {block.figure.caption}
+                  </figcaption>
+                </figure>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}
+
+{
+  narrative.length === 0 && (
+    <section class="mx-auto mt-section max-w-content page-x">
+      <p class="reveal max-w-[78rem] font-display text-base leading-relaxed text-slate md:text-lg">
+        {copy.pending}
+      </p>
+    </section>
+  )
+}
+
+<!-- 4. The lab's own work in the domain -->
+{
+  pubs.length > 0 && (
+    <section class="mx-auto mt-section max-w-content page-x" aria-labelledby="domain-pubs">
+      <header class="reveal flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="eyebrow">04 &mdash; {copy.work}</p>
+          <h2 id="domain-pubs" class="mt-3 font-display text-3xl font-medium text-charcoal md:text-4xl">
+            {copy.workTitle}
+          </h2>
+        </div>
+        <p class="font-label text-[0.75rem] tracking-[0.12em] text-slate">
+          {copy.count(pubs.length)}
+          {stage && <span class="ml-2">/ {stage.label}</span>}
+        </p>
+      </header>
+
+      <ul class="mt-10 w-full">
+        {pubs.map((pub) => (
+          <PublicationItem pub={pub} hideStatus />
+        ))}
+      </ul>
+      <p class="reveal mt-8">
+        <a href={`${p}/publications/`} class="link-amber font-heading text-sm tracking-wide">
+          {copy.allWork} &rarr;
+        </a>
+      </p>
+    </section>
+  )
+}
+
+<!-- The other domains -->
+<section class="mx-auto mt-section max-w-content page-x">
+  <div class="reveal border-t border-stone pt-10">
+    <h2 class="font-display text-xl font-medium text-charcoal md:text-2xl">{copy.others}</h2>
+    <ul class="mt-8 grid gap-px border border-stone bg-stone sm:grid-cols-2 lg:grid-cols-3">
+      {
+        siblings.map((s) => (
+          <li>
+            <a
+              href={`${p}/research/${s.slug}/`}
+              class="group flex h-full items-center gap-4 bg-ivory p-5 transition-colors hover:bg-cream"
+            >
+              <img
+                src={webp(s.image, 800)}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+                class="h-14 w-20 shrink-0 border border-stone object-cover"
+              />
+              <span class="font-display text-base text-charcoal transition-colors group-hover:text-amber-deep">
+                {s.title}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<div class="h-section-sm" aria-hidden="true"></div>

@@ -25,7 +25,7 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-10-15",
     label: "Paper",
-    body: "A single-author paper by Inoshita was accepted to Applied Soft Computing.",
+    body: "A single-author paper by Inoshita was accepted to Applied Soft Computing (IF 7.8).",
     slug: "20261015-asc-driver-intervention",
     title: "Single-author paper accepted to Applied Soft Computing",
     entries: [
@@ -71,7 +71,7 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-16",
     label: "Paper",
-    body: "A co-authored paper first-authored by Inoshita was accepted to IEEE ICDM 2026 (Research Track).",
+    body: "A co-authored paper first-authored by Inoshita was accepted to IEEE ICDM 2026 (Research Track, Rank A*).",
     slug: "20260816-icdm2026-bsetd",
     title: "Inoshita's first-authored paper accepted to IEEE ICDM 2026",
     entries: [

@@ -1,0 +1,68 @@
+---
+// The daytime-town study from Chromasphere Atelier, used as a page background.
+// People walking the streets each broadcast an emotion distribution; the layer
+// of air above the town is their interference. The still is a single frame of
+// the same scene and stands in on phones, with motion reduced, without WebGL,
+// and until the live scene has drawn.
+//
+// The page that uses this adds its own wash over it, and any instrument panels.
+---
+
+<img
+  src="/hero/town-poster.webp"
+  alt=""
+  aria-hidden="true"
+  width="1800"
+  height="990"
+  class="absolute inset-0 z-0 h-full w-full object-cover"
+/>
+<canvas
+  data-hero-town
+  aria-hidden="true"
+  class="absolute inset-0 z-0 h-full w-full opacity-0 transition-opacity duration-700"></canvas>
+
+<script>
+  // Attach the live scene only where it is worth ~620 KB and a WebGL loop:
+  // wide viewports, motion allowed, WebGL available. Everywhere else the still
+  // frame stands in for it.
+  const canvas = document.querySelector<HTMLCanvasElement>("[data-hero-town]");
+
+  function supportsWebgl(): boolean {
+    try {
+      const probe = document.createElement("canvas");
+      return !!(
+        window.WebGLRenderingContext &&
+        (probe.getContext("webgl") || probe.getContext("experimental-webgl"))
+      );
+    } catch {
+      return false;
+    }
+  }
+
+  function loadScript(src: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const el = document.createElement("script");
+      el.src = src;
+      el.async = false; // three.js must be in place before the scene runs
+      el.onload = () => resolve();
+      el.onerror = () => reject(new Error(src));
+      document.head.appendChild(el);
+    });
+  }
+
+  // The corner panels are cheap and carry no WebGL, so they load even where
+  // the live scene does not. On a page without them the script exits at once.
+  loadScript("/js/hero-dash.js").catch(() => {});
+
+  if (canvas) {
+    const wideEnough = window.matchMedia("(min-width: 768px)").matches;
+    const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (wideEnough && motionOk && supportsWebgl()) {
+      loadScript("/js/three.min.js")
+        .then(() => loadScript("/js/hero-town.js"))
+        .catch(() => {
+          // Scene unavailable (offline, blocked): the still frame remains.
+        });
+    }
+  }
+</script>

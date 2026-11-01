@@ -34,7 +34,7 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-10-15",
     label: "論文",
-    body: "井下の単著論文が Applied Soft Computing に採択されました。",
+    body: "井下の単著論文が Applied Soft Computing（IF 7.8）に採択されました。",
     slug: "20261015-asc-driver-intervention",
     title: "井下の単著論文が Applied Soft Computing に採択",
     entries: [
@@ -80,7 +80,7 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-16",
     label: "論文",
-    body: "井下が筆頭の共著論文が IEEE ICDM 2026 (Research Track) に採択されました。",
+    body: "井下が筆頭の共著論文が IEEE ICDM 2026 (Research Track, Rank A*) に採択されました。",
     slug: "20260816-icdm2026-bsetd",
     title: "井下が筆頭の共著論文が IEEE ICDM 2026 に採択",
     entries: [
