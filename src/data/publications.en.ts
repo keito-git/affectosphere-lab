@@ -78,6 +78,20 @@ export const kindOrder: PublicationKind[] = [
 // below is hand-curated; we sort at the bottom of the file so editors can
 // keep entries grouped by kind here without breaking display order.
 const rawPublications: Publication[] = [
+  {
+    slug: "inoshita-free-anchors-2027",
+    title:
+      "Adding Judges Is Not Enough: Free Anchors for Identifiable LLM Judge Panels",
+    venue: "WSDM 2027",
+    date: "2026-11-03",
+    year: 2026,
+    authors: "Keito Inoshita",
+    kind: "international-conference",
+    firstAuthor: true,
+    reviewed: true,
+    status: "Accepted, to appear",
+    rank: "A",
+  },
   // ---- Added from 業績リスト_井下敬翔.docx (2026-09-16) ----
   {
     slug: "ipsj-dp-uncertainty-2027",

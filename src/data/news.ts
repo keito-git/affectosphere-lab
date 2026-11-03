@@ -32,6 +32,23 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-11-03",
+    label: "論文",
+    body: "井下の単著論文が WSDM 2027（Main Conference, Rank A）に採択されました。",
+    slug: "20261103-wsdm2027-free-anchors",
+    title: "井下の単著論文が WSDM 2027 に採択",
+    entries: [
+      {
+        title:
+          "Adding Judges Is Not Enough: Free Anchors for Identifiable LLM Judge Panels",
+        authors: "Keito Inoshita",
+        venue: "WSDM 2027 (Main Conference)",
+        summary:
+          "LLMを評価者（judge）として並べたパネルは、判定者を増やせば信頼できると考えられてきた。本論文は理論と2つの独立したパネルで、最初の判定者ファミリー以降、追加の判定者が識別集合を縮めるのは、その誤りが既存の判定者の張る錐の外にあるときだけであることを示す。7プロバイダのパネルでは最初のファミリーが識別集合の42%を削り、残り6つは測定できる寄与を持たなかった。一方、LLMJudgeパネルでは、プールに既にある明確な2項目だけで18%が削れた。識別可能性を決めるのは判定者の数ではなく、プールの構成と評価契約の選び方であり、どのファミリーが寄与するかは調達の前に検定できる。",
+      },
+    ],
+  },
+  {
     date: "2026-10-15",
     label: "論文",
     body: "井下の単著論文が Applied Soft Computing（IF 7.8）に採択されました。",

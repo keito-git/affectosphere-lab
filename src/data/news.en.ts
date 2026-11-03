@@ -23,6 +23,23 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-11-03",
+    label: "Paper",
+    body: "A single-author paper by Inoshita was accepted to WSDM 2027 (Main Conference, Rank A).",
+    slug: "20261103-wsdm2027-free-anchors",
+    title: "Single-author paper accepted to WSDM 2027",
+    entries: [
+      {
+        title:
+          "Adding Judges Is Not Enough: Free Anchors for Identifiable LLM Judge Panels",
+        authors: "Keito Inoshita",
+        venue: "WSDM 2027 (Main Conference)",
+        summary:
+          "Practitioners add judges to make an LLM evaluation panel more reliable. The paper shows, in theory and on two independently judged panels, that after the first judge family further judges shrink the identification set only when their errors escape the cone spanned by the existing ones. On a panel of seven providers the first family removes 42% of the identification set and the six after it remove nothing measurable; on the LLMJudge panel, two unambiguous items already in the pool remove 18%. Identifiability is governed by pool composition and contract choice rather than judge count, and which families contribute can be tested before they are procured.",
+      },
+    ],
+  },
+  {
     date: "2026-10-15",
     label: "Paper",
     body: "A single-author paper by Inoshita was accepted to Applied Soft Computing (IF 7.8).",

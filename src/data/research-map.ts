@@ -237,6 +237,7 @@ export const publicationStage: Record<string, StageId> = {
   // --- Beyond affect -------------------------------------------------------
   "inoshita-name-region-2026": "beyond",
   "inoshita-name-remind-2026": "beyond",
+  "inoshita-free-anchors-2027": "beyond",
   "inoshita-argument-rarity-2026": "beyond",
   "nojiri-etymology-2026": "beyond",
   "nojiri-gliding-2026": "beyond",
@@ -331,6 +332,7 @@ export const publicationDomain: Record<string, string> = {
   // その他AI研究
   "inoshita-name-region-2026": "other-ai-research",
   "inoshita-name-remind-2026": "other-ai-research",
+  "inoshita-free-anchors-2027": "other-ai-research",
   "inoshita-argument-rarity-2026": "other-ai-research",
   "nojiri-etymology-2026": "other-ai-research",
   "nojiri-gliding-2026": "other-ai-research",
