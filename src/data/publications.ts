@@ -83,8 +83,8 @@ const rawPublications: Publication[] = [
     title:
       "Adding Judges Is Not Enough: Free Anchors for Identifiable LLM Judge Panels",
     venue: "WSDM 2027",
-    date: "2026-11-03",
-    year: 2026,
+    date: "2027-02-01",
+    year: 2027,
     authors: "Keito Inoshita",
     kind: "international-conference",
     firstAuthor: true,
