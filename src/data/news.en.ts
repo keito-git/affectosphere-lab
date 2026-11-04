@@ -25,7 +25,7 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-11-03",
     label: "Paper",
-    body: "A single-author paper by Inoshita was accepted to WSDM 2027 (Main Conference, Rank A).",
+    body: "A single-author paper by Inoshita was accepted to WSDM 2027 (Main Conference, Rank A). The Main Conference accepted 277 of 1,756 reviewed submissions (15.8%).",
     slug: "20261103-wsdm2027-free-anchors",
     title: "Single-author paper accepted to WSDM 2027",
     entries: [
@@ -88,7 +88,7 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-16",
     label: "Paper",
-    body: "A co-authored paper first-authored by Inoshita was accepted to IEEE ICDM 2026 (Research Track, Rank A*).",
+    body: "A co-authored paper first-authored by Inoshita was accepted to IEEE ICDM 2026 (Research Track, Rank A*). The Research Track accepted 289 of 1,450 submissions (19.93%).",
     slug: "20260816-icdm2026-bsetd",
     title: "Inoshita's first-authored paper accepted to IEEE ICDM 2026",
     entries: [

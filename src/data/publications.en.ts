@@ -37,6 +37,8 @@ export type Publication = {
   sjr?: string;
   /** Conference rank at acceptance, CORE-style. */
   rank?: string;
+  /** Acceptance rate of the track, as stated in the acceptance notice (e.g. "15.8%"). */
+  acceptanceRate?: string;
   /** Optional external link. */
   href?: string;
 };
@@ -91,6 +93,7 @@ const rawPublications: Publication[] = [
     reviewed: true,
     status: "Accepted, to appear",
     rank: "A",
+    acceptanceRate: "15.8%",
   },
   // ---- Added from 業績リスト_井下敬翔.docx (2026-09-16) ----
   {
@@ -278,6 +281,7 @@ const rawPublications: Publication[] = [
     status: "Accepted, to appear",
     href: "https://arxiv.org/abs/2606.01906",
     rank: "A*",
+    acceptanceRate: "19.93%",
   },
   {
     slug: "inoshita-driver-intervention-2026",

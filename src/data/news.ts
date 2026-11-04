@@ -34,7 +34,7 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-11-03",
     label: "論文",
-    body: "井下の単著論文が WSDM 2027（Main Conference, Rank A）に採択されました。",
+    body: "井下の単著論文が WSDM 2027（Main Conference, Rank A）に採択されました。Main Conference の採択率は15.8%（査読対象1,756件中277件）でした。",
     slug: "20261103-wsdm2027-free-anchors",
     title: "井下の単著論文が WSDM 2027 に採択",
     entries: [
@@ -97,7 +97,7 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-08-16",
     label: "論文",
-    body: "井下が筆頭の共著論文が IEEE ICDM 2026 (Research Track, Rank A*) に採択されました。",
+    body: "井下が筆頭の共著論文が IEEE ICDM 2026 (Research Track, Rank A*) に採択されました。Research Track の採択率は19.93%（投稿1,450件中289件）でした。",
     slug: "20260816-icdm2026-bsetd",
     title: "井下が筆頭の共著論文が IEEE ICDM 2026 に採択",
     entries: [

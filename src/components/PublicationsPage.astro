@@ -105,9 +105,16 @@ function authorParts(authors: string): { name: string; pi: boolean }[] {
 // Figures as recorded on acceptance in the PI's publication list. Nothing is
 // inferred: an entry without a figure shows none.
 function metricsOf(pub: Publication): string[] {
-  return [pub.impact, pub.sjr ? `SJR ${pub.sjr}` : null, pub.rank ? `Rank ${pub.rank}` : null].filter(
-    Boolean
-  ) as string[];
+  return [
+    pub.impact,
+    pub.sjr ? `SJR ${pub.sjr}` : null,
+    pub.rank ? `Rank ${pub.rank}` : null,
+    pub.acceptanceRate
+      ? isEn
+        ? `Acceptance ${pub.acceptanceRate}`
+        : `採択率 ${pub.acceptanceRate}`
+      : null,
+  ].filter(Boolean) as string[];
 }
 ---
 
