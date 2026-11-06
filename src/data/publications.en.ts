@@ -91,6 +91,8 @@ const rawPublications: Publication[] = [
     kind: "journal-international",
     reviewed: true,
     status: "Accepted, to appear",
+    impact: "CiteScore 6.6",
+    sjr: "Q1",
   },
   {
     slug: "inoshita-free-anchors-2027",
