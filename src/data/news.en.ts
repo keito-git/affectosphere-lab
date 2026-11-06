@@ -25,7 +25,7 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-11-06",
     label: "Paper",
-    body: "A co-authored paper was accepted to the Journal of Ethnic Foods (first-authored by Yutaro Inoshita, with Inoshita as corresponding author).",
+    body: "One of Inoshita's co-authored papers was accepted to the Journal of Ethnic Foods.",
     slug: "20261106-jef-kyotango-butyrate",
     title: "Co-authored paper accepted to the Journal of Ethnic Foods",
     entries: [

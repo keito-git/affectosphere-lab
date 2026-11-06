@@ -34,7 +34,7 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-11-06",
     label: "論文",
-    body: "井下の共著論文が Journal of Ethnic Foods に採択されました（井下湧太郎が筆頭、井下が責任著者）。",
+    body: "井下の共著論文が Journal of Ethnic Foods に採択されました。",
     slug: "20261106-jef-kyotango-butyrate",
     title: "井下の共著論文が Journal of Ethnic Foods に採択",
     entries: [
