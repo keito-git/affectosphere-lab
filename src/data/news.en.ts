@@ -23,6 +23,23 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-11-06",
+    label: "Paper",
+    body: "A co-authored paper was accepted to the Journal of Ethnic Foods (first-authored by Yutaro Inoshita, with Inoshita as corresponding author).",
+    slug: "20261106-jef-kyotango-butyrate",
+    title: "Co-authored paper accepted to the Journal of Ethnic Foods",
+    entries: [
+      {
+        title:
+          "Diachronic Analysis of Food Culture and Butyrate Production Potential in the Kyotango Region, Japan: From the Jomon Period to the Present",
+        authors: "Yutaro Inoshita, Keito Inoshita",
+        venue: "Journal of Ethnic Foods (Springer Nature)",
+        summary:
+          "A narrative integrative review of food culture in Kyotango City, Kyoto, which has roughly three times the national centenarian rate and a gut microbiota enriched in butyrate-producing bacteria. Using a large language model as a literature-integration tool, it synthesizes six temporal cross-sections from the Jomon period to the present (the Hamazume shell midden, the Engishiki, the Kebukigusa, early modern regional cuisine surveys and contemporary cohort studies) and cross-references dietary ingredients against known substrates of butyrate-producing bacteria. Diverse seafood and dietary fiber sources recur in all six eras, while preserved and fermented foods are added over time, culminating in heshiko. Each era is summarized with a four-axis Butyrate Production Potential Score, rated by one human and three open-weight LLMs with excellent agreement (ICC(2,k) = 0.91). Sansho, recorded in the Engishiki (927 CE) as a Tango Province tribute item, remains an ingredient of modern heshiko. The paper proposes that the gut environment of Kyotango residents may reflect a food culture structure dating back to the Jomon period, while leaving causal verification to future empirical work.",
+      },
+    ],
+  },
+  {
     date: "2026-11-03",
     label: "Paper",
     body: "A single-author paper by Inoshita was accepted to WSDM 2027 (Main Conference, Rank A). The Main Conference accepted 277 of 1,756 reviewed submissions (15.8%).",

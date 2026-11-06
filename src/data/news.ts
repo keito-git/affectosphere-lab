@@ -32,6 +32,23 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-11-06",
+    label: "論文",
+    body: "井下の共著論文が Journal of Ethnic Foods に採択されました（井下湧太郎が筆頭、井下が責任著者）。",
+    slug: "20261106-jef-kyotango-butyrate",
+    title: "井下の共著論文が Journal of Ethnic Foods に採択",
+    entries: [
+      {
+        title:
+          "Diachronic Analysis of Food Culture and Butyrate Production Potential in the Kyotango Region, Japan: From the Jomon Period to the Present",
+        authors: "Yutaro Inoshita, Keito Inoshita",
+        venue: "Journal of Ethnic Foods (Springer Nature)",
+        summary:
+          "百寿者の割合が全国平均の約3倍で、腸内に酪酸産生菌が多いことで知られる京都府京丹後市について、縄文時代から現代までの6つの時代の食文化資料を、大規模言語モデル（LLM）を文献統合の道具として横断的にまとめた叙述的統合レビュー。浜詰貝塚の考古資料、延喜式、毛吹草、近世の郷土料理調査、現代のコホート研究を、酪酸産生菌が利用する食材と照らし合わせた。多様な海産物と食物繊維源はすべての時代に見られ、保存食・発酵食品は時代とともに加わり、へしこに至る。各時代を4軸の指標（BPPS）で評価し、1名と3種のオープンなLLMによる採点の一致度は高かった（ICC(2,k) = 0.91）。延喜式（927年）に丹後国の貢納品として記された山椒が現代のへしこ作りにも使われ続けていることを示し、京丹後の腸内環境が縄文期にさかのぼる食文化の構造を反映している可能性を提起した。因果の検証は今後の実証研究に委ねている。",
+      },
+    ],
+  },
+  {
     date: "2026-11-03",
     label: "論文",
     body: "井下の単著論文が WSDM 2027（Main Conference, Rank A）に採択されました。Main Conference の採択率は15.8%（査読対象1,756件中277件）でした。",

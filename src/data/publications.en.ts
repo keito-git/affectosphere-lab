@@ -81,6 +81,18 @@ export const kindOrder: PublicationKind[] = [
 // keep entries grouped by kind here without breaking display order.
 const rawPublications: Publication[] = [
   {
+    slug: "yinoshita-kyotango-butyrate-2026",
+    title:
+      "Diachronic Analysis of Food Culture and Butyrate Production Potential in the Kyotango Region, Japan: From the Jomon Period to the Present",
+    venue: "Journal of Ethnic Foods",
+    date: "2026-11-06",
+    year: 2026,
+    authors: "Yutaro Inoshita, Keito Inoshita",
+    kind: "journal-international",
+    reviewed: true,
+    status: "Accepted, to appear",
+  },
+  {
     slug: "inoshita-free-anchors-2027",
     title:
       "Adding Judges Is Not Enough: Free Anchors for Identifiable LLM Judge Panels",
