@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* The `hidden` attribute must always win. Tailwind's preflight rule for it has
+   the same specificity as display utilities such as `.grid` and comes earlier,
+   so a filtered-out item with `class="grid"` stayed visible (the Publications
+   kind filter showed every entry). Scripts toggle `el.hidden`, so enforce it. */
+[hidden]:not([hidden="until-found"]) {
+  display: none !important;
+}
+
 /* ---------------------------------------------------------------------------
  * Global tokens & base styles for Affectosphere Group.
  * - Tailwind handles utility classes; this layer defines typography defaults,
