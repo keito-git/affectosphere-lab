@@ -81,6 +81,19 @@ export const kindOrder: PublicationKind[] = [
 // keep entries grouped by kind here without breaking display order.
 const rawPublications: Publication[] = [
   {
+    slug: "inoshita-argument-rarity-rmal-2026",
+    title: "Argument Rarity as a Measure of Essay Originality in the Age of AI-Assisted Writing",
+    venue: "Research Methods in Applied Linguistics",
+    date: "2026-11-17",
+    year: 2026,
+    authors: "Keito Inoshita, Michiaki Omura, Tsukasa Yamanaka, Go Maeda, Kentaro Tsuji",
+    kind: "journal-international",
+    firstAuthor: true,
+    reviewed: true,
+    status: "Accepted, to appear",
+    impact: "IF 5.5",
+  },
+  {
     slug: "yinoshita-kyotango-butyrate-2026",
     title:
       "Diachronic Analysis of Food Culture and Butyrate Production Potential in the Kyotango Region, Japan: From the Jomon Period to the Present",

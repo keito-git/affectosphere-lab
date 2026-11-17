@@ -32,6 +32,23 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-11-17",
+    label: "論文",
+    body: "井下の筆頭論文が Research Methods in Applied Linguistics（IF 5.5）に採択されました。",
+    slug: "20261117-rmal-argument-rarity",
+    title: "井下の筆頭論文が Research Methods in Applied Linguistics に採択",
+    entries: [
+      {
+        title:
+          "Argument Rarity as a Measure of Essay Originality in the Age of AI-Assisted Writing",
+        authors: "Keito Inoshita, Michiaki Omura, Tsukasa Yamanaka, Go Maeda, Kentaro Tsuji",
+        venue: "Research Methods in Applied Linguistics (Elsevier, IF 5.5)",
+        summary:
+          "LLMが流暢で整ったエッセイを書けるようになり、文章評価では論証の独創性が重要な対象になっている。本研究は、同じ課題に対する学生エッセイを参照コーパスとし、主張・根拠・論証構造の希少性として独創性のうち新規性の側面を測る枠組み AROA（Argument Rarity-based Originality Assessment）を提案した。2つの資料型課題の学生エッセイ1,354本と GPT-4.1-mini が生成したエッセイ1,000本に適用したところ、AIのエッセイは集団として著しく均質で、集団内の主張の多様性は学生の約3分の1だった。一方、個々の主張が学生より典型的だったのは1課題のみで、根拠は典型的とはいえなかった。AIのエッセイを参照コーパスに加えると主張の希少性の差は見かけ上3倍以上に広がり、参照コーパスの構成が希少性の意味を決めることを示した。摂動実験では捏造した根拠にも得点が付くことなども分かり、希少性を独創性と解釈するにはさらなる検証が必要としている。",
+      },
+    ],
+  },
+  {
     date: "2026-11-06",
     label: "論文",
     body: "井下の共著論文が Journal of Ethnic Foods に採択されました。",
