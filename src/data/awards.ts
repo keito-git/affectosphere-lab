@@ -147,6 +147,11 @@ const _rawResearch: Award[] = [
 
 const _rawContest: Award[] = [
   {
+    title: "一般財団法人NHK財団 第4回インフォメーション・ヘルスAWARD オープン部門",
+    rank: "準グランプリ",
+    date: "2026-11-18",
+  },
+  {
     title: "公益社団法人教育文化協会 第23回 私の提言募集",
     rank: "奨励賞",
     date: "2026-09-16",

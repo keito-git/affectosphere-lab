@@ -81,6 +81,19 @@ export const kindOrder: PublicationKind[] = [
 // keep entries grouped by kind here without breaking display order.
 const rawPublications: Publication[] = [
   {
+    slug: "inoshita-lslm-bcf-socialcom-2026",
+    title:
+      "Label-Conditioned Speaker–Listener Model with Bayes-Based Cross-Family Fusion for LLM-Oriented Sarcasm Recognition",
+    venue: "IEEE SocialCom 2026",
+    date: "2026-11-18",
+    year: 2026,
+    authors: "Keito Inoshita, Xiaokang Zhou, Akira Kawai, Huazhong Liu, Katsutoshi Yada",
+    kind: "international-conference",
+    firstAuthor: true,
+    reviewed: true,
+    status: "Accepted, to appear",
+  },
+  {
     slug: "inoshita-argument-rarity-rmal-2026",
     title: "Argument Rarity as a Measure of Essay Originality in the Age of AI-Assisted Writing",
     venue: "Research Methods in Applied Linguistics",

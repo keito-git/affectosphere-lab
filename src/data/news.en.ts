@@ -23,6 +23,32 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-11-18",
+    label: "Award",
+    body: "Inoshita received the Runner-up Prize in the Open Category of the 4th Information Health AWARD (NHK Foundation).",
+    slug: "20261118-information-health-award",
+    title: "Runner-up Prize at the 4th Information Health AWARD",
+    summary:
+      "Inoshita received the Runner-up Prize in the Open Category of the 4th Information Health AWARD, hosted by the NHK Foundation. The award invites ideas and initiatives for a healthy balance in how people deal with information (\"information health\").",
+  },
+  {
+    date: "2026-11-18",
+    label: "Paper",
+    body: "A co-authored paper with Inoshita as first author was accepted to IEEE SocialCom 2026.",
+    slug: "20261118-socialcom2026-lslm-bcf",
+    title: "First-author paper accepted to IEEE SocialCom 2026",
+    entries: [
+      {
+        title:
+          "Label-Conditioned Speaker–Listener Model with Bayes-Based Cross-Family Fusion for LLM-Oriented Sarcasm Recognition",
+        authors: "Keito Inoshita, Xiaokang Zhou, Akira Kawai, Huazhong Liu, Katsutoshi Yada",
+        venue: "IEEE SocialCom 2026",
+        summary:
+          "Large language models can generate sarcastic text, but it remains unclear how this generative ability can improve the discrimination of real sarcastic posts. The paper proposes LSLM-BCF, which combines a discriminative listener LLM that scores a post by the logit difference of the label tokens with label-conditioned speaker LLMs that model how a post is written under the sarcastic and the sincere label. Each speaker computes the likelihood of the observed post under both labels, and Bayes' rule turns the likelihood ratio into the posterior odds of sarcasm, so the speaker scores a post without generating text. The standardized scores of two speakers from different model families are averaged and added to the listener score, and one speaker is trained with a posterior-regularized likelihood (PRL) loss. On four sarcasm datasets, LSLM-BCF achieves the highest F1 among the compared methods and improves the listener's test AUC on every dataset, reaching 0.889 on iSarcasm. Analyses show that the gains come from post-specific speaker information and that cross-family fusion is more stable than fusion with a single speaker.",
+      },
+    ],
+  },
+  {
     date: "2026-11-17",
     label: "Paper",
     body: "A first-author paper by Inoshita was accepted to Research Methods in Applied Linguistics (IF 5.5).",

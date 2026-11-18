@@ -151,6 +151,11 @@ const _rawResearch: Award[] = [
 
 const _rawContest: Award[] = [
   {
+    title: "NHK Foundation, 4th Information Health AWARD, Open Category",
+    rank: "Runner-up Prize",
+    date: "2026-11-18",
+  },
+  {
     title: "Rengo Institute for Advancement of Living Standards, 23rd “My Proposal” call",
     rank: "Encouragement Award",
     date: "2026-09-16",

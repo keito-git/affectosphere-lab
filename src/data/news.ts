@@ -32,6 +32,32 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-11-18",
+    label: "受賞",
+    body: "井下が NHK財団 第4回インフォメーション・ヘルスAWARD オープン部門 にて準グランプリを受賞しました。",
+    slug: "20261118-information-health-award",
+    title: "第4回インフォメーション・ヘルスAWARD オープン部門 にて準グランプリを受賞",
+    summary:
+      "一般財団法人NHK財団が主催する「第4回インフォメーション・ヘルスAWARD」のオープン部門において、井下が準グランプリを受賞しました。本アワードは、情報との付き合い方のバランス（インフォメーション・ヘルス）に関するアイデアや取り組みを募集するものです。",
+  },
+  {
+    date: "2026-11-18",
+    label: "論文",
+    body: "井下が筆頭の共著論文が IEEE SocialCom 2026 に採択されました。",
+    slug: "20261118-socialcom2026-lslm-bcf",
+    title: "井下が筆頭の共著論文が IEEE SocialCom 2026 に採択",
+    entries: [
+      {
+        title:
+          "Label-Conditioned Speaker–Listener Model with Bayes-Based Cross-Family Fusion for LLM-Oriented Sarcasm Recognition",
+        authors: "Keito Inoshita, Xiaokang Zhou, Akira Kawai, Huazhong Liu, Katsutoshi Yada",
+        venue: "IEEE SocialCom 2026",
+        summary:
+          "LLMは皮肉な文章を生成できるが、その生成能力を実際の皮肉投稿の識別にどう生かせるかは明らかでない。本研究は、皮肉／非皮肉のラベルを条件として文章の書かれ方を学習した話者（Speaker）LLMと、ラベルトークンのロジット差で投稿を採点する識別的な聞き手（Listener）LLMを組み合わせる LSLM-BCF を提案した。話者は観測された投稿の尤度を両ラベルの下で計算し、ベイズの定理により尤度比を皮肉の事後オッズに変換するため、文章を生成せずに採点できる。異なるモデルファミリーの2つの話者のスコアを平均して聞き手のスコアと統合し、一方の話者は事後正則化尤度（PRL）損失で学習する。4つの皮肉データセットで比較手法中最高のF1を達成し、すべてのデータセットで聞き手単体のテストAUCを改善した（iSarcasm で0.889）。分析から、改善は投稿ごとの話者情報に由来し、異なるファミリーの統合は単一話者との統合より安定していることを示した。",
+      },
+    ],
+  },
+  {
     date: "2026-11-17",
     label: "論文",
     body: "井下の筆頭論文が Research Methods in Applied Linguistics（IF 5.5）に採択されました。",

@@ -182,6 +182,7 @@ export const publicationStage: Record<string, StageId> = {
   // --- Perception ----------------------------------------------------------
   "nldb-2025": "perception",
   "ieee-iaict-2025-sarcasm": "perception",
+  "inoshita-lslm-bcf-socialcom-2026": "perception",
   "ieee-icoailo-2025": "perception",
   "joho-chishiki-multimodal-2025": "perception",
   "kansei-kogaku-2025": "perception",
@@ -305,6 +306,7 @@ export const publicationDomain: Record<string, string> = {
 
   // AIによる感情の認識
   "world-model-sarcasm-2026": "emotion-recognition",
+  "inoshita-lslm-bcf-socialcom-2026": "emotion-recognition",
   "nldb-2025": "emotion-recognition",
   "ieee-iaict-2025-sarcasm": "emotion-recognition",
   "ieee-icoailo-2025": "emotion-recognition",
