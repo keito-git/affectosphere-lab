@@ -30,6 +30,13 @@ export type AwardGroup = {
 
 const _rawResearch: Award[] = [
   {
+    title: "Japan Freight Railway Company, 26th Freight Railway Paper Award",
+    rank: "Grand Prize",
+    date: "2026-11-18",
+    paperTitle: "Where Is the Room for Growth in Rail Container Freight? Estimating Section-Level Modal-Shift Potential from Public Freight Flow Statistics and Machine Learning, and Proposing Priority Corridors (in Japanese)",
+    paperAuthors: "Keito Inoshita",
+  },
+  {
     title: "GeoSciAI2026 (Geoscience Data AI Modeling Competition — Meteorology Task)",
     rank: "Student Award",
     date: "2026-05-24",

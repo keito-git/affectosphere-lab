@@ -25,6 +25,22 @@ export const allNews: NewsItem[] = [
   {
     date: "2026-11-18",
     label: "Award",
+    body: "Inoshita received the Grand Prize of the 26th Freight Railway Paper Award (Japan Freight Railway Company).",
+    slug: "20261118-kamotsu-tetsudo-ronbunsho",
+    title: "Grand Prize of the 26th Freight Railway Paper Award",
+    summary:
+      "Inoshita's paper received the Grand Prize of the 26th Freight Railway Paper Award, hosted by Japan Freight Railway Company (JR Freight). The paper uses the national Inter-Regional Freight Flow Survey (FY2020–2024) to estimate the rail container share expected for each section in Japan with statistical models and machine learning, and estimates modal-shift potential from sections that persistently fall below this expectation.",
+    entries: [
+      {
+        title: "Where Is the Room for Growth in Rail Container Freight? Estimating Section-Level Modal-Shift Potential from Public Freight Flow Statistics and Machine Learning, and Proposing Priority Corridors (in Japanese)",
+        authors: "Keito Inoshita",
+        venue: "26th Freight Railway Paper Award (Japan Freight Railway Company)",
+      },
+    ],
+  },
+  {
+    date: "2026-11-18",
+    label: "Award",
     body: "Inoshita received the Runner-up Prize in the Open Category of the 4th Information Health AWARD (NHK Foundation).",
     slug: "20261118-information-health-award",
     title: "Runner-up Prize at the 4th Information Health AWARD",

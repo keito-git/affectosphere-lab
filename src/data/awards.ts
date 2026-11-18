@@ -30,6 +30,13 @@ export type AwardGroup = {
 
 const _rawResearch: Award[] = [
   {
+    title: "日本貨物鉄道株式会社 第26回貨物鉄道論文賞",
+    rank: "最優秀賞",
+    date: "2026-11-18",
+    paperTitle: "鉄道コンテナの「伸びしろ」はどこにあるか――公的流動統計と機械学習による区間別モーダルシフト潜在量の推計と優先回廊の提案――",
+    paperAuthors: "井下 敬翔",
+  },
+  {
     title: "GeoSciAI2026（地球惑星科学データAIモデル作成コンペティション・気象課題）",
     rank: "学生賞",
     date: "2026-05-24",
