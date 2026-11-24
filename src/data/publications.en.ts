@@ -93,6 +93,7 @@ const rawPublications: Publication[] = [
     reviewed: true,
     status: "Accepted, to appear",
     impact: "IF 8.0",
+    sjr: "Q1",
   },
   {
     slug: "inoshita-lslm-bcf-socialcom-2026",
