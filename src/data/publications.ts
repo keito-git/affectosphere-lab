@@ -81,6 +81,20 @@ export const kindOrder: PublicationKind[] = [
 // keep entries grouped by kind here without breaking display order.
 const rawPublications: Publication[] = [
   {
+    slug: "inoshita-ace-net-kbs-2026",
+    title:
+      "ACE-Net: Diagnosing Learned Deep Prior Injection for Fine-Grained Emotion Recognition in Under-Determined Texts",
+    venue: "Knowledge-Based Systems",
+    date: "2026-11-24",
+    year: 2026,
+    authors: "Keito Inoshita",
+    kind: "journal-international",
+    firstAuthor: true,
+    reviewed: true,
+    status: "Accepted, to appear",
+    impact: "IF 8.0",
+  },
+  {
     slug: "inoshita-lslm-bcf-socialcom-2026",
     title:
       "Label-Conditioned Speaker–Listener Model with Bayes-Based Cross-Family Fusion for LLM-Oriented Sarcasm Recognition",

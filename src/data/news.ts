@@ -32,6 +32,27 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-11-24",
+    label: "論文",
+    body: "井下の単著論文が Knowledge-Based Systems（IF 8.0）に採択されました。",
+    slug: "20261124-kbs-ace-net",
+    title: "井下の単著論文が Knowledge-Based Systems に採択",
+    entries: [
+      {
+        title:
+          "ACE-Net: Diagnosing Learned Deep Prior Injection for Fine-Grained Emotion Recognition in Under-Determined Texts",
+        authors: "Keito Inoshita",
+        venue: "Knowledge-Based Systems (Elsevier, IF 8.0)",
+        summary:
+          "短い文や感情語を含まない文では、表面の文字列だけでは書き手の感情が決まらないことが多く、細かな感情カテゴリの認識は難しい。外部資源に頼る手法は規模が大きく、LLMが生成した文脈を入力にそのまま連結しても改善しないことが知られていたが、文脈の注入がどのような条件で効くのかは明らかでなかった。本研究は、LLMが事前に生成した文脈の説明を蒸留してプロトタイプ辞書にまとめ、合成した文脈ベクトルをTransformerの中間層に注入する ACE-Net（Adaptive Context-Embedding Network）を提案した。辞書の作成に感情ラベルは不要で、推論時にLLMを呼び出さず、追加パラメータもわずかである。統制したアブレーションから、辞書の内容・離散的な選択・適応的な温度はいずれも単独では寄与せず、改善の全体が中間層の一定範囲に注入される単一の学習済み事前ベクトルに帰着し、改善を左右するのは注入の深さであることを示した。性質の異なる3つのベンチマークでは、文脈が不足するデータでのみ有意な改善が得られ、文脈が十分なデータでは改善がなかった。さらに、少数のラベル付き標本から計算する内部指標 FORGE-Ω が、注入がどの入力に効くかを事前に見分ける診断として、異なるバックボーンでも機能することを示した。",
+      },
+    ],
+    links: [
+      { label: "コード（GitHub）", url: "https://github.com/keito-git/ace-net" },
+      { label: "データ（Zenodo）", url: "https://doi.org/10.5281/zenodo.23415199" },
+    ],
+  },
+  {
     date: "2026-11-18",
     label: "受賞",
     body: "井下が 日本貨物鉄道株式会社 第26回貨物鉄道論文賞 にて最優秀賞を受賞しました。",

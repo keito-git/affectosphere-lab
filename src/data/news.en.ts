@@ -23,6 +23,27 @@ export type NewsItem = {
 // All news items in reverse-chronological order.  Add new items at the top.
 export const allNews: NewsItem[] = [
   {
+    date: "2026-11-24",
+    label: "Paper",
+    body: "Inoshita's single-author paper was accepted to Knowledge-Based Systems (IF 8.0).",
+    slug: "20261124-kbs-ace-net",
+    title: "Single-author paper accepted to Knowledge-Based Systems",
+    entries: [
+      {
+        title:
+          "ACE-Net: Diagnosing Learned Deep Prior Injection for Fine-Grained Emotion Recognition in Under-Determined Texts",
+        authors: "Keito Inoshita",
+        venue: "Knowledge-Based Systems (Elsevier, IF 8.0)",
+        summary:
+          "Fine-grained emotion recognition from contextually under-determined texts remains a fundamental challenge, because most benchmark samples carry no explicit emotion words and their surface form alone does not determine the intended emotion. Existing remedies either depend on large-scale external resources or fail when large language model (LLM) generated context is naively concatenated to the input, and the regime in which injecting such context helps has never been characterized. We propose the Adaptive Context-Embedding Network (ACE-Net), which encodes offline LLM-distilled context descriptions, clusters them into a frozen prototype dictionary, and injects a synthesized context vector into an intermediate Transformer layer through input-adaptive allocation, requiring no emotion labels for the dictionary and no inference-time LLM calls while adding only a negligible number of parameters. A controlled ablation yields our central diagnostic finding: none of the dictionary content, the discrete selection, or the adaptive temperature contributes on its own, and the entire gain reduces to a single learned prior vector injected within a load-bearing band of intermediate layers, with the injection depth, rather than the dictionary or selection machinery, governing the improvement. Across three benchmarks of differing determinacy, the gain is significant on under-determined data yet absent on context-sufficient data, showing it compensates a context deficit rather than boosting accuracy generically. Finally, an internal signal, FORGE-Ω, computed from the per-example change in classification loss between the baseline and the injected model on a small labeled sample, acts across backbones as a pre-deployment diagnostic that flags which inputs the injection will help.",
+      },
+    ],
+    links: [
+      { label: "Code (GitHub)", url: "https://github.com/keito-git/ace-net" },
+      { label: "Data (Zenodo)", url: "https://doi.org/10.5281/zenodo.23415199" },
+    ],
+  },
+  {
     date: "2026-11-18",
     label: "Award",
     body: "Inoshita received the Grand Prize of the 26th Freight Railway Paper Award (Japan Freight Railway Company).",
