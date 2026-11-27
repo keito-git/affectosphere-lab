@@ -15,6 +15,8 @@ authors:
     affiliation: "関西大学"
   - name: "Kota Nojiri"
     affiliation: "The University of Tokyo"
+  - name: "Takumi Taga"
+    affiliation: "Nagoya University"
 tldr: "学名の語源の研究は、分類学者が原記載を読んで判断する手間のかかる作業です。この研究では、専門家が語源を分類した動物プランクトン（ワムシと微小甲殻類）989 種のデータを使い、GPT-4o-mini による自動分類がどこまで専門家に一致するかを調べました。全体の正解率は 0.84、Cohen の κ は 0.74 でした。F1 は形態 0.92、人名 0.91、地理 0.83 と高く、生態・行動は 0.62、文化は 0.20 でした。文化では、LLM が文化と判定した名前の多くが専門家の分類では別のカテゴリでした。年ごと・10 年ごとの件数の長期傾向は GAM でほぼ再現でき、両者に有意な差が出たのは文化の年単位の比較（P = 0.04）だけでした。"
 links:
   - label: "Paper (Journal of Plankton Research)"
@@ -23,7 +25,7 @@ citation: |
   @article{sugeno2026applying,
     title   = {Applying large language models to expert-based etymological
                classification in zooplankton},
-    author  = {Sugeno, Haruto and Inoshita, Keito and Nojiri, Kota},
+    author  = {Sugeno, Haruto and Inoshita, Keito and Nojiri, Kota and Taga, Takumi},
     journal = {Journal of Plankton Research},
     volume  = {48},
     number  = {5},

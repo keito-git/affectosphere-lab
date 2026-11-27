@@ -1,7 +1,7 @@
 """Figures for the Affeline research-blog post. Every number is copied from the
-SSRN manuscript (paper/Affeline_SSRN_20261031: Tables 3-5, Sections 4.2-4.6, 5.1,
-and generated/tab_transfer.tex, the source of Figure 4); nothing is recomputed
-except the simple per-task differences noted below."""
+SSRN preprint (abstract id 7685008: Tables 3-5, 7, Sections 4.2-4.6, 5.1, and the
+data plotted in Figure 4, checked against the posted PDF on 2026-11-27); nothing
+is recomputed except the simple per-task differences noted below."""
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -10,7 +10,7 @@ from PIL import Image
 
 OUT = "/Users/ishitatakashishou/Sites/affectosphere-lab/public/column-images/ssrn-affeline/"
 SRC = ("/private/tmp/claude-501/-Users-ishitatakashishou/62e336aa-c915-4181-a249-1463c108b1af/"
-       "scratchpad/ssrn-affeline/")
+       "scratchpad/affeline-ssrn/")
 AMBER, STEEL, GREY, LIGHT = "#C4974A", "#3D6B8C", "#9AA0A6", "#D9D4CB"
 plt.rcParams.update({
     "font.family": "Arial", "font.size": 11, "axes.edgecolor": "#444",
@@ -24,7 +24,7 @@ def save(fig, name):
     plt.close(fig)
 
 # 0. Method figures: crops of the manuscript's own Figure 1 and Figure 2
-#    (pages 5 and 6 rendered at 220 dpi with pdftoppm).
+#    (pages 5 and 6 of the SSRN PDF rendered at 220 dpi with pdftoppm).
 Image.open(SRC + "pg-05.png").crop((325, 160, 1350, 955)).save(OUT + "architecture.png")
 Image.open(SRC + "pg-06.png").crop((205, 510, 1460, 925)).save(OUT + "late-read.png")
 

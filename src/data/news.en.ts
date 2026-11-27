@@ -132,7 +132,7 @@ export const allNews: NewsItem[] = [
         authors: "Keito Inoshita",
         venue: "WSDM 2027 (Main Conference)",
         summary:
-          "Practitioners add judges to make an LLM evaluation panel more reliable. The paper shows, in theory and on two independently judged panels, that after the first judge family further judges shrink the identification set only when their errors escape the cone spanned by the existing ones. On a panel of seven providers the first family removes 42% of the identification set and the six after it remove nothing measurable; on the LLMJudge panel, two unambiguous items already in the pool remove 18%. Identifiability is governed by pool composition and contract choice rather than judge count, and which families contribute can be tested before they are procured.",
+          "Practitioners add judges to make an LLM evaluation panel more reliable. The paper shows that added judges help only under conditions on the judging pool and the evaluation contract, not on the number of judges. Modelling the panel as a family-level latent-class model, it derives when the panel is identified and a common-confusion floor that no added family removes. A family adds identification power only if its errors are not implied by the existing families, which for binary labels two likelihood ratios decide before procurement. On two independently judged panels, families after the first gave no detected reduction in the diameter of the identification set, and the binary check predicted all 69 tested cases. Two gold-confirmed unambiguous items already in the pool reduced the diameter by 18%, but on the LLMJudge panel such items exist for only one relevance level.",
       },
     ],
   },

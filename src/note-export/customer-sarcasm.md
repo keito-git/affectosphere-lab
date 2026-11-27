@@ -148,12 +148,12 @@ CX マネージャーの相談に戻ると、「NPS は伸びているのに解�
 
 ## 参考論文
 
-1. Keito Inoshita, Shinnosuke Mizuno (2026). *World model inspired sarcasm reasoning with large language model agents*. Discovery Artificial Intelligence.
+1. Keito Inoshita, Shinnosuke Mizuno (2026). *World model inspired sarcasm reasoning with large language model agents*. Discover Artificial Intelligence.
 2. Takato Ueno, Keito Inoshita (2025). *Dual-Branch Feature Extraction via Discrepancy-Aware Fusion with Evidential Deep Learning for Sarcasm Detection*. IEEE IAICT 2025, pp. 345-352.
 
 ## 注釈
 
-[1] Keito Inoshita, Shinnosuke Mizuno, "World model inspired sarcasm reasoning with large language model agents", Discovery Artificial Intelligence, 2026.
+[1] Keito Inoshita, Shinnosuke Mizuno, "World model inspired sarcasm reasoning with large language model agents", Discover Artificial Intelligence, 2026.
 [2] Takato Ueno, Keito Inoshita, "Dual-Branch Feature Extraction via Discrepancy-Aware Fusion with Evidential Deep Learning for Sarcasm Detection", IEEE IAICT 2025, pp. 345-352.
 
 ## おことわり

@@ -15,6 +15,8 @@ authors:
     affiliation: "Kansai University"
   - name: "Kota Nojiri"
     affiliation: "The University of Tokyo"
+  - name: "Takumi Taga"
+    affiliation: "Nagoya University"
 tldr: "Etymological studies of scientific names rely on taxonomists reading original descriptions, which is slow. Using a dataset in which experts labelled the epithet origins of 989 zooplankton species (rotifers and microcrustaceans), we tested how closely GPT-4o-mini matches the experts. Overall accuracy was 0.84 and Cohen's κ 0.74. F1 was high for Morphology (0.92), People (0.91) and Geography (0.83), moderate for Ecology & Behavior (0.62) and low for Culture (0.20): many names the LLM called Culture were assigned elsewhere by experts. GAMs on yearly and decadal counts reproduced the long-term trends, with a significant difference between methods only for Culture at the yearly scale (P = 0.04)."
 links:
   - label: "Paper (Journal of Plankton Research)"
@@ -23,7 +25,7 @@ citation: |
   @article{sugeno2026applying,
     title   = {Applying large language models to expert-based etymological
                classification in zooplankton},
-    author  = {Sugeno, Haruto and Inoshita, Keito and Nojiri, Kota},
+    author  = {Sugeno, Haruto and Inoshita, Keito and Nojiri, Kota and Taga, Takumi},
     journal = {Journal of Plankton Research},
     volume  = {48},
     number  = {5},

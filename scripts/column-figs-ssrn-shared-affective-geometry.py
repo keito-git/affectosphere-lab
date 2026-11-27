@@ -1,7 +1,7 @@
 """Figures for the 'shared affective geometry' research-blog post (SSRN 7551120).
-Every number is copied from the real-name preprint source
-(AffectGeometry_arxiv.zip, sections/05_experiments.tex); nothing is recomputed.
-The pipeline figure (pipeline.png) is the paper's own Fig. 1 converted from PDF."""
+Every number is copied from the posted SSRN PDF (ssrn-7551120.pdf, Section V,
+Tables II-VII); nothing is recomputed.
+The pipeline figure (pipeline.png) is the paper's own Fig. 1 (checked against the SSRN PDF)."""
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -47,7 +47,7 @@ ali = [0.031, 0.071, 0.082, 0.016, 0.043]
 red = ["−25.9%", "−61.0%", "−22.0%", "−19.8%", "+20.2%"]
 x = np.arange(5); w = .36
 fig, ax = plt.subplots(figsize=(7.2, 3.4))
-ax.bar(x - w/2, raw, w, color=GREY, label="Representative layer (raw)")
+ax.bar(x - w/2, raw, w, color=GREY, label="Before alignment (raw)")
 ax.bar(x + w/2, ali, w, color=[AMBER, AMBER, AMBER, AMBER, STEEL], label="Per-model peak aligned")
 for xi, r, a, t in zip(x, raw, ali, red):
     ax.text(xi, max(r, a) + .007, t, ha="center", fontsize=10,

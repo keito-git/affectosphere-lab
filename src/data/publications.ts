@@ -342,8 +342,8 @@ const rawPublications: Publication[] = [
     slug: "inoshita-driver-intervention-2026",
     title:
       "Safety-Aware Evaluation of LLM-Generated Driver Intervention Messages through Multi-Task Risk Fusion",
-    venue: "Applied Soft Computing",
-    date: "2026-10-15",
+    venue: "Applied Soft Computing, vol. 204, 116630 (Jan. 2027 issue)",
+    date: "2026-10-16",
     year: 2026,
     authors: "Keito Inoshita",
     kind: "journal-international",
@@ -406,7 +406,7 @@ const rawPublications: Publication[] = [
   {
     slug: "world-model-sarcasm-2026",
     title: "World model inspired sarcasm reasoning with large language model agents",
-    venue: "Discovery Artificial Intelligence, vol. 6, no. 606",
+    venue: "Discover Artificial Intelligence, vol. 6, no. 606",
     date: "2026-05-01",
     year: 2026,
     authors: "Keito Inoshita, Shinnosuke Mizuno",
@@ -696,10 +696,10 @@ const rawPublications: Publication[] = [
     slug: "sugeno-plankton-2026",
     title:
       "Applying large language models to expert-based etymological classification in zooplankton",
-    venue: "Journal of Plankton Research",
+    venue: "Journal of Plankton Research, vol. 48, no. 5",
     date: "2026-07-01",
     year: 2026,
-    authors: "Haruto Sugeno, Keito Inoshita, Kota Nojiri",
+    authors: "Haruto Sugeno, Keito Inoshita, Kota Nojiri, Takumi Taga",
     kind: "journal-international",
     reviewed: true,
     href: "https://doi.org/10.1093/plankt/fbag061",

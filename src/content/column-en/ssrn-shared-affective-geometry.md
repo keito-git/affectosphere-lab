@@ -68,7 +68,7 @@ Four quantities are computed for every model, layer and stimulus condition.
 
 1. **Orthogonality (orth).** The smallest principal angle between the VAD subspace and the discrete-category subspace, divided by π/2. Near 1 means the two are independent; near 0 means they are nearly collinear.
 2. **Circularity (CI).** How circumplex-like the stimuli look when projected into the VAD subspace.
-3. **Linear decodability (R²).** How well ridge regression recovers valence, arousal and dominance from the activations.
+3. **Linear decodability (R²).** How well linear regression recovers valence, arousal and dominance from the activations.
 4. **Interaction excess.** Whether the geometry differs between high- and low-arousal stimuli beyond what a random split produces.
 
 **Universality** is defined as an equivalence problem. An index is universal when the between-model standard deviation is shown to be smaller than a margin Δ. The margin, Δ = 0.136, is derived from human cross-linguistic variation in emotion semantics and was fixed before the confirmation data were opened. Stimuli were split 50/50 into a discovery set, used only to set up procedures, and a confirmation set, examined once.
@@ -97,14 +97,14 @@ Orthogonality (SD 0.053, p = 6.26 × 10⁻¹⁰) and circularity (SD 0.049, p = 
 
 At the same layer, all three linear decodability indices fail: R²_V 0.197, R²_A 0.316, R²_D 0.259, all above 0.136. Read naively, this says the models share the shape of the emotion space but differ in how readable it is. The later experiments show that most of the second half is a depth effect.
 
-Two checks guard the geometric result. Random subspaces drawn in the same PCA space give orthogonality 0.691 for 6-dimensional subspaces and 0.038 for 47-dimensional ones. The observed values sit far from both.
+A saturation control checks that the geometric result is not an artifact of subspace size. Random subspaces drawn in the same PCA space give orthogonality 0.691 for 6-dimensional subspaces and 0.038 for 47-dimensional ones. The observed values sit far from both.
 
 <figure>
   <img src="/column-images/ssrn-shared-affective-geometry/saturation-1600.webp" alt="Saturation control" />
   <figcaption><strong>Figure 3.</strong> Observed orthogonality compared with random subspaces of the two dimensionalities used. The observed 0.467 and 0.460 lie well outside both random ranges, so the value is not an artifact of subspace size.</figcaption>
 </figure>
 
-On the combined set, mean orthogonality is 0.460 with SD 0.039 (universal, p = 2.40 × 10⁻¹⁴). The pre-registered decision tree, which sorts models into dimensional or discrete types, left 36 of 38 models inconclusive, because they concentrate near 0.460, between the 0.15 and 0.50 thresholds. A Gaussian mixture prefers a single component and a dip test finds no bimodality. **Models do not split into "dimensional" and "discrete" types; they share an intermediate relation.** The interaction excess was inconclusive (p = 0.233).
+On the combined set, mean orthogonality is 0.460 with SD 0.039 (universal, p = 2.40 × 10⁻¹⁴). The pre-registered decision tree, which sorts models into dimensional or discrete types, left 36 of 38 models (combined set) and 32 of 38 (word templates) inconclusive, because they concentrate near 0.460, between the 0.15 and 0.50 thresholds. A Gaussian mixture prefers a single component and a dip test finds no bimodality. **Models do not split into "dimensional" and "discrete" types; they share an intermediate relation.** The interaction excess was inconclusive (p = 0.233).
 
 ## Experiment 2: Are decodability differences real?
 
@@ -138,7 +138,7 @@ All 38 models follow a similar single-peaked trajectory across layers. The media
   <figcaption><strong>Figure 5.</strong> Between-model SD of arousal decodability at different reading positions. The two stimulus conditions use different items and should not be compared with each other directly.</figcaption>
 </figure>
 
-For EmoBank condB read at a common relative depth of 0.60, all three decodability indices pass (SD 0.074, 0.033 and 0.029 for V, A and D). Arousal moves from not universal at the representative layer to universal under both alignment procedures. Word templates stay above the margin at both positions (0.316 and 0.151), so the change of verdict depends on the stimulus condition as well as the position.
+For EmoBank condB read at a common relative depth of 0.60, all three decodability indices pass (SD 0.074, 0.033 and 0.029 for V, A and D). Arousal moves from not universal at the representative layer to universal under both alignment procedures. Word templates stay above the margin at both positions (0.316 and 0.151), so, as the paper puts it, the change of verdict follows the reading condition rather than the reading position.
 
 The verdicts are also sensitive to the margin. Orthogonality and circularity stay universal for all executed margins from 0.136 to 0.172 and at the cap of 0.20, but the smallest variant (Δ_B = 0.0397) makes every index not universal.
 
@@ -157,13 +157,13 @@ Seven models were run on the same EmoBank sentences with emotion labels replaced
 
 The control condition also passes the equivalence test for orthogonality, so a conserved subspace arrangement is not unique to emotion. Its degree is different, however: all 7 of 7 models show higher separation for emotion than for the control (two-sided binomial p = 0.016), even though the control is more decodable (0.434 vs 0.233). The paper reads this as a gradient, not as affective exclusivity.
 
-The embedding layer gives a second clue. On word templates, orthogonality at layer 0 is about the same as at depth 0.60 (median ratio 1.00, Wilcoxon p = 0.365), while all R² values are negative at layer 0 in all 38 models. On news headlines (6 models), layer-0 orthogonality is higher than after the forward pass in 6 of 6. **Separation is inherited from the input space; linear decodability is acquired through computation.**
+The embedding layer gives a second clue. On word templates, orthogonality at layer 0 is about the same as at depth 0.60 (median ratio 1.00, Wilcoxon p = 0.365), while all R² values are negative at layer 0 in all 38 models. On news headlines (6 models), layer-0 orthogonality is higher than after the forward pass in 6 of 6. **Separation is already present in the input space; linear decodability appears through computation.** The paper notes that this reading comes from comparing layers and was not tested by manipulating the embedding layer.
 
 ## Experiment 5: Do the directions act on the output?
 
 <p class="experiment-label">Experiment 5</p>
 
-This analysis is **exploratory**: its protocol amendments were not version-controlled. In five models from different lineages (1.5B–8B), an estimated valence direction was added at relative depth 0.60, and the shift in next-token output was compared with a random direction of the same norm.
+This analysis is **exploratory**: its protocol amendments were not version-controlled. Six models from six lineages (1.5B–8B) were selected, and one was excluded for architectural reasons. In the remaining five, an estimated valence direction was added at relative depth 0.60, and the shift in next-token output was compared with a random direction of the same norm.
 
 <figure>
   <img src="/column-images/ssrn-shared-affective-geometry/patching-1600.webp" alt="Activation patching" />

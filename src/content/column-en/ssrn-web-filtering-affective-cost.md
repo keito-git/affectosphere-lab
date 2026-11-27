@@ -71,7 +71,7 @@ We ask three questions.
 
 The measurement has two safeguards. The first is the stimuli. We use the 6,600 event descriptions of crowd-enVENT, each labeled by its writer with one of 13 emotions and rated on 21 appraisal dimensions. The official version already masks the emotion word; we further scrub any remaining emotion words with an extended lexicon. A model can then recover the category only by representing the situation, not by spotting a label word.
 
-The second is the floor. Situation words alone carry emotion cues, so raw probe scores are not interpretable. The floor is the higher of a randomly initialized network of the same architecture and a TF-IDF bag-of-words (BoW) probe, and a model is credited only for what exceeds it. The main measure, M1, is the macro-F1 over 13 categories. M2 (discrimination within negative emotions), M3 (pleasantness regression) and M4 (representational similarity with humans) are also reported.
+The second is the floor. Situation words alone carry emotion cues, so raw probe scores are not interpretable. The floor is the higher of a randomly initialized network of the same architecture and a TF-IDF bag-of-words (BoW) probe, and a model is credited only for what exceeds it. The main measure, M1, is the macro-F1 over 13 categories. M2 (discrimination within negative emotions), M3 (regression on pleasantness and unpleasantness appraisals) and M4 (representational similarity with humans) are also reported.
 
 The stimuli were split into 3,281 discovery and 3,319 confirmation texts before any model was measured.
 
