@@ -65,7 +65,7 @@ So we changed the question. Instead of asking whether to add context, we asked *
 ## How ACE-Net works
 
 <figure>
-  <img src="/column-images/ace-net/architecture.png" alt="ACE-Net architecture" />
+  <img src="/column-images/ace-net/architecture-1600.webp" alt="ACE-Net architecture" />
   <figcaption><strong>Figure 1.</strong> ACE-Net. Top: the offline dictionary construction. Bottom: injection at run time. No LLM is called at inference.</figcaption>
 </figure>
 
@@ -94,7 +94,7 @@ We built it so that **the dictionary content, the selection, the temperature and
 </div>
 
 <figure>
-  <img src="/column-images/ace-net/main-results.png" alt="Main results on GoEmotions" />
+  <img src="/column-images/ace-net/main-results-1600.webp" alt="Main results on GoEmotions" />
   <figcaption><strong>Figure 2.</strong> GoEmotions macro-F1. The dashed line is the no-context baseline (A1). The three grey bars are existing ways of adding context, and all sit at the baseline. Zero-shot CoT with GPT-4o-mini (A5) scores 0.3099 and is left off the axis.</figcaption>
 </figure>
 
@@ -109,7 +109,7 @@ The blue bar is the interesting one. Prefix-tuning with a single learnable token
 We removed the components one at a time and measured macro-F1.
 
 <figure>
-  <img src="/column-images/ace-net/ablation.png" alt="Core-mechanism ablation" />
+  <img src="/column-images/ace-net/ablation-1600.webp" alt="Core-mechanism ablation" />
   <figcaption><strong>Figure 3.</strong> macro-F1 with components removed. Amber is the full model. Blue drops the dictionary and the selection and simply adds one learned vector at L = 8. Only late fusion (adding at the final CLS) clearly drops.</figcaption>
 </figure>
 
@@ -126,7 +126,7 @@ This also explains why prefix-tuning lands in the same band. The internal ablati
 If one vector explains the gain, the remaining variable is where it goes. We injected at each of the twelve layers.
 
 <figure>
-  <img src="/column-images/ace-net/layer-sweep.png" alt="Injection-layer sweep" />
+  <img src="/column-images/ace-net/layer-sweep-1600.webp" alt="Injection-layer sweep" />
   <figcaption><strong>Figure 4.</strong> macro-F1 by injection layer (band = std over five seeds). Layers L5–L8 cluster at 0.49–0.50; L10 and L11 fall below the baseline.</figcaption>
 </figure>
 
@@ -141,7 +141,7 @@ Near the top, macro-F1 drops to 0.4382 at L10 and 0.3728 at L11, **worse than ad
 We repeated the comparison on three datasets of different character. ISEAR consists of self-narratives of the form "When I ... I felt ...", so the context is in the text. It is included as a negative control.
 
 <figure>
-  <img src="/column-images/ace-net/selectivity.png" alt="Selectivity across datasets" />
+  <img src="/column-images/ace-net/selectivity-1600.webp" alt="Selectivity across datasets" />
   <figcaption><strong>Figure 5.</strong> Improvement by dataset. The less context the text carries, the more the injection helps; on ISEAR it does not help.</figcaption>
 </figure>
 
@@ -159,7 +159,7 @@ Inside one dataset, the gain is significant on texts with no emotion word (S1) a
 By class, the gain is **concentrated on the three rarest classes**.
 
 <figure>
-  <img src="/column-images/ace-net/tail3.png" alt="Tail-3 decomposition" />
+  <img src="/column-images/ace-net/tail3-1600.webp" alt="Tail-3 decomposition" />
   <figcaption><strong>Figure 6.</strong> The gain split by class frequency. Without the three rarest classes the gain is +0.008 (n.s.); on those three alone it is +0.315.</figcaption>
 </figure>
 
@@ -172,7 +172,7 @@ By class, the gain is **concentrated on the three rarest classes**.
 If the gain is on rare classes, standard long-tail fixes (logit adjustment, class-balanced loss) might do the same job. We compared them under the same protocol.
 
 <figure>
-  <img src="/column-images/ace-net/rebalancing.png" alt="Comparison with long-tail rebalancing" />
+  <img src="/column-images/ace-net/rebalancing-1600.webp" alt="Comparison with long-tail rebalancing" />
   <figcaption><strong>Figure 7.</strong> Improvement over the baseline. Standard rebalancing reaches 40–50% of the ACE-Net gain.</figcaption>
 </figure>
 
@@ -185,7 +185,7 @@ The stronger rebalancer, class-balanced loss, gains +0.0207, about 51% of the AC
 Before moving to a new domain, it helps to know which inputs the injection will help. FORGE-Ω takes a small labeled sample, computes for each example the change in classification loss between the injected and non-injected models (ΔL), and uses it as the indicator.
 
 <figure>
-  <img src="/column-images/ace-net/forge-omega.png" alt="FORGE-Omega correlations" />
+  <img src="/column-images/ace-net/forge-omega-1600.webp" alt="FORGE-Omega correlations" />
   <figcaption><strong>Figure 8.</strong> Correlation of each signal with per-example improvement (frequency-controlled subset, n = 444). The loss change ΔL correlates positively on two backbones; the label-free surrogate does not.</figcaption>
 </figure>
 

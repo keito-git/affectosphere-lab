@@ -61,7 +61,7 @@ SNS の短い投稿から感情を読み取るタスクは、28 種類の感情�
 ## ACE-Net の仕組み
 
 <figure>
-  <img src="/column-images/ace-net/architecture.png" alt="ACE-Net architecture" />
+  <img src="/column-images/ace-net/architecture-1600.webp" alt="ACE-Net architecture" />
   <figcaption><strong>Figure 1.</strong> ACE-Net の全体図。上がオフラインの辞書づくり、下が実行時の注入です。推論時に LLM は呼びません。</figcaption>
 </figure>
 
@@ -90,7 +90,7 @@ ACE-Net は二段階で動きます。
 </div>
 
 <figure>
-  <img src="/column-images/ace-net/main-results.png" alt="Main results on GoEmotions" />
+  <img src="/column-images/ace-net/main-results-1600.webp" alt="Main results on GoEmotions" />
   <figcaption><strong>Figure 2.</strong> GoEmotions での macro-F1。点線は文脈なしの基準（A1）。灰色の 3 本は文脈を足す既存のやり方で、いずれも基準とほぼ同じです。GPT-4o-mini のゼロショット CoT（A5）は 0.3099 で、軸の外になるため省いています。</figcaption>
 </figure>
 
@@ -105,7 +105,7 @@ ACE-Net は 0.4965 で、基準より +0.041 高くなりました。文脈を�
 部品を一つずつ外して、macro-F1 がどう変わるかを見ました。
 
 <figure>
-  <img src="/column-images/ace-net/ablation.png" alt="Core-mechanism ablation" />
+  <img src="/column-images/ace-net/ablation-1600.webp" alt="Core-mechanism ablation" />
   <figcaption><strong>Figure 3.</strong> 部品を外したときの macro-F1。金色が完全版、青は辞書も選択も使わず「L = 8 に学習済みベクトルを 1 本足すだけ」の条件です。最終層の CLS に足す late fusion だけがはっきり下がります。</figcaption>
 </figure>
 
@@ -122,7 +122,7 @@ ACE-Net は 0.4965 で、基準より +0.041 高くなりました。文脈を�
 効果がベクトル 1 本で説明できるなら、残る変数は「どこに入れるか」です。12 層すべてに入れ分けました。
 
 <figure>
-  <img src="/column-images/ace-net/layer-sweep.png" alt="Injection-layer sweep" />
+  <img src="/column-images/ace-net/layer-sweep-1600.webp" alt="Injection-layer sweep" />
   <figcaption><strong>Figure 4.</strong> 注入する層ごとの macro-F1（帯は 5 シードの標準偏差）。中間層 L5〜L8 で 0.49〜0.50 にそろい、L10・L11 では基準を下回ります。</figcaption>
 </figure>
 
@@ -137,7 +137,7 @@ ACE-Net は 0.4965 で、基準より +0.041 高くなりました。文脈を�
 性質の違う 3 つのデータセットで同じことをしました。ISEAR は「When I ... I felt ...」という自己語りの文で、文脈が文の中にそろっています。効かないはずの対照として入れています。
 
 <figure>
-  <img src="/column-images/ace-net/selectivity.png" alt="Selectivity across datasets" />
+  <img src="/column-images/ace-net/selectivity-1600.webp" alt="Selectivity across datasets" />
   <figcaption><strong>Figure 5.</strong> データセットごとの改善幅。文脈が足りないほど効き、文脈が文中にそろう ISEAR では効きません。</figcaption>
 </figure>
 
@@ -155,7 +155,7 @@ GoEmotions（+0.041）＞ SemEval-2018（+0.013）＞ ISEAR（−0.001、有意�
 さらにクラス別に見ると、改善は**極端に少ない 3 クラスに集中**していました。
 
 <figure>
-  <img src="/column-images/ace-net/tail3.png" alt="Tail-3 decomposition" />
+  <img src="/column-images/ace-net/tail3-1600.webp" alt="Tail-3 decomposition" />
   <figcaption><strong>Figure 6.</strong> 改善をクラスの頻度で分解したもの。最も少ない 3 クラスを除くと改善は +0.008（有意差なし）で、3 クラスだけを見ると +0.315 です。</figcaption>
 </figure>
 
@@ -168,7 +168,7 @@ macro-F1 の改善のうち 83.3% が、最も少ない 3 クラスから来て�
 少ないクラスに効くなら、ロングテール向けの標準的な手当て（ロジット調整、クラス重みつき損失）で同じことができるのでは、という疑問が出ます。同じ条件で比べました。
 
 <figure>
-  <img src="/column-images/ace-net/rebalancing.png" alt="Comparison with long-tail rebalancing" />
+  <img src="/column-images/ace-net/rebalancing-1600.webp" alt="Comparison with long-tail rebalancing" />
   <figcaption><strong>Figure 7.</strong> 基準からの改善幅。標準的な手当てで届くのは ACE-Net の改善の 4〜5 割です。</figcaption>
 </figure>
 
@@ -181,7 +181,7 @@ macro-F1 の改善のうち 83.3% が、最も少ない 3 クラスから来て�
 新しいドメインに入れる前に「どの入力で効くか」がわかると便利です。FORGE-Ω は、ラベル付きの小さなサンプルで、注入ありとなしの分類損失の差（ΔL）を文ごとに計算し、それを効き目の目安にします。
 
 <figure>
-  <img src="/column-images/ace-net/forge-omega.png" alt="FORGE-Omega correlations" />
+  <img src="/column-images/ace-net/forge-omega-1600.webp" alt="FORGE-Omega correlations" />
   <figcaption><strong>Figure 8.</strong> 各シグナルと文ごとの改善量との相関（頻度をそろえた 444 文）。損失差 ΔL は 2 つのバックボーンで正の相関を示し、ラベルを使わない代替指標は相関しませんでした。</figcaption>
 </figure>
 

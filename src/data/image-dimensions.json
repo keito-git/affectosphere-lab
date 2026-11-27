@@ -382,5 +382,1013 @@
   "/column-images/ace-net/tail3.png": {
     "width": 1384,
     "height": 715
+  },
+  "/column-images/aisociety-bridging-silos/cascade.png": {
+    "width": 3025,
+    "height": 1069
+  },
+  "/column-images/aisociety-bridging-silos/dc-matrix.png": {
+    "width": 1665,
+    "height": 696
+  },
+  "/column-images/aisociety-bridging-silos/pipeline.png": {
+    "width": 2605,
+    "height": 1532
+  },
+  "/column-images/aisociety-bridging-silos/prior-surveys.png": {
+    "width": 1610,
+    "height": 484
+  },
+  "/column-images/aisociety-bridging-silos/stakes.png": {
+    "width": 1435,
+    "height": 714
+  },
+  "/column-images/asc-driver-intervention-safety/architecture.png": {
+    "width": 2000,
+    "height": 730
+  },
+  "/column-images/asc-driver-intervention-safety/bertscore-vs-smr.png": {
+    "width": 1324,
+    "height": 865
+  },
+  "/column-images/asc-driver-intervention-safety/comparison.png": {
+    "width": 1524,
+    "height": 696
+  },
+  "/column-images/asc-driver-intervention-safety/control.png": {
+    "width": 1514,
+    "height": 700
+  },
+  "/column-images/asc-driver-intervention-safety/geval.png": {
+    "width": 1795,
+    "height": 649
+  },
+  "/column-images/asc-driver-intervention-safety/single-task-response.png": {
+    "width": 1426,
+    "height": 715
+  },
+  "/column-images/asc-driver-intervention-safety/stratum.png": {
+    "width": 1418,
+    "height": 828
+  },
+  "/column-images/discoverai-sarcasm-world-model/ablation.png": {
+    "width": 1641,
+    "height": 788
+  },
+  "/column-images/discoverai-sarcasm-world-model/backbone.png": {
+    "width": 1471,
+    "height": 673
+  },
+  "/column-images/discoverai-sarcasm-world-model/cases.png": {
+    "width": 1866,
+    "height": 629
+  },
+  "/column-images/discoverai-sarcasm-world-model/cost.png": {
+    "width": 1369,
+    "height": 751
+  },
+  "/column-images/discoverai-sarcasm-world-model/framework.png": {
+    "width": 1354,
+    "height": 798
+  },
+  "/column-images/discoverai-sarcasm-world-model/lr-weights.png": {
+    "width": 1189,
+    "height": 390
+  },
+  "/column-images/discoverai-sarcasm-world-model/main-results.png": {
+    "width": 2509,
+    "height": 830
+  },
+  "/column-images/dss2024-evolutionary-merging/difficulty.png": {
+    "width": 1590,
+    "height": 920
+  },
+  "/column-images/dss2024-evolutionary-merging/framework.png": {
+    "width": 1623,
+    "height": 780
+  },
+  "/column-images/dss2024-evolutionary-merging/mcl-comparison.png": {
+    "width": 1604,
+    "height": 1647
+  },
+  "/column-images/dss2024-evolutionary-merging/mcl-delta.png": {
+    "width": 1571,
+    "height": 920
+  },
+  "/column-images/dss2024-evolutionary-merging/mem-mechanism.png": {
+    "width": 1866,
+    "height": 780
+  },
+  "/column-images/dss2024-evolutionary-merging/mem-vs-base-expert.png": {
+    "width": 1604,
+    "height": 1647
+  },
+  "/column-images/dss2024-evolutionary-merging/win-counts.png": {
+    "width": 1694,
+    "height": 582
+  },
+  "/column-images/hpcc2025-food-recommendation/ablation-auc.png": {
+    "width": 1524,
+    "height": 514
+  },
+  "/column-images/hpcc2025-food-recommendation/ablation.png": {
+    "width": 1422,
+    "height": 673
+  },
+  "/column-images/hpcc2025-food-recommendation/architecture.png": {
+    "width": 1306,
+    "height": 758
+  },
+  "/column-images/hpcc2025-food-recommendation/baselines.png": {
+    "width": 2283,
+    "height": 822
+  },
+  "/column-images/hpcc2025-food-recommendation/lifestyle-module.png": {
+    "width": 662,
+    "height": 465
+  },
+  "/column-images/hpcc2025-food-recommendation/umap.png": {
+    "width": 1268,
+    "height": 497
+  },
+  "/column-images/icdm2026-bayesian-spectral-transition/cross-corpus.png": {
+    "width": 1286,
+    "height": 991
+  },
+  "/column-images/icdm2026-bayesian-spectral-transition/inertia-contagion.png": {
+    "width": 1409,
+    "height": 788
+  },
+  "/column-images/icdm2026-bayesian-spectral-transition/pipeline.png": {
+    "width": 2000,
+    "height": 1054
+  },
+  "/column-images/icdm2026-bayesian-spectral-transition/results-overview.png": {
+    "width": 2630,
+    "height": 951
+  },
+  "/column-images/icdm2026-bayesian-spectral-transition/robustness.png": {
+    "width": 2001,
+    "height": 720
+  },
+  "/column-images/icdm2026-bayesian-spectral-transition/spectral-indices.png": {
+    "width": 1266,
+    "height": 865
+  },
+  "/column-images/icdm2026-bayesian-spectral-transition/top-transitions.png": {
+    "width": 1505,
+    "height": 853
+  },
+  "/column-images/ijabc-kdda/ablation.png": {
+    "width": 2084,
+    "height": 639
+  },
+  "/column-images/ijabc-kdda/classification.png": {
+    "width": 2086,
+    "height": 722
+  },
+  "/column-images/ijabc-kdda/confusion-matrices.png": {
+    "width": 1688,
+    "height": 2400
+  },
+  "/column-images/ijabc-kdda/distance-to-golden.png": {
+    "width": 2080,
+    "height": 1445
+  },
+  "/column-images/ijabc-kdda/feature-distribution.png": {
+    "width": 2400,
+    "height": 2146
+  },
+  "/column-images/ijabc-kdda/overview.png": {
+    "width": 2400,
+    "height": 1194
+  },
+  "/column-images/ijabc-persona-synthetic-data/diversity.png": {
+    "width": 1647,
+    "height": 746
+  },
+  "/column-images/ijabc-persona-synthetic-data/downstream.png": {
+    "width": 1726,
+    "height": 649
+  },
+  "/column-images/ijabc-persona-synthetic-data/framework.png": {
+    "width": 2400,
+    "height": 743
+  },
+  "/column-images/ijabc-persona-synthetic-data/human-likeness.png": {
+    "width": 1356,
+    "height": 605
+  },
+  "/column-images/ijabc-persona-synthetic-data/per-emotion-f1.png": {
+    "width": 1447,
+    "height": 691
+  },
+  "/column-images/ijabc-persona-synthetic-data/similarity.png": {
+    "width": 1814,
+    "height": 604
+  },
+  "/column-images/ijabc-persona-synthetic-data/tsne.png": {
+    "width": 1800,
+    "height": 1244
+  },
+  "/column-images/ipsj-dp-llm-uncertainty/calibration.png": {
+    "width": 1256,
+    "height": 778
+  },
+  "/column-images/ipsj-dp-llm-uncertainty/checklist.png": {
+    "width": 1680,
+    "height": 687
+  },
+  "/column-images/ipsj-dp-llm-uncertainty/overview.png": {
+    "width": 1680,
+    "height": 704
+  },
+  "/column-images/ipsj-dp-llm-uncertainty/projects.png": {
+    "width": 1919,
+    "height": 594
+  },
+  "/column-images/ipsj-dp-llm-uncertainty/review-bottleneck.png": {
+    "width": 1758,
+    "height": 548
+  },
+  "/column-images/ipsj-dp-llm-uncertainty/scenarios.png": {
+    "width": 1882,
+    "height": 640
+  },
+  "/column-images/jef-kyotango-butyrate/agreement.png": {
+    "width": 1596,
+    "height": 706
+  },
+  "/column-images/jef-kyotango-butyrate/axis-profile.png": {
+    "width": 1793,
+    "height": 615
+  },
+  "/column-images/jef-kyotango-butyrate/bpps-era.png": {
+    "width": 1409,
+    "height": 847
+  },
+  "/column-images/jef-kyotango-butyrate/fish.png": {
+    "width": 1558,
+    "height": 616
+  },
+  "/column-images/jef-kyotango-butyrate/mechanism.png": {
+    "width": 1872,
+    "height": 1122
+  },
+  "/column-images/jef-kyotango-butyrate/method-flow.png": {
+    "width": 1713,
+    "height": 934
+  },
+  "/column-images/jef-kyotango-butyrate/shellfish.png": {
+    "width": 1625,
+    "height": 717
+  },
+  "/column-images/jpr-zooplankton-etymology/cross-taxa-f1.png": {
+    "width": 1384,
+    "height": 773
+  },
+  "/column-images/jpr-zooplankton-etymology/pipeline.png": {
+    "width": 1510,
+    "height": 535
+  },
+  "/column-images/jpr-zooplankton-etymology/precision-recall.png": {
+    "width": 1131,
+    "height": 887
+  },
+  "/column-images/jpr-zooplankton-etymology/prf1.png": {
+    "width": 1418,
+    "height": 792
+  },
+  "/column-images/nldb2025-multiscale-fusion/ablation.png": {
+    "width": 1541,
+    "height": 582
+  },
+  "/column-images/nldb2025-multiscale-fusion/architecture.png": {
+    "width": 1055,
+    "height": 307
+  },
+  "/column-images/nldb2025-multiscale-fusion/cfa.png": {
+    "width": 629,
+    "height": 362
+  },
+  "/column-images/nldb2025-multiscale-fusion/main-results.png": {
+    "width": 1625,
+    "height": 717
+  },
+  "/column-images/nldb2025-multiscale-fusion/metrics.png": {
+    "width": 1375,
+    "height": 747
+  },
+  "/column-images/nldb2025-multiscale-fusion/mscf.png": {
+    "width": 645,
+    "height": 410
+  },
+  "/column-images/nldb2025-multiscale-fusion/pca.png": {
+    "width": 1267,
+    "height": 371
+  },
+  "/column-images/plosone-animalia-naming/arthropoda-share.png": {
+    "width": 1356,
+    "height": 412
+  },
+  "/column-images/plosone-animalia-naming/paper-fig1.png": {
+    "width": 1600,
+    "height": 977
+  },
+  "/column-images/plosone-animalia-naming/paper-fig3.png": {
+    "width": 1600,
+    "height": 999
+  },
+  "/column-images/plosone-animalia-naming/paper-fig5.png": {
+    "width": 1389,
+    "height": 2000
+  },
+  "/column-images/plosone-animalia-naming/paper-fig6.png": {
+    "width": 1600,
+    "height": 1051
+  },
+  "/column-images/plosone-animalia-naming/paper-fig7.png": {
+    "width": 1600,
+    "height": 985
+  },
+  "/column-images/plosone-animalia-naming/pipeline.png": {
+    "width": 1544,
+    "height": 569
+  },
+  "/column-images/plosone-animalia-naming/validation.png": {
+    "width": 1326,
+    "height": 681
+  },
+  "/column-images/rmal-argument-rarity/composition.png": {
+    "width": 1517,
+    "height": 633
+  },
+  "/column-images/rmal-argument-rarity/expert.png": {
+    "width": 1593,
+    "height": 734
+  },
+  "/column-images/rmal-argument-rarity/framework.png": {
+    "width": 2400,
+    "height": 1292
+  },
+  "/column-images/rmal-argument-rarity/generation-strategy.png": {
+    "width": 1446,
+    "height": 673
+  },
+  "/column-images/rmal-argument-rarity/homogeneity.png": {
+    "width": 1430,
+    "height": 781
+  },
+  "/column-images/rmal-argument-rarity/perturbation.png": {
+    "width": 1644,
+    "height": 700
+  },
+  "/column-images/rmal-argument-rarity/reference-size.png": {
+    "width": 1445,
+    "height": 633
+  },
+  "/column-images/rmal-argument-rarity/student-vs-ai.png": {
+    "width": 1405,
+    "height": 745
+  },
+  "/column-images/socialcom2026-lslm-bcf/ablation.png": {
+    "width": 1758,
+    "height": 751
+  },
+  "/column-images/socialcom2026-lslm-bcf/architecture.png": {
+    "width": 2408,
+    "height": 807
+  },
+  "/column-images/socialcom2026-lslm-bcf/auc-gain.png": {
+    "width": 1416,
+    "height": 701
+  },
+  "/column-images/socialcom2026-lslm-bcf/f1-comparison.png": {
+    "width": 1471,
+    "height": 826
+  },
+  "/column-images/socialcom2026-lslm-bcf/fusion.png": {
+    "width": 2145,
+    "height": 360
+  },
+  "/column-images/socialcom2026-lslm-bcf/mechanism.png": {
+    "width": 1786,
+    "height": 626
+  },
+  "/column-images/socialcom2026-lslm-bcf/prl-loss.png": {
+    "width": 2098,
+    "height": 386
+  },
+  "/column-images/socialcom2026-lslm-bcf/robustness.png": {
+    "width": 1796,
+    "height": 616
+  },
+  "/column-images/ssrn-affeline/architecture.png": {
+    "width": 1025,
+    "height": 795
+  },
+  "/column-images/ssrn-affeline/late-read.png": {
+    "width": 1255,
+    "height": 415
+  },
+  "/column-images/ssrn-affeline/late-vs-early.png": {
+    "width": 1545,
+    "height": 961
+  },
+  "/column-images/ssrn-affeline/per-task-gain.png": {
+    "width": 1839,
+    "height": 1090
+  },
+  "/column-images/ssrn-affeline/resource-groups.png": {
+    "width": 1305,
+    "height": 739
+  },
+  "/column-images/ssrn-affeline/transfer.png": {
+    "width": 2175,
+    "height": 775
+  },
+  "/column-images/ssrn-affeline/wrime-disagreement.png": {
+    "width": 1213,
+    "height": 698
+  },
+  "/column-images/ssrn-behavioral-steering/framework.png": {
+    "width": 1474,
+    "height": 462
+  },
+  "/column-images/ssrn-behavioral-steering/interchange-nulls.png": {
+    "width": 1430,
+    "height": 754
+  },
+  "/column-images/ssrn-behavioral-steering/natural-amplitude.png": {
+    "width": 1560,
+    "height": 800
+  },
+  "/column-images/ssrn-behavioral-steering/null-pvalues.png": {
+    "width": 1810,
+    "height": 923
+  },
+  "/column-images/ssrn-behavioral-steering/rule-control.png": {
+    "width": 1646,
+    "height": 718
+  },
+  "/column-images/ssrn-behavioral-steering/selectivity.png": {
+    "width": 1404,
+    "height": 764
+  },
+  "/column-images/ssrn-behavioral-steering/task.png": {
+    "width": 1474,
+    "height": 467
+  },
+  "/column-images/ssrn-cai-systematic-mapping/cai-conceptual.png": {
+    "width": 4518,
+    "height": 3072
+  },
+  "/column-images/ssrn-cai-systematic-mapping/core-vs-external.png": {
+    "width": 3049,
+    "height": 3147
+  },
+  "/column-images/ssrn-cai-systematic-mapping/mechanism-check.png": {
+    "width": 1635,
+    "height": 768
+  },
+  "/column-images/ssrn-cai-systematic-mapping/reporting.png": {
+    "width": 2446,
+    "height": 830
+  },
+  "/column-images/ssrn-cai-systematic-mapping/reuse-strata.png": {
+    "width": 1360,
+    "height": 818
+  },
+  "/column-images/ssrn-cai-systematic-mapping/scoring-key.png": {
+    "width": 1798,
+    "height": 785
+  },
+  "/column-images/ssrn-cai-systematic-mapping/selection-flow.png": {
+    "width": 3305,
+    "height": 2442
+  },
+  "/column-images/ssrn-cai-systematic-mapping/temporal.png": {
+    "width": 3561,
+    "height": 3034
+  },
+  "/column-images/ssrn-chatgpt-emotional-change/cits-schematic.png": {
+    "width": 745,
+    "height": 399
+  },
+  "/column-images/ssrn-chatgpt-emotional-change/framework.png": {
+    "width": 660,
+    "height": 736
+  },
+  "/column-images/ssrn-chatgpt-emotional-change/instruments.png": {
+    "width": 1738,
+    "height": 616
+  },
+  "/column-images/ssrn-chatgpt-emotional-change/primary-estimates.png": {
+    "width": 1438,
+    "height": 772
+  },
+  "/column-images/ssrn-chatgpt-emotional-change/resampling.png": {
+    "width": 1428,
+    "height": 698
+  },
+  "/column-images/ssrn-chatgpt-emotional-change/simulation.png": {
+    "width": 1718,
+    "height": 875
+  },
+  "/column-images/ssrn-chatgpt-emotional-change/specification.png": {
+    "width": 1809,
+    "height": 1090
+  },
+  "/column-images/ssrn-functional-emotion-problem-discovery/ai-components.png": {
+    "width": 1890,
+    "height": 979
+  },
+  "/column-images/ssrn-functional-emotion-problem-discovery/appraisal-complementarity.png": {
+    "width": 1502,
+    "height": 1093
+  },
+  "/column-images/ssrn-functional-emotion-problem-discovery/argument-structure.png": {
+    "width": 1646,
+    "height": 823
+  },
+  "/column-images/ssrn-functional-emotion-problem-discovery/predictions.png": {
+    "width": 1578,
+    "height": 653
+  },
+  "/column-images/ssrn-functional-emotion-problem-discovery/problem-discovery-gap.png": {
+    "width": 1214,
+    "height": 586
+  },
+  "/column-images/ssrn-functional-emotion-problem-discovery/routes.png": {
+    "width": 2204,
+    "height": 850
+  },
+  "/column-images/ssrn-functional-emotion-problem-discovery/thought-experiment.png": {
+    "width": 2223,
+    "height": 603
+  },
+  "/column-images/ssrn-generated-texts-llm-readers/decomposition.png": {
+    "width": 2071,
+    "height": 987
+  },
+  "/column-images/ssrn-generated-texts-llm-readers/flow.png": {
+    "width": 1169,
+    "height": 264
+  },
+  "/column-images/ssrn-generated-texts-llm-readers/harm.png": {
+    "width": 1650,
+    "height": 744
+  },
+  "/column-images/ssrn-generated-texts-llm-readers/jsd.png": {
+    "width": 1418,
+    "height": 815
+  },
+  "/column-images/ssrn-generated-texts-llm-readers/reader-disagreement.png": {
+    "width": 1866,
+    "height": 676
+  },
+  "/column-images/ssrn-generated-texts-llm-readers/reader-labels.png": {
+    "width": 1567,
+    "height": 803
+  },
+  "/column-images/ssrn-generated-texts-llm-readers/relabel.png": {
+    "width": 1533,
+    "height": 734
+  },
+  "/column-images/ssrn-goal-relative-valence/bands.png": {
+    "width": 1831,
+    "height": 830
+  },
+  "/column-images/ssrn-goal-relative-valence/behaviour.png": {
+    "width": 1614,
+    "height": 819
+  },
+  "/column-images/ssrn-goal-relative-valence/controls-task.png": {
+    "width": 1754,
+    "height": 717
+  },
+  "/column-images/ssrn-goal-relative-valence/leak-audit.png": {
+    "width": 1525,
+    "height": 714
+  },
+  "/column-images/ssrn-goal-relative-valence/overview.png": {
+    "width": 1256,
+    "height": 523
+  },
+  "/column-images/ssrn-goal-relative-valence/transition-depth.png": {
+    "width": 1612,
+    "height": 717
+  },
+  "/column-images/ssrn-learner-state-data-value/direction.png": {
+    "width": 1813,
+    "height": 732
+  },
+  "/column-images/ssrn-learner-state-data-value/directions.png": {
+    "width": 1553,
+    "height": 698
+  },
+  "/column-images/ssrn-learner-state-data-value/exchange-curve.png": {
+    "width": 1411,
+    "height": 818
+  },
+  "/column-images/ssrn-learner-state-data-value/matched-cost.png": {
+    "width": 1855,
+    "height": 746
+  },
+  "/column-images/ssrn-learner-state-data-value/overview.png": {
+    "width": 2148,
+    "height": 438
+  },
+  "/column-images/ssrn-learner-state-data-value/pool-rates.png": {
+    "width": 2092,
+    "height": 725
+  },
+  "/column-images/ssrn-learner-state-data-value/same-teacher.png": {
+    "width": 1404,
+    "height": 734
+  },
+  "/column-images/ssrn-learner-state-data-value/trajectory.png": {
+    "width": 1449,
+    "height": 696
+  },
+  "/column-images/ssrn-ordinal-ranking-instability/accuracy-vs-score.png": {
+    "width": 1420,
+    "height": 751
+  },
+  "/column-images/ssrn-ordinal-ranking-instability/binding.png": {
+    "width": 1384,
+    "height": 751
+  },
+  "/column-images/ssrn-ordinal-ranking-instability/binomial.png": {
+    "width": 1403,
+    "height": 717
+  },
+  "/column-images/ssrn-ordinal-ranking-instability/conventions.png": {
+    "width": 1384,
+    "height": 795
+  },
+  "/column-images/ssrn-ordinal-ranking-instability/overview.png": {
+    "width": 2602,
+    "height": 950
+  },
+  "/column-images/ssrn-ordinal-ranking-instability/quantisation.png": {
+    "width": 1646,
+    "height": 698
+  },
+  "/column-images/ssrn-ordinal-ranking-instability/same-model.png": {
+    "width": 1384,
+    "height": 751
+  },
+  "/column-images/ssrn-referent-framing/epistemic.png": {
+    "width": 1232,
+    "height": 673
+  },
+  "/column-images/ssrn-referent-framing/person-referent.png": {
+    "width": 1384,
+    "height": 728
+  },
+  "/column-images/ssrn-referent-framing/pipeline.png": {
+    "width": 2038,
+    "height": 361
+  },
+  "/column-images/ssrn-referent-framing/reality-type.png": {
+    "width": 1232,
+    "height": 685
+  },
+  "/column-images/ssrn-referent-framing/referent-conditions.png": {
+    "width": 1484,
+    "height": 732
+  },
+  "/column-images/ssrn-referent-framing/replication.png": {
+    "width": 1183,
+    "height": 899
+  },
+  "/column-images/ssrn-referent-framing/restriction.png": {
+    "width": 1807,
+    "height": 751
+  },
+  "/column-images/ssrn-representational-magnitude/answer-formats.png": {
+    "width": 1461,
+    "height": 827
+  },
+  "/column-images/ssrn-representational-magnitude/factorial.png": {
+    "width": 770,
+    "height": 555
+  },
+  "/column-images/ssrn-representational-magnitude/layer-sweep.png": {
+    "width": 2249,
+    "height": 1095
+  },
+  "/column-images/ssrn-representational-magnitude/magnitude-vs-gain.png": {
+    "width": 2106,
+    "height": 544
+  },
+  "/column-images/ssrn-representational-magnitude/overview.png": {
+    "width": 1400,
+    "height": 550
+  },
+  "/column-images/ssrn-representational-magnitude/own-vectors.png": {
+    "width": 1461,
+    "height": 827
+  },
+  "/column-images/ssrn-representational-magnitude/partial-ratios.png": {
+    "width": 1461,
+    "height": 827
+  },
+  "/column-images/ssrn-representational-magnitude/reversal-ranges.png": {
+    "width": 1747,
+    "height": 719
+  },
+  "/column-images/ssrn-reproducible-human-disagreement/controls.png": {
+    "width": 1581,
+    "height": 761
+  },
+  "/column-images/ssrn-reproducible-human-disagreement/group-size.png": {
+    "width": 1385,
+    "height": 751
+  },
+  "/column-images/ssrn-reproducible-human-disagreement/main-share.png": {
+    "width": 1385,
+    "height": 761
+  },
+  "/column-images/ssrn-reproducible-human-disagreement/overview.png": {
+    "width": 1426,
+    "height": 726
+  },
+  "/column-images/ssrn-reproducible-human-disagreement/partition.png": {
+    "width": 1862,
+    "height": 827
+  },
+  "/column-images/ssrn-reproducible-human-disagreement/second-datasets.png": {
+    "width": 1419,
+    "height": 796
+  },
+  "/column-images/ssrn-reproducible-human-disagreement/vote-format.png": {
+    "width": 1600,
+    "height": 694
+  },
+  "/column-images/ssrn-shared-affective-geometry/alignment.png": {
+    "width": 1403,
+    "height": 673
+  },
+  "/column-images/ssrn-shared-affective-geometry/control.png": {
+    "width": 1636,
+    "height": 616
+  },
+  "/column-images/ssrn-shared-affective-geometry/patching.png": {
+    "width": 1646,
+    "height": 675
+  },
+  "/column-images/ssrn-shared-affective-geometry/pipeline.png": {
+    "width": 1432,
+    "height": 248
+  },
+  "/column-images/ssrn-shared-affective-geometry/readout.png": {
+    "width": 1403,
+    "height": 704
+  },
+  "/column-images/ssrn-shared-affective-geometry/saturation.png": {
+    "width": 1782,
+    "height": 633
+  },
+  "/column-images/ssrn-shared-affective-geometry/verdicts.png": {
+    "width": 1403,
+    "height": 715
+  },
+  "/column-images/ssrn-steering-human-partition/category.png": {
+    "width": 1497,
+    "height": 853
+  },
+  "/column-images/ssrn-steering-human-partition/floor.png": {
+    "width": 787,
+    "height": 500
+  },
+  "/column-images/ssrn-steering-human-partition/gate3.png": {
+    "width": 1594,
+    "height": 707
+  },
+  "/column-images/ssrn-steering-human-partition/gates-1-2.png": {
+    "width": 1716,
+    "height": 911
+  },
+  "/column-images/ssrn-steering-human-partition/gates.png": {
+    "width": 1571,
+    "height": 885
+  },
+  "/column-images/ssrn-steering-human-partition/paired.png": {
+    "width": 1571,
+    "height": 548
+  },
+  "/column-images/ssrn-steering-is-geometry/cross-model.png": {
+    "width": 1281,
+    "height": 791
+  },
+  "/column-images/ssrn-steering-is-geometry/estimator.png": {
+    "width": 1539,
+    "height": 766
+  },
+  "/column-images/ssrn-steering-is-geometry/floor-ratio.png": {
+    "width": 1996,
+    "height": 720
+  },
+  "/column-images/ssrn-steering-is-geometry/pipeline.png": {
+    "width": 1576,
+    "height": 495
+  },
+  "/column-images/ssrn-steering-is-geometry/reference-direction.png": {
+    "width": 1780,
+    "height": 786
+  },
+  "/column-images/ssrn-steering-is-geometry/vmic-ratio.png": {
+    "width": 1281,
+    "height": 720
+  },
+  "/column-images/ssrn-vlm-criterion-bias/auc-vs-criterion.png": {
+    "width": 1445,
+    "height": 1004
+  },
+  "/column-images/ssrn-vlm-criterion-bias/calibration.png": {
+    "width": 1775,
+    "height": 807
+  },
+  "/column-images/ssrn-vlm-criterion-bias/criterion.png": {
+    "width": 1572,
+    "height": 1056
+  },
+  "/column-images/ssrn-vlm-criterion-bias/examples.png": {
+    "width": 1438,
+    "height": 848
+  },
+  "/column-images/ssrn-vlm-criterion-bias/framework.png": {
+    "width": 1375,
+    "height": 484
+  },
+  "/column-images/ssrn-vlm-criterion-bias/separability-loss.png": {
+    "width": 1783,
+    "height": 649
+  },
+  "/column-images/ssrn-vlm-criterion-bias/transfer.png": {
+    "width": 1866,
+    "height": 582
+  },
+  "/column-images/ssrn-vlm-frame-alignment/align-effect.png": {
+    "width": 1384,
+    "height": 715
+  },
+  "/column-images/ssrn-vlm-frame-alignment/badge.png": {
+    "width": 1384,
+    "height": 704
+  },
+  "/column-images/ssrn-vlm-frame-alignment/controls.png": {
+    "width": 1796,
+    "height": 649
+  },
+  "/column-images/ssrn-vlm-frame-alignment/dose.png": {
+    "width": 1424,
+    "height": 747
+  },
+  "/column-images/ssrn-vlm-frame-alignment/joint.png": {
+    "width": 1479,
+    "height": 762
+  },
+  "/column-images/ssrn-vlm-frame-alignment/models.png": {
+    "width": 1588,
+    "height": 798
+  },
+  "/column-images/ssrn-vlm-frame-alignment/overview.png": {
+    "width": 1540,
+    "height": 396
+  },
+  "/column-images/ssrn-vlm-frame-alignment/stimulus.png": {
+    "width": 1380,
+    "height": 431
+  },
+  "/column-images/ssrn-web-filtering-affective-cost/audit.png": {
+    "width": 1668,
+    "height": 809
+  },
+  "/column-images/ssrn-web-filtering-affective-cost/corpora.png": {
+    "width": 1557,
+    "height": 734
+  },
+  "/column-images/ssrn-web-filtering-affective-cost/deletion.png": {
+    "width": 1442,
+    "height": 656
+  },
+  "/column-images/ssrn-web-filtering-affective-cost/densities.png": {
+    "width": 1307,
+    "height": 698
+  },
+  "/column-images/ssrn-web-filtering-affective-cost/knowledge.png": {
+    "width": 1578,
+    "height": 630
+  },
+  "/column-images/ssrn-web-filtering-affective-cost/overview.png": {
+    "width": 1540,
+    "height": 594
+  },
+  "/column-images/ssrn-web-filtering-affective-cost/robustness.png": {
+    "width": 1773,
+    "height": 785
+  },
+  "/column-images/ssrn-web-filtering-affective-cost/scale.png": {
+    "width": 1266,
+    "height": 681
+  },
+  "/column-images/ssrn-writer-reader-disagreement/direct-supervision.png": {
+    "width": 1836,
+    "height": 698
+  },
+  "/column-images/ssrn-writer-reader-disagreement/error-covariance.png": {
+    "width": 1471,
+    "height": 721
+  },
+  "/column-images/ssrn-writer-reader-disagreement/framework.png": {
+    "width": 1391,
+    "height": 480
+  },
+  "/column-images/ssrn-writer-reader-disagreement/input-visibility.png": {
+    "width": 1384,
+    "height": 668
+  },
+  "/column-images/ssrn-writer-reader-disagreement/prompt-shift.png": {
+    "width": 1952,
+    "height": 717
+  },
+  "/column-images/ssrn-writer-reader-disagreement/shift-vs-alignment.png": {
+    "width": 1831,
+    "height": 1203
+  },
+  "/column-images/wsdm2027-free-anchors/agreement.png": {
+    "width": 1646,
+    "height": 632
+  },
+  "/column-images/wsdm2027-free-anchors/anchor-sweep.png": {
+    "width": 1384,
+    "height": 700
+  },
+  "/column-images/wsdm2027-free-anchors/diversification.png": {
+    "width": 1452,
+    "height": 761
+  },
+  "/column-images/wsdm2027-free-anchors/gauge-schematic.png": {
+    "width": 1302,
+    "height": 813
+  },
+  "/column-images/wsdm2027-free-anchors/interventions.png": {
+    "width": 1590,
+    "height": 633
+  },
+  "/column-images/wsdm2027-free-anchors/synthetic.png": {
+    "width": 1690,
+    "height": 610
+  },
+  "/column-images/wsdm2027-free-anchors/vertex-coverage.png": {
+    "width": 1384,
+    "height": 615
+  },
+  "/column-images/zinc2026-emotional-detox/category.png": {
+    "width": 1387,
+    "height": 707
+  },
+  "/column-images/zinc2026-emotional-detox/consumers.png": {
+    "width": 1356,
+    "height": 639
+  },
+  "/column-images/zinc2026-emotional-detox/effect-sizes.png": {
+    "width": 1720,
+    "height": 717
+  },
+  "/column-images/zinc2026-emotional-detox/mode-metrics.png": {
+    "width": 1866,
+    "height": 1203
+  },
+  "/column-images/zinc2026-emotional-detox/overview.png": {
+    "width": 2287,
+    "height": 1249
+  },
+  "/column-images/zinc2026-emotional-detox/semantic.png": {
+    "width": 1703,
+    "height": 613
+  },
+  "/column-images/zoolsci-scientific-names/accuracy-vs-f1.png": {
+    "width": 1590,
+    "height": 700
+  },
+  "/column-images/zoolsci-scientific-names/counts.png": {
+    "width": 1276,
+    "height": 622
+  },
+  "/column-images/zoolsci-scientific-names/kappa.png": {
+    "width": 1590,
+    "height": 649
+  },
+  "/column-images/zoolsci-scientific-names/pipeline.png": {
+    "width": 1510,
+    "height": 535
+  },
+  "/column-images/zoolsci-scientific-names/prf1.png": {
+    "width": 1462,
+    "height": 786
   }
 }
