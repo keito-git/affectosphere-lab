@@ -270,7 +270,7 @@ export const allNews: NewsItem[] = [
       {
         title:
           "Applying large language models to expert-based etymological classification in zooplankton",
-        authors: "Haruto Sugeno, Keito Inoshita, Kota Nojiri",
+        authors: "Haruto Sugeno, Keito Inoshita, Kota Nojiri, Takumi Taga",
         venue: "Journal of Plankton Research",
         summary:
           "A study applying large language models to support expert-based etymological classification of zooplankton.",

@@ -109,7 +109,7 @@ Late-Read の要点は、デコーダ型 Transformer の因果マスクにあり
 
 15 タスク中、Affeline が上回ったのは 7 タスクでした。符号検定の p は 1.0000 で、どちらにも全体としての優位はありません。
 
-信頼区間が 0 をまたがないタスクを見ると、GoEmotions、WRIME 読み手、EI-reg などのデータの多いタスクでは専用モデルが上、皮肉検出では Affeline が上でした。最も差が大きいのは EI-reg の −0.0539 です。
+信頼区間が 0 をまたがないタスクを見ると、GoEmotions、WRIME 読み手、EI-reg などのデータの多いタスクでは専用モデルが上、皮肉検出では Affeline が上でした。表の中で目立つのは皮肉検出で、Affeline が専用モデルを +0.0450（95% 信頼区間 0.0077〜0.0824）上回りました。
 
 <figure>
   <img src="/column-images/ssrn-affeline/resource-groups-1600.webp" alt="Gain by resource group" />

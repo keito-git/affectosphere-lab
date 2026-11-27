@@ -109,7 +109,7 @@ Training uses three seeds. Each seed gets the same fixed budget, and the weights
 
 Affeline is better on 7 of the 15 tasks. The sign test gives p = 1.0000, so neither side has an overall advantage.
 
-Where the interval excludes zero, the specialist leads on high-resource tasks such as GoEmotions, WRIME reader and EI-reg, and Affeline leads on irony detection. The largest gap is on EI-reg, at −0.0539.
+Where the interval excludes zero, the specialist leads on high-resource tasks such as GoEmotions, WRIME reader and EI-reg, and Affeline leads on irony detection. The difference that stands out in the table is irony detection, where Affeline leads the specialist by +0.0450 (95% CI 0.0077 to 0.0824).
 
 <figure>
   <img src="/column-images/ssrn-affeline/resource-groups-1600.webp" alt="Gain by resource group" />

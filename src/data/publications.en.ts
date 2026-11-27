@@ -697,7 +697,7 @@ const rawPublications: Publication[] = [
     title:
       "Applying large language models to expert-based etymological classification in zooplankton",
     venue: "Journal of Plankton Research, vol. 48, no. 5",
-    date: "2026-07-01",
+    date: "2026-08-10",
     year: 2026,
     authors: "Haruto Sugeno, Keito Inoshita, Kota Nojiri, Takumi Taga",
     kind: "journal-international",
