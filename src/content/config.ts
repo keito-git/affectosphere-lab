@@ -32,6 +32,8 @@ const columnSchema = z.object({
   citation: z.string().optional(),
   /** Dated notes appended after publication. */
   updated: z.string().optional(),
+  /** Show `image` above the body. Turn off when the body repeats it as Figure 1. */
+  showImage: z.boolean().default(true),
   /** Drafts are skipped by every page. */
   draft: z.boolean().default(false),
 });

@@ -143,7 +143,7 @@ const L = en
       </div>
     </header>
 
-    {d.image && (
+    {d.image && d.showImage && (
       <figure class="reveal mx-auto mt-12 max-w-4xl">
         <Img src={d.image} alt={d.imageAlt ?? ""} class="w-full border border-stone" eager />
       </figure>
@@ -156,7 +156,7 @@ const L = en
       </aside>
     )}
 
-    <div class="prose-column reveal mx-auto mt-12 max-w-[46rem] font-display text-charcoal">
+    <div class="prose-column mx-auto mt-12 max-w-[46rem] font-display text-charcoal">
       <Content />
     </div>
 
@@ -263,6 +263,12 @@ const L = en
   :global(.prose-column ul) {
     margin: 1.25rem 0 1.25rem 1.5rem;
     padding-left: 1rem;
+  }
+  :global(.prose-column ol) {
+    list-style: decimal;
+  }
+  :global(.prose-column ul) {
+    list-style: disc;
   }
   :global(.prose-column li) {
     margin: 0.5rem 0;

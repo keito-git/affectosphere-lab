@@ -350,5 +350,37 @@
   "/logo/mark.png": {
     "width": 717,
     "height": 544
+  },
+  "/column-images/ace-net/ablation.png": {
+    "width": 1945,
+    "height": 683
+  },
+  "/column-images/ace-net/architecture.png": {
+    "width": 2167,
+    "height": 1129
+  },
+  "/column-images/ace-net/forge-omega.png": {
+    "width": 1768,
+    "height": 616
+  },
+  "/column-images/ace-net/layer-sweep.png": {
+    "width": 1403,
+    "height": 755
+  },
+  "/column-images/ace-net/main-results.png": {
+    "width": 1800,
+    "height": 717
+  },
+  "/column-images/ace-net/rebalancing.png": {
+    "width": 1598,
+    "height": 548
+  },
+  "/column-images/ace-net/selectivity.png": {
+    "width": 1403,
+    "height": 698
+  },
+  "/column-images/ace-net/tail3.png": {
+    "width": 1384,
+    "height": 715
   }
 }
