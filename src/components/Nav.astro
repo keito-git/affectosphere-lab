@@ -113,11 +113,11 @@ const switcherShort = locale === "en" ? "JP" : "EN";
     <div class="mx-auto max-w-content page-x">
       <nav aria-label="主要メニュー">
         <!-- One cell per entry, all the same width, separated by hairlines:
-             five across on tablet, all ten in one row from xl up. -->
+             six across on tablet, all eleven in one row from xl up. -->
         <ul class="flex flex-wrap border-r border-[#4A4A48]">
           {
             navItems.map((item) => (
-              <li class="shrink-0 basis-[20%] border-l border-[#4A4A48] xl:flex-1 xl:basis-0">
+              <li class="shrink-0 basis-[16.666%] border-l border-[#4A4A48] xl:flex-1 xl:basis-0">
                 <a
                   href={localizedHref(item.href)}
                   class:list={[

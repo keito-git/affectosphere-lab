@@ -2,12 +2,12 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHeader from "../../components/PageHeader.astro";
-import ColumnGrid from "../../components/ColumnGrid.astro";
+import ColumnList from "../../components/ColumnList.astro";
 import Pagination from "../../components/Pagination.astro";
 
 const PAGE_SIZE = 15;
 
-const allPosts = (await getCollection("column-en")).sort((a, b) =>
+const allPosts = (await getCollection("column-en", (p) => !p.data.draft)).sort((a, b) =>
   b.data.date.localeCompare(a.data.date)
 );
 const totalPages = Math.max(1, Math.ceil(allPosts.length / PAGE_SIZE));
@@ -16,14 +16,14 @@ const posts = allPosts.slice(0, PAGE_SIZE);
 
 <BaseLayout
   title="Column"
-  description="Plain-language columns from Affectosphere Group — research findings rewritten for business and practice. 5-minute reads."
+  description="Long-form research posts on Affectosphere Group's papers: background, experiments and results, with figures and tables."
   fullBleed
   locale="en"
 >
   <PageHeader
     eyebrow="Column"
-    title="Research, in business language."
-    subtitle="We rewrite Affectosphere Group's research into something useful for business and practical decision-making. Each piece is a 5-minute read."
+    title="Our papers, explained by their authors."
+    subtitle="Long-form posts on Affectosphere Group's papers: the background, the experiments and the results, with figures and tables."
     wideSubtitle
   />
 
@@ -32,10 +32,10 @@ const posts = allPosts.slice(0, PAGE_SIZE);
       posts.length === 0 ? (
         <div class="reveal max-w-prose">
           <p class="font-display text-lg leading-relaxed text-charcoal md:text-xl" style="line-height: 1.72;">
-            Columns are in preparation.
+            Posts are in preparation.
           </p>
           <p class="mt-4 font-display text-base leading-relaxed text-slate md:text-lg">
-            Research rewritten into language a business or practice decision can be made from will appear here.
+            Detailed posts on each paper's background, experiments and results will appear here.
           </p>
           <p class="mt-8">
             <a href="/en/research/" class="link-amber font-heading text-sm tracking-wide">
@@ -44,7 +44,7 @@ const posts = allPosts.slice(0, PAGE_SIZE);
           </p>
         </div>
       ) : (
-        <ColumnGrid posts={posts} hrefBase="/en/column" />
+        <ColumnList posts={posts} hrefBase="/en/column" locale="en" />
       )
     }
     {allPosts.length > 0 && (

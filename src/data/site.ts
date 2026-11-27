@@ -39,6 +39,8 @@ export const navItems: NavItem[] = [
   { groupStart: true, label: "Publications", href: "/publications/" },
   { label: "Awards", href: "/awards/" },
   { label: "Grants", href: "/grants/" },
+  // Long-form research posts.
+  { groupStart: true, label: "Column", href: "/column/" },
   // What is happening
   { groupStart: true, label: "News", href: "/news/" },
   // How to get involved. Contact carries the services menu as well.

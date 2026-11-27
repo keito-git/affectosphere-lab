@@ -2,12 +2,12 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeader from "../components/PageHeader.astro";
-import ColumnGrid from "../components/ColumnGrid.astro";
+import ColumnList from "../components/ColumnList.astro";
 import Pagination from "../components/Pagination.astro";
 
 const PAGE_SIZE = 15;
 
-const allPosts = (await getCollection("column-ja")).sort((a, b) =>
+const allPosts = (await getCollection("column-ja", (p) => !p.data.draft)).sort((a, b) =>
   b.data.date.localeCompare(a.data.date)
 );
 const totalPages = Math.max(1, Math.ceil(allPosts.length / PAGE_SIZE));
@@ -16,13 +16,13 @@ const posts = allPosts.slice(0, PAGE_SIZE);
 
 <BaseLayout
   title="Column"
-  description="Affectosphere Group の研究を、ビジネス・実務目線で読み解くコラム。5 分で読めるように書いています。"
+  description="Affectosphere Group の論文を、背景・実験・結果まで図表と一緒に解説する研究ブログです。"
   fullBleed
 >
   <PageHeader
     eyebrow="Column"
-    title="研究をビジネスの言葉に。"
-    subtitle="Affectosphere Group の研究を、ビジネスや実務の意思決定に役立つ形で書き直していきます。"
+    title="論文を、書いた本人が解説する。"
+    subtitle="Affectosphere Group の論文について、背景・実験・結果を図や表と一緒に解説します。"
     wideSubtitle
   />
 
@@ -31,10 +31,10 @@ const posts = allPosts.slice(0, PAGE_SIZE);
       posts.length === 0 ? (
         <div class="reveal max-w-prose">
           <p class="font-display text-lg leading-relaxed text-charcoal md:text-xl" style="line-height: 1.72;">
-            コラムは現在準備中です。
+            記事は現在準備中です。
           </p>
           <p class="mt-4 font-display text-base leading-relaxed text-slate md:text-lg">
-            研究を、ビジネスや実務の意思決定に使える言葉へ書き直した記事を、ここで公開していきます。
+            論文ごとに、背景・実験・結果を詳しく解説した記事をここで公開していきます。
           </p>
           <p class="mt-8">
             <a href="/research/" class="link-amber font-heading text-sm tracking-wide">
@@ -43,7 +43,7 @@ const posts = allPosts.slice(0, PAGE_SIZE);
           </p>
         </div>
       ) : (
-        <ColumnGrid posts={posts} hrefBase="/column" />
+        <ColumnList posts={posts} hrefBase="/column" locale="ja" />
       )
     }
     {allPosts.length > 0 && (

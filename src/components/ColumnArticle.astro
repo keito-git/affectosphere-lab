@@ -1,0 +1,393 @@
+---
+// Shared layout for a column / research-blog post (both languages).
+// Header: title, subtitle, authors, affiliations, date, links.
+// Then an optional TL;DR box, the Markdown body, the source paper and a
+// BibTeX block with a copy button.
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Img from "./Img.astro";
+
+interface Props {
+  post: CollectionEntry<"column-ja"> | CollectionEntry<"column-en">;
+  locale: "ja" | "en";
+  /** True when the other language has the same slug. */
+  hasOther: boolean;
+}
+
+const { post, locale, hasOther } = Astro.props;
+const { Content } = await post.render();
+const d = post.data;
+const en = locale === "en";
+const prefix = en ? "/en" : "";
+
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July",
+  "August", "September", "October", "November", "December"];
+function formatDate(iso: string): string {
+  const [y, m, day] = iso.split("-");
+  return en
+    ? `${MONTHS[Number(m) - 1]} ${Number(day)}, ${y}`
+    : `${y}年${Number(m)}月${Number(day)}日`;
+}
+
+const authors = d.authors ?? [
+  {
+    name: en ? "Keito Inoshita" : "井下 敬翔",
+    url: `${prefix}/about/`,
+    affiliation: en ? "Kansai University" : "関西大学",
+    equal: false,
+  },
+];
+// Affiliations listed once each, in order of first appearance.
+const affiliations = [...new Set(authors.map((a) => a.affiliation).filter(Boolean))] as string[];
+const hasEqual = authors.some((a) => a.equal);
+
+const origin = Astro.site ? Astro.site.origin : "https://lab.affectosphere.group";
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: d.title,
+  description: d.excerpt,
+  inLanguage: locale,
+  datePublished: d.date,
+  dateModified: d.updated ?? d.date,
+  author: authors.map((a) => ({ "@type": "Person", name: a.name })),
+  publisher: {
+    "@type": "Organization",
+    name: "Affectosphere Group",
+    url: origin,
+    logo: { "@type": "ImageObject", url: `${origin}/logo/mark.png` },
+  },
+  mainEntityOfPage: { "@type": "WebPage", "@id": `${origin}${prefix}/column/${post.slug}/` },
+  ...(d.image && { image: `${origin}${d.image}` }),
+};
+
+const L = en
+  ? { authors: "Authors", affil: "Affiliations", pub: "Published", upd: "Updated",
+      equal: "Equal contribution", other: "日本語版", otherHref: `/column/${post.slug}/`,
+      based: "Based on", cite: "Citation", citeLead: "Please cite this post or the paper as",
+      copy: "Copy", copied: "Copied", back: "All columns", min: "min read" }
+  : { authors: "著者", affil: "所属", pub: "公開日", upd: "更新日",
+      equal: "同等貢献", other: "English version", otherHref: `/en/column/${post.slug}/`,
+      based: "元の論文", cite: "引用", citeLead: "この記事・論文を引用する場合は以下をお使いください。",
+      copy: "コピー", copied: "コピーしました", back: "コラム一覧へ", min: "分で読める" };
+---
+
+<BaseLayout
+  title={d.title}
+  description={d.excerpt}
+  fullBleed
+  locale={locale}
+  ogImage={d.image}
+  jsonLd={articleJsonLd}
+>
+  <article class="mx-auto max-w-content page-x pt-20 md:pt-28">
+    <header class="reveal mx-auto max-w-[46rem]">
+      <p class="eyebrow">Column</p>
+      <h1
+        class="mt-4 font-display font-medium tracking-tight text-charcoal"
+        style="font-size: clamp(1.75rem, 3.2vw, 2.6rem); line-height: 1.15;"
+      >
+        {d.title}
+      </h1>
+      {d.subtitle && (
+        <p class="mt-4 font-display text-xl leading-snug text-slate md:text-2xl">{d.subtitle}</p>
+      )}
+
+      <!-- Byline: three labelled columns, as on a paper's project page. -->
+      <dl class="mt-8 grid gap-6 border-y border-stone py-6 font-display text-[0.95rem] sm:grid-cols-[2fr_2fr_1fr]">
+        <div>
+          <dt class="eyebrow">{L.authors}</dt>
+          <dd class="mt-2 leading-relaxed text-charcoal">
+            {authors.map((a, i) => (
+              <span>
+                {a.url ? <a href={a.url} class="link-amber">{a.name}</a> : a.name}
+                {a.equal && <sup>*</sup>}
+                {i < authors.length - 1 && <span class="text-slate">, </span>}
+              </span>
+            ))}
+            {hasEqual && <span class="mt-1 block text-xs text-slate">* {L.equal}</span>}
+          </dd>
+        </div>
+        <div>
+          <dt class="eyebrow">{L.affil}</dt>
+          <dd class="mt-2 leading-relaxed text-charcoal">
+            {affiliations.map((a) => <span class="block">{a}</span>)}
+          </dd>
+        </div>
+        <div>
+          <dt class="eyebrow">{L.pub}</dt>
+          <dd class="mt-2 text-charcoal">
+            <time datetime={d.date}>{formatDate(d.date)}</time>
+            {d.updated && (
+              <span class="mt-1 block text-xs text-slate">{L.upd}: <time datetime={d.updated}>{formatDate(d.updated)}</time></span>
+            )}
+          </dd>
+        </div>
+      </dl>
+
+      <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 font-heading text-sm">
+        {d.links?.map((l) => (
+          <a
+            href={l.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center border border-softink/60 px-3 py-1 text-softink transition-colors hover:border-charcoal hover:bg-charcoal hover:text-ivory"
+          >
+            {l.label}
+          </a>
+        ))}
+        <span class="font-label text-[0.7rem] uppercase tracking-[0.16em] text-slate">
+          {d.readingMinutes} {L.min}
+        </span>
+        {hasOther && <a href={L.otherHref} class="link-amber">{L.other} &rarr;</a>}
+      </div>
+    </header>
+
+    {d.image && (
+      <figure class="reveal mx-auto mt-12 max-w-4xl">
+        <Img src={d.image} alt={d.imageAlt ?? ""} class="w-full border border-stone" eager />
+      </figure>
+    )}
+
+    {d.tldr && (
+      <aside class="reveal mx-auto mt-12 max-w-[46rem] border border-stone bg-cream p-6 md:p-8">
+        <p class="font-label text-[0.75rem] font-medium uppercase tracking-[0.18em] text-amber-deep">TL;DR</p>
+        <p class="mt-3 font-display text-lg leading-relaxed text-charcoal">{d.tldr}</p>
+      </aside>
+    )}
+
+    <div class="prose-column reveal mx-auto mt-12 max-w-[46rem] font-display text-charcoal">
+      <Content />
+    </div>
+
+    {d.basedOnPaper && (
+      <aside class="reveal mx-auto mt-16 max-w-[46rem] border-l-2 border-amber/60 bg-cream/40 p-6">
+        <p class="mb-2 font-display text-sm italic text-slate">{L.based}</p>
+        <p class="font-display text-base text-charcoal">
+          {d.basedOnPaperUrl ? <a href={d.basedOnPaperUrl} class="link-amber">{d.basedOnPaper}</a> : d.basedOnPaper}
+        </p>
+      </aside>
+    )}
+
+    {d.citation && (
+      <section class="reveal mx-auto mt-16 max-w-[46rem]">
+        <h2 class="font-display text-2xl font-medium text-charcoal">{L.cite}</h2>
+        <p class="mt-3 font-display text-base text-slate">{L.citeLead}</p>
+        <div class="relative mt-4">
+          <pre class="overflow-x-auto border border-stone bg-cream p-5 pr-24 font-mono text-[0.8rem] leading-relaxed text-charcoal"><code data-citation>{d.citation.trim()}</code></pre>
+          <button
+            type="button"
+            class="absolute right-3 top-3 border border-softink/60 bg-ivory px-3 py-1 font-heading text-xs text-softink transition-colors hover:bg-charcoal hover:text-ivory"
+            data-copy-citation
+            data-label-copied={L.copied}
+          >
+            {L.copy}
+          </button>
+        </div>
+      </section>
+    )}
+
+    <nav class="reveal mx-auto mt-16 max-w-[46rem] border-t border-stone pt-8">
+      <a href={`${prefix}/column/`} class="link-amber font-heading text-sm tracking-wide">&larr; {L.back}</a>
+    </nav>
+  </article>
+
+  <div class="h-section-sm" aria-hidden="true"></div>
+</BaseLayout>
+
+<script>
+  // Copy the BibTeX block to the clipboard.
+  document.querySelectorAll<HTMLButtonElement>("[data-copy-citation]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const code = btn.parentElement?.querySelector("[data-citation]");
+      if (!code) return;
+      const original = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(code.textContent ?? "");
+        btn.textContent = btn.dataset.labelCopied ?? "Copied";
+        setTimeout(() => (btn.textContent = original), 1600);
+      } catch {
+        /* Clipboard blocked: the text stays selectable. */
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Local typography tuning for the Markdown body (Astro doesn't apply
+     Tailwind Typography by default; this keeps the rest of the site free
+     from the @tailwindcss/typography plugin while giving columns clean
+     defaults).  Applies to children of .prose-column. */
+  :global(.prose-column) {
+    line-height: 1.95;
+    font-size: 1.0625rem;
+  }
+  :global(.prose-column h2) {
+    margin-top: 3.5rem;
+    margin-bottom: 1rem;
+    font-family: "Times New Roman", "Noto Serif JP", serif;
+    font-weight: 500;
+    font-size: 1.625rem;
+    line-height: 1.3;
+    color: #2b2b28;
+  }
+  :global(.prose-column h3) {
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-family: "Times New Roman", "Noto Serif JP", serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.35;
+    color: #2b2b28;
+  }
+  :global(.prose-column p) {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  :global(.prose-column hr) {
+    margin: 3rem 0;
+    border: none;
+    border-top: 1px solid #ddd6c4;
+  }
+  :global(.prose-column strong) {
+    font-weight: 600;
+  }
+  :global(.prose-column blockquote) {
+    margin: 1.75rem 0;
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    border-left: 2px solid rgba(212, 159, 76, 0.5);
+    color: #6b6b66;
+    font-style: italic;
+  }
+  :global(.prose-column ol),
+  :global(.prose-column ul) {
+    margin: 1.25rem 0 1.25rem 1.5rem;
+    padding-left: 1rem;
+  }
+  :global(.prose-column li) {
+    margin: 0.5rem 0;
+  }
+  :global(.prose-column a) {
+    color: #d49f4c;
+    border-bottom: 1px solid rgba(212, 159, 76, 0.4);
+    text-decoration: none;
+  }
+  :global(.prose-column a:hover) {
+    border-bottom-color: rgba(212, 159, 76, 0.9);
+  }
+  :global(.prose-column code) {
+    background: rgba(212, 159, 76, 0.12);
+    padding: 0.1rem 0.35rem;
+    border-radius: 2px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.92em;
+  }
+  :global(.prose-column .footnotes) {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd6c4;
+    font-size: 0.875rem;
+    color: #6b6b66;
+  }
+  :global(.prose-column .ai-notice) {
+    margin-top: 2.5rem;
+    color: #8a8a82;
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+  :global(.prose-column .ai-notice small) {
+    font-size: inherit;
+  }
+
+  /* Research-blog elements: figures, tables, code, math-free callouts. */
+  :global(.prose-column figure) {
+    margin: 2.75rem 0;
+  }
+  :global(.prose-column figure img),
+  :global(.prose-column p > img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #e2ddd6;
+    background: #fff;
+  }
+  :global(.prose-column figcaption) {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #6b7280;
+  }
+  :global(.prose-column figcaption strong) {
+    color: #1a1a1a;
+  }
+  :global(.prose-column table) {
+    display: block;
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  :global(.prose-column th),
+  :global(.prose-column td) {
+    padding: 0.5rem 0.9rem;
+    border-bottom: 1px solid #e2ddd6;
+    text-align: left;
+    white-space: nowrap;
+  }
+  :global(.prose-column thead th) {
+    border-bottom: 1.5px solid #1a1a1a;
+    font-weight: 600;
+  }
+  :global(.prose-column pre) {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    padding: 1rem 1.25rem;
+    background: #f4f0e8;
+    border: 1px solid #e2ddd6;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  :global(.prose-column pre code) {
+    background: none;
+    padding: 0;
+  }
+  :global(.prose-column .setup) {
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    border-left: 2px solid #3d6b8c;
+    background: rgba(61, 107, 140, 0.05);
+  }
+  :global(.prose-column .experiment-label) {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #3d6b8c;
+  }
+  :global(.prose-column .teaser) {
+    display: grid;
+    gap: 1rem;
+    margin: 2.5rem 0;
+  }
+  @media (min-width: 768px) {
+    :global(.prose-column .teaser) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  :global(.prose-column .teaser > div) {
+    padding: 1rem;
+    border: 1px solid #e2ddd6;
+    background: #f4f0e8;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  :global(.prose-column .teaser > div > p:first-child) {
+    margin-top: 0;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #7b5e28;
+  }
+</style>
